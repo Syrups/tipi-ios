@@ -17,6 +17,13 @@
 		B3BCCFF81AA5C4CB00261212 /* GTWalsheim Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B3BCCFF61AA5C4CB00261212 /* GTWalsheim Light.otf */; };
 		B3BCCFF91AA5C4CB00261212 /* GTWalsheim Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B3BCCFF71AA5C4CB00261212 /* GTWalsheim Regular.otf */; };
 		B3BCCFFD1AA5C85B00261212 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFFC1AA5C85B00261212 /* HomeViewController.m */; };
+		B3BCD0001AA5E50D00261212 /* MediaPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFFF1AA5E50D00261212 /* MediaPickerViewController.m */; };
+		B3BCD0031AA5F03D00261212 /* AbortModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD0021AA5F03D00261212 /* AbortModalViewController.m */; };
+		B3BCD0061AA5F0CE00261212 /* NewStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD0051AA5F0CE00261212 /* NewStoryViewController.m */; };
+		B3BCD0091AA5F3D300261212 /* RoomPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD0081AA5F3D300261212 /* RoomPickerViewController.m */; };
+		B3BCD00C1AA5FCF400261212 /* ChooseTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD00B1AA5FCF400261212 /* ChooseTagViewController.m */; };
+		B3BCD0101AA5FDB500261212 /* NameStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD00F1AA5FDB500261212 /* NameStoryViewController.m */; };
+		B3BCD0131AA604DA00261212 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD0121AA604DA00261212 /* RecordViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +54,20 @@
 		B3BCCFF71AA5C4CB00261212 /* GTWalsheim Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTWalsheim Regular.otf"; sourceTree = "<group>"; };
 		B3BCCFFB1AA5C85B00261212 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		B3BCCFFC1AA5C85B00261212 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		B3BCCFFE1AA5E50D00261212 /* MediaPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaPickerViewController.h; sourceTree = "<group>"; };
+		B3BCCFFF1AA5E50D00261212 /* MediaPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaPickerViewController.m; sourceTree = "<group>"; };
+		B3BCD0011AA5F03D00261212 /* AbortModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbortModalViewController.h; sourceTree = "<group>"; };
+		B3BCD0021AA5F03D00261212 /* AbortModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbortModalViewController.m; sourceTree = "<group>"; };
+		B3BCD0041AA5F0CE00261212 /* NewStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStoryViewController.h; sourceTree = "<group>"; };
+		B3BCD0051AA5F0CE00261212 /* NewStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStoryViewController.m; sourceTree = "<group>"; };
+		B3BCD0071AA5F3D300261212 /* RoomPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomPickerViewController.h; sourceTree = "<group>"; };
+		B3BCD0081AA5F3D300261212 /* RoomPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomPickerViewController.m; sourceTree = "<group>"; };
+		B3BCD00A1AA5FCF400261212 /* ChooseTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseTagViewController.h; sourceTree = "<group>"; };
+		B3BCD00B1AA5FCF400261212 /* ChooseTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseTagViewController.m; sourceTree = "<group>"; };
+		B3BCD00E1AA5FDB500261212 /* NameStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameStoryViewController.h; sourceTree = "<group>"; };
+		B3BCD00F1AA5FDB500261212 /* NameStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameStoryViewController.m; sourceTree = "<group>"; };
+		B3BCD0111AA604DA00261212 /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordViewController.h; sourceTree = "<group>"; };
+		B3BCD0121AA604DA00261212 /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,12 +151,34 @@
 		B3BCCFFA1AA5C84B00261212 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B3BCD00D1AA5FD8000261212 /* Create */,
 				B3BCCFFB1AA5C85B00261212 /* HomeViewController.h */,
 				B3BCCFFC1AA5C85B00261212 /* HomeViewController.m */,
 				73B20BEA1AA5FF0800A9C88F /* BaseHomeViewController.h */,
 				73B20BEB1AA5FF0800A9C88F /* BaseHomeViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B3BCD00D1AA5FD8000261212 /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				B3BCCFFE1AA5E50D00261212 /* MediaPickerViewController.h */,
+				B3BCCFFF1AA5E50D00261212 /* MediaPickerViewController.m */,
+				B3BCD0011AA5F03D00261212 /* AbortModalViewController.h */,
+				B3BCD0021AA5F03D00261212 /* AbortModalViewController.m */,
+				B3BCD0041AA5F0CE00261212 /* NewStoryViewController.h */,
+				B3BCD0051AA5F0CE00261212 /* NewStoryViewController.m */,
+				B3BCD0071AA5F3D300261212 /* RoomPickerViewController.h */,
+				B3BCD0081AA5F3D300261212 /* RoomPickerViewController.m */,
+				B3BCD00A1AA5FCF400261212 /* ChooseTagViewController.h */,
+				B3BCD00B1AA5FCF400261212 /* ChooseTagViewController.m */,
+				B3BCD00E1AA5FDB500261212 /* NameStoryViewController.h */,
+				B3BCD00F1AA5FDB500261212 /* NameStoryViewController.m */,
+				B3BCD0111AA604DA00261212 /* RecordViewController.h */,
+				B3BCD0121AA604DA00261212 /* RecordViewController.m */,
+			);
+			name = Create;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +230,7 @@
 				TargetAttributes = {
 					B3BCCFCC1AA5C36C00261212 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = BS32A789K9;
 					};
 					B3BCCFE51AA5C36C00261212 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -240,10 +284,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3BCD0101AA5FDB500261212 /* NameStoryViewController.m in Sources */,
+				B3BCD00C1AA5FCF400261212 /* ChooseTagViewController.m in Sources */,
 				B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */,
+				B3BCD0061AA5F0CE00261212 /* NewStoryViewController.m in Sources */,
+				B3BCD0031AA5F03D00261212 /* AbortModalViewController.m in Sources */,
+				B3BCD0091AA5F3D300261212 /* RoomPickerViewController.m in Sources */,
 				B3BCCFD31AA5C36C00261212 /* main.m in Sources */,
 				73B20BEC1AA5FF0800A9C88F /* BaseHomeViewController.m in Sources */,
 				B3BCCFFD1AA5C85B00261212 /* HomeViewController.m in Sources */,
+				B3BCD0001AA5E50D00261212 /* MediaPickerViewController.m in Sources */,
+				B3BCD0131AA604DA00261212 /* RecordViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +416,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Wireframe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -375,6 +427,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Wireframe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
