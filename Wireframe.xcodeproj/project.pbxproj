@@ -15,6 +15,7 @@
 		B3BCCFED1AA5C36C00261212 /* WireframeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFEC1AA5C36C00261212 /* WireframeTests.m */; };
 		B3BCCFF81AA5C4CB00261212 /* GTWalsheim Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B3BCCFF61AA5C4CB00261212 /* GTWalsheim Light.otf */; };
 		B3BCCFF91AA5C4CB00261212 /* GTWalsheim Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B3BCCFF71AA5C4CB00261212 /* GTWalsheim Regular.otf */; };
+		B3BCCFFD1AA5C85B00261212 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFFC1AA5C85B00261212 /* HomeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,8 @@
 		B3BCCFEC1AA5C36C00261212 /* WireframeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WireframeTests.m; sourceTree = "<group>"; };
 		B3BCCFF61AA5C4CB00261212 /* GTWalsheim Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTWalsheim Light.otf"; sourceTree = "<group>"; };
 		B3BCCFF71AA5C4CB00261212 /* GTWalsheim Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTWalsheim Regular.otf"; sourceTree = "<group>"; };
+		B3BCCFFB1AA5C85B00261212 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		B3BCCFFC1AA5C85B00261212 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,7 @@
 		B3BCCFCF1AA5C36C00261212 /* Wireframe */ = {
 			isa = PBXGroup;
 			children = (
+				B3BCCFFA1AA5C84B00261212 /* Controllers */,
 				B3BCCFF61AA5C4CB00261212 /* GTWalsheim Light.otf */,
 				B3BCCFF71AA5C4CB00261212 /* GTWalsheim Regular.otf */,
 				B3BCCFD41AA5C36C00261212 /* AppDelegate.h */,
@@ -118,6 +122,15 @@
 				B3BCCFEB1AA5C36C00261212 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B3BCCFFA1AA5C84B00261212 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B3BCCFFB1AA5C85B00261212 /* HomeViewController.h */,
+				B3BCCFFC1AA5C85B00261212 /* HomeViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +237,7 @@
 			files = (
 				B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */,
 				B3BCCFD31AA5C36C00261212 /* main.m in Sources */,
+				B3BCCFFD1AA5C85B00261212 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
