@@ -23,4 +23,18 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)discard:(id)sender {
+    UINavigationController* previous = (UINavigationController*)self.presentingViewController;
+    [self dismissViewControllerAnimated:YES completion:^{
+        [previous popToRootViewControllerAnimated:YES];
+    }];
+}
+
+- (IBAction)save:(id)sender {
+    UINavigationController* previous = (UINavigationController*)self.presentingViewController;
+    [self dismissViewControllerAnimated:YES completion:^{
+        [previous popToRootViewControllerAnimated:YES];
+    }];
+}
+
 @end
