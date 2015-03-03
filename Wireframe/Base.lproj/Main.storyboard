@@ -410,10 +410,10 @@
             </objects>
             <point key="canvasLocation" x="2579" y="-986"/>
         </scene>
-        <!--View Controller-->
+        <!--Organize Story View Controller-->
         <scene sceneID="Pvx-Rm-ZwT">
             <objects>
-                <viewController id="HyC-CS-MSr" sceneMemberID="viewController">
+                <viewController id="HyC-CS-MSr" customClass="OrganizeStoryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CBU-73-A3R"/>
                         <viewControllerLayoutGuide type="bottom" id="iWB-j8-lff"/>
@@ -440,51 +440,49 @@
                                     <segue destination="gHW-fG-7DP" kind="modal" id="AXH-4n-hAG"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6j-Yd-C5l">
-                                <rect key="frame" x="0.0" y="174" width="320" height="218"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXE-Vq-Xms">
-                                        <rect key="frame" x="262" y="37" width="146" height="144"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vap-cp-gaf">
+                                <rect key="frame" x="0.0" y="128" width="320" height="351"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewLayout key="collectionViewLayout" id="bem-4E-aH9" customClass="LXReorderableCollectionViewFlowLayout"/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MediaCell" id="pkH-gF-aLa">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="161" height="166"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="bn3-Z3-zde" kind="push" id="GLM-dw-NbC"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0d-gL-AEd">
-                                        <rect key="frame" x="439" y="37" width="146" height="144"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMz-0e-4yk">
-                                        <rect key="frame" x="85" y="37" width="146" height="144"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="bn3-Z3-zde" kind="push" id="JwR-gd-xa3"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="contentSize">
-                                        <size key="value" width="800" height="218"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </scrollView>
+                                        <size key="customSize" width="161" height="166"/>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aOD-Th-e2b">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="HyC-CS-MSr" id="WGy-qH-fnb"/>
+                                    <outlet property="delegate" destination="HyC-CS-MSr" id="Wip-E3-dNd"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="qTm-rl-zxA"/>
+                    <connections>
+                        <outlet property="collectionView" destination="Vap-cp-gaf" id="mew-3S-Uci"/>
+                        <segue destination="bn3-Z3-zde" kind="push" identifier="ToRecord" id="KJk-U9-Yrn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BdT-pl-9vK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2976" y="-986"/>
+            <point key="canvasLocation" x="2978" y="-986"/>
         </scene>
         <!--Record View Controller-->
         <scene sceneID="IRE-9P-Kwh">
@@ -538,6 +536,11 @@
                 <swipeGestureRecognizer direction="left" id="74V-rK-Kl4">
                     <connections>
                         <segue destination="eau-Wd-xjD" kind="push" id="202-Mm-NNI"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="Whw-G3-NvM">
+                    <connections>
+                        <action selector="back:" destination="bn3-Z3-zde" id="B02-G8-WOV"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -750,7 +753,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="gHW-fG-7DP" kind="modal" id="4Cm-I4-ka0"/>
+                                    <segue destination="gHW-fG-7DP" kind="modal" id="lPn-QD-ukx"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose who to tell your story to" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxo-QR-RB5">
@@ -887,6 +890,7 @@
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="Qro-vt-Z1k" appends="YES" id="XQZ-nD-LQ0"/>
+                            <outletCollection property="gestureRecognizers" destination="Wnk-QA-bHr" appends="YES" id="CHL-yc-Xfv"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="uCP-Jn-wh5"/>
@@ -898,6 +902,11 @@
                 <swipeGestureRecognizer direction="left" id="Qro-vt-Z1k">
                     <connections>
                         <segue destination="HRD-xh-k2l" kind="push" id="H6P-IV-skD"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="Wnk-QA-bHr">
+                    <connections>
+                        <action selector="back:" destination="eau-Wd-xjD" id="jeC-db-Vgx"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -929,6 +938,9 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="gHW-fG-7DP" kind="modal" id="gSG-RX-CtH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsb-wx-zde">
                                 <rect key="frame" x="120" y="401" width="80" height="80"/>
@@ -941,6 +953,7 @@
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="9z6-9q-nD1" appends="YES" id="mLU-zv-G5w"/>
+                            <outletCollection property="gestureRecognizers" destination="Ned-my-JIQ" appends="YES" id="Cpp-TN-qPm"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="pVm-Zg-6mm"/>
@@ -954,6 +967,11 @@
                         <segue destination="clz-xR-hRu" kind="push" id="fdR-rB-LLi"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="Ned-my-JIQ">
+                    <connections>
+                        <action selector="back:" destination="HRD-xh-k2l" id="4MQ-Bl-aHi"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4161" y="-986"/>
         </scene>
@@ -964,7 +982,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="WEG-lH-OuO"/>
-        <segue reference="JwR-gd-xa3"/>
+        <segue reference="lPn-QD-ukx"/>
     </inferredMetricsTieBreakers>
 </document>
