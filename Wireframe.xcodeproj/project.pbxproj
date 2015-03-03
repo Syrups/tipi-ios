@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		73B20BEC1AA5FF0800A9C88F /* BaseHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B20BEB1AA5FF0800A9C88F /* BaseHomeViewController.m */; };
 		B3BCCFD31AA5C36C00261212 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFD21AA5C36C00261212 /* main.m */; };
 		B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFD51AA5C36C00261212 /* AppDelegate.m */; };
 		B3BCCFDC1AA5C36C00261212 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3BCCFDA1AA5C36C00261212 /* Main.storyboard */; };
@@ -29,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		73B20BEA1AA5FF0800A9C88F /* BaseHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseHomeViewController.h; sourceTree = "<group>"; };
+		73B20BEB1AA5FF0800A9C88F /* BaseHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseHomeViewController.m; sourceTree = "<group>"; };
 		B3BCCFCD1AA5C36C00261212 /* Wireframe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wireframe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3BCCFD11AA5C36C00261212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3BCCFD21AA5C36C00261212 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -129,6 +132,8 @@
 			children = (
 				B3BCCFFB1AA5C85B00261212 /* HomeViewController.h */,
 				B3BCCFFC1AA5C85B00261212 /* HomeViewController.m */,
+				73B20BEA1AA5FF0800A9C88F /* BaseHomeViewController.h */,
+				73B20BEB1AA5FF0800A9C88F /* BaseHomeViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -237,6 +242,7 @@
 			files = (
 				B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */,
 				B3BCCFD31AA5C36C00261212 /* main.m in Sources */,
+				73B20BEC1AA5FF0800A9C88F /* BaseHomeViewController.m in Sources */,
 				B3BCCFFD1AA5C85B00261212 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,6 +434,7 @@
 				B3BCCFF21AA5C36C00261212 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B3BCCFF31AA5C36C00261212 /* Build configuration list for PBXNativeTarget "WireframeTests" */ = {
 			isa = XCConfigurationList;
@@ -436,6 +443,7 @@
 				B3BCCFF51AA5C36C00261212 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

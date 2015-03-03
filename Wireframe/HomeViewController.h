@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeViewController : UIViewController
+@interface HomeViewController : UIViewController <UIPageViewControllerDataSource>
 
+@property (nonatomic, strong)UIPageViewController *pager;
 @end
