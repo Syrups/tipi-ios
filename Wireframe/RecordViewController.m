@@ -22,6 +22,8 @@
     self.recordButton.layer.borderWidth = 1;
 }
 
-
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end
