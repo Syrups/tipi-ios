@@ -42,7 +42,6 @@
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
-            <string>GTWalsheim-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -177,28 +176,26 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oBV-af-jJZ" id="zxn-8o-hU9">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hKf-r5-LsR">
-                                                    <rect key="frame" x="45" y="14" width="200" height="200"/>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hKf-r5-LsR">
+                                                    <rect key="frame" x="45" y="15" width="200" height="200"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1l-Jy-arN">
-                                                    <rect key="frame" x="62" y="28" width="200" height="200"/>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h1l-Jy-arN">
+                                                    <rect key="frame" x="62" y="29" width="200" height="200"/>
                                                     <subviews>
-                                                        <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UfQ-58-X2x">
-                                                            <rect key="frame" x="35" y="78" width="149" height="51"/>
-                                                            <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="20"/>
-                                                            <state key="normal" title="New story">
-                                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fk5-dR-we7">
+                                                            <rect key="frame" x="8" y="92" width="184" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="UfQ-58-X2x" secondAttribute="bottom" constant="71" id="4Qs-x8-awU"/>
-                                                        <constraint firstItem="UfQ-58-X2x" firstAttribute="leading" secondItem="h1l-Jy-arN" secondAttribute="leading" constant="35" id="4wv-xA-LyN"/>
-                                                        <constraint firstAttribute="trailing" secondItem="UfQ-58-X2x" secondAttribute="trailing" constant="16" id="Uc4-en-jGX"/>
-                                                        <constraint firstItem="UfQ-58-X2x" firstAttribute="top" secondItem="h1l-Jy-arN" secondAttribute="top" constant="78" id="Yki-oc-fLn"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Fk5-dR-we7" secondAttribute="bottom" constant="87" id="590-Uo-gS2"/>
+                                                        <constraint firstItem="Fk5-dR-we7" firstAttribute="leading" secondItem="h1l-Jy-arN" secondAttribute="leading" constant="8" id="P3v-PY-HN4"/>
+                                                        <constraint firstItem="Fk5-dR-we7" firstAttribute="top" secondItem="h1l-Jy-arN" secondAttribute="top" constant="92" id="cVd-5S-yYf"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Fk5-dR-we7" secondAttribute="trailing" constant="8" id="yZp-52-c1F"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -229,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEu-gH-EFJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1215" y="-641"/>
+            <point key="canvasLocation" x="1215" y="-644"/>
         </scene>
         <!--Show One Group View Controller-->
         <scene sceneID="cmJ-mA-YpI">
@@ -649,7 +646,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BdT-pl-9vK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2448" y="-1250"/>
+            <point key="canvasLocation" x="2978" y="-986"/>
         </scene>
         <!--Record View Controller-->
         <scene sceneID="IRE-9P-Kwh">
@@ -1149,7 +1146,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="JwR-gd-xa3"/>
-        <segue reference="h2d-LZ-3kN"/>
+        <segue reference="lPn-QD-ukx"/>
     </inferredMetricsTieBreakers>
 </document>

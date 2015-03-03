@@ -50,9 +50,7 @@
     }
     
     UILabel *name = (UILabel*)[cell.contentView viewWithTag:100];
-    
-    //name.text = @"ok";
-    //name.text = [NSString stringWithFormat:@"Groupe %ld", (long)indexPath.row];
+    name.text = [NSString stringWithFormat:@"Groupe %ld", (long)indexPath.row];
     
     return cell;
 }
