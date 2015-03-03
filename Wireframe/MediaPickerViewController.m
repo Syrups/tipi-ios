@@ -7,6 +7,7 @@
 //
 
 #import "MediaPickerViewController.h"
+#import "PKCollectionViewStickyHeaderFlowLayout.h"
 
 @interface MediaPickerViewController ()
 
@@ -18,6 +19,8 @@
 
 - (void)viewDidLoad {
     selectedIndexes = [NSMutableArray array];
+    
+//    self.mediaCollectionView.collectionViewLayout = [[PKCollectionViewStickyHeaderFlowLayout alloc] init];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {

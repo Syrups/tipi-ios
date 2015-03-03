@@ -25,6 +25,7 @@
 		B3BCD0131AA604DA00261212 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD0121AA604DA00261212 /* RecordViewController.m */; };
 		B3BCD01D1AA60D4C00261212 /* OrganizeStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD01C1AA60D4C00261212 /* OrganizeStoryViewController.m */; };
 		B3BCD0211AA6148100261212 /* LXReorderableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD0201AA6148100261212 /* LXReorderableCollectionViewFlowLayout.m */; };
+		B3BCD0261AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD0251AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,8 @@
 		B3BCD01C1AA60D4C00261212 /* OrganizeStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrganizeStoryViewController.m; sourceTree = "<group>"; };
 		B3BCD01F1AA6148100261212 /* LXReorderableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXReorderableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		B3BCD0201AA6148100261212 /* LXReorderableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXReorderableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		B3BCD0241AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKCollectionViewStickyHeaderFlowLayout.h; sourceTree = "<group>"; };
+		B3BCD0251AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKCollectionViewStickyHeaderFlowLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +116,7 @@
 		B3BCCFCF1AA5C36C00261212 /* Wireframe */ = {
 			isa = PBXGroup;
 			children = (
+				B3BCD0221AA622FA00261212 /* Components */,
 				B3BCCFFA1AA5C84B00261212 /* Controllers */,
 				B3BCCFF61AA5C4CB00261212 /* GTWalsheim Light.otf */,
 				B3BCCFF71AA5C4CB00261212 /* GTWalsheim Regular.otf */,
@@ -192,6 +196,23 @@
 				B3BCD0201AA6148100261212 /* LXReorderableCollectionViewFlowLayout.m */,
 			);
 			path = LXReorderableCollectionViewFlowLayout;
+			sourceTree = "<group>";
+		};
+		B3BCD0221AA622FA00261212 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B3BCD0231AA6230100261212 /* Layout */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		B3BCD0231AA6230100261212 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				B3BCD0241AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.h */,
+				B3BCD0251AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m */,
+			);
+			name = Layout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,6 +320,7 @@
 			files = (
 				B3BCD0101AA5FDB500261212 /* NameStoryViewController.m in Sources */,
 				B3BCD00C1AA5FCF400261212 /* ChooseTagViewController.m in Sources */,
+				B3BCD0261AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m in Sources */,
 				B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */,
 				B3BCD0061AA5F0CE00261212 /* NewStoryViewController.m in Sources */,
 				B3BCD01D1AA60D4C00261212 /* OrganizeStoryViewController.m in Sources */,
