@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseHomeViewController.h"
 
-@interface NewStoryViewController : UIViewController
+@interface NewStoryViewController : BaseHomeViewController
 
 @end
