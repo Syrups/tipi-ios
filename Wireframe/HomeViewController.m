@@ -15,6 +15,10 @@
 
 @implementation HomeViewController
 
+// Some number
+#define MAX_PAGES 2
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -53,9 +57,6 @@
     [self.pager didMoveToParentViewController:self];
 }
 
-// Some number
-#define MAX_PAGES 5
-
 // Factory method
 - (UIViewController *)viewControllerAtIndex:(int)i {
     // Asking for a page that is out of bounds??
@@ -66,8 +67,10 @@
         return nil;
     }
     
+    NSString * indentifier = i == 0 ? @"NewStoryViewController" : @"ShowGroupsViewController";
+    
     // Assuming you have SomePageViewController.xib
-    BaseHomeViewController *newController = [self.storyboard instantiateViewControllerWithIdentifier: @"BaseHomeViewController"];
+    BaseHomeViewController *newController = [self.storyboard instantiateViewControllerWithIdentifier: indentifier];
     newController.idx = i;
     
     return newController;
