@@ -25,13 +25,14 @@
     
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;
+    self.mTableView.separatorColor = [UIColor clearColor];
     
     
-    for (UIView* v in self.mTableView.subviews ) {
-        for (UITableViewCell *cell in v.subviews) {
-            cell.contentView.layer.borderWidth = 1;
-            cell.contentView.layer.borderColor = [UIColor blackColor].CGColor;
-        }
+    for (UIView* v in self.view.subviews ) {
+        //for (UITableViewCell *cell in v.subviews) {
+            //v.layer.borderWidth = 1;
+            //v.layer.borderColor = [UIColor blackColor].CGColor;
+        //}
     }
 }
 
@@ -50,9 +51,7 @@
     }
     
     UILabel *name = (UILabel*)[cell.contentView viewWithTag:100];
-    
-    //name.text = @"ok";
-    //name.text = [NSString stringWithFormat:@"Groupe %ld", (long)indexPath.row];
+    name.text = [NSString stringWithFormat:@"Group %ld", (long)indexPath.row];
     
     return cell;
 }
