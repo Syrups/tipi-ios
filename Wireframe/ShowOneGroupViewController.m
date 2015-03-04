@@ -20,7 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.mStories = @[@1, @2, @3, @4];
+    self.mStories = @[@"coup de chance", @"Conférence F.A.M.E", @"Plexus Gobelins"];
     
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;
@@ -68,10 +68,15 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
-    //UILabel *name = (UILabel*)[cell.contentView viewWithTag:100];
+    for (UIView* v in cell.contentView.subviews) {
+        //if([v class])
+        v.layer.borderWidth = 1;
+        v.layer.borderColor = [UIColor blackColor].CGColor;
+    }
     
-    //name.text = @"ok";
-    //name.text = [NSString stringWithFormat:@"Groupe %ld", (long)indexPath.row];
+    
+    UILabel *name = (UILabel*)[cell.contentView viewWithTag:10];
+    name.text = [self.mStories objectAtIndex:indexPath.row];
     
     return cell;
 }
