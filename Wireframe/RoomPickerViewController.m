@@ -22,6 +22,14 @@
     selectedIndexes = [NSMutableArray array];
 }
 
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)backToStart:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }

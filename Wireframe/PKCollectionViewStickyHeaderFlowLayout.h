@@ -1,5 +1,5 @@
 //
-//  ChooseTagViewController.h
+//  PKCollectionViewStickyHeaderFlowLayout.h
 //  Wireframe
 //
 //  Created by Leo on 03/03/2015.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChooseTagViewController : UIViewController <UITextFieldDelegate>
+@interface PKCollectionViewStickyHeaderFlowLayout : UICollectionViewFlowLayout
 
 @end

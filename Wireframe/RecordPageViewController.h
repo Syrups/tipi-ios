@@ -1,5 +1,5 @@
 //
-//  ChooseTagViewController.h
+//  RecordPageViewController.h
 //  Wireframe
 //
 //  Created by Leo on 03/03/2015.
@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChooseTagViewController : UIViewController <UITextFieldDelegate>
+@interface RecordPageViewController : UIViewController
+
+@property NSUInteger pageIndex;
+@property BOOL recorded;
 
 @end

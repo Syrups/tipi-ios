@@ -29,6 +29,9 @@
 		B3BCD0101AA5FDB500261212 /* NameStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD00F1AA5FDB500261212 /* NameStoryViewController.m */; };
 		B3BCD0131AA604DA00261212 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD0121AA604DA00261212 /* RecordViewController.m */; };
 		B3BCD01D1AA60D4C00261212 /* OrganizeStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD01C1AA60D4C00261212 /* OrganizeStoryViewController.m */; };
+		B3BCD0261AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD0251AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m */; };
+		B3FC7B8C1AA662CC00034E58 /* RecordPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FC7B8B1AA662CC00034E58 /* RecordPageViewController.m */; };
+		B3FC7B8F1AA672DE00034E58 /* placeholder.gif in Resources */ = {isa = PBXBuildFile; fileRef = B3FC7B8E1AA672DE00034E58 /* placeholder.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +86,11 @@
 		B3BCD01C1AA60D4C00261212 /* OrganizeStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrganizeStoryViewController.m; sourceTree = "<group>"; };
 		B3BCD01F1AA6148100261212 /* LXReorderableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXReorderableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		B3BCD0201AA6148100261212 /* LXReorderableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXReorderableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		B3BCD0241AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKCollectionViewStickyHeaderFlowLayout.h; sourceTree = "<group>"; };
+		B3BCD0251AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKCollectionViewStickyHeaderFlowLayout.m; sourceTree = "<group>"; };
+		B3FC7B8A1AA662CC00034E58 /* RecordPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordPageViewController.h; sourceTree = "<group>"; };
+		B3FC7B8B1AA662CC00034E58 /* RecordPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordPageViewController.m; sourceTree = "<group>"; };
+		B3FC7B8E1AA672DE00034E58 /* placeholder.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = placeholder.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +154,9 @@
 		B3BCCFCF1AA5C36C00261212 /* Wireframe */ = {
 			isa = PBXGroup;
 			children = (
+				B3FC7B8E1AA672DE00034E58 /* placeholder.gif */,
+				B3A4CDC51AA71D860079F8D1 /* Services */,
+				B3BCD0221AA622FA00261212 /* Components */,
 				B3BCCFFA1AA5C84B00261212 /* Controllers */,
 				B3BCCFF61AA5C4CB00261212 /* GTWalsheim Light.otf */,
 				B3BCCFF71AA5C4CB00261212 /* GTWalsheim Regular.otf */,
@@ -201,6 +212,7 @@
 		B3BCD00D1AA5FD8000261212 /* Create */ = {
 			isa = PBXGroup;
 			children = (
+				B3FC7B8D1AA662D900034E58 /* Record */,
 				B3BCCFFE1AA5E50D00261212 /* MediaPickerViewController.h */,
 				B3BCCFFF1AA5E50D00261212 /* MediaPickerViewController.m */,
 				B3BCD0011AA5F03D00261212 /* AbortModalViewController.h */,
@@ -213,8 +225,6 @@
 				B3BCD00B1AA5FCF400261212 /* ChooseTagViewController.m */,
 				B3BCD00E1AA5FDB500261212 /* NameStoryViewController.h */,
 				B3BCD00F1AA5FDB500261212 /* NameStoryViewController.m */,
-				B3BCD0111AA604DA00261212 /* RecordViewController.h */,
-				B3BCD0121AA604DA00261212 /* RecordViewController.m */,
 				B3BCD01B1AA60D4C00261212 /* OrganizeStoryViewController.h */,
 				B3BCD01C1AA60D4C00261212 /* OrganizeStoryViewController.m */,
 			);
@@ -228,6 +238,34 @@
 				B3BCD0201AA6148100261212 /* LXReorderableCollectionViewFlowLayout.m */,
 			);
 			path = LXReorderableCollectionViewFlowLayout;
+			sourceTree = "<group>";
+		};
+		B3BCD0221AA622FA00261212 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B3BCD0231AA6230100261212 /* Layout */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		B3BCD0231AA6230100261212 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				B3BCD0241AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.h */,
+				B3BCD0251AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
+		B3FC7B8D1AA662D900034E58 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				B3BCD0111AA604DA00261212 /* RecordViewController.h */,
+				B3BCD0121AA604DA00261212 /* RecordViewController.m */,
+				B3FC7B8A1AA662CC00034E58 /* RecordPageViewController.h */,
+				B3FC7B8B1AA662CC00034E58 /* RecordPageViewController.m */,
+			);
+			name = Record;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,6 +353,7 @@
 				B3BCCFF91AA5C4CB00261212 /* GTWalsheim Regular.otf in Resources */,
 				B3BCCFDC1AA5C36C00261212 /* Main.storyboard in Resources */,
 				B3BCCFE11AA5C36C00261212 /* LaunchScreen.xib in Resources */,
+				B3FC7B8F1AA672DE00034E58 /* placeholder.gif in Resources */,
 				B3BCCFDE1AA5C36C00261212 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,7 +374,10 @@
 			files = (
 				73B20BF41AA61FC400A9C88F /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				B3BCD0101AA5FDB500261212 /* NameStoryViewController.m in Sources */,
+				B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */,
 				B3BCD00C1AA5FCF400261212 /* ChooseTagViewController.m in Sources */,
+				B3FC7B8C1AA662CC00034E58 /* RecordPageViewController.m in Sources */,
+				B3BCD0261AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m in Sources */,
 				B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */,
 				B3BCD0061AA5F0CE00261212 /* NewStoryViewController.m in Sources */,
 				B3BCD01D1AA60D4C00261212 /* OrganizeStoryViewController.m in Sources */,
