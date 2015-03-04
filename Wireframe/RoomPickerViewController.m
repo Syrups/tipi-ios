@@ -14,12 +14,14 @@
 
 @implementation RoomPickerViewController {
     NSMutableArray* selectedIndexes;
+    NSArray* rooms;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     selectedIndexes = [NSMutableArray array];
+    rooms = @[@"Room mates", @"Family", @"Kayak"];
 }
 
 - (IBAction)back:(id)sender {
@@ -35,7 +37,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 4;
+    return rooms.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -49,6 +51,9 @@
         v.layer.borderWidth = 1;
         v.layer.borderColor = [UIColor blackColor].CGColor;
     }
+    
+    UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
+    name.text = [rooms objectAtIndex:indexPath.row];
     
     return cell;
 }

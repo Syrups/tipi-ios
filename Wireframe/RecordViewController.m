@@ -20,9 +20,9 @@
     
     self.lastPage = NO;
     
-    self.recordButton.layer.borderColor = [UIColor blackColor].CGColor;
+    self.recordButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.recordButton.layer.cornerRadius = 40;
-    self.recordButton.layer.borderWidth = 1;
+    self.recordButton.layer.borderWidth = 10;
     
     self.pages = [NSMutableArray arrayWithObjects:@"1", @"2", @"3", nil];
     
@@ -52,6 +52,7 @@
     RecordPageViewController* current = [self currentPage];
     
     if (current.recorded) {
+        current.recorded = NO;
         if (recognizer.state == UIGestureRecognizerStateBegan) {
             [UIView animateWithDuration:0.6f delay:0 options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAutoreverse animations:^{
                 self.eraseWarning.alpha = 1;
@@ -60,14 +61,19 @@
                     self.eraseWarning.alpha = 0;
                 }];
             }];
+            self.replay.hidden = YES;
         } else if (recognizer.state == UIGestureRecognizerStateEnded) {
             [UIView animateWithDuration:0.3f animations:^{
                 self.eraseWarning.alpha = 0;
             }];
         }
+    } else {
+        if (recognizer.state == UIGestureRecognizerStateEnded) {
+            self.replay.hidden = NO;
+            current.recorded = YES;
+        }
+        
     }
-    
-    current.recorded = YES;
 }
 
 - (IBAction)back:(id)sender {

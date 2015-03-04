@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSMutableArray* pages;
 @property (strong, nonatomic) IBOutlet UIButton* recordButton;
 @property (strong, nonatomic) IBOutlet UIView* eraseWarning;
+@property (strong, nonatomic) IBOutlet UIView* replay;
 
 @property BOOL lastPage;
 
