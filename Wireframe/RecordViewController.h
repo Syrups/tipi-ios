@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RecordViewController : UIViewController
+@interface RecordViewController : UIViewController <UIPageViewControllerDataSource, UIScrollViewDelegate>
 
+@property (strong, nonatomic) UIPageViewController* pageViewController;
+@property (strong, nonatomic) NSMutableArray* pages;
 @property (strong, nonatomic) IBOutlet UIButton* recordButton;
+
+@property BOOL lastPage;
 
 @end

@@ -25,6 +25,7 @@
 
 - (IBAction)discard:(id)sender {
     UINavigationController* previous = (UINavigationController*)self.presentingViewController;
+    NSLog(@"%@", [previous class]);
     [self dismissViewControllerAnimated:YES completion:^{
         [previous popToRootViewControllerAnimated:YES];
     }];

@@ -7,6 +7,7 @@
 //
 
 #import "RecordViewController.h"
+#import "RecordPageViewController.h"
 
 @interface RecordViewController ()
 
@@ -17,13 +18,102 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.lastPage = NO;
+    
     self.recordButton.layer.borderColor = [UIColor blackColor].CGColor;
     self.recordButton.layer.cornerRadius = 40;
     self.recordButton.layer.borderWidth = 1;
+    
+    self.pages = [NSMutableArray arrayWithObjects:@"1", @"2", @"3", nil];
+    
+    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RecordPageViewController"];
+    self.pageViewController.dataSource = self;
+    
+    RecordPageViewController* first = [self viewControllerAtIndex:0];
+    [self.pageViewController setViewControllers:@[first] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    
+    [self addChildViewController:self.pageViewController];
+    [self.view addSubview:self.pageViewController.view];
+    [self.view sendSubviewToBack:self.pageViewController.view];
+    [self.pageViewController didMoveToParentViewController:self];
+    
+    for (UIView* v in self.pageViewController.view.subviews) {
+        if ([v isKindOfClass:[UIScrollView class]]) {
+            ((UIScrollView*)v).delegate = self;
+        }
+    }
 }
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - UIPageViewController
+
+- (RecordPageViewController *)viewControllerAtIndex:(NSUInteger)index
+{
+    if (([self.pages count] == 0) || (index >= [self.pages count])) {
+        return nil;
+    }
+    
+    // Create a new view controller and pass suitable data.
+    RecordPageViewController *page = [self.storyboard instantiateViewControllerWithIdentifier:@"RecordPage"];
+    page.pageIndex = index;
+    
+    return page;
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
+{
+    NSUInteger index = ((RecordPageViewController*) viewController).pageIndex;
+    
+    if ((index == 0) || (index == NSNotFound)) {
+        return nil;
+    }
+    
+    if (index < self.pages.count-1) {
+        self.lastPage = NO;
+    }
+    
+    index--;
+    return [self viewControllerAtIndex:index];
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
+{
+    NSUInteger index = ((RecordPageViewController*) viewController).pageIndex;
+    
+    if (index == NSNotFound) {
+        return nil;
+    }
+    
+    index++;
+    if (index == [self.pages count]) {
+        
+        self.lastPage = YES;
+        
+        return nil;
+    }
+    
+    return [self viewControllerAtIndex:index];
+}
+
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
+{
+    return [self.pages count];
+}
+
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
+{
+    return 0;
+}
+
+#pragma mark - UIScrollView
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (self.lastPage && scrollView.contentOffset.x > self.view.frame.size.width+10) {
+        [self performSegueWithIdentifier:@"ToNameStory" sender:nil];
+    }
 }
 
 @end

@@ -22,11 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    for (UIView* v in self.view.subviews) {
-        v.layer.borderWidth = 1;
-        v.layer.borderColor = [UIColor blackColor].CGColor;
-    }
-    
     // Create it.
     self.pager = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
@@ -55,6 +50,8 @@
     
     // And make sure to activate!
     [self.pager didMoveToParentViewController:self];
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 // Factory method

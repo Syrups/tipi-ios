@@ -10,4 +10,6 @@
 
 @interface AbortModalViewController : UIViewController
 
+@property (weak, nonatomic) UIViewController* currentParentController;
+
 @end
