@@ -37,11 +37,17 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return rooms.count;
+    return rooms.count+1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RoomCell" forIndexPath:indexPath];
+    UICollectionViewCell* cell = nil;
+    
+    if (indexPath.row < rooms.count) {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RoomCell" forIndexPath:indexPath];
+    } else {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CreateRoomCell" forIndexPath:indexPath];
+    }
     
     if (cell == nil) {
         cell = [[UICollectionViewCell alloc] init];
@@ -52,8 +58,10 @@
         v.layer.borderColor = [UIColor blackColor].CGColor;
     }
     
-    UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
-    name.text = [rooms objectAtIndex:indexPath.row];
+    if (indexPath.row < rooms.count) {
+        UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
+        name.text = [rooms objectAtIndex:indexPath.row];
+    }
     
     return cell;
 }
