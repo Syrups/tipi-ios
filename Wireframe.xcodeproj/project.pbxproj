@@ -48,8 +48,8 @@
 		73B20BEF1AA609DB00A9C88F /* ShowGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowGroupsViewController.m; sourceTree = "<group>"; };
 		73B20BF11AA6178200A9C88F /* ShowOneGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowOneGroupViewController.h; sourceTree = "<group>"; };
 		73B20BF21AA6178200A9C88F /* ShowOneGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowOneGroupViewController.m; sourceTree = "<group>"; };
-		73F237781AA70D37004E6C20 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		73F237791AA70D37004E6C20 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		73F237781AA70D37004E6C20 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = Wireframe/SWRevealViewController.h; sourceTree = "<group>"; };
+		73F237791AA70D37004E6C20 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = Wireframe/SWRevealViewController.m; sourceTree = "<group>"; };
 		B3BCCFCD1AA5C36C00261212 /* Wireframe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wireframe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3BCCFD11AA5C36C00261212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3BCCFD21AA5C36C00261212 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -114,9 +114,19 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		73F2377B1AA71AD6004E6C20 /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				73F237781AA70D37004E6C20 /* SWRevealViewController.h */,
+				73F237791AA70D37004E6C20 /* SWRevealViewController.m */,
+			);
+			name = SWRevealViewController;
+			sourceTree = "<group>";
+		};
 		B3BCCFC41AA5C36C00261212 = {
 			isa = PBXGroup;
 			children = (
+				73F2377B1AA71AD6004E6C20 /* SWRevealViewController */,
 				B3BCD01E1AA6148100261212 /* LXReorderableCollectionViewFlowLayout */,
 				B3BCCFCF1AA5C36C00261212 /* Wireframe */,
 				B3BCCFE91AA5C36C00261212 /* WireframeTests */,
@@ -136,8 +146,6 @@
 		B3BCCFCF1AA5C36C00261212 /* Wireframe */ = {
 			isa = PBXGroup;
 			children = (
-				73F237781AA70D37004E6C20 /* SWRevealViewController.h */,
-				73F237791AA70D37004E6C20 /* SWRevealViewController.m */,
 				B3BCCFFA1AA5C84B00261212 /* Controllers */,
 				B3BCCFF61AA5C4CB00261212 /* GTWalsheim Light.otf */,
 				B3BCCFF71AA5C4CB00261212 /* GTWalsheim Regular.otf */,

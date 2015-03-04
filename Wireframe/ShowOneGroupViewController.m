@@ -7,6 +7,8 @@
 //
 
 #import "ShowOneGroupViewController.h"
+#import "SWRevealViewController.h"
+
 
 @interface ShowOneGroupViewController ()
 
@@ -22,7 +24,33 @@
     
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;
-    
+    [self customSetup];
+}
+
+- (void)customSetup
+{
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if ( revealViewController )
+    {
+        [self.revealTag addTarget:self.revealViewController
+                           action:@selector(revealToggle:)
+           forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.revealUsers addTarget:self.revealViewController
+                           action:@selector(rightRevealToggle:)
+                 forControlEvents:UIControlEventTouchUpInside];
+        
+        self.revealViewController.rightViewRevealWidth = 120;
+        self.revealViewController.rightViewRevealOverdraw = 0;
+        
+        self.revealViewController.rearViewRevealWidth = 120;
+        self.revealViewController.rearViewRevealOverdraw = 0;
+        
+        //self.revealViewController.bounceBackOnOverdraw = NO;
+        //self.revealViewController.bounceBackOnLeftOverdraw = NO;
+        
+        [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
