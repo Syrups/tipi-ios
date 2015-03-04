@@ -27,13 +27,7 @@
     self.mTableView.dataSource = self;
     self.mTableView.separatorColor = [UIColor clearColor];
     
-    
-    for (UIView* v in self.view.subviews ) {
-        //for (UITableViewCell *cell in v.subviews) {
-            //v.layer.borderWidth = 1;
-            //v.layer.borderColor = [UIColor blackColor].CGColor;
-        //}
-    }
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,6 +43,14 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
+    
+    UIView* v1 = [cell.contentView viewWithTag:10];
+    v1.layer.borderWidth = 1;
+    v1.layer.borderColor = [UIColor blackColor].CGColor;
+    
+    UIView* v2 = [cell.contentView viewWithTag:15];
+    v2.layer.borderWidth = 1;
+    v2.layer.borderColor = [UIColor blackColor].CGColor;
     
     UILabel *name = (UILabel*)[cell.contentView viewWithTag:100];
     name.text = [NSString stringWithFormat:@"Group %ld", (long)indexPath.row];

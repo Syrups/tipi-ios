@@ -176,12 +176,12 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oBV-af-jJZ" id="zxn-8o-hU9">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hKf-r5-LsR">
-                                                    <rect key="frame" x="45" y="15" width="200" height="200"/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hKf-r5-LsR">
+                                                    <rect key="frame" x="45" y="14" width="200" height="200"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h1l-Jy-arN">
-                                                    <rect key="frame" x="62" y="29" width="200" height="200"/>
+                                                <view tag="15" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1l-Jy-arN">
+                                                    <rect key="frame" x="62" y="28" width="200" height="200"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fk5-dR-we7">
                                                             <rect key="frame" x="8" y="92" width="184" height="21"/>
@@ -190,7 +190,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="Fk5-dR-we7" secondAttribute="bottom" constant="87" id="590-Uo-gS2"/>
                                                         <constraint firstItem="Fk5-dR-we7" firstAttribute="leading" secondItem="h1l-Jy-arN" secondAttribute="leading" constant="8" id="P3v-PY-HN4"/>
@@ -219,7 +219,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="1et-2Y-rHt"/>
+                    <navigationItem key="navigationItem" id="1et-2Y-rHt">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="9aU-fu-2nX"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="mTableView" destination="Cva-fL-HQG" id="y5p-vK-Cvi"/>
                     </connections>
