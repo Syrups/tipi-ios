@@ -31,6 +31,8 @@
 		73B3B3561AA7BA3F00FF7578 /* story.png in Resources */ = {isa = PBXBuildFile; fileRef = 73B3B3441AA7BA3F00FF7578 /* story.png */; };
 		73B3B3571AA7BA3F00FF7578 /* Thumbs.db in Resources */ = {isa = PBXBuildFile; fileRef = 73B3B3451AA7BA3F00FF7578 /* Thumbs.db */; };
 		73B3B35A1AA7BC6100FF7578 /* GroupMembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B3B3591AA7BC6100FF7578 /* GroupMembersViewController.m */; };
+		73B3B35F1AA7CA5100FF7578 /* ReadModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B3B35E1AA7CA5100FF7578 /* ReadModeViewController.m */; };
+		73B3B3621AA7CA9100FF7578 /* ReadModeContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B3B3611AA7CA9100FF7578 /* ReadModeContainerViewController.m */; };
 		73F2377A1AA70D37004E6C20 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F237791AA70D37004E6C20 /* SWRevealViewController.m */; };
 		B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4CDC71AA71DB90079F8D1 /* StoryWIPSaver.m */; };
 		B3BCCFD31AA5C36C00261212 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFD21AA5C36C00261212 /* main.m */; };
@@ -94,6 +96,10 @@
 		73B3B3451AA7BA3F00FF7578 /* Thumbs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thumbs.db; sourceTree = "<group>"; };
 		73B3B3581AA7BC6100FF7578 /* GroupMembersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMembersViewController.h; sourceTree = "<group>"; };
 		73B3B3591AA7BC6100FF7578 /* GroupMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupMembersViewController.m; sourceTree = "<group>"; };
+		73B3B35D1AA7CA5100FF7578 /* ReadModeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadModeViewController.h; sourceTree = "<group>"; };
+		73B3B35E1AA7CA5100FF7578 /* ReadModeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadModeViewController.m; sourceTree = "<group>"; };
+		73B3B3601AA7CA9100FF7578 /* ReadModeContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadModeContainerViewController.h; sourceTree = "<group>"; };
+		73B3B3611AA7CA9100FF7578 /* ReadModeContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadModeContainerViewController.m; sourceTree = "<group>"; };
 		73F237781AA70D37004E6C20 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = Wireframe/SWRevealViewController.h; sourceTree = "<group>"; };
 		73F237791AA70D37004E6C20 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = Wireframe/SWRevealViewController.m; sourceTree = "<group>"; };
 		B3A4CDC61AA71DB90079F8D1 /* StoryWIPSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryWIPSaver.h; sourceTree = "<group>"; };
@@ -208,6 +214,10 @@
 		73B3B35C1AA7C55500FF7578 /* ReadStory */ = {
 			isa = PBXGroup;
 			children = (
+				73B3B35D1AA7CA5100FF7578 /* ReadModeViewController.h */,
+				73B3B35E1AA7CA5100FF7578 /* ReadModeViewController.m */,
+				73B3B3601AA7CA9100FF7578 /* ReadModeContainerViewController.h */,
+				73B3B3611AA7CA9100FF7578 /* ReadModeContainerViewController.m */,
 			);
 			name = ReadStory;
 			sourceTree = "<group>";
@@ -493,8 +503,10 @@
 				73B20BF41AA61FC400A9C88F /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				B3BCD0101AA5FDB500261212 /* NameStoryViewController.m in Sources */,
 				73B3B3321AA7B45500FF7578 /* TagMenuViewController.m in Sources */,
+				73B3B3621AA7CA9100FF7578 /* ReadModeContainerViewController.m in Sources */,
 				B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */,
 				B3BCD00C1AA5FCF400261212 /* ChooseTagViewController.m in Sources */,
+				73B3B35F1AA7CA5100FF7578 /* ReadModeViewController.m in Sources */,
 				B3FC7B8C1AA662CC00034E58 /* RecordPageViewController.m in Sources */,
 				B3BCD0261AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m in Sources */,
 				B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */,
