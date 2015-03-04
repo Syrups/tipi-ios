@@ -7,6 +7,7 @@
 //
 
 #import "AbortModalViewController.h"
+#import "StoryWIPSaver.h"
 
 @interface AbortModalViewController ()
 
@@ -17,6 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.saveButton.layer.borderColor = [UIColor blackColor].CGColor;
+    self.saveButton.layer.borderWidth = 1;
 }
 
 - (IBAction)cancel:(id)sender {
@@ -32,6 +36,8 @@
 }
 
 - (IBAction)save:(id)sender {
+    [[StoryWIPSaver sharedSaver] setSaved:YES];
+    
     UINavigationController* previous = (UINavigationController*)self.presentingViewController;
     [self dismissViewControllerAnimated:YES completion:^{
         [previous popToRootViewControllerAnimated:YES];

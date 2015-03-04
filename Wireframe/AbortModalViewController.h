@@ -10,6 +10,8 @@
 
 @interface AbortModalViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIButton* saveButton;
+
 @property (weak, nonatomic) UIViewController* currentParentController;
 
 @end

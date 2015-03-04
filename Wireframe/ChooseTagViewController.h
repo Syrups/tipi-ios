@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChooseTagViewController : UIViewController
+@interface ChooseTagViewController : UIViewController <UITextFieldDelegate>
 
 @end

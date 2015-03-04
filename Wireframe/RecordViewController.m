@@ -42,6 +42,32 @@
             ((UIScrollView*)v).delegate = self;
         }
     }
+    
+    UILongPressGestureRecognizer* press = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(record:)];
+    
+    [self.recordButton addGestureRecognizer:press];
+}
+
+- (void)record:(UILongPressGestureRecognizer*)recognizer {
+    RecordPageViewController* current = [self currentPage];
+    
+    if (current.recorded) {
+        if (recognizer.state == UIGestureRecognizerStateBegan) {
+            [UIView animateWithDuration:0.6f delay:0 options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAutoreverse animations:^{
+                self.eraseWarning.alpha = 1;
+            } completion:^(BOOL finished) {
+                [UIView animateWithDuration:0.4f animations:^{
+                    self.eraseWarning.alpha = 0;
+                }];
+            }];
+        } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+            [UIView animateWithDuration:0.3f animations:^{
+                self.eraseWarning.alpha = 0;
+            }];
+        }
+    }
+    
+    current.recorded = YES;
 }
 
 - (IBAction)back:(id)sender {
@@ -114,6 +140,12 @@
     if (self.lastPage && scrollView.contentOffset.x > self.view.frame.size.width+10) {
         [self performSegueWithIdentifier:@"ToNameStory" sender:nil];
     }
+}
+
+#pragma mark - Helpers
+
+- (RecordPageViewController*)currentPage {
+    return self.pageViewController.viewControllers[0];
 }
 
 @end

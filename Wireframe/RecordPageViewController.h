@@ -11,5 +11,6 @@
 @interface RecordPageViewController : UIViewController
 
 @property NSUInteger pageIndex;
+@property BOOL recorded;
 
 @end

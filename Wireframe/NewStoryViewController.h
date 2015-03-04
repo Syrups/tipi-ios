@@ -11,4 +11,7 @@
 
 @interface NewStoryViewController : BaseHomeViewController
 
+@property (strong, nonatomic) IBOutlet UIButton* mainButton;
+@property (strong, nonatomic) IBOutlet UIButton* secondaryButton;
+
 @end

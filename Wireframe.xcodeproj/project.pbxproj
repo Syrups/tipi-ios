@@ -11,6 +11,7 @@
 		73B20BF01AA609DB00A9C88F /* ShowGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B20BEF1AA609DB00A9C88F /* ShowGroupsViewController.m */; };
 		73B20BF31AA6178200A9C88F /* ShowOneGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B20BF21AA6178200A9C88F /* ShowOneGroupViewController.m */; };
 		73B20BF41AA61FC400A9C88F /* LXReorderableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD0201AA6148100261212 /* LXReorderableCollectionViewFlowLayout.m */; };
+		B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4CDC71AA71DB90079F8D1 /* StoryWIPSaver.m */; };
 		B3BCCFD31AA5C36C00261212 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFD21AA5C36C00261212 /* main.m */; };
 		B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFD51AA5C36C00261212 /* AppDelegate.m */; };
 		B3BCCFDC1AA5C36C00261212 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3BCCFDA1AA5C36C00261212 /* Main.storyboard */; };
@@ -29,7 +30,6 @@
 		B3BCD0131AA604DA00261212 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD0121AA604DA00261212 /* RecordViewController.m */; };
 		B3BCD01D1AA60D4C00261212 /* OrganizeStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD01C1AA60D4C00261212 /* OrganizeStoryViewController.m */; };
 		B3BCD0261AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD0251AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m */; };
-		B3BCD0271AA64B3200261212 /* LXReorderableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD0201AA6148100261212 /* LXReorderableCollectionViewFlowLayout.m */; };
 		B3FC7B8C1AA662CC00034E58 /* RecordPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FC7B8B1AA662CC00034E58 /* RecordPageViewController.m */; };
 		B3FC7B8F1AA672DE00034E58 /* placeholder.gif in Resources */ = {isa = PBXBuildFile; fileRef = B3FC7B8E1AA672DE00034E58 /* placeholder.gif */; };
 /* End PBXBuildFile section */
@@ -51,6 +51,8 @@
 		73B20BEF1AA609DB00A9C88F /* ShowGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowGroupsViewController.m; sourceTree = "<group>"; };
 		73B20BF11AA6178200A9C88F /* ShowOneGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowOneGroupViewController.h; sourceTree = "<group>"; };
 		73B20BF21AA6178200A9C88F /* ShowOneGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowOneGroupViewController.m; sourceTree = "<group>"; };
+		B3A4CDC61AA71DB90079F8D1 /* StoryWIPSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryWIPSaver.h; sourceTree = "<group>"; };
+		B3A4CDC71AA71DB90079F8D1 /* StoryWIPSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryWIPSaver.m; sourceTree = "<group>"; };
 		B3BCCFCD1AA5C36C00261212 /* Wireframe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wireframe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3BCCFD11AA5C36C00261212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3BCCFD21AA5C36C00261212 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -120,6 +122,15 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		B3A4CDC51AA71D860079F8D1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B3A4CDC61AA71DB90079F8D1 /* StoryWIPSaver.h */,
+				B3A4CDC71AA71DB90079F8D1 /* StoryWIPSaver.m */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		B3BCCFC41AA5C36C00261212 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				B3FC7B8E1AA672DE00034E58 /* placeholder.gif */,
+				B3A4CDC51AA71D860079F8D1 /* Services */,
 				B3BCD0221AA622FA00261212 /* Components */,
 				B3BCCFFA1AA5C84B00261212 /* Controllers */,
 				B3BCCFF61AA5C4CB00261212 /* GTWalsheim Light.otf */,
@@ -361,6 +373,7 @@
 			files = (
 				73B20BF41AA61FC400A9C88F /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				B3BCD0101AA5FDB500261212 /* NameStoryViewController.m in Sources */,
+				B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */,
 				B3BCD00C1AA5FCF400261212 /* ChooseTagViewController.m in Sources */,
 				B3FC7B8C1AA662CC00034E58 /* RecordPageViewController.m in Sources */,
 				B3BCD0261AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m in Sources */,
@@ -371,7 +384,6 @@
 				73B20BF31AA6178200A9C88F /* ShowOneGroupViewController.m in Sources */,
 				73B20BF01AA609DB00A9C88F /* ShowGroupsViewController.m in Sources */,
 				B3BCD0091AA5F3D300261212 /* RoomPickerViewController.m in Sources */,
-				B3BCD0271AA64B3200261212 /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				B3BCCFD31AA5C36C00261212 /* main.m in Sources */,
 				73B20BEC1AA5FF0800A9C88F /* BaseHomeViewController.m in Sources */,
 				B3BCCFFD1AA5C85B00261212 /* HomeViewController.m in Sources */,
