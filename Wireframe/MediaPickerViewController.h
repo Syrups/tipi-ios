@@ -11,5 +11,6 @@
 @interface MediaPickerViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UICollectionView* mediaCollectionView;
+@property (strong, nonatomic) IBOutlet UILabel* selectedCount;
 
 @end

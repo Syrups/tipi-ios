@@ -21,6 +21,14 @@
     selectedIndexes = [NSMutableArray array];
     
 //    self.mediaCollectionView.collectionViewLayout = [[PKCollectionViewStickyHeaderFlowLayout alloc] init];
+    
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Autorisation" message:@"Cette application souhaite accéder à vos photos" delegate:nil cancelButtonTitle:@"Annuler" otherButtonTitles:@"Autoriser", nil];
+    
+    [alert show];
+}
+
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -68,6 +76,8 @@
         [selectedIndexes removeObject:indexPath];
         cell.contentView.backgroundColor = [UIColor lightGrayColor];
     }
+    
+    self.selectedCount.text = [NSString stringWithFormat:@"%ld selected", selectedIndexes.count];
 }
 
 
