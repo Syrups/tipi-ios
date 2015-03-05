@@ -12,5 +12,6 @@
 @interface OrganizeStoryViewController : UIViewController <LXReorderableCollectionViewDataSource, UICollectionViewDelegate, LXReorderableCollectionViewDelegateFlowLayout>
 
 @property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
+@property (strong, nonatomic) IBOutlet UILabel* helpLabel;
 
 @end

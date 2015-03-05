@@ -54,12 +54,13 @@
     if (current.recorded) {
         current.recorded = NO;
         if (recognizer.state == UIGestureRecognizerStateBegan) {
+            self.replay.hidden = YES;
             [UIView animateWithDuration:0.6f delay:0 options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAutoreverse animations:^{
                 self.eraseWarning.alpha = 1;
             } completion:^(BOOL finished) {
-                [UIView animateWithDuration:0.4f animations:^{
+                [UIView animateWithDuration:0.4f delay:0.6f options:0 animations:^{
                     self.eraseWarning.alpha = 0;
-                }];
+                } completion:nil];
             }];
             self.replay.hidden = YES;
         } else if (recognizer.state == UIGestureRecognizerStateEnded) {
