@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Lcv-xj-Ztq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Lcv-xj-Ztq">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -1511,6 +1511,7 @@ Tap one image to zoom in and record your story</string>
     <resources>
         <image name="croix-blanche.png" width="26" height="27"/>
         <image name="croix-noire" width="26" height="27"/>
+        <image name="croix-noire.png" width="26" height="27"/>
         <image name="go-left" width="28" height="28"/>
         <image name="go-right" width="28" height="28"/>
         <image name="home-blanc" width="17" height="19"/>
@@ -1522,6 +1523,7 @@ Tap one image to zoom in and record your story</string>
         <image name="proches-petit.png" width="37" height="37"/>
         <image name="replay-gris" width="65" height="65"/>
         <image name="roue-dentee" width="28" height="28"/>
+        <image name="story.png" width="99" height="121"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
