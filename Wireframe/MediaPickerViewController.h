@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StoryWIPSaver.h"
 
 @interface MediaPickerViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate>
 
+@property (strong, nonatomic) StoryWIPSaver* saver;
+@property (strong, nonatomic) NSMutableArray* medias;
 @property (strong, nonatomic) IBOutlet UICollectionView* mediaCollectionView;
 @property (strong, nonatomic) IBOutlet UILabel* selectedCount;
 

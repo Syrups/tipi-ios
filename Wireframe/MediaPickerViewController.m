@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Syrup Apps. All rights reserved.
 //
 
+#import <AssetsLibrary/AssetsLibrary.h>
 #import "MediaPickerViewController.h"
 #import "PKCollectionViewStickyHeaderFlowLayout.h"
 
@@ -19,12 +20,48 @@
 
 - (void)viewDidLoad {
     selectedIndexes = [NSMutableArray array];
+    self.medias = [NSMutableArray array];
+    self.saver = [StoryWIPSaver sharedSaver];
     
-//    self.mediaCollectionView.collectionViewLayout = [[PKCollectionViewStickyHeaderFlowLayout alloc] init];
+    NSMutableArray* assetGroups = [NSMutableArray array];
+    ALAssetsLibrary* library = [[ALAssetsLibrary alloc] init];
+    NSUInteger types = ALAssetsGroupAll;
+    [library enumerateGroupsWithTypes:types usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+        if(group != nil) {
+            [assetGroups addObject:group];
+            
+            [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
+                if (result != nil) {
+                    NSURL *url= (NSURL*) [[result defaultRepresentation]url];
+                    
+                    [library assetForURL:url
+                             resultBlock:^(ALAsset *asset) { //Your line
+                                 ALAssetRepresentation* rep = [asset defaultRepresentation];
+                                 
+                                 UIImage* image = [UIImage imageWithCGImage:[asset thumbnail]];
+                                 UIImage* fullImage = [UIImage imageWithCGImage:[rep fullScreenImage]];
+                                 [self.medias addObject:@{
+                                        @"image": image,
+                                        @"full": fullImage,
+                                        @"date": [result valueForProperty:ALAssetPropertyDate]
+                                  }];
+                                 
+                                 if (index+1 == group.numberOfAssets) {
+                                     [self.mediaCollectionView reloadData];
+                                 }
+                             }
+                            failureBlock:^(NSError *error){
+                                NSLog(@"test:Fail");
+                            }];
+                }
+                
+                
+            }];
+        }
+    } failureBlock:^(NSError *error) {
+        
+    }];
     
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Autorisation" message:@"Cette application souhaite accéder à vos photos" delegate:nil cancelButtonTitle:@"Annuler" otherButtonTitles:@"Autoriser", nil];
-    
-    [alert show];
 }
 
 - (IBAction)back:(id)sender {
@@ -32,11 +69,11 @@
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 3;
+    return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 4;
+    return self.medias.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -45,6 +82,11 @@
     if (cell == nil) {
         cell = [[UICollectionViewCell alloc] init];
     }
+    
+    UIImageView* image = (UIImageView*)[cell.contentView viewWithTag:10];
+    NSDictionary* media = [self.medias objectAtIndex:indexPath.row];
+    [image setImage:[media objectForKey:@"image"]];
+    
     
     return cell;
 }
@@ -72,8 +114,10 @@
     if (![selectedIndexes containsObject:indexPath]) {
         cell.contentView.backgroundColor = [UIColor blackColor];
         [selectedIndexes addObject:indexPath];
+        [self.saver.medias addObject:[self.medias objectAtIndex:indexPath.row]];
     } else {
         [selectedIndexes removeObject:indexPath];
+        [self.saver.medias removeObject:[self.medias objectAtIndex:indexPath.row]];
         cell.contentView.backgroundColor = [UIColor lightGrayColor];
     }
     

@@ -22,6 +22,8 @@
     
     self.mStories = @[@"coup de chance", @"Conférence F.A.M.E", @"Plexus Gobelins"];
     
+    NSLog(@"%lu", (unsigned long)self.roomId);
+    
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;
     [self customSetup];

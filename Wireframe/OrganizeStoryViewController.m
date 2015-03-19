@@ -16,7 +16,6 @@
 
 @implementation OrganizeStoryViewController {
     NSString* oldHelpText;
-    NSMutableArray* medias;
 }
 
 - (void)viewDidLoad {
@@ -27,7 +26,7 @@
     
     self.collectionView.collectionViewLayout = layout;
     
-    medias = @[@"toto", @"tata", @"titi", @"toto", @"tata", @"titi", @"toto", @"tata", @"titi"].mutableCopy;
+    self.saver = [StoryWIPSaver sharedSaver];
 }
 
 - (IBAction)start:(id)sender {
@@ -45,7 +44,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return medias.count;
+    return self.saver.medias.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -56,8 +55,11 @@
     }
     
     UILabel* label = (UILabel*)[cell.contentView viewWithTag:10];
-    label.text = [NSString stringWithFormat:@"%ld sur %ld", (unsigned long)indexPath.row+1, (unsigned long)medias.count];
+    label.text = [NSString stringWithFormat:@"%ld sur %ld", (unsigned long)indexPath.row+1, (unsigned long)self.saver.medias.count];
 
+    UIImageView* image = (UIImageView*)[cell.contentView viewWithTag:20];
+    NSDictionary* media = [self.saver.medias objectAtIndex:indexPath.row];
+    [image setImage:[media objectForKey:@"image"]];
     
     return cell;
 }
@@ -82,13 +84,13 @@
     
     UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:fromIndexPath];
     
-    id media = [medias objectAtIndex:fromIndexPath.row];
-    [medias removeObjectAtIndex:fromIndexPath.row];
-    [medias insertObject:media atIndex:toIndexPath.row];
+    id media = [self.saver.medias objectAtIndex:fromIndexPath.row];
+    [self.saver.medias removeObjectAtIndex:fromIndexPath.row];
+    [self.saver.medias insertObject:media atIndex:toIndexPath.row];
     
     
     UILabel* label = (UILabel*)[cell.contentView viewWithTag:10];
-    label.text = [NSString stringWithFormat:@"%ld sur %ld", (unsigned long)[medias indexOfObject:media], (unsigned long)medias.count];
+    label.text = [NSString stringWithFormat:@"%ld sur %ld", (unsigned long)[self.saver.medias indexOfObject:media], (unsigned long)self.saver.medias.count];
     [collectionView reloadData];
 }
 

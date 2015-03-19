@@ -1,0 +1,30 @@
+//
+//  Api.m
+//  Wireframe
+//
+//  Created by Leo on 18/03/2015.
+//  Copyright (c) 2015 Syrup Apps. All rights reserved.
+//
+
+#import "Api.h"
+#import "Configuration.h"
+
+@implementation Api
+
++ (NSURLRequest *)getBaseRequestFor:(NSString *)path authenticated:(BOOL)authenticated method:(NSString *)method {
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kApiRootUrl, path] ] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:8];
+    
+    [request setHTTPMethod:method];
+    NSMutableURLRequest *mutableRequest = [request mutableCopy];
+    [mutableRequest addValue:@"application/json" forHTTPHeaderField:@"Content-type"];
+    
+    if (authenticated) {
+        [mutableRequest addValue:kApiTestUserToken forHTTPHeaderField:@"X-Authorization-Token"];
+    }
+    
+    request = [mutableRequest copy];
+    
+    return request;
+}
+
+@end

@@ -7,36 +7,35 @@
 //
 
 #import "ShowGroupsViewController.h"
+#import "ShowOneGroupViewController.h"
+#import "UserSession.h"
+#import "SWRevealViewController.h"
 
-@interface ShowGroupsViewController ()
-
-@end
-
-
-
-@implementation ShowGroupsViewController
+@implementation ShowGroupsViewController {
+    NSUInteger selectedRoom;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
+    RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
     
-    self.mGroups = @[@1, @2, @3, @4];
-    
-    self.mTableView.delegate = self;
-    self.mTableView.dataSource = self;
-    self.mTableView.separatorColor = [UIColor clearColor];
-    
-
+    [manager fetchRoomsForUser:[[UserSession sharedSession] user]];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - RoomFetcher
+
+- (void)roomManager:(RoomManager *)manager successfullyFetchedRooms:(NSArray *)rooms {
+    self.mGroups = rooms;
+    
+    [self.mTableView reloadData];
 }
 
+#pragma mark - UITableView
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    Room* room = [self.mGroups objectAtIndex:indexPath.row];
     
     static NSString *cellIdentifier = @"groupCell";
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -53,7 +52,8 @@
     v2.layer.borderColor = [UIColor blackColor].CGColor;
     
     UILabel *name = (UILabel*)[cell.contentView viewWithTag:100];
-    name.text = [NSString stringWithFormat:@"Group %ld", (long)indexPath.row];
+    name.text = room.name;
+    
     
     return cell;
 }
@@ -65,23 +65,18 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    //self.mShowOneGroupViewController =
-    //[[ShowOneGroupViewController alloc] initWithNibName:@"ShowOneGroup" bundle:nil];
-    //[self presentViewController:self.mShowOneGroupViewController animated:YES completion:nil];
+    selectedRoom = [((Room*)[self.mGroups objectAtIndex:indexPath.row]).id integerValue];
 }
 
 -(IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    SWRevealViewController* reveal = (SWRevealViewController*)[segue destinationViewController];
+    ShowOneGroupViewController* vc = (ShowOneGroupViewController*)[reveal frontViewController];
+    vc.roomId = selectedRoom;
+    
+}
+
 
 @end
