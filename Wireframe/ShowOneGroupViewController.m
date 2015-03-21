@@ -95,6 +95,9 @@
     [self presentViewController:self.mShowOneGroupViewController animated:YES completion:nil];*/
 }
 
+-(IBAction)prepareForGoBackToOneGroup:(UIStoryboardSegue *)segue {
+}
+
 /*
 #pragma mark - Navigation
 

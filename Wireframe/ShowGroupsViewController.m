@@ -21,7 +21,7 @@
     // Do any additional setup after loading the view.
     
     
-    self.mGroups = @[@1, @2, @3, @4];
+    self.mGroups = @[@"Familly", @"Geek Team", @"Junkie Style", @"Google"];
     
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;
@@ -53,7 +53,7 @@
     v2.layer.borderColor = [UIColor blackColor].CGColor;
     
     UILabel *name = (UILabel*)[cell.contentView viewWithTag:100];
-    name.text = [NSString stringWithFormat:@"Group %ld", (long)indexPath.row];
+    name.text = [self.mGroups objectAtIndex:indexPath.row ];
     
     return cell;
 }
