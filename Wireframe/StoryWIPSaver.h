@@ -13,5 +13,10 @@
 + (StoryWIPSaver*)sharedSaver;
 
 @property BOOL saved;
+@property (strong, nonatomic) NSString* uuid;
+@property (strong, nonatomic) NSMutableArray* medias;
+
+- (void)discard;
+- (void)save;
 
 @end

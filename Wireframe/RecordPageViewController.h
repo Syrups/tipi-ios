@@ -13,4 +13,8 @@
 @property NSUInteger pageIndex;
 @property BOOL recorded;
 
+@property (strong, nonatomic) UIImage* image;
+@property (strong, nonatomic) IBOutlet UIImageView* imageView;
+
+
 @end

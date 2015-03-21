@@ -7,36 +7,35 @@
 //
 
 #import "ShowGroupsViewController.h"
+#import "ShowOneGroupViewController.h"
+#import "UserSession.h"
+#import "SWRevealViewController.h"
 
-@interface ShowGroupsViewController ()
-
-@end
-
-
-
-@implementation ShowGroupsViewController
+@implementation ShowGroupsViewController {
+    NSUInteger selectedRoom;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
     
     self.mGroups = @[@"Familly", @"Geek Team", @"Junkie Style", @"Google"];
     
-    self.mTableView.delegate = self;
-    self.mTableView.dataSource = self;
-    self.mTableView.separatorColor = [UIColor clearColor];
+    [manager fetchRoomsForUser:[[UserSession sharedSession] user]];
+}
+
+#pragma mark - RoomFetcher
+
+- (void)roomManager:(RoomManager *)manager successfullyFetchedRooms:(NSArray *)rooms {
+    self.mGroups = rooms;
     
-
+    [self.mTableView reloadData];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
+#pragma mark - UITableView
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    Room* room = [self.mGroups objectAtIndex:indexPath.row];
     
     static NSString *cellIdentifier = @"groupCell";
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -65,23 +64,18 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    //self.mShowOneGroupViewController =
-    //[[ShowOneGroupViewController alloc] initWithNibName:@"ShowOneGroup" bundle:nil];
-    //[self presentViewController:self.mShowOneGroupViewController animated:YES completion:nil];
+    selectedRoom = [((Room*)[self.mGroups objectAtIndex:indexPath.row]).id integerValue];
 }
 
 -(IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    SWRevealViewController* reveal = (SWRevealViewController*)[segue destinationViewController];
+    ShowOneGroupViewController* vc = (ShowOneGroupViewController*)[reveal frontViewController];
+    vc.roomId = selectedRoom;
+    
+}
+
 
 @end

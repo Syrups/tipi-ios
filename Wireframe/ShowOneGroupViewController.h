@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Room.h"
 
 @interface ShowOneGroupViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic) NSUInteger roomId;
 @property (weak, nonatomic) IBOutlet UITableView *mTableView;
 @property (weak, nonatomic) IBOutlet UIButton *revealTag;
 @property (weak, nonatomic) IBOutlet UIButton *revealUsers;

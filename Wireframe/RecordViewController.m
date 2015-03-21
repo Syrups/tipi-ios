@@ -8,6 +8,7 @@
 
 #import "RecordViewController.h"
 #import "RecordPageViewController.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface RecordViewController ()
 
@@ -20,14 +21,17 @@
     
     self.lastPage = NO;
     
+    self.saver = [StoryWIPSaver sharedSaver];
+    
     self.recordButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.recordButton.layer.cornerRadius = 40;
     self.recordButton.layer.borderWidth = 10;
     
-    self.pages = [NSMutableArray arrayWithObjects:@"1", @"2", @"3", nil];
+//    self.pages = [NSMutableArray arrayWithObjects:@"1", @"2", @"3", nil];
     
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RecordPageViewController"];
     self.pageViewController.dataSource = self;
+    self.pageViewController.delegate = self;
     
     RecordPageViewController* first = [self viewControllerAtIndex:0];
     [self.pageViewController setViewControllers:@[first] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
@@ -43,38 +47,30 @@
         }
     }
     
-    UILongPressGestureRecognizer* press = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(record:)];
+    UILongPressGestureRecognizer* press = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     
     [self.recordButton addGestureRecognizer:press];
+    
+    self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
+    
 }
 
-- (void)record:(UILongPressGestureRecognizer*)recognizer {
-    RecordPageViewController* current = [self currentPage];
-    
-    if (current.recorded) {
-        current.recorded = NO;
-        if (recognizer.state == UIGestureRecognizerStateBegan) {
-            self.replay.hidden = YES;
-            [UIView animateWithDuration:0.6f delay:0 options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAutoreverse animations:^{
-                self.eraseWarning.alpha = 1;
-            } completion:^(BOOL finished) {
-                [UIView animateWithDuration:0.4f delay:0.6f options:0 animations:^{
-                    self.eraseWarning.alpha = 0;
-                } completion:nil];
-            }];
-            self.replay.hidden = YES;
-        } else if (recognizer.state == UIGestureRecognizerStateEnded) {
-            [UIView animateWithDuration:0.3f animations:^{
-                self.eraseWarning.alpha = 0;
-            }];
-        }
-    } else {
-        if (recognizer.state == UIGestureRecognizerStateEnded) {
-            self.replay.hidden = NO;
-            current.recorded = YES;
-        }
-        
+
+- (void)handleLongPress:(UILongPressGestureRecognizer*)recognizer {
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"begin touch");
+        [self.recorder startRecording];
     }
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"ended touch");
+        [self.recorder stopRecording];
+        
+        self.replay.hidden = NO;
+    }
+}
+
+- (IBAction)replay:(id)sender {
+    [self.recorder playAudio];
 }
 
 - (IBAction)back:(id)sender {
@@ -85,13 +81,14 @@
 
 - (RecordPageViewController *)viewControllerAtIndex:(NSUInteger)index
 {
-    if (([self.pages count] == 0) || (index >= [self.pages count])) {
+    if (([self.saver.medias count] == 0) || (index >= [self.saver.medias count])) {
         return nil;
     }
     
     // Create a new view controller and pass suitable data.
     RecordPageViewController *page = [self.storyboard instantiateViewControllerWithIdentifier:@"RecordPage"];
     page.pageIndex = index;
+    page.image = [(NSDictionary*)[self.saver.medias objectAtIndex:index] objectForKey:@"full"];
     
     return page;
 }
@@ -104,7 +101,7 @@
         return nil;
     }
     
-    if (index < self.pages.count-1) {
+    if (index < self.saver.medias.count-1) {
         self.lastPage = NO;
     }
     
@@ -121,7 +118,7 @@
     }
     
     index++;
-    if (index == [self.pages count]) {
+    if (index == [self.saver.medias count]) {
         
         self.lastPage = YES;
         
@@ -133,7 +130,7 @@
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
 {
-    return [self.pages count];
+    return [self.saver.medias count];
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
@@ -141,11 +138,27 @@
     return 0;
 }
 
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
+    NSUInteger index = [self currentPage].pageIndex;
+    self.currentIndex = index;
+    
+    if (index != self.saver.medias.count-1) {
+        self.lastPage = NO;
+    }
+    
+    [self.recorder.player stop];
+    [self.recorder setupForMediaWithIndex:index];
+}
+
 #pragma mark - UIScrollView
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (self.lastPage && scrollView.contentOffset.x > self.view.frame.size.width+10) {
+    if (self.lastPage && scrollView.contentOffset.x > self.view.frame.size.width+20) {
         [self performSegueWithIdentifier:@"ToNameStory" sender:nil];
+    }
+    
+    if (self.currentIndex == 0 && scrollView.contentOffset.x < -20) {
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
@@ -154,5 +167,6 @@
 - (RecordPageViewController*)currentPage {
     return self.pageViewController.viewControllers[0];
 }
+
 
 @end

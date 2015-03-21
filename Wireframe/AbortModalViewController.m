@@ -28,15 +28,15 @@
 }
 
 - (IBAction)discard:(id)sender {
+    [[StoryWIPSaver sharedSaver] discard];
     UINavigationController* previous = (UINavigationController*)self.presentingViewController;
-    NSLog(@"%@", [previous class]);
     [self dismissViewControllerAnimated:YES completion:^{
         [previous popToRootViewControllerAnimated:YES];
     }];
 }
 
 - (IBAction)save:(id)sender {
-    [[StoryWIPSaver sharedSaver] setSaved:YES];
+    [[StoryWIPSaver sharedSaver] save];
     
     UINavigationController* previous = (UINavigationController*)self.presentingViewController;
     [self dismissViewControllerAnimated:YES completion:^{
