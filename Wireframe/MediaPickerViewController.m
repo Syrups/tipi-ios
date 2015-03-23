@@ -23,6 +23,8 @@
     self.medias = [NSMutableArray array];
     self.saver = [StoryWIPSaver sharedSaver];
     
+    self.activityIndicator.hidden = NO;
+    
     NSMutableArray* assetGroups = [NSMutableArray array];
     ALAssetsLibrary* library = [[ALAssetsLibrary alloc] init];
     NSUInteger types = ALAssetsGroupAll;
@@ -43,10 +45,12 @@
                                  [self.medias addObject:@{
                                         @"image": image,
                                         @"full": fullImage,
-                                        @"date": [result valueForProperty:ALAssetPropertyDate]
+                                        @"date": [result valueForProperty:ALAssetPropertyDate],
+                                        @"type": [result valueForProperty:ALAssetPropertyType]
                                   }];
                                  
                                  if (index+1 == group.numberOfAssets) {
+                                     self.activityIndicator.hidden = YES;
                                      [self.mediaCollectionView reloadData];
                                  }
                              }
@@ -78,15 +82,22 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MediaCell" forIndexPath:indexPath];
+    UIImageView* image = (UIImageView*)[cell.contentView viewWithTag:10];
+    NSDictionary* media = [self.medias objectAtIndex:indexPath.row];
     
     if (cell == nil) {
         cell = [[UICollectionViewCell alloc] init];
     }
     
-    UIImageView* image = (UIImageView*)[cell.contentView viewWithTag:10];
-    NSDictionary* media = [self.medias objectAtIndex:indexPath.row];
     [image setImage:[media objectForKey:@"image"]];
     
+    UIView* vidIcon = (UIView*)[cell.contentView viewWithTag:20];
+    
+    if ([[media objectForKey:@"type"] isEqual:ALAssetTypeVideo]) {
+        vidIcon.hidden = NO;
+    } else {
+        vidIcon.hidden = YES;
+    }
     
     return cell;
 }

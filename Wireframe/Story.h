@@ -7,10 +7,12 @@
 //
 
 #import "JSONModel.h"
+#import "Page.h"
 
 @interface Story : JSONModel
 
 @property (strong, nonatomic) NSString* id;
 @property (strong, nonatomic) NSString* title;
+@property (strong, nonatomic) NSArray<Page>* pages;
 
 @end

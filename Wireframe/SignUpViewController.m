@@ -7,6 +7,7 @@
 //
 
 #import "SignUpViewController.h"
+#import "Configuration.h"
 
 @implementation SignUpViewController
 
@@ -34,8 +35,12 @@
     // success
 }
 
-- (void)userManager:(UserManager *)manager failedToCreateUser:(NSError *)error {
-    // failure
+- (void)userManager:(UserManager *)manager failedToCreateUserWithStatusCode:(NSUInteger)statusCode {
+    if (statusCode == 409) {
+        ErrorAlert(@"Username is already taken");
+    } else {
+        ErrorAlert(@"Network error");
+    }
 }
 
 @end

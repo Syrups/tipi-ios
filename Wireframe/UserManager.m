@@ -36,7 +36,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
         if (self.delegate) {
-            [self.delegate userManager:self failedToCreateUser:error];
+            [self.delegate userManager:self failedToCreateUserWithStatusCode:operation.response.statusCode];
         }
     }];
     

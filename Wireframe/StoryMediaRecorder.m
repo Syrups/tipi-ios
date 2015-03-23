@@ -78,4 +78,10 @@
     
 }
 
+- (void)microphone:(EZMicrophone *)microphone hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
+    if ([self.delegate respondsToSelector:@selector(mediaRecorder:hasAudioReceived:withBufferSize:withNumberOfChannels:)]) {
+        [self.delegate mediaRecorder:self hasAudioReceived:buffer withBufferSize:bufferSize withNumberOfChannels:numberOfChannels];
+    }
+}
+
 @end

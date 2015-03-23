@@ -7,17 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseManager.h"
 #import "Story.h"
+#import "User.h"
 
-@interface StoryManager : NSObject
+@interface StoryManager : BaseManager
 
-- (void)createStoryWithName:(NSString*)name tag:(NSString*)tag medias:(NSArray*)medias audiosFiles:(NSArray*)audioFiles sucess:(void(^)())success failure:(void(^)())failure;
+- (void)createStoryWithName:(NSString*)name owner:(User*)owner inRooms:(NSArray*)rooms tag:(NSString*)tag medias:(NSArray*)medias audiosFiles:(NSArray*)audioFiles;
 
 @end
 
 @protocol StoryCreatorDelegate <NSObject>
 
-- (void)storyManager:(StoryManager*)manager successfullyCreatedStory:(Story*)story;
+- (void)storyManager:(StoryManager*)manager successfullyCreatedStory:(Story*)story withPages:(NSArray*)pages;
 - (void)storyManager:(StoryManager *)manager failedToCreateStory:(NSError*)error;
 
 @end

@@ -14,7 +14,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [[UserSession sharedSession] load];
+    [[UserSession sharedSession] load];
     
     if ([[UserSession sharedSession] isAuthenticated]) {
         UIViewController* home = [self.storyboard instantiateViewControllerWithIdentifier:@"Home"];

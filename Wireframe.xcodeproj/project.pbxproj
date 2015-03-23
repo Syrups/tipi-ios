@@ -35,6 +35,7 @@
 		73B3B3621AA7CA9100FF7578 /* ReadModeContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B3B3611AA7CA9100FF7578 /* ReadModeContainerViewController.m */; };
 		73F2377A1AA70D37004E6C20 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F237791AA70D37004E6C20 /* SWRevealViewController.m */; };
 		825B10453DF4C5EAFBC589D9 /* libPods-Wireframe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9894FA4EEDEAF922FCD71B9 /* libPods-Wireframe.a */; };
+		B30317FD1ABC2759005EF73D /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = B30317FC1ABC2759005EF73D /* Page.m */; };
 		B3065A331AB9868100C10AD9 /* StoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A321AB9868100C10AD9 /* StoryManager.m */; };
 		B3065A361AB9883400C10AD9 /* Api.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A351AB9883400C10AD9 /* Api.m */; };
 		B3065A3B1AB98ACC00C10AD9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A3A1AB98ACC00C10AD9 /* LoginViewController.m */; };
@@ -46,6 +47,9 @@
 		B3065A4E1ABAFD7600C10AD9 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A4D1ABAFD7600C10AD9 /* Room.m */; };
 		B3065A511ABB29E200C10AD9 /* Story.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A501ABB29E200C10AD9 /* Story.m */; };
 		B3065A541ABB35D700C10AD9 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A531ABB35D700C10AD9 /* SignUpViewController.m */; };
+		B35AD0391ABF2B6600527C0D /* ReviewStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD0381ABF2B6600527C0D /* ReviewStoryViewController.m */; };
+		B35AD03C1ABF2D2500527C0D /* ReviewPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD03B1ABF2D2500527C0D /* ReviewPageViewController.m */; };
+		B35AD0441ABF339200527C0D /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD0431ABF339200527C0D /* ArrayDataSource.m */; };
 		B35CDBDA1AB87DD900BF9F82 /* StoryMediaRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = B35CDBD91AB87DD900BF9F82 /* StoryMediaRecorder.m */; };
 		B35CDBDC1AB8863C00BF9F82 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35CDBDB1AB8863C00BF9F82 /* AVFoundation.framework */; };
 		B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4CDC71AA71DB90079F8D1 /* StoryWIPSaver.m */; };
@@ -117,6 +121,8 @@
 		73B3B3611AA7CA9100FF7578 /* ReadModeContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadModeContainerViewController.m; sourceTree = "<group>"; };
 		73F237781AA70D37004E6C20 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = Wireframe/SWRevealViewController.h; sourceTree = "<group>"; };
 		73F237791AA70D37004E6C20 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = Wireframe/SWRevealViewController.m; sourceTree = "<group>"; };
+		B30317FB1ABC2759005EF73D /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Page.h; sourceTree = "<group>"; };
+		B30317FC1ABC2759005EF73D /* Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Page.m; sourceTree = "<group>"; };
 		B3065A311AB9868100C10AD9 /* StoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryManager.h; sourceTree = "<group>"; };
 		B3065A321AB9868100C10AD9 /* StoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryManager.m; sourceTree = "<group>"; };
 		B3065A341AB9883400C10AD9 /* Api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Api.h; sourceTree = "<group>"; };
@@ -140,6 +146,12 @@
 		B3065A501ABB29E200C10AD9 /* Story.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Story.m; sourceTree = "<group>"; };
 		B3065A521ABB35D700C10AD9 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		B3065A531ABB35D700C10AD9 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		B35AD0371ABF2B6600527C0D /* ReviewStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewStoryViewController.h; sourceTree = "<group>"; };
+		B35AD0381ABF2B6600527C0D /* ReviewStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewStoryViewController.m; sourceTree = "<group>"; };
+		B35AD03A1ABF2D2500527C0D /* ReviewPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewPageViewController.h; sourceTree = "<group>"; };
+		B35AD03B1ABF2D2500527C0D /* ReviewPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewPageViewController.m; sourceTree = "<group>"; };
+		B35AD0421ABF339200527C0D /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
+		B35AD0431ABF339200527C0D /* ArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataSource.m; sourceTree = "<group>"; };
 		B35CDBD81AB87DD900BF9F82 /* StoryMediaRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryMediaRecorder.h; sourceTree = "<group>"; };
 		B35CDBD91AB87DD900BF9F82 /* StoryMediaRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryMediaRecorder.m; sourceTree = "<group>"; };
 		B35CDBDB1AB8863C00BF9F82 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -343,8 +355,30 @@
 				B3065A4D1ABAFD7600C10AD9 /* Room.m */,
 				B3065A4F1ABB29E200C10AD9 /* Story.h */,
 				B3065A501ABB29E200C10AD9 /* Story.m */,
+				B30317FB1ABC2759005EF73D /* Page.h */,
+				B30317FC1ABC2759005EF73D /* Page.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		B35AD0361ABF2B4B00527C0D /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				B35AD0371ABF2B6600527C0D /* ReviewStoryViewController.h */,
+				B35AD0381ABF2B6600527C0D /* ReviewStoryViewController.m */,
+				B35AD03A1ABF2D2500527C0D /* ReviewPageViewController.h */,
+				B35AD03B1ABF2D2500527C0D /* ReviewPageViewController.m */,
+			);
+			name = Review;
+			sourceTree = "<group>";
+		};
+		B35AD0411ABF338300527C0D /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				B35AD0421ABF339200527C0D /* ArrayDataSource.h */,
+				B35AD0431ABF339200527C0D /* ArrayDataSource.m */,
+			);
+			name = DataSources;
 			sourceTree = "<group>";
 		};
 		B3A4CDC51AA71D860079F8D1 /* Services */ = {
@@ -390,6 +424,7 @@
 			children = (
 				B3065A371AB9887500C10AD9 /* Configuration.h */,
 				B3FC7B8E1AA672DE00034E58 /* placeholder.gif */,
+				B35AD0411ABF338300527C0D /* DataSources */,
 				B3065A421AB99BA700C10AD9 /* Models */,
 				B3065A301AB9866000C10AD9 /* Managers */,
 				B3A4CDC51AA71D860079F8D1 /* Services */,
@@ -453,6 +488,7 @@
 				B3065A2D1AB9714400C10AD9 /* Media */,
 				B3FC7B8D1AA662D900034E58 /* Record */,
 				B3065A2F1AB9718100C10AD9 /* Configure */,
+				B35AD0361ABF2B4B00527C0D /* Review */,
 				B3065A2E1AB9717200C10AD9 /* Rooms */,
 				B3BCD0011AA5F03D00261212 /* AbortModalViewController.h */,
 				B3BCD0021AA5F03D00261212 /* AbortModalViewController.m */,
@@ -680,6 +716,7 @@
 				B3BCD0101AA5FDB500261212 /* NameStoryViewController.m in Sources */,
 				73B3B3321AA7B45500FF7578 /* TagMenuViewController.m in Sources */,
 				73B3B3621AA7CA9100FF7578 /* ReadModeContainerViewController.m in Sources */,
+				B35AD0441ABF339200527C0D /* ArrayDataSource.m in Sources */,
 				B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */,
 				B3065A3B1AB98ACC00C10AD9 /* LoginViewController.m in Sources */,
 				B3065A331AB9868100C10AD9 /* StoryManager.m in Sources */,
@@ -697,6 +734,8 @@
 				73B20BF01AA609DB00A9C88F /* ShowGroupsViewController.m in Sources */,
 				B3BCD0091AA5F3D300261212 /* RoomPickerViewController.m in Sources */,
 				B3065A451AB99BB700C10AD9 /* User.m in Sources */,
+				B35AD03C1ABF2D2500527C0D /* ReviewPageViewController.m in Sources */,
+				B35AD0391ABF2B6600527C0D /* ReviewStoryViewController.m in Sources */,
 				B3065A481ABAF60E00C10AD9 /* UserSession.m in Sources */,
 				B3065A361AB9883400C10AD9 /* Api.m in Sources */,
 				B3065A511ABB29E200C10AD9 /* Story.m in Sources */,
@@ -704,6 +743,7 @@
 				B3BCCFD31AA5C36C00261212 /* main.m in Sources */,
 				73F2377A1AA70D37004E6C20 /* SWRevealViewController.m in Sources */,
 				B3065A3E1AB98B4900C10AD9 /* UserManager.m in Sources */,
+				B30317FD1ABC2759005EF73D /* Page.m in Sources */,
 				73B20BEC1AA5FF0800A9C88F /* BaseHomeViewController.m in Sources */,
 				B3BCCFFD1AA5C85B00261212 /* HomeViewController.m in Sources */,
 				B3BCD0001AA5E50D00261212 /* MediaPickerViewController.m in Sources */,

@@ -43,6 +43,8 @@ static UserSession* sharedSession;
 
 - (void)storeUser:(User *)user {
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    self.token = user.token;
+    self.id = user.id;
     [defaults setObject:user.id forKey:kSessionStoreId];
     [defaults setObject:user.token forKey:kSessionStoreToken];
     [defaults synchronize];

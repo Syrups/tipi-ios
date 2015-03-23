@@ -29,6 +29,6 @@
 - (void)roomManager:(RoomManager*)manager successfullyFetchedRooms:(NSArray*)rooms;
 - (void)roomManager:(RoomManager*)manager successfullyFetchedRoom:(Room*)room;
 - (void)roomManager:(RoomManager *)manager failedToFetchRoomWithId:(NSUInteger)roomId;
-- (void)roomManagerFailedToFetchRooms:(RoomManager *)manager;
+- (void)roomManager:(RoomManager *)manager failedToFetchRooms:(NSError*)error;
 
 @end

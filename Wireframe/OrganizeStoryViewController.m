@@ -7,6 +7,8 @@
 //
 
 #import "OrganizeStoryViewController.h"
+#import "RecordViewController.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
 #define CELL_SIZE 180
 
@@ -16,6 +18,7 @@
 
 @implementation OrganizeStoryViewController {
     NSString* oldHelpText;
+    NSUInteger selectedPageIndex;
 }
 
 - (void)viewDidLoad {
@@ -61,6 +64,14 @@
     NSDictionary* media = [self.saver.medias objectAtIndex:indexPath.row];
     [image setImage:[media objectForKey:@"image"]];
     
+    UIView* vidIcon = (UIView*)[cell.contentView viewWithTag:30];
+    
+    if ([[media objectForKey:@"type"] isEqual:ALAssetTypeVideo]) {
+        vidIcon.hidden = NO;
+    } else {
+        vidIcon.hidden = YES;
+    }
+    
     return cell;
 }
 
@@ -77,6 +88,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    selectedPageIndex = indexPath.row;
     [self performSegueWithIdentifier:@"ToRecord" sender:nil];
 }
 
@@ -101,6 +113,17 @@
 
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout willEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
     self.helpLabel.text = oldHelpText;
+    
+    UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
+    
+    NSLog(@"%f", cell.bounds.origin.y);
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    RecordViewController* vc = (RecordViewController*)[segue destinationViewController];
+    vc.currentIndex = selectedPageIndex;
 }
 
 
