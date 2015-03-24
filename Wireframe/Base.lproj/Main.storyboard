@@ -51,6 +51,9 @@
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -626,7 +629,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="iue-FJ-Wse"/>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="L4p-li-cfC"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhl-if-qPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -703,7 +706,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5do-em-0kp">
-                                <rect key="frame" x="24" y="137" width="272" height="367"/>
+                                <rect key="frame" x="24" y="154" width="272" height="350"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gaL-Kr-Uyk">
                                     <size key="itemSize" width="113" height="113"/>
@@ -721,6 +724,9 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" alpha="0.49999999999999961" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder.gif" translatesAutoresizingMaskIntoConstraints="NO" id="SJW-n2-zyk">
                                                     <rect key="frame" x="0.0" y="0.0" width="127" height="127"/>
+                                                </imageView>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" tag="20" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="play.png" translatesAutoresizingMaskIntoConstraints="NO" id="96G-DW-pNs">
+                                                    <rect key="frame" x="51" y="51" width="25" height="25"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -835,8 +841,8 @@
                                     <segue destination="HyC-CS-MSr" kind="push" id="gGV-Z8-Jxd"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select your images" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uC-mb-GsY">
-                                <rect key="frame" x="76" y="57" width="169" height="52"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select photos and videos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uC-mb-GsY">
+                                <rect key="frame" x="49" y="52" width="223" height="52"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -864,10 +870,20 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 selected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLW-mP-LeN">
-                                <rect key="frame" x="76" y="88" width="169" height="52"/>
+                                <rect key="frame" x="76" y="104" width="169" height="52"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="EjS-QT-glx">
+                                <rect key="frame" x="276" y="120" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To build your story" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syJ-Zg-N5e">
+                                <rect key="frame" x="76" y="76" width="169" height="52"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -875,6 +891,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="VdL-qu-vMC"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="EjS-QT-glx" id="gGZ-I9-0nz"/>
                         <outlet property="mediaCollectionView" destination="5do-em-0kp" id="x1J-Gy-xrS"/>
                         <outlet property="selectedCount" destination="kLW-mP-LeN" id="xVH-6o-5jl"/>
                     </connections>
@@ -895,13 +912,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Organize your images" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GR8-cG-pvA">
-                                <rect key="frame" x="63" y="60" width="195" height="52"/>
-                                <gestureRecognizers/>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vap-cp-gaf">
                                 <rect key="frame" x="0.0" y="128" width="320" height="351"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -936,6 +946,9 @@ tap to record</string>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" tag="30" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="play.png" translatesAutoresizingMaskIntoConstraints="NO" id="81W-hj-KLX">
+                                                    <rect key="frame" x="68" y="70" width="25" height="25"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -986,6 +999,31 @@ tap to record</string>
                                     <segue destination="gHW-fG-7DP" kind="modal" id="LyR-kB-D5R"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Drag and drop to sort your story" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwn-kQ-NVw">
+                                <rect key="frame" x="68" y="73" width="184" height="52"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDf-Qp-Wil">
+                                <rect key="frame" x="230" y="516" width="74" height="32"/>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
+                                <state key="normal" title="Record">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="start:" destination="HyC-CS-MSr" eventType="touchUpInside" id="iTN-j7-A0g"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Organize your images" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GR8-cG-pvA">
+                                <rect key="frame" x="63" y="40" width="195" height="52"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1241,7 +1279,62 @@ Release to cancel</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vda-LV-cFK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3496" y="-2684"/>
+            <point key="canvasLocation" x="3656" y="-2674"/>
+        </scene>
+        <!--Review Story View Controller-->
+        <scene sceneID="36N-nK-ei4">
+            <objects>
+                <viewController id="u3t-YH-VVb" customClass="ReviewStoryViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WSe-kp-r2d"/>
+                        <viewControllerLayoutGuide type="bottom" id="fYC-og-iFk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2GD-kJ-fEX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50z-IU-QER">
+                                <rect key="frame" x="27" y="28" width="49" height="34"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismiss:" destination="u3t-YH-VVb" eventType="touchUpInside" id="Bgs-C0-O8S"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cfj-2K-8ky" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4031" y="-2674"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="M2E-VW-6mB">
+            <objects>
+                <pageViewController storyboardIdentifier="ReviewStoryPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="iwi-t1-AgM" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DE2-CT-BVH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4424" y="-2674"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Wnd-3R-RTL">
+            <objects>
+                <viewController id="RfX-4h-5gF" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vPu-OH-s95"/>
+                        <viewControllerLayoutGuide type="bottom" id="fAW-wr-f0l"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pfW-6X-X4J">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N4B-bc-KU1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4810" y="-2674"/>
         </scene>
         <!--Name Story View Controller-->
         <scene sceneID="nWE-0Y-4hA">
@@ -1348,6 +1441,9 @@ Release to cancel</string>
                                         <state key="normal" image="replay-gris">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="u3t-YH-VVb" kind="modal" id="hwp-ak-nvG"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6WR-J3-32R">
                                         <rect key="frame" x="67" y="110" width="94" height="37"/>
@@ -1367,7 +1463,7 @@ Release to cancel</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPe-Is-Oeg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3732" y="-2014"/>
+            <point key="canvasLocation" x="3656" y="-2012"/>
         </scene>
         <!--Room Picker View Controller-->
         <scene sceneID="dls-9R-q9Q">
@@ -1476,7 +1572,7 @@ Release to cancel</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="aZu-gw-KYA" kind="modal" id="N1H-gT-YWi"/>
+                                    <action selector="send:" destination="UYI-ME-qVa" eventType="touchUpInside" id="1gq-Kv-26h"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rvw-qu-n1a">
@@ -1511,10 +1607,13 @@ Release to cancel</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="1NI-iV-7jP"/>
+                    <connections>
+                        <outlet property="roomsCollectionView" destination="3xg-qs-pbH" id="SlQ-0t-d2s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nzK-4c-4nq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4107" y="-2014"/>
+            <point key="canvasLocation" x="4031" y="-2012"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="geR-Xj-Wxp">
@@ -1552,7 +1651,7 @@ Release to cancel</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2a-Eq-bfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4500" y="-2016"/>
+            <point key="canvasLocation" x="4424" y="-2014"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="zjK-23-chf">
@@ -1723,6 +1822,7 @@ Release to cancel</string>
         <image name="loupe.png" width="32" height="32"/>
         <image name="pause.png" width="28" height="32"/>
         <image name="placeholder.gif" width="1000" height="1000"/>
+        <image name="play.png" width="28" height="32"/>
         <image name="proches-grand.png" width="164" height="163"/>
         <image name="proches-petit.png" width="37" height="37"/>
         <image name="replay-gris" width="65" height="65"/>
@@ -1737,7 +1837,6 @@ Release to cancel</string>
     <inferredMetricsTieBreakers>
         <segue reference="Trf-vP-Ghn"/>
         <segue reference="uPg-Jv-iUs"/>
-        <segue reference="yZm-2b-pPQ"/>
         <segue reference="ZIi-u5-YMg"/>
         <segue reference="IEH-kK-W5I"/>
     </inferredMetricsTieBreakers>

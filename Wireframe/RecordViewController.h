@@ -11,7 +11,7 @@
 #import "StoryWIPSaver.h"
 #import "StoryMediaRecorder.h"
 
-@interface RecordViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate, EZMicrophoneDelegate>
+@interface RecordViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate, EZMicrophoneDelegate, StoryMediaRecorderDelegate>
 
 @property NSUInteger currentIndex;
 @property (strong, nonatomic) UIPageViewController* pageViewController;
@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UIView* replay;
 @property (strong, nonatomic) StoryWIPSaver* saver;
 @property (strong, nonatomic) StoryMediaRecorder* recorder;
+@property (strong, nonatomic) EZAudioPlotGL* audioPlot;
 
 @property BOOL lastPage;
 

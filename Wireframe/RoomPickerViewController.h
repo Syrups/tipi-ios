@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RoomManager.h"
+#import "StoryManager.h"
 
-@interface RoomPickerViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+
+@interface RoomPickerViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, RoomFetcherDelegate, StoryCreatorDelegate>
+
+@property (strong, nonatomic) IBOutlet UICollectionView* roomsCollectionView;
+@property (strong, nonatomic) NSArray* rooms;
+
 
 @end

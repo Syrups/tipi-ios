@@ -33,7 +33,7 @@
     self.pageViewController.dataSource = self;
     self.pageViewController.delegate = self;
     
-    RecordPageViewController* first = [self viewControllerAtIndex:0];
+    RecordPageViewController* first = [self viewControllerAtIndex:self.currentIndex];
     [self.pageViewController setViewControllers:@[first] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     [self addChildViewController:self.pageViewController];
@@ -52,7 +52,23 @@
     [self.recordButton addGestureRecognizer:press];
     
     self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
+    self.recorder.delegate = self;
     
+    EZAudioPlotGL* audioPlot = [[EZAudioPlotGL alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:audioPlot];
+    audioPlot.userInteractionEnabled = NO;
+    audioPlot.alpha = 0.5f;
+    audioPlot.backgroundColor = [UIColor whiteColor];
+    audioPlot.plotType = EZPlotTypeRolling;
+    
+    self.audioPlot = audioPlot;
+    
+}
+
+#pragma mark - StoryMediaRecorder
+
+- (void)mediaRecorder:(StoryMediaRecorder *)recorder hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
+    [self.audioPlot updateBuffer:buffer[0] withBufferSize:bufferSize];
 }
 
 

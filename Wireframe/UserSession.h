@@ -11,7 +11,7 @@
 
 @interface UserSession : NSObject
 
-@property (assign, nonatomic) NSString* id;
+@property (strong, nonatomic) NSString* id;
 @property (strong, nonatomic) NSString* token;
 @property (strong, nonatomic) NSURL* avatarUrl;
 @property (assign, nonatomic) BOOL hasPendingFriendRequests;

@@ -21,7 +21,7 @@
 @protocol UserCreatorDelegate <NSObject>
 
 - (void)userManager:(UserManager*)manager successfullyCreatedUser:(User*)user;
-- (void)userManager:(UserManager*)manager failedToCreateUser:(NSError*)error;
+- (void)userManager:(UserManager*)manager failedToCreateUserWithStatusCode:(NSUInteger)statusCode;
 
 @end
 

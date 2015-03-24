@@ -33,7 +33,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
         if (self.delegate) {
-            [self.delegate roomManagerFailedToFetchRooms:self];
+            [self.delegate roomManager:self failedToFetchRooms:error];
         }
     }];
     

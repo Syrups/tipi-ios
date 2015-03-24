@@ -15,5 +15,6 @@
 @property (strong, nonatomic) NSMutableArray* medias;
 @property (strong, nonatomic) IBOutlet UICollectionView* mediaCollectionView;
 @property (strong, nonatomic) IBOutlet UILabel* selectedCount;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView* activityIndicator;
 
 @end

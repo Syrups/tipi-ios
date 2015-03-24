@@ -8,6 +8,7 @@
 
 #import "Api.h"
 #import "Configuration.h"
+#import "UserSession.h"
 
 @implementation Api
 
@@ -18,8 +19,10 @@
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
     [mutableRequest addValue:@"application/json" forHTTPHeaderField:@"Content-type"];
     
+    NSString* token = [[UserSession sharedSession] token];
+    
     if (authenticated) {
-        [mutableRequest addValue:kApiTestUserToken forHTTPHeaderField:@"X-Authorization-Token"];
+        [mutableRequest addValue:token forHTTPHeaderField:@"X-Authorization-Token"];
     }
     
     request = [mutableRequest copy];

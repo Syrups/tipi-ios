@@ -31,6 +31,10 @@
     [self.mTableView reloadData];
 }
 
+- (void)roomManagerFailedToFetchRooms:(RoomManager *)manager {
+    // error
+}
+
 #pragma mark - UITableView
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

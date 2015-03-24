@@ -12,6 +12,7 @@
 
 @interface StoryMediaRecorder : NSObject <EZMicrophoneDelegate, EZAudioFileDelegate>
 
+@property (weak, nonatomic) id delegate;
 @property (strong, nonatomic) NSString* storyUuid;
 @property (strong, nonatomic) EZMicrophone* microphone;
 @property (strong, nonatomic) EZRecorder* recorder;
@@ -25,5 +26,11 @@
 - (void)startRecording;
 - (void)stopRecording;
 - (void)playAudio;
+
+@end
+
+@protocol StoryMediaRecorderDelegate <NSObject>
+
+- (void)mediaRecorder:(StoryMediaRecorder*)recorder hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels;
 
 @end
