@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.mGroups = @[@"Familly", @"Geek Team", @"Junkie Style", @"Google"];
+    RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
     
     [manager fetchRoomsForUser:[[UserSession sharedSession] user]];
 }
@@ -52,7 +52,8 @@
     v2.layer.borderColor = [UIColor blackColor].CGColor;
     
     UILabel *name = (UILabel*)[cell.contentView viewWithTag:100];
-    name.text = [self.mGroups objectAtIndex:indexPath.row ];
+    name.text = room.name;
+    
     
     return cell;
 }
