@@ -54,21 +54,21 @@
     self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
     self.recorder.delegate = self;
     
-    EZAudioPlotGL* audioPlot = [[EZAudioPlotGL alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:audioPlot];
-    audioPlot.userInteractionEnabled = NO;
-    audioPlot.alpha = 0.5f;
-    audioPlot.backgroundColor = [UIColor whiteColor];
-    audioPlot.plotType = EZPlotTypeRolling;
-    
-    self.audioPlot = audioPlot;
+//    EZAudioPlotGL* audioPlot = [[EZAudioPlotGL alloc] initWithFrame:self.view.frame];
+//    [self.view addSubview:audioPlot];
+//    audioPlot.userInteractionEnabled = NO;
+//    audioPlot.alpha = 0.5f;
+//    audioPlot.backgroundColor = [UIColor whiteColor];
+//    audioPlot.plotType = EZPlotTypeRolling;
+//    
+//    self.audioPlot = audioPlot;
     
 }
 
 #pragma mark - StoryMediaRecorder
 
 - (void)mediaRecorder:(StoryMediaRecorder *)recorder hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
-    [self.audioPlot updateBuffer:buffer[0] withBufferSize:bufferSize];
+//    [self.audioPlot updateBuffer:buffer[0] withBufferSize:bufferSize];
 }
 
 

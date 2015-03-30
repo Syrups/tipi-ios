@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "StoryWIPSaver.h"
+#import "StoryMediaRecorder.h"
 
-@interface ReviewStoryViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface ReviewStoryViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate, StoryMediaRecorderDelegate>
 
 @property (strong, nonatomic) UIPageViewController* pageViewController;
 @property (strong, nonatomic) StoryWIPSaver* saver;
+@property (strong, nonatomic) StoryMediaRecorder* recorder;
 @property NSUInteger currentIndex;
 @property BOOL lastPage;
 

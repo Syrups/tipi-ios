@@ -28,11 +28,13 @@
             
             if (err) { NSLog(@"%@", err); }
             
-            [self.delegate roomManager:self successfullyFetchedRooms:rooms];
+            if ([self.delegate respondsToSelector:@selector(roomManager:successfullyFetchedRooms::)]) {
+                [self.delegate roomManager:self successfullyFetchedRooms:rooms];
+            }
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        if (self.delegate) {
+        if ([self.delegate respondsToSelector:@selector(roomManager:failedToFetchRooms:)]) {
             [self.delegate roomManager:self failedToFetchRooms:error];
         }
     }];

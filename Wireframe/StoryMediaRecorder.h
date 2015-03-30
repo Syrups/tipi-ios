@@ -10,7 +10,7 @@
 #import <EZAudio/EZAudio.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface StoryMediaRecorder : NSObject <EZMicrophoneDelegate, EZAudioFileDelegate>
+@interface StoryMediaRecorder : NSObject <EZMicrophoneDelegate, EZAudioFileDelegate, AVAudioPlayerDelegate>
 
 @property (weak, nonatomic) id delegate;
 @property (strong, nonatomic) NSString* storyUuid;
@@ -32,5 +32,6 @@
 @protocol StoryMediaRecorderDelegate <NSObject>
 
 - (void)mediaRecorder:(StoryMediaRecorder*)recorder hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels;
+- (void)mediaRecorder:(StoryMediaRecorder*)recorder didFinishPlayingAudioAtIndex:(NSUInteger)index;
 
 @end

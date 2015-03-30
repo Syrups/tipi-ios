@@ -17,6 +17,8 @@
     
     self.microphone = [EZMicrophone microphoneWithDelegate:self];
     
+    [self configureAudioSession];
+    
     return self;
 }
 
@@ -44,6 +46,8 @@
 - (void)playAudio {
     NSError* err = nil;
     self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL URLWithString:[self pathForAudioFile]] error:&err];
+    self.player.delegate = self;
+    self.player.volume = 1;
     
     if (err) {
         NSLog(@"%@", err);
@@ -67,6 +71,31 @@
     return [NSString stringWithFormat:@"%@/%@", basePath, filename];
 }
 
+- (void)configureAudioSession {
+    AVAudioSession* session = [AVAudioSession sharedInstance];
+    
+    BOOL success;
+    NSError *err;
+    
+    success = [session setCategory:AVAudioSessionCategoryPlayAndRecord error:&err];
+    
+    if (!success) {
+        NSLog(@"%@", err);
+    }
+    
+    success = [session overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&err];
+    
+    if (!success) {
+        NSLog(@"%@", err);
+    }
+    
+    success = [session setActive:YES error:&err];
+    
+    if (!success) {
+        NSLog(@"%@", err);
+    }
+}
+
 #pragma mark - EZMicrophone
 
 - (void)microphone:(EZMicrophone *)microphone hasBufferList:(AudioBufferList *)bufferList withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
@@ -81,6 +110,16 @@
 - (void)microphone:(EZMicrophone *)microphone hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
     if ([self.delegate respondsToSelector:@selector(mediaRecorder:hasAudioReceived:withBufferSize:withNumberOfChannels:)]) {
         [self.delegate mediaRecorder:self hasAudioReceived:buffer withBufferSize:bufferSize withNumberOfChannels:numberOfChannels];
+    }
+}
+
+#pragma mark - AVAudioPlayer
+
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    if (flag == YES) {
+        if ([self.delegate respondsToSelector:@selector(mediaRecorder:didFinishPlayingAudioAtIndex:)]) {
+            [self.delegate mediaRecorder:self didFinishPlayingAudioAtIndex:self.currentPageIndex];
+        }
     }
 }
 

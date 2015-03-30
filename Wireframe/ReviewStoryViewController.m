@@ -23,16 +23,28 @@
     [self.pageViewController willMoveToParentViewController:self];
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
+    [self.view sendSubviewToBack:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
     
     self.saver = [StoryWIPSaver sharedSaver];
     
     ReviewPageViewController* first = [self viewControllerAtIndex:self.currentIndex];
     [self.pageViewController setViewControllers:@[first] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    
+    self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
+    self.recorder.delegate = self;
+    [self.recorder setupForMediaWithIndex:0];
+    [self.recorder playAudio];
 }
 
 - (IBAction)dismiss:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - StoryMediaRecorder
+
+- (void)mediaRecorder:(StoryMediaRecorder *)recorder didFinishPlayingAudioAtIndex:(NSUInteger)index {
+    [NSTimer scheduledTimerWithTimeInterval:0.2f target:self selector:@selector(next) userInfo:nil repeats:NO];
 }
 
 #pragma mark - UIPageViewController
@@ -103,6 +115,9 @@
     if (index != self.saver.medias.count-1) {
         self.lastPage = NO;
     }
+    
+    [self.recorder setupForMediaWithIndex:index];
+    [self.recorder playAudio];
 }
 
 #pragma mark - Helpers
@@ -111,5 +126,20 @@
     return self.pageViewController.viewControllers[0];
 }
 
+- (void)next {
+    ReviewPageViewController* vc = [self viewControllerAtIndex:self.currentIndex+1];
+    
+    if (vc == nil) {
+        [self dismiss:nil];
+        
+        return;
+    }
+    
+    __block ReviewStoryViewController* _self = self;
+    
+    [self.pageViewController setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
+        [_self pageViewController:_self.pageViewController didFinishAnimating:finished previousViewControllers:nil transitionCompleted:YES];
+    }];
+}
 
 @end
