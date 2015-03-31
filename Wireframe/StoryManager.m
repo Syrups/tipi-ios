@@ -18,7 +18,7 @@
     NSString* path = [NSString stringWithFormat:@"/users/%@/stories", owner.id];
     NSMutableURLRequest* request = [Api getBaseRequestFor:path authenticated:YES method:@"POST"].mutableCopy;
     
-    [request setHTTPBody:[[NSString stringWithFormat:@"{ \"story\": { \"title\": \"%@\", \"pages_count\": \"%ld\", \"tag\": \"%@\", \"rooms\": %@ } }", name, medias.count, tag, [self jsonArrayForRooms:rooms]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:[[NSString stringWithFormat:@"{ \"story\": { \"title\": \"%@\", \"page_count\": \"%ld\", \"tag\": \"%@\", \"rooms\": %@ } }", name, medias.count, tag, [self jsonArrayForRooms:rooms]] dataUsingEncoding:NSUTF8StringEncoding]];
     
                   
 
@@ -32,6 +32,7 @@
         Story* story = [[Story alloc] initWithDictionary:responseObject error:&err];
         
         if (err) { NSLog(@"%@", err); }
+        
         
         [self.delegate storyManager:self successfullyCreatedStory:story withPages:story.pages];
         

@@ -71,6 +71,19 @@
     return [NSString stringWithFormat:@"%@/%@", basePath, filename];
 }
 
+- (NSData *)dataOfAudioWithIndex:(NSUInteger)index {
+    NSString* filename = [NSString stringWithFormat:@"%@_%ld.m4a", self.storyUuid, (long)index];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    
+    #ifdef IPHONE_SIMULATOR
+        basePath = @"/Users/leo/Desktop";
+    #endif
+    
+    return [NSData dataWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", basePath, filename]];
+}
+
 - (void)configureAudioSession {
     AVAudioSession* session = [AVAudioSession sharedInstance];
     

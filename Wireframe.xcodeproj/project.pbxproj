@@ -52,6 +52,8 @@
 		B35AD0441ABF339200527C0D /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD0431ABF339200527C0D /* ArrayDataSource.m */; };
 		B35CDBDA1AB87DD900BF9F82 /* StoryMediaRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = B35CDBD91AB87DD900BF9F82 /* StoryMediaRecorder.m */; };
 		B35CDBDC1AB8863C00BF9F82 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35CDBDB1AB8863C00BF9F82 /* AVFoundation.framework */; };
+		B36941AF1ACAE02500F3F95A /* FileUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = B36941AE1ACAE02500F3F95A /* FileUploader.m */; };
+		B36941B11ACAF06800F3F95A /* pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B36941B01ACAF06800F3F95A /* pic.jpg */; };
 		B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4CDC71AA71DB90079F8D1 /* StoryWIPSaver.m */; };
 		B3BCCFD31AA5C36C00261212 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFD21AA5C36C00261212 /* main.m */; };
 		B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFD51AA5C36C00261212 /* AppDelegate.m */; };
@@ -155,6 +157,9 @@
 		B35CDBD81AB87DD900BF9F82 /* StoryMediaRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryMediaRecorder.h; sourceTree = "<group>"; };
 		B35CDBD91AB87DD900BF9F82 /* StoryMediaRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryMediaRecorder.m; sourceTree = "<group>"; };
 		B35CDBDB1AB8863C00BF9F82 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B36941AD1ACAE02500F3F95A /* FileUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUploader.h; sourceTree = "<group>"; };
+		B36941AE1ACAE02500F3F95A /* FileUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUploader.m; sourceTree = "<group>"; };
+		B36941B01ACAF06800F3F95A /* pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic.jpg; sourceTree = "<group>"; };
 		B39C1DE51AC4B1620011D87E /* Wireframe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Wireframe.entitlements; sourceTree = "<group>"; };
 		B3A4CDC61AA71DB90079F8D1 /* StoryWIPSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryWIPSaver.h; sourceTree = "<group>"; };
 		B3A4CDC71AA71DB90079F8D1 /* StoryWIPSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryWIPSaver.m; sourceTree = "<group>"; };
@@ -234,6 +239,7 @@
 		73B3B3331AA7BA3F00FF7578 /* exports */ = {
 			isa = PBXGroup;
 			children = (
+				B36941B01ACAF06800F3F95A /* pic.jpg */,
 				73B3B3341AA7BA3F00FF7578 /* croix-blanche.png */,
 				73B3B3351AA7BA3F00FF7578 /* croix-noire.png */,
 				73B3B3361AA7BA3F00FF7578 /* go-left.png */,
@@ -393,6 +399,8 @@
 				B3065A351AB9883400C10AD9 /* Api.m */,
 				B3065A461ABAF60E00C10AD9 /* UserSession.h */,
 				B3065A471ABAF60E00C10AD9 /* UserSession.m */,
+				B36941AD1ACAE02500F3F95A /* FileUploader.h */,
+				B36941AE1ACAE02500F3F95A /* FileUploader.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -662,6 +670,7 @@
 				73B3B3541AA7BA3F00FF7578 /* replay-noir.png in Resources */,
 				B3FC7B8F1AA672DE00034E58 /* placeholder.gif in Resources */,
 				73B3B34D1AA7BA3F00FF7578 /* pause.png in Resources */,
+				B36941B11ACAF06800F3F95A /* pic.jpg in Resources */,
 				B3BCCFDE1AA5C36C00261212 /* Images.xcassets in Resources */,
 				73B3B34A1AA7BA3F00FF7578 /* home-blanc.png in Resources */,
 				73B3B3481AA7BA3F00FF7578 /* go-left.png in Resources */,
@@ -754,6 +763,7 @@
 				73B20BEC1AA5FF0800A9C88F /* BaseHomeViewController.m in Sources */,
 				B3BCCFFD1AA5C85B00261212 /* HomeViewController.m in Sources */,
 				B3BCD0001AA5E50D00261212 /* MediaPickerViewController.m in Sources */,
+				B36941AF1ACAE02500F3F95A /* FileUploader.m in Sources */,
 				B3BCD0131AA604DA00261212 /* RecordViewController.m in Sources */,
 				73B3B35A1AA7BC6100FF7578 /* GroupMembersViewController.m in Sources */,
 			);

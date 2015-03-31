@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "RoomManager.h"
 #import "StoryManager.h"
-
+#import "StoryWIPSaver.h"
+#import "StoryMediaRecorder.h"
 
 @interface RoomPickerViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, RoomFetcherDelegate, StoryCreatorDelegate>
 
+@property (strong, nonatomic) StoryWIPSaver* saver;
+@property (strong, nonatomic) StoryMediaRecorder* recorder;
 @property (strong, nonatomic) IBOutlet UICollectionView* roomsCollectionView;
 @property (strong, nonatomic) NSArray* rooms;
 

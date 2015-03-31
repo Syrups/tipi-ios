@@ -26,6 +26,7 @@
 - (void)startRecording;
 - (void)stopRecording;
 - (void)playAudio;
+- (NSData*)dataOfAudioWithIndex:(NSUInteger)index;
 
 @end
 

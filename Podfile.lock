@@ -1,11 +1,11 @@
 PODS:
   - AFNetworking (2.5.1):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-    - AFNetworking/UIKit
+    - AFNetworking/NSURLConnection (= 2.5.1)
+    - AFNetworking/NSURLSession (= 2.5.1)
+    - AFNetworking/Reachability (= 2.5.1)
+    - AFNetworking/Security (= 2.5.1)
+    - AFNetworking/Serialization (= 2.5.1)
+    - AFNetworking/UIKit (= 2.5.1)
   - AFNetworking/NSURLConnection (2.5.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -33,4 +33,4 @@ SPEC CHECKSUMS:
   EZAudio: 2f2e5a5094d29ab91d45b229a75c3c31ee26ed1f
   JSONModel: cbdef0fdff1cc70e913a860861d3072860efd3a1
 
-COCOAPODS: 0.34.4
+COCOAPODS: 0.35.0

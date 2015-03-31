@@ -46,7 +46,8 @@
                                         @"image": image,
                                         @"full": fullImage,
                                         @"date": [result valueForProperty:ALAssetPropertyDate],
-                                        @"type": [result valueForProperty:ALAssetPropertyType]
+                                        @"type": [result valueForProperty:ALAssetPropertyType],
+                                        @"url": url
                                   }];
                                  
                                  if (index+1 == group.numberOfAssets) {
@@ -97,6 +98,12 @@
         vidIcon.hidden = NO;
     } else {
         vidIcon.hidden = YES;
+    }
+    
+    if (![selectedIndexes containsObject:indexPath]) {
+        cell.contentView.backgroundColor = [UIColor lightGrayColor];
+    } else {
+        cell.contentView.backgroundColor = [UIColor blackColor];
     }
     
     return cell;

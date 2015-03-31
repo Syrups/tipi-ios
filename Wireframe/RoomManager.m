@@ -28,7 +28,7 @@
             
             if (err) { NSLog(@"%@", err); }
             
-            if ([self.delegate respondsToSelector:@selector(roomManager:successfullyFetchedRooms::)]) {
+            if ([self.delegate respondsToSelector:@selector(roomManager:successfullyFetchedRooms:)]) {
                 [self.delegate roomManager:self successfullyFetchedRooms:rooms];
             }
         }
@@ -36,6 +36,36 @@
         NSLog(@"%@", error);
         if ([self.delegate respondsToSelector:@selector(roomManager:failedToFetchRooms:)]) {
             [self.delegate roomManager:self failedToFetchRooms:error];
+        }
+    }];
+    
+    [op start];
+}
+
+- (void)fetchRoomWithId:(NSUInteger)roomId {
+    NSString* path = [NSString stringWithFormat:@"/rooms/%ld", roomId];
+    NSURLRequest* request = [Api getBaseRequestFor:path authenticated:YES method:@"GET"];
+    
+    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (self.delegate) {
+            
+            NSError* err = nil;
+            Room* room = [[Room alloc] initWithDictionary:responseObject error:&err];
+            
+            if (err) { NSLog(@"%@", err); }
+            
+            if ([self.delegate respondsToSelector:@selector(roomManager:successfullyFetchedRoom:)]) {
+                [self.delegate roomManager:self successfullyFetchedRoom:room];
+            }
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        if ([self.delegate respondsToSelector:@selector(roomManager:failedToFetchRoomWithId:)]) {
+            [self.delegate roomManager:self failedToFetchRoomWithId:roomId];
         }
     }];
     

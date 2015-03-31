@@ -10,6 +10,7 @@
 #import "UserSession.h"
 #import "StoryManager.h"
 #import "StoryWIPSaver.h"
+#import "FileUploader.h"
 
 @interface RoomPickerViewController ()
 
@@ -26,6 +27,9 @@
     
     RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
     [manager fetchRoomsForUser:[[UserSession sharedSession] user]];
+    
+    self.saver = [StoryWIPSaver sharedSaver];
+    self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
 }
 
 - (IBAction)back:(id)sender {
@@ -56,7 +60,19 @@
 
 - (void)storyManager:(StoryManager *)manager successfullyCreatedStory:(Story *)story withPages:(NSArray *)pages {
     NSLog(@"Story created");
-    NSLog(@"%@", pages);
+    
+    FileUploader* uploader = [[FileUploader alloc] init];
+    uploader.delegate = self;
+    
+    [story.pages enumerateObjectsUsingBlock:^(Page* page, NSUInteger idx, BOOL *stop) {
+        UIImage* image = [(NSDictionary*)[self.saver.medias objectAtIndex:idx] objectForKey:@"full"];
+        NSString* mediaPath = [NSString stringWithFormat:@"/pages/%@/media", page.id];
+        NSString* audioPath = [NSString stringWithFormat:@"/pages/%@/audio", page.id];
+        
+        [uploader uploadFileWithData:UIImageJPEGRepresentation(image, 1.0) toPath:mediaPath ofType:kUploadTypeMedia];
+        
+        [uploader uploadFileWithData:[self.recorder dataOfAudioWithIndex:idx] toPath:audioPath ofType:kUploadTypeAudio];
+    }];
 }
 
 - (void)storyManager:(StoryManager *)manager failedToCreateStory:(NSError *)error {
@@ -104,6 +120,11 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
+    
+    if (indexPath.row == self.rooms.count) {
+        return;
+    }
+    
     Room* room = [self.rooms objectAtIndex:indexPath.row];
     
     if (![selectedRooms containsObject:room]) {
