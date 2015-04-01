@@ -11,6 +11,7 @@
 #import "StoryWIPSaver.h"
 #import "StoryMediaRecorder.h"
 
+
 @interface RecordViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate, EZMicrophoneDelegate, StoryMediaRecorderDelegate>
 
 @property NSUInteger currentIndex;

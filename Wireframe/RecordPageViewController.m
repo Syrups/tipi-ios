@@ -18,7 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self.imageView setImage:self.image];
+    if (self.image)
+        [self.imageView setImage:self.image];
 }
 
 

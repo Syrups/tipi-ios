@@ -25,53 +25,25 @@
     
     self.activityIndicator.hidden = NO;
     
-    NSMutableArray* assetGroups = [NSMutableArray array];
-    ALAssetsLibrary* library = [[ALAssetsLibrary alloc] init];
-    NSUInteger types = ALAssetsGroupAll;
-    [library enumerateGroupsWithTypes:types usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-        if(group != nil) {
-            [assetGroups addObject:group];
-            
-            [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
-                if (result != nil) {
-                    NSURL *url= (NSURL*) [[result defaultRepresentation]url];
-                    
-                    [library assetForURL:url
-                             resultBlock:^(ALAsset *asset) { //Your line
-                                 ALAssetRepresentation* rep = [asset defaultRepresentation];
-                                 
-                                 UIImage* image = [UIImage imageWithCGImage:[asset thumbnail]];
-                                 UIImage* fullImage = [UIImage imageWithCGImage:[rep fullScreenImage]];
-                                 [self.medias addObject:@{
-                                        @"image": image,
-                                        @"full": fullImage,
-                                        @"date": [result valueForProperty:ALAssetPropertyDate],
-                                        @"type": [result valueForProperty:ALAssetPropertyType],
-                                        @"url": url
-                                  }];
-                                 
-                                 if (index+1 == group.numberOfAssets) {
-                                     self.activityIndicator.hidden = YES;
-                                     [self.mediaCollectionView reloadData];
-                                 }
-                             }
-                            failureBlock:^(NSError *error){
-                                NSLog(@"test:Fail");
-                            }];
-                }
-                
-                
-            }];
-        }
-    } failureBlock:^(NSError *error) {
-        
-    }];
+    MediaLibrary* library = [[MediaLibrary alloc] init];
+    library.delegate = self;
     
+    [library fetchMediasFromLibrary];
 }
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mark - MediaLibrary
+
+- (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedias:(NSArray *)medias {
+    self.activityIndicator.hidden = YES;
+    self.medias = medias.mutableCopy;
+    [self.mediaCollectionView reloadData];
+}
+
+#pragma mark - UICollectionView
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;

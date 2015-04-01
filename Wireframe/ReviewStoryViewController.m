@@ -44,7 +44,7 @@
 #pragma mark - StoryMediaRecorder
 
 - (void)mediaRecorder:(StoryMediaRecorder *)recorder didFinishPlayingAudioAtIndex:(NSUInteger)index {
-    [NSTimer scheduledTimerWithTimeInterval:0.2f target:self selector:@selector(next) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(next) userInfo:nil repeats:NO];
 }
 
 #pragma mark - UIPageViewController

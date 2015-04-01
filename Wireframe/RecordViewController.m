@@ -10,6 +10,7 @@
 #import "RecordPageViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
+
 @interface RecordViewController ()
 
 @end
@@ -32,6 +33,7 @@
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RecordPageViewController"];
     self.pageViewController.dataSource = self;
     self.pageViewController.delegate = self;
+    self.pageViewController.view.frame = self.view.frame;
     
     RecordPageViewController* first = [self viewControllerAtIndex:self.currentIndex];
     [self.pageViewController setViewControllers:@[first] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
@@ -76,12 +78,21 @@
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         NSLog(@"begin touch");
         [self.recorder startRecording];
+        
+        if ([self currentPage].moviePlayer != nil) {
+            [[self currentPage].moviePlayer play];
+            [[self currentPage].view bringSubviewToFront:[self currentPage].moviePlayer.view];
+        }
     }
     if (recognizer.state == UIGestureRecognizerStateEnded) {
         NSLog(@"ended touch");
         [self.recorder stopRecording];
         
         self.replay.hidden = NO;
+        
+        if ([self currentPage].moviePlayer != nil) {
+            [[self currentPage].moviePlayer pause];
+        }
     }
 }
 
@@ -104,7 +115,23 @@
     // Create a new view controller and pass suitable data.
     RecordPageViewController *page = [self.storyboard instantiateViewControllerWithIdentifier:@"RecordPage"];
     page.pageIndex = index;
-    page.image = [(NSDictionary*)[self.saver.medias objectAtIndex:index] objectForKey:@"full"];
+    
+    NSDictionary* media = [self.saver.medias objectAtIndex:index];
+    
+    if ([[media objectForKey:@"type"] isEqualToString:ALAssetTypeVideo]) {
+        NSURL *url= (NSURL*)[media objectForKey:@"url"];
+        
+        page.moviePlayer=[[MPMoviePlayerController alloc] initWithContentURL:url];
+        NSLog(@"%@", url);
+        
+        page.image = [(NSDictionary*)[self.saver.medias objectAtIndex:index] objectForKey:@"full"];
+        
+        page.moviePlayer.view.frame = self.view.frame;
+        [page.view addSubview:page.moviePlayer.view];
+        [page.view sendSubviewToBack:page.moviePlayer.view];
+    } else {
+        page.image = [(NSDictionary*)[self.saver.medias objectAtIndex:index] objectForKey:@"full"];
+    }
     
     return page;
 }
@@ -161,6 +188,8 @@
     if (index != self.saver.medias.count-1) {
         self.lastPage = NO;
     }
+    
+    self.replay.hidden = ![self.recorder hasRecordedAtIndex:index];
     
     [self.recorder.player stop];
     [self.recorder setupForMediaWithIndex:index];

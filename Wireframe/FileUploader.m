@@ -10,6 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "Configuration.h"
 #import "UserSession.h"
+#import "Page.h"
 
 @implementation FileUploader
 
@@ -28,9 +29,23 @@
         
         if (err) { NSLog(@"%@", err); }
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Success: %@", responseObject);
+        NSError* err = nil;
+        Page* page = [[Page alloc] initWithDictionary:responseObject error:&err];
+        
+        if (err) { NSLog(@"%@", err); }
+        
+        NSString* filename = [type isEqualToString:kUploadTypeAudio] ? page.audio.file : page.media.file;
+        
+        if ([self.delegate respondsToSelector:@selector(fileUploader:successfullyUploadedFileOfType:toPath:withFileName:)]) {
+            [self.delegate fileUploader:self successfullyUploadedFileOfType:type toPath:path withFileName:filename];
+        }
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
+        
+        if ([self.delegate respondsToSelector:@selector(fileUploader:failedToUploadFileOfType:toPath:)]) {
+            [self.delegate fileUploader:self failedToUploadFileOfType:type toPath:path];
+        }
     }];
 }
 

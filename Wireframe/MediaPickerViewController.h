@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "StoryWIPSaver.h"
+#import "MediaLibrary.h"
 
-@interface MediaPickerViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate>
+@interface MediaPickerViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, MediaLibraryDelegate>
 
 @property (strong, nonatomic) StoryWIPSaver* saver;
 @property (strong, nonatomic) NSMutableArray* medias;

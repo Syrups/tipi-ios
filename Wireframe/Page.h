@@ -7,12 +7,16 @@
 //
 
 #import "JSONModel.h"
+#import "Audio.h"
+#import "Media.h"
 
 @interface Page : JSONModel
 
 @property (strong, nonatomic) NSString* id;
 //@property (assign, nonatomic) NSUInteger duration;
 //@property (assign, nonatomic) NSUInteger position;
+@property (strong, nonatomic) Audio<Optional>* audio;
+@property (strong, nonatomic) Media<Optional>* media;
 
 @end
 

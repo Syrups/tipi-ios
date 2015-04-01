@@ -122,8 +122,10 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    RecordViewController* vc = (RecordViewController*)[segue destinationViewController];
-    vc.currentIndex = selectedPageIndex;
+    if ([segue.identifier isEqualToString:@"ToRecord"]) {
+        RecordViewController* vc = (RecordViewController*)[segue destinationViewController];
+        vc.currentIndex = selectedPageIndex;
+    }
 }
 
 

@@ -84,6 +84,10 @@
     return [NSData dataWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", basePath, filename]];
 }
 
+- (BOOL)hasRecordedAtIndex:(NSUInteger)index {
+    return [self dataOfAudioWithIndex:index] != nil;
+}
+
 - (void)configureAudioSession {
     AVAudioSession* session = [AVAudioSession sharedInstance];
     

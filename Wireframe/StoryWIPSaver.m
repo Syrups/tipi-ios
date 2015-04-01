@@ -17,6 +17,11 @@
         saver = [[StoryWIPSaver alloc] init];
     });
     
+    // set a uuid if it does not have one
+    if (saver.uuid == nil) {
+        saver.uuid = [saver generateUuid];
+    }
+    
     return saver;
 }
 

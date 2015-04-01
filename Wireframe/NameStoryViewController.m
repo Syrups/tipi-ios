@@ -7,6 +7,7 @@
 //
 
 #import "NameStoryViewController.h"
+#import "StoryWIPSaver.h"
 
 @interface NameStoryViewController ()
 
@@ -25,6 +26,8 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
+    
+    [[StoryWIPSaver sharedSaver] setTitle:[textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     
     return YES;
 }

@@ -15,6 +15,8 @@
 @property BOOL saved;
 @property (strong, nonatomic) NSString* uuid;
 @property (strong, nonatomic) NSMutableArray* medias;
+@property (strong, nonatomic) NSString* tag;
+@property (strong, nonatomic) NSString* title;
 
 - (void)discard;
 - (void)save;

@@ -10,14 +10,11 @@
 #import "UserSession.h"
 #import "StoryManager.h"
 #import "StoryWIPSaver.h"
-#import "FileUploader.h"
-
-@interface RoomPickerViewController ()
-
-@end
 
 @implementation RoomPickerViewController {
     NSMutableArray* selectedRooms;
+    NSUInteger uploadedAudiosCount;
+    NSUInteger uploadedMediasCount;
 }
 
 - (void)viewDidLoad {
@@ -40,8 +37,27 @@
     StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
     User* user = [[UserSession sharedSession] user];
     NSArray* medias = [[StoryWIPSaver sharedSaver] medias];
+    NSString* tag = [[StoryWIPSaver sharedSaver] tag];
+    NSString* title = [[StoryWIPSaver sharedSaver] title];
     
-    [manager createStoryWithName:@"Amazing story" owner:user inRooms:selectedRooms tag:@"los angeles" medias:medias audiosFiles:medias];
+    [manager createStoryWithName:title owner:user inRooms:selectedRooms tag:tag medias:medias audiosFiles:medias];
+}
+
+#pragma mark - FileUploaderDelegate
+
+- (void)fileUploader:(FileUploader *)uploader successfullyUploadedFileOfType:(NSString *)type toPath:(NSString *)path withFileName:(NSString *)filename {
+    
+    if ([type isEqualToString:kUploadTypeAudio]) {
+        uploadedAudiosCount++;
+    } else {
+        uploadedMediasCount++;
+    }
+    
+    
+    // all good
+    if (uploadedMediasCount == self.saver.medias.count && uploadedAudiosCount == self.saver.medias.count) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark - RoomFetcherDelegate

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NameStoryViewController.h"
 
 @interface ChooseTagViewController : UIViewController <UITextFieldDelegate>
 

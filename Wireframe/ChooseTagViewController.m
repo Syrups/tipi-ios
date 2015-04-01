@@ -7,6 +7,7 @@
 //
 
 #import "ChooseTagViewController.h"
+#import "StoryWIPSaver.h"
 
 @interface ChooseTagViewController ()
 
@@ -25,6 +26,8 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
+    
+    [[StoryWIPSaver sharedSaver] setTag:textField.text];
     
     return YES;
 }
