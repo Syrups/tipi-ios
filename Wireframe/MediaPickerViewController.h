@@ -12,6 +12,7 @@
 
 @interface MediaPickerViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, MediaLibraryDelegate>
 
+@property (strong, nonatomic) MediaLibrary* library;
 @property (strong, nonatomic) StoryWIPSaver* saver;
 @property (strong, nonatomic) NSMutableArray* medias;
 @property (strong, nonatomic) IBOutlet UICollectionView* mediaCollectionView;

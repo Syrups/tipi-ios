@@ -43,7 +43,7 @@
 }
 
 - (void)fetchRoomWithId:(NSUInteger)roomId {
-    NSString* path = [NSString stringWithFormat:@"/rooms/%ld", roomId];
+    NSString* path = [NSString stringWithFormat:@"/rooms/%ld", (unsigned long)roomId];
     NSURLRequest* request = [Api getBaseRequestFor:path authenticated:YES method:@"GET"];
     
     AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];

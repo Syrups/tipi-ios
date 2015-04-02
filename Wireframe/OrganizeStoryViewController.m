@@ -47,11 +47,19 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.saver.medias.count;
+    return self.saver.medias.count + 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MediaCell" forIndexPath:indexPath];
+    if (indexPath.row <= self.saver.medias.count-1) {
+        return [self cellForMediaAtIndexPath:indexPath];
+    }
+    
+    return [self.collectionView dequeueReusableCellWithReuseIdentifier:@"AddPageCell" forIndexPath:indexPath];
+}
+
+- (UICollectionViewCell*)cellForMediaAtIndexPath:(NSIndexPath*)indexPath {
+    UICollectionViewCell* cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"MediaCell" forIndexPath:indexPath];
     
     if (cell == nil) {
         cell = [[UICollectionViewCell alloc] init];
@@ -59,7 +67,7 @@
     
     UILabel* label = (UILabel*)[cell.contentView viewWithTag:10];
     label.text = [NSString stringWithFormat:@"%ld sur %ld", (unsigned long)indexPath.row+1, (unsigned long)self.saver.medias.count];
-
+    
     UIImageView* image = (UIImageView*)[cell.contentView viewWithTag:20];
     NSDictionary* media = [self.saver.medias objectAtIndex:indexPath.row];
     [image setImage:[media objectForKey:@"image"]];
@@ -88,6 +96,9 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == self.saver.medias.count) return;
+    
     selectedPageIndex = indexPath.row;
     [self performSegueWithIdentifier:@"ToRecord" sender:nil];
 }

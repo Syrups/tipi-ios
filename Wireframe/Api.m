@@ -13,7 +13,7 @@
 @implementation Api
 
 + (NSURLRequest *)getBaseRequestFor:(NSString *)path authenticated:(BOOL)authenticated method:(NSString *)method {
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kApiRootUrl, path] ] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:8];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kApiRootUrl, path] ] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:4];
     
     [request setHTTPMethod:method];
     NSMutableURLRequest *mutableRequest = [request mutableCopy];

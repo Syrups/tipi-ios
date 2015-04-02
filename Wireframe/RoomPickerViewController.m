@@ -10,6 +10,7 @@
 #import "UserSession.h"
 #import "StoryManager.h"
 #import "StoryWIPSaver.h"
+#import "Configuration.h"
 
 @implementation RoomPickerViewController {
     NSMutableArray* selectedRooms;
@@ -70,6 +71,7 @@
 
 - (void)roomManager:(RoomManager *)manager failedToFetchRooms:(NSError *)error {
     // error
+    ErrorAlert(@"Impossible de charger les feux de camp.");
 }
 
 #pragma mark - StoryCreatorDelegate

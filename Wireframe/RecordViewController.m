@@ -35,6 +35,8 @@
     self.pageViewController.delegate = self;
     self.pageViewController.view.frame = self.view.frame;
     
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     RecordPageViewController* first = [self viewControllerAtIndex:self.currentIndex];
     [self.pageViewController setViewControllers:@[first] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
@@ -171,15 +173,6 @@
     return [self viewControllerAtIndex:index];
 }
 
-- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
-{
-    return [self.saver.medias count];
-}
-
-- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
-{
-    return 0;
-}
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
     NSUInteger index = [self currentPage].pageIndex;
@@ -198,11 +191,11 @@
 #pragma mark - UIScrollView
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (self.lastPage && scrollView.contentOffset.x > self.view.frame.size.width+20) {
+    if (self.lastPage && scrollView.contentOffset.x > self.view.frame.size.width) {
         [self performSegueWithIdentifier:@"ToNameStory" sender:nil];
     }
     
-    if (self.currentIndex == 0 && scrollView.contentOffset.x < -20) {
+    if (self.currentIndex == 0 && scrollView.contentOffset.x < -10) {
         [self.navigationController popViewControllerAnimated:YES];
     }
 }

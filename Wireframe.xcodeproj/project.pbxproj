@@ -56,6 +56,7 @@
 		B36941B11ACAF06800F3F95A /* pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B36941B01ACAF06800F3F95A /* pic.jpg */; };
 		B38B895F1ACC08C500799EDD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38B895E1ACC08C500799EDD /* MediaPlayer.framework */; };
 		B38B89621ACC146200799EDD /* MediaLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = B38B89611ACC146200799EDD /* MediaLibrary.m */; };
+		B38B89661ACC221600799EDD /* SRRecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B38B89651ACC221600799EDD /* SRRecordButton.m */; };
 		B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4CDC71AA71DB90079F8D1 /* StoryWIPSaver.m */; };
 		B3BCCFD31AA5C36C00261212 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFD21AA5C36C00261212 /* main.m */; };
 		B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFD51AA5C36C00261212 /* AppDelegate.m */; };
@@ -167,6 +168,8 @@
 		B38B895E1ACC08C500799EDD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		B38B89601ACC146200799EDD /* MediaLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaLibrary.h; sourceTree = "<group>"; };
 		B38B89611ACC146200799EDD /* MediaLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaLibrary.m; sourceTree = "<group>"; };
+		B38B89641ACC221600799EDD /* SRRecordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecordButton.h; sourceTree = "<group>"; };
+		B38B89651ACC221600799EDD /* SRRecordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecordButton.m; sourceTree = "<group>"; };
 		B39C1DE51AC4B1620011D87E /* Wireframe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Wireframe.entitlements; sourceTree = "<group>"; };
 		B3A4CDC61AA71DB90079F8D1 /* StoryWIPSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryWIPSaver.h; sourceTree = "<group>"; };
 		B3A4CDC71AA71DB90079F8D1 /* StoryWIPSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryWIPSaver.m; sourceTree = "<group>"; };
@@ -404,6 +407,14 @@
 			name = DataSources;
 			sourceTree = "<group>";
 		};
+		B38B89631ACC21F300799EDD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B3BCD0221AA622FA00261212 /* Components */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		B3A4CDC51AA71D860079F8D1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,11 +463,11 @@
 				B39C1DE51AC4B1620011D87E /* Wireframe.entitlements */,
 				B3065A371AB9887500C10AD9 /* Configuration.h */,
 				B3FC7B8E1AA672DE00034E58 /* placeholder.gif */,
+				B38B89631ACC21F300799EDD /* Views */,
 				B35AD0411ABF338300527C0D /* DataSources */,
 				B3065A421AB99BA700C10AD9 /* Models */,
 				B3065A301AB9866000C10AD9 /* Managers */,
 				B3A4CDC51AA71D860079F8D1 /* Services */,
-				B3BCD0221AA622FA00261212 /* Components */,
 				B3BCCFFA1AA5C84B00261212 /* Controllers */,
 				B3BCCFF61AA5C4CB00261212 /* GTWalsheim Light.otf */,
 				B3BCCFF71AA5C4CB00261212 /* GTWalsheim Regular.otf */,
@@ -539,6 +550,8 @@
 			isa = PBXGroup;
 			children = (
 				B3BCD0231AA6230100261212 /* Layout */,
+				B38B89641ACC221600799EDD /* SRRecordButton.h */,
+				B38B89651ACC221600799EDD /* SRRecordButton.m */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -764,6 +777,7 @@
 				B3BCD0061AA5F0CE00261212 /* NewStoryViewController.m in Sources */,
 				B38B89621ACC146200799EDD /* MediaLibrary.m in Sources */,
 				B3BCD01D1AA60D4C00261212 /* OrganizeStoryViewController.m in Sources */,
+				B38B89661ACC221600799EDD /* SRRecordButton.m in Sources */,
 				B3BCD0031AA5F03D00261212 /* AbortModalViewController.m in Sources */,
 				73B20BF31AA6178200A9C88F /* ShowOneGroupViewController.m in Sources */,
 				B35CDBDA1AB87DD900BF9F82 /* StoryMediaRecorder.m in Sources */,
