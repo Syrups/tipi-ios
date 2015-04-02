@@ -13,6 +13,6 @@
 
 @property (strong, nonatomic) NSString* id;
 @property (strong, nonatomic) NSString* title;
-@property (strong, nonatomic) NSArray<Page>* pages;
+@property (strong, nonatomic) NSArray<Optional, Page>* pages;
 
 @end

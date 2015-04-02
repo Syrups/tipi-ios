@@ -10,16 +10,15 @@
 #import "ShowOneGroupViewController.h"
 #import "UserSession.h"
 #import "SWRevealViewController.h"
+#import "RoomRevealWrapperViewController.h"
 
 @implementation ShowGroupsViewController {
-    NSUInteger selectedRoom;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
-    
     [manager fetchRoomsForUser:[[UserSession sharedSession] user]];
 }
 
@@ -31,7 +30,7 @@
     [self.mTableView reloadData];
 }
 
-- (void)roomManagerFailedToFetchRooms:(RoomManager *)manager {
+- (void)roomManager:(RoomManager *)manager failedToFetchRooms:(NSError*)error{
     // error
 }
 
@@ -68,18 +67,21 @@
     return self.mGroups.count;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    selectedRoom = [((Room*)[self.mGroups objectAtIndex:indexPath.row]).id integerValue];
-}
 
 -(IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
 }
 
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    SWRevealViewController* reveal = (SWRevealViewController*)[segue destinationViewController];
-    ShowOneGroupViewController* vc = (ShowOneGroupViewController*)[reveal frontViewController];
-    vc.roomId = selectedRoom;
-    
+    if ([segue.identifier isEqualToString:@"ToGroupSegue"]) {
+        
+        NSIndexPath *indexPath = [self.mTableView indexPathForSelectedRow];
+        Room* room = [self.mGroups objectAtIndex:indexPath.row];
+        NSUInteger selectedRoom = [room.id integerValue];
+        
+        RoomRevealWrapperViewController* reveal = segue.destinationViewController;
+        reveal.roomId = selectedRoom;
+    }
 }
 
 

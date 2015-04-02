@@ -8,6 +8,7 @@
 
 #import "ReadModeContainerViewController.h"
 #import "ReadModeViewController.h"
+
 @interface ReadModeContainerViewController ()
 
 @end
@@ -50,6 +51,10 @@
     [self.pager didMoveToParentViewController:self];
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
+    [manager fetchStoryWithId:self.storyId];
+    
 }
 
 // Factory method
@@ -65,6 +70,7 @@
     // Assuming you have SomePageViewController.xib
     ReadModeViewController *newController = [self.storyboard instantiateViewControllerWithIdentifier: @"ReadMode"];
     newController.idx = i;
+    newController.page = [self.mPages objectAtIndex:i];
     
     return newController;
 }
@@ -78,6 +84,18 @@
     ReadModeViewController *p = (ReadModeViewController *)viewController;
     return [self viewControllerAtIndex:(p.idx + 1)];
 }
+
+- (void)storyManager:(StoryManager*)manager successfullyFetchedStory:(Story *)story{
+    self.story = story;
+    self.mPages = self.story.pages;
+}
+
+
+- (void)storyManager:(StoryManager *)manager failedToFetchStoryWithId:(NSUInteger)id{
+    
+}
+
+
 
 /*
 #pragma mark - Navigation

@@ -19,16 +19,27 @@
 
 @protocol RoomCreatorDelegate <NSObject>
 
+@required
 - (void)roomManager:(RoomManager*)manager successfullyCreatedRoom:(Room*)room;
+
+@required
 - (void)roomManager:(RoomManager *)manager failedToCreateRoom:(NSError*)error;
 
 @end
 
 @protocol RoomFetcherDelegate <NSObject>
 
+@optional
 - (void)roomManager:(RoomManager*)manager successfullyFetchedRooms:(NSArray*)rooms;
+
+@optional
 - (void)roomManager:(RoomManager*)manager successfullyFetchedRoom:(Room*)room;
+
+
+@optional
 - (void)roomManager:(RoomManager *)manager failedToFetchRoomWithId:(NSUInteger)roomId;
+
+@optional
 - (void)roomManager:(RoomManager *)manager failedToFetchRooms:(NSError*)error;
 
 @end

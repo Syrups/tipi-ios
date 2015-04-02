@@ -43,6 +43,70 @@
     [op start];
 }
 
+- (void)fetchStoriesForRoomId:(NSUInteger )room {
+    NSString* path = [NSString stringWithFormat:@"/rooms/%ld/stories", (long)room];
+    NSURLRequest* request = [Api getBaseRequestFor:path authenticated:YES method:@"GET"];
+    
+    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (self.delegate) {
+            
+            
+            
+            NSError* err = nil;
+            NSArray* stories = [Story arrayOfModelsFromDictionaries:responseObject];
+            
+            if (err) { NSLog(@"%@", err); }
+            
+            if ([self.delegate respondsToSelector:@selector(storyManager:successfullyFetchedStories:)]) {
+                [self.delegate storyManager:self successfullyFetchedStories:stories];
+            }
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        if ([self.delegate respondsToSelector:@selector(storyManager:failedToFetchStories:)]) {
+            [self.delegate storyManager:self failedToFetchStories:error];
+        }
+    }];
+    
+    [op start];
+}
+
+- (void)fetchStoryWithId:(NSUInteger)roomId {
+    NSString* path = [NSString stringWithFormat:@"/stories/%ld", roomId];
+    NSURLRequest* request = [Api getBaseRequestFor:path authenticated:YES method:@"GET"];
+    
+    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (self.delegate) {
+            
+            NSLog(@"blubli %@", responseObject);
+            
+            NSError* err = nil;
+            Story* story = [[Story alloc] initWithDictionary:responseObject error:&err];
+            
+            if (err) { NSLog(@"%@", err); }
+            
+            if ([self.delegate respondsToSelector:@selector(storyManager:successfullyFetchedStory:)]) {
+                [self.delegate storyManager:self successfullyFetchedStory:story];
+            }
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        if ([self.delegate respondsToSelector:@selector(storyManager:failedToFetchStoryWithId:)]) {
+            [self.delegate storyManager:self failedToFetchStoryWithId:roomId];
+        }
+    }];
+    
+    [op start];
+}
+
 
 #pragma mark - Helpers
 

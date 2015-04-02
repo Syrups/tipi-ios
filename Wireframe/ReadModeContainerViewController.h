@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StoryManager.h"
 
-@interface ReadModeContainerViewController : UIViewController<UIPageViewControllerDataSource>
+@interface ReadModeContainerViewController : UIViewController<UIPageViewControllerDataSource, StoryFetcherDelegate>
 
-@property (nonatomic, strong)UIPageViewController *pager;
-@property (strong, nonatomic)  NSArray *mPages;
+@property (nonatomic, strong) UIPageViewController *pager;
+@property (strong, nonatomic) NSArray *mPages;
+@property (nonatomic ) NSUInteger storyId;
+@property (nonatomic ) Story *story;
 @end

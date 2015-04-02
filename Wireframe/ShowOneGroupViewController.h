@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Room.h"
+#import "StoryManager.h"
 
-@interface ShowOneGroupViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface ShowOneGroupViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, StoryFetcherDelegate>
 
 @property (nonatomic) NSUInteger roomId;
 @property (weak, nonatomic) IBOutlet UITableView *mTableView;

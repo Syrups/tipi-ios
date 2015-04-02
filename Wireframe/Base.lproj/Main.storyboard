@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Lcv-xj-Ztq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Lcv-xj-Ztq">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -310,7 +310,7 @@
                                 <color key="backgroundColor" red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellStory" rowHeight="300" id="pRv-Xl-RLc">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellStory" rowHeight="300" id="pRv-Xl-RLc">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pRv-Xl-RLc" id="4HD-IQ-vz2">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -384,7 +384,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <segue destination="ygu-vl-5js" kind="modal" id="658-ec-q8g"/>
+                                            <segue destination="ygu-vl-5js" kind="modal" identifier="showStory" id="658-ec-q8g"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -500,6 +500,9 @@
                                 <state key="normal" image="pause.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="playSound:" destination="Jfr-qe-DBm" eventType="touchUpInside" id="6PQ-QF-6N5"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="story.png" translatesAutoresizingMaskIntoConstraints="NO" id="jTE-UR-1dw">
                                 <rect key="frame" x="92" y="203" width="136" height="161"/>
@@ -524,6 +527,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lga-ac-Odf"/>
+                    <connections>
+                        <outlet property="image" destination="bGc-Kb-Pum" id="YvB-dA-Saj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NRN-Qx-x0E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1661,10 +1667,10 @@ Release to cancel</string>
             </objects>
             <point key="canvasLocation" x="4424" y="-2014"/>
         </scene>
-        <!--Reveal View Controller-->
+        <!--Room Reveal Wrapper View Controller-->
         <scene sceneID="zjK-23-chf">
             <objects>
-                <viewController storyboardIdentifier="SWRevealViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nvP-lk-YWe" customClass="SWRevealViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SWRevealViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nvP-lk-YWe" customClass="RoomRevealWrapperViewController" sceneMemberID="viewController">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="rearViewRevealWidth">
                             <integer key="value" value="120"/>

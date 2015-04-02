@@ -1,18 +1,19 @@
 //
-//  ReadModeViewController.m
+//  RoomRevealWrapperViewController.m
 //  Wireframe
 //
-//  Created by Glenn Sonna on 05/03/2015.
+//  Created by Glenn Sonna on 02/04/2015.
 //  Copyright (c) 2015 Syrup Apps. All rights reserved.
 //
 
-#import "ReadModeViewController.h"
+#import "RoomRevealWrapperViewController.h"
 
-@interface ReadModeViewController ()
+@interface RoomRevealWrapperViewController ()
+
 
 @end
 
-@implementation ReadModeViewController
+@implementation RoomRevealWrapperViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,6 +35,4 @@
 }
 */
 
-- (IBAction)playSound:(id)sender {
-}
 @end

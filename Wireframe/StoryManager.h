@@ -15,6 +15,9 @@
 
 - (void)createStoryWithName:(NSString*)name owner:(User*)owner inRooms:(NSArray*)rooms tag:(NSString*)tag medias:(NSArray*)medias audiosFiles:(NSArray*)audioFiles;
 
+- (void)fetchStoriesForRoomId:(NSUInteger )room ;
+- (void)fetchStoryWithId:(NSUInteger)roomId ;
+
 @end
 
 @protocol StoryCreatorDelegate <NSObject>
@@ -26,7 +29,16 @@
 
 @protocol StoryFetcherDelegate <NSObject>
 
+@optional
+- (void)storyManager:(StoryManager*)manager successfullyFetchedStories:(NSArray *)stories;
+
+@optional
+- (void)storyManager:(StoryManager *)manager failedToFetchStories:(NSError*)error;
+
+@optional
 - (void)storyManager:(StoryManager*)manager successfullyFetchedStory:(Story *)story;
-- (void)storyManager:(StoryManager *)manager failedToFetchStoryWithId:(NSString*)id;
+
+@optional
+- (void)storyManager:(StoryManager *)manager failedToFetchStoryWithId:(NSUInteger)id;
 
 @end

@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 Syrup Apps. All rights reserved.
 //
 
+#import "RoomRevealWrapperViewController.h"
 #import "ShowOneGroupViewController.h"
-#import "SWRevealViewController.h"
+#import "UserSession.h"
+#import "ReadModeContainerViewController.h"
 
 
 @interface ShowOneGroupViewController ()
@@ -20,12 +22,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.mStories = @[@"coup de chance", @"Conférence F.A.M.E", @"Plexus Gobelins"];
+    //self.mStories = @[@"coup de chance", @"Conférence F.A.M.E", @"Plexus Gobelins"];
+    RoomRevealWrapperViewController *parent = (RoomRevealWrapperViewController*)[self revealViewController];
+    self.roomId = parent.roomId;
     
-    NSLog(@"%lu", (unsigned long)self.roomId);
+    
+    NSLog(@"Room is %lu", (unsigned long)self.roomId);
     
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;
+    
+    StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
+    [manager fetchStoriesForRoomId:self.roomId];
+    
     [self customSetup];
 }
 
@@ -53,12 +62,13 @@
         
         [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    
 }
 
 
@@ -76,9 +86,10 @@
         v.layer.borderColor = [UIColor blackColor].CGColor;
     }
     
+    Story* story = [self.mStories objectAtIndex:indexPath.row];
     
     UILabel *name = (UILabel*)[cell.contentView viewWithTag:10];
-    name.text = [self.mStories objectAtIndex:indexPath.row];
+    name.text = story.title;
     
     return cell;
 }
@@ -98,6 +109,32 @@
 }
 
 -(IBAction)prepareForGoBackToOneGroup:(UIStoryboardSegue *)segue {
+    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showStory"]) {
+        
+        //TODO put in model
+        NSIndexPath *indexPath = [self.mTableView indexPathForSelectedRow];
+        Story* story = [self.mStories objectAtIndex:indexPath.row];
+        NSUInteger selectedStory = [story.id integerValue];
+        
+        ReadModeContainerViewController* reveal = segue.destinationViewController;
+        reveal.storyId = selectedStory;
+    }
+}
+
+
+
+- (void)storyManager:(StoryManager *)manager successfullyFetchedStories:(NSArray *)stories{
+    
+    self.mStories = stories;
+    [self.mTableView reloadData];
+}
+
+-(void)storyManager:(StoryManager *)manager failedToFetchStories:(NSError *)error{
+    //error
 }
 
 /*
