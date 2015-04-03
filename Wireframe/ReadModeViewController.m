@@ -7,6 +7,8 @@
 //
 
 #import "ReadModeViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "Configuration.h"
 
 @interface ReadModeViewController ()
 
@@ -17,6 +19,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //NSString *url = [NSString stringWithFormat:@"%@%@",kMediaRootUrl, self.page.media.u];
+    [self.image sd_setImageWithURL:[NSURL URLWithString:@"http://www.domain.com/path/to/image.jpg"]
+                      placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
 }
 
 - (void)didReceiveMemoryWarning {

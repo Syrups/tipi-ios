@@ -10,6 +10,8 @@
 #define Wireframe_Configuration_h
 
 #define kApiRootUrl @"http://shelter-dev.herokuapp.com/api/v1"
+#define kMediaRootUrl @"http://shelter-dev.herokuapp.com/uploads/media/"
+#define kAudioRootUrl @"http://shelter-dev.herokuapp.com/uploads/audio/"
 
 #define kApiTestUserToken @"bf4d45e51878831054e37991d16860ac991a2e7668b7c7011f994ead021118f8"
 
