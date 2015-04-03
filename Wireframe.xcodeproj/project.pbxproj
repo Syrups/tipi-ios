@@ -63,6 +63,8 @@
 		B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4CDC71AA71DB90079F8D1 /* StoryWIPSaver.m */; };
 		B3A8D17D1ACE7A3800B09C34 /* RoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D17C1ACE7A3800B09C34 /* RoomController.m */; };
 		B3A8D1811ACE8C2F00B09C34 /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D1801ACE8C2F00B09C34 /* FriendListViewController.m */; };
+		B3A8D1841ACEAD0A00B09C34 /* FriendManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D1831ACEAD0A00B09C34 /* FriendManager.m */; };
+		B3A8D1871ACEB5EE00B09C34 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D1861ACEB5EE00B09C34 /* Comment.m */; };
 		B3BCCFD31AA5C36C00261212 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFD21AA5C36C00261212 /* main.m */; };
 		B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFD51AA5C36C00261212 /* AppDelegate.m */; };
 		B3BCCFDC1AA5C36C00261212 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3BCCFDA1AA5C36C00261212 /* Main.storyboard */; };
@@ -189,6 +191,10 @@
 		B3A8D17C1ACE7A3800B09C34 /* RoomController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomController.m; sourceTree = "<group>"; };
 		B3A8D17F1ACE8C2F00B09C34 /* FriendListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListViewController.h; sourceTree = "<group>"; };
 		B3A8D1801ACE8C2F00B09C34 /* FriendListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListViewController.m; sourceTree = "<group>"; };
+		B3A8D1821ACEAD0A00B09C34 /* FriendManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendManager.h; sourceTree = "<group>"; };
+		B3A8D1831ACEAD0A00B09C34 /* FriendManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendManager.m; sourceTree = "<group>"; };
+		B3A8D1851ACEB5EE00B09C34 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		B3A8D1861ACEB5EE00B09C34 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		B3BCCFCD1AA5C36C00261212 /* Wireframe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wireframe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3BCCFD11AA5C36C00261212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3BCCFD21AA5C36C00261212 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -371,6 +377,8 @@
 				B3065A3D1AB98B4900C10AD9 /* UserManager.m */,
 				B3065A491ABAFD1000C10AD9 /* RoomManager.h */,
 				B3065A4A1ABAFD1000C10AD9 /* RoomManager.m */,
+				B3A8D1821ACEAD0A00B09C34 /* FriendManager.h */,
+				B3A8D1831ACEAD0A00B09C34 /* FriendManager.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -427,6 +435,8 @@
 				B3C85E531ACBF4C50083C50A /* Audio.m */,
 				B3C85E551ACBF5260083C50A /* Media.h */,
 				B3C85E561ACBF5260083C50A /* Media.m */,
+				B3A8D1851ACEB5EE00B09C34 /* Comment.h */,
+				B3A8D1861ACEB5EE00B09C34 /* Comment.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -813,6 +823,7 @@
 				B3065A4B1ABAFD1000C10AD9 /* RoomManager.m in Sources */,
 				73B20BF41AA61FC400A9C88F /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				B3BCD0101AA5FDB500261212 /* NameStoryViewController.m in Sources */,
+				B3A8D1871ACEB5EE00B09C34 /* Comment.m in Sources */,
 				73B3B3321AA7B45500FF7578 /* TagMenuViewController.m in Sources */,
 				73B3B3621AA7CA9100FF7578 /* ReadModeContainerViewController.m in Sources */,
 				B35AD0441ABF339200527C0D /* ArrayDataSource.m in Sources */,
@@ -850,6 +861,7 @@
 				B30317FD1ABC2759005EF73D /* Page.m in Sources */,
 				73B20BEC1AA5FF0800A9C88F /* BaseHomeViewController.m in Sources */,
 				73BEF8671ACD8A8D00881F46 /* RoomRevealWrapperViewController.m in Sources */,
+				B3A8D1841ACEAD0A00B09C34 /* FriendManager.m in Sources */,
 				B3BCCFFD1AA5C85B00261212 /* HomeViewController.m in Sources */,
 				B3C85E571ACBF5260083C50A /* Media.m in Sources */,
 				B3BCD0001AA5E50D00261212 /* MediaPickerViewController.m in Sources */,

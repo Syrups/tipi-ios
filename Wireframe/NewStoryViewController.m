@@ -15,6 +15,12 @@
 
 @implementation NewStoryViewController
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    NSLog(@"stop fetching");
+    [self.microphone stopFetchingAudio];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -29,7 +35,18 @@
         [self.mainButton setTitle:@"Continue story" forState:UIControlStateNormal];
         self.secondaryButton.hidden = NO;
     }
+    
+    self.microphone = [[EZMicrophone alloc] initWithMicrophoneDelegate:self];
+    [self.microphone startFetchingAudio];
 }
 
+#pragma mark - EZMicrophone
+
+- (void)microphone:(EZMicrophone *)microphone hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
+    
+    NSUInteger scaledAmount = abs(buffer[0][0] * 1000);
+    
+    // enjoy
+}
 
 @end

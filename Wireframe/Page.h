@@ -9,6 +9,7 @@
 #import "JSONModel.h"
 #import "Audio.h"
 #import "Media.h"
+#import "Comment.h"
 
 @interface Page : JSONModel
 
@@ -17,6 +18,7 @@
 //@property (assign, nonatomic) NSUInteger position;
 @property (strong, nonatomic) Audio<Optional>* audio;
 @property (strong, nonatomic) Media<Optional>* media;
+@property (strong, nonatomic) NSArray<Comment, Optional>* comments;
 
 @end
 

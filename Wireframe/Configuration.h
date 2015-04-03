@@ -9,6 +9,8 @@
 #ifndef Wireframe_Configuration_h
 #define Wireframe_Configuration_h
 
+#import "UserSession.h"
+
 #define kApiRootUrl @"http://shelter-dev.herokuapp.com/api/v1"
 #define kMediaRootUrl @"http://shelter-dev.herokuapp.com/uploads/media/"
 #define kAudioRootUrl @"http://shelter-dev.herokuapp.com/uploads/audio/"
@@ -25,5 +27,7 @@
 #define RgbColorAlpha(r, g, b, a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
 
 #define APP_DELEGATE (AppDelegate*)[[UIApplication sharedApplication] delegate];
+
+#define CurrentUser [[UserSession sharedSession] user]
 
 #endif

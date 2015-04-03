@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FriendManager.h"
 
-@interface FriendListViewController : UIViewController
+@interface FriendListViewController : UIViewController <FriendFetcherDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView* friendsTableView;
+@property (strong, nonatomic) NSMutableArray* friends;
 
 @end
