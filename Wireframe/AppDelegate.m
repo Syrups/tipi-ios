@@ -17,6 +17,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    self.userController = [[UserController alloc] init];
+    self.storyController = [[StoryController alloc] init];
+    self.roomController = [[RoomController alloc] init];
+    
     return YES;
 }
 

@@ -1,16 +1,16 @@
 //
-//  Api.m
+//  BaseModelController.m
 //  Wireframe
 //
-//  Created by Leo on 18/03/2015.
+//  Created by Leo on 02/04/2015.
 //  Copyright (c) 2015 Syrup Apps. All rights reserved.
 //
 
-#import "Api.h"
-#import "Configuration.h"
+#import "BaseModelController.h"
 #import "UserSession.h"
+#import "Configuration.h"
 
-@implementation Api
+@implementation BaseModelController
 
 + (NSURLRequest *)getBaseRequestFor:(NSString *)path authenticated:(BOOL)authenticated method:(NSString *)method {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kApiRootUrl, path] ] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:4];

@@ -58,7 +58,7 @@
                         UIImage* image = [UIImage imageWithCGImage:[result thumbnail]];
                         UIImage* fullImage = [UIImage imageWithCGImage:[rep fullScreenImage]];
                         
-                        dispatch_async(dispatch_get_main_queue(), ^{
+                        
                             NSDictionary* media = @{
                                                     @"image": image,
                                                     @"full": fullImage,
@@ -74,19 +74,14 @@
                             }
                             
                             if (index == limit || index == group.numberOfAssets-1) {
-                                
-                                // reverse order
-                                NSMutableArray *reversed = [NSMutableArray arrayWithCapacity:[medias count]];
-                                NSEnumerator *enumerator = [medias reverseObjectEnumerator];
-                                for (id element in enumerator) {
-                                    [reversed addObject:element];
-                                }
-                                
-                                if ([self.delegate respondsToSelector:@selector(mediaLibrary:successfullyFetchedMedias:from:to:)]) {
-                                    [self.delegate mediaLibrary:self successfullyFetchedMedias:reversed from:start to:limit];
-                                }
+                
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    if ([self.delegate respondsToSelector:@selector(mediaLibrary:successfullyFetchedMedias:from:to:)]) {
+                                        [self.delegate mediaLibrary:self successfullyFetchedMedias:medias from:start to:limit];
+                                    }
+                                });
                             }
-                        });
+                        
                         
                     });
                     

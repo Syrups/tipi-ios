@@ -37,7 +37,6 @@
 		825B10453DF4C5EAFBC589D9 /* libPods-Wireframe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9894FA4EEDEAF922FCD71B9 /* libPods-Wireframe.a */; };
 		B30317FD1ABC2759005EF73D /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = B30317FC1ABC2759005EF73D /* Page.m */; };
 		B3065A331AB9868100C10AD9 /* StoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A321AB9868100C10AD9 /* StoryManager.m */; };
-		B3065A361AB9883400C10AD9 /* Api.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A351AB9883400C10AD9 /* Api.m */; };
 		B3065A3B1AB98ACC00C10AD9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A3A1AB98ACC00C10AD9 /* LoginViewController.m */; };
 		B3065A3E1AB98B4900C10AD9 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A3D1AB98B4900C10AD9 /* UserManager.m */; };
 		B3065A411AB98D6700C10AD9 /* BaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A401AB98D6700C10AD9 /* BaseManager.m */; };
@@ -47,6 +46,9 @@
 		B3065A4E1ABAFD7600C10AD9 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A4D1ABAFD7600C10AD9 /* Room.m */; };
 		B3065A511ABB29E200C10AD9 /* Story.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A501ABB29E200C10AD9 /* Story.m */; };
 		B3065A541ABB35D700C10AD9 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A531ABB35D700C10AD9 /* SignUpViewController.m */; };
+		B33B6FD71ACDC702009C0623 /* UserController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33B6FD61ACDC702009C0623 /* UserController.m */; };
+		B33DE8581ACDCC66008AE55F /* StoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DE8571ACDCC66008AE55F /* StoryController.m */; };
+		B33DE85B1ACDCE00008AE55F /* BaseModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DE85A1ACDCE00008AE55F /* BaseModelController.m */; };
 		B35AD0391ABF2B6600527C0D /* ReviewStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD0381ABF2B6600527C0D /* ReviewStoryViewController.m */; };
 		B35AD03C1ABF2D2500527C0D /* ReviewPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD03B1ABF2D2500527C0D /* ReviewPageViewController.m */; };
 		B35AD0441ABF339200527C0D /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD0431ABF339200527C0D /* ArrayDataSource.m */; };
@@ -58,6 +60,8 @@
 		B38B89621ACC146200799EDD /* MediaLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = B38B89611ACC146200799EDD /* MediaLibrary.m */; };
 		B38B89661ACC221600799EDD /* SRRecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B38B89651ACC221600799EDD /* SRRecordButton.m */; };
 		B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4CDC71AA71DB90079F8D1 /* StoryWIPSaver.m */; };
+		B3A8D17D1ACE7A3800B09C34 /* RoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D17C1ACE7A3800B09C34 /* RoomController.m */; };
+		B3A8D1811ACE8C2F00B09C34 /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D1801ACE8C2F00B09C34 /* FriendListViewController.m */; };
 		B3BCCFD31AA5C36C00261212 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFD21AA5C36C00261212 /* main.m */; };
 		B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFD51AA5C36C00261212 /* AppDelegate.m */; };
 		B3BCCFDC1AA5C36C00261212 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3BCCFDA1AA5C36C00261212 /* Main.storyboard */; };
@@ -132,8 +136,6 @@
 		B30317FC1ABC2759005EF73D /* Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Page.m; sourceTree = "<group>"; };
 		B3065A311AB9868100C10AD9 /* StoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryManager.h; sourceTree = "<group>"; };
 		B3065A321AB9868100C10AD9 /* StoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryManager.m; sourceTree = "<group>"; };
-		B3065A341AB9883400C10AD9 /* Api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Api.h; sourceTree = "<group>"; };
-		B3065A351AB9883400C10AD9 /* Api.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Api.m; sourceTree = "<group>"; };
 		B3065A371AB9887500C10AD9 /* Configuration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
 		B3065A391AB98ACC00C10AD9 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B3065A3A1AB98ACC00C10AD9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -153,6 +155,13 @@
 		B3065A501ABB29E200C10AD9 /* Story.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Story.m; sourceTree = "<group>"; };
 		B3065A521ABB35D700C10AD9 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		B3065A531ABB35D700C10AD9 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		B33B6FD51ACDC702009C0623 /* UserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserController.h; sourceTree = "<group>"; };
+		B33B6FD61ACDC702009C0623 /* UserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserController.m; sourceTree = "<group>"; };
+		B33DE8561ACDCC66008AE55F /* StoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryController.h; sourceTree = "<group>"; };
+		B33DE8571ACDCC66008AE55F /* StoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryController.m; sourceTree = "<group>"; };
+		B33DE8591ACDCE00008AE55F /* BaseModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModelController.h; sourceTree = "<group>"; };
+		B33DE85A1ACDCE00008AE55F /* BaseModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModelController.m; sourceTree = "<group>"; };
+		B33DE85C1ACDCFBB008AE55F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		B35AD0371ABF2B6600527C0D /* ReviewStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewStoryViewController.h; sourceTree = "<group>"; };
 		B35AD0381ABF2B6600527C0D /* ReviewStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewStoryViewController.m; sourceTree = "<group>"; };
 		B35AD03A1ABF2D2500527C0D /* ReviewPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewPageViewController.h; sourceTree = "<group>"; };
@@ -173,6 +182,10 @@
 		B39C1DE51AC4B1620011D87E /* Wireframe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Wireframe.entitlements; sourceTree = "<group>"; };
 		B3A4CDC61AA71DB90079F8D1 /* StoryWIPSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryWIPSaver.h; sourceTree = "<group>"; };
 		B3A4CDC71AA71DB90079F8D1 /* StoryWIPSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryWIPSaver.m; sourceTree = "<group>"; };
+		B3A8D17B1ACE7A3800B09C34 /* RoomController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomController.h; sourceTree = "<group>"; };
+		B3A8D17C1ACE7A3800B09C34 /* RoomController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomController.m; sourceTree = "<group>"; };
+		B3A8D17F1ACE8C2F00B09C34 /* FriendListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListViewController.h; sourceTree = "<group>"; };
+		B3A8D1801ACE8C2F00B09C34 /* FriendListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListViewController.m; sourceTree = "<group>"; };
 		B3BCCFCD1AA5C36C00261212 /* Wireframe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wireframe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3BCCFD11AA5C36C00261212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3BCCFD21AA5C36C00261212 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -360,6 +373,7 @@
 		B3065A381AB98AB700C10AD9 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				B3A8D17E1ACE8C0F00B09C34 /* Friends */,
 				B3065A391AB98ACC00C10AD9 /* LoginViewController.h */,
 				B3065A3A1AB98ACC00C10AD9 /* LoginViewController.m */,
 				B3065A521ABB35D700C10AD9 /* SignUpViewController.h */,
@@ -369,6 +383,31 @@
 			sourceTree = "<group>";
 		};
 		B3065A421AB99BA700C10AD9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B33B6FD81ACDC717009C0623 /* Entities */,
+				B3065A301AB9866000C10AD9 /* Managers */,
+				B33B6FD41ACDC6E3009C0623 /* Controllers */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		B33B6FD41ACDC6E3009C0623 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B33B6FD51ACDC702009C0623 /* UserController.h */,
+				B33B6FD61ACDC702009C0623 /* UserController.m */,
+				B33DE8561ACDCC66008AE55F /* StoryController.h */,
+				B33DE8571ACDCC66008AE55F /* StoryController.m */,
+				B33DE8591ACDCE00008AE55F /* BaseModelController.h */,
+				B33DE85A1ACDCE00008AE55F /* BaseModelController.m */,
+				B3A8D17B1ACE7A3800B09C34 /* RoomController.h */,
+				B3A8D17C1ACE7A3800B09C34 /* RoomController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B33B6FD81ACDC717009C0623 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				B3065A431AB99BB700C10AD9 /* User.h */,
@@ -384,7 +423,7 @@
 				B3C85E551ACBF5260083C50A /* Media.h */,
 				B3C85E561ACBF5260083C50A /* Media.m */,
 			);
-			name = Models;
+			name = Entities;
 			sourceTree = "<group>";
 		};
 		B35AD0361ABF2B4B00527C0D /* Review */ = {
@@ -422,8 +461,6 @@
 				B3A4CDC71AA71DB90079F8D1 /* StoryWIPSaver.m */,
 				B35CDBD81AB87DD900BF9F82 /* StoryMediaRecorder.h */,
 				B35CDBD91AB87DD900BF9F82 /* StoryMediaRecorder.m */,
-				B3065A341AB9883400C10AD9 /* Api.h */,
-				B3065A351AB9883400C10AD9 /* Api.m */,
 				B3065A461ABAF60E00C10AD9 /* UserSession.h */,
 				B3065A471ABAF60E00C10AD9 /* UserSession.m */,
 				B36941AD1ACAE02500F3F95A /* FileUploader.h */,
@@ -432,6 +469,15 @@
 				B38B89611ACC146200799EDD /* MediaLibrary.m */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		B3A8D17E1ACE8C0F00B09C34 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				B3A8D17F1ACE8C2F00B09C34 /* FriendListViewController.h */,
+				B3A8D1801ACE8C2F00B09C34 /* FriendListViewController.m */,
+			);
+			name = Friends;
 			sourceTree = "<group>";
 		};
 		B3BCCFC41AA5C36C00261212 = {
@@ -466,7 +512,6 @@
 				B38B89631ACC21F300799EDD /* Views */,
 				B35AD0411ABF338300527C0D /* DataSources */,
 				B3065A421AB99BA700C10AD9 /* Models */,
-				B3065A301AB9866000C10AD9 /* Managers */,
 				B3A4CDC51AA71D860079F8D1 /* Services */,
 				B3BCCFFA1AA5C84B00261212 /* Controllers */,
 				B3BCCFF61AA5C4CB00261212 /* GTWalsheim Light.otf */,
@@ -486,6 +531,7 @@
 			children = (
 				B3BCCFD11AA5C36C00261212 /* Info.plist */,
 				B3BCCFD21AA5C36C00261212 /* main.m */,
+				B33DE85C1ACDCFBB008AE55F /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -775,11 +821,14 @@
 				B3BCD0261AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m in Sources */,
 				B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */,
 				B3BCD0061AA5F0CE00261212 /* NewStoryViewController.m in Sources */,
+				B3A8D17D1ACE7A3800B09C34 /* RoomController.m in Sources */,
 				B38B89621ACC146200799EDD /* MediaLibrary.m in Sources */,
 				B3BCD01D1AA60D4C00261212 /* OrganizeStoryViewController.m in Sources */,
 				B38B89661ACC221600799EDD /* SRRecordButton.m in Sources */,
 				B3BCD0031AA5F03D00261212 /* AbortModalViewController.m in Sources */,
+				B33DE8581ACDCC66008AE55F /* StoryController.m in Sources */,
 				73B20BF31AA6178200A9C88F /* ShowOneGroupViewController.m in Sources */,
+				B3A8D1811ACE8C2F00B09C34 /* FriendListViewController.m in Sources */,
 				B35CDBDA1AB87DD900BF9F82 /* StoryMediaRecorder.m in Sources */,
 				73B20BF01AA609DB00A9C88F /* ShowGroupsViewController.m in Sources */,
 				B3BCD0091AA5F3D300261212 /* RoomPickerViewController.m in Sources */,
@@ -787,7 +836,7 @@
 				B35AD03C1ABF2D2500527C0D /* ReviewPageViewController.m in Sources */,
 				B35AD0391ABF2B6600527C0D /* ReviewStoryViewController.m in Sources */,
 				B3065A481ABAF60E00C10AD9 /* UserSession.m in Sources */,
-				B3065A361AB9883400C10AD9 /* Api.m in Sources */,
+				B33DE85B1ACDCE00008AE55F /* BaseModelController.m in Sources */,
 				B3065A511ABB29E200C10AD9 /* Story.m in Sources */,
 				B3065A541ABB35D700C10AD9 /* SignUpViewController.m in Sources */,
 				B3BCCFD31AA5C36C00261212 /* main.m in Sources */,
@@ -800,6 +849,7 @@
 				B3BCD0001AA5E50D00261212 /* MediaPickerViewController.m in Sources */,
 				B36941AF1ACAE02500F3F95A /* FileUploader.m in Sources */,
 				B3BCD0131AA604DA00261212 /* RecordViewController.m in Sources */,
+				B33B6FD71ACDC702009C0623 /* UserController.m in Sources */,
 				73B3B35A1AA7BC6100FF7578 /* GroupMembersViewController.m in Sources */,
 				B3C85E541ACBF4C50083C50A /* Audio.m in Sources */,
 			);
@@ -926,6 +976,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = Wireframe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -940,6 +991,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = Wireframe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

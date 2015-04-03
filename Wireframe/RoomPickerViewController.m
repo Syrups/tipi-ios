@@ -61,6 +61,10 @@
     }
 }
 
+- (void)fileUploader:(FileUploader *)uploader failedToUploadFileOfType:(NSString *)type toPath:(NSString *)path {
+    // TODO
+}
+
 #pragma mark - RoomFetcherDelegate
 
 - (void)roomManager:(RoomManager *)manager successfullyFetchedRooms:(NSArray *)rooms {

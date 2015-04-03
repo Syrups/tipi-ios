@@ -52,6 +52,7 @@
     }
     
     UILongPressGestureRecognizer* press = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    press.minimumPressDuration = 0.3f;
     
     [self.recordButton addGestureRecognizer:press];
     
@@ -79,10 +80,12 @@
 - (void)handleLongPress:(UILongPressGestureRecognizer*)recognizer {
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         NSLog(@"begin touch");
+//        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         [self.recorder startRecording];
         
         if ([self currentPage].moviePlayer != nil) {
             [[self currentPage].moviePlayer play];
+            [[self currentPage].moviePlayer setControlStyle:MPMovieControlStyleNone];
             [[self currentPage].view bringSubviewToFront:[self currentPage].moviePlayer.view];
         }
     }

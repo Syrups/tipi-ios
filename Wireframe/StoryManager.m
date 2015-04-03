@@ -7,40 +7,32 @@
 //
 
 #import "StoryManager.h"
-#import "Api.h"
 #import "Room.h"
 #import <AFNetworking/AFNetworking.h>
+#import "AppDelegate.h"
 
 @implementation StoryManager
 
 -(void)createStoryWithName:(NSString *)name owner:(User *)owner inRooms:(NSArray *)rooms tag:(NSString *)tag medias:(NSArray *)medias audiosFiles:(NSArray *)audioFiles {
     
-    NSString* path = [NSString stringWithFormat:@"/users/%@/stories", owner.id];
-    NSMutableURLRequest* request = [Api getBaseRequestFor:path authenticated:YES method:@"POST"].mutableCopy;
-    
-    [request setHTTPBody:[[NSString stringWithFormat:@"{ \"story\": { \"title\": \"%@\", \"page_count\": \"%ld\", \"tag\": \"%@\", \"rooms\": %@ } }", name, medias.count, tag, [self jsonArrayForRooms:rooms]] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-                  
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        
+        [delegate.storyController createStoryWithName:name owner:owner inRooms:rooms tag:tag medias:medias audiosFiles:audioFiles success:^(Story *story, NSArray* pages) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(storyManager:successfullyCreatedStory:withPages:)]) {
+                    [self.delegate storyManager:self successfullyCreatedStory:story withPages:pages];
+                }
+            });
+        } failure:^(NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(storyManager:failedToCreateStory:)]) {
+                    [self.delegate storyManager:self failedToCreateStory:error];
+                }
+            });
+        }];
 
-    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    
-    op.responseSerializer = [AFJSONResponseSerializer serializer];
-    
-    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        NSError* err = nil;
-        Story* story = [[Story alloc] initWithDictionary:responseObject error:&err];
-        
-        if (err) { NSLog(@"%@", err); }
-        
-        
-        [self.delegate storyManager:self successfullyCreatedStory:story withPages:story.pages];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.delegate storyManager:self failedToCreateStory:error];
-    }];
-    
-    [op start];
+    });
 }
 
 

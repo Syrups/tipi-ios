@@ -18,6 +18,7 @@
     NSMutableArray* selectedIndexes;
     NSUInteger currentOffset;
     BOOL loading;
+    NSMutableArray* unorderedMedias;
 }
 
 - (void)viewDidLoad {
@@ -29,6 +30,7 @@
     self.library = [[MediaLibrary alloc] init];
     self.library.delegate = self;
     self.medias = [self.library cachedMedias];
+    unorderedMedias = [NSMutableArray array];
     
     currentOffset = 0;
     [self.library fetchMediasFromLibraryFrom:currentOffset to:currentOffset+10];
@@ -38,16 +40,18 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
 #pragma mark - MediaLibrary
 
 - (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedias:(NSArray *)medias from:(NSUInteger)start to:(NSUInteger)limit {
 
     self.activityIndicator.hidden = YES;
     [self.medias addObjectsFromArray:medias];
+    
     [self.mediaCollectionView performBatchUpdates:^{
         [self.mediaCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
     } completion:^(BOOL finished) {
-        currentOffset += 10;
+        currentOffset += 11;
     }];
     
 }
@@ -120,7 +124,7 @@
         cell.contentView.backgroundColor = [UIColor lightGrayColor];
     }
     
-    self.selectedCount.text = [NSString stringWithFormat:@"%ld selected", selectedIndexes.count];
+    self.selectedCount.text = [NSString stringWithFormat:@"%ld selected", (unsigned long)selectedIndexes.count];
 }
 
 #pragma mark - UIScrollView
