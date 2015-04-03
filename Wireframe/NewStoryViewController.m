@@ -15,6 +15,12 @@
 
 @implementation NewStoryViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.microphone = [[EZMicrophone alloc] initWithMicrophoneDelegate:self];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     NSLog(@"stop fetching");
@@ -36,7 +42,6 @@
         self.secondaryButton.hidden = NO;
     }
     
-    self.microphone = [[EZMicrophone alloc] initWithMicrophoneDelegate:self];
     [self.microphone startFetchingAudio];
 }
 

@@ -12,6 +12,7 @@
 @interface FriendManager : BaseManager
 
 - (void)fetchFriendsOfUser:(User*)user;
+- (void)addFriend:(User*)friend;
 
 @end
 
@@ -19,5 +20,19 @@
 
 - (void)friendManager:(FriendManager*)manager successfullyFetchedFriends:(NSArray*)friends ofUser:(User*)user;
 - (void)friendManager:(FriendManager *)manager failedToFetchFriendsOfUser:(User*)user withError:(NSError*)error;
+
+@end
+
+@protocol FriendAdderDelegate <NSObject>
+
+- (void)friendManager:(FriendManager*)manager successfullyAddedFriend:(User*)friend;
+- (void)friendManager:(FriendManager *)manager failedToAddFriendWithError:(NSError*)error;
+
+@end
+
+@protocol FriendRequestFetcherDelegate <NSObject>
+
+- (void)friendManager:(FriendManager*)manager successfullyFetchedFriendRequests:(NSArray*)requests;
+- (void)friendManager:(FriendManager *)manager failedToFetchFriendRequestsWithError:(NSError*)error;
 
 @end

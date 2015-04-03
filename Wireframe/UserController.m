@@ -134,4 +134,28 @@
     [op start];
 }
 
+- (void)getLatestTagsWithSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
+    NSString* path = [NSString stringWithFormat:@"/users/%@/tags", CurrentUser.id];
+    NSURLRequest* request = [UserController getBaseRequestFor:path authenticated:YES method:@"GET"];
+    
+    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSError* err = nil;
+        NSArray* tags = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&err];
+        
+        if (err) { NSLog(@"%@", err); }
+        
+        success(tags);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        if (failure != nil) failure(error);
+    }];
+    
+    [op start];
+}
+
 @end

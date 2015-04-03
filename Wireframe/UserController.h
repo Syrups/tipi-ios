@@ -21,5 +21,6 @@
 - (void)acceptFriend:(User*)user success:(void(^)(User* friend))success failure:(void(^)(NSError* error))failure;
 - (void)dismissFriend:(User*)user success:(void(^)())success failure:(void(^)(NSError* error))failure;
 - (void)unfriend:(User*)user success:(void(^)())success failure:(void(^)(NSError* error))failure;
+- (void)getLatestTagsWithSuccess:(void(^)(NSArray* tags))success failure:(void(^)(NSError* error))failure;
 
 @end

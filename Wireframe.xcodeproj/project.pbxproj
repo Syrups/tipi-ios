@@ -65,6 +65,8 @@
 		B3A8D1811ACE8C2F00B09C34 /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D1801ACE8C2F00B09C34 /* FriendListViewController.m */; };
 		B3A8D1841ACEAD0A00B09C34 /* FriendManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D1831ACEAD0A00B09C34 /* FriendManager.m */; };
 		B3A8D1871ACEB5EE00B09C34 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D1861ACEB5EE00B09C34 /* Comment.m */; };
+		B3A8D18A1ACECB1A00B09C34 /* AddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D1891ACECB1A00B09C34 /* AddFriendViewController.m */; };
+		B3A8D18E1ACED0EC00B09C34 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D18D1ACED0EC00B09C34 /* ProfileViewController.m */; };
 		B3BCCFD31AA5C36C00261212 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFD21AA5C36C00261212 /* main.m */; };
 		B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFD51AA5C36C00261212 /* AppDelegate.m */; };
 		B3BCCFDC1AA5C36C00261212 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3BCCFDA1AA5C36C00261212 /* Main.storyboard */; };
@@ -195,6 +197,10 @@
 		B3A8D1831ACEAD0A00B09C34 /* FriendManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendManager.m; sourceTree = "<group>"; };
 		B3A8D1851ACEB5EE00B09C34 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		B3A8D1861ACEB5EE00B09C34 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		B3A8D1881ACECB1A00B09C34 /* AddFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendViewController.h; sourceTree = "<group>"; };
+		B3A8D1891ACECB1A00B09C34 /* AddFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendViewController.m; sourceTree = "<group>"; };
+		B3A8D18C1ACED0EC00B09C34 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		B3A8D18D1ACED0EC00B09C34 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		B3BCCFCD1AA5C36C00261212 /* Wireframe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wireframe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3BCCFD11AA5C36C00261212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3BCCFD21AA5C36C00261212 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -386,6 +392,7 @@
 		B3065A381AB98AB700C10AD9 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				B3A8D18B1ACED0E300B09C34 /* Profile */,
 				B3A8D17E1ACE8C0F00B09C34 /* Friends */,
 				B3065A391AB98ACC00C10AD9 /* LoginViewController.h */,
 				B3065A3A1AB98ACC00C10AD9 /* LoginViewController.m */,
@@ -491,8 +498,19 @@
 			children = (
 				B3A8D17F1ACE8C2F00B09C34 /* FriendListViewController.h */,
 				B3A8D1801ACE8C2F00B09C34 /* FriendListViewController.m */,
+				B3A8D1881ACECB1A00B09C34 /* AddFriendViewController.h */,
+				B3A8D1891ACECB1A00B09C34 /* AddFriendViewController.m */,
 			);
 			name = Friends;
+			sourceTree = "<group>";
+		};
+		B3A8D18B1ACED0E300B09C34 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				B3A8D18C1ACED0EC00B09C34 /* ProfileViewController.h */,
+				B3A8D18D1ACED0EC00B09C34 /* ProfileViewController.m */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		B3BCCFC41AA5C36C00261212 = {
@@ -835,8 +853,10 @@
 				73B3B35F1AA7CA5100FF7578 /* ReadModeViewController.m in Sources */,
 				B3FC7B8C1AA662CC00034E58 /* RecordPageViewController.m in Sources */,
 				B3BCD0261AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m in Sources */,
+				B3A8D18A1ACECB1A00B09C34 /* AddFriendViewController.m in Sources */,
 				B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */,
 				B3BCD0061AA5F0CE00261212 /* NewStoryViewController.m in Sources */,
+				B3A8D18E1ACED0EC00B09C34 /* ProfileViewController.m in Sources */,
 				B3A8D17D1ACE7A3800B09C34 /* RoomController.m in Sources */,
 				B38B89621ACC146200799EDD /* MediaLibrary.m in Sources */,
 				B3BCD01D1AA60D4C00261212 /* OrganizeStoryViewController.m in Sources */,
