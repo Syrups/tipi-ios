@@ -37,14 +37,37 @@
 }
 
 - (void)save {
+    
+    NSDictionary* dataDic = [NSDictionary dictionaryWithObjects:@[self.uuid, [NSNumber numberWithInteger:self.medias.count]] forKeys:@[@"uuid", @"count"]];
+    [dataDic writeToFile:[self pathForStorySaveFile] atomically:YES];
+    
     self.saved = YES;
     
 }
 
+- (void)loadSavedStory {
+    NSDictionary* dataDic = [NSDictionary dictionaryWithContentsOfFile:[self pathForStorySaveFile]];
+    
+    if (dataDic != nil) {
+        self.uuid = [dataDic objectForKey:@"uuid"];
+    }
+}
+
 - (void)discard {
-    self.medias = [NSMutableArray array];
-    self.uuid = nil;
-    self.saved = NO;
+    
+    // erase all medias
+    [self.medias enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSError* err = nil;
+        [[NSFileManager defaultManager] removeItemAtPath:[self pathForAudioFileAtIndex:idx] error:&err];
+        
+        if (err) { NSLog(@"%@", err); }
+        
+        if (idx == self.medias.count-1) {
+            self.medias = [NSMutableArray array];
+            self.uuid = nil;
+            self.saved = NO;
+        }
+    }];
 }
 
 - (NSString *)generateUuid {
@@ -57,5 +80,29 @@
     return uuidString;
 }
 
+#pragma mark - Helper
+
+- (NSString*)pathForAudioFileAtIndex:(NSUInteger)index {
+    //    NSArray* documents = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString* filename = [NSString stringWithFormat:@"%@_%ld.m4a", self.uuid, (long)index];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    
+#ifdef IPHONE_SIMULATOR
+    basePath = @"/Users/leo/Desktop";
+#endif
+    
+    return [NSString stringWithFormat:@"%@/%@", basePath, filename];
+}
+
+- (NSString*)pathForStorySaveFile {
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+
+    return [NSString stringWithFormat:@"%@/%@", basePath, @"current_story"];
+}
 
 @end

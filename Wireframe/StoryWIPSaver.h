@@ -20,5 +20,6 @@
 
 - (void)discard;
 - (void)save;
+- (void)loadSavedStory;
 
 @end

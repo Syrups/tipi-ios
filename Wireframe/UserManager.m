@@ -7,97 +7,69 @@
 //
 
 #import "UserManager.h"
-#import "Api.h"
 #import <AFNetworking/AFNetworking.h>
+#import "AppDelegate.h"
 
 @implementation UserManager
 
 - (void)createUserWithUsername:(NSString *)username password:(NSString *)password email:(NSString *)email {
-    NSMutableURLRequest* request = [Api getBaseRequestFor:@"/users" authenticated:NO method:@"POST"].mutableCopy;
-    
-    NSString* deviceToken = @"";
-    
-    [request setHTTPBody:[[NSString stringWithFormat:@"{ \"username\": \"%@\", \"password\": \"%@\", \"email\" : \"%@\", \"device_type\" : \"ios\", \"device_token\": \"%@\" }", username, password, email, deviceToken] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    
-    op.responseSerializer = [AFJSONResponseSerializer serializer];
-    
-    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (self.delegate) {
-            
-            NSError* err = nil;
-            User* user = [[User alloc] initWithDictionary:(NSDictionary*)responseObject error:&err];
-            
-            if (err) { NSLog(@"%@", err); }
-            
-            [self.delegate userManager:self successfullyCreatedUser:user];
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
-        if (self.delegate) {
-            [self.delegate userManager:self failedToCreateUserWithStatusCode:operation.response.statusCode];
-        }
-    }];
-    
-    [op start];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        
+        [delegate.userController createUserWithUsername:username password:password email:email success:^(User *user) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(userManager:successfullyCreatedUser:)]) {
+                    [self.delegate userManager:self successfullyCreatedUser:user];
+                }
+            });
+        } failure:^(NSError *error, NSUInteger statusCode) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(userManager:failedToCreateUserWithStatusCode:)]) {
+                    [self.delegate userManager:self failedToCreateUserWithStatusCode:statusCode];
+                }
+            });
+        }];
+    });
 }
 
 - (void)authenticateUserWithUsername:(NSString *)username password:(NSString *)password {
-    
-    NSMutableURLRequest* request = [Api getBaseRequestFor:@"/authenticate" authenticated:NO method:@"POST"].mutableCopy;
-    [request setHTTPBody:[[NSString stringWithFormat:@"{ \"username\": \"%@\", \"password\": \"%@\" }", username, password] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    
-    op.responseSerializer = [AFJSONResponseSerializer serializer];
-    
-    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (self.delegate) {
-            
-            NSError* err = nil;
-            User* user = [[User alloc] initWithDictionary:(NSDictionary*)responseObject error:&err];
-            
-            if (err) { NSLog(@"%@", err); }
-            
-            [self.delegate userManager:self successfullyAuthenticatedUser:user];
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
-        if (self.delegate) {
-            [self.delegate userManager:self failedToAuthenticateUserWithUsername:username];
-        }
-    }];
-    
-    [op start];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        
+        [delegate.userController authenticateUserWithUsername:username password:password success:^(User *user) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(userManager:successfullyAuthenticatedUser:)]) {
+                    [self.delegate userManager:self successfullyAuthenticatedUser:user];
+                }
+            });
+        } failure:^(NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(userManager:failedToAuthenticateUserWithUsername:)]) {
+                    [self.delegate userManager:self failedToAuthenticateUserWithUsername:username];
+                }
+            });
+        }];
+    });
 }
 
 - (void)fetchUserWithId:(NSInteger)userId {
-    NSString* path = [NSString stringWithFormat:@"/users/%ld", userId];
-    NSURLRequest* request = [Api getBaseRequestFor:path authenticated:NO method:@"POST"];
-    
-    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    
-    op.responseSerializer = [AFJSONResponseSerializer serializer];
-    
-    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (self.delegate) {
-            
-            NSError* err = nil;
-            User* user = [[User alloc] initWithDictionary:(NSDictionary*)responseObject error:&err];
-            
-            if (err) { NSLog(@"%@", err); }
-            
-            [self.delegate userManager:self successfullyFetchedUser:user];
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
-        if (self.delegate) {
-            [self.delegate userManager:self failedToFetchUserWithId:userId];
-        }
-    }];
-    
-    [op start];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        
+        [delegate.userController fetchUserWithId:userId success:^(User *user) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(userManager:successfullyFetchedUser:)]) {
+                    [self.delegate userManager:self successfullyFetchedUser:user];
+                }
+            });
+        } failure:^(NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(userManager:failedToFetchUserWithId:)]) {
+                    [self.delegate userManager:self failedToFetchUserWithId:userId];
+                }
+            });
+        }];
+    });
 }
 
 @end

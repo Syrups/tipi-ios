@@ -53,7 +53,6 @@
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
-            <string>GTWalsheim-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -118,7 +117,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="554" y="-1256"/>
+            <point key="canvasLocation" x="570" y="-1256"/>
+        </scene>
+        <!--Friend List View Controller-->
+        <scene sceneID="Nl0-I5-O3x">
+            <objects>
+                <viewController id="Idt-6s-eN1" customClass="FriendListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X73-Nz-kAp"/>
+                        <viewControllerLayoutGuide type="bottom" id="GxK-ab-ixa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DPC-Qy-N1l">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AS6-Vp-JIb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Idt-6s-eN1" id="J2t-8M-1gT"/>
+                                    <outlet property="delegate" destination="Idt-6s-eN1" id="r7R-Gx-UXB"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gqG-hn-hdR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1612" y="-2218"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="6mH-bN-Rse">
@@ -137,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2pd-Wg-o5t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1215" y="-1256"/>
+            <point key="canvasLocation" x="2543" y="-1232"/>
         </scene>
         <!--New Story View Controller-->
         <scene sceneID="W7o-Zi-nJc">
@@ -170,7 +197,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="tUV-fc-U0L" kind="push" id="uPg-Jv-iUs"/>
+                                            <segue destination="Gwv-JV-E0d" kind="push" id="Z4G-2e-8fb"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -183,9 +210,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="tUV-fc-U0L" kind="push" id="n9E-NU-0Qg"/>
-                                </connections>
                             </button>
                             <button opaque="NO" tag="10" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lO9-3x-Oou">
                                 <rect key="frame" x="16" y="37" width="21" height="21"/>
@@ -194,7 +218,7 @@
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.85490196080000003" green="0.28627450980000002" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                     </view>
                     <navigationItem key="navigationItem" id="fdF-M6-cLh"/>
@@ -205,7 +229,50 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NFl-ab-tfn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1636" y="-2020"/>
+            <point key="canvasLocation" x="2964" y="-1996"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1ht-Mg-AF3">
+            <objects>
+                <viewController id="Gwv-JV-E0d" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ECP-8b-Hcz"/>
+                        <viewControllerLayoutGuide type="bottom" id="c6T-Mn-dye"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ff3-dT-bV8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yxu-e1-JPI">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <connections>
+                                    <segue destination="vHd-Ls-yrg" kind="embed" id="sRD-KG-GPm"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdk-Qs-mWR">
+                                <rect key="frame" x="16" y="20" width="45" height="57"/>
+                                <state key="normal" image="menu">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="gHW-fG-7DP" kind="modal" id="02X-7e-ZTD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="c6T-Mn-dye" firstAttribute="top" secondItem="yxu-e1-JPI" secondAttribute="bottom" id="LLa-3K-Zfc"/>
+                            <constraint firstAttribute="trailing" secondItem="yxu-e1-JPI" secondAttribute="trailing" id="f3B-4v-5Oo"/>
+                            <constraint firstItem="yxu-e1-JPI" firstAttribute="top" secondItem="Ff3-dT-bV8" secondAttribute="top" id="jmK-0p-nKU"/>
+                            <constraint firstItem="yxu-e1-JPI" firstAttribute="leading" secondItem="Ff3-dT-bV8" secondAttribute="leading" id="wcM-Au-8Qa"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Q6w-zD-ggv"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fKd-C6-WjN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3350" y="-1996"/>
         </scene>
         <!--Show Groups View Controller-->
         <scene sceneID="tjo-uN-pJZ">
@@ -291,7 +358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEu-gH-EFJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1617" y="-621"/>
+            <point key="canvasLocation" x="2945" y="-597"/>
         </scene>
         <!--Show One Group View Controller-->
         <scene sceneID="cmJ-mA-YpI">
@@ -445,7 +512,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dNF-W5-T6p" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="FM0-Qz-DcM" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2416" y="-550"/>
+            <point key="canvasLocation" x="3748" y="-597"/>
         </scene>
         <!--Read Mode Container View Controller-->
         <scene sceneID="tTz-b2-Jyk">
@@ -464,7 +531,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tvq-96-2oQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2841" y="-550"/>
+            <point key="canvasLocation" x="4173" y="-597"/>
         </scene>
         <!--Read Mode View Controller-->
         <scene sceneID="2xy-M7-cS4">
@@ -524,7 +591,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NRN-Qx-x0E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3204" y="-550"/>
+            <point key="canvasLocation" x="4536" y="-597"/>
         </scene>
         <!--Tag Menu View Controller-->
         <scene sceneID="3HQ-kh-db2">
@@ -593,7 +660,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wEr-vs-0TZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1833" y="95"/>
+            <point key="canvasLocation" x="3161" y="119"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UL0-EI-5FA">
@@ -609,7 +676,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4pV-wF-m0s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1220" y="-621"/>
+            <point key="canvasLocation" x="2548" y="-597"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bt5-CC-C1b">
@@ -690,7 +757,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5W4-ot-MIr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1927" y="-2728"/>
+            <point key="canvasLocation" x="3811" y="-2692"/>
         </scene>
         <!--Media Picker View Controller-->
         <scene sceneID="bWs-1j-7Io">
@@ -833,7 +900,7 @@
                                 <rect key="frame" x="226" y="523" width="94" height="37"/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
                                 <state key="normal" title="Next">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -841,27 +908,17 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select photos and videos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uC-mb-GsY">
-                                <rect key="frame" x="49" y="52" width="223" height="52"/>
+                                <rect key="frame" x="49" y="62" width="223" height="52"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tbs-6e-kvk">
-                                <rect key="frame" x="16" y="20" width="41" height="52"/>
-                                <state key="normal" image="home-noir">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="gHW-fG-7DP" kind="modal" id="2vz-We-LIG"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJ1-j5-8yl">
                                 <rect key="frame" x="16" y="523" width="74" height="32"/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
                                 <state key="normal" title="Back">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -869,7 +926,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 selected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLW-mP-LeN">
-                                <rect key="frame" x="76" y="104" width="169" height="52"/>
+                                <rect key="frame" x="76" y="114" width="169" height="52"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -879,14 +936,14 @@
                                 <rect key="frame" x="276" y="120" width="20" height="20"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To build your story" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syJ-Zg-N5e">
-                                <rect key="frame" x="76" y="76" width="169" height="52"/>
+                                <rect key="frame" x="76" y="86" width="169" height="52"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.85490196078431369" green="0.28627450980392155" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="VdL-qu-vMC"/>
                     <connections>
@@ -897,7 +954,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="53I-JT-BX0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2035" y="-2014"/>
+            <point key="canvasLocation" x="4293" y="-1992"/>
         </scene>
         <!--Organize Story View Controller-->
         <scene sceneID="Pvx-Rm-ZwT">
@@ -912,7 +969,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vap-cp-gaf">
-                                <rect key="frame" x="0.0" y="128" width="320" height="351"/>
+                                <rect key="frame" x="0.0" y="159" width="320" height="340"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewLayout key="collectionViewLayout" id="bem-4E-aH9" customClass="LXReorderableCollectionViewFlowLayout"/>
                                 <cells>
@@ -962,14 +1019,25 @@ tap to record</string>
                                         </constraints>
                                         <size key="customSize" width="161" height="166"/>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aOD-Th-e2b">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddPageCell" id="aOD-Th-e2b">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ajoute ta voix" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9P-5L-o9C">
+                                                    <rect key="frame" x="9" y="54" width="143" height="52"/>
+                                                    <gestureRecognizers/>
+                                                    <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <size key="customSize" width="160" height="160"/>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -981,25 +1049,15 @@ tap to record</string>
                                 <rect key="frame" x="16" y="516" width="74" height="32"/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
                                 <state key="normal" title="Back">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="back:" destination="HyC-CS-MSr" eventType="touchUpInside" id="ZyN-J7-G1S"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLW-al-ygu">
-                                <rect key="frame" x="16" y="20" width="41" height="52"/>
-                                <state key="normal" image="home-noir">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="gHW-fG-7DP" kind="modal" id="LyR-kB-D5R"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Drag and drop to sort your story" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwn-kQ-NVw">
-                                <rect key="frame" x="68" y="73" width="184" height="52"/>
+                                <rect key="frame" x="42" y="85" width="236" height="52"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1009,7 +1067,7 @@ tap to record</string>
                                 <rect key="frame" x="230" y="516" width="74" height="32"/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
                                 <state key="normal" title="Record">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1017,14 +1075,14 @@ tap to record</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Organize your images" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GR8-cG-pvA">
-                                <rect key="frame" x="63" y="40" width="195" height="52"/>
+                                <rect key="frame" x="63" y="60" width="195" height="52"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="19"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.85490196080000003" green="0.28627450980000002" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="qTm-rl-zxA"/>
                     <connections>
@@ -1034,7 +1092,7 @@ tap to record</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BdT-pl-9vK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2430" y="-2006"/>
+            <point key="canvasLocation" x="4703" y="-1996"/>
         </scene>
         <!--Record View Controller-->
         <scene sceneID="reA-gP-plh">
@@ -1049,10 +1107,10 @@ tap to record</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Record your voice" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84S-YD-VzP">
-                                <rect key="frame" x="63" y="60" width="195" height="52"/>
+                                <rect key="frame" x="63" y="55" width="195" height="52"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0i-uW-s4J">
@@ -1076,21 +1134,11 @@ Release to cancel</string>
                                 <rect key="frame" x="16" y="516" width="74" height="32"/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
                                 <state key="normal" title="Back">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="back:" destination="YZ8-zn-pF5" eventType="touchUpInside" id="cy1-5R-pjH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5J-cX-kVV">
-                                <rect key="frame" x="16" y="20" width="41" height="52"/>
-                                <state key="normal" image="home-noir">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="gHW-fG-7DP" kind="modal" id="yZm-2b-pPQ"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DmN-r7-gD7">
@@ -1104,17 +1152,6 @@ Release to cancel</string>
                                 <state key="normal" image="go-right">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D1p-j6-aWT">
-                                <rect key="frame" x="230" y="34" width="74" height="32"/>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
-                                <state key="normal" title="Finish">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="clz-xR-hRu" kind="push" id="D5N-YR-wkq"/>
-                                </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NhQ-OQ-h6i">
                                 <rect key="frame" x="200" y="405" width="134" height="118"/>
@@ -1139,8 +1176,19 @@ Release to cancel</string>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D1p-j6-aWT">
+                                <rect key="frame" x="230" y="25" width="74" height="32"/>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
+                                <state key="normal" title="Finish">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="clz-xR-hRu" kind="push" id="D5N-YR-wkq"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.85490196080000003" green="0.28627450980000002" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="psK-cO-yJv"/>
                     <connections>
@@ -1152,17 +1200,18 @@ Release to cancel</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qa8-gB-K4d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2858" y="-2006"/>
+            <point key="canvasLocation" x="5116" y="-1990"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="hJg-6g-57r">
             <objects>
-                <pageViewController storyboardIdentifier="RecordPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="fxe-IP-Ndy" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="RecordPageViewController" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="fxe-IP-Ndy" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="z1q-SP-1XG"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="19V-NP-9IZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2858" y="-1362"/>
+            <point key="canvasLocation" x="4584" y="-1340"/>
         </scene>
         <!--Record Page View Controller-->
         <scene sceneID="IRE-9P-Kwh">
@@ -1196,7 +1245,7 @@ Release to cancel</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HzV-Cr-JzZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3234" y="-1362"/>
+            <point key="canvasLocation" x="4960" y="-1340"/>
         </scene>
         <!--Choose Tag View Controller-->
         <scene sceneID="mY7-3P-NNA">
@@ -1268,23 +1317,13 @@ Release to cancel</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vab-oJ-Lp3">
-                                <rect key="frame" x="16" y="20" width="41" height="52"/>
-                                <state key="normal" image="home-blanc">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="gHW-fG-7DP" kind="modal" id="u29-RQ-WlP"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1411382299" green="0.13333334029999999" blue="0.16078431900000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vda-LV-cFK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3656" y="-2674"/>
+            <point key="canvasLocation" x="5542" y="-2652"/>
         </scene>
         <!--Review Story View Controller-->
         <scene sceneID="36N-nK-ei4">
@@ -1313,7 +1352,7 @@ Release to cancel</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cfj-2K-8ky" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4031" y="-2674"/>
+            <point key="canvasLocation" x="5917" y="-2652"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="M2E-VW-6mB">
@@ -1321,7 +1360,7 @@ Release to cancel</string>
                 <pageViewController storyboardIdentifier="ReviewStoryPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="iwi-t1-AgM" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DE2-CT-BVH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4424" y="-2674"/>
+            <point key="canvasLocation" x="6310" y="-2652"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Wnd-3R-RTL">
@@ -1339,7 +1378,7 @@ Release to cancel</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4B-bc-KU1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4810" y="-2674"/>
+            <point key="canvasLocation" x="6696" y="-2652"/>
         </scene>
         <!--Name Story View Controller-->
         <scene sceneID="nWE-0Y-4hA">
@@ -1375,16 +1414,6 @@ Release to cancel</string>
                                     <segue destination="UYI-ME-qVa" kind="push" id="QEU-uC-xyv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZjD-Fb-seS">
-                                <rect key="frame" x="16" y="20" width="41" height="52"/>
-                                <state key="normal" image="home-blanc">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="gHW-fG-7DP" kind="modal" id="IEH-kK-W5I"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Give a name to your story" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqH-qG-44P">
                                 <rect key="frame" x="45" y="65" width="231" height="52"/>
                                 <gestureRecognizers/>
@@ -1395,7 +1424,6 @@ Release to cancel</string>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="My story" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8uw-Aj-tY4">
                                 <rect key="frame" x="67" y="116" width="176" height="42"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <connections>
@@ -1462,13 +1490,13 @@ Release to cancel</string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.14113822992700731" green="0.13333334028720856" blue="0.16078431904315948" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.85490196080000003" green="0.28627450980000002" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="pfc-Gt-rqj"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPe-Is-Oeg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3656" y="-2012"/>
+            <point key="canvasLocation" x="5542" y="-1990"/>
         </scene>
         <!--Room Picker View Controller-->
         <scene sceneID="dls-9R-q9Q">
@@ -1482,7 +1510,7 @@ Release to cancel</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3xg-qs-pbH">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3xg-qs-pbH">
                                 <rect key="frame" x="0.0" y="130" width="320" height="438"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hrJ-Qb-Hv9">
@@ -1595,21 +1623,11 @@ Release to cancel</string>
                                 <rect key="frame" x="37" y="70" width="246" height="52"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jKa-3k-k7R">
-                                <rect key="frame" x="16" y="20" width="41" height="52"/>
-                                <state key="normal" image="home-noir">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="gHW-fG-7DP" kind="modal" id="db5-Yf-xpc"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.85490196080000003" green="0.28627450980000002" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="1NI-iV-7jP"/>
                     <connections>
@@ -1618,45 +1636,7 @@ Release to cancel</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nzK-4c-4nq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4031" y="-2012"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="geR-Xj-Wxp">
-            <objects>
-                <viewController id="aZu-gw-KYA" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="07U-vW-zDc"/>
-                        <viewControllerLayoutGuide type="bottom" id="Soy-I1-bMB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="d15-lo-S51">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your story have been sent" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9f-qC-0UI">
-                                <rect key="frame" x="37" y="241" width="246" height="52"/>
-                                <gestureRecognizers/>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DIp-td-ryD">
-                                <rect key="frame" x="113" y="322" width="94" height="37"/>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
-                                <state key="normal" title="Ok">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="backToStart:" destination="UYI-ME-qVa" eventType="touchUpInside" id="RhS-M3-vku"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="v2a-Eq-bfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4424" y="-2014"/>
+            <point key="canvasLocation" x="5917" y="-1990"/>
         </scene>
         <!--Room Reveal Wrapper View Controller-->
         <scene sceneID="zjK-23-chf">
@@ -1675,7 +1655,7 @@ Release to cancel</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DLg-PV-aPQ" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2011" y="-621"/>
+            <point key="canvasLocation" x="3339" y="-597"/>
         </scene>
         <!--Group Members View Controller-->
         <scene sceneID="aHW-re-9gE">
@@ -1752,7 +1732,31 @@ Release to cancel</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XpS-ww-Og1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2189" y="95"/>
+            <point key="canvasLocation" x="3517" y="119"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="dgC-Fd-twc">
+            <objects>
+                <viewController id="usD-fn-CRC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iMV-0w-gSn"/>
+                        <viewControllerLayoutGuide type="bottom" id="JLu-49-CuN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b42-WB-zmr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wfj-Hc-d0n" customClass="SRRecordButton">
+                                <rect key="frame" x="55" y="185" width="211" height="198"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KJS-2e-fhM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-276" y="-475"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="SM3-h5-f1D">
@@ -1813,7 +1817,25 @@ Release to cancel</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CH9-4c-Rua" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="554" y="-598"/>
+            <point key="canvasLocation" x="570" y="-598"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4Wu-KP-Dan">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="vHd-Ls-yrg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FLZ-xV-MNU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="tUV-fc-U0L" kind="relationship" relationship="rootViewController" id="21J-wJ-0sA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jqp-Qx-vcr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3811" y="-1996"/>
         </scene>
     </scenes>
     <resources>
@@ -1822,9 +1844,8 @@ Release to cancel</string>
         <image name="croix-noire.png" width="26" height="27"/>
         <image name="go-left" width="28" height="28"/>
         <image name="go-right" width="28" height="28"/>
-        <image name="home-blanc" width="17" height="19"/>
-        <image name="home-noir" width="17" height="19"/>
         <image name="loupe.png" width="32" height="32"/>
+        <image name="menu" width="20" height="25"/>
         <image name="pause.png" width="28" height="32"/>
         <image name="placeholder.gif" width="1000" height="1000"/>
         <image name="play.png" width="28" height="32"/>
@@ -1840,7 +1861,6 @@ Release to cancel</string>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="ZIi-u5-YMg"/>
-        <segue reference="uPg-Jv-iUs"/>
-        <segue reference="yZm-2b-pPQ"/>
+        <segue reference="f9D-2v-E2M"/>
     </inferredMetricsTieBreakers>
 </document>

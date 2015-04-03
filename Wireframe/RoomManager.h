@@ -14,6 +14,7 @@
 - (void)createRoomWithName:(NSString*)name andUsers:(NSArray*)users;
 - (void)fetchRoomWithId:(NSUInteger)roomId;
 - (void)fetchRoomsForUser:(User*)user;
+- (void)updateRoom:(Room*)room;
 
 @end
 
@@ -41,5 +42,12 @@
 
 @optional
 - (void)roomManager:(RoomManager *)manager failedToFetchRooms:(NSError*)error;
+
+@end
+
+@protocol RoomUpdaterDelegate <NSObject>
+
+- (void)roomManager:(RoomManager*)manager successfullyUpdatedRoom:(Room*)room;
+- (void)roomManager:(RoomManager *)manager failedToUpdateRoom:(Room*)room withError:(NSError*)error;
 
 @end

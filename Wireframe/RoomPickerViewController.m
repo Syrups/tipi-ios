@@ -10,6 +10,7 @@
 #import "UserSession.h"
 #import "StoryManager.h"
 #import "StoryWIPSaver.h"
+#import "Configuration.h"
 
 @implementation RoomPickerViewController {
     NSMutableArray* selectedRooms;
@@ -60,6 +61,10 @@
     }
 }
 
+- (void)fileUploader:(FileUploader *)uploader failedToUploadFileOfType:(NSString *)type toPath:(NSString *)path {
+    // TODO
+}
+
 #pragma mark - RoomFetcherDelegate
 
 - (void)roomManager:(RoomManager *)manager successfullyFetchedRooms:(NSArray *)rooms {
@@ -70,6 +75,7 @@
 
 - (void)roomManager:(RoomManager *)manager failedToFetchRooms:(NSError *)error {
     // error
+    ErrorAlert(@"Impossible de charger les feux de camp.");
 }
 
 #pragma mark - StoryCreatorDelegate

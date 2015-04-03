@@ -26,7 +26,6 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell* cell = nil;
     
-    id item = [self.items objectAtIndex:indexPath.row];
     cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RoomCell" forIndexPath:indexPath];
     
     if (cell == nil) {

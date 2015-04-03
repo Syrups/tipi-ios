@@ -11,14 +11,17 @@
 @interface MediaLibrary : NSObject
 
 @property (strong, nonatomic) id delegate;
+@property (strong, nonatomic) NSMutableArray* cachedMedias;
+@property (strong, nonatomic) NSMutableArray* medias;
 
-- (void)fetchMediasFromLibrary;
+- (void)fetchMediasFromLibraryFrom:(NSUInteger)start to:(NSUInteger)limit;
 
 @end
 
 @protocol MediaLibraryDelegate <NSObject>
 
-- (void)mediaLibrary:(MediaLibrary*)library successfullyFetchedMedias:(NSArray*)medias;
+- (void)mediaLibrary:(MediaLibrary*)library successfullyFetchedMedias:(NSArray*)medias from:(NSUInteger)start to:(NSUInteger)limit;
 - (void)mediaLibrary:(MediaLibrary *)library failedToFetchMediasWithError:(NSError*)error;
+- (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedia:(NSDictionary *)media;
 
 @end

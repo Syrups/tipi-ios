@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserController.h"
+#import "StoryController.h"
+#import "RoomController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) UserController* userController;
+@property (strong, nonatomic) StoryController* storyController;
+@property (strong, nonatomic) RoomController* roomController;
 
 @end
 

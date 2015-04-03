@@ -16,31 +16,44 @@
 
 @implementation MediaPickerViewController {
     NSMutableArray* selectedIndexes;
+    NSUInteger currentOffset;
+    BOOL loading;
+    NSMutableArray* unorderedMedias;
 }
 
 - (void)viewDidLoad {
     selectedIndexes = [NSMutableArray array];
-    self.medias = [NSMutableArray array];
     self.saver = [StoryWIPSaver sharedSaver];
     
     self.activityIndicator.hidden = NO;
     
-    MediaLibrary* library = [[MediaLibrary alloc] init];
-    library.delegate = self;
+    self.library = [[MediaLibrary alloc] init];
+    self.library.delegate = self;
+    self.medias = [self.library cachedMedias];
+    unorderedMedias = [NSMutableArray array];
     
-    [library fetchMediasFromLibrary];
+    currentOffset = 0;
+    [self.library fetchMediasFromLibraryFrom:currentOffset to:currentOffset+10];
 }
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
 #pragma mark - MediaLibrary
 
-- (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedias:(NSArray *)medias {
+- (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedias:(NSArray *)medias from:(NSUInteger)start to:(NSUInteger)limit {
+
     self.activityIndicator.hidden = YES;
-    self.medias = medias.mutableCopy;
-    [self.mediaCollectionView reloadData];
+    [self.medias addObjectsFromArray:medias];
+    
+    [self.mediaCollectionView performBatchUpdates:^{
+        [self.mediaCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+    } completion:^(BOOL finished) {
+        currentOffset += 11;
+    }];
+    
 }
 
 #pragma mark - UICollectionView
@@ -111,9 +124,19 @@
         cell.contentView.backgroundColor = [UIColor lightGrayColor];
     }
     
-    self.selectedCount.text = [NSString stringWithFormat:@"%ld selected", selectedIndexes.count];
+    self.selectedCount.text = [NSString stringWithFormat:@"%ld selected", (unsigned long)selectedIndexes.count];
 }
 
+#pragma mark - UIScrollView
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSArray* visibleIndexPaths = [self.mediaCollectionView indexPathsForVisibleItems];
+    
+    if ([visibleIndexPaths containsObject:[NSIndexPath indexPathForItem:self.medias.count-1 inSection:0]] && !loading) {
+        loading = YES;
+        self.activityIndicator.hidden = NO;
+        [self.library fetchMediasFromLibraryFrom:currentOffset to:currentOffset+10];
+    }
+}
 
 @end
