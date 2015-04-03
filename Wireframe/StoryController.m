@@ -42,6 +42,63 @@
 }
 
 
+- (void)fetchStoriesForRoomId:(NSUInteger )room success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
+    
+    NSString* path = [NSString stringWithFormat:@"/rooms/%ld/stories", (long)room];
+    NSURLRequest* request = [StoryController getBaseRequestFor:path authenticated:YES method:@"GET"];
+    
+    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSError* err = nil;
+        NSArray* stories = [Story arrayOfModelsFromDictionaries:responseObject];
+        
+        if (err) { NSLog(@"%@", err); }
+        
+        success(stories);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        failure(error);
+    }];
+    
+    [op start];
+}
+
+- (void)fetchStoryWithId:(NSUInteger)roomId success:(void (^)(Story *))success failure:(void (^)(NSError *))failure {
+    NSString* path = [NSString stringWithFormat:@"/stories/%ld", roomId];
+    NSURLRequest* request = [StoryController getBaseRequestFor:path authenticated:YES method:@"GET"];
+    
+    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        
+        NSLog(@"blubli %@", responseObject);
+        
+        NSError* err = nil;
+        Story* story = [[Story alloc] initWithDictionary:responseObject error:&err];
+        
+        if (err) { NSLog(@"%@", err); }
+        
+        success(story);
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        failure(error);
+    }];
+    
+    [op start];
+}
+
+
+
 #pragma mark - Helpers
 
 - (NSString*)jsonArrayForRooms:(NSArray*)rooms {

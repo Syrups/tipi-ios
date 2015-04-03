@@ -36,67 +36,47 @@
 }
 
 - (void)fetchStoriesForRoomId:(NSUInteger )room {
-    NSString* path = [NSString stringWithFormat:@"/rooms/%ld/stories", (long)room];
-    NSURLRequest* request = [Api getBaseRequestFor:path authenticated:YES method:@"GET"];
     
-    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    
-    op.responseSerializer = [AFJSONResponseSerializer serializer];
-    
-    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (self.delegate) {
-            
-            
-            
-            NSError* err = nil;
-            NSArray* stories = [Story arrayOfModelsFromDictionaries:responseObject];
-            
-            if (err) { NSLog(@"%@", err); }
-            
-            if ([self.delegate respondsToSelector:@selector(storyManager:successfullyFetchedStories:)]) {
-                [self.delegate storyManager:self successfullyFetchedStories:stories];
-            }
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
-        if ([self.delegate respondsToSelector:@selector(storyManager:failedToFetchStories:)]) {
-            [self.delegate storyManager:self failedToFetchStories:error];
-        }
-    }];
-    
-    [op start];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        
+        [delegate.storyController fetchStoriesForRoomId:room success:^(NSArray * stories) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                if ([self.delegate respondsToSelector:@selector(storyManager:successfullyFetchedStories:)]) {
+                    [self.delegate storyManager:self successfullyFetchedStories:stories];
+                }
+            });
+        } failure:^(NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(storyManager:failedToFetchStories:)]) {
+                    [self.delegate storyManager:self failedToFetchStories:error];
+                }
+            });
+        }];
+    });
 }
 
 - (void)fetchStoryWithId:(NSUInteger)roomId {
-    NSString* path = [NSString stringWithFormat:@"/stories/%ld", roomId];
-    NSURLRequest* request = [Api getBaseRequestFor:path authenticated:YES method:@"GET"];
     
-    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    
-    op.responseSerializer = [AFJSONResponseSerializer serializer];
-    
-    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (self.delegate) {
-            
-            NSLog(@"blubli %@", responseObject);
-            
-            NSError* err = nil;
-            Story* story = [[Story alloc] initWithDictionary:responseObject error:&err];
-            
-            if (err) { NSLog(@"%@", err); }
-            
-            if ([self.delegate respondsToSelector:@selector(storyManager:successfullyFetchedStory:)]) {
-                [self.delegate storyManager:self successfullyFetchedStory:story];
-            }
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
-        if ([self.delegate respondsToSelector:@selector(storyManager:failedToFetchStoryWithId:)]) {
-            [self.delegate storyManager:self failedToFetchStoryWithId:roomId];
-        }
-    }];
-    
-    [op start];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        
+        [delegate.storyController fetchStoryWithId:roomId success:^(Story * story) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                if ([self.delegate respondsToSelector:@selector(storyManager:successfullyFetchedStory:)]) {
+                    [self.delegate storyManager:self successfullyFetchedStory:story];
+                }
+            });
+        } failure:^(NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(storyManager:failedToFetchStoryWithId:)]) {
+                    [self.delegate storyManager:self failedToFetchStoryWithId:roomId];
+                }
+            });
+        }];
+    });
 }
 
 
