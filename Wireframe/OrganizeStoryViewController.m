@@ -11,17 +11,19 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 
 #define CELL_SIZE 180
-
-@interface OrganizeStoryViewController ()
-
-@end
+#define INACTIVE_CELL_OPACITY 0.3f
+#define ACTIVE_CELL_ROTATION 0.05f
 
 @implementation OrganizeStoryViewController {
     NSString* oldHelpText;
     NSUInteger selectedPageIndex;
+    CGFloat lastOffset;
+    NSUInteger currentMedia;
+    BOOL firstLoad;
 }
 
 - (void)viewDidLoad {
+    currentMedia = 1;
     LXReorderableCollectionViewFlowLayout* layout = [[LXReorderableCollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.longPressGestureRecognizer.minimumPressDuration = 0;
@@ -30,6 +32,9 @@
     self.collectionView.collectionViewLayout = layout;
     
     self.saver = [StoryWIPSaver sharedSaver];
+    
+    
+
 }
 
 - (IBAction)start:(id)sender {
@@ -65,9 +70,6 @@
         cell = [[UICollectionViewCell alloc] init];
     }
     
-    UILabel* label = (UILabel*)[cell.contentView viewWithTag:10];
-    label.text = [NSString stringWithFormat:@"%ld sur %ld", (unsigned long)indexPath.row+1, (unsigned long)self.saver.medias.count];
-    
     UIImageView* image = (UIImageView*)[cell.contentView viewWithTag:20];
     NSDictionary* media = [self.saver.medias objectAtIndex:indexPath.row];
     [image setImage:[media objectForKey:@"image"]];
@@ -80,6 +82,14 @@
         vidIcon.hidden = YES;
     }
     
+    
+    if (indexPath.row == 0 && !firstLoad) {
+        cell.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(ACTIVE_CELL_ROTATION));
+        firstLoad = YES;
+    } else {
+        cell.alpha = INACTIVE_CELL_OPACITY;
+    }
+    
     return cell;
 }
 
@@ -88,11 +98,11 @@
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return (collectionView.frame.size.width-CELL_SIZE)/4;
+    return 5;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, (collectionView.frame.size.width-CELL_SIZE)/2, 0, (collectionView.frame.size.width-CELL_SIZE)/2);
+    return UIEdgeInsetsMake(0, (collectionView.frame.size.width-CELL_SIZE)/2, 0, (collectionView.frame.size.width-CELL_SIZE)/5);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -118,16 +128,42 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout willBeginDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
-    oldHelpText = self.helpLabel.text;
-    self.helpLabel.text = @"pull to remove";
+    
 }
 
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout willEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
     self.helpLabel.text = oldHelpText;
     
     UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
+    cell.transform = CGAffineTransformMakeRotation(0);
     
     NSLog(@"%f", cell.bounds.origin.y);
+}
+
+#pragma mark - UIScrollView
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        CGPoint point = CGPointMake(self.collectionView.contentOffset.x + self.collectionView.frame.size.width/2, self.collectionView.frame.size.height/2);
+        NSIndexPath* indexPath = [self.collectionView indexPathForItemAtPoint:point];
+        UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+        cell.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(ACTIVE_CELL_ROTATION));
+        cell.layer.zPosition = 100;
+        cell.alpha = 1;
+    } completion:nil];
+    
+    [self.wave shuffle];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        CGPoint point = CGPointMake(self.collectionView.contentOffset.x + self.collectionView.frame.size.width/2, self.collectionView.frame.size.height/2);
+        NSIndexPath* indexPath = [self.collectionView indexPathForItemAtPoint:point];
+        UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+        cell.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1, 1), CGAffineTransformMakeRotation(0));
+        cell.layer.zPosition = 0;
+        cell.alpha = INACTIVE_CELL_OPACITY;
+    } completion:nil];
 }
 
 #pragma mark - Navigation

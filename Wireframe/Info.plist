@@ -26,6 +26,7 @@
 	<array>
 		<string>GTWalsheim Light.otf</string>
 		<string>GTWalsheim Regular.otf</string>
+		<string>GTWalsheim Bold.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

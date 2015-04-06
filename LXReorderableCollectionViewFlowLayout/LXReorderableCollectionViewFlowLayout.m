@@ -340,7 +340,9 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
              animations:^{
                  __strong typeof(self) strongSelf = weakSelf;
                  if (strongSelf) {
-                     strongSelf.currentView.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
+                     
+//                     strongSelf.currentView.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.1f, 1.1f), CGAffineTransformMakeRotation(0.2f));
+                     
                      highlightedImageView.alpha = 0.0f;
                      imageView.alpha = 1.0f;
                  }
@@ -484,6 +486,43 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
     }
     
     return layoutAttributes;
+}
+
+- (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity
+{
+    CGSize collectionViewSize = self.collectionView.bounds.size;
+    CGFloat proposedContentOffsetCenterX = proposedContentOffset.x + self.collectionView.bounds.size.width * 0.5f;
+    
+    CGRect proposedRect = self.collectionView.bounds;
+    
+    // Comment out if you want the collectionview simply stop at the center of an item while scrolling freely
+    // proposedRect = CGRectMake(proposedContentOffset.x, 0.0, collectionViewSize.width, collectionViewSize.height);
+    
+    UICollectionViewLayoutAttributes* candidateAttributes;
+    for (UICollectionViewLayoutAttributes* attributes in [self layoutAttributesForElementsInRect:proposedRect])
+    {
+        
+        // == Skip comparison with non-cell items (headers and footers) == //
+        if (attributes.representedElementCategory != UICollectionElementCategoryCell)
+        {
+            continue;
+        }
+        
+        // == First time in the loop == //
+        if(!candidateAttributes)
+        {
+            candidateAttributes = attributes;
+            continue;
+        }
+        
+        if (fabsf(attributes.center.x - proposedContentOffsetCenterX) < fabsf(candidateAttributes.center.x - proposedContentOffsetCenterX))
+        {
+            candidateAttributes = attributes;
+        }
+    }
+    
+    return CGPointMake(candidateAttributes.center.x - self.collectionView.bounds.size.width * 0.5f, proposedContentOffset.y);
+    
 }
 
 #pragma mark - UIGestureRecognizerDelegate methods

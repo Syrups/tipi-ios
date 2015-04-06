@@ -48,7 +48,7 @@
                 if (result != nil && index >= start && index <= limit) {
                     
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                        NSLog(@"asset - %ld / %ld", (unsigned long)index, (unsigned long)group.numberOfAssets);
+//                        NSLog(@"asset - %ld / %ld", (unsigned long)index, (unsigned long)group.numberOfAssets);
                         NSURL *url= (NSURL*) [[result defaultRepresentation]url];
                         
                         ALAssetRepresentation* rep = [result defaultRepresentation];

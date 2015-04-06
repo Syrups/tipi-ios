@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="GTWalsheim Bold.otf">
+            <string>GTWalsheim-Bold</string>
+        </mutableArray>
         <mutableArray key="GTWalsheim Regular.otf">
-            <string>GTWalsheim-Regular</string>
-            <string>GTWalsheim-Regular</string>
-            <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
@@ -338,7 +338,7 @@
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.85490196080000003" green="0.28627450980000002" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                     </view>
                     <navigationItem key="navigationItem" id="fdF-M6-cLh"/>
@@ -1063,7 +1063,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.85490196078431369" green="0.28627450980392155" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="VdL-qu-vMC"/>
                     <connections>
@@ -1088,9 +1088,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vap-cp-gaf">
-                                <rect key="frame" x="0.0" y="159" width="320" height="340"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77r-vd-RtX" customClass="WaveBackground">
+                                <rect key="frame" x="0.0" y="314" width="320" height="254"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wave-buddy-left" translatesAutoresizingMaskIntoConstraints="NO" id="gEc-ni-TRO">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="254"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Faites glisser une image d'un côté ou de l'autre pour changer sa position dans l'histoire" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufi-xp-mAc">
+                                        <rect key="frame" x="37" y="118" width="246" height="87"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="87" id="7hH-86-H02"/>
+                                            <constraint firstAttribute="width" constant="246" id="qjv-Jd-gJR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="ufi-xp-mAc" secondAttribute="centerX" id="4gi-My-z8S"/>
+                                    <constraint firstAttribute="bottom" secondItem="gEc-ni-TRO" secondAttribute="bottom" id="CeF-oF-hFl"/>
+                                    <constraint firstItem="gEc-ni-TRO" firstAttribute="leading" secondItem="77r-vd-RtX" secondAttribute="leading" id="Wi8-or-awS"/>
+                                    <constraint firstAttribute="centerY" secondItem="ufi-xp-mAc" secondAttribute="centerY" constant="-34.5" id="fIJ-7g-55r"/>
+                                    <constraint firstAttribute="trailing" secondItem="gEc-ni-TRO" secondAttribute="trailing" id="frQ-pq-DHf"/>
+                                    <constraint firstAttribute="height" constant="254" id="ip7-mP-OuO"/>
+                                    <constraint firstItem="gEc-ni-TRO" firstAttribute="top" secondItem="77r-vd-RtX" secondAttribute="top" id="tkn-Z5-I7h"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vap-cp-gaf">
+                                <rect key="frame" x="0.0" y="82" width="320" height="317"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="317" id="io5-8U-ixK"/>
+                                </constraints>
                                 <collectionViewLayout key="collectionViewLayout" id="bem-4E-aH9" customClass="LXReorderableCollectionViewFlowLayout"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MediaCell" id="pkH-gF-aLa">
@@ -1114,12 +1146,6 @@
 tap to record</string>
                                                     <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZX-V5-3b3">
-                                                    <rect key="frame" x="17" y="125" width="127" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" tag="30" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="play.png" translatesAutoresizingMaskIntoConstraints="NO" id="81W-hj-KLX">
@@ -1165,7 +1191,7 @@ tap to record</string>
                                     <outlet property="delegate" destination="HyC-CS-MSr" id="Wip-E3-dNd"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYw-DI-UR5">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYw-DI-UR5">
                                 <rect key="frame" x="16" y="516" width="74" height="32"/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
                                 <state key="normal" title="Back">
@@ -1176,14 +1202,7 @@ tap to record</string>
                                     <action selector="back:" destination="HyC-CS-MSr" eventType="touchUpInside" id="ZyN-J7-G1S"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Drag and drop to sort your story" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwn-kQ-NVw">
-                                <rect key="frame" x="42" y="85" width="236" height="52"/>
-                                <gestureRecognizers/>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDf-Qp-Wil">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDf-Qp-Wil">
                                 <rect key="frame" x="230" y="516" width="74" height="32"/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
                                 <state key="normal" title="Record">
@@ -1194,25 +1213,40 @@ tap to record</string>
                                     <action selector="start:" destination="HyC-CS-MSr" eventType="touchUpInside" id="iTN-j7-A0g"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Organize your images" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GR8-cG-pvA">
-                                <rect key="frame" x="63" y="60" width="195" height="52"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O R G A N I S E R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GR8-cG-pvA">
+                                <rect key="frame" x="63" y="20" width="195" height="52"/>
                                 <gestureRecognizers/>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="5dB-Gq-sXy"/>
+                                    <constraint firstAttribute="width" constant="195" id="bFa-79-jRT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Bold" family="GTWalsheim" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.85490196080000003" green="0.28627450980000002" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="77r-vd-RtX" firstAttribute="leading" secondItem="UkW-iJ-Az8" secondAttribute="leading" id="18n-qV-cg5"/>
+                            <constraint firstAttribute="centerX" secondItem="GR8-cG-pvA" secondAttribute="centerX" id="FGN-Sf-E03"/>
+                            <constraint firstItem="Vap-cp-gaf" firstAttribute="leading" secondItem="UkW-iJ-Az8" secondAttribute="leading" id="O01-IM-5HD"/>
+                            <constraint firstItem="iWB-j8-lff" firstAttribute="top" secondItem="77r-vd-RtX" secondAttribute="bottom" id="P1O-x9-2TA"/>
+                            <constraint firstItem="GR8-cG-pvA" firstAttribute="top" secondItem="CBU-73-A3R" secondAttribute="bottom" constant="20" id="SjW-aH-RZf"/>
+                            <constraint firstAttribute="trailing" secondItem="77r-vd-RtX" secondAttribute="trailing" id="UMc-ae-F5X"/>
+                            <constraint firstItem="Vap-cp-gaf" firstAttribute="top" secondItem="CBU-73-A3R" secondAttribute="bottom" constant="82" id="ceg-PB-Dga"/>
+                            <constraint firstAttribute="trailing" secondItem="Vap-cp-gaf" secondAttribute="trailing" id="cfv-bV-OhD"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qTm-rl-zxA"/>
                     <connections>
                         <outlet property="collectionView" destination="Vap-cp-gaf" id="mew-3S-Uci"/>
+                        <outlet property="wave" destination="77r-vd-RtX" id="u08-hM-toJ"/>
                         <segue destination="YZ8-zn-pF5" kind="push" identifier="ToRecord" id="aMW-bQ-5Bn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BdT-pl-9vK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4703" y="-1996"/>
+            <point key="canvasLocation" x="4663" y="-1996"/>
         </scene>
         <!--Record View Controller-->
         <scene sceneID="reA-gP-plh">
@@ -1758,44 +1792,6 @@ Release to cancel</string>
             </objects>
             <point key="canvasLocation" x="5917" y="-1990"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="geR-Xj-Wxp">
-            <objects>
-                <viewController id="aZu-gw-KYA" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="07U-vW-zDc"/>
-                        <viewControllerLayoutGuide type="bottom" id="Soy-I1-bMB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="d15-lo-S51">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your story have been sent" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9f-qC-0UI">
-                                <rect key="frame" x="37" y="241" width="246" height="52"/>
-                                <gestureRecognizers/>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DIp-td-ryD">
-                                <rect key="frame" x="113" y="322" width="94" height="37"/>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
-                                <state key="normal" title="Ok">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="backToStart:" destination="UYI-ME-qVa" eventType="touchUpInside" id="RhS-M3-vku"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="v2a-Eq-bfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4424" y="-2014"/>
-        </scene>
         <!--Room Reveal Wrapper View Controller-->
         <scene sceneID="zjK-23-chf">
             <objects>
@@ -2012,6 +2008,7 @@ Release to cancel</string>
         <image name="proches-petit.png" width="37" height="37"/>
         <image name="replay-gris" width="65" height="65"/>
         <image name="roue-dentee" width="28" height="28"/>
+        <image name="wave-buddy-left" width="320" height="270"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
