@@ -26,31 +26,8 @@
     // Point the datasource back to this UIViewController.
     self.pager.dataSource = self;
     
-    // Start at the first page of the array?
-    int initialIndex = 0;
+   
     
-    // Assuming you have a SomePageViewController which extends UIViewController so you can do custom things.
-    ReadModeViewController *initialViewController = (ReadModeViewController *)[self viewControllerAtIndex:initialIndex];
-    NSArray *initialViewControllers = [NSArray arrayWithObject:initialViewController];
-    
-    // animated:NO is important so the view just pops into existence.
-    // direction: doesn't matter because it's not animating in.
-    [self.pager setViewControllers:initialViewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    
-    // Tell the child view to get ready
-    [self.pager willMoveToParentViewController:self];
-    
-    // Actually add the child view controller
-    [self addChildViewController:self.pager];
-    
-    // Don't forget to add the new root view to the current view hierarchy!
-    [self.view addSubview:self.pager.view];
-    [self.view sendSubviewToBack:self.pager.view];
-    
-    // And make sure to activate!
-    [self.pager didMoveToParentViewController:self];
-    
-    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
     [manager fetchStoryWithId:self.storyId];
@@ -88,6 +65,32 @@
 - (void)storyManager:(StoryManager*)manager successfullyFetchedStory:(Story *)story{
     self.story = story;
     self.mPages = self.story.pages;
+    
+    // Start at the first page of the array?
+    int initialIndex = 0;
+    
+    // Assuming you have a SomePageViewController which extends UIViewController so you can do custom things.
+    ReadModeViewController *initialViewController = (ReadModeViewController *)[self viewControllerAtIndex:initialIndex];
+    NSArray *initialViewControllers = [NSArray arrayWithObject:initialViewController];
+    
+    // animated:NO is important so the view just pops into existence.
+    // direction: doesn't matter because it's not animating in.
+    [self.pager setViewControllers:initialViewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    
+    // Tell the child view to get ready
+    [self.pager willMoveToParentViewController:self];
+    
+    // Actually add the child view controller
+    [self addChildViewController:self.pager];
+    
+    // Don't forget to add the new root view to the current view hierarchy!
+    [self.view addSubview:self.pager.view];
+    [self.view sendSubviewToBack:self.pager.view];
+    
+    // And make sure to activate!
+    [self.pager didMoveToParentViewController:self];
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 
