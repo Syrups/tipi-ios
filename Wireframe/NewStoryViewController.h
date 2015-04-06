@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseHomeViewController.h"
+#import <EZAudio/EZAudio.h>
 
-@interface NewStoryViewController : BaseHomeViewController
+@interface NewStoryViewController : BaseHomeViewController <EZMicrophoneDelegate>
 
 @property (strong, nonatomic) IBOutlet UIButton* mainButton;
 @property (strong, nonatomic) IBOutlet UIButton* secondaryButton;
+@property (strong, nonatomic) EZMicrophone* microphone;
 
 @end

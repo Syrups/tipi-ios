@@ -24,9 +24,8 @@ static UserSession* sharedSession;
 }
 
 - (User *)user {
-    User* u = [[User alloc] init];
-    u.id = self.id;
-    u.token = self.token;
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    User* u = [[User alloc] initWithString:[defaults objectForKey:kSessionStoreId] error:nil];
     
     return u;
 }
@@ -38,22 +37,19 @@ static UserSession* sharedSession;
 }
 
 - (BOOL)isAuthenticated {
-    return self.token != nil;
+    return [self user] != nil;
 }
 
 - (void)storeUser:(User *)user {
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     self.token = user.token;
-    self.id = user.id;
-    [defaults setObject:user.id forKey:kSessionStoreId];
-    [defaults setObject:user.token forKey:kSessionStoreToken];
+    [defaults setObject:[user toJSONString] forKey:kSessionStoreId];
     [defaults synchronize];
 }
 
 - (void)destroy {
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:kSessionStoreId];
-    [defaults removeObjectForKey:kSessionStoreToken];
     [defaults synchronize];
 }
 

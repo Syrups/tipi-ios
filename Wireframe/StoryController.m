@@ -97,7 +97,29 @@
     [op start];
 }
 
-
+- (void)addCommentOnPage:(Page *)page atTime:(NSUInteger)time withAudioFile:(NSString *)audioFile success:(void (^)(Comment *))success failure:(void (^)(NSError *))failure {
+    NSString* path = [NSString stringWithFormat:@"/pages/%@/comments", page.id];
+    NSMutableURLRequest* request = [StoryController getBaseRequestFor:path authenticated:YES method:@"POST"].mutableCopy;
+    
+    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSError* err = nil;
+        Comment* comment = [[Comment alloc] initWithDictionary:responseObject error:&err];
+        
+        if (err) { NSLog(@"%@", err); }
+        
+        success(comment);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        failure(error);
+    }];
+    
+    [op start];
+}
 
 #pragma mark - Helpers
 

@@ -21,7 +21,7 @@
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    [manager.requestSerializer setValue:[[UserSession sharedSession] token] forHTTPHeaderField:@"X-Authorization-Token"];
+    [manager.requestSerializer setValue:[[UserSession sharedSession].user token] forHTTPHeaderField:@"X-Authorization-Token"];
 
     [manager POST:[kApiRootUrl stringByAppendingString:path] parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         NSError* err = nil;

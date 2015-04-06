@@ -47,6 +47,7 @@
     
     // Don't forget to add the new root view to the current view hierarchy!
     [self.view addSubview:self.pager.view];
+    [self.view sendSubviewToBack:self.pager.view];
     
     // And make sure to activate!
     [self.pager didMoveToParentViewController:self];

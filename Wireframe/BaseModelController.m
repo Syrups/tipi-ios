@@ -19,7 +19,7 @@
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
     [mutableRequest addValue:@"application/json" forHTTPHeaderField:@"Content-type"];
     
-    NSString* token = [[UserSession sharedSession] token];
+    NSString* token = [[UserSession sharedSession].user token];
     
     if (authenticated) {
         [mutableRequest addValue:token forHTTPHeaderField:@"X-Authorization-Token"];
@@ -29,7 +29,5 @@
     
     return request;
 }
-
-
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "UserController.h"
+#import "UserSession.h"
 #import <AFNetworking/AFNetworking.h>
 
 @implementation UserController
@@ -66,7 +67,7 @@
 
 - (void)fetchUserWithId:(NSInteger)userId success:(void (^)(User *))success failure:(void (^)(NSError *))failure {
     NSString* path = [NSString stringWithFormat:@"/users/%ld", userId];
-    NSURLRequest* request = [UserController getBaseRequestFor:path authenticated:NO method:@"POST"];
+    NSURLRequest* request = [UserController getBaseRequestFor:path authenticated:YES method:@"GET"];
     
     AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
@@ -80,6 +81,75 @@
         if (err) { NSLog(@"%@", err); }
         
         success(user);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        if (failure != nil) failure(error);
+    }];
+    
+    [op start];
+}
+
+- (void)fetchFriendsOfUser:(User *)user success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
+    NSString* path = [NSString stringWithFormat:@"/users/%@/friends", user.id];
+    NSURLRequest* request = [UserController getBaseRequestFor:path authenticated:YES method:@"GET"];
+    
+    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSError* err = nil;
+        NSArray* friends = [User arrayOfModelsFromDictionaries:responseObject error:&err];
+        
+        if (err) { NSLog(@"%@", err); }
+        
+        success(friends);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        if (failure != nil) failure(error);
+    }];
+    
+    [op start];
+}
+
+- (void)addFriend:(User *)user success:(void (^)())success failure:(void (^)(NSError *))failure {
+    NSString* path = [NSString stringWithFormat:@"/users/%@/friends", [[UserSession sharedSession].user id]];
+    NSMutableURLRequest* request = [UserController getBaseRequestFor:path authenticated:YES method:@"POST"].mutableCopy;
+    
+    [request setHTTPBody:[[NSString stringWithFormat:@"{ \"friend_id\" : \"%@\" }", user.id] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+ 
+        success();
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        if (failure != nil) failure(error);
+    }];
+    
+    [op start];
+}
+
+- (void)getLatestTagsWithSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
+    NSString* path = [NSString stringWithFormat:@"/users/%@/tags", CurrentUser.id];
+    NSURLRequest* request = [UserController getBaseRequestFor:path authenticated:YES method:@"GET"];
+    
+    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSError* err = nil;
+        NSArray* tags = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&err];
+        
+        if (err) { NSLog(@"%@", err); }
+        
+        success(tags);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
         if (failure != nil) failure(error);
