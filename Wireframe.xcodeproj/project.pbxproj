@@ -86,7 +86,6 @@
 		B3BCD0131AA604DA00261212 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD0121AA604DA00261212 /* RecordViewController.m */; };
 		B3BCD01D1AA60D4C00261212 /* OrganizeStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD01C1AA60D4C00261212 /* OrganizeStoryViewController.m */; };
 		B3BCD0261AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD0251AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m */; };
-		B3C2E5C31AD31B7D00868DA4 /* GTWalsheim Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B3C2E5C21AD31B7D00868DA4 /* GTWalsheim Bold.otf */; };
 		B3C2E5C61AD32A1B00868DA4 /* WaveBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C2E5C51AD32A1B00868DA4 /* WaveBackground.m */; };
 		B3C85E541ACBF4C50083C50A /* Audio.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C85E531ACBF4C50083C50A /* Audio.m */; };
 		B3C85E571ACBF5260083C50A /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C85E561ACBF5260083C50A /* Media.m */; };
@@ -241,7 +240,6 @@
 		B3BCD0201AA6148100261212 /* LXReorderableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXReorderableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		B3BCD0241AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKCollectionViewStickyHeaderFlowLayout.h; sourceTree = "<group>"; };
 		B3BCD0251AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKCollectionViewStickyHeaderFlowLayout.m; sourceTree = "<group>"; };
-		B3C2E5C21AD31B7D00868DA4 /* GTWalsheim Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GTWalsheim Bold.otf"; path = "../../../../Downloads/Walshem/GTWalsheim Bold.otf"; sourceTree = "<group>"; };
 		B3C2E5C41AD32A1B00868DA4 /* WaveBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveBackground.h; sourceTree = "<group>"; };
 		B3C2E5C51AD32A1B00868DA4 /* WaveBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveBackground.m; sourceTree = "<group>"; };
 		B3C85E521ACBF4C50083C50A /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audio.h; sourceTree = "<group>"; };
@@ -558,7 +556,6 @@
 				B3A4CDC51AA71D860079F8D1 /* Services */,
 				B3BCCFFA1AA5C84B00261212 /* Controllers */,
 				B3BCCFF61AA5C4CB00261212 /* GTWalsheim Light.otf */,
-				B3C2E5C21AD31B7D00868DA4 /* GTWalsheim Bold.otf */,
 				B3BCCFF71AA5C4CB00261212 /* GTWalsheim Regular.otf */,
 				B3BCCFD41AA5C36C00261212 /* AppDelegate.h */,
 				B3BCCFD51AA5C36C00261212 /* AppDelegate.m */,
@@ -779,7 +776,6 @@
 				73B3B3491AA7BA3F00FF7578 /* go-right.png in Resources */,
 				73B3B3531AA7BA3F00FF7578 /* replay-gris.png in Resources */,
 				73B3B3501AA7BA3F00FF7578 /* play.png in Resources */,
-				B3C2E5C31AD31B7D00868DA4 /* GTWalsheim Bold.otf in Resources */,
 				73B3B3461AA7BA3F00FF7578 /* croix-blanche.png in Resources */,
 				73B3B34B1AA7BA3F00FF7578 /* home-noir.png in Resources */,
 				73B3B3471AA7BA3F00FF7578 /* croix-noire.png in Resources */,
