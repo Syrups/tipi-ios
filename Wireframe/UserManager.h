@@ -15,6 +15,7 @@
 - (void)createUserWithUsername:(NSString*)username password:(NSString*)password email:(NSString*)email;
 - (void)authenticateUserWithUsername:(NSString*)username password:(NSString*)password;
 - (void)fetchUserWithId:(NSInteger)userId;
+- (void)fetchLatestTags;
 
 @end
 
@@ -43,5 +44,12 @@
 
 - (void)userManager:(UserManager*)manager successfullyUpdatedUser:(User*)user;
 - (void)userManager:(UserManager*)manager failedToUpdateUser:(User*)user;
+
+@end
+
+@protocol TagFetcherDelegate <NSObject>
+
+- (void)userManager:(UserManager*)manager successfullyFetchedTags:(NSArray*)tags;
+- (void)userManager:(UserManager *)manager failedToFetchTagsWithError:(NSError*)error;
 
 @end

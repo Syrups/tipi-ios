@@ -72,4 +72,26 @@
     });
 }
 
+- (void)fetchLatestTags {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        
+        [delegate.userController getLatestTagsWithSuccess:^(NSArray *tags) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(userManager:successfullyFetchedTags:)]) {
+                    [self.delegate userManager:self successfullyFetchedTags:tags];
+                }
+            });
+        } failure:^(NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(userManager:failedToFetchTagsWithError:)]) {
+                    [self.delegate userManager:self failedToFetchTagsWithError:error];
+                }
+            });
+        }];
+    });
+}
+
+
+
 @end

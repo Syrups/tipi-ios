@@ -15,7 +15,9 @@
 
 @property (strong, nonatomic) StoryWIPSaver* saver;
 @property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
-@property (strong, nonatomic) IBOutlet UILabel* helpLabel;
+@property (strong, nonatomic) IBOutlet UILabel* pageLabel;
 @property (strong, nonatomic) IBOutlet WaveBackground* wave;
+
+- (void)zoom;
 
 @end

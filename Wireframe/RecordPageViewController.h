@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface RecordPageViewController : UIViewController
 
@@ -16,6 +16,7 @@
 
 @property (strong, nonatomic) UIImage* image;
 @property (strong, nonatomic) IBOutlet UIImageView* imageView;
-@property (strong, nonatomic) MPMoviePlayerController* moviePlayer;
+@property (strong, nonatomic) AVPlayer* moviePlayer;
+@property (strong, nonatomic) AVPlayerLayer* moviePlayerLayer;
 
 @end
