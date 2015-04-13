@@ -324,7 +324,10 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
             collectionViewCell.highlighted = NO;
             UIView *imageView = [collectionViewCell LX_snapshotView];
             imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-            imageView.alpha = 0.0f;
+            imageView.alpha = 1.0f;
+            
+            highlightedImageView.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(0.05f));
+            imageView.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(0.05f));
             
             [self.currentView addSubview:imageView];
             [self.currentView addSubview:highlightedImageView];
@@ -343,8 +346,10 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
                      
 //                     strongSelf.currentView.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.1f, 1.1f), CGAffineTransformMakeRotation(0.2f));
                      
-                     highlightedImageView.alpha = 0.0f;
+                     highlightedImageView.alpha = 1.0f;
                      imageView.alpha = 1.0f;
+                     
+                     
                  }
              }
              completion:^(BOOL finished) {
@@ -384,7 +389,8 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
                  animations:^{
                      __strong typeof(self) strongSelf = weakSelf;
                      if (strongSelf) {
-                         strongSelf.currentView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+//                         strongSelf.currentView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+                         strongSelf.currentView.alpha = 1;
                          strongSelf.currentView.center = layoutAttributes.center;
                      }
                  }

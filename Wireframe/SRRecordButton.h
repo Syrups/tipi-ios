@@ -10,4 +10,13 @@
 
 @interface SRRecordButton : UIView
 
+@property (strong, nonatomic) UIColor* color;
+@property (strong, nonatomic) UIColor* fillColor;
+@property CGFloat duration;
+@property CGFloat currentTime;
+
+- (void)start;
+- (void)pause;
+- (void)reset;
+
 @end

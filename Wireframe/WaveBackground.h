@@ -11,5 +11,6 @@
 @interface WaveBackground : UIView
 
 - (void)shuffle;
+- (void)grow;
 
 @end

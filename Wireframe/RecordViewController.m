@@ -11,10 +11,6 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 
 
-@interface RecordViewController ()
-
-@end
-
 @implementation RecordViewController
 
 - (void)viewDidLoad {
@@ -54,7 +50,7 @@
     UILongPressGestureRecognizer* press = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     press.minimumPressDuration = 0.3f;
     
-    [self.recordButton addGestureRecognizer:press];
+    [self.view addGestureRecognizer:press];
     
     self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
     self.recorder.delegate = self;
@@ -82,16 +78,18 @@
         NSLog(@"begin touch");
 //        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         [self.recorder startRecording];
+        [self.recordTimer reset];
+        [self.recordTimer start];
         
         if ([self currentPage].moviePlayer != nil) {
             [[self currentPage].moviePlayer play];
-            [[self currentPage].moviePlayer setControlStyle:MPMovieControlStyleNone];
-            [[self currentPage].view bringSubviewToFront:[self currentPage].moviePlayer.view];
+            [[self currentPage].view.layer insertSublayer:[self currentPage].moviePlayerLayer atIndex:10];
         }
     }
     if (recognizer.state == UIGestureRecognizerStateEnded) {
         NSLog(@"ended touch");
         [self.recorder stopRecording];
+        [self.recordTimer pause];
         
         self.replay.hidden = NO;
         
@@ -126,14 +124,24 @@
     if ([[media objectForKey:@"type"] isEqualToString:ALAssetTypeVideo]) {
         NSURL *url= (NSURL*)[media objectForKey:@"url"];
         
-        page.moviePlayer=[[MPMoviePlayerController alloc] initWithContentURL:url];
+        AVURLAsset* asset = [AVURLAsset URLAssetWithURL:url options:nil];
+        AVPlayerItem* item = [AVPlayerItem playerItemWithAsset:asset];
+        page.moviePlayer=[AVPlayer playerWithPlayerItem:item];
         NSLog(@"%@", url);
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:AVPlayerItemDidPlayToEndTimeNotification object:item queue:nil usingBlock:^(NSNotification *note) {
+            AVPlayerItem* item = [note object];
+            [item seekToTime:kCMTimeZero];
+            [page.moviePlayer play];
+        }];
         
         page.image = [(NSDictionary*)[self.saver.medias objectAtIndex:index] objectForKey:@"full"];
         
-        page.moviePlayer.view.frame = self.view.frame;
-        [page.view addSubview:page.moviePlayer.view];
-        [page.view sendSubviewToBack:page.moviePlayer.view];
+        AVPlayerLayer* playerLayer = [AVPlayerLayer playerLayerWithPlayer:page.moviePlayer];
+        page.moviePlayerLayer = playerLayer;
+        page.moviePlayer.volume = 0;
+        playerLayer.frame = self.view.frame;
+        [page.view.layer insertSublayer:playerLayer atIndex:0];
     } else {
         page.image = [(NSDictionary*)[self.saver.medias objectAtIndex:index] objectForKey:@"full"];
     }
@@ -186,6 +194,7 @@
     }
     
     self.replay.hidden = ![self.recorder hasRecordedAtIndex:index];
+    [self.recordTimer reset];
     
     [self.recorder.player stop];
     [self.recorder setupForMediaWithIndex:index];

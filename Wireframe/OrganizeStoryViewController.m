@@ -10,7 +10,7 @@
 #import "RecordViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
-#define CELL_SIZE 180
+#define CELL_SIZE 160
 #define INACTIVE_CELL_OPACITY 0.3f
 #define ACTIVE_CELL_ROTATION 0.05f
 
@@ -72,7 +72,9 @@
     
     UIImageView* image = (UIImageView*)[cell.contentView viewWithTag:20];
     NSDictionary* media = [self.saver.medias objectAtIndex:indexPath.row];
-    [image setImage:[media objectForKey:@"image"]];
+    [image setImage:[media objectForKey:@"full"]];
+    image.contentMode = UIViewContentModeScaleAspectFill;
+    image.clipsToBounds = YES;
     
     UIView* vidIcon = (UIView*)[cell.contentView viewWithTag:30];
     
@@ -84,7 +86,7 @@
     
     
     if (indexPath.row == 0 && !firstLoad) {
-        cell.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(ACTIVE_CELL_ROTATION));
+//        cell.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(ACTIVE_CELL_ROTATION));
         firstLoad = YES;
     } else {
         cell.alpha = INACTIVE_CELL_OPACITY;
@@ -98,7 +100,7 @@
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 5;
+    return 0;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
@@ -110,7 +112,7 @@
     if (indexPath.row == self.saver.medias.count) return;
     
     selectedPageIndex = indexPath.row;
-    [self performSegueWithIdentifier:@"ToRecord" sender:nil];
+    [self zoom];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath didMoveToIndexPath:(NSIndexPath *)toIndexPath {
@@ -132,12 +134,18 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout willEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
-    self.helpLabel.text = oldHelpText;
     
     UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
     cell.transform = CGAffineTransformMakeRotation(0);
     
     NSLog(@"%f", cell.bounds.origin.y);
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGPoint point = CGPointMake(self.collectionView.contentOffset.x + self.collectionView.frame.size.width/2, self.collectionView.frame.size.height/2);
+    NSIndexPath* visibleIndexPath = [self.collectionView indexPathForItemAtPoint:point];
+    
+    return visibleIndexPath.row == indexPath.row;
 }
 
 #pragma mark - UIScrollView
@@ -147,9 +155,10 @@
         CGPoint point = CGPointMake(self.collectionView.contentOffset.x + self.collectionView.frame.size.width/2, self.collectionView.frame.size.height/2);
         NSIndexPath* indexPath = [self.collectionView indexPathForItemAtPoint:point];
         UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:indexPath];
-        cell.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(ACTIVE_CELL_ROTATION));
+//        cell.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(ACTIVE_CELL_ROTATION));
         cell.layer.zPosition = 100;
         cell.alpha = 1;
+        self.pageLabel.text = [NSString stringWithFormat:@"page %d", indexPath.row+1];
     } completion:nil];
     
     [self.wave shuffle];
@@ -160,7 +169,7 @@
         CGPoint point = CGPointMake(self.collectionView.contentOffset.x + self.collectionView.frame.size.width/2, self.collectionView.frame.size.height/2);
         NSIndexPath* indexPath = [self.collectionView indexPathForItemAtPoint:point];
         UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:indexPath];
-        cell.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1, 1), CGAffineTransformMakeRotation(0));
+//        cell.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1, 1), CGAffineTransformMakeRotation(0));
         cell.layer.zPosition = 0;
         cell.alpha = INACTIVE_CELL_OPACITY;
     } completion:nil];
@@ -168,12 +177,31 @@
 
 #pragma mark - Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"ToRecord"]) {
-        RecordViewController* vc = (RecordViewController*)[segue destinationViewController];
-        vc.currentIndex = selectedPageIndex;
-    }
+- (void)zoom {
+    RecordViewController* vc = (RecordViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"Record"];
+    vc.currentIndex = selectedPageIndex;
+    
+    UIImageView* full = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height)];
+    NSDictionary* media = [self.saver.medias objectAtIndex:selectedPageIndex];
+    [full setImage:[media objectForKey:@"full"]];
+    full.contentMode = UIViewContentModeScaleAspectFill;
+    
+//    [self.view addSubview:full];
+//    [self.view bringSubviewToFront:self.wave];
+    
+//    [UIView animateWithDuration:0.5f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+//        CGRect f = full.frame;
+//        f.origin.y = 0;
+//        full.frame = f;
+//    } completion:nil];
+    
+    
+    
+//    [self.wave grow];
+    
+    [self.navigationController pushViewController:vc animated:NO];
 }
+
 
 
 @end

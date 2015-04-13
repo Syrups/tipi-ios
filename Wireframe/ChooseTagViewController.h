@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "NameStoryViewController.h"
+#import "UserManager.h"
 
-@interface ChooseTagViewController : UIViewController <UITextFieldDelegate>
+@interface ChooseTagViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, TagFetcherDelegate>
+
+@property (strong, nonatomic) NSMutableArray* tags;
+@property (strong, nonatomic) IBOutlet UITableView* tagsTableView;
 
 @end

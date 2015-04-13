@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserManager.h"
 
-@interface NameStoryViewController : UIViewController <UITextFieldDelegate>
+@interface NameStoryViewController : UIViewController <UITextFieldDelegate, TagFetcherDelegate>
+
+@property (strong, nonatomic) IBOutlet UIButton* latestTagLabel;
 
 @end

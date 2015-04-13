@@ -146,8 +146,7 @@
     [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSError* err = nil;
-        NSArray* tags = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&err];
-        
+        NSArray* tags = responseObject;
         if (err) { NSLog(@"%@", err); }
         
         success(tags);

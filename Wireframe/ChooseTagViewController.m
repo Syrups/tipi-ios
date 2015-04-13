@@ -9,6 +9,7 @@
 #import "ChooseTagViewController.h"
 #import "StoryWIPSaver.h"
 
+
 @interface ChooseTagViewController ()
 
 @end
@@ -17,12 +18,42 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    UserManager* manager = [[UserManager alloc] initWithDelegate:self];
+    [manager fetchLatestTags];
 }
 
 - (IBAction)back:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark - TagFetcher
+
+- (void)userManager:(UserManager *)manager successfullyFetchedTags:(NSArray *)tags {
+    self.tags = tags;
+    [self.tagsTableView reloadData];
+}
+
+- (void)userManager:(UserManager *)manager failedToFetchTagsWithError:(NSError *)error {
+    // ERROR
+}
+
+#pragma mark - UITableView
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.tags.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"TagCell"];
+    
+    UILabel* tagLabel = (UILabel*)[cell.contentView viewWithTag:10];
+    tagLabel.text = [self.tags objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+
+#pragma mark - UITextField
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
