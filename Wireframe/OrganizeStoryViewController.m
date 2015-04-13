@@ -10,7 +10,7 @@
 #import "RecordViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
-#define CELL_SIZE 160
+#define CELL_SIZE 180
 #define INACTIVE_CELL_OPACITY 0.3f
 #define ACTIVE_CELL_ROTATION 0.05f
 
@@ -52,7 +52,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.saver.medias.count + 1;
+    return self.saver.medias.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -100,7 +100,7 @@
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 0;
+    return 20;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {

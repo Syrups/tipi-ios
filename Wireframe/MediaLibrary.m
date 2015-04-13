@@ -41,7 +41,7 @@
         if(group != nil) {
             [assetGroups addObject:group];
             
-            
+            self.totalMediasCount += group.numberOfAssets;
             
             [group enumerateAssetsWithOptions:0 usingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
                 

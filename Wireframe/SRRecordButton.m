@@ -49,6 +49,8 @@
     [timer invalidate];
     self.currentTime = 0;
     circleOffset = 18;
+    
+    [self setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -62,13 +64,13 @@
     CGContextBeginPath(ctx);
     CGContextAddArc(ctx, center.x, center.y, self.frame.size.width/2.5f + circleOffset, 0, 2*M_PI, 0);
     CGContextSetStrokeColorWithColor(ctx, self.color.CGColor);
-    CGContextSetLineWidth(ctx, 12.0f);
+    CGContextSetLineWidth(ctx, 8.0f);
     CGContextStrokePath(ctx);
     
     CGContextBeginPath(ctx);
     CGContextAddArc(ctx, center.x, center.y, self.frame.size.width/2.5f + circleOffset, -M_PI_2, [self getAnglePercent], 0);
     CGContextSetStrokeColorWithColor(ctx, self.fillColor.CGColor);
-    CGContextSetLineWidth(ctx, 12.0f);
+    CGContextSetLineWidth(ctx, 8.0f);
     CGContextStrokePath(ctx);
     
     // inner circle

@@ -18,5 +18,6 @@
 @property (strong, nonatomic) IBOutlet UICollectionView* mediaCollectionView;
 @property (strong, nonatomic) IBOutlet UILabel* selectedCount;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView* activityIndicator;
+@property (strong, nonatomic) IBOutlet UIButton* continueButton;
 
 @end

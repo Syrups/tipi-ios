@@ -29,6 +29,8 @@
     
     self.library = [[MediaLibrary alloc] init];
     self.library.delegate = self;
+//    [self.library preload];
+    
     self.medias = [self.library cachedMedias];
     unorderedMedias = [NSMutableArray array];
     
@@ -46,13 +48,12 @@
 - (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedias:(NSArray *)medias from:(NSUInteger)start to:(NSUInteger)limit {
 
     self.activityIndicator.hidden = YES;
+    loading = NO;
     [self.medias addObjectsFromArray:medias];
     
-    [self.mediaCollectionView performBatchUpdates:^{
-        [self.mediaCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
-    } completion:^(BOOL finished) {
+    [self.mediaCollectionView reloadData];
         currentOffset += 11;
-    }];
+
     
 }
 
@@ -78,6 +79,7 @@
     [image setImage:[media objectForKey:@"image"]];
     
     UIView* vidIcon = (UIView*)[cell.contentView viewWithTag:20];
+    UIView* check = (UIView*)[cell.contentView viewWithTag:30];
     
     if ([[media objectForKey:@"type"] isEqual:ALAssetTypeVideo]) {
         vidIcon.hidden = NO;
@@ -85,10 +87,10 @@
         vidIcon.hidden = YES;
     }
     
-    if (![selectedIndexes containsObject:indexPath]) {
-        cell.contentView.backgroundColor = [UIColor lightGrayColor];
+    if ([selectedIndexes containsObject:indexPath]) {
+        check.alpha = 1;
     } else {
-        cell.contentView.backgroundColor = [UIColor blackColor];
+        check.alpha = 0;
     }
     
     return cell;
@@ -114,17 +116,33 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
+    UIView* check = [cell.contentView viewWithTag:30];
+    
     if (![selectedIndexes containsObject:indexPath]) {
-        cell.contentView.backgroundColor = [UIColor blackColor];
+        ((UIView*)check.subviews[0]).transform = CGAffineTransformMakeScale(0, 0);
+        [UIView animateWithDuration:0.3f animations:^{
+            check.alpha = 1;
+            ((UIView*)check.subviews[0]).transform = CGAffineTransformMakeScale(1, 1);
+        }];
         [selectedIndexes addObject:indexPath];
         [self.saver.medias addObject:[self.medias objectAtIndex:indexPath.row]];
     } else {
+        [UIView animateWithDuration:0.3f animations:^{
+            check.alpha = 0;
+        }];
         [selectedIndexes removeObject:indexPath];
         [self.saver.medias removeObject:[self.medias objectAtIndex:indexPath.row]];
-        cell.contentView.backgroundColor = [UIColor lightGrayColor];
     }
     
-    self.selectedCount.text = [NSString stringWithFormat:@"%ld selected", (unsigned long)selectedIndexes.count];
+    if (selectedIndexes.count > 0) {
+        self.continueButton.enabled = YES;
+        self.continueButton.alpha = 1;
+    } else {
+        self.continueButton.enabled = NO;
+        self.continueButton.alpha = 0.6f;
+    }
+    
+    self.selectedCount.text = [NSString stringWithFormat:@"%ld médias sélectionnés", (unsigned long)selectedIndexes.count];
 }
 
 #pragma mark - UIScrollView
@@ -132,7 +150,9 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSArray* visibleIndexPaths = [self.mediaCollectionView indexPathsForVisibleItems];
     
-    if ([visibleIndexPaths containsObject:[NSIndexPath indexPathForItem:self.medias.count-1 inSection:0]] && !loading) {
+    NSLog(@"%d / %d", self.medias.count, self.library.totalMediasCount);
+    
+    if ([visibleIndexPaths containsObject:[NSIndexPath indexPathForItem:self.medias.count-1 inSection:0]] && !loading && self.medias.count < self.library.totalMediasCount) {
         loading = YES;
         self.activityIndicator.hidden = NO;
         [self.library fetchMediasFromLibraryFrom:currentOffset to:currentOffset+10];
