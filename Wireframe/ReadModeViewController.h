@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Page.h"
+#import "ReadModeContainerViewController.h"
 
 @interface ReadModeViewController : UIViewController
     @property (weak, nonatomic) IBOutlet UIImageView *image;
     @property (nonatomic) NSUInteger idx;
     @property (nonatomic) Page *page;
+    @property (strong,nonatomic) ReadModeContainerViewController *parent;
+    @property (strong,nonatomic) NSURL* fileURL;
 
 - (IBAction)playSound:(id)sender;
 @end

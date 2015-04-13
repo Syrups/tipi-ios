@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "StoryManager.h"
+@import AVFoundation;
+@import AudioToolbox;
 
 @interface ReadModeContainerViewController : UIViewController<UIPageViewControllerDataSource, StoryFetcherDelegate>
 
@@ -15,4 +17,9 @@
 @property (strong, nonatomic) NSArray *mPages;
 @property (nonatomic ) NSUInteger storyId;
 @property (nonatomic ) Story *story;
+@property (nonatomic, strong) AVAudioPlayer* player;
+
+
+
+- (void)playSound:(NSURL*)filePath;
 @end

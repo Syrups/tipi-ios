@@ -19,6 +19,7 @@
     
     [request setHTTPBody:[[NSString stringWithFormat:@"{ \"username\": \"%@\", \"password\": \"%@\", \"email\" : \"%@\", \"device_type\" : \"ios\", \"device_token\": \"%@\" }", username, password, email, deviceToken] dataUsingEncoding:NSUTF8StringEncoding]];
     
+    NSLog(@"%@", request.HTTPBody);
     AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
     op.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -32,7 +33,7 @@
         success(user);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
+        NSLog(@"%@", error.localizedDescription);
         if (failure != nil) failure(error, operation.response.statusCode);
     }];
     

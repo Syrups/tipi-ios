@@ -8,9 +8,13 @@
 
 #import "ReadModeContainerViewController.h"
 #import "ReadModeViewController.h"
+#import "Configuration.h"
+#import <AFURLSessionManager.h>
+
+
+typedef void(^fadeOutCompletion)(BOOL);
 
 @interface ReadModeContainerViewController ()
-
 @end
 
 @implementation ReadModeContainerViewController
@@ -48,6 +52,7 @@
     ReadModeViewController *newController = [self.storyboard instantiateViewControllerWithIdentifier: @"ReadMode"];
     newController.idx = i;
     newController.page = [self.mPages objectAtIndex:i];
+    newController.parent = self;
     
     return newController;
 }
@@ -99,6 +104,63 @@
 }
 
 
+- (void)playSound:(NSURL*)filePath {
+    
+    if(self.player != nil){
+        
+        if(self.player.isPlaying){
+            
+            //Same file means pause
+            if([self.player.url isEqual:filePath]){
+                [self doVolumeFadeAndPause];
+            }else{//Different file mean stop for current and play for new
+                
+                [self doVolumeFadeAndStop];
+                //Stop callback
+                self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:filePath error:nil];
+            }
+        }else{//Not playing
+            //DoFadeInAndPlay
+            if(![self.player.url isEqual:filePath]){
+                self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:filePath error:nil];
+            }
+            [self.player play];
+        }
+    }else{
+        self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:filePath error:nil];
+        [self.player play];
+    }
+    
+}
+
+-(void)doVolumeFadeAndStop{
+  [self doVolumeFade:^(BOOL stop) {
+      // Stop and get the sound ready for playing again
+      [self.player stop];
+      self.player.currentTime = 0;
+      [self.player prepareToPlay];
+      self.player.volume = 1.0;
+  }];
+}
+
+-(void)doVolumeFadeAndPause{
+    [self doVolumeFade:^(BOOL stop)  {
+        // Stop and get the sound ready for playing again
+        [self.player stop];
+        self.player.currentTime = 0;
+        [self.player prepareToPlay];
+        self.player.volume = 1.0;
+    }];
+}
+
+-(void)doVolumeFade: (fadeOutCompletion) completion{
+    if (self.player.volume > 0.1) {
+        self.player.volume = self.player.volume - 0.1;
+        [self performSelector:@selector(doVolumeFade:) withObject:completion afterDelay:0.1];
+    } else {
+        completion(YES);
+    }
+}
 
 /*
 #pragma mark - Navigation

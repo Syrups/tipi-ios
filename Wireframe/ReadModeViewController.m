@@ -12,9 +12,7 @@
 #import <AFURLSessionManager.h>
 @import AVFoundation;
 
-@interface ReadModeViewController (){
-    AVAudioPlayer* player;
-}
+@interface ReadModeViewController ()
 @end
 
 @implementation ReadModeViewController
@@ -29,8 +27,10 @@
     
     NSString *fileUrl = [NSString stringWithFormat:@"%@%@",kAudioRootUrl, [self.page.audio.file lastPathComponent]];
     [self downloadFileWithURL:fileUrl completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-        player = [[AVAudioPlayer alloc] initWithContentsOfURL:filePath error:nil];
-        NSLog(@"File downloaded to: %@", filePath);
+
+        self.fileURL = filePath;
+        
+        NSLog(@"File %@ downloaded to: %@",fileUrl, filePath);
     }];
 }
 
@@ -50,8 +50,8 @@
 */
 
 - (IBAction)playSound:(id)sender {
-    if(player){
-        [player play];
+    if(self.fileURL){
+        [self.parent playSound:self.fileURL];
     }
 }
 
