@@ -807,10 +807,10 @@
             </objects>
             <point key="canvasLocation" x="2548" y="-597"/>
         </scene>
-        <!--View Controller-->
+        <!--Sandbox View Controller-->
         <scene sceneID="o0J-2O-uUJ">
             <objects>
-                <viewController id="ICF-5f-zLq" sceneMemberID="viewController">
+                <viewController id="ICF-5f-zLq" customClass="SandboxViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hDo-7g-6y1"/>
                         <viewControllerLayoutGuide type="bottom" id="HRk-UA-BO5"/>
@@ -819,13 +819,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mlX-a7-jkC" customClass="SRAnimatedWaveView">
-                                <rect key="frame" x="0.0" y="85" width="320" height="295"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N0y-o8-Jho" customClass="AudioWave">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <gestureRecognizers/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="audioWave" destination="N0y-o8-Jho" id="uJB-CI-gt7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uhJ-Sv-bnn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -902,7 +905,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="15"/>
                                         <state key="normal" title="quitter sans sauvegarder">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>

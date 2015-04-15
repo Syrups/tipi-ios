@@ -65,7 +65,8 @@
 #pragma mark - StoryMediaRecorder
 
 - (void)mediaRecorder:(StoryMediaRecorder *)recorder hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
-    [self.audioWave updateBuffer:buffer[0] withBufferSize:bufferSize];
+    
+    [self.audioWave updateWithBuffer:buffer bufferSize:bufferSize withNumberOfChannels:numberOfChannels];
 }
 
 #pragma mark - UISwipeGestureRecognizer
