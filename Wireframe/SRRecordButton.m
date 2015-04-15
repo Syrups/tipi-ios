@@ -12,11 +12,14 @@
 @implementation SRRecordButton {
     NSTimer* timer;
     CGFloat circleOffset;
+    CGFloat startAngle;
+    NSTimer* appearanceTimer;
+    NSTimer* closingTimer;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self.currentTime = 0.0f;
-    circleOffset = 18;
+    circleOffset = 10;
     
     self = [super initWithCoder:aDecoder];
     self.backgroundColor = [UIColor clearColor];
@@ -37,6 +40,47 @@
     return self;
 }
 
+#pragma mark - Appearing and closing animations
+
+- (void)appear {
+    appearanceTimer = [NSTimer scheduledTimerWithTimeInterval:0.005f target:self selector:@selector(updateAppearing) userInfo:nil repeats:YES];
+}
+
+- (void)close {
+    closingTimer = [NSTimer scheduledTimerWithTimeInterval:0.005f target:self selector:@selector(updateClosing) userInfo:nil repeats:YES];
+}
+
+- (void)updateAppearing {
+    
+    if (self.currentTime >= self.duration) {
+        startAngle += .05f;
+        
+        if (startAngle >= M_2_PI) {
+            startAngle = 0;
+            self.currentTime = 0;
+            [appearanceTimer invalidate];
+        }
+    } else {
+        self.currentTime += .7f;
+    }
+
+    [self setNeedsDisplay];
+    [self setContentMode:UIViewContentModeRedraw];
+}
+
+- (void)updateClosing {
+    circleOffset -= 3.5f;
+    
+    if (circleOffset <= -self.frame.size.width/2 + 30) {
+        [closingTimer invalidate];
+    }
+    
+    [self setNeedsDisplay];
+    [self setContentMode:UIViewContentModeRedraw];
+}
+
+#pragma mark - Timer
+
 - (void)start {
     timer = [NSTimer scheduledTimerWithTimeInterval:0.05f target:self selector:@selector(update) userInfo:nil repeats:YES];
 }
@@ -48,7 +92,7 @@
 - (void)reset {
     [timer invalidate];
     self.currentTime = 0;
-    circleOffset = 18;
+    circleOffset = 10;
     
     [self setNeedsDisplay];
 }
@@ -66,9 +110,9 @@
     CGContextSetStrokeColorWithColor(ctx, self.color.CGColor);
     CGContextSetLineWidth(ctx, 8.0f);
     CGContextStrokePath(ctx);
-    
+
     CGContextBeginPath(ctx);
-    CGContextAddArc(ctx, center.x, center.y, self.frame.size.width/2.5f + circleOffset, -M_PI_2, [self getAnglePercent], 0);
+    CGContextAddArc(ctx, center.x, center.y, self.frame.size.width/2.5f + circleOffset, -M_PI_2 + startAngle, [self getAnglePercent], 0);
     CGContextSetStrokeColorWithColor(ctx, self.fillColor.CGColor);
     CGContextSetLineWidth(ctx, 8.0f);
     CGContextStrokePath(ctx);
@@ -91,7 +135,7 @@
 }
 
 - (CGFloat)getAnglePercent {
-    return -M_PI_2 + (M_PI*2 * self.currentTime) / self.duration;
+    return startAngle + (-M_PI_2 + (M_PI*2 * self.currentTime) / self.duration);
 }
 
 - (void)update {
@@ -102,7 +146,7 @@
     [self setNeedsDisplay];
     [self setContentMode:UIViewContentModeRedraw];
     
-    circleOffset -= 0.1f;
+    circleOffset -= 0.05f;
 }
 
 @end

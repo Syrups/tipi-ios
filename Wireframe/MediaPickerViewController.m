@@ -35,7 +35,7 @@
     unorderedMedias = [NSMutableArray array];
     
     currentOffset = 0;
-    [self.library fetchMediasFromLibraryFrom:currentOffset to:currentOffset+10];
+    [self.library fetchMediasFromLibraryFrom:currentOffset to:currentOffset + kMediaPickerMediaLimit];
 }
 
 - (IBAction)back:(id)sender {
@@ -46,13 +46,20 @@
 #pragma mark - MediaLibrary
 
 - (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedias:(NSArray *)medias from:(NSUInteger)start to:(NSUInteger)limit {
+    
+    // reverse array
+    NSMutableArray *reversed = [NSMutableArray arrayWithCapacity:[medias count]];
+    NSEnumerator *enumerator = [medias reverseObjectEnumerator];
+    for (id element in enumerator) {
+        [reversed addObject:element];
+    }
 
     self.activityIndicator.hidden = YES;
     loading = NO;
-    [self.medias addObjectsFromArray:medias];
+    [self.medias addObjectsFromArray:reversed];
     
     [self.mediaCollectionView reloadData];
-        currentOffset += 11;
+        currentOffset += kMediaPickerMediaLimit + 1;
 
     
 }
@@ -77,6 +84,16 @@
     }
     
     [image setImage:[media objectForKey:@"image"]];
+    
+    if (cell.tag == 0) {
+        image.transform = CGAffineTransformMakeScale(0, 0);
+        
+        [UIView animateWithDuration:0.2f delay:indexPath.row*0.03f options:UIViewAnimationOptionCurveEaseIn animations:^{
+            image.transform = CGAffineTransformMakeScale(1, 1);
+        } completion:nil];
+        cell.tag = 1;
+    }
+
     
     UIView* vidIcon = (UIView*)[cell.contentView viewWithTag:20];
     UIView* check = (UIView*)[cell.contentView viewWithTag:30];
@@ -126,12 +143,14 @@
         }];
         [selectedIndexes addObject:indexPath];
         [self.saver.medias addObject:[self.medias objectAtIndex:indexPath.row]];
+        [self.wave grow];
     } else {
         [UIView animateWithDuration:0.3f animations:^{
             check.alpha = 0;
         }];
         [selectedIndexes removeObject:indexPath];
         [self.saver.medias removeObject:[self.medias objectAtIndex:indexPath.row]];
+        [self.wave ungrow];
     }
     
     if (selectedIndexes.count > 0) {

@@ -10,7 +10,10 @@
 
 @interface WaveBackground : UIView
 
+@property CGFloat growingAmount;
+
 - (void)shuffle;
 - (void)grow;
+- (void)ungrow;
 
 @end

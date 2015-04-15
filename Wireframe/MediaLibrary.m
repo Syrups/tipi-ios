@@ -7,6 +7,7 @@
 //
 
 #import "MediaLibrary.h"
+#import "AppDelegate.h"
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 
@@ -22,19 +23,10 @@
     return self;
 }
 
-+ (ALAssetsLibrary *)defaultAssetsLibrary {
-    static dispatch_once_t pred = 0;
-    static ALAssetsLibrary *library = nil;
-    dispatch_once(&pred, ^{
-        library = [[ALAssetsLibrary alloc] init];
-    });
-    return library;
-}
-
 - (void)fetchMediasFromLibraryFrom:(NSUInteger)start to:(NSUInteger)limit {
     
     NSMutableArray* assetGroups = [NSMutableArray array];
-    ALAssetsLibrary* library = [MediaLibrary defaultAssetsLibrary];
+    ALAssetsLibrary* library = [AppDelegate defaultAssetsLibrary];
     NSMutableArray* medias = [NSMutableArray array];
     
     [library enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
@@ -50,22 +42,20 @@
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 //                        NSLog(@"asset - %ld / %ld", (unsigned long)index, (unsigned long)group.numberOfAssets);
                         NSURL *url= (NSURL*) [[result defaultRepresentation]url];
-                        
-                        ALAssetRepresentation* rep = [result defaultRepresentation];
-                        
-                        
+
                         
                         UIImage* image = [UIImage imageWithCGImage:[result thumbnail]];
-                        UIImage* fullImage = [UIImage imageWithCGImage:[rep fullScreenImage]];
+//                        UIImage* fullImage = [UIImage imageWithCGImage:[rep fullScreenImage]];
                         
                         
                             NSDictionary* media = @{
                                                     @"image": image,
-                                                    @"full": fullImage,
+                                                    @"asset": result,
+//                                                    @"full": fullImage,
                                                     @"date": [result valueForProperty:ALAssetPropertyDate],
                                                     @"type": [result valueForProperty:ALAssetPropertyType],
                                                     @"url": url
-                                                    };
+                                                    }.mutableCopy;
                             
                             [medias addObject:media];
                             

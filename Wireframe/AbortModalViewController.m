@@ -9,10 +9,6 @@
 #import "AbortModalViewController.h"
 #import "StoryWIPSaver.h"
 
-@interface AbortModalViewController ()
-
-@end
-
 @implementation AbortModalViewController
 
 - (void)viewDidLoad {
@@ -24,24 +20,28 @@
 }
 
 - (IBAction)cancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [UIView animateWithDuration:0.2f animations:^{
+        self.view.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self.view removeFromSuperview];
+        [self removeFromParentViewController];
+    }];
 }
 
 - (IBAction)discard:(id)sender {
     [[StoryWIPSaver sharedSaver] discard];
-    UINavigationController* previous = (UINavigationController*)self.presentingViewController;
-    [self dismissViewControllerAnimated:YES completion:^{
-        [previous popToRootViewControllerAnimated:YES];
-    }];
+    UINavigationController* previous = (UINavigationController*)self.parentViewController.navigationController;
+    [self removeFromParentViewController];
+    [previous popToRootViewControllerAnimated:YES];
 }
 
 - (IBAction)save:(id)sender {
     [[StoryWIPSaver sharedSaver] save];
     
-    UINavigationController* previous = (UINavigationController*)self.presentingViewController;
-    [self dismissViewControllerAnimated:YES completion:^{
-        [previous popToRootViewControllerAnimated:YES];
-    }];
+    UINavigationController* previous = (UINavigationController*)self.parentViewController.navigationController;
+    [self removeFromParentViewController];
+    [previous popToRootViewControllerAnimated:YES];
+
 }
 
 @end

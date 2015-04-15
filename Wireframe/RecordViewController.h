@@ -11,20 +11,20 @@
 #import "StoryWIPSaver.h"
 #import "StoryMediaRecorder.h"
 #import "SRRecordButton.h"
+#import "AudioWave.h"
+#import "PreviewBubble.h"
 
-
-@interface RecordViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate, EZMicrophoneDelegate, StoryMediaRecorderDelegate>
+@interface RecordViewController : UIViewController <EZMicrophoneDelegate, StoryMediaRecorderDelegate, UIGestureRecognizerDelegate>
 
 @property NSUInteger currentIndex;
-@property (strong, nonatomic) UIPageViewController* pageViewController;
-@property (strong, nonatomic) NSMutableArray* pages;
 @property (strong, nonatomic) IBOutlet UIButton* recordButton;
 @property (strong, nonatomic) IBOutlet UIView* eraseWarning;
 @property (strong, nonatomic) IBOutlet SRRecordButton* recordTimer;
 @property (strong, nonatomic) IBOutlet UIView* replay;
 @property (strong, nonatomic) StoryWIPSaver* saver;
 @property (strong, nonatomic) StoryMediaRecorder* recorder;
-@property (strong, nonatomic) EZAudioPlotGL* audioPlot;
+@property (strong, nonatomic) IBOutlet AudioWave* audioWave;
+@property (strong, nonatomic) IBOutlet PreviewBubble* previewBubble;
 
 @property BOOL lastPage;
 
