@@ -8,13 +8,45 @@
 
 #import "SandboxViewController.h"
 
-@implementation SandboxViewController
+
+@implementation SandboxViewController {
+    CGFloat lastValue;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self.button appear];
+    //[self.button appear];
+    
+    NSError *error;
+    
+    self.microphone = [EZMicrophone microphoneWithDelegate:self];
+    [self.microphone startFetchingAudio];
+    
+    if(error) {
+        NSLog(@"Ups, could not create recorder %@", error);
+        return;
+    }
+    
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+    
+    if (error) {
+        NSLog(@"Error setting category: %@", [error description]);
+    }
+    
+    [self.recorder prepareToRecord];
+    [self.recorder setMeteringEnabled:YES];
+    [self.recorder record];
+    
+    self.audioWave.deployed = YES;
+    
+}
+
+
+- (void)microphone:(EZMicrophone *)microphone hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
+    
+    [self.audioWave updateWithBuffer:buffer bufferSize:bufferSize withNumberOfChannels:numberOfChannels];
 }
 
 

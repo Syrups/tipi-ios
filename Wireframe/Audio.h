@@ -11,7 +11,7 @@
 @interface Audio : JSONModel
 
 @property (strong, nonatomic) NSString* file;
-@property (strong, nonatomic) NSString* duration;
+@property (strong, nonatomic) NSString<Optional>* duration;
 
 @end
 

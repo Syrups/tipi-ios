@@ -11,6 +11,8 @@
 
 #import "UserSession.h"
 
+//shelter-dev.herokuapp.com
+//localhost:3000
 #define kApiRootUrl @"http://shelter-dev.herokuapp.com/api/v1"
 #define kMediaRootUrl @"http://shelter-dev.herokuapp.com/uploads/media/"
 #define kAudioRootUrl @"http://shelter-dev.herokuapp.com/uploads/audio/"

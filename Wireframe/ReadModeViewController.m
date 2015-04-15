@@ -9,9 +9,10 @@
 #import "ReadModeViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "Configuration.h"
+#import <AFURLSessionManager.h>
+@import AVFoundation;
 
 @interface ReadModeViewController ()
-
 @end
 
 @implementation ReadModeViewController
@@ -20,9 +21,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //NSString *url = [NSString stringWithFormat:@"%@%@",kMediaRootUrl, self.page.media.u];
-    [self.image sd_setImageWithURL:[NSURL URLWithString:@"http://www.domain.com/path/to/image.jpg"]
-                      placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    NSString *url = [NSString stringWithFormat:@"%@%@",kMediaRootUrl, [self.page.media.file lastPathComponent]];
+    ///api/v1/pages/:page_id/media
+    [self.image sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"placeholder.gif"]];
+    
+    NSString *fileUrl = [NSString stringWithFormat:@"%@%@",kAudioRootUrl, [self.page.audio.file lastPathComponent]];
+    [self downloadFileWithURL:fileUrl completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+
+        self.fileURL = filePath;
+        
+        NSLog(@"File %@ downloaded to: %@",fileUrl, filePath);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,5 +50,23 @@
 */
 
 - (IBAction)playSound:(id)sender {
+    if(self.fileURL){
+        [self.parent playSound:self.fileURL];
+    }
+}
+
+- (void) downloadFileWithURL: (NSString *) fileURL  completionHandler:(void (^)(NSURLResponse *response, NSURL *filePath, NSError *error)) completionHandler{
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSURL *URL = [NSURL URLWithString:fileURL];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+        return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+    } completionHandler:completionHandler];
+    
+    [downloadTask resume];
 }
 @end

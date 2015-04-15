@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "SRRecordButton.h"
+#import <AVFoundation/AVFoundation.h>
+#import "AudioWave.h"
+#import <EZMicrophone.h>
 
-@interface SandboxViewController : UIViewController
+@interface SandboxViewController : UIViewController <EZMicrophoneDelegate>
 
 @property (strong, nonatomic) IBOutlet SRRecordButton* button;
+@property (nonatomic, strong) AVAudioRecorder *recorder;
+@property (weak, nonatomic) IBOutlet AudioWave *audioWave;
+@property (strong, nonatomic) EZMicrophone* microphone;
 
 @end

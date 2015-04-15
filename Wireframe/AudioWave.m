@@ -7,18 +7,51 @@
 //
 
 #import "AudioWave.h"
+static const CGFloat kDefaultFrequency          = 1.5f;
+static const CGFloat kDefaultAmplitude          = 1.0f;
+static const CGFloat kDefaultIdleAmplitude      = 0.01f;
+static const CGFloat kDefaultNumberOfWaves      = 5.0f;
+static const CGFloat kDefaultPhaseShift         = -0.15f;
+static const CGFloat kDefaultDensity            = 5.0f;
+static const CGFloat kDefaultPrimaryLineWidth   = 3.0f;
+static const CGFloat kDefaultSecondaryLineWidth = 1.0f;
+
+@interface AudioWave ()
+
+@property (nonatomic, assign) CGFloat phase;
+@property (nonatomic, assign) CGFloat amplitude;
+
+@end
+
 
 @implementation AudioWave {
     CAShapeLayer* shapeLayer;
     BOOL animating;
     CGFloat audioRate;
+    CGFloat lastValue;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
     if (self) {
+        
+        CADisplayLink *displaylink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateSelf)];
+        [displaylink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+        
         self.backgroundColor = RgbColorAlpha(43, 75, 122, 0.8f);
+        
+        self.frequency = kDefaultFrequency;
+        
+        self.amplitude = kDefaultAmplitude;
+        self.idleAmplitude = kDefaultIdleAmplitude;
+        
+        self.numberOfWaves = kDefaultNumberOfWaves;
+        self.phaseShift = kDefaultPhaseShift;
+        self.density = kDefaultDensity;
+        
+        self.primaryWaveLineWidth = kDefaultPrimaryLineWidth;
+        self.secondaryWaveLineWidth = kDefaultSecondaryLineWidth;
     }
     return self;
 }
@@ -34,7 +67,7 @@
 
 
 
-- (CGPathRef)pathForLayer {
+- (CGPathRef)pathForLayer{
     UIBezierPath* path = [[UIBezierPath alloc] init];
     
     CGFloat o = !self.deployed ? self.frame.size.height + 80 : self.frame.size.height/2 + 50;
@@ -45,7 +78,21 @@
     CGPoint end = CGPointMake(self.frame.size.width, start.y - 40 - arc4random_uniform(audioRate));
     
     [path moveToPoint:start];
-    [path addCurveToPoint:end controlPoint1:c1 controlPoint2:c2];
+    //[path addCurveToPoint:end controlPoint1:c1 controlPoint2:c2];
+    
+    for (CGFloat x = 0; x<width + self.density; x += self.density) {
+        // We use a parable to scale the sinus wave, that has its peak in the middle of the view.
+        CGFloat scaling = -pow(1 / mid * (x - mid), 2) + 1;
+        
+        CGFloat y = scaling * maxAmplitude * self.amplitude * sinf(2 * M_PI *(x / width) * self.frequency + self.phase) + halfHeight;
+        
+        if (x == 0) {
+            [path moveToPoint:CGPointMake(x, y)];
+        } else {
+            //CGContextAddLineToPoint(context, x, y);
+            [path addLineToPoint:CGPointMake(x, y)];
+        }
+    }
     
     [path addLineToPoint:CGPointMake(self.frame.size.width, self.frame.size.height)];
     [path addLineToPoint:CGPointMake(0, self.frame.size.height)];
@@ -53,6 +100,7 @@
     
     return path.CGPath;
 }
+
 
 - (void)hide {
     self.deployed = NO;
@@ -84,22 +132,31 @@
     [CATransaction commit];
 }
 
-- (void)updateBuffer:(float *)buffer withBufferSize:(UInt32)bufferSize {
+- (void)updateWithBuffer:(float **)buffer bufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
     
-    if (animating) return;
-    animating = YES;
+    float* channel = buffer[0];
     
-    CGFloat max = 0;
-    
-    for (int i = 0 ; i < bufferSize ; i++) {
-        if (max < buffer[i])
-            max = buffer[i];
+    CGFloat max = 0.0;
+    for (int i = 0 ; i < bufferSize ; ++i) {
+        if (*(channel+i) > max && *(channel+i) < .1f) max = *(channel+i);
     }
     
-    audioRate = max * 500;
+    lastValue = max;
+}
+
+
+- (void)updateWithLevel:(CGFloat)level
+{
+    self.phase += self.phaseShift;
+    self.amplitude = fmax(level, self.idleAmplitude);
+   
     
-    [self performSelectorOnMainThread:@selector(morph) withObject:nil waitUntilDone:NO];
-    
+    [self setNeedsDisplay];
+}
+
+- (void)updateSelf
+{
+       [self updateWithLevel:lastValue];
 }
 
 @end

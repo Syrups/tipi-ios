@@ -8,9 +8,13 @@
 
 #import "ReadModeContainerViewController.h"
 #import "ReadModeViewController.h"
+#import "Configuration.h"
+#import <AFURLSessionManager.h>
+
+
+typedef void(^fadeOutCompletion)(BOOL);
 
 @interface ReadModeContainerViewController ()
-
 @end
 
 @implementation ReadModeContainerViewController
@@ -25,6 +29,47 @@
     
     // Point the datasource back to this UIViewController.
     self.pager.dataSource = self;
+    
+   
+    
+    
+    StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
+    [manager fetchStoryWithId:self.storyId];
+    
+}
+
+// Factory method
+- (UIViewController *)viewControllerAtIndex:(int)i {
+    // Asking for a page that is out of bounds??
+    if (i<0) {
+        return nil;
+    }
+    if (i>=self.mPages.count) {
+        return nil;
+    }
+    
+    // Assuming you have SomePageViewController.xib
+    ReadModeViewController *newController = [self.storyboard instantiateViewControllerWithIdentifier: @"ReadMode"];
+    newController.idx = i;
+    newController.page = [self.mPages objectAtIndex:i];
+    newController.parent = self;
+    
+    return newController;
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+    ReadModeViewController *p = (ReadModeViewController *)viewController;
+    return [self viewControllerAtIndex:(p.idx - 1)];
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+    ReadModeViewController *p = (ReadModeViewController *)viewController;
+    return [self viewControllerAtIndex:(p.idx + 1)];
+}
+
+- (void)storyManager:(StoryManager*)manager successfullyFetchedStory:(Story *)story{
+    self.story = story;
+    self.mPages = self.story.pages;
     
     // Start at the first page of the array?
     int initialIndex = 0;
@@ -51,43 +96,6 @@
     [self.pager didMoveToParentViewController:self];
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    
-    StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
-    [manager fetchStoryWithId:self.storyId];
-    
-}
-
-// Factory method
-- (UIViewController *)viewControllerAtIndex:(int)i {
-    // Asking for a page that is out of bounds??
-    if (i<0) {
-        return nil;
-    }
-    if (i>=self.mPages.count) {
-        return nil;
-    }
-    
-    // Assuming you have SomePageViewController.xib
-    ReadModeViewController *newController = [self.storyboard instantiateViewControllerWithIdentifier: @"ReadMode"];
-    newController.idx = i;
-    newController.page = [self.mPages objectAtIndex:i];
-    
-    return newController;
-}
-
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
-    ReadModeViewController *p = (ReadModeViewController *)viewController;
-    return [self viewControllerAtIndex:(p.idx - 1)];
-}
-
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
-    ReadModeViewController *p = (ReadModeViewController *)viewController;
-    return [self viewControllerAtIndex:(p.idx + 1)];
-}
-
-- (void)storyManager:(StoryManager*)manager successfullyFetchedStory:(Story *)story{
-    self.story = story;
-    self.mPages = self.story.pages;
 }
 
 
@@ -96,6 +104,63 @@
 }
 
 
+- (void)playSound:(NSURL*)filePath {
+    
+    if(self.player != nil){
+        
+        if(self.player.isPlaying){
+            
+            //Same file means pause
+            if([self.player.url isEqual:filePath]){
+                [self doVolumeFadeAndPause];
+            }else{//Different file mean stop for current and play for new
+                
+                [self doVolumeFadeAndStop];
+                //Stop callback
+                self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:filePath error:nil];
+            }
+        }else{//Not playing
+            //DoFadeInAndPlay
+            if(![self.player.url isEqual:filePath]){
+                self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:filePath error:nil];
+            }
+            [self.player play];
+        }
+    }else{
+        self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:filePath error:nil];
+        [self.player play];
+    }
+    
+}
+
+-(void)doVolumeFadeAndStop{
+  [self doVolumeFade:^(BOOL stop) {
+      // Stop and get the sound ready for playing again
+      [self.player stop];
+      self.player.currentTime = 0;
+      [self.player prepareToPlay];
+      self.player.volume = 1.0;
+  }];
+}
+
+-(void)doVolumeFadeAndPause{
+    [self doVolumeFade:^(BOOL stop)  {
+        // Stop and get the sound ready for playing again
+        [self.player stop];
+        self.player.currentTime = 0;
+        [self.player prepareToPlay];
+        self.player.volume = 1.0;
+    }];
+}
+
+-(void)doVolumeFade: (fadeOutCompletion) completion{
+    if (self.player.volume > 0.1) {
+        self.player.volume = self.player.volume - 0.1;
+        [self performSelector:@selector(doVolumeFade:) withObject:completion afterDelay:0.1];
+    } else {
+        completion(YES);
+    }
+}
 
 /*
 #pragma mark - Navigation
