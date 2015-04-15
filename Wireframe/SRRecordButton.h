@@ -15,6 +15,8 @@
 @property CGFloat duration;
 @property CGFloat currentTime;
 
+- (void)appear;
+- (void)close;
 - (void)start;
 - (void)pause;
 - (void)reset;

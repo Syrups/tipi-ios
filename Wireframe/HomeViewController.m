@@ -51,8 +51,10 @@
     
     // And make sure to activate!
     [self.pager didMoveToParentViewController:self];
+
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
+
 }
 
 // Factory method
@@ -83,8 +85,6 @@
     BaseHomeViewController *p = (BaseHomeViewController *)viewController;
     return [self viewControllerAtIndex:(p.idx + 1)];
 }
-
-
 
 -(IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
     [self.navigationController popViewControllerAnimated:YES];

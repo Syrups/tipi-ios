@@ -20,6 +20,7 @@
 #define kSessionStoreId    @"user.id"
 #define kSessionStoreToken @"user.token"
 
+#define kMediaPickerMediaLimit 999999
 
 #define ErrorAlert(msg) UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Erreur" message:msg delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil]; \
 [alert show];

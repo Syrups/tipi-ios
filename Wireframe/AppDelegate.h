@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 #import "UserController.h"
 #import "StoryController.h"
 #import "RoomController.h"
@@ -17,6 +18,8 @@
 @property (strong, nonatomic) UserController* userController;
 @property (strong, nonatomic) StoryController* storyController;
 @property (strong, nonatomic) RoomController* roomController;
+
++ (ALAssetsLibrary *)defaultAssetsLibrary;
 
 @end
 

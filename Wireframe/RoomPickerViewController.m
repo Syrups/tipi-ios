@@ -7,6 +7,7 @@
 //
 
 #import "RoomPickerViewController.h"
+#import "RoomListFlowLayout.h"
 #import "UserSession.h"
 #import "StoryManager.h"
 #import "StoryWIPSaver.h"
@@ -108,7 +109,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.rooms.count+1;
+    return self.rooms.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -116,26 +117,15 @@
     
     Room* room = nil;
     
-    if (self.rooms.count > 0 && indexPath.row <= self.rooms.count-1) {
-        room = [self.rooms objectAtIndex:indexPath.row];
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RoomCell" forIndexPath:indexPath];
-    } else {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CreateRoomCell" forIndexPath:indexPath];
-    }
-    
+    room = [self.rooms objectAtIndex:indexPath.row];
+    cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RoomCell" forIndexPath:indexPath];
+
     if (cell == nil) {
         cell = [[UICollectionViewCell alloc] init];
     }
     
-    for (UIView* v in cell.contentView.subviews) {
-        v.layer.borderWidth = 1;
-        v.layer.borderColor = [UIColor blackColor].CGColor;
-    }
-    
-    if (indexPath.row < self.rooms.count) {
-        UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
-        name.text = room.name;
-    }
+    UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
+    name.text = room.name;
     
     return cell;
 }
@@ -151,25 +141,43 @@
     
     if (![selectedRooms containsObject:room]) {
         [selectedRooms addObject:room];
-        
-        for (UIView* v in cell.contentView.subviews) {
-            v.backgroundColor = [UIColor blackColor];
-            v.layer.borderColor = [UIColor whiteColor].CGColor;
-        }
+
         
         UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
         name.textColor = [UIColor whiteColor];
         
     } else {
         [selectedRooms removeObject:room];
-        for (UIView* v in cell.contentView.subviews) {
-            v.backgroundColor = [UIColor whiteColor];
-            v.layer.borderColor = [UIColor blackColor].CGColor;
-        }
-        
+
         UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
         name.textColor = [UIColor blackColor];
     }
+}
+
+#pragma mark - UIScrollView
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        CGPoint point = CGPointMake(self.roomsCollectionView.frame.size.width/2, self.roomsCollectionView.contentOffset.y + 100);
+        NSIndexPath* indexPath = [self.roomsCollectionView indexPathForItemAtPoint:point];
+        UICollectionViewCell* cell = [self.roomsCollectionView cellForItemAtIndexPath:indexPath];
+        
+        cell.transform = CGAffineTransformMakeScale(1.2f, 1.2f);
+        
+        UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
+        name.alpha = 1;
+        
+        [[self.roomsCollectionView indexPathsForVisibleItems] enumerateObjectsUsingBlock:^(NSIndexPath* _indexPath, NSUInteger idx, BOOL *stop) {
+            if (indexPath.row != _indexPath.row) {
+                UICollectionViewCell* cell = [self.roomsCollectionView cellForItemAtIndexPath:_indexPath];
+                cell.transform = CGAffineTransformMakeScale(1, 1);
+                
+                UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
+                name.alpha = 0.6f;
+            }
+        }];
+
+    } completion:nil];
 }
 
 @end

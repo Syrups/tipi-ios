@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import <CoreMotion/CoreMotion.h>
 
 @interface RecordPageViewController : UIViewController
 
@@ -18,5 +19,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView* imageView;
 @property (strong, nonatomic) AVPlayer* moviePlayer;
 @property (strong, nonatomic) AVPlayerLayer* moviePlayerLayer;
+@property (strong, nonatomic) CMMotionManager* motionManager;
+@property BOOL imagePanningEnabled;
 
 @end

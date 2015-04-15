@@ -10,7 +10,7 @@
 #import "RecordViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
-#define CELL_SIZE 180
+#define CELL_SIZE 140
 #define INACTIVE_CELL_OPACITY 0.3f
 #define ACTIVE_CELL_ROTATION 0.05f
 
@@ -33,7 +33,25 @@
     
     self.saver = [StoryWIPSaver sharedSaver];
     
+    // Okay, so we load the first XX images in full resolution
+    // so they can display immediately on collection view,
+    // while we load all the others in the background thread.
     
+    [self.saver.medias enumerateObjectsUsingBlock:^(NSMutableDictionary* media, NSUInteger idx, BOOL *stop) {
+        if (idx < 4) {
+            ALAsset* asset = (ALAsset*)[media objectForKey:@"asset"];
+            UIImage* full = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
+            [media setObject:full forKey:@"full"];
+        }
+    }];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        [self.saver.medias enumerateObjectsUsingBlock:^(NSMutableDictionary* media, NSUInteger idx, BOOL *stop) {
+            ALAsset* asset = (ALAsset*)[media objectForKey:@"asset"];
+            UIImage* full = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
+            [media setObject:full forKey:@"full"];
+        }];
+    });
 
 }
 
@@ -89,7 +107,7 @@
 //        cell.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(ACTIVE_CELL_ROTATION));
         firstLoad = YES;
     } else {
-        cell.alpha = INACTIVE_CELL_OPACITY;
+//        cell.alpha = INACTIVE_CELL_OPACITY;
     }
     
     return cell;
@@ -136,7 +154,7 @@
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout willEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
     
     UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
-    cell.transform = CGAffineTransformMakeRotation(0);
+//    cell.transform = CGAffineTransformMakeRotation(0);
     
     NSLog(@"%f", cell.bounds.origin.y);
 }
@@ -171,7 +189,7 @@
         UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:indexPath];
 //        cell.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1, 1), CGAffineTransformMakeRotation(0));
         cell.layer.zPosition = 0;
-        cell.alpha = INACTIVE_CELL_OPACITY;
+//        cell.alpha = INACTIVE_CELL_OPACITY;
     } completion:nil];
 }
 

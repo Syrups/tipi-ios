@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "StoryWIPSaver.h"
 #import "MediaLibrary.h"
+#import "WaveBackground.h"
 
 @interface MediaPickerViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, MediaLibraryDelegate>
 
@@ -19,5 +20,6 @@
 @property (strong, nonatomic) IBOutlet UILabel* selectedCount;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView* activityIndicator;
 @property (strong, nonatomic) IBOutlet UIButton* continueButton;
+@property (strong, nonatomic) IBOutlet WaveBackground* wave;
 
 @end

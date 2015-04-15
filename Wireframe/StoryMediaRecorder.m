@@ -126,7 +126,9 @@
 
 - (void)microphone:(EZMicrophone *)microphone hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
     if ([self.delegate respondsToSelector:@selector(mediaRecorder:hasAudioReceived:withBufferSize:withNumberOfChannels:)]) {
-        [self.delegate mediaRecorder:self hasAudioReceived:buffer withBufferSize:bufferSize withNumberOfChannels:numberOfChannels];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            [self.delegate mediaRecorder:self hasAudioReceived:buffer withBufferSize:bufferSize withNumberOfChannels:numberOfChannels];
+        });
     }
 }
 
