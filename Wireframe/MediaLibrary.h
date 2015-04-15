@@ -13,7 +13,10 @@
 @property (strong, nonatomic) id delegate;
 @property (strong, nonatomic) NSMutableArray* cachedMedias;
 @property (strong, nonatomic) NSMutableArray* medias;
+@property (strong, nonatomic) NSMutableArray* assets;
+@property NSUInteger totalMediasCount;
 
+- (void)preload;
 - (void)fetchMediasFromLibraryFrom:(NSUInteger)start to:(NSUInteger)limit;
 
 @end
