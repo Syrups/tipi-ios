@@ -33,7 +33,7 @@
     [first didMoveToParentViewController:self];
 
     UILongPressGestureRecognizer* press = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    press.minimumPressDuration = 0.3f;
+    press.minimumPressDuration = 0.2f;
     
     UISwipeGestureRecognizer* swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     swipe.direction = UISwipeGestureRecognizerDirectionLeft;
@@ -71,9 +71,18 @@
 #pragma mark - UISwipeGestureRecognizer
 
 - (void)handleSwipe:(UISwipeGestureRecognizer*)swipe {
-    [self.previewBubble expandWithCompletion:^{
-        [self goNextPage];
-    }];
+    if (self.previewBubble.hidden) {
+        [self.previewBubble appearWithCompletion:^{
+            [self.previewBubble expandWithCompletion:^{
+                [self goNextPage];
+            }];
+        }];
+    } else {
+        [self.previewBubble expandWithCompletion:^{
+            [self goNextPage];
+        }];
+    }
+    
 }
 
 - (void)handleSwipeBack:(UISwipeGestureRecognizer*)swipe {
@@ -91,7 +100,9 @@
         [self.recordTimer start];
         
         self.audioWave.deployed = YES;
-        [self.previewBubble hide];
+        [self.previewBubble hideWithCompletion:^{
+            
+        }];
         
         // Pause gyroscope panning
         [self currentPage].imagePanningEnabled = NO;
@@ -110,7 +121,9 @@
         // Requeue gyroscope panning
         [self currentPage].imagePanningEnabled = YES;
 
-        [self.previewBubble appear];
+        [self.previewBubble appearWithCompletion:^{
+            
+        }];
         [self.audioWave hide];
         
         if ([self currentPage].moviePlayer != nil) {
@@ -264,5 +277,10 @@
     return (RecordPageViewController*)self.childViewControllers[0];
 }
 
+#pragma mark - Stuff
+
+- (IBAction)applySepiaFilter:(id)sender {
+    [[self currentPage] applySepiaFilter];
+}
 
 @end

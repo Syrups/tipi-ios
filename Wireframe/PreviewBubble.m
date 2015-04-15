@@ -57,14 +57,14 @@
     [self setNeedsDisplay];
 }
 
-- (void)appear {
+- (void)appearWithCompletion:(void (^)())completionBlock {
     self.hidden = NO;
-    [self animateUpdate];
+    [self animateUpdateWithCompletion:completionBlock];
 }
 
-- (void)hide {
+- (void)hideWithCompletion:(void (^)())completionBlock {
     self.hidden = YES;
-    [self animateUpdate];
+    [self animateUpdateWithCompletion:completionBlock];
 }
 
 - (void)close {
@@ -97,10 +97,13 @@
     [CATransaction commit];
 }
 
-- (void)animateUpdate {
+- (void)animateUpdateWithCompletion:(void (^)())completionBlock {
+    [CATransaction begin];
+    [CATransaction setCompletionBlock:completionBlock];
+    
     CABasicAnimation* morph = [CABasicAnimation animationWithKeyPath:@"path"];
-    morph.duration = 0.3f;
-    morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    morph.duration = 0.2f;
+    morph.timingFunction = [CAMediaTimingFunction functionWithControlPoints:.45f :.14f :.84f :.48f];
     
     CGPathRef from = shapeLayer.path;
     CGPathRef to = [self pathForLayer];
@@ -111,6 +114,8 @@
     [shapeLayer addAnimation:morph forKey:@"morphing"];
     
     [shapeLayer.modelLayer setPath:to];
+    
+    [CATransaction commit];
 }
 
 - (CGPathRef)pathForLayer {

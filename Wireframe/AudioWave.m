@@ -37,12 +37,12 @@
 - (CGPathRef)pathForLayer {
     UIBezierPath* path = [[UIBezierPath alloc] init];
     
-    CGFloat o = !self.deployed ? self.frame.size.height + 50 : self.frame.size.height/2 + 50;
+    CGFloat o = !self.deployed ? self.frame.size.height + 80 : self.frame.size.height/2 + 50;
     
     CGPoint start = CGPointMake(0, o - arc4random_uniform(audioRate));
-    CGPoint c1 = CGPointMake(CGRectGetMidX(self.frame) - 30 - arc4random_uniform(20), start.y + arc4random_uniform(audioRate) + 50);
-    CGPoint c2 = CGPointMake(CGRectGetMidX(self.frame) + 30 + arc4random_uniform(20), start.y - (arc4random_uniform(audioRate) + 50));
-    CGPoint end = CGPointMake(self.frame.size.width, start.y - arc4random_uniform(audioRate));
+    CGPoint c1 = CGPointMake(CGRectGetMidX(self.frame) + 30 + arc4random_uniform(20), start.y + arc4random_uniform(audioRate) + 50);
+    CGPoint c2 = CGPointMake(CGRectGetMidX(self.frame) - 30 - arc4random_uniform(20), start.y - (arc4random_uniform(audioRate) + 50));
+    CGPoint end = CGPointMake(self.frame.size.width, start.y - 40 - arc4random_uniform(audioRate));
     
     [path moveToPoint:start];
     [path addCurveToPoint:end controlPoint1:c1 controlPoint2:c2];

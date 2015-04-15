@@ -14,8 +14,8 @@
 @property BOOL expanded;
 
 - (void)updateWithImage:(UIImage*)image;
-- (void)appear;
-- (void)hide;
+- (void)appearWithCompletion:(void(^)())completionBlock;
+- (void)hideWithCompletion:(void(^)())completionBlock;
 - (void)close;
 - (void)expandWithCompletion:(void(^)())completionBlock;
 

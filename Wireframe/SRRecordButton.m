@@ -43,6 +43,7 @@
 #pragma mark - Appearing and closing animations
 
 - (void)appear {
+    circleOffset = -self.frame.size.width/2 + 28;
     appearanceTimer = [NSTimer scheduledTimerWithTimeInterval:0.005f target:self selector:@selector(updateAppearing) userInfo:nil repeats:YES];
 }
 
@@ -52,17 +53,23 @@
 
 - (void)updateAppearing {
     
-    if (self.currentTime >= self.duration) {
-        startAngle += .05f;
-        
-        if (startAngle >= M_2_PI) {
-            startAngle = 0;
-            self.currentTime = 0;
-            [appearanceTimer invalidate];
-        }
-    } else {
-        self.currentTime += .7f;
+    circleOffset += 2;
+    
+    if (circleOffset >= 10) {
+        circleOffset = 10;
+        [appearanceTimer invalidate];
     }
+//    
+//    if (self.currentTime >= self.duration) {
+//        startAngle += .5f;
+//        
+//        if (startAngle >= M_2_PI) {
+//            startAngle = 0;
+//            self.currentTime = 0;
+//        }
+//    } else {
+//        self.currentTime += .7f;
+//    }
 
     [self setNeedsDisplay];
     [self setContentMode:UIViewContentModeRedraw];
@@ -73,6 +80,7 @@
     
     if (circleOffset <= -self.frame.size.width/2 + 30) {
         [closingTimer invalidate];
+        self.alpha = 0;
     }
     
     [self setNeedsDisplay];
