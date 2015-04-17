@@ -14,6 +14,7 @@
 @property (strong, nonatomic) UIColor* fillColor;
 @property CGFloat duration;
 @property CGFloat currentTime;
+@property BOOL appeared;
 
 - (void)appear;
 - (void)close;

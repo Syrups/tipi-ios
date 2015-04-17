@@ -10,10 +10,6 @@
 #import "MediaPickerViewController.h"
 #import "PKCollectionViewStickyHeaderFlowLayout.h"
 
-@interface MediaPickerViewController ()
-
-@end
-
 @implementation MediaPickerViewController {
     NSMutableArray* selectedIndexes;
     NSUInteger currentOffset;
@@ -86,10 +82,11 @@
     [image setImage:[media objectForKey:@"image"]];
     
     if (cell.tag == 0) {
-        image.transform = CGAffineTransformMakeScale(0, 0);
-        
+//        image.transform = CGAffineTransformMakeScale(0, 0);
+        image.alpha = 0;
         [UIView animateWithDuration:0.2f delay:indexPath.row*0.03f options:UIViewAnimationOptionCurveEaseIn animations:^{
-            image.transform = CGAffineTransformMakeScale(1, 1);
+//            image.transform = CGAffineTransformMakeScale(1, 1);
+            image.alpha = 1;
         } completion:nil];
         cell.tag = 1;
     }
@@ -158,7 +155,7 @@
         self.continueButton.alpha = 1;
     } else {
         self.continueButton.enabled = NO;
-        self.continueButton.alpha = 0.6f;
+        self.continueButton.alpha = 0.3f;
     }
     
     self.selectedCount.text = [NSString stringWithFormat:@"%ld médias sélectionnés", (unsigned long)selectedIndexes.count];
@@ -173,7 +170,7 @@
     
     if ([visibleIndexPaths containsObject:[NSIndexPath indexPathForItem:self.medias.count-1 inSection:0]] && !loading && self.medias.count < self.library.totalMediasCount) {
         loading = YES;
-        self.activityIndicator.hidden = NO;
+//        self.activityIndicator.hidden = NO;
         [self.library fetchMediasFromLibraryFrom:currentOffset to:currentOffset+10];
     }
 }

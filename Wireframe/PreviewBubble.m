@@ -10,6 +10,8 @@
 
 @implementation PreviewBubble {
     CAShapeLayer* shapeLayer;
+    CGFloat lastX;
+    CGFloat expandOffset;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
@@ -18,6 +20,7 @@
     if (self) {
         self.backgroundColor = [UIColor blackColor];
         self.hidden = YES;
+//        self.userInteractionEnabled = YES;
     }
     return self;
 }
@@ -121,12 +124,12 @@
 - (CGPathRef)pathForLayer {
     UIBezierPath* path = [[UIBezierPath alloc] init];
     
-    [path moveToPoint:CGPointMake(self.frame.size.width, 150)];
+    [path moveToPoint:CGPointMake(self.frame.size.width, 150 - (4*expandOffset))];
     
     if (self.hidden) {
         [path addLineToPoint:CGPointMake(self.frame.size.width, self.frame.size.height-150)];
     } else {
-        [path addQuadCurveToPoint:CGPointMake(self.frame.size.width, self.frame.size.height - 150) controlPoint:CGPointMake(self.frame.size.width/3, self.frame.size.height/2)];
+        [path addQuadCurveToPoint:CGPointMake(self.frame.size.width, self.frame.size.height - 150) controlPoint:CGPointMake(self.frame.size.width/2.5f - (8*expandOffset), self.frame.size.height/2 + (4*expandOffset))];
     }
     
     
@@ -143,6 +146,31 @@
     
     return path.CGPath;
 
+}
+
+#pragma mark - Drag
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    CGPoint location = [[touches anyObject] locationInView:self];
+    
+    lastX = location.x;
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    CGPoint location = [[touches anyObject] locationInView:self];
+    CGFloat deltaX = lastX - location.x;
+    
+    NSLog(@"%f", deltaX);
+    
+    if (deltaX > 0) {
+        expandOffset += 2;
+    }
+    
+    if (expandOffset > 10) {
+        [self.delegate previewBubbleDidDragToExpand:self];
+    }
+    
+    [self setNeedsDisplay];
 }
 
 @end

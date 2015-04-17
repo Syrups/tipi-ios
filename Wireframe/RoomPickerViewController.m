@@ -55,10 +55,12 @@
         uploadedMediasCount++;
     }
     
-    
     // all good
     if (uploadedMediasCount == self.saver.medias.count && uploadedAudiosCount == self.saver.medias.count) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self.navigationController popToRootViewControllerAnimated:NO];
+        
+        NSLog(@"%@", self.navigationController.parentViewController);
+        [self.navigationController.parentViewController.navigationController popToRootViewControllerAnimated:YES];
     }
 }
 
@@ -124,6 +126,10 @@
         cell = [[UICollectionViewCell alloc] init];
     }
     
+    if (indexPath.row == 0) {
+        cell.transform = CGAffineTransformMakeScale(1.3f, 1.3f);
+    }
+    
     UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
     name.text = room.name;
     
@@ -162,7 +168,7 @@
         NSIndexPath* indexPath = [self.roomsCollectionView indexPathForItemAtPoint:point];
         UICollectionViewCell* cell = [self.roomsCollectionView cellForItemAtIndexPath:indexPath];
         
-        cell.transform = CGAffineTransformMakeScale(1.2f, 1.2f);
+        cell.transform = CGAffineTransformMakeScale(1.3f, 1.3f);
         
         UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
         name.alpha = 1;

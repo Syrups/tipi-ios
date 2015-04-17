@@ -39,7 +39,7 @@ static const CGFloat kDefaultSecondaryLineWidth = 1.0f;
         CADisplayLink *displaylink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateSelf)];
         [displaylink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
         
-        self.backgroundColor = RgbColorAlpha(43, 75, 122, 0.8f);
+        self.backgroundColor = RgbColorAlpha(43, 75, 122, 0.4f);
         
         self.frequency = kDefaultFrequency;
         
@@ -70,13 +70,16 @@ static const CGFloat kDefaultSecondaryLineWidth = 1.0f;
 - (CGPathRef)pathForLayer{
     UIBezierPath* path = [[UIBezierPath alloc] init];
     
-    CGFloat o = !self.deployed ? self.frame.size.height + 80 : self.frame.size.height/2 + 50;
+    CGFloat halfHeight = CGRectGetHeight(self.bounds) / 2.0f;
+    CGFloat width = CGRectGetWidth(self.bounds);
+    CGFloat mid = width / 2.0f;
+    
+    const CGFloat maxAmplitude = halfHeight - 4.0f; // 4 corresponds to twice the stroke width
+    
+    CGFloat o = !self.deployed ? self.frame.size.height + 50 : self.frame.size.height/2 + 50;
     
     CGPoint start = CGPointMake(0, o - arc4random_uniform(audioRate));
-    CGPoint c1 = CGPointMake(CGRectGetMidX(self.frame) + 30 + arc4random_uniform(20), start.y + arc4random_uniform(audioRate) + 50);
-    CGPoint c2 = CGPointMake(CGRectGetMidX(self.frame) - 30 - arc4random_uniform(20), start.y - (arc4random_uniform(audioRate) + 50));
-    CGPoint end = CGPointMake(self.frame.size.width, start.y - 40 - arc4random_uniform(audioRate));
-    
+
     [path moveToPoint:start];
     //[path addCurveToPoint:end controlPoint1:c1 controlPoint2:c2];
     
@@ -149,7 +152,7 @@ static const CGFloat kDefaultSecondaryLineWidth = 1.0f;
 {
     self.phase += self.phaseShift;
     self.amplitude = fmax(level, self.idleAmplitude);
-   
+    self.backgroundColor = self.deployed ? RgbColorAlpha(43, 75, 122, 0.8f) :  RgbColorAlpha(43, 75, 122, 0.4f);
     
     [self setNeedsDisplay];
 }

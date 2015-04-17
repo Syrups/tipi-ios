@@ -10,6 +10,7 @@
 
 @interface PreviewBubble : UIView
 
+@property (weak) id delegate;
 @property BOOL hidden;
 @property BOOL expanded;
 
@@ -18,5 +19,11 @@
 - (void)hideWithCompletion:(void(^)())completionBlock;
 - (void)close;
 - (void)expandWithCompletion:(void(^)())completionBlock;
+
+@end
+
+@protocol PreviewBubbleDelegate <NSObject>
+
+- (void)previewBubbleDidDragToExpand:(PreviewBubble*)bubble;
 
 @end

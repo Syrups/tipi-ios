@@ -7,6 +7,7 @@
 //
 
 #import "StoryMediaRecorder.h"
+#import "StoryWIPSaver.h"
 
 @implementation StoryMediaRecorder
 
@@ -86,6 +87,17 @@
 
 - (BOOL)hasRecordedAtIndex:(NSUInteger)index {
     return [self dataOfAudioWithIndex:index] != nil;
+}
+
+- (BOOL)isComplete {
+    NSUInteger count = [[StoryWIPSaver sharedSaver].medias count];
+    for (int i = 0 ; i < count; ++i) {
+        if (![self hasRecordedAtIndex:i]) {
+            return false;
+        }
+    }
+    
+    return true;
 }
 
 - (void)configureAudioSession {

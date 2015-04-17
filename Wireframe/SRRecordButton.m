@@ -43,12 +43,15 @@
 #pragma mark - Appearing and closing animations
 
 - (void)appear {
-    circleOffset = -self.frame.size.width/2 + 28;
+    self.alpha = 1;
+    circleOffset = -self.frame.size.width/2 + 30;
     appearanceTimer = [NSTimer scheduledTimerWithTimeInterval:0.005f target:self selector:@selector(updateAppearing) userInfo:nil repeats:YES];
+    self.appeared = YES;
 }
 
 - (void)close {
     closingTimer = [NSTimer scheduledTimerWithTimeInterval:0.005f target:self selector:@selector(updateClosing) userInfo:nil repeats:YES];
+    self.appeared = NO;
 }
 
 - (void)updateAppearing {

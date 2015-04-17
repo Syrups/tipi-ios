@@ -18,8 +18,9 @@
     [manager fetchLatestTags];
 }
 
-- (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+- (IBAction)close:(id)sender {
+    [self.view removeFromSuperview];
+    [self removeFromParentViewController];
 }
 
 #pragma mark - TagFetcher
