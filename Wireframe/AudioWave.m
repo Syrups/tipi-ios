@@ -16,6 +16,9 @@ static const CGFloat kDefaultDensity            = 5.0f;
 static const CGFloat kDefaultPrimaryLineWidth   = 3.0f;
 static const CGFloat kDefaultSecondaryLineWidth = 1.0f;
 
+
+static const CGFloat kDefaulIncline = 0.3f;
+
 @interface AudioWave ()
 
 @property (nonatomic, assign) CGFloat phase;
@@ -39,7 +42,11 @@ static const CGFloat kDefaultSecondaryLineWidth = 1.0f;
         CADisplayLink *displaylink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateSelf)];
         [displaylink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
         
-        self.backgroundColor = RgbColorAlpha(43, 75, 122, 0.8f);
+        //self.backgroundColor = RgbColorAlpha(43, 75, 122, 0.8f);
+        
+        if([self.backgroundColor isEqual:[UIColor whiteColor]]){
+            self.backgroundColor = RgbColorAlpha(43, 75, 122, 0.8f);
+        }
         
         self.frequency = kDefaultFrequency;
         
@@ -52,6 +59,19 @@ static const CGFloat kDefaultSecondaryLineWidth = 1.0f;
         
         self.primaryWaveLineWidth = kDefaultPrimaryLineWidth;
         self.secondaryWaveLineWidth = kDefaultSecondaryLineWidth;
+        
+        self.rotation = kDefaulIncline;
+        
+        self.pulseValue = .01f;
+        
+        
+        if(self.isSexy){
+            double delayInSeconds = 6.0;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                self.pulseValue = .01f;
+            });
+        }
     }
     return self;
 }
@@ -65,6 +85,9 @@ static const CGFloat kDefaultSecondaryLineWidth = 1.0f;
     shapeLayer = layer;
 }
 
+- (void)startSexyWaving{
+
+}
 
 
 - (CGPathRef)pathForLayer{
@@ -83,11 +106,13 @@ static const CGFloat kDefaultSecondaryLineWidth = 1.0f;
     [path moveToPoint:start];
     //[path addCurveToPoint:end controlPoint1:c1 controlPoint2:c2];
     
+ 
+    
     for (CGFloat x = 0; x<width + self.density; x += self.density) {
         // We use a parable to scale the sinus wave, that has its peak in the middle of the view.
         CGFloat scaling = -pow(1 / mid * (x - mid), 2) + 1;
         
-        CGFloat y = scaling * maxAmplitude * self.amplitude * sinf(2 * M_PI *(x / width) * self.frequency + self.phase) + halfHeight;
+        CGFloat y = (scaling * maxAmplitude * self.amplitude * sinf(2 * M_PI *(x / width) * self.frequency + self.phase) + halfHeight) - (x * (self.isInlined ? self.rotation  : 0) );
         
         if (x == 0) {
             [path moveToPoint:CGPointMake(x, y)];
@@ -153,13 +178,27 @@ static const CGFloat kDefaultSecondaryLineWidth = 1.0f;
     self.phase += self.phaseShift;
     self.amplitude = fmax(level, self.idleAmplitude);
    
+    //NSLog(@"sexy... %f", level);
     
     [self setNeedsDisplay];
 }
 
 - (void)updateSelf
 {
-       [self updateWithLevel:lastValue];
+    if(self.isSexy){
+        lastValue = [self getRamdomAmp];
+    }
+   
+    [self updateWithLevel:lastValue];
 }
+
+- (double)getRamdomAmp{
+    
+    //return sin(((double)arc4random() / 0x100000000));
+    return 1.0f * sin(self.pulseValue * M_PI) ;
+    //return 1.0f * sin(self.amplitude * M_PI) ; //+ this.horizon;
+}
+
+
 
 @end

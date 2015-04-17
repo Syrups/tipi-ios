@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="GTWalsheim Bold.otf">
@@ -304,7 +305,17 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="Ji1-1h-avL">
                                 <rect key="frame" x="0.0" y="0.0" width="327" height="568"/>
+                                <color key="backgroundColor" red="0.16862745098039217" green="0.29411764705882354" blue="0.47843137254901957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JiW-F5-XL5" customClass="AudioWave">
+                                <rect key="frame" x="0.0" y="284" width="320" height="284"/>
+                                <color key="backgroundColor" red="0.023529411764705882" green="0.035294117647058823" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSexy" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isInlined" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <button hidden="YES" opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dc4-fw-lkV">
                                 <rect key="frame" x="86" y="508" width="149" height="51"/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
@@ -342,6 +353,10 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="Kn4-Wt-C7l" secondAttribute="centerY" constant="-205" id="CCK-xx-SAU"/>
+                            <constraint firstItem="JiW-F5-XL5" firstAttribute="leading" secondItem="FTg-OB-Jau" secondAttribute="leadingMargin" constant="-16" id="Cka-v8-L9h"/>
+                            <constraint firstItem="Baf-N2-fbv" firstAttribute="top" secondItem="JiW-F5-XL5" secondAttribute="bottom" id="hSj-zu-pW5"/>
+                            <constraint firstItem="JiW-F5-XL5" firstAttribute="height" secondItem="FTg-OB-Jau" secondAttribute="height" multiplier="0.5" id="k8P-9Z-xfR"/>
+                            <constraint firstItem="JiW-F5-XL5" firstAttribute="width" secondItem="FTg-OB-Jau" secondAttribute="width" id="w0l-RQ-2rz"/>
                             <constraint firstAttribute="centerX" secondItem="Kn4-Wt-C7l" secondAttribute="centerX" id="y8r-Bo-One"/>
                         </constraints>
                     </view>
