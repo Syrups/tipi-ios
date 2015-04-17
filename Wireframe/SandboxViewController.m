@@ -40,13 +40,14 @@
     [self.recorder record];
     
     self.audioWave.deployed = YES;
-    
+    self.audioWave.isSexy = YES;
+    self.audioWave.isInlined = YES;
 }
 
 
 - (void)microphone:(EZMicrophone *)microphone hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
     
-    [self.audioWave updateWithBuffer:buffer bufferSize:bufferSize withNumberOfChannels:numberOfChannels];
+    //[self.audioWave updateWithBuffer:buffer bufferSize:bufferSize withNumberOfChannels:numberOfChannels];
 }
 
 

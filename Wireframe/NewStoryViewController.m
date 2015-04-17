@@ -51,6 +51,8 @@
     
     NSUInteger scaledAmount = abs(buffer[0][0] * 1000);
     
+    [self.wave updateWithBuffer:buffer bufferSize:bufferSize withNumberOfChannels:numberOfChannels];
+    
     // enjoy
 }
 

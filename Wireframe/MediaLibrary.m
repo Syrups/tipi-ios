@@ -54,7 +54,8 @@
 //                                                    @"full": fullImage,
                                                     @"date": [result valueForProperty:ALAssetPropertyDate],
                                                     @"type": [result valueForProperty:ALAssetPropertyType],
-                                                    @"url": url
+                                                    @"url": url,
+                                                    @"audio_only": [NSNumber numberWithBool:NO]
                                                     }.mutableCopy;
                             
                             [medias addObject:media];

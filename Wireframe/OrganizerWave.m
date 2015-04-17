@@ -18,7 +18,7 @@
     self = [super initWithCoder:coder];
     if (self) {
         self.backgroundColor = RgbColorAlpha(43, 75, 122, 1);
-        imageView = [[UIImageView alloc] initWithFrame:self.frame];
+        imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height/2)];
         imageView.alpha = .1f;
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         

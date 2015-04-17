@@ -70,6 +70,15 @@
     }];
 }
 
+- (void)appendBlankMedia {
+    
+    NSMutableDictionary* media = @{
+        @"audio_only": [NSNumber numberWithBool:YES]
+    }.mutableCopy;
+    
+    [self.medias addObject:media];
+}
+
 - (NSString *)generateUuid {
     // Returns a UUID
     

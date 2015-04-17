@@ -70,6 +70,18 @@
 
 
 
+@property (nonatomic, assign) IBInspectable BOOL isInlined;
+
+
+@property (nonatomic, assign) IBInspectable BOOL isSexy;
+
+
+@property (nonatomic, assign) IBInspectable CGFloat rotation;
+
+@property (nonatomic, assign) IBInspectable CGFloat pulseValue;
+
+
+
 - (void)hide;
 
 - (void)updateWithLevel:(CGFloat)level;

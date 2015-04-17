@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="GTWalsheim Bold.otf">
@@ -300,7 +301,17 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="Ji1-1h-avL">
                                 <rect key="frame" x="0.0" y="0.0" width="327" height="568"/>
+                                <color key="backgroundColor" red="0.16862745098039217" green="0.29411764705882354" blue="0.47843137254901957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JiW-F5-XL5" customClass="AudioWave">
+                                <rect key="frame" x="0.0" y="284" width="320" height="284"/>
+                                <color key="backgroundColor" red="0.023529411764705882" green="0.035294117647058823" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSexy" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isInlined" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <button hidden="YES" opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dc4-fw-lkV">
                                 <rect key="frame" x="86" y="508" width="149" height="51"/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
@@ -338,12 +349,17 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="Kn4-Wt-C7l" secondAttribute="centerY" constant="-205" id="CCK-xx-SAU"/>
+                            <constraint firstItem="JiW-F5-XL5" firstAttribute="leading" secondItem="FTg-OB-Jau" secondAttribute="leadingMargin" constant="-16" id="Cka-v8-L9h"/>
+                            <constraint firstItem="Baf-N2-fbv" firstAttribute="top" secondItem="JiW-F5-XL5" secondAttribute="bottom" id="hSj-zu-pW5"/>
+                            <constraint firstItem="JiW-F5-XL5" firstAttribute="height" secondItem="FTg-OB-Jau" secondAttribute="height" multiplier="0.5" id="k8P-9Z-xfR"/>
+                            <constraint firstItem="JiW-F5-XL5" firstAttribute="width" secondItem="FTg-OB-Jau" secondAttribute="width" id="w0l-RQ-2rz"/>
                             <constraint firstAttribute="centerX" secondItem="Kn4-Wt-C7l" secondAttribute="centerX" id="y8r-Bo-One"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fdF-M6-cLh"/>
                     <connections>
                         <outlet property="secondaryButton" destination="dc4-fw-lkV" id="Twu-jj-dSs"/>
+                        <outlet property="wave" destination="JiW-F5-XL5" id="TnG-fu-DsV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NFl-ab-tfn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1015,7 +1031,7 @@
                                                 <imageView hidden="YES" userInteractionEnabled="NO" tag="20" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="play.png" translatesAutoresizingMaskIntoConstraints="NO" id="96G-DW-pNs">
                                                     <rect key="frame" x="94" y="94" width="25" height="25"/>
                                                 </imageView>
-                                                <view alpha="0.0" tag="30" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5h-85-Mbb" userLabel="Check">
+                                                <view clipsSubviews="YES" alpha="0.0" tag="30" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5h-85-Mbb" userLabel="Check">
                                                     <rect key="frame" x="0.0" y="0.0" width="127" height="127"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picker-check" translatesAutoresizingMaskIntoConstraints="NO" id="HPj-HS-e15">
@@ -1026,7 +1042,7 @@
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.023529411764705882" green="0.031372549019607843" blue="0.11372549019607843" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.023529411764705882" green="0.031372549019607843" blue="0.11372549019607843" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="centerY" secondItem="HPj-HS-e15" secondAttribute="centerY" id="GKP-Y5-dWo"/>
                                                         <constraint firstAttribute="centerX" secondItem="HPj-HS-e15" secondAttribute="centerX" id="dgj-FA-vXI"/>
@@ -1319,6 +1335,15 @@
                                     <segue destination="u3t-YH-VVb" kind="modal" id="X0M-R6-hNO"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJe-bN-rW1">
+                                <rect key="frame" x="261" y="10" width="48" height="47"/>
+                                <state key="normal" title="+">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="appendBlankMedia:" destination="HyC-CS-MSr" eventType="touchUpInside" id="lFI-Hw-AUR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1365,6 +1390,7 @@
                             </view>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6y-kG-2h3" customClass="AudioWave">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                             </view>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DRe-i6-6Sy" customClass="SRRecordButton">

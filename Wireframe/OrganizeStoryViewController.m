@@ -79,6 +79,14 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)appendBlankMedia:(id)sender {
+    [self.saver appendBlankMedia];
+//    NSArray* indexPaths = @[[NSIndexPath indexPathForItem:self.saver.medias.count-1 inSection:0]];
+    [self.collectionView reloadData];
+    
+    [self.collectionView setContentOffset:CGPointMake(self.collectionView.contentSize.width - self.view.frame.size.width, 0) animated:YES];
+}
+
 #pragma mark - UICollectionView
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -96,10 +104,15 @@
         cell = [[UICollectionViewCell alloc] init];
     }
     
+    NSDictionary* media = [self.saver.medias objectAtIndex:indexPath.row];
+    
+    if ([[media objectForKey:@"audio_only"] isEqual:[NSNumber numberWithBool:YES]]) {
+        return [self cellForBlankMediaAtIndexPath:indexPath];
+    }
+    
     UIImageView* image = (UIImageView*)[cell.contentView viewWithTag:20];
     image.layer.mask = [self maskForCell:cell expanded:NO];
     
-    NSDictionary* media = [self.saver.medias objectAtIndex:indexPath.row];
     [image setImage:[media objectForKey:@"full"]];
     image.contentMode = UIViewContentModeScaleAspectFill;
     image.clipsToBounds = YES;
@@ -110,6 +123,16 @@
         firstLoad = YES;
     } else {
         //        cell.alpha = INACTIVE_CELL_OPACITY;
+    }
+    
+    return cell;
+}
+
+- (UICollectionViewCell*)cellForBlankMediaAtIndexPath:(NSIndexPath*)indexPath {
+    UICollectionViewCell* cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"MediaCell" forIndexPath:indexPath];
+    
+    if (cell == nil) {
+        cell = [[UICollectionViewCell alloc] init];
     }
     
     return cell;
@@ -186,11 +209,12 @@
         UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:indexPath];
 //        cell.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(ACTIVE_CELL_ROTATION));
         
-        [self.wave updateImage:[ImageUtils convertImageToGrayScale:[self mediaForIndexPath:indexPath]]];
+        if ([self mediaForIndexPath:indexPath] != nil) {
+            [self.wave updateImage:[ImageUtils convertImageToGrayScale:[self mediaForIndexPath:indexPath]]];
+        }
         
         cell.layer.zPosition = 100;
         cell.alpha = 1;
-        self.pageLabel.text = [NSString stringWithFormat:@"page %d", indexPath.row+1];
     } completion:nil];
 }
 
