@@ -12,6 +12,7 @@
 
 @property BOOL deployed;
 
+
 /*
  * The total number of waves
  * Default: 5
@@ -82,7 +83,7 @@
 
 
 - (void)hide;
-
+- (void)updateImage:(UIImage*)image;
 - (void)updateWithLevel:(CGFloat)level;
 - (void)updateWithBuffer:(float **)buffer bufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels ;
 

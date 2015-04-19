@@ -14,11 +14,13 @@
 @property (strong, nonatomic) UIColor* fillColor;
 @property CGFloat duration;
 @property CGFloat currentTime;
+@property BOOL appeared;
 
 - (void)appear;
 - (void)close;
 - (void)start;
 - (void)pause;
 - (void)reset;
+- (void)updateWithBuffer:(float **)buffer bufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels ;
 
 @end

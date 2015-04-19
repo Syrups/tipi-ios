@@ -15,6 +15,7 @@
     CGFloat startAngle;
     NSTimer* appearanceTimer;
     NSTimer* closingTimer;
+    CGFloat lastValue;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -43,26 +44,36 @@
 #pragma mark - Appearing and closing animations
 
 - (void)appear {
+    self.alpha = 1;
+    circleOffset = -self.frame.size.width/2 + 30;
     appearanceTimer = [NSTimer scheduledTimerWithTimeInterval:0.005f target:self selector:@selector(updateAppearing) userInfo:nil repeats:YES];
+    self.appeared = YES;
 }
 
 - (void)close {
     closingTimer = [NSTimer scheduledTimerWithTimeInterval:0.005f target:self selector:@selector(updateClosing) userInfo:nil repeats:YES];
+    self.appeared = NO;
 }
 
 - (void)updateAppearing {
     
-    if (self.currentTime >= self.duration) {
-        startAngle += .05f;
-        
-        if (startAngle >= M_2_PI) {
-            startAngle = 0;
-            self.currentTime = 0;
-            [appearanceTimer invalidate];
-        }
-    } else {
-        self.currentTime += .7f;
+    circleOffset += 2;
+    
+    if (circleOffset >= 10) {
+        circleOffset = 10;
+        [appearanceTimer invalidate];
     }
+//    
+//    if (self.currentTime >= self.duration) {
+//        startAngle += .5f;
+//        
+//        if (startAngle >= M_2_PI) {
+//            startAngle = 0;
+//            self.currentTime = 0;
+//        }
+//    } else {
+//        self.currentTime += .7f;
+//    }
 
     [self setNeedsDisplay];
     [self setContentMode:UIViewContentModeRedraw];
@@ -73,6 +84,7 @@
     
     if (circleOffset <= -self.frame.size.width/2 + 30) {
         [closingTimer invalidate];
+        self.alpha = 0;
     }
     
     [self setNeedsDisplay];
@@ -147,6 +159,18 @@
     [self setContentMode:UIViewContentModeRedraw];
     
     circleOffset -= 0.05f;
+}
+
+- (void)updateWithBuffer:(float **)buffer bufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
+    
+    float* channel = buffer[0];
+    
+    CGFloat max = 0.0;
+    for (int i = 0 ; i < bufferSize ; ++i) {
+        if (*(channel+i) > max && *(channel+i) < .1f) max = *(channel+i);
+    }
+    
+    lastValue = max;
 }
 
 @end

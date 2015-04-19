@@ -9,10 +9,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "MediaPickerViewController.h"
 #import "PKCollectionViewStickyHeaderFlowLayout.h"
-
-@interface MediaPickerViewController ()
-
-@end
+#import "MediaCell.h"
 
 @implementation MediaPickerViewController {
     NSMutableArray* selectedIndexes;
@@ -22,6 +19,8 @@
 }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    
     selectedIndexes = [NSMutableArray array];
     self.saver = [StoryWIPSaver sharedSaver];
     
@@ -36,6 +35,8 @@
     
     currentOffset = 0;
     [self.library fetchMediasFromLibraryFrom:currentOffset to:currentOffset + kMediaPickerMediaLimit];
+    
+    NSLog(@"%@", self.showcaseLayer);
 }
 
 - (IBAction)back:(id)sender {
@@ -75,33 +76,32 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MediaCell" forIndexPath:indexPath];
+    MediaCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MediaCell" forIndexPath:indexPath];
     UIImageView* image = (UIImageView*)[cell.contentView viewWithTag:10];
-    NSDictionary* media = [self.medias objectAtIndex:indexPath.row];
+    NSMutableDictionary* media = [self.medias objectAtIndex:indexPath.row];
     
     if (cell == nil) {
-        cell = [[UICollectionViewCell alloc] init];
+        cell = [[MediaCell alloc] initWithMedia:media];
     }
     
     [image setImage:[media objectForKey:@"image"]];
     
     if (cell.tag == 0) {
-        image.transform = CGAffineTransformMakeScale(0, 0);
-        
+//        image.transform = CGAffineTransformMakeScale(0, 0);
+        image.alpha = 0;
         [UIView animateWithDuration:0.2f delay:indexPath.row*0.03f options:UIViewAnimationOptionCurveEaseIn animations:^{
-            image.transform = CGAffineTransformMakeScale(1, 1);
+//            image.transform = CGAffineTransformMakeScale(1, 1);
+            image.alpha = 1;
         } completion:nil];
         cell.tag = 1;
     }
 
-    
-    UIView* vidIcon = (UIView*)[cell.contentView viewWithTag:20];
     UIView* check = (UIView*)[cell.contentView viewWithTag:30];
     
     if ([[media objectForKey:@"type"] isEqual:ALAssetTypeVideo]) {
-        vidIcon.hidden = NO;
+        [cell launchVideoPreviewWithUrl:[media objectForKey:@"url"]];
     } else {
-        vidIcon.hidden = YES;
+        [cell.playerLayer removeFromSuperlayer];
     }
     
     if ([selectedIndexes containsObject:indexPath]) {
@@ -134,6 +134,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
     UIView* check = [cell.contentView viewWithTag:30];
+    NSDictionary* media = [self.medias objectAtIndex:indexPath.row];
     
     if (![selectedIndexes containsObject:indexPath]) {
         ((UIView*)check.subviews[0]).transform = CGAffineTransformMakeScale(0, 0);
@@ -144,6 +145,8 @@
         [selectedIndexes addObject:indexPath];
         [self.saver.medias addObject:[self.medias objectAtIndex:indexPath.row]];
         [self.wave grow];
+        
+        [self.wave updateImage:[media objectForKey:@"image"]];
     } else {
         [UIView animateWithDuration:0.3f animations:^{
             check.alpha = 0;
@@ -158,7 +161,7 @@
         self.continueButton.alpha = 1;
     } else {
         self.continueButton.enabled = NO;
-        self.continueButton.alpha = 0.6f;
+        self.continueButton.alpha = 0.3f;
     }
     
     self.selectedCount.text = [NSString stringWithFormat:@"%ld médias sélectionnés", (unsigned long)selectedIndexes.count];
@@ -173,7 +176,7 @@
     
     if ([visibleIndexPaths containsObject:[NSIndexPath indexPathForItem:self.medias.count-1 inSection:0]] && !loading && self.medias.count < self.library.totalMediasCount) {
         loading = YES;
-        self.activityIndicator.hidden = NO;
+//        self.activityIndicator.hidden = NO;
         [self.library fetchMediasFromLibraryFrom:currentOffset to:currentOffset+10];
     }
 }

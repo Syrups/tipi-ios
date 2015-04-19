@@ -11,7 +11,7 @@
 #import "MediaLibrary.h"
 #import "WaveBackground.h"
 
-@interface MediaPickerViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, MediaLibraryDelegate>
+@interface MediaPickerViewController : ShowCaseableViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, MediaLibraryDelegate>
 
 @property (strong, nonatomic) MediaLibrary* library;
 @property (strong, nonatomic) StoryWIPSaver* saver;

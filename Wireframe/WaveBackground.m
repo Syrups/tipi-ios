@@ -42,6 +42,22 @@
     
 }
 
+- (void)updateImage:(UIImage *)image {
+    UIImageView* newImageView = [[UIImageView alloc] initWithFrame:_image.frame];
+    newImageView.contentMode = UIViewContentModeScaleAspectFill;
+    newImageView.image = image;
+    newImageView.alpha = 0;
+    [self addSubview:newImageView];
+    
+    [UIView animateWithDuration:.2f animations:^{
+        _image.alpha = 0;
+        newImageView.alpha = .1f;
+        [_image removeFromSuperview];
+        _image = newImageView;
+    }];
+    
+}
+
 - (void)shuffle {
     CABasicAnimation* morph = [CABasicAnimation animationWithKeyPath:@"path"];
     morph.duration = 0.2f;

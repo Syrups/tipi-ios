@@ -28,6 +28,7 @@
 - (void)playAudio;
 - (NSData*)dataOfAudioWithIndex:(NSUInteger)index;
 - (BOOL)hasRecordedAtIndex:(NSUInteger)index;
+- (BOOL)isComplete;
 
 @end
 

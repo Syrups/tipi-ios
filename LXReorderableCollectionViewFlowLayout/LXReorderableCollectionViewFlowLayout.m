@@ -326,8 +326,11 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
             imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
             imageView.alpha = 1.0f;
             
+            highlightedImageView.layer.zPosition = 100;
+            
             [UIView animateWithDuration:0.2f animations:^{
-                highlightedImageView.transform = CGAffineTransformMakeScale(1.2f, 1.2f);
+                highlightedImageView.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(1.1f));
+                
                 imageView.transform = CGAffineTransformMakeScale(1.2f, 1.2f);
             }];
             

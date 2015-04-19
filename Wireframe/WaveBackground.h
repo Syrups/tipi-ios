@@ -15,5 +15,6 @@
 - (void)shuffle;
 - (void)grow;
 - (void)ungrow;
+- (void)updateImage:(UIImage *)image;
 
 @end

@@ -95,4 +95,24 @@
 }
 
 
+#pragma mark - Fun sepia filter :)
+
+- (void)applySepiaFilter {
+    CIImage *beginImage = [CIImage imageWithCGImage:[self.image CGImage]];
+    CIContext *context = [CIContext contextWithOptions:nil];
+    
+    CIFilter *filter = [CIFilter filterWithName:@"CISepiaTone" keysAndValues: kCIInputImageKey, beginImage, @"inputIntensity", [NSNumber numberWithFloat:0.8], nil];
+    CIImage *outputImage = [filter outputImage];
+    
+    CGImageRef cgimg = [context createCGImage:outputImage fromRect:[outputImage extent]];
+    UIImage *newImg = [UIImage imageWithCGImage:cgimg];
+    
+    [self.imageView setImage:newImg];
+    
+    CGImageRelease(cgimg);
+    
+    NSLog(@"Sepia");
+}
+
+
 @end

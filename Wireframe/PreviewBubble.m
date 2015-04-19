@@ -10,6 +10,8 @@
 
 @implementation PreviewBubble {
     CAShapeLayer* shapeLayer;
+    CGFloat lastX;
+    CGFloat expandOffset;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
@@ -18,6 +20,7 @@
     if (self) {
         self.backgroundColor = [UIColor blackColor];
         self.hidden = YES;
+//        self.userInteractionEnabled = YES;
     }
     return self;
 }
@@ -57,14 +60,14 @@
     [self setNeedsDisplay];
 }
 
-- (void)appear {
+- (void)appearWithCompletion:(void (^)())completionBlock {
     self.hidden = NO;
-    [self animateUpdate];
+    [self animateUpdateWithCompletion:completionBlock];
 }
 
-- (void)hide {
+- (void)hideWithCompletion:(void (^)())completionBlock {
     self.hidden = YES;
-    [self animateUpdate];
+    [self animateUpdateWithCompletion:completionBlock];
 }
 
 - (void)close {
@@ -97,10 +100,13 @@
     [CATransaction commit];
 }
 
-- (void)animateUpdate {
+- (void)animateUpdateWithCompletion:(void (^)())completionBlock {
+    [CATransaction begin];
+    [CATransaction setCompletionBlock:completionBlock];
+    
     CABasicAnimation* morph = [CABasicAnimation animationWithKeyPath:@"path"];
-    morph.duration = 0.3f;
-    morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    morph.duration = 0.2f;
+    morph.timingFunction = [CAMediaTimingFunction functionWithControlPoints:.45f :.14f :.84f :.48f];
     
     CGPathRef from = shapeLayer.path;
     CGPathRef to = [self pathForLayer];
@@ -111,17 +117,19 @@
     [shapeLayer addAnimation:morph forKey:@"morphing"];
     
     [shapeLayer.modelLayer setPath:to];
+    
+    [CATransaction commit];
 }
 
 - (CGPathRef)pathForLayer {
     UIBezierPath* path = [[UIBezierPath alloc] init];
     
-    [path moveToPoint:CGPointMake(self.frame.size.width, 150)];
+    [path moveToPoint:CGPointMake(self.frame.size.width, 150 - (4*expandOffset))];
     
     if (self.hidden) {
         [path addLineToPoint:CGPointMake(self.frame.size.width, self.frame.size.height-150)];
     } else {
-        [path addQuadCurveToPoint:CGPointMake(self.frame.size.width, self.frame.size.height - 150) controlPoint:CGPointMake(self.frame.size.width/3, self.frame.size.height/2)];
+        [path addQuadCurveToPoint:CGPointMake(self.frame.size.width, self.frame.size.height - 150) controlPoint:CGPointMake(self.frame.size.width/2.5f - (8*expandOffset), self.frame.size.height/2 + (4*expandOffset))];
     }
     
     
@@ -138,6 +146,32 @@
     
     return path.CGPath;
 
+}
+
+#pragma mark - Drag
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    CGPoint location = [[touches anyObject] locationInView:self];
+    
+    lastX = location.x;
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    CGPoint location = [[touches anyObject] locationInView:self];
+    CGFloat deltaX = lastX - location.x;
+    
+    NSLog(@"%f", deltaX);
+    
+    if (deltaX > 0) {
+        expandOffset += 2;
+    }
+    
+    if (expandOffset > 10) {
+        [self.delegate previewBubbleDidDragToExpand:self];
+        self.userInteractionEnabled = NO;
+    }
+    
+    [self setNeedsDisplay];
 }
 
 @end

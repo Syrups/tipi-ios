@@ -51,11 +51,18 @@
 		B3065A4E1ABAFD7600C10AD9 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A4D1ABAFD7600C10AD9 /* Room.m */; };
 		B3065A511ABB29E200C10AD9 /* Story.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A501ABB29E200C10AD9 /* Story.m */; };
 		B3065A541ABB35D700C10AD9 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A531ABB35D700C10AD9 /* SignUpViewController.m */; };
+		B319338A1ADFB2B600603158 /* GTWalsheim Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B31933891ADFB2B600603158 /* GTWalsheim Bold.otf */; };
+		B319338D1ADFB4AE00603158 /* DoneStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B319338C1ADFB4AE00603158 /* DoneStoryViewController.m */; };
+		B31933911AE009D000603158 /* ZoomOutSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = B31933901AE009D000603158 /* ZoomOutSegue.m */; };
 		B325A13A1ADE546A0041DF21 /* SandboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A1391ADE546A0041DF21 /* SandboxViewController.m */; };
 		B325A13D1ADE5AD80041DF21 /* PreviewBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A13C1ADE5AD80041DF21 /* PreviewBubble.m */; };
+		B325A1401ADEE6400041DF21 /* Timeline.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A13F1ADEE6400041DF21 /* Timeline.m */; };
+		B325A1431ADF0B4D0041DF21 /* OrganizerWave.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A1421ADF0B4D0041DF21 /* OrganizerWave.m */; };
 		B33B6FD71ACDC702009C0623 /* UserController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33B6FD61ACDC702009C0623 /* UserController.m */; };
 		B33DE8581ACDCC66008AE55F /* StoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DE8571ACDCC66008AE55F /* StoryController.m */; };
 		B33DE85B1ACDCE00008AE55F /* BaseModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DE85A1ACDCE00008AE55F /* BaseModelController.m */; };
+		B341F04C1AE1A272001D448A /* MediaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B341F04B1AE1A272001D448A /* MediaCell.m */; };
+		B35975F21ADFA29F00936E5E /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B35975F11ADFA29F00936E5E /* ImageUtils.m */; };
 		B35AD0391ABF2B6600527C0D /* ReviewStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD0381ABF2B6600527C0D /* ReviewStoryViewController.m */; };
 		B35AD03C1ABF2D2500527C0D /* ReviewPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD03B1ABF2D2500527C0D /* ReviewPageViewController.m */; };
 		B35AD0441ABF339200527C0D /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD0431ABF339200527C0D /* ArrayDataSource.m */; };
@@ -66,6 +73,8 @@
 		B3846F1D1ADD058B0030DBDE /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3846F1C1ADD058B0030DBDE /* CoreMotion.framework */; };
 		B3846F391ADD0F1D0030DBDE /* RoomListFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846F381ADD0F1D0030DBDE /* RoomListFlowLayout.m */; };
 		B3846F3C1ADD43170030DBDE /* AudioWave.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846F3B1ADD43170030DBDE /* AudioWave.m */; };
+		B38621F41AE16C7200D2CA5A /* ShowCaseOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = B38621F31AE16C7200D2CA5A /* ShowCaseOverlay.m */; };
+		B38621FA1AE16DC200D2CA5A /* ShowCaseableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38621F91AE16DC200D2CA5A /* ShowCaseableViewController.m */; };
 		B38B895F1ACC08C500799EDD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38B895E1ACC08C500799EDD /* MediaPlayer.framework */; };
 		B38B89621ACC146200799EDD /* MediaLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = B38B89611ACC146200799EDD /* MediaLibrary.m */; };
 		B38B89661ACC221600799EDD /* SRRecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B38B89651ACC221600799EDD /* SRRecordButton.m */; };
@@ -97,6 +106,7 @@
 		B3C2E5C61AD32A1B00868DA4 /* WaveBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C2E5C51AD32A1B00868DA4 /* WaveBackground.m */; };
 		B3C85E541ACBF4C50083C50A /* Audio.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C85E531ACBF4C50083C50A /* Audio.m */; };
 		B3C85E571ACBF5260083C50A /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C85E561ACBF5260083C50A /* Media.m */; };
+		B3D683891ADFB259006F9C50 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3BCCFD11AA5C36C00261212 /* Info.plist */; };
 		B3DDF3461ADC6311009A9CAF /* NewStoryMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DDF3451ADC6311009A9CAF /* NewStoryMainController.m */; };
 		B3FC7B8C1AA662CC00034E58 /* RecordPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FC7B8B1AA662CC00034E58 /* RecordPageViewController.m */; };
 		B3FC7B8F1AA672DE00034E58 /* placeholder.gif in Resources */ = {isa = PBXBuildFile; fileRef = B3FC7B8E1AA672DE00034E58 /* placeholder.gif */; };
@@ -181,10 +191,19 @@
 		B3065A501ABB29E200C10AD9 /* Story.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Story.m; sourceTree = "<group>"; };
 		B3065A521ABB35D700C10AD9 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		B3065A531ABB35D700C10AD9 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		B31933891ADFB2B600603158 /* GTWalsheim Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTWalsheim Bold.otf"; sourceTree = "<group>"; };
+		B319338B1ADFB4AE00603158 /* DoneStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoneStoryViewController.h; sourceTree = "<group>"; };
+		B319338C1ADFB4AE00603158 /* DoneStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoneStoryViewController.m; sourceTree = "<group>"; };
+		B319338F1AE009D000603158 /* ZoomOutSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomOutSegue.h; sourceTree = "<group>"; };
+		B31933901AE009D000603158 /* ZoomOutSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomOutSegue.m; sourceTree = "<group>"; };
 		B325A1381ADE546A0041DF21 /* SandboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandboxViewController.h; sourceTree = "<group>"; };
 		B325A1391ADE546A0041DF21 /* SandboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandboxViewController.m; sourceTree = "<group>"; };
 		B325A13B1ADE5AD80041DF21 /* PreviewBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewBubble.h; sourceTree = "<group>"; };
 		B325A13C1ADE5AD80041DF21 /* PreviewBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewBubble.m; sourceTree = "<group>"; };
+		B325A13E1ADEE6400041DF21 /* Timeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timeline.h; sourceTree = "<group>"; };
+		B325A13F1ADEE6400041DF21 /* Timeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timeline.m; sourceTree = "<group>"; };
+		B325A1411ADF0B4D0041DF21 /* OrganizerWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrganizerWave.h; sourceTree = "<group>"; };
+		B325A1421ADF0B4D0041DF21 /* OrganizerWave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrganizerWave.m; sourceTree = "<group>"; };
 		B33B6FD51ACDC702009C0623 /* UserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserController.h; sourceTree = "<group>"; };
 		B33B6FD61ACDC702009C0623 /* UserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserController.m; sourceTree = "<group>"; };
 		B33DE8561ACDCC66008AE55F /* StoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryController.h; sourceTree = "<group>"; };
@@ -192,6 +211,10 @@
 		B33DE8591ACDCE00008AE55F /* BaseModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModelController.h; sourceTree = "<group>"; };
 		B33DE85A1ACDCE00008AE55F /* BaseModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModelController.m; sourceTree = "<group>"; };
 		B33DE85C1ACDCFBB008AE55F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		B341F04A1AE1A272001D448A /* MediaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaCell.h; sourceTree = "<group>"; };
+		B341F04B1AE1A272001D448A /* MediaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaCell.m; sourceTree = "<group>"; };
+		B35975F01ADFA29F00936E5E /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
+		B35975F11ADFA29F00936E5E /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
 		B35AD0371ABF2B6600527C0D /* ReviewStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewStoryViewController.h; sourceTree = "<group>"; };
 		B35AD0381ABF2B6600527C0D /* ReviewStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewStoryViewController.m; sourceTree = "<group>"; };
 		B35AD03A1ABF2D2500527C0D /* ReviewPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewPageViewController.h; sourceTree = "<group>"; };
@@ -209,6 +232,10 @@
 		B3846F381ADD0F1D0030DBDE /* RoomListFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomListFlowLayout.m; sourceTree = "<group>"; };
 		B3846F3A1ADD43170030DBDE /* AudioWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioWave.h; sourceTree = "<group>"; };
 		B3846F3B1ADD43170030DBDE /* AudioWave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioWave.m; sourceTree = "<group>"; };
+		B38621F21AE16C7200D2CA5A /* ShowCaseOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowCaseOverlay.h; sourceTree = "<group>"; };
+		B38621F31AE16C7200D2CA5A /* ShowCaseOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowCaseOverlay.m; sourceTree = "<group>"; };
+		B38621F81AE16DC200D2CA5A /* ShowCaseableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowCaseableViewController.h; sourceTree = "<group>"; };
+		B38621F91AE16DC200D2CA5A /* ShowCaseableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowCaseableViewController.m; sourceTree = "<group>"; };
 		B38B895E1ACC08C500799EDD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		B38B89601ACC146200799EDD /* MediaLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaLibrary.h; sourceTree = "<group>"; };
 		B38B89611ACC146200799EDD /* MediaLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaLibrary.m; sourceTree = "<group>"; };
@@ -398,12 +425,15 @@
 		B3065A2D1AB9714400C10AD9 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				B341F0491AE1A25D001D448A /* Cell */,
 				B3BCCFFE1AA5E50D00261212 /* MediaPickerViewController.h */,
 				B3BCCFFF1AA5E50D00261212 /* MediaPickerViewController.m */,
 				B3BCD01B1AA60D4C00261212 /* OrganizeStoryViewController.h */,
 				B3BCD01C1AA60D4C00261212 /* OrganizeStoryViewController.m */,
 				B3C2E5C41AD32A1B00868DA4 /* WaveBackground.h */,
 				B3C2E5C51AD32A1B00868DA4 /* WaveBackground.m */,
+				B325A1411ADF0B4D0041DF21 /* OrganizerWave.h */,
+				B325A1421ADF0B4D0041DF21 /* OrganizerWave.m */,
 			);
 			name = Media;
 			sourceTree = "<group>";
@@ -425,6 +455,8 @@
 				B3BCD00B1AA5FCF400261212 /* ChooseTagViewController.m */,
 				B3BCD00E1AA5FDB500261212 /* NameStoryViewController.h */,
 				B3BCD00F1AA5FDB500261212 /* NameStoryViewController.m */,
+				B319338B1ADFB4AE00603158 /* DoneStoryViewController.h */,
+				B319338C1ADFB4AE00603158 /* DoneStoryViewController.m */,
 			);
 			name = Configure;
 			sourceTree = "<group>";
@@ -469,6 +501,15 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		B319338E1AE009BA00603158 /* Segue */ = {
+			isa = PBXGroup;
+			children = (
+				B319338F1AE009D000603158 /* ZoomOutSegue.h */,
+				B31933901AE009D000603158 /* ZoomOutSegue.m */,
+			);
+			name = Segue;
+			sourceTree = "<group>";
+		};
 		B33B6FD41ACDC6E3009C0623 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,6 +546,15 @@
 			name = Entities;
 			sourceTree = "<group>";
 		};
+		B341F0491AE1A25D001D448A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B341F04A1AE1A272001D448A /* MediaCell.h */,
+				B341F04B1AE1A272001D448A /* MediaCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		B35AD0361ABF2B4B00527C0D /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -534,6 +584,15 @@
 			name = Layout;
 			sourceTree = "<group>";
 		};
+		B38621F11AE16C6100D2CA5A /* ShowCase */ = {
+			isa = PBXGroup;
+			children = (
+				B38621F21AE16C7200D2CA5A /* ShowCaseOverlay.h */,
+				B38621F31AE16C7200D2CA5A /* ShowCaseOverlay.m */,
+			);
+			name = ShowCase;
+			sourceTree = "<group>";
+		};
 		B38B89631ACC21F300799EDD /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -557,6 +616,8 @@
 				B36941AE1ACAE02500F3F95A /* FileUploader.m */,
 				B38B89601ACC146200799EDD /* MediaLibrary.h */,
 				B38B89611ACC146200799EDD /* MediaLibrary.m */,
+				B35975F01ADFA29F00936E5E /* ImageUtils.h */,
+				B35975F11ADFA29F00936E5E /* ImageUtils.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -584,6 +645,7 @@
 		B3BCCFC41AA5C36C00261212 = {
 			isa = PBXGroup;
 			children = (
+				B31933891ADFB2B600603158 /* GTWalsheim Bold.otf */,
 				73F2377B1AA71AD6004E6C20 /* SWRevealViewController */,
 				B3BCD01E1AA6148100261212 /* LXReorderableCollectionViewFlowLayout */,
 				73B3B3331AA7BA3F00FF7578 /* exports */,
@@ -665,6 +727,8 @@
 				B3BCCFFC1AA5C85B00261212 /* HomeViewController.m */,
 				B325A1381ADE546A0041DF21 /* SandboxViewController.h */,
 				B325A1391ADE546A0041DF21 /* SandboxViewController.m */,
+				B38621F81AE16DC200D2CA5A /* ShowCaseableViewController.h */,
+				B38621F91AE16DC200D2CA5A /* ShowCaseableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -699,6 +763,7 @@
 		B3BCD0221AA622FA00261212 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B38621F11AE16C6100D2CA5A /* ShowCase */,
 				B3BCD0231AA6230100261212 /* Layout */,
 				B38B89641ACC221600799EDD /* SRRecordButton.h */,
 				B38B89651ACC221600799EDD /* SRRecordButton.m */,
@@ -720,6 +785,7 @@
 		B3FC7B8D1AA662D900034E58 /* Record */ = {
 			isa = PBXGroup;
 			children = (
+				B319338E1AE009BA00603158 /* Segue */,
 				B3BCD0111AA604DA00261212 /* RecordViewController.h */,
 				B3BCD0121AA604DA00261212 /* RecordViewController.m */,
 				B3FC7B8A1AA662CC00034E58 /* RecordPageViewController.h */,
@@ -728,6 +794,8 @@
 				B3846F3B1ADD43170030DBDE /* AudioWave.m */,
 				B325A13B1ADE5AD80041DF21 /* PreviewBubble.h */,
 				B325A13C1ADE5AD80041DF21 /* PreviewBubble.m */,
+				B325A13E1ADEE6400041DF21 /* Timeline.h */,
+				B325A13F1ADEE6400041DF21 /* Timeline.m */,
 			);
 			name = Record;
 			sourceTree = "<group>";
@@ -852,6 +920,8 @@
 				73B3B34E1AA7BA3F00FF7578 /* perso-blanc.png in Resources */,
 				73B3B3521AA7BA3F00FF7578 /* proches-petit.png in Resources */,
 				B3BCCFDC1AA5C36C00261212 /* Main.storyboard in Resources */,
+				B319338A1ADFB2B600603158 /* GTWalsheim Bold.otf in Resources */,
+				B3D683891ADFB259006F9C50 /* Info.plist in Resources */,
 				73B3B3511AA7BA3F00FF7578 /* proches-grand.png in Resources */,
 				73B3B34C1AA7BA3F00FF7578 /* loupe.png in Resources */,
 				B3BCCFE11AA5C36C00261212 /* LaunchScreen.xib in Resources */,
@@ -941,16 +1011,20 @@
 				B3BCD0061AA5F0CE00261212 /* NewStoryViewController.m in Sources */,
 				B3A8D18E1ACED0EC00B09C34 /* ProfileViewController.m in Sources */,
 				B3A8D17D1ACE7A3800B09C34 /* RoomController.m in Sources */,
+				B38621F41AE16C7200D2CA5A /* ShowCaseOverlay.m in Sources */,
 				B38B89621ACC146200799EDD /* MediaLibrary.m in Sources */,
 				B3BCD01D1AA60D4C00261212 /* OrganizeStoryViewController.m in Sources */,
 				B38B89661ACC221600799EDD /* SRRecordButton.m in Sources */,
+				B35975F21ADFA29F00936E5E /* ImageUtils.m in Sources */,
 				B3BCD0031AA5F03D00261212 /* AbortModalViewController.m in Sources */,
 				B33DE8581ACDCC66008AE55F /* StoryController.m in Sources */,
 				73B20BF31AA6178200A9C88F /* ShowOneGroupViewController.m in Sources */,
+				B341F04C1AE1A272001D448A /* MediaCell.m in Sources */,
 				B3A8D1811ACE8C2F00B09C34 /* FriendListViewController.m in Sources */,
 				B3846F3C1ADD43170030DBDE /* AudioWave.m in Sources */,
 				B35CDBDA1AB87DD900BF9F82 /* StoryMediaRecorder.m in Sources */,
 				7338BF791AD2C167005FD5F0 /* SRAnimatedWaveView.m in Sources */,
+				B31933911AE009D000603158 /* ZoomOutSegue.m in Sources */,
 				73B20BF01AA609DB00A9C88F /* ShowGroupsViewController.m in Sources */,
 				B3BCD0091AA5F3D300261212 /* RoomPickerViewController.m in Sources */,
 				B3065A451AB99BB700C10AD9 /* User.m in Sources */,
@@ -969,14 +1043,18 @@
 				73B20BEC1AA5FF0800A9C88F /* BaseHomeViewController.m in Sources */,
 				73BEF8671ACD8A8D00881F46 /* RoomRevealWrapperViewController.m in Sources */,
 				B3A8D1841ACEAD0A00B09C34 /* FriendManager.m in Sources */,
+				B38621FA1AE16DC200D2CA5A /* ShowCaseableViewController.m in Sources */,
 				B3BCCFFD1AA5C85B00261212 /* HomeViewController.m in Sources */,
 				B3C85E571ACBF5260083C50A /* Media.m in Sources */,
+				B319338D1ADFB4AE00603158 /* DoneStoryViewController.m in Sources */,
 				B3BCD0001AA5E50D00261212 /* MediaPickerViewController.m in Sources */,
 				B36941AF1ACAE02500F3F95A /* FileUploader.m in Sources */,
 				B3BCD0131AA604DA00261212 /* RecordViewController.m in Sources */,
 				B325A13D1ADE5AD80041DF21 /* PreviewBubble.m in Sources */,
 				B33B6FD71ACDC702009C0623 /* UserController.m in Sources */,
 				73B3B35A1AA7BC6100FF7578 /* GroupMembersViewController.m in Sources */,
+				B325A1431ADF0B4D0041DF21 /* OrganizerWave.m in Sources */,
+				B325A1401ADEE6400041DF21 /* Timeline.m in Sources */,
 				B3C85E541ACBF4C50083C50A /* Audio.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -27,6 +27,11 @@
     [self.microphone stopFetchingAudio];
 }
 
+- (IBAction)launchStoryBuilder:(id)sender {
+    UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"StoryBuilder"];
+    [self.navigationController pushViewController:vc animated:NO];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -50,6 +55,8 @@
 - (void)microphone:(EZMicrophone *)microphone hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
     
     NSUInteger scaledAmount = abs(buffer[0][0] * 1000);
+    
+    [self.wave updateWithBuffer:buffer bufferSize:bufferSize withNumberOfChannels:numberOfChannels];
     
     // enjoy
 }

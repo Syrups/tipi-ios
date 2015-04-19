@@ -35,10 +35,20 @@
     self.recorder.delegate = self;
     [self.recorder setupForMediaWithIndex:0];
     [self.recorder playAudio];
+    
+    self.microphone = [EZMicrophone microphoneWithDelegate:self];
+    [self.microphone startFetchingAudio];
 }
 
 - (IBAction)dismiss:(id)sender {
+    [self.microphone stopFetchingAudio];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - EZMicrophone
+
+- (void)microphone:(EZMicrophone *)microphone hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
+    [self.audioWave updateWithBuffer:buffer bufferSize:bufferSize withNumberOfChannels:numberOfChannels];
 }
 
 #pragma mark - StoryMediaRecorder
