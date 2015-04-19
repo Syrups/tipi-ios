@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7338BF791AD2C167005FD5F0 /* SRAnimatedWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7338BF781AD2C167005FD5F0 /* SRAnimatedWaveView.m */; };
+		73559BA21AE2686000547886 /* CampToRoomNavigationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 73559BA11AE2686000547886 /* CampToRoomNavigationDelegate.m */; };
+		73559BA61AE269A200547886 /* WaveSwipeTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 73559BA51AE269A200547886 /* WaveSwipeTransitionAnimator.m */; };
 		73825C1D1ADE8B4300D43383 /* SHPathLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 73825C1C1ADE8B4300D43383 /* SHPathLibrary.m */; };
 		73B20BEC1AA5FF0800A9C88F /* BaseHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B20BEB1AA5FF0800A9C88F /* BaseHomeViewController.m */; };
 		73B20BF01AA609DB00A9C88F /* ShowGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B20BEF1AA609DB00A9C88F /* ShowGroupsViewController.m */; };
@@ -124,6 +126,10 @@
 		668F960769FF3C13F992EB88 /* Pods-Wireframe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wireframe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wireframe/Pods-Wireframe.debug.xcconfig"; sourceTree = "<group>"; };
 		7338BF771AD2C167005FD5F0 /* SRAnimatedWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRAnimatedWaveView.h; sourceTree = "<group>"; };
 		7338BF781AD2C167005FD5F0 /* SRAnimatedWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRAnimatedWaveView.m; sourceTree = "<group>"; };
+		73559BA01AE2686000547886 /* CampToRoomNavigationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampToRoomNavigationDelegate.h; sourceTree = "<group>"; };
+		73559BA11AE2686000547886 /* CampToRoomNavigationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampToRoomNavigationDelegate.m; sourceTree = "<group>"; };
+		73559BA41AE269A200547886 /* WaveSwipeTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveSwipeTransitionAnimator.h; sourceTree = "<group>"; };
+		73559BA51AE269A200547886 /* WaveSwipeTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveSwipeTransitionAnimator.m; sourceTree = "<group>"; };
 		73825C1B1ADE8B4300D43383 /* SHPathLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHPathLibrary.h; sourceTree = "<group>"; };
 		73825C1C1ADE8B4300D43383 /* SHPathLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHPathLibrary.m; sourceTree = "<group>"; };
 		73B20BEA1AA5FF0800A9C88F /* BaseHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseHomeViewController.h; sourceTree = "<group>"; };
@@ -322,15 +328,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		73559BA31AE2697500547886 /* Specials */ = {
+			isa = PBXGroup;
+			children = (
+				73559BA41AE269A200547886 /* WaveSwipeTransitionAnimator.h */,
+				73559BA51AE269A200547886 /* WaveSwipeTransitionAnimator.m */,
+			);
+			name = Specials;
+			sourceTree = "<group>";
+		};
+		73559BA71AE2762B00547886 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				73B20BEA1AA5FF0800A9C88F /* BaseHomeViewController.h */,
+				73B20BEB1AA5FF0800A9C88F /* BaseHomeViewController.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
 		73B20BED1AA6097700A9C88F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				73559BA31AE2697500547886 /* Specials */,
 				73B3B35C1AA7C55500FF7578 /* ReadStory */,
 				73B3B35B1AA7C54D00FF7578 /* OneGroup */,
 				73B20BEE1AA609DB00A9C88F /* ShowGroupsViewController.h */,
 				73B20BEF1AA609DB00A9C88F /* ShowGroupsViewController.m */,
 				73BEF8651ACD8A8D00881F46 /* RoomRevealWrapperViewController.h */,
 				73BEF8661ACD8A8D00881F46 /* RoomRevealWrapperViewController.m */,
+				73559BA01AE2686000547886 /* CampToRoomNavigationDelegate.h */,
+				73559BA11AE2686000547886 /* CampToRoomNavigationDelegate.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -692,13 +719,12 @@
 		B3BCCFFA1AA5C84B00261212 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				73559BA71AE2762B00547886 /* Base */,
 				B3065A381AB98AB700C10AD9 /* Account */,
 				73B20BED1AA6097700A9C88F /* View */,
 				B3BCD00D1AA5FD8000261212 /* Create */,
 				B3BCCFFB1AA5C85B00261212 /* HomeViewController.h */,
 				B3BCCFFC1AA5C85B00261212 /* HomeViewController.m */,
-				73B20BEA1AA5FF0800A9C88F /* BaseHomeViewController.h */,
-				73B20BEB1AA5FF0800A9C88F /* BaseHomeViewController.m */,
 				B325A1381ADE546A0041DF21 /* SandboxViewController.h */,
 				B325A1391ADE546A0041DF21 /* SandboxViewController.m */,
 				B38621F81AE16DC200D2CA5A /* ShowCaseableViewController.h */,
@@ -961,6 +987,7 @@
 			files = (
 				B3065A4E1ABAFD7600C10AD9 /* Room.m in Sources */,
 				B3065A4B1ABAFD1000C10AD9 /* RoomManager.m in Sources */,
+				73559BA61AE269A200547886 /* WaveSwipeTransitionAnimator.m in Sources */,
 				B3DDF3461ADC6311009A9CAF /* NewStoryMainController.m in Sources */,
 				73B20BF41AA61FC400A9C88F /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				B3BCD0101AA5FDB500261212 /* NameStoryViewController.m in Sources */,
@@ -970,6 +997,7 @@
 				B35AD0441ABF339200527C0D /* ArrayDataSource.m in Sources */,
 				B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */,
 				B3065A3B1AB98ACC00C10AD9 /* LoginViewController.m in Sources */,
+				73559BA21AE2686000547886 /* CampToRoomNavigationDelegate.m in Sources */,
 				B3065A331AB9868100C10AD9 /* StoryManager.m in Sources */,
 				B3065A411AB98D6700C10AD9 /* BaseManager.m in Sources */,
 				B3BCD00C1AA5FCF400261212 /* ChooseTagViewController.m in Sources */,
