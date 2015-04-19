@@ -32,7 +32,6 @@
     return self.interactionController;
 }
 
-
 //1
 - (void)panned:(UIPanGestureRecognizer*)gestureRecognizer{
     
@@ -57,14 +56,14 @@
             
             CGPoint translation = [gestureRecognizer translationInView:self.navigationController.view];
             
-            float completionProgress = translation.x/CGRectGetWidth(self.navigationController.view.bounds );
+            float completionProgress = translation.x/-CGRectGetWidth(self.navigationController.view.bounds );
             [self.interactionController updateInteractiveTransition: completionProgress];
             
             break;
             
         case UIGestureRecognizerStateEnded :
             
-            if ([gestureRecognizer velocityInView:self.navigationController.view].x > 0) {
+            if ([gestureRecognizer velocityInView:self.navigationController.view].x <= 0) {
                 [self.interactionController finishInteractiveTransition];
             } else {
                 [self.interactionController cancelInteractiveTransition];
@@ -79,5 +78,7 @@
             break;
     }
 }
+
+
 
 @end

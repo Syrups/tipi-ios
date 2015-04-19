@@ -11,4 +11,6 @@
 
 @interface SHPathLibrary : NSObject
 + (void) addRightCurveBezierPathToView: (UIView *) view ;
++ (UIBezierPath *) swipableRightCurvyBezierPathForRect: (CGRect ) frame ;
++ (UIBezierPath *) swippedRightCurvyBezierPathForRect: (CGRect ) frame ;
 @end

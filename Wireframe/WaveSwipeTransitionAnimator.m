@@ -7,6 +7,7 @@
 //
 
 #import "WaveSwipeTransitionAnimator.h"
+#import "SHPathLibrary.h"
 
 @implementation WaveSwipeTransitionAnimator
 
@@ -26,13 +27,12 @@
     [containerView addSubview: toViewController.view];
     
     //4
-    UIBezierPath* circleMaskPathInitial = [UIBezierPath bezierPathWithRect:baseFrame];
-    //var circleMaskPathInitial = UIBezierPath(ovalInRect: button.frame)
+    UIBezierPath* circleMaskPathInitial = [SHPathLibrary swipableRightCurvyBezierPathForRect:fromViewController.view.frame];//[UIBezierPath bezierPathWithRect:baseFrame];
     CGPoint extremePoint = CGPointMake(0, 0 - CGRectGetHeight(toViewController.view.bounds));
     //CGPoint(x: button.center.x - 0, y: button.center.y - CGRectGetHeight(toViewController.view.bounds))
     float radius = sqrt((extremePoint.x*extremePoint.x) + (extremePoint.y*extremePoint.y));
-    UIBezierPath* circleMaskPathFinal = [UIBezierPath bezierPathWithOvalInRect:CGRectInset(baseFrame, -radius, -radius)];
-    //UIBezierPath(ovalInRect: CGRectInset(button.frame, -radius, -radius))
+    UIBezierPath* circleMaskPathFinal = [SHPathLibrary swippedRightCurvyBezierPathForRect:toViewController.view.frame];
+    [UIBezierPath bezierPathWithOvalInRect:CGRectInset(baseFrame, -radius, -radius)];
     
     //5
     CAShapeLayer* maskLayer = [CAShapeLayer layer];
