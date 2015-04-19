@@ -9,6 +9,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "MediaPickerViewController.h"
 #import "PKCollectionViewStickyHeaderFlowLayout.h"
+#import "MediaCell.h"
 
 @implementation MediaPickerViewController {
     NSMutableArray* selectedIndexes;
@@ -18,6 +19,8 @@
 }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    
     selectedIndexes = [NSMutableArray array];
     self.saver = [StoryWIPSaver sharedSaver];
     
@@ -32,6 +35,8 @@
     
     currentOffset = 0;
     [self.library fetchMediasFromLibraryFrom:currentOffset to:currentOffset + kMediaPickerMediaLimit];
+    
+    NSLog(@"%@", self.showcaseLayer);
 }
 
 - (IBAction)back:(id)sender {
@@ -71,12 +76,12 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MediaCell" forIndexPath:indexPath];
+    MediaCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MediaCell" forIndexPath:indexPath];
     UIImageView* image = (UIImageView*)[cell.contentView viewWithTag:10];
-    NSDictionary* media = [self.medias objectAtIndex:indexPath.row];
+    NSMutableDictionary* media = [self.medias objectAtIndex:indexPath.row];
     
     if (cell == nil) {
-        cell = [[UICollectionViewCell alloc] init];
+        cell = [[MediaCell alloc] initWithMedia:media];
     }
     
     [image setImage:[media objectForKey:@"image"]];
@@ -91,14 +96,12 @@
         cell.tag = 1;
     }
 
-    
-    UIView* vidIcon = (UIView*)[cell.contentView viewWithTag:20];
     UIView* check = (UIView*)[cell.contentView viewWithTag:30];
     
     if ([[media objectForKey:@"type"] isEqual:ALAssetTypeVideo]) {
-        vidIcon.hidden = NO;
+        [cell launchVideoPreviewWithUrl:[media objectForKey:@"url"]];
     } else {
-        vidIcon.hidden = YES;
+        [cell.playerLayer removeFromSuperlayer];
     }
     
     if ([selectedIndexes containsObject:indexPath]) {
@@ -131,6 +134,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
     UIView* check = [cell.contentView viewWithTag:30];
+    NSDictionary* media = [self.medias objectAtIndex:indexPath.row];
     
     if (![selectedIndexes containsObject:indexPath]) {
         ((UIView*)check.subviews[0]).transform = CGAffineTransformMakeScale(0, 0);
@@ -141,6 +145,8 @@
         [selectedIndexes addObject:indexPath];
         [self.saver.medias addObject:[self.medias objectAtIndex:indexPath.row]];
         [self.wave grow];
+        
+        [self.wave updateImage:[media objectForKey:@"image"]];
     } else {
         [UIView animateWithDuration:0.3f animations:^{
             check.alpha = 0;

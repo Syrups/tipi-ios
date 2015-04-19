@@ -27,6 +27,11 @@
     [self.microphone stopFetchingAudio];
 }
 
+- (IBAction)launchStoryBuilder:(id)sender {
+    UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"StoryBuilder"];
+    [self.navigationController pushViewController:vc animated:NO];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     

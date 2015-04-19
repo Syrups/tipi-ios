@@ -341,7 +341,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="Gwv-JV-E0d" kind="push" id="YsS-s8-y2V"/>
+                                    <action selector="launchStoryBuilder:" destination="HHk-KG-YL4" eventType="touchUpInside" id="FOe-u2-xP2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -369,7 +369,7 @@
         <!--New Story Main Controller-->
         <scene sceneID="1ht-Mg-AF3">
             <objects>
-                <viewController id="Gwv-JV-E0d" customClass="NewStoryMainController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StoryBuilder" id="Gwv-JV-E0d" customClass="NewStoryMainController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ECP-8b-Hcz"/>
                         <viewControllerLayoutGuide type="bottom" id="c6T-Mn-dye"/>
@@ -1018,7 +1018,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MediaCell" id="IgU-wM-TqO">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MediaCell" id="IgU-wM-TqO" customClass="MediaCell">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1031,6 +1031,10 @@
                                                 <imageView hidden="YES" userInteractionEnabled="NO" tag="20" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="play.png" translatesAutoresizingMaskIntoConstraints="NO" id="96G-DW-pNs">
                                                     <rect key="frame" x="94" y="94" width="25" height="25"/>
                                                 </imageView>
+                                                <view tag="40" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wqi-yN-UKW" userLabel="VideoPreview">
+                                                    <rect key="frame" x="0.0" y="0.0" width="127" height="127"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <view clipsSubviews="YES" alpha="0.0" tag="30" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5h-85-Mbb" userLabel="Check">
                                                     <rect key="frame" x="0.0" y="0.0" width="127" height="127"/>
                                                     <subviews>
@@ -1054,12 +1058,16 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="SJW-n2-zyk" secondAttribute="bottom" id="1eH-o3-ahU"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="Wqi-yN-UKW" secondAttribute="bottom" constant="-8" id="6cL-K6-XV8"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Wqi-yN-UKW" secondAttribute="trailing" constant="-8" id="7yz-6i-oHF"/>
                                             <constraint firstAttribute="trailing" secondItem="SJW-n2-zyk" secondAttribute="trailing" id="97M-dG-zBZ"/>
+                                            <constraint firstItem="Wqi-yN-UKW" firstAttribute="leading" secondItem="IgU-wM-TqO" secondAttribute="leadingMargin" constant="-8" id="OM0-HW-h5d"/>
                                             <constraint firstItem="SJW-n2-zyk" firstAttribute="top" secondItem="IgU-wM-TqO" secondAttribute="top" id="Q23-dg-Buc"/>
                                             <constraint firstAttribute="bottom" secondItem="f5h-85-Mbb" secondAttribute="bottom" id="QE0-9C-E1G"/>
                                             <constraint firstItem="f5h-85-Mbb" firstAttribute="top" secondItem="IgU-wM-TqO" secondAttribute="top" id="UDS-Mo-VqK"/>
                                             <constraint firstItem="SJW-n2-zyk" firstAttribute="leading" secondItem="IgU-wM-TqO" secondAttribute="leading" id="ZHZ-u1-Oyh"/>
                                             <constraint firstAttribute="trailing" secondItem="f5h-85-Mbb" secondAttribute="trailing" id="jfQ-KP-HsB"/>
+                                            <constraint firstItem="Wqi-yN-UKW" firstAttribute="top" secondItem="IgU-wM-TqO" secondAttribute="topMargin" constant="-8" id="kS4-EW-Qin"/>
                                             <constraint firstItem="f5h-85-Mbb" firstAttribute="leading" secondItem="IgU-wM-TqO" secondAttribute="leading" id="xll-h9-nPO"/>
                                         </constraints>
                                         <size key="customSize" width="127" height="127"/>
@@ -1282,7 +1290,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewLayout key="collectionViewLayout" id="bem-4E-aH9" customClass="LXReorderableCollectionViewFlowLayout"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MediaCell" id="pkH-gF-aLa">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MediaCell" id="pkH-gF-aLa" customClass="MediaCell">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1295,7 +1303,11 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.allowsEdgeAntialiasing" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" alpha="0.0" tag="30" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gouigoui" translatesAutoresizingMaskIntoConstraints="NO" id="Lsh-fm-yyd">
+                                                <view hidden="YES" tag="40" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8PU-04-CKA" userLabel="VideoPreview">
+                                                    <rect key="frame" x="0.0" y="0.0" width="161" height="166"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" tag="30" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gouigoui" translatesAutoresizingMaskIntoConstraints="NO" id="Lsh-fm-yyd">
                                                     <rect key="frame" x="60" y="61" width="41" height="43"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="43" id="QZu-FS-cjm"/>
@@ -1312,7 +1324,11 @@
                                             <constraint firstItem="SCw-uW-lUT" firstAttribute="top" secondItem="pkH-gF-aLa" secondAttribute="topMargin" constant="-8" id="BbS-q3-f72"/>
                                             <constraint firstItem="SCw-uW-lUT" firstAttribute="leading" secondItem="pkH-gF-aLa" secondAttribute="leadingMargin" constant="-8" id="CaW-m3-L9M"/>
                                             <constraint firstAttribute="centerX" secondItem="Lsh-fm-yyd" secondAttribute="centerX" id="Yoj-9Y-2jQ"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="8PU-04-CKA" secondAttribute="trailing" constant="-8" id="nig-KH-caB"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="SCw-uW-lUT" secondAttribute="trailing" constant="-8" id="qFm-zZ-0gr"/>
+                                            <constraint firstItem="8PU-04-CKA" firstAttribute="leading" secondItem="pkH-gF-aLa" secondAttribute="leadingMargin" constant="-8" id="xTk-9w-fJ8"/>
+                                            <constraint firstItem="8PU-04-CKA" firstAttribute="top" secondItem="pkH-gF-aLa" secondAttribute="topMargin" constant="-8" id="zWX-ct-Jdk"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="8PU-04-CKA" secondAttribute="bottom" constant="-8" id="ztP-q2-GaY"/>
                                         </constraints>
                                         <size key="customSize" width="161" height="166"/>
                                     </collectionViewCell>

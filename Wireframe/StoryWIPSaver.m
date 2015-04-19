@@ -70,13 +70,28 @@
     }];
 }
 
-- (void)appendBlankMedia {
+- (void)appendBlankMediaAfterIndex:(NSUInteger)index {
     
     NSMutableDictionary* media = @{
         @"audio_only": [NSNumber numberWithBool:YES]
     }.mutableCopy;
     
-    [self.medias addObject:media];
+    // insert object after media
+    
+    NSMutableArray* newArray = [NSMutableArray array];
+    
+    [self.medias enumerateObjectsUsingBlock:^(NSDictionary* obj, NSUInteger idx, BOOL *stop) {
+        if (idx <= index) {
+            [newArray addObject:obj];
+        } else if (idx == index+1) {
+            [newArray addObject:media];
+            [newArray addObject:obj];
+        } else {
+            [newArray addObject:obj];
+        }
+    }];
+    
+    self.medias = newArray;
 }
 
 - (NSString *)generateUuid {

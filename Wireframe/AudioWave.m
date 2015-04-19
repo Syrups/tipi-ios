@@ -8,7 +8,7 @@
 
 #import "AudioWave.h"
 static const CGFloat kDefaultFrequency          = 1.5f;
-static const CGFloat kDefaultAmplitude          = 1.0f;
+static const CGFloat kDefaultAmplitude          = 2.0f;
 static const CGFloat kDefaultIdleAmplitude      = 0.01f;
 static const CGFloat kDefaultNumberOfWaves      = 5.0f;
 static const CGFloat kDefaultPhaseShift         = -0.15f;
@@ -32,6 +32,7 @@ static const CGFloat kDefaulIncline = 0.3f;
     BOOL animating;
     CGFloat audioRate;
     CGFloat lastValue;
+    UIImageView* imageView;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
@@ -47,6 +48,12 @@ static const CGFloat kDefaulIncline = 0.3f;
         if([self.backgroundColor isEqual:[UIColor whiteColor]]){
             self.backgroundColor = RgbColorAlpha(43, 75, 122, 0.8f);
         }
+        
+        imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height/2)];
+        imageView.alpha = .1f;
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        
+        [self addSubview:imageView];
         
         self.frequency = kDefaultFrequency;
         
@@ -87,6 +94,23 @@ static const CGFloat kDefaulIncline = 0.3f;
 
 - (void)startSexyWaving{
 
+}
+
+- (void)updateImage:(UIImage *)image {
+    
+    UIImageView* newImageView = [[UIImageView alloc] initWithFrame:imageView.frame];
+    newImageView.contentMode = UIViewContentModeScaleAspectFill;
+    newImageView.image = image;
+    newImageView.alpha = 0;
+    [self addSubview:newImageView];
+    
+    [UIView animateWithDuration:.2f animations:^{
+        imageView.alpha = 0;
+        newImageView.alpha = .1f;
+        [imageView removeFromSuperview];
+        imageView = newImageView;
+    }];
+    
 }
 
 

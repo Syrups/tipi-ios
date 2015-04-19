@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "LXReorderableCollectionViewFlowLayout.h"
 #import "StoryWIPSaver.h"
+#import "StoryMediaRecorder.h"
 #import "OrganizerWave.h"
 
 @interface OrganizeStoryViewController : UIViewController <LXReorderableCollectionViewDataSource, UICollectionViewDelegate, LXReorderableCollectionViewDelegateFlowLayout>
 
 @property (strong, nonatomic) StoryWIPSaver* saver;
+@property (strong, nonatomic) StoryMediaRecorder* recorder;
 @property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
 @property (strong, nonatomic) IBOutlet UILabel* pageLabel;
 @property (strong, nonatomic) IBOutlet OrganizerWave* wave;

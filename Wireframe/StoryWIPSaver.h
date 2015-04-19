@@ -21,6 +21,6 @@
 - (void)discard;
 - (void)save;
 - (void)loadSavedStory;
-- (void)appendBlankMedia;
+- (void)appendBlankMediaAfterIndex:(NSUInteger)index;
 
 @end

@@ -59,6 +59,7 @@
 		B33B6FD71ACDC702009C0623 /* UserController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33B6FD61ACDC702009C0623 /* UserController.m */; };
 		B33DE8581ACDCC66008AE55F /* StoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DE8571ACDCC66008AE55F /* StoryController.m */; };
 		B33DE85B1ACDCE00008AE55F /* BaseModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DE85A1ACDCE00008AE55F /* BaseModelController.m */; };
+		B341F04C1AE1A272001D448A /* MediaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B341F04B1AE1A272001D448A /* MediaCell.m */; };
 		B35975F21ADFA29F00936E5E /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B35975F11ADFA29F00936E5E /* ImageUtils.m */; };
 		B35AD0391ABF2B6600527C0D /* ReviewStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD0381ABF2B6600527C0D /* ReviewStoryViewController.m */; };
 		B35AD03C1ABF2D2500527C0D /* ReviewPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD03B1ABF2D2500527C0D /* ReviewPageViewController.m */; };
@@ -70,6 +71,8 @@
 		B3846F1D1ADD058B0030DBDE /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3846F1C1ADD058B0030DBDE /* CoreMotion.framework */; };
 		B3846F391ADD0F1D0030DBDE /* RoomListFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846F381ADD0F1D0030DBDE /* RoomListFlowLayout.m */; };
 		B3846F3C1ADD43170030DBDE /* AudioWave.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846F3B1ADD43170030DBDE /* AudioWave.m */; };
+		B38621F41AE16C7200D2CA5A /* ShowCaseOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = B38621F31AE16C7200D2CA5A /* ShowCaseOverlay.m */; };
+		B38621FA1AE16DC200D2CA5A /* ShowCaseableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38621F91AE16DC200D2CA5A /* ShowCaseableViewController.m */; };
 		B38B895F1ACC08C500799EDD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38B895E1ACC08C500799EDD /* MediaPlayer.framework */; };
 		B38B89621ACC146200799EDD /* MediaLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = B38B89611ACC146200799EDD /* MediaLibrary.m */; };
 		B38B89661ACC221600799EDD /* SRRecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B38B89651ACC221600799EDD /* SRRecordButton.m */; };
@@ -202,6 +205,8 @@
 		B33DE8591ACDCE00008AE55F /* BaseModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModelController.h; sourceTree = "<group>"; };
 		B33DE85A1ACDCE00008AE55F /* BaseModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModelController.m; sourceTree = "<group>"; };
 		B33DE85C1ACDCFBB008AE55F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		B341F04A1AE1A272001D448A /* MediaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaCell.h; sourceTree = "<group>"; };
+		B341F04B1AE1A272001D448A /* MediaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaCell.m; sourceTree = "<group>"; };
 		B35975F01ADFA29F00936E5E /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
 		B35975F11ADFA29F00936E5E /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
 		B35AD0371ABF2B6600527C0D /* ReviewStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewStoryViewController.h; sourceTree = "<group>"; };
@@ -221,6 +226,10 @@
 		B3846F381ADD0F1D0030DBDE /* RoomListFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomListFlowLayout.m; sourceTree = "<group>"; };
 		B3846F3A1ADD43170030DBDE /* AudioWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioWave.h; sourceTree = "<group>"; };
 		B3846F3B1ADD43170030DBDE /* AudioWave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioWave.m; sourceTree = "<group>"; };
+		B38621F21AE16C7200D2CA5A /* ShowCaseOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowCaseOverlay.h; sourceTree = "<group>"; };
+		B38621F31AE16C7200D2CA5A /* ShowCaseOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowCaseOverlay.m; sourceTree = "<group>"; };
+		B38621F81AE16DC200D2CA5A /* ShowCaseableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowCaseableViewController.h; sourceTree = "<group>"; };
+		B38621F91AE16DC200D2CA5A /* ShowCaseableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowCaseableViewController.m; sourceTree = "<group>"; };
 		B38B895E1ACC08C500799EDD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		B38B89601ACC146200799EDD /* MediaLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaLibrary.h; sourceTree = "<group>"; };
 		B38B89611ACC146200799EDD /* MediaLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaLibrary.m; sourceTree = "<group>"; };
@@ -389,6 +398,7 @@
 		B3065A2D1AB9714400C10AD9 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				B341F0491AE1A25D001D448A /* Cell */,
 				B3BCCFFE1AA5E50D00261212 /* MediaPickerViewController.h */,
 				B3BCCFFF1AA5E50D00261212 /* MediaPickerViewController.m */,
 				B3BCD01B1AA60D4C00261212 /* OrganizeStoryViewController.h */,
@@ -509,6 +519,15 @@
 			name = Entities;
 			sourceTree = "<group>";
 		};
+		B341F0491AE1A25D001D448A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B341F04A1AE1A272001D448A /* MediaCell.h */,
+				B341F04B1AE1A272001D448A /* MediaCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		B35AD0361ABF2B4B00527C0D /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -536,6 +555,15 @@
 				B3846F381ADD0F1D0030DBDE /* RoomListFlowLayout.m */,
 			);
 			name = Layout;
+			sourceTree = "<group>";
+		};
+		B38621F11AE16C6100D2CA5A /* ShowCase */ = {
+			isa = PBXGroup;
+			children = (
+				B38621F21AE16C7200D2CA5A /* ShowCaseOverlay.h */,
+				B38621F31AE16C7200D2CA5A /* ShowCaseOverlay.m */,
+			);
+			name = ShowCase;
 			sourceTree = "<group>";
 		};
 		B38B89631ACC21F300799EDD /* Views */ = {
@@ -673,6 +701,8 @@
 				73B20BEB1AA5FF0800A9C88F /* BaseHomeViewController.m */,
 				B325A1381ADE546A0041DF21 /* SandboxViewController.h */,
 				B325A1391ADE546A0041DF21 /* SandboxViewController.m */,
+				B38621F81AE16DC200D2CA5A /* ShowCaseableViewController.h */,
+				B38621F91AE16DC200D2CA5A /* ShowCaseableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -707,6 +737,7 @@
 		B3BCD0221AA622FA00261212 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B38621F11AE16C6100D2CA5A /* ShowCase */,
 				B3BCD0231AA6230100261212 /* Layout */,
 				B38B89641ACC221600799EDD /* SRRecordButton.h */,
 				B38B89651ACC221600799EDD /* SRRecordButton.m */,
@@ -952,6 +983,7 @@
 				B3BCD0061AA5F0CE00261212 /* NewStoryViewController.m in Sources */,
 				B3A8D18E1ACED0EC00B09C34 /* ProfileViewController.m in Sources */,
 				B3A8D17D1ACE7A3800B09C34 /* RoomController.m in Sources */,
+				B38621F41AE16C7200D2CA5A /* ShowCaseOverlay.m in Sources */,
 				B38B89621ACC146200799EDD /* MediaLibrary.m in Sources */,
 				B3BCD01D1AA60D4C00261212 /* OrganizeStoryViewController.m in Sources */,
 				B38B89661ACC221600799EDD /* SRRecordButton.m in Sources */,
@@ -959,6 +991,7 @@
 				B3BCD0031AA5F03D00261212 /* AbortModalViewController.m in Sources */,
 				B33DE8581ACDCC66008AE55F /* StoryController.m in Sources */,
 				73B20BF31AA6178200A9C88F /* ShowOneGroupViewController.m in Sources */,
+				B341F04C1AE1A272001D448A /* MediaCell.m in Sources */,
 				B3A8D1811ACE8C2F00B09C34 /* FriendListViewController.m in Sources */,
 				B3846F3C1ADD43170030DBDE /* AudioWave.m in Sources */,
 				B35CDBDA1AB87DD900BF9F82 /* StoryMediaRecorder.m in Sources */,
@@ -982,6 +1015,7 @@
 				73B20BEC1AA5FF0800A9C88F /* BaseHomeViewController.m in Sources */,
 				73BEF8671ACD8A8D00881F46 /* RoomRevealWrapperViewController.m in Sources */,
 				B3A8D1841ACEAD0A00B09C34 /* FriendManager.m in Sources */,
+				B38621FA1AE16DC200D2CA5A /* ShowCaseableViewController.m in Sources */,
 				B3BCCFFD1AA5C85B00261212 /* HomeViewController.m in Sources */,
 				B3C85E571ACBF5260083C50A /* Media.m in Sources */,
 				B319338D1ADFB4AE00603158 /* DoneStoryViewController.m in Sources */,

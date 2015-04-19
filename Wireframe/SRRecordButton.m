@@ -15,6 +15,7 @@
     CGFloat startAngle;
     NSTimer* appearanceTimer;
     NSTimer* closingTimer;
+    CGFloat lastValue;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -158,6 +159,18 @@
     [self setContentMode:UIViewContentModeRedraw];
     
     circleOffset -= 0.05f;
+}
+
+- (void)updateWithBuffer:(float **)buffer bufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
+    
+    float* channel = buffer[0];
+    
+    CGFloat max = 0.0;
+    for (int i = 0 ; i < bufferSize ; ++i) {
+        if (*(channel+i) > max && *(channel+i) < .1f) max = *(channel+i);
+    }
+    
+    lastValue = max;
 }
 
 @end

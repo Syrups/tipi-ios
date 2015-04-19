@@ -21,5 +21,6 @@
 - (void)start;
 - (void)pause;
 - (void)reset;
+- (void)updateWithBuffer:(float **)buffer bufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels ;
 
 @end

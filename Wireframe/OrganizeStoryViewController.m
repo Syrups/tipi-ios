@@ -11,6 +11,7 @@
 #import "DoneStoryViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "ImageUtils.h"
+#import "MediaCell.h"
 
 #define CELL_SIZE 190
 #define INACTIVE_CELL_OPACITY 0.3f
@@ -34,6 +35,7 @@
     self.collectionView.collectionViewLayout = layout;
     
     self.saver = [StoryWIPSaver sharedSaver];
+    self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
     
     // Okay, so we load the first XX images in full resolution
     // so they can display immediately on collection view,
@@ -80,11 +82,11 @@
 }
 
 - (IBAction)appendBlankMedia:(id)sender {
-    [self.saver appendBlankMedia];
+    CGPoint point = CGPointMake(self.collectionView.contentOffset.x + self.collectionView.frame.size.width/2, self.collectionView.frame.size.height/2);
+    NSIndexPath* indexPath = [self.collectionView indexPathForItemAtPoint:point];
+    [self.saver appendBlankMediaAfterIndex:indexPath.row];
 //    NSArray* indexPaths = @[[NSIndexPath indexPathForItem:self.saver.medias.count-1 inSection:0]];
     [self.collectionView reloadData];
-    
-    [self.collectionView setContentOffset:CGPointMake(self.collectionView.contentSize.width - self.view.frame.size.width, 0) animated:YES];
 }
 
 #pragma mark - UICollectionView
@@ -98,10 +100,10 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell* cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"MediaCell" forIndexPath:indexPath];
+    MediaCell* cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"MediaCell" forIndexPath:indexPath];
     
     if (cell == nil) {
-        cell = [[UICollectionViewCell alloc] init];
+        cell = [[MediaCell alloc] init];
     }
     
     NSDictionary* media = [self.saver.medias objectAtIndex:indexPath.row];
@@ -109,6 +111,12 @@
     if ([[media objectForKey:@"audio_only"] isEqual:[NSNumber numberWithBool:YES]]) {
         return [self cellForBlankMediaAtIndexPath:indexPath];
     }
+    
+//    if ([[media objectForKey:@"type"] isEqual:ALAssetTypeVideo]) {
+//        [cell launchVideoPreviewWithUrl:[media objectForKey:@"url"]];
+//    } else {
+//        [cell.playerLayer removeFromSuperlayer];
+//    }
     
     UIImageView* image = (UIImageView*)[cell.contentView viewWithTag:20];
     image.layer.mask = [self maskForCell:cell expanded:NO];
@@ -124,6 +132,9 @@
     } else {
         //        cell.alpha = INACTIVE_CELL_OPACITY;
     }
+    
+    UIView* gouigoui = [cell.contentView viewWithTag:30];
+    gouigoui.hidden = ![self.recorder hasRecordedAtIndex:indexPath.row];
     
     return cell;
 }
@@ -159,7 +170,7 @@
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(130, (collectionView.frame.size.width-CELL_SIZE)/2, 120, collectionView.frame.size.width/2);
+    return UIEdgeInsetsMake(110, (collectionView.frame.size.width-CELL_SIZE)/2, 120, collectionView.frame.size.width/2);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {

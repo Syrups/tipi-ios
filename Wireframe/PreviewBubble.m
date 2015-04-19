@@ -168,6 +168,7 @@
     
     if (expandOffset > 10) {
         [self.delegate previewBubbleDidDragToExpand:self];
+        self.userInteractionEnabled = NO;
     }
     
     [self setNeedsDisplay];
