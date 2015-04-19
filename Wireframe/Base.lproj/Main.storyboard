@@ -377,7 +377,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NFl-ab-tfn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2964" y="-1996"/>
+            <point key="canvasLocation" x="3496" y="-1996"/>
         </scene>
         <!--New Story Main Controller-->
         <scene sceneID="1ht-Mg-AF3">
@@ -426,7 +426,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fKd-C6-WjN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3350" y="-1996"/>
+            <point key="canvasLocation" x="3882" y="-1996"/>
         </scene>
         <!--Show Groups View Controller-->
         <scene sceneID="tjo-uN-pJZ">
@@ -1200,7 +1200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="53I-JT-BX0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4294" y="-1996"/>
+            <point key="canvasLocation" x="4826" y="-1996"/>
         </scene>
         <!--Organize Story View Controller-->
         <scene sceneID="Pvx-Rm-ZwT">
@@ -1367,7 +1367,7 @@ tap to record</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BdT-pl-9vK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4663" y="-1996"/>
+            <point key="canvasLocation" x="5195" y="-1996"/>
         </scene>
         <!--Record View Controller-->
         <scene sceneID="reA-gP-plh">
@@ -1453,7 +1453,7 @@ tap to record</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5116" y="-1990"/>
+            <point key="canvasLocation" x="5648" y="-1990"/>
         </scene>
         <!--Record Page View Controller-->
         <scene sceneID="IRE-9P-Kwh">
@@ -1728,7 +1728,7 @@ tap to record</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPe-Is-Oeg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5542" y="-1990"/>
+            <point key="canvasLocation" x="6074" y="-1990"/>
         </scene>
         <!--Room Picker View Controller-->
         <scene sceneID="dls-9R-q9Q">
@@ -1845,7 +1845,7 @@ tap to record</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nzK-4c-4nq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5930" y="-1990"/>
+            <point key="canvasLocation" x="6462" y="-1990"/>
         </scene>
         <!--Room Reveal Wrapper View Controller-->
         <scene sceneID="zjK-23-chf">
@@ -2045,7 +2045,7 @@ tap to record</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jqp-Qx-vcr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3811" y="-1996"/>
+            <point key="canvasLocation" x="4343" y="-1996"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HAi-Ey-BYX">
@@ -2089,6 +2089,24 @@ tap to record</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SbM-lz-SfK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="XUL-sg-kaK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="BEc-aU-wUR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hNb-gg-o2t">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HHk-KG-YL4" kind="relationship" relationship="rootViewController" id="eDV-Fb-6qP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4kC-aJ-K7Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2964" y="-1996"/>
         </scene>
     </scenes>
     <resources>
