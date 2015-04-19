@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+@import UIKit;
 
 @interface SHPathLibrary : NSObject
-
++ (void) addRightCurveBezierPathToView: (UIView *) view ;
 @end

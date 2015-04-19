@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface HomeViewController : UIViewController //<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+- (IBAction)goRooms:(id)sender;
 
-@property (nonatomic, strong)UIPageViewController *pager;
+//@property (nonatomic, strong)UIPageViewController *pager;
 @end

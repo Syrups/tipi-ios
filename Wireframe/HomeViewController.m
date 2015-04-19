@@ -22,8 +22,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UISwipeGestureRecognizer * recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goRight)];
+    [recognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
+    [self.view addGestureRecognizer:recognizer];
+    
     // Create it.
-    self.pager = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+    /*self.pager = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
     // Point the datasource back to this UIViewController.
     self.pager.dataSource = self;
@@ -50,12 +54,18 @@
     [self.view sendSubviewToBack:self.pager.view];
     
     // And make sure to activate!
-    [self.pager didMoveToParentViewController:self];
+    [self.pager didMoveToParentViewController:self];*/
 
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
 }
+
+-(void)goRight{
+    [self performSegueWithIdentifier: @"goRooms" sender: self];
+}
+
+
 
 // Factory method
 - (UIViewController *)viewControllerAtIndex:(int)i {
@@ -67,7 +77,7 @@
         return nil;
     }
     
-    NSString * indentifier = i == 0 ? @"NewStoryViewController" : @"ShowGroupsViewController";
+    NSString * indentifier = i == 0 ? @"NewStoryViewController" : @"ShowGroupsNavViewController";//ShowGroupsViewController
     
     // Assuming you have SomePageViewController.xib
     BaseHomeViewController *newController = [self.storyboard instantiateViewControllerWithIdentifier: indentifier];
@@ -90,4 +100,13 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)goRooms:(id)sender
+{
+    
+    // Assuming you have SomePageViewController.xib
+    UINavigationController *roomController = [self.storyboard instantiateViewControllerWithIdentifier: @"ShowGroupsNavViewController"];
+    
+  
+    [self presentViewController:roomController animated:YES completion:nil];
+}
 @end

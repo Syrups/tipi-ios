@@ -11,6 +11,7 @@
 #import "UserSession.h"
 #import "SWRevealViewController.h"
 #import "RoomRevealWrapperViewController.h"
+#import "SHPathLibrary.h"
 
 @implementation ShowGroupsViewController {
 }
@@ -20,6 +21,9 @@
     
     RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
     [manager fetchRoomsForUser:[[UserSession sharedSession] user]];
+    
+    
+    [SHPathLibrary addRightCurveBezierPathToView:self.view];
 }
 
 #pragma mark - RoomFetcher
@@ -33,6 +37,34 @@
 - (void)roomManager:(RoomManager *)manager failedToFetchRooms:(NSError*)error{
     // error
 }
+
+/*
+- (CGPathRef)pathForLayer {
+    UIBezierPath* path = [[UIBezierPath alloc] init];
+    
+    [path moveToPoint:CGPointMake(self.frame.size.width, 150)];
+    
+    if (self.hidden) {
+        [path addLineToPoint:CGPointMake(self.frame.size.width, self.frame.size.height-150)];
+    } else {
+        [path addQuadCurveToPoint:CGPointMake(self.frame.size.width, self.frame.size.height - 150) controlPoint:CGPointMake(self.frame.size.width/3, self.frame.size.height/2)];
+    }
+    
+    
+    return path.CGPath;
+}
+
+- (CGPathRef)pathForLayerExpanded {
+    UIBezierPath* path = [[UIBezierPath alloc] init];
+    
+    [path moveToPoint:CGPointMake(self.frame.size.width, -self.frame.size.height)];
+    
+    [path addQuadCurveToPoint:CGPointMake(self.frame.size.width, 2*self.frame.size.height) controlPoint:CGPointMake(-self.frame.size.width*2, self.frame.size.height/2)];
+    
+    
+    return path.CGPath;
+    
+}*/
 
 #pragma mark - UITableView
 
@@ -83,6 +115,8 @@
         reveal.roomId = selectedRoom;
     }
 }
+
+
 
 
 @end
