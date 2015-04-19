@@ -18,7 +18,8 @@
     shapeLayer.path = [path CGPath];
     shapeLayer.strokeColor = [[UIColor clearColor] CGColor];
     shapeLayer.lineWidth = 3.0;
-    shapeLayer.fillColor = [[UIColor colorWithRed:61 green:22 blue:20 alpha:1] CGColor];
+    shapeLayer.fillColor = [[UIColor redColor] CGColor];
+    //colorWithRed:61 green:22 blue:20 alpha:1
     //[[UIColor clearColor] CGColor];
     
     [view.layer addSublayer:shapeLayer];
