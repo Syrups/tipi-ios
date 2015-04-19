@@ -11,7 +11,7 @@
 #import "ShowOneGroupViewController.h"
 #import "RoomManager.h"
 
-@interface ShowGroupsViewController : BaseHomeViewController<UITableViewDataSource, UITableViewDelegate, RoomFetcherDelegate>
+@interface ShowGroupsViewController : BaseHomeViewController<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, RoomFetcherDelegate>
 
 @property (strong, nonatomic) ShowOneGroupViewController *mShowOneGroupViewController;
 @property (weak, nonatomic) IBOutlet UITableView *mTableView;
