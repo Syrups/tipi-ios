@@ -443,13 +443,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Listen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gqh-3X-MCV">
-                                <rect key="frame" x="82" y="28" width="157" height="52"/>
-                                <gestureRecognizers/>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="256" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cva-fL-HQG">
                                 <rect key="frame" x="16" y="66" width="288" height="502"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -491,8 +484,23 @@
                                     <outlet property="delegate" destination="rxv-4M-dHT" id="Bbl-lZ-f5c"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feux de camps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gqh-3X-MCV">
+                                <rect key="frame" x="82" y="20" width="157" height="31"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="157" id="YEf-iJ-s1X"/>
+                                    <constraint firstAttribute="height" constant="31" id="ZmD-ps-wCU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="15"/>
+                                <color key="textColor" red="0.46274509803921571" green="0.40784313725490196" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Gqh-3X-MCV" secondAttribute="centerX" constant="-0.5" id="PzT-II-EQ8"/>
+                            <constraint firstItem="Gqh-3X-MCV" firstAttribute="top" secondItem="Guj-6H-DJr" secondAttribute="bottom" id="oyo-M6-0nw"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1et-2Y-rHt">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="9aU-fu-2nX"/>

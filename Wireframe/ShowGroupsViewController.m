@@ -24,6 +24,13 @@
     
     
     [SHPathLibrary addRightCurveBezierPathToView:self.view];
+    
+    [self.mTableView setContentInset:UIEdgeInsetsMake(70,0,150,0)];
+    
+    //CGRect testRect = CGRectMake(0, self.mTableView.superview.center.y- 100, self.mTableView.superview.frame.size.width, 200);
+    //UIView *testView = [[UIView alloc] initWithFrame:testRect];
+    //testView.backgroundColor = [UIColor greenColor];
+    //[self.view addSubview:testView];
 }
 
 #pragma mark - RoomFetcher
@@ -38,33 +45,6 @@
     // error
 }
 
-/*
-- (CGPathRef)pathForLayer {
-    UIBezierPath* path = [[UIBezierPath alloc] init];
-    
-    [path moveToPoint:CGPointMake(self.frame.size.width, 150)];
-    
-    if (self.hidden) {
-        [path addLineToPoint:CGPointMake(self.frame.size.width, self.frame.size.height-150)];
-    } else {
-        [path addQuadCurveToPoint:CGPointMake(self.frame.size.width, self.frame.size.height - 150) controlPoint:CGPointMake(self.frame.size.width/3, self.frame.size.height/2)];
-    }
-    
-    
-    return path.CGPath;
-}
-
-- (CGPathRef)pathForLayerExpanded {
-    UIBezierPath* path = [[UIBezierPath alloc] init];
-    
-    [path moveToPoint:CGPointMake(self.frame.size.width, -self.frame.size.height)];
-    
-    [path addQuadCurveToPoint:CGPointMake(self.frame.size.width, 2*self.frame.size.height) controlPoint:CGPointMake(-self.frame.size.width*2, self.frame.size.height/2)];
-    
-    
-    return path.CGPath;
-    
-}*/
 
 #pragma mark - UITableView
 
@@ -116,6 +96,33 @@
     }
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    
+    //TODO : reset LOOP
+    
+    NSLog(@"__________");
+    
+    for (UITableViewCell *cell in self.mTableView.visibleCells) {
+        CGRect cellRect = [scrollView convertRect:cell.frame toView:scrollView.superview];
+        float cellY = roundf(cellRect.origin.y);
+        
+        UILabel *name = (UILabel*)[cell.contentView viewWithTag:100];
+        //name.text = room.name;
+        
+        CGPoint center = [scrollView convertPoint:cell.center toView:scrollView.superview];
+        NSLog(@"cell: %@ : %@, tableCenter : %@ ", name.text, NSStringFromCGPoint(center) , NSStringFromCGPoint(scrollView.superview.center) );
+        if (cellY){
+            
+            //[self updateThemeDataWithCell:cell];
+            //[cell updateAsFullyVisible:YES];
+           
+        }else{
+            //[cell updateAsFullyVisible:NO];
+            //NSLog(@"updateAsFullyVisible : NO : %@ : %f", name.text, cellY);
+        }
+    }
+}
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     [self centerTable];
@@ -126,9 +133,9 @@
 }
 
 - (void)centerTable {
-    NSIndexPath *pathForCenterCell = [self.mTableView indexPathForRowAtPoint:CGPointMake(CGRectGetMidX(self.mTableView.bounds), CGRectGetMidY(self.mTableView.bounds))];
-    
-    [self.mTableView scrollToRowAtIndexPath:pathForCenterCell atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    NSIndexPath *pathForCenterCell = [self.mTableView indexPathForRowAtPoint:CGPointMake(CGRectGetMidX(self.mTableView.bounds), CGRectGetMidY(self.mTableView.bounds) - 100)];
+    [self.mTableView scrollToRowAtIndexPath:pathForCenterCell atScrollPosition:UITableViewScrollPositionTop animated:YES];
+   
 }
 
 
