@@ -10,6 +10,8 @@
 #import "BaseHomeViewController.h"
 #import "ShowOneGroupViewController.h"
 #import "RoomManager.h"
+#import "UIRoomTableViewCell.h"
+
 
 @interface ShowGroupsViewController : BaseHomeViewController<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, RoomFetcherDelegate>
 

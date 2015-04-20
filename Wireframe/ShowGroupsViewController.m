@@ -48,27 +48,20 @@
 
 #pragma mark - UITableView
 
-- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UIRoomTableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     Room* room = [self.mGroups objectAtIndex:indexPath.row];
     
     static NSString *cellIdentifier = @"groupCell";
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    UIRoomTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        cell = [[UIRoomTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
-    UIView* v1 = [cell.contentView viewWithTag:10];
-    v1.layer.borderWidth = 1;
-    v1.layer.borderColor = [UIColor blackColor].CGColor;
     
-    UIView* v2 = [cell.contentView viewWithTag:15];
-    v2.layer.borderWidth = 1;
-    v2.layer.borderColor = [UIColor blackColor].CGColor;
-    
-    UILabel *name = (UILabel*)[cell.contentView viewWithTag:100];
-    name.text = room.name;
-    
+   
+    cell.roomName.text = room.name;
+
     
     return cell;
 }
@@ -101,25 +94,30 @@
     
     //TODO : reset LOOP
     
-    NSLog(@"__________");
+    //NSLog(@"__________");
     
-    for (UITableViewCell *cell in self.mTableView.visibleCells) {
+    for (UIRoomTableViewCell *cell in self.mTableView.visibleCells) {
         CGRect cellRect = [scrollView convertRect:cell.frame toView:scrollView.superview];
-        float cellY = roundf(cellRect.origin.y);
-        
-        UILabel *name = (UILabel*)[cell.contentView viewWithTag:100];
-        //name.text = room.name;
-        
         CGPoint center = [scrollView convertPoint:cell.center toView:scrollView.superview];
-        NSLog(@"cell: %@ : %@, tableCenter : %@ ", name.text, NSStringFromCGPoint(center) , NSStringFromCGPoint(scrollView.superview.center) );
-        if (cellY){
+        
+        CGRect testRect = CGRectMake(0, self.mTableView.superview.center.y- 100, self.mTableView.superview.frame.size.width, 200);
+        
+        //NSLog(@"cell: %@ : %@, tableCenter : %@ ", name.text, NSStringFromCGPoint(center), NSStringFromCGPoint(scrollView.superview.center) );
+        
+        
+      
+        //NSLog(@"cell: %@ : %@, inter : %@ ", name.text, NSStringFromCGPoint(center) , inter ? @"Yes" : @"No");
+        int del = fabsf(scrollView.superview.center.y -  center.y)/ 5;
+        
+        cell.heightConstraint.constant = 120 - del;
+        cell.widthConstraint.constant = 120 - del;
+        [cell setNeedsLayout];
+        [cell setNeedsUpdateConstraints];
+        
+        if([cell.roomName.text isEqualToString:@"Potes"]){
             
-            //[self updateThemeDataWithCell:cell];
-            //[cell updateAsFullyVisible:YES];
-           
-        }else{
-            //[cell updateAsFullyVisible:NO];
-            //NSLog(@"updateAsFullyVisible : NO : %@ : %f", name.text, cellY);
+            NSLog(@"cell: %@ : %f vs %f -> %d ", cell.roomName.text, center.y , scrollView.superview.center.y, del);
+        
         }
     }
 }
