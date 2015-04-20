@@ -19,19 +19,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
-    [manager fetchRoomsForUser:[[UserSession sharedSession] user]];
-    
-    
+    [self.mTableView setContentInset:UIEdgeInsetsMake(70,0,150,0)];
     [SHPathLibrary addRightCurveBezierPathToView:self.view];
     
-    [self.mTableView setContentInset:UIEdgeInsetsMake(70,0,150,0)];
     
-    //CGRect testRect = CGRectMake(0, self.mTableView.superview.center.y- 100, self.mTableView.superview.frame.size.width, 200);
-    //UIView *testView = [[UIView alloc] initWithFrame:testRect];
-    //testView.backgroundColor = [UIColor greenColor];
-    //[self.view addSubview:testView];
+    RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
+    [manager fetchRoomsForUser:[[UserSession sharedSession] user]];
 }
+
+
 
 #pragma mark - RoomFetcher
 
@@ -39,6 +35,7 @@
     self.mGroups = rooms;
     
     [self.mTableView reloadData];
+    [self.mTableView setContentOffset:CGPointMake(0.0f, -self.mTableView .contentInset.bottom) animated:NO];
 }
 
 - (void)roomManager:(RoomManager *)manager failedToFetchRooms:(NSError*)error{
@@ -54,14 +51,13 @@
     
     static NSString *cellIdentifier = @"groupCell";
     UIRoomTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
     if (!cell) {
         cell = [[UIRoomTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
     
-   
     cell.roomName.text = room.name;
-
     
     return cell;
 }
@@ -72,6 +68,50 @@
     return self.mGroups.count;
 }
 
+
+#pragma mark - UIScrollView
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    
+    for (UIRoomTableViewCell *cell in self.mTableView.visibleCells) {
+        CGPoint cellCenter = [scrollView convertPoint:cell.center toView:scrollView.superview];
+        
+        int del = fabsf(scrollView.superview.center.y -  cellCenter.y)/ 4.5;
+        
+        cell.heightConstraint.constant = 120 - del;
+        cell.widthConstraint.constant = 120 - del;
+        
+        [cell setNeedsLayout];
+        [cell setNeedsUpdateConstraints];
+        
+        CGRect cellRect = [scrollView convertRect:cell.frame toView:scrollView.superview];
+        CGRect hitRect = CGRectMake(0, self.mTableView.superview.center.y- 25, self.mTableView.superview.frame.size.width, 50);
+        
+        if(CGRectIntersectsRect(cellRect, hitRect)){
+            [self.mTableView selectRowAtIndexPath: [self.mTableView indexPathForCell:cell]
+                                         animated: NO
+                                   scrollPosition: UITableViewScrollPositionNone];
+        }
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self centerTable];
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    [self centerTable];
+}
+
+- (void)centerTable {
+    
+    NSIndexPath *pathForCenterCell = [self.mTableView indexPathForRowAtPoint:CGPointMake(CGRectGetMidX(self.mTableView.bounds), CGRectGetMidY(self.mTableView.bounds) - 100)];
+    [self.mTableView scrollToRowAtIndexPath:pathForCenterCell atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    
+}
+
+#pragma mark - UIStoryboardSegue
 
 -(IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
 }
@@ -87,53 +127,6 @@
         RoomRevealWrapperViewController* reveal = segue.destinationViewController;
         reveal.roomId = selectedRoom;
     }
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    
-    //TODO : reset LOOP
-    
-    //NSLog(@"__________");
-    
-    for (UIRoomTableViewCell *cell in self.mTableView.visibleCells) {
-        CGRect cellRect = [scrollView convertRect:cell.frame toView:scrollView.superview];
-        CGPoint center = [scrollView convertPoint:cell.center toView:scrollView.superview];
-        
-        CGRect testRect = CGRectMake(0, self.mTableView.superview.center.y- 100, self.mTableView.superview.frame.size.width, 200);
-        
-        //NSLog(@"cell: %@ : %@, tableCenter : %@ ", name.text, NSStringFromCGPoint(center), NSStringFromCGPoint(scrollView.superview.center) );
-        
-        
-      
-        //NSLog(@"cell: %@ : %@, inter : %@ ", name.text, NSStringFromCGPoint(center) , inter ? @"Yes" : @"No");
-        int del = fabsf(scrollView.superview.center.y -  center.y)/ 5;
-        
-        cell.heightConstraint.constant = 120 - del;
-        cell.widthConstraint.constant = 120 - del;
-        [cell setNeedsLayout];
-        [cell setNeedsUpdateConstraints];
-        
-        if([cell.roomName.text isEqualToString:@"Potes"]){
-            
-            NSLog(@"cell: %@ : %f vs %f -> %d ", cell.roomName.text, center.y , scrollView.superview.center.y, del);
-        
-        }
-    }
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    [self centerTable];
-}
-
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
-    [self centerTable];
-}
-
-- (void)centerTable {
-    NSIndexPath *pathForCenterCell = [self.mTableView indexPathForRowAtPoint:CGPointMake(CGRectGetMidX(self.mTableView.bounds), CGRectGetMidY(self.mTableView.bounds) - 100)];
-    [self.mTableView scrollToRowAtIndexPath:pathForCenterCell atScrollPosition:UITableViewScrollPositionTop animated:YES];
-   
 }
 
 

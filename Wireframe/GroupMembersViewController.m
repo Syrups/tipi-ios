@@ -37,7 +37,6 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    
  
     UILabel *name = (UILabel*)[cell.contentView viewWithTag:90];
     name.text = [self.mUsers objectAtIndex:indexPath.row];

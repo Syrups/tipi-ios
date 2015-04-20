@@ -8,19 +8,20 @@
 
 #import "SHPathLibrary.h"
 
+
 @implementation SHPathLibrary
 
 
 + (void) addRightCurveBezierPathToView: (UIView *) view {
     UIBezierPath* path = [SHPathLibrary swipableRightCurvyBezierPathForRect:view.frame];
     
+    UIColor *color = [UIColor colorWithRed:46/255.0  green:13/255.0 blue:14/255.0 alpha:1];
+    
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.path = [path CGPath];
-    shapeLayer.strokeColor = [[UIColor blackColor] CGColor];
+    shapeLayer.strokeColor = [[UIColor clearColor] CGColor];
     shapeLayer.lineWidth = 3.0;
-    shapeLayer.fillColor = [[UIColor blackColor] CGColor];
-    //colorWithRed:61 green:22 blue:20 alpha:1
-    //[[UIColor clearColor] CGColor];
+    shapeLayer.fillColor = [color CGColor];
     
     [view.layer addSublayer:shapeLayer];
 }

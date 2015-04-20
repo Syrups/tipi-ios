@@ -80,12 +80,6 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
-    for (UIView* v in cell.contentView.subviews) {
-        //if([v class])
-        v.layer.borderWidth = 1;
-        v.layer.borderColor = [UIColor blackColor].CGColor;
-    }
-    
     Story* story = [self.mStories objectAtIndex:indexPath.row];
     
     UILabel *name = (UILabel*)[cell.contentView viewWithTag:10];
