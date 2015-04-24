@@ -41,6 +41,7 @@
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", operation.responseString);
         NSLog(@"Error: %@", error);
         
         if ([self.delegate respondsToSelector:@selector(fileUploader:failedToUploadFileOfType:toPath:)]) {
