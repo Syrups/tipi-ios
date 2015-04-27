@@ -10,6 +10,7 @@
 #import "MediaPickerViewController.h"
 #import "PKCollectionViewStickyHeaderFlowLayout.h"
 #import "MediaCell.h"
+#import "HelpModalViewController.h"
 
 @implementation MediaPickerViewController {
     NSMutableArray* selectedIndexes;
@@ -43,6 +44,14 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)openHelp:(id)sender {
+    HelpModalViewController* helpVc = (HelpModalViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"HelpModal"];
+    
+    [self addChildViewController:helpVc];
+    helpVc.view.frame = self.view.frame;
+    [self.view addSubview:helpVc.view];
+    [helpVc didMoveToParentViewController:self];
+}
 
 #pragma mark - MediaLibrary
 

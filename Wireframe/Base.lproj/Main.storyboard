@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BEc-aU-wUR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Lcv-xj-Ztq">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -16,6 +16,8 @@
             <string>GTWalsheim-Bold</string>
         </mutableArray>
         <mutableArray key="GTWalsheim Regular.otf">
+            <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
@@ -937,7 +939,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3350" y="-2658"/>
+            <point key="canvasLocation" x="3296" y="-2646"/>
         </scene>
         <!--Media Picker View Controller-->
         <scene sceneID="bWs-1j-7Io">
@@ -1128,6 +1130,9 @@
                                 <state key="normal" image="help-btn">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="openHelp:" destination="tUV-fc-U0L" eventType="touchUpInside" id="xkS-Ie-HXi"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C H O I S I R  D E S  P H O T O S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyH-AG-HkS">
                                 <rect key="frame" x="62" y="5" width="195" height="52"/>
@@ -1563,11 +1568,11 @@ E N R E G I S T R E R</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jmg-cx-tJO" customClass="AudioWave">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jmg-cx-tJO" customClass="AudioWave">
                                 <rect key="frame" x="0.0" y="-20" width="320" height="588"/>
                                 <gestureRecognizers/>
                             </view>
-                            <button opaque="NO" tag="10" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEA-V1-b8a">
+                            <button opaque="NO" tag="10" contentMode="scaleAspectFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEA-V1-b8a">
                                 <rect key="frame" x="12" y="10" width="50" height="51"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1613,7 +1618,7 @@ E N R E G I S T R E R</string>
                 <pageViewController storyboardIdentifier="ReviewStoryPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="iwi-t1-AgM" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DE2-CT-BVH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6310" y="-2652"/>
+            <point key="canvasLocation" x="5454" y="-3322"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Wnd-3R-RTL">
@@ -1631,7 +1636,7 @@ E N R E G I S T R E R</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4B-bc-KU1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6696" y="-2652"/>
+            <point key="canvasLocation" x="5840" y="-3322"/>
         </scene>
         <!--Name Story View Controller-->
         <scene sceneID="nWE-0Y-4hA">
@@ -1741,7 +1746,7 @@ ton histoire</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPe-Is-Oeg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5838" y="-1990"/>
+            <point key="canvasLocation" x="6582" y="-2658"/>
         </scene>
         <!--Room Picker View Controller-->
         <scene sceneID="dls-9R-q9Q">
@@ -2169,7 +2174,7 @@ Votre histoire est finie !</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5482" y="-1990"/>
+            <point key="canvasLocation" x="6226" y="-2658"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XUL-sg-kaK">
@@ -2213,6 +2218,105 @@ Votre histoire est finie !</string>
             </objects>
             <point key="canvasLocation" x="3477" y="-597"/>
         </scene>
+        <!--Help Modal View Controller-->
+        <scene sceneID="NNY-zW-Y2A">
+            <objects>
+                <viewController storyboardIdentifier="HelpModal" id="5be-Fs-0xO" customClass="HelpModalViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="m5x-Vn-ISD"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kmo-vp-Ccb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tvc-JV-efi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sdL-kT-s9d">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="qv1-uo-pgZ" appends="YES" id="ijL-Qr-unz"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cww-Xp-pzg">
+                                <rect key="frame" x="40" y="164" width="240" height="240"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctu-6f-Eap">
+                                        <rect key="frame" x="5.5" y="41" width="229" height="76"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="76" id="Wjf-UN-AuO"/>
+                                            <constraint firstAttribute="width" constant="229" id="rDQ-5V-P1J"/>
+                                        </constraints>
+                                        <string key="text">Raconte un souvenir, un évènement marquant, ou toute autre chose que tu souhaite 
+partager avec tes amis !</string>
+                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="15"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mC-0l-3Ee">
+                                        <rect key="frame" x="54" y="158" width="132" height="44"/>
+                                        <color key="backgroundColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="132" id="SFL-vX-fpS"/>
+                                            <constraint firstAttribute="height" constant="44" id="bOA-sp-ibg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
+                                        <state key="normal" title="ça marche !">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="22"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="close:" destination="5be-Fs-0xO" eventType="touchUpInside" id="Vvl-co-dnw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="ctu-6f-Eap" secondAttribute="centerX" id="4ut-bo-yN5"/>
+                                    <constraint firstAttribute="bottom" secondItem="9mC-0l-3Ee" secondAttribute="bottom" constant="38" id="A92-v3-Bgh"/>
+                                    <constraint firstItem="ctu-6f-Eap" firstAttribute="top" secondItem="cww-Xp-pzg" secondAttribute="top" constant="41" id="EDl-bb-0Jg"/>
+                                    <constraint firstAttribute="centerX" secondItem="9mC-0l-3Ee" secondAttribute="centerX" id="SxX-9T-8QU"/>
+                                    <constraint firstAttribute="width" constant="240" id="YQv-Ru-eZx"/>
+                                    <constraint firstAttribute="height" constant="240" id="fiS-dg-VBP"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="sdL-kT-s9d" firstAttribute="top" secondItem="m5x-Vn-ISD" secondAttribute="bottom" constant="-20" id="HME-wk-ad1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sdL-kT-s9d" secondAttribute="trailing" constant="-16" id="Ykj-H0-YHS"/>
+                            <constraint firstItem="sdL-kT-s9d" firstAttribute="leading" secondItem="Tvc-JV-efi" secondAttribute="leadingMargin" constant="-16" id="Zsf-C5-JJi"/>
+                            <constraint firstItem="Kmo-vp-Ccb" firstAttribute="top" secondItem="sdL-kT-s9d" secondAttribute="bottom" id="hNf-js-OXH"/>
+                            <constraint firstAttribute="centerY" secondItem="cww-Xp-pzg" secondAttribute="centerY" id="jBk-bq-j4C"/>
+                            <constraint firstAttribute="centerX" secondItem="cww-Xp-pzg" secondAttribute="centerX" id="zZv-AG-MdO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="13m-tg-Zez"/>
+                    <connections>
+                        <outlet property="helpLabel" destination="ctu-6f-Eap" id="Jla-yU-alw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nMX-Os-QBi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="qv1-uo-pgZ">
+                    <connections>
+                        <action selector="cancel:" destination="5be-Fs-0xO" id="L5w-cW-Xxh"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3698" y="-2646"/>
+        </scene>
     </scenes>
     <resources>
         <image name="btn-replay" width="87" height="87"/>
@@ -2241,6 +2345,6 @@ Votre histoire est finie !</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="X0M-R6-hNO"/>
+        <segue reference="yBT-y0-fqU"/>
     </inferredMetricsTieBreakers>
 </document>

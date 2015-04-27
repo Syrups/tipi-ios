@@ -63,6 +63,7 @@
 		B33DE8581ACDCC66008AE55F /* StoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DE8571ACDCC66008AE55F /* StoryController.m */; };
 		B33DE85B1ACDCE00008AE55F /* BaseModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DE85A1ACDCE00008AE55F /* BaseModelController.m */; };
 		B341F04C1AE1A272001D448A /* MediaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B341F04B1AE1A272001D448A /* MediaCell.m */; };
+		B34FEE971AEAB7A200A7E57B /* HelpModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34FEE961AEAB7A200A7E57B /* HelpModalViewController.m */; };
 		B35975F21ADFA29F00936E5E /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B35975F11ADFA29F00936E5E /* ImageUtils.m */; };
 		B35AD0391ABF2B6600527C0D /* ReviewStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD0381ABF2B6600527C0D /* ReviewStoryViewController.m */; };
 		B35AD03C1ABF2D2500527C0D /* ReviewPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD03B1ABF2D2500527C0D /* ReviewPageViewController.m */; };
@@ -216,6 +217,8 @@
 		B33DE85C1ACDCFBB008AE55F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		B341F04A1AE1A272001D448A /* MediaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaCell.h; sourceTree = "<group>"; };
 		B341F04B1AE1A272001D448A /* MediaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaCell.m; sourceTree = "<group>"; };
+		B34FEE951AEAB7A200A7E57B /* HelpModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpModalViewController.h; sourceTree = "<group>"; };
+		B34FEE961AEAB7A200A7E57B /* HelpModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpModalViewController.m; sourceTree = "<group>"; };
 		B35975F01ADFA29F00936E5E /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
 		B35975F11ADFA29F00936E5E /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
 		B35AD0371ABF2B6600527C0D /* ReviewStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewStoryViewController.h; sourceTree = "<group>"; };
@@ -560,6 +563,15 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		B34FEE981AEAB7A700A7E57B /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				B34FEE951AEAB7A200A7E57B /* HelpModalViewController.h */,
+				B34FEE961AEAB7A200A7E57B /* HelpModalViewController.m */,
+			);
+			name = Help;
+			sourceTree = "<group>";
+		};
 		B35AD0361ABF2B4B00527C0D /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -741,6 +753,7 @@
 		B3BCD00D1AA5FD8000261212 /* Create */ = {
 			isa = PBXGroup;
 			children = (
+				B34FEE981AEAB7A700A7E57B /* Help */,
 				B3065A2D1AB9714400C10AD9 /* Media */,
 				B3FC7B8D1AA662D900034E58 /* Record */,
 				B3065A2F1AB9718100C10AD9 /* Configure */,
@@ -1013,6 +1026,7 @@
 				B3BCD0261AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m in Sources */,
 				B3A8D18A1ACECB1A00B09C34 /* AddFriendViewController.m in Sources */,
 				B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */,
+				B34FEE971AEAB7A200A7E57B /* HelpModalViewController.m in Sources */,
 				B3BCD0061AA5F0CE00261212 /* NewStoryViewController.m in Sources */,
 				B3A8D18E1ACED0EC00B09C34 /* ProfileViewController.m in Sources */,
 				B3A8D17D1ACE7A3800B09C34 /* RoomController.m in Sources */,
