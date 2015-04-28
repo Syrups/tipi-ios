@@ -360,7 +360,7 @@
 			children = (
 				73559BA31AE2697500547886 /* Specials */,
 				73B3B35C1AA7C55500FF7578 /* ReadStory */,
-				73B3B35B1AA7C54D00FF7578 /* OneGroup */,
+				73B3B35B1AA7C54D00FF7578 /* InRoom */,
 				73B20BEE1AA609DB00A9C88F /* ShowGroupsViewController.h */,
 				73B20BEF1AA609DB00A9C88F /* ShowGroupsViewController.m */,
 				73BEF8651ACD8A8D00881F46 /* RoomRevealWrapperViewController.h */,
@@ -400,7 +400,7 @@
 			path = Wireframe/exports;
 			sourceTree = "<group>";
 		};
-		73B3B35B1AA7C54D00FF7578 /* OneGroup */ = {
+		73B3B35B1AA7C54D00FF7578 /* InRoom */ = {
 			isa = PBXGroup;
 			children = (
 				73B20BF11AA6178200A9C88F /* ShowOneGroupViewController.h */,
@@ -410,7 +410,7 @@
 				73B3B3581AA7BC6100FF7578 /* GroupMembersViewController.h */,
 				73B3B3591AA7BC6100FF7578 /* GroupMembersViewController.m */,
 			);
-			name = OneGroup;
+			name = InRoom;
 			sourceTree = "<group>";
 		};
 		73B3B35C1AA7C55500FF7578 /* ReadStory */ = {
