@@ -7,6 +7,7 @@
 //
 
 #import "RoomController.h"
+#import "RoomCache.h"
 #import <AFNetworking/AFNetworking.h>
 
 @implementation RoomController
@@ -16,6 +17,14 @@
 }
 
 - (void)fetchRoomsForUser:(User *)user success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
+    
+    // first use cache
+    [RoomCache fetchCachedRoomsWithSuccess:^(NSArray *rooms) {
+        success(rooms);
+    } failure:^{
+        failure(nil);
+    }];
+    
     NSString* path = [NSString stringWithFormat:@"/users/%@/rooms", user.id];
     NSURLRequest* request = [BaseModelController getBaseRequestFor:path authenticated:YES method:@"GET"];
     
@@ -30,7 +39,9 @@
         
         if (err) { NSLog(@"%@", err); }
         
-        success(rooms);
+        [RoomCache cacheRooms:rooms completion:^{
+            success(rooms);
+        }];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);

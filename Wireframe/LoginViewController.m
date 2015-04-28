@@ -14,12 +14,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[UserSession sharedSession] load];
-    
-    if ([[UserSession sharedSession] isAuthenticated]) {
-        UIViewController* home = [self.storyboard instantiateViewControllerWithIdentifier:@"Home"];
-        [self.navigationController setViewControllers:@[home]];
-    }
+//    [[UserSession sharedSession] load];
+//    
+//    if ([[UserSession sharedSession] isAuthenticated]) {
+//        UIViewController* home = [self.storyboard instantiateViewControllerWithIdentifier:@"Home"];
+//        [self.navigationController setViewControllers:@[home]];
+//    }
     
 }
 

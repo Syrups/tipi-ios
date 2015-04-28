@@ -15,7 +15,7 @@
 - (void)createUserWithUsername:(NSString *)username password:(NSString *)password email:(NSString *)email success:(void (^)(User *))success failure:(void (^)(NSError *, NSUInteger))failure {
     NSMutableURLRequest* request = [UserController getBaseRequestFor:@"/users" authenticated:NO method:@"POST"].mutableCopy;
     
-    NSString* deviceToken = @"";
+    NSData* deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"device_token"];
     
     [request setHTTPBody:[[NSString stringWithFormat:@"{ \"username\": \"%@\", \"password\": \"%@\", \"email\" : \"%@\", \"device_type\" : \"ios\", \"device_token\": \"%@\" }", username, password, email, deviceToken] dataUsingEncoding:NSUTF8StringEncoding]];
     

@@ -72,6 +72,7 @@
 		B35CDBDC1AB8863C00BF9F82 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35CDBDB1AB8863C00BF9F82 /* AVFoundation.framework */; };
 		B36941AF1ACAE02500F3F95A /* FileUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = B36941AE1ACAE02500F3F95A /* FileUploader.m */; };
 		B36941B11ACAF06800F3F95A /* pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B36941B01ACAF06800F3F95A /* pic.jpg */; };
+		B36DD6231AEE5928001FA8C5 /* RoomCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B36DD6221AEE5928001FA8C5 /* RoomCache.m */; };
 		B3846F1D1ADD058B0030DBDE /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3846F1C1ADD058B0030DBDE /* CoreMotion.framework */; };
 		B3846F391ADD0F1D0030DBDE /* RoomListFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846F381ADD0F1D0030DBDE /* RoomListFlowLayout.m */; };
 		B3846F3C1ADD43170030DBDE /* AudioWave.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846F3B1ADD43170030DBDE /* AudioWave.m */; };
@@ -233,6 +234,8 @@
 		B36941AD1ACAE02500F3F95A /* FileUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUploader.h; sourceTree = "<group>"; };
 		B36941AE1ACAE02500F3F95A /* FileUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUploader.m; sourceTree = "<group>"; };
 		B36941B01ACAF06800F3F95A /* pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic.jpg; sourceTree = "<group>"; };
+		B36DD6211AEE5928001FA8C5 /* RoomCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomCache.h; sourceTree = "<group>"; };
+		B36DD6221AEE5928001FA8C5 /* RoomCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomCache.m; sourceTree = "<group>"; };
 		B3846F1C1ADD058B0030DBDE /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		B3846F371ADD0F1D0030DBDE /* RoomListFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomListFlowLayout.h; sourceTree = "<group>"; };
 		B3846F381ADD0F1D0030DBDE /* RoomListFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomListFlowLayout.m; sourceTree = "<group>"; };
@@ -502,6 +505,7 @@
 		B3065A421AB99BA700C10AD9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B36DD6201AEE5909001FA8C5 /* Cache */,
 				B33B6FD81ACDC717009C0623 /* Entities */,
 				B3065A301AB9866000C10AD9 /* Managers */,
 				B33B6FD41ACDC6E3009C0623 /* Controllers */,
@@ -590,6 +594,15 @@
 				B35AD0431ABF339200527C0D /* ArrayDataSource.m */,
 			);
 			name = DataSources;
+			sourceTree = "<group>";
+		};
+		B36DD6201AEE5909001FA8C5 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				B36DD6211AEE5928001FA8C5 /* RoomCache.h */,
+				B36DD6221AEE5928001FA8C5 /* RoomCache.m */,
+			);
+			name = Cache;
 			sourceTree = "<group>";
 		};
 		B3846F361ADD0F020030DBDE /* Layout */ = {
@@ -1010,6 +1023,7 @@
 				73B20BF41AA61FC400A9C88F /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				B3BCD0101AA5FDB500261212 /* NameStoryViewController.m in Sources */,
 				B3A8D1871ACEB5EE00B09C34 /* Comment.m in Sources */,
+				B36DD6231AEE5928001FA8C5 /* RoomCache.m in Sources */,
 				73B3B3321AA7B45500FF7578 /* TagMenuViewController.m in Sources */,
 				73B3B3621AA7CA9100FF7578 /* ReadModeContainerViewController.m in Sources */,
 				B35AD0441ABF339200527C0D /* ArrayDataSource.m in Sources */,

@@ -14,6 +14,7 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+@property (strong, nonatomic) NSData* deviceToken;
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UserController* userController;
 @property (strong, nonatomic) StoryController* storyController;
