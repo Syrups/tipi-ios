@@ -18,13 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.microphone = [[EZMicrophone alloc] initWithMicrophoneDelegate:self];
+//    self.microphone = [[EZMicrophone alloc] initWithMicrophoneDelegate:self];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     NSLog(@"stop fetching");
-    [self.microphone stopFetchingAudio];
+//    [self.microphone stopFetchingAudio];
 }
 
 - (IBAction)launchStoryBuilder:(id)sender {
@@ -47,7 +47,7 @@
         self.secondaryButton.hidden = NO;
     }
     
-    [self.microphone startFetchingAudio];
+//    [self.microphone startFetchingAudio];
 }
 
 #pragma mark - EZMicrophone
