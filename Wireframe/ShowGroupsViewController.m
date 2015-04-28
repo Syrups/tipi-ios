@@ -20,13 +20,11 @@
     [super viewDidLoad];
     
     [self.mTableView setContentInset:UIEdgeInsetsMake(70,0,150,0)];
-    [SHPathLibrary addRightCurveBezierPathToView:self.view];
-    
+    [SHPathLibrary addRightCurveBezierPathToView:self.view inverted:NO];
     
     RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
     [manager fetchRoomsForUser:[[UserSession sharedSession] user]];
 }
-
 
 
 #pragma mark - RoomFetcher

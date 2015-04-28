@@ -10,6 +10,7 @@
 #import "ShowOneGroupViewController.h"
 #import "UserSession.h"
 #import "ReadModeContainerViewController.h"
+#import "SHPathLibrary.h"
 
 
 @interface ShowOneGroupViewController ()
@@ -36,6 +37,10 @@
     [manager fetchStoriesForRoomId:self.roomId];
     
     [self customSetup];
+    
+    [SHPathLibrary addRightCurveBezierPathToView:self.view
+                                       withColor:[UIColor colorWithRed:35/255.0  green:12/255.0 blue:11/255.0 alpha:1]
+                                        inverted:YES];
 }
 
 - (void)customSetup

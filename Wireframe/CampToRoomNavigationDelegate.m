@@ -36,34 +36,48 @@
 - (void)panned:(UIPanGestureRecognizer*)gestureRecognizer{
     
     
+    CGPoint velocity = [gestureRecognizer velocityInView:self.navigationController.view];
+    
+    BOOL toRight = velocity.x > 0;
+    BOOL popingBack = self.navigationController.viewControllers.count > 1;
+    
+   
+    //NSLog(@"gesture went %@", toRight ? @"->" : @"<-");
+
     switch(gestureRecognizer.state)
     {
         case UIGestureRecognizerStateBegan :
             
             self.interactionController = [[UIPercentDrivenInteractiveTransition alloc] init];
             
-            if (self.navigationController.viewControllers.count > 1) {
-                [self.navigationController popViewControllerAnimated: YES];
+            if (popingBack) {
+                if (toRight){
+                    [self.navigationController popViewControllerAnimated: YES];
+                }
             } else {
-                [self.navigationController.topViewController performSegueWithIdentifier: @"ToGroupSegue" sender: nil];
+                if (!toRight){
+                    [self.navigationController.topViewController performSegueWithIdentifier: @"ToGroupSegue" sender: nil];
+                }
             }
             
             break;
         case UIGestureRecognizerStateChanged :
-            
+           
             //Bug if I remove it
             [gestureRecognizer translationInView:self.navigationController.view];
             
+             int factor = popingBack ? -1 : 1;
+            
             CGPoint translation = [gestureRecognizer translationInView:self.navigationController.view];
             
-            float completionProgress = translation.x/-CGRectGetWidth(self.navigationController.view.bounds );
+            float completionProgress = translation.x/((CGRectGetWidth(self.navigationController.view.bounds)) * factor);
             [self.interactionController updateInteractiveTransition: completionProgress];
             
             break;
             
         case UIGestureRecognizerStateEnded :
             
-            if ([gestureRecognizer velocityInView:self.navigationController.view].x <= 0) {
+            if ([gestureRecognizer velocityInView:self.navigationController.view].x <= 0 && popingBack) {
                 [self.interactionController finishInteractiveTransition];
             } else {
                 [self.interactionController cancelInteractiveTransition];

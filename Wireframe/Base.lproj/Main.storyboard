@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BEc-aU-wUR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tvZ-hA-KJJ">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -263,6 +263,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qkS-lP-VtB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <connections>
+                                    <segue destination="BEc-aU-wUR" kind="embed" id="JPZ-lm-2Oh"/>
+                                </connections>
+                            </containerView>
                             <button opaque="NO" tag="10" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5o3-Eq-Jm5">
                                 <rect key="frame" x="26" y="29" width="20" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -290,12 +296,18 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="qkS-lP-VtB" secondAttribute="trailing" constant="-16" id="3XT-Es-Vs6"/>
+                            <constraint firstItem="rih-oO-Kdc" firstAttribute="top" secondItem="qkS-lP-VtB" secondAttribute="bottom" id="74l-LT-bv2"/>
+                            <constraint firstItem="qkS-lP-VtB" firstAttribute="top" secondItem="zTh-Ad-ekw" secondAttribute="topMargin" id="ga5-je-Mmt"/>
+                            <constraint firstItem="qkS-lP-VtB" firstAttribute="leading" secondItem="zTh-Ad-ekw" secondAttribute="leadingMargin" constant="-16" id="z8k-JE-RVR"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3NF-2L-rB5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2pd-Wg-o5t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2428" y="-1375"/>
+            <point key="canvasLocation" x="2422" y="-1409"/>
         </scene>
         <!--New Story View Controller-->
         <scene sceneID="W7o-Zi-nJc">
@@ -2212,6 +2224,24 @@ Votre histoire est finie !</string>
                 </customObject>
             </objects>
             <point key="canvasLocation" x="3477" y="-597"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8vg-jD-2Xm">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="vY4-hK-FrQ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QNa-AS-yJK"/>
+                        <viewControllerLayoutGuide type="bottom" id="pxf-gh-rGB"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="SuC-jA-EXl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zMO-Zf-Uk2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

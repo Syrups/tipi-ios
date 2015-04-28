@@ -8,6 +8,7 @@
 
 #import "WaveSwipeTransitionAnimator.h"
 #import "SHPathLibrary.h"
+#import "RoomRevealWrapperViewController.h"
 
 @implementation WaveSwipeTransitionAnimator
 
@@ -20,14 +21,18 @@
     UIViewController* fromViewController=  [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController* toViewController=  [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
    
+    BOOL segueBack = [fromViewController isKindOfClass:[RoomRevealWrapperViewController class]] ;
+    
     //3
     [containerView addSubview: toViewController.view];
     
     //4
     
     //TODO reverse
-    UIBezierPath* circleMaskPathInitial = [SHPathLibrary swipableRightCurvyBezierPathForRect:fromViewController.view.frame];
-    UIBezierPath* circleMaskPathFinal = [SHPathLibrary swippedRightCurvyBezierPathForRect:toViewController.view.frame];
+    UIBezierPath* circleMaskPathInitial = [SHPathLibrary swipableRightCurvyBezierPathForRect:fromViewController.view.frame
+                                                                                    inverted:segueBack];
+    UIBezierPath* circleMaskPathFinal = [SHPathLibrary swippedRightCurvyBezierPathForRect:toViewController.view.frame
+                                                                                 ];
     
     //5
     CAShapeLayer* maskLayer = [CAShapeLayer layer];

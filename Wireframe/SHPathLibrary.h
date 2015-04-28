@@ -10,7 +10,11 @@
 @import UIKit;
 
 @interface SHPathLibrary : NSObject
-+ (void) addRightCurveBezierPathToView: (UIView *) view ;
-+ (UIBezierPath *) swipableRightCurvyBezierPathForRect: (CGRect ) frame ;
-+ (UIBezierPath *) swippedRightCurvyBezierPathForRect: (CGRect ) frame ;
++ (void) addRightCurveBezierPathToView: (UIView *) view inverted:(BOOL)inverted;
++ (void) addRightCurveBezierPathToView: (UIView *) view withColor:(UIColor*)color inverted:(BOOL)inverted;
+
++ (UIBezierPath *) swippedRightCurvyBezierPathForRect: (CGRect) frame;
++ (UIBezierPath *) swippedRightCurvyBezierPathForRect: (CGRect) frame inverted:(BOOL)inverted;
++ (UIBezierPath *) swipableRightCurvyBezierPathForRect: (CGRect) frame inverted:(BOOL)inverted;
+
 @end
