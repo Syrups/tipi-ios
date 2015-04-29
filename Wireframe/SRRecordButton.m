@@ -9,6 +9,8 @@
 #import "SRRecordButton.h"
 #import "Configuration.h"
 
+#define DEGREES_TO_RADIANS(deg) deg * (M_PI / 180)
+
 @implementation SRRecordButton {
     NSTimer* timer;
     CGFloat circleOffset;
@@ -16,6 +18,9 @@
     NSTimer* appearanceTimer;
     NSTimer* closingTimer;
     CGFloat lastValue;
+    float* _buffer;
+    UInt32 _bufferSize;
+    UInt32 t;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -51,6 +56,8 @@
 }
 
 - (void)close {
+    _bufferSize = 0;
+    _buffer = NULL;
     closingTimer = [NSTimer scheduledTimerWithTimeInterval:0.005f target:self selector:@selector(updateClosing) userInfo:nil repeats:YES];
     self.appeared = NO;
 }
@@ -112,23 +119,70 @@
 - (void)drawRect:(CGRect)rect {
     self.backgroundColor = [UIColor clearColor];
     
+    CGRect frame = self.bounds;
     CGPoint center = CGPointMake(self.frame.size.width / 2.0, self.frame.size.height / 2.0);
     CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(ctx);
+    CGFloat radius = 90;
+    CGFloat r;
+    
+    CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
+    CGContextSetStrokeColorWithColor(ctx, [UIColor whiteColor].CGColor);
+    CGContextSetLineWidth(ctx, 6.0f);
+    
+    // draw first circle
+
+    if (_bufferSize == 0) {
+        for (int a = 0 ; a < 360 ; a++) {
+            
+            r = radius + circleOffset;
+            float offset = sin(DEGREES_TO_RADIANS(a) * 6 + t) * 5;
+            float cx = frame.size.width/2 + r * cos(a * M_PI / 180) + offset;
+            float cy = frame.size.height/2 + r * sin(a * M_PI / 180) + offset;
+            if (a == 0) CGContextMoveToPoint(ctx, cx, cy);
+            CGContextAddLineToPoint(ctx, cx, cy);
+            
+        }
+    } else {
+        for (int i = 0 ; i < _bufferSize ; i++) {
+            
+            float delta = _buffer[i] * 30;
+            
+            float a = (i+1) * 360 / _bufferSize;
+            r = radius + circleOffset;
+            float offset = sin(DEGREES_TO_RADIANS(a) * 6 + t) * 5 + delta;
+            float cx = frame.size.width/2 + r * cos(a * M_PI / 180) + offset;
+            float cy = frame.size.height/2 + r * sin(a * M_PI / 180) + offset;
+            if (i == 0) CGContextMoveToPoint(ctx, cx, cy);
+            CGContextAddLineToPoint(ctx, cx, cy);
+          
+        }
+    }
+    
+    
+    CGContextClosePath(ctx);
+    
+//    CGContextFillPath(ctx);
+    CGContextStrokePath(ctx);
+    
+    
+    CGContextRestoreGState(ctx);
+    
     
     // outer circle
     
-    CGContextBeginPath(ctx);
-    CGContextAddArc(ctx, center.x, center.y, self.frame.size.width/2.5f + circleOffset, 0, 2*M_PI, 0);
-    CGContextSetStrokeColorWithColor(ctx, self.color.CGColor);
-    CGContextSetLineWidth(ctx, 6.0f);
-    CGContextStrokePath(ctx);
-
-    CGContextBeginPath(ctx);
-    CGContextAddArc(ctx, center.x, center.y, self.frame.size.width/2.5f + circleOffset, -M_PI_2 + startAngle, [self getAnglePercent], 0);
-    CGContextSetStrokeColorWithColor(ctx, self.fillColor.CGColor);
-    CGContextSetLineWidth(ctx, 4.0f);
-    CGContextStrokePath(ctx);
-    
+//    CGContextBeginPath(ctx);
+//    CGContextAddArc(ctx, center.x, center.y, self.frame.size.width/2.5f + circleOffset, 0, 2*M_PI, 0);
+//    CGContextSetStrokeColorWithColor(ctx, self.color.CGColor);
+//    CGContextSetLineWidth(ctx, 6.0f);
+//    CGContextStrokePath(ctx);
+//
+//    CGContextBeginPath(ctx);
+//    CGContextAddArc(ctx, center.x, center.y, self.frame.size.width/2.5f + circleOffset, -M_PI_2 + startAngle, [self getAnglePercent], 0);
+//    CGContextSetStrokeColorWithColor(ctx, self.fillColor.CGColor);
+//    CGContextSetLineWidth(ctx, 4.0f);
+//    CGContextStrokePath(ctx);
+//    
     // inner circle
     //    CGContextBeginPath(ctx);
     //    CGContextAddArc(ctx, center.x, center.y, self.frame.size.width/2.5f - 16 , 0, 2*M_PI, 0);
@@ -150,7 +204,10 @@
     return startAngle + (-M_PI_2 + (M_PI*2 * self.currentTime) / self.duration);
 }
 
+
 - (void)update {
+    
+    t++;
     
     if (self.duration <= self.currentTime) return;
     
@@ -164,6 +221,9 @@
 - (void)updateWithBuffer:(float **)buffer bufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
     
     float* channel = buffer[0];
+    
+    _buffer = buffer[0];
+    _bufferSize = bufferSize;
     
     CGFloat max = 0.0;
     for (int i = 0 ; i < bufferSize ; ++i) {

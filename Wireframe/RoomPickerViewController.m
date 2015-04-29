@@ -32,6 +32,7 @@
     self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
     
     [self.roomsTableView setContentInset:UIEdgeInsetsMake(70,0,150,0)];
+    [self centerTable];
 }
 
 - (IBAction)back:(id)sender {

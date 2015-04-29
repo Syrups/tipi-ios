@@ -10,4 +10,8 @@
 
 @implementation Room
 
+- (BOOL)isAdmin:(User *)user {
+    return [user.id isEqualToString:self.owner.id];
+}
+
 @end

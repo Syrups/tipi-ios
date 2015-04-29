@@ -7,7 +7,8 @@
 //
 
 #import "SWRevealViewController.h"
+#import "Room.h"
 
 @interface RoomRevealWrapperViewController : SWRevealViewController
-@property (nonatomic)  NSUInteger roomId;
+@property (strong, nonatomic) Room* room;
 @end
