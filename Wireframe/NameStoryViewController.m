@@ -23,6 +23,13 @@
     [self removeFromParentViewController];
 }
 
+- (IBAction)next:(id)sender {
+    [[StoryWIPSaver sharedSaver] setTitle:[self.titleField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+    
+    UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RoomPicker"];
+    [self.parentViewController.navigationController.parentViewController.navigationController pushViewController:vc animated:YES];
+}
+
 #pragma mark - TagFetcher
 
 - (void)userManager:(UserManager *)manager successfullyFetchedTags:(NSArray *)tags {
@@ -37,10 +44,6 @@
 #pragma mark - UITextField
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    
-    [[StoryWIPSaver sharedSaver] setTitle:[textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-    
     return YES;
 }
 

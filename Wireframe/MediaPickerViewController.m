@@ -36,8 +36,6 @@
     
     currentOffset = 0;
     [self.library fetchMediasFromLibraryFrom:currentOffset to:currentOffset + kMediaPickerMediaLimit];
-    
-    NSLog(@"%@", self.showcaseLayer);
 }
 
 - (IBAction)back:(id)sender {

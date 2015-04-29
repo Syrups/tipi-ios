@@ -27,6 +27,7 @@
 @property (strong, nonatomic) IBOutlet PreviewBubble* previewBubble;
 @property (strong, nonatomic) IBOutlet Timeline* timeline;
 @property (strong, nonatomic) IBOutlet UIButton* replayButton;
+@property (strong, nonatomic) UILongPressGestureRecognizer* longPressRecognizer;
 
 @property (strong, nonatomic) UIViewController* donePopin;
 @property (strong, nonatomic) UIViewController* namePopin;

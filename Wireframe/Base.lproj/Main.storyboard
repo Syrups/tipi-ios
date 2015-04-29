@@ -2067,8 +2067,7 @@ ton histoire</string>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="save:" destination="gHW-fG-7DP" eventType="touchUpInside" id="Iex-j8-4ZF"/>
-                                            <segue destination="UYI-ME-qVa" kind="push" id="2F6-tu-Adh"/>
+                                            <action selector="next:" destination="clz-xR-hRu" eventType="touchUpInside" id="aL1-Xl-rxd"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpq-PH-4GJ">
@@ -2110,6 +2109,9 @@ ton histoire</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pfc-Gt-rqj"/>
+                    <connections>
+                        <outlet property="titleField" destination="7kT-m3-mJb" id="tzt-im-cwB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPe-Is-Oeg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="fvh-bK-sn9">
@@ -2123,7 +2125,7 @@ ton histoire</string>
         <!--Room Picker View Controller-->
         <scene sceneID="dls-9R-q9Q">
             <objects>
-                <viewController id="UYI-ME-qVa" customClass="RoomPickerViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RoomPicker" id="UYI-ME-qVa" customClass="RoomPickerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bsf-DP-dgr"/>
                         <viewControllerLayoutGuide type="bottom" id="D2L-Wt-wwU"/>

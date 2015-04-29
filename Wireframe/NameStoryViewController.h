@@ -11,6 +11,7 @@
 
 @interface NameStoryViewController : UIViewController <UITextFieldDelegate, TagFetcherDelegate>
 
+@property (strong, nonatomic) IBOutlet UITextField* titleField;
 @property (strong, nonatomic) IBOutlet UIButton* latestTagLabel;
 
 @end

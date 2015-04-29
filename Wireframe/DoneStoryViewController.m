@@ -23,6 +23,10 @@
 //        frame.origin.y = self.view.frame.size.height/2 - self.popin.frame.size.height/2;
 //        self.popin.frame = frame;
 //    } completion:nil];
+    
+    // disable interaction with the background controller
+    ((RecordViewController*)self.parentViewController).longPressRecognizer.enabled = NO;
+    
 }
 
 - (IBAction)next:(id)sender {
@@ -30,8 +34,11 @@
 }
 
 - (IBAction)close:(id)sender {
+    self.parentViewController.view.userInteractionEnabled = YES;
     [self.view removeFromSuperview];
     [self removeFromParentViewController];
+    
+    ((RecordViewController*)self.parentViewController).longPressRecognizer.enabled = YES;
 }
 
 @end

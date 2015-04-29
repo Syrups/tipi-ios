@@ -38,8 +38,8 @@
     [self.view sendSubviewToBack:first.view];
     [first didMoveToParentViewController:self];
 
-    UILongPressGestureRecognizer* press = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    press.minimumPressDuration = 0.2f;
+    self.longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    self.longPressRecognizer.minimumPressDuration = 0.2f;
     
     UISwipeGestureRecognizer* swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     swipe.direction = UISwipeGestureRecognizerDirectionLeft;
@@ -49,7 +49,7 @@
     
     [self.view addGestureRecognizer:swipe];
     [self.view addGestureRecognizer:swipeBack];
-    [self.view addGestureRecognizer:press];
+    [self.view addGestureRecognizer:self.longPressRecognizer];
     
     self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
     self.recorder.delegate = self;
