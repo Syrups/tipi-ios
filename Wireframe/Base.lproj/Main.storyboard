@@ -54,6 +54,12 @@
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -686,7 +692,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.39999999999999963" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgh-92-Ofc">
-                                                    <rect key="frame" x="13" y="25.5" width="216" height="38"/>
+                                                    <rect key="frame" x="13" y="26" width="216" height="38"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="38" id="Her-JI-I0I"/>
@@ -2195,7 +2201,7 @@ ton histoire</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZo-X1-6V8">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZo-X1-6V8">
                                 <rect key="frame" x="76" y="506" width="169" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -2562,12 +2568,6 @@ Votre histoire est finie !</string>
         <!--Navigation Controller-->
         <scene sceneID="BCE-mK-V7y">
             <objects>
-                <customObject id="jkI-fA-Mlw" customClass="CampToRoomNavigationDelegate">
-                    <connections>
-                        <outlet property="navigationController" destination="9QW-l3-5b0" id="AqP-Iz-Evf"/>
-                    </connections>
-                </customObject>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FNr-Ge-xhS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="ShowGroupsNavViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="9QW-l3-5b0" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UB9-n6-C28">
@@ -2583,6 +2583,12 @@ Votre histoire est finie !</string>
                         <segue destination="rxv-4M-dHT" kind="relationship" relationship="rootViewController" id="su3-3w-2uN"/>
                     </connections>
                 </navigationController>
+                <customObject id="jkI-fA-Mlw" customClass="CampToRoomNavigationDelegate">
+                    <connections>
+                        <outlet property="navigationController" destination="9QW-l3-5b0" id="AqP-Iz-Evf"/>
+                    </connections>
+                </customObject>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FNr-Ge-xhS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3477" y="-597"/>
         </scene>
