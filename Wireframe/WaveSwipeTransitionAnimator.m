@@ -33,7 +33,6 @@
                                                                                     inverted:segueBack];
     UIBezierPath* circleMaskPathFinal = [SHPathLibrary swippedRightCurvyBezierPathForRect:toViewController.view.frame
                                                                                  ];
-    
     //5
     CAShapeLayer* maskLayer = [CAShapeLayer layer];
     maskLayer.path = circleMaskPathFinal.CGPath;
@@ -46,6 +45,10 @@
     maskLayerAnimation.toValue = (__bridge id)(circleMaskPathFinal.CGPath);
     maskLayerAnimation.duration = [self transitionDuration:transitionContext];
     maskLayerAnimation.delegate = self;
+
+    //[maskLayerAnimation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+    [maskLayerAnimation setTimingFunction:[CAMediaTimingFunction functionWithControlPoints:.34 :.01 :.69 :1.37]];
+    
     [maskLayer addAnimation:maskLayerAnimation forKey:@"growing"];
 }
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{

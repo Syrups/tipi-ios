@@ -13,6 +13,29 @@
 
 @property (strong, nonatomic) NSString* id;
 @property (strong, nonatomic) NSString* title;
+@property (strong, nonatomic) NSDate * createdAt;
+
 @property (strong, nonatomic) NSArray<Optional, Page>* pages;
+
+//@property (nonatomic) NSInteger* candidate;
+//@property (nonatomic) NSInteger* page_count;
+
++ (NSString *)NSDateToShowString:(NSDate *)date ;
+
+@end
+
+@implementation JSONValueTransformer (CustomTransformer)
+
+- (NSDate *)NSDateFromNSString:(NSString*)string {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    return [formatter dateFromString:string];
+}
+
+- (NSString *)JSONObjectFromNSDate:(NSDate *)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    return [formatter stringFromDate:date];
+}
 
 @end

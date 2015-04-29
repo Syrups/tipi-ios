@@ -67,8 +67,6 @@
         
         [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     }
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -87,15 +85,20 @@
     
     Story* story = [self.mStories objectAtIndex:indexPath.row];
     
+   
+    //NSLog(@"%@", [story toJSONString]);
+    
     UILabel *name = (UILabel*)[cell.contentView viewWithTag:10];
     name.text = story.title;
+    
+    UILabel *desc = (UILabel*)[cell.contentView viewWithTag:20];
+    desc.text = [Story NSDateToShowString: story.createdAt];
     
     return cell;
 }
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.mStories.count;
 }
 

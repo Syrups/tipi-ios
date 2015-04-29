@@ -8,6 +8,17 @@
 
 #import "Story.h"
 
+
 @implementation Story
+
++(JSONKeyMapper*)keyMapper{
+    return [JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
+}
+
++ (NSString *)NSDateToShowString:(NSDate *)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd/MM/yy"];
+    return [formatter stringFromDate:date];
+}
 
 @end

@@ -104,9 +104,9 @@
 {
     
     // Assuming you have SomePageViewController.xib
-    UINavigationController *roomController = [self.storyboard instantiateViewControllerWithIdentifier: @"ShowGroupsViewController"];
+    UINavigationController *roomController = [self.storyboard instantiateViewControllerWithIdentifier: @"ShowGroupsNavViewController"];
     
-  
-    [self.navigationController pushViewController:roomController animated:YES];
+    [self presentViewController:roomController animated:YES completion:nil];
+    //[self.navigationController pushViewController:roomController animated:YES];
 }
 @end
