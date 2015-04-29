@@ -42,7 +42,7 @@
     BOOL popingBack = self.navigationController.viewControllers.count > 1;
     
    
-    //NSLog(@"gesture went %@", toRight ? @"->" : @"<-");
+    NSLog(@"gesture went %@", toRight ? @"->" : @"<-");
 
     switch(gestureRecognizer.state)
     {

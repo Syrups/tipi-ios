@@ -56,6 +56,8 @@
         NSError* err = nil;
         NSArray* stories = [Story arrayOfModelsFromDictionaries:responseObject];
         
+           NSLog(@"%@",responseObject);
+        
         if (err) { NSLog(@"%@", err); }
         
         success(stories);

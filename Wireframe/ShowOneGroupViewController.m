@@ -87,6 +87,9 @@
     
     Story* story = [self.mStories objectAtIndex:indexPath.row];
     
+   
+    NSLog(@"%@", [story toJSONString]);
+    
     UILabel *name = (UILabel*)[cell.contentView viewWithTag:10];
     name.text = story.title;
     
@@ -130,6 +133,8 @@
     
     self.mStories = stories;
     [self.mTableView reloadData];
+    
+ 
 }
 
 -(void)storyManager:(StoryManager *)manager failedToFetchStories:(NSError *)error{

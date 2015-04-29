@@ -80,7 +80,7 @@
     for (UIRoomTableViewCell *cell in self.mTableView.visibleCells) {
         CGPoint cellCenter = [scrollView convertPoint:cell.center toView:scrollView.superview];
         
-        int del = fabsf(scrollView.superview.center.y -  cellCenter.y)/ 4.5;
+        int del = fabs(scrollView.superview.center.y -  cellCenter.y)/ 4.5;
         
         cell.heightConstraint.constant = 120 - del;
         cell.widthConstraint.constant = 120 - del;
