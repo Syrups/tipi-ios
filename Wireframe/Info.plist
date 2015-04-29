@@ -2,8 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>tipi</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>com.syrupapps.Shelter</string>
+		</dict>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 	<key>CFBundleDisplayName</key>
 	<string>Tipi</string>
 	<key>CFBundleExecutable</key>

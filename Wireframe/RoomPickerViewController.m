@@ -38,6 +38,11 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)createNewRoom:(id)sender {
+    UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"CreateRoom"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 - (IBAction)send:(id)sender {
     StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
     User* user = [[UserSession sharedSession] user];

@@ -16,5 +16,6 @@
 + (UIBezierPath *) swippedRightCurvyBezierPathForRect: (CGRect) frame;
 + (UIBezierPath *) swippedRightCurvyBezierPathForRect: (CGRect) frame inverted:(BOOL)inverted;
 + (UIBezierPath *) swipableRightCurvyBezierPathForRect: (CGRect) frame inverted:(BOOL)inverted;
++ (UIBezierPath *) pathForHomeBubbleInRect:(CGRect)rect open:(BOOL)open;
 
 @end

@@ -28,6 +28,9 @@
 @property (strong, nonatomic) IBOutlet Timeline* timeline;
 @property (strong, nonatomic) IBOutlet UIButton* replayButton;
 
+@property (strong, nonatomic) UIViewController* donePopin;
+@property (strong, nonatomic) UIViewController* namePopin;
+
 @property BOOL lastPage;
 
 - (void)openNameStoryPopin;

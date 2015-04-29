@@ -18,6 +18,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    application.applicationIconBadgeNumber = 0;
+    
     self.userController = [[UserController alloc] init];
     self.storyController = [[StoryController alloc] init];
     self.roomController = [[RoomController alloc] init];
@@ -50,6 +52,13 @@
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
      NSLog(@"%@", error);
+}
+
+#pragma mark - Open from URL scheme
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
+    return YES;
 }
 
 #pragma mark - ALAssetLibrary static accessor

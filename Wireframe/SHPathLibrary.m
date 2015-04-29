@@ -141,4 +141,11 @@
     
     return path;
 }
+
++ (UIBezierPath *)pathForHomeBubbleInRect:(CGRect)rect open:(BOOL)open {
+    CGRect smallRect = open ? CGRectMake(-rect.size.width, -rect.size.height, rect.size.width*3, rect.size.height*3) :CGRectMake(CGRectGetMidX(rect) - 125, 50, 250, 250);
+    UIBezierPath* path = [UIBezierPath bezierPathWithOvalInRect:smallRect];
+    
+    return path;
+}
 @end
