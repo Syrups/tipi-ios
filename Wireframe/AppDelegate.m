@@ -22,7 +22,34 @@
     self.storyController = [[StoryController alloc] init];
     self.roomController = [[RoomController alloc] init];
     
+    //This code will work in iOS 8.0 xcode 6.0 or later
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+    {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+    else
+    {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeNewsstandContentAvailability| UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }
+    
     return YES;
+}
+
+// <8ae534fd f1a586d6 724fe275 823d1ed8 3ffe2861 1cad6aa5 d72e7064 6b362f5a>
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    [[NSUserDefaults standardUserDefaults] setObject:deviceToken forKey:@"device_token"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    self.deviceToken = deviceToken;
+    
+     NSLog(@"%@", deviceToken);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+     NSLog(@"%@", error);
 }
 
 #pragma mark - ALAssetLibrary static accessor

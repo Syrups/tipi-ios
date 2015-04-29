@@ -33,4 +33,6 @@
 
 #define CurrentUser [[UserSession sharedSession] user]
 
+#define SRLog(msg) NSLog([@" [x] " stringByAppendingString:msg])
+
 #endif

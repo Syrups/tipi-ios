@@ -89,6 +89,22 @@
     [self.collectionView reloadData];
 }
 
+- (IBAction)swipeToRemove:(UISwipeGestureRecognizer*)sender {
+    NSInteger index = sender.view.tag;
+    
+    UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+    
+    [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        cell.transform = CGAffineTransformMakeTranslation(0, -100);
+        cell.alpha = 0;
+    } completion:^(BOOL finished) {
+       
+        [self.saver.medias removeObjectAtIndex:index];
+        [self.collectionView reloadData];
+    }];
+    
+}
+
 #pragma mark - UICollectionView
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -135,6 +151,12 @@
     
     UIView* gouigoui = [cell.contentView viewWithTag:30];
     gouigoui.hidden = ![self.recorder hasRecordedAtIndex:indexPath.row];
+    
+    cell.contentView.tag = indexPath.row;
+    
+    UISwipeGestureRecognizer* swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToRemove:)];
+    swipe.direction = UISwipeGestureRecognizerDirectionUp;
+    [cell.contentView addGestureRecognizer:swipe];
     
     return cell;
 }

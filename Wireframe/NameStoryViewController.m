@@ -26,7 +26,7 @@
 #pragma mark - TagFetcher
 
 - (void)userManager:(UserManager *)manager successfullyFetchedTags:(NSArray *)tags {
-    [self.latestTagLabel setTitle:[@"Tag : " stringByAppendingString:tags[0]] forState:UIControlStateNormal];
+//    [self.latestTagLabel setTitle:[@"Tag : " stringByAppendingString:tags[0]] forState:UIControlStateNormal];
     [[StoryWIPSaver sharedSaver] setTag:tags[0]]; // by default set story tag to the latest one used
 }
 

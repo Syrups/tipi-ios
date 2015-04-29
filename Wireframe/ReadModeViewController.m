@@ -21,11 +21,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSString *url = [NSString stringWithFormat:@"%@%@",kMediaRootUrl, [self.page.media.file lastPathComponent]];
+    NSString* url = self.page.media.file;
+//    NSString *url = [NSString stringWithFormat:@"%@%@",kMediaRootUrl, [self.page.media.file lastPathComponent]];
     ///api/v1/pages/:page_id/media
     [self.image sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"placeholder.gif"]];
     
-    NSString *fileUrl = [NSString stringWithFormat:@"%@%@",kAudioRootUrl, [self.page.audio.file lastPathComponent]];
+//    NSString *fileUrl = [NSString stringWithFormat:@"%@%@",kAudioRootUrl, [self.page.audio.file lastPathComponent]];
+    NSString* fileUrl = self.page.audio.file;
     [self downloadFileWithURL:fileUrl completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
 
         self.fileURL = filePath;

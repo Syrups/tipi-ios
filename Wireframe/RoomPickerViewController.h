@@ -13,11 +13,11 @@
 #import "StoryMediaRecorder.h"
 #import "FileUploader.h"
 
-@interface RoomPickerViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, RoomFetcherDelegate, StoryCreatorDelegate, FileUploaderDelegate>
+@interface RoomPickerViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, RoomFetcherDelegate, StoryCreatorDelegate, FileUploaderDelegate>
 
 @property (strong, nonatomic) StoryWIPSaver* saver;
 @property (strong, nonatomic) StoryMediaRecorder* recorder;
-@property (strong, nonatomic) IBOutlet UICollectionView* roomsCollectionView;
+@property (strong, nonatomic) IBOutlet UITableView* roomsTableView;
 @property (strong, nonatomic) NSArray* rooms;
 
 

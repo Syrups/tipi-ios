@@ -14,7 +14,23 @@
 @implementation RoomManager
 
 - (void)createRoomWithName:(NSString *)name andUsers:(NSArray *)users {
-    // TODO
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        
+        [delegate.roomController createRoomWithName:name andUsers:users success:^(Room *room) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(roomManager:successfullyCreatedRoom:)]) {
+                    [self.delegate roomManager:self successfullyCreatedRoom:room];
+                }
+            });
+        } failure:^(NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(roomManager:failedToCreateRoom:)]) {
+                    [self.delegate roomManager:self failedToCreateRoom:error];
+                }
+            });
+        }];
+    });
 }
 
 - (void)fetchRoomsForUser:(User *)user {

@@ -12,6 +12,7 @@
 #import "StoryManager.h"
 #import "StoryWIPSaver.h"
 #import "Configuration.h"
+#import "UIRoomTableViewCell.h"
 
 @implementation RoomPickerViewController {
     NSMutableArray* selectedRooms;
@@ -29,6 +30,8 @@
     
     self.saver = [StoryWIPSaver sharedSaver];
     self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
+    
+    [self.roomsTableView setContentInset:UIEdgeInsetsMake(70,0,150,0)];
 }
 
 - (IBAction)back:(id)sender {
@@ -73,7 +76,7 @@
 - (void)roomManager:(RoomManager *)manager successfullyFetchedRooms:(NSArray *)rooms {
     self.rooms = rooms;
     
-    [self.roomsCollectionView reloadData];
+    [self.roomsTableView reloadData];
 }
 
 - (void)roomManager:(RoomManager *)manager failedToFetchRooms:(NSError *)error {
@@ -104,40 +107,36 @@
     NSLog(@"%@", error);
 }
 
-#pragma mark - UICollectionView
+#pragma mark - UITableView
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.rooms.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell* cell = nil;
+- (UIRoomTableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    Room* room = nil;
+    Room* room = [self.rooms objectAtIndex:indexPath.row];
     
-    room = [self.rooms objectAtIndex:indexPath.row];
-    cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RoomCell" forIndexPath:indexPath];
-
-    if (cell == nil) {
-        cell = [[UICollectionViewCell alloc] init];
+    static NSString *cellIdentifier = @"groupCell";
+    UIRoomTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if (!cell) {
+        cell = [[UIRoomTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
-    if (indexPath.row == 0) {
-        cell.transform = CGAffineTransformMakeScale(1.3f, 1.3f);
-    }
     
-    UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
-    name.text = room.name;
+    cell.roomName.text = room.name;
     
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     
     if (indexPath.row == self.rooms.count) {
         return;
@@ -147,43 +146,80 @@
     
     if (![selectedRooms containsObject:room]) {
         [selectedRooms addObject:room];
-
         
         UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
         name.textColor = [UIColor whiteColor];
         
     } else {
         [selectedRooms removeObject:room];
-
+        
         UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
         name.textColor = [UIColor blackColor];
     }
 }
 
+
 #pragma mark - UIScrollView
 
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-    [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        CGPoint point = CGPointMake(self.roomsCollectionView.frame.size.width/2, self.roomsCollectionView.contentOffset.y + 100);
-        NSIndexPath* indexPath = [self.roomsCollectionView indexPathForItemAtPoint:point];
-        UICollectionViewCell* cell = [self.roomsCollectionView cellForItemAtIndexPath:indexPath];
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    
+    for (UIRoomTableViewCell *cell in self.roomsTableView.visibleCells) {
+        CGPoint cellCenter = [scrollView convertPoint:cell.center toView:scrollView.superview];
         
-        cell.transform = CGAffineTransformMakeScale(1.3f, 1.3f);
+        int del = fabsf(scrollView.superview.center.y -  cellCenter.y)/ 4.5;
         
-        UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
-        name.alpha = 1;
+        cell.heightConstraint.constant = 120 - del;
+        cell.widthConstraint.constant = 120 - del;
         
-        [[self.roomsCollectionView indexPathsForVisibleItems] enumerateObjectsUsingBlock:^(NSIndexPath* _indexPath, NSUInteger idx, BOOL *stop) {
-            if (indexPath.row != _indexPath.row) {
-                UICollectionViewCell* cell = [self.roomsCollectionView cellForItemAtIndexPath:_indexPath];
-                cell.transform = CGAffineTransformMakeScale(1, 1);
-                
-                UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
-                name.alpha = 0.6f;
-            }
-        }];
-
-    } completion:nil];
+        [cell setNeedsLayout];
+        [cell setNeedsUpdateConstraints];
+        
+        CGRect cellRect = [scrollView convertRect:cell.frame toView:scrollView.superview];
+        CGRect hitRect = CGRectMake(0, self.roomsTableView.superview.center.y- 25, self.roomsTableView.superview.frame.size.width, 50);
+        
+        if(CGRectIntersectsRect(cellRect, hitRect)){
+            [self.roomsTableView selectRowAtIndexPath: [self.roomsTableView indexPathForCell:cell]
+                                         animated: NO
+                                   scrollPosition: UITableViewScrollPositionNone];
+        }
+    }
 }
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self centerTable];
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    [self centerTable];
+}
+
+- (void)centerTable {
+    NSIndexPath *pathForCenterCell = [self.roomsTableView indexPathForRowAtPoint:CGPointMake(CGRectGetMidX(self.roomsTableView.bounds), CGRectGetMidY(self.roomsTableView.bounds) - 100)];
+    [self.roomsTableView scrollToRowAtIndexPath:pathForCenterCell atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    
+}
+
+//- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+//    [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//        CGPoint point = CGPointMake(self.roomsTableView.frame.size.width/2, self.roomsTableView.contentOffset.y + 100);
+//        NSIndexPath* indexPath = [self.roomsTableView indexPathForRowAtPoint:point];
+//        UITableViewCell* cell = [self.roomsTableView cellForRowAtIndexPath:indexPath];
+//        
+//        
+//        UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
+//        name.alpha = 1;
+//        
+//        [[self.roomsTableView indexPathsForVisibleRows] enumerateObjectsUsingBlock:^(NSIndexPath* _indexPath, NSUInteger idx, BOOL *stop) {
+//            if (indexPath.row != _indexPath.row) {
+//                UITableViewCell* cell = [self.roomsTableView cellForRowAtIndexPath:_indexPath];
+//
+//                UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
+//                name.alpha = 0.6f;
+//            }
+//        }];
+//
+//    } completion:nil];
+//}
 
 @end

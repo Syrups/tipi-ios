@@ -120,13 +120,13 @@
     CGContextBeginPath(ctx);
     CGContextAddArc(ctx, center.x, center.y, self.frame.size.width/2.5f + circleOffset, 0, 2*M_PI, 0);
     CGContextSetStrokeColorWithColor(ctx, self.color.CGColor);
-    CGContextSetLineWidth(ctx, 8.0f);
+    CGContextSetLineWidth(ctx, 6.0f);
     CGContextStrokePath(ctx);
 
     CGContextBeginPath(ctx);
     CGContextAddArc(ctx, center.x, center.y, self.frame.size.width/2.5f + circleOffset, -M_PI_2 + startAngle, [self getAnglePercent], 0);
     CGContextSetStrokeColorWithColor(ctx, self.fillColor.CGColor);
-    CGContextSetLineWidth(ctx, 8.0f);
+    CGContextSetLineWidth(ctx, 4.0f);
     CGContextStrokePath(ctx);
     
     // inner circle

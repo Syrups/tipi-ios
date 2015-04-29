@@ -63,6 +63,7 @@
 		B33DE8581ACDCC66008AE55F /* StoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DE8571ACDCC66008AE55F /* StoryController.m */; };
 		B33DE85B1ACDCE00008AE55F /* BaseModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DE85A1ACDCE00008AE55F /* BaseModelController.m */; };
 		B341F04C1AE1A272001D448A /* MediaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B341F04B1AE1A272001D448A /* MediaCell.m */; };
+		B34FEE971AEAB7A200A7E57B /* HelpModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34FEE961AEAB7A200A7E57B /* HelpModalViewController.m */; };
 		B35975F21ADFA29F00936E5E /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B35975F11ADFA29F00936E5E /* ImageUtils.m */; };
 		B35AD0391ABF2B6600527C0D /* ReviewStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD0381ABF2B6600527C0D /* ReviewStoryViewController.m */; };
 		B35AD03C1ABF2D2500527C0D /* ReviewPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD03B1ABF2D2500527C0D /* ReviewPageViewController.m */; };
@@ -71,6 +72,7 @@
 		B35CDBDC1AB8863C00BF9F82 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35CDBDB1AB8863C00BF9F82 /* AVFoundation.framework */; };
 		B36941AF1ACAE02500F3F95A /* FileUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = B36941AE1ACAE02500F3F95A /* FileUploader.m */; };
 		B36941B11ACAF06800F3F95A /* pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B36941B01ACAF06800F3F95A /* pic.jpg */; };
+		B36DD6231AEE5928001FA8C5 /* RoomCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B36DD6221AEE5928001FA8C5 /* RoomCache.m */; };
 		B3846F1D1ADD058B0030DBDE /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3846F1C1ADD058B0030DBDE /* CoreMotion.framework */; };
 		B3846F391ADD0F1D0030DBDE /* RoomListFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846F381ADD0F1D0030DBDE /* RoomListFlowLayout.m */; };
 		B3846F3C1ADD43170030DBDE /* AudioWave.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846F3B1ADD43170030DBDE /* AudioWave.m */; };
@@ -109,6 +111,8 @@
 		B3C85E571ACBF5260083C50A /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C85E561ACBF5260083C50A /* Media.m */; };
 		B3D683891ADFB259006F9C50 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3BCCFD11AA5C36C00261212 /* Info.plist */; };
 		B3DDF3461ADC6311009A9CAF /* NewStoryMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DDF3451ADC6311009A9CAF /* NewStoryMainController.m */; };
+		B3FBAABD1AEF7D0900A3A6B4 /* CreateRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAABC1AEF7D0900A3A6B4 /* CreateRoomViewController.m */; };
+		B3FBAAC01AEF7EA500A3A6B4 /* AddUsersToRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAABF1AEF7EA500A3A6B4 /* AddUsersToRoomViewController.m */; };
 		B3FC7B8C1AA662CC00034E58 /* RecordPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FC7B8B1AA662CC00034E58 /* RecordPageViewController.m */; };
 		B3FC7B8F1AA672DE00034E58 /* placeholder.gif in Resources */ = {isa = PBXBuildFile; fileRef = B3FC7B8E1AA672DE00034E58 /* placeholder.gif */; };
 /* End PBXBuildFile section */
@@ -216,6 +220,8 @@
 		B33DE85C1ACDCFBB008AE55F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		B341F04A1AE1A272001D448A /* MediaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaCell.h; sourceTree = "<group>"; };
 		B341F04B1AE1A272001D448A /* MediaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaCell.m; sourceTree = "<group>"; };
+		B34FEE951AEAB7A200A7E57B /* HelpModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpModalViewController.h; sourceTree = "<group>"; };
+		B34FEE961AEAB7A200A7E57B /* HelpModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpModalViewController.m; sourceTree = "<group>"; };
 		B35975F01ADFA29F00936E5E /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
 		B35975F11ADFA29F00936E5E /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
 		B35AD0371ABF2B6600527C0D /* ReviewStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewStoryViewController.h; sourceTree = "<group>"; };
@@ -230,6 +236,8 @@
 		B36941AD1ACAE02500F3F95A /* FileUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUploader.h; sourceTree = "<group>"; };
 		B36941AE1ACAE02500F3F95A /* FileUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUploader.m; sourceTree = "<group>"; };
 		B36941B01ACAF06800F3F95A /* pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic.jpg; sourceTree = "<group>"; };
+		B36DD6211AEE5928001FA8C5 /* RoomCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomCache.h; sourceTree = "<group>"; };
+		B36DD6221AEE5928001FA8C5 /* RoomCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomCache.m; sourceTree = "<group>"; };
 		B3846F1C1ADD058B0030DBDE /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		B3846F371ADD0F1D0030DBDE /* RoomListFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomListFlowLayout.h; sourceTree = "<group>"; };
 		B3846F381ADD0F1D0030DBDE /* RoomListFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomListFlowLayout.m; sourceTree = "<group>"; };
@@ -302,6 +310,10 @@
 		B3C85E561ACBF5260083C50A /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media.m; sourceTree = "<group>"; };
 		B3DDF3441ADC6311009A9CAF /* NewStoryMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStoryMainController.h; sourceTree = "<group>"; };
 		B3DDF3451ADC6311009A9CAF /* NewStoryMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStoryMainController.m; sourceTree = "<group>"; };
+		B3FBAABB1AEF7D0900A3A6B4 /* CreateRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateRoomViewController.h; sourceTree = "<group>"; };
+		B3FBAABC1AEF7D0900A3A6B4 /* CreateRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateRoomViewController.m; sourceTree = "<group>"; };
+		B3FBAABE1AEF7EA500A3A6B4 /* AddUsersToRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddUsersToRoomViewController.h; sourceTree = "<group>"; };
+		B3FBAABF1AEF7EA500A3A6B4 /* AddUsersToRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddUsersToRoomViewController.m; sourceTree = "<group>"; };
 		B3FC7B8A1AA662CC00034E58 /* RecordPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordPageViewController.h; sourceTree = "<group>"; };
 		B3FC7B8B1AA662CC00034E58 /* RecordPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordPageViewController.m; sourceTree = "<group>"; };
 		B3FC7B8E1AA672DE00034E58 /* placeholder.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = placeholder.gif; sourceTree = "<group>"; };
@@ -352,6 +364,7 @@
 		73B20BED1AA6097700A9C88F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B3FBAABA1AEF7CFC00A3A6B4 /* Rooms */,
 				73559BA31AE2697500547886 /* Specials */,
 				73B3B35C1AA7C55500FF7578 /* ReadStory */,
 				73B3B35B1AA7C54D00FF7578 /* InRoom */,
@@ -499,6 +512,7 @@
 		B3065A421AB99BA700C10AD9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B36DD6201AEE5909001FA8C5 /* Cache */,
 				B33B6FD81ACDC717009C0623 /* Entities */,
 				B3065A301AB9866000C10AD9 /* Managers */,
 				B33B6FD41ACDC6E3009C0623 /* Controllers */,
@@ -560,6 +574,15 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		B34FEE981AEAB7A700A7E57B /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				B34FEE951AEAB7A200A7E57B /* HelpModalViewController.h */,
+				B34FEE961AEAB7A200A7E57B /* HelpModalViewController.m */,
+			);
+			name = Help;
+			sourceTree = "<group>";
+		};
 		B35AD0361ABF2B4B00527C0D /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -578,6 +601,15 @@
 				B35AD0431ABF339200527C0D /* ArrayDataSource.m */,
 			);
 			name = DataSources;
+			sourceTree = "<group>";
+		};
+		B36DD6201AEE5909001FA8C5 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				B36DD6211AEE5928001FA8C5 /* RoomCache.h */,
+				B36DD6221AEE5928001FA8C5 /* RoomCache.m */,
+			);
+			name = Cache;
 			sourceTree = "<group>";
 		};
 		B3846F361ADD0F020030DBDE /* Layout */ = {
@@ -741,6 +773,7 @@
 		B3BCD00D1AA5FD8000261212 /* Create */ = {
 			isa = PBXGroup;
 			children = (
+				B34FEE981AEAB7A700A7E57B /* Help */,
 				B3065A2D1AB9714400C10AD9 /* Media */,
 				B3FC7B8D1AA662D900034E58 /* Record */,
 				B3065A2F1AB9718100C10AD9 /* Configure */,
@@ -785,6 +818,17 @@
 				B3BCD0251AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m */,
 			);
 			name = Layout;
+			sourceTree = "<group>";
+		};
+		B3FBAABA1AEF7CFC00A3A6B4 /* Rooms */ = {
+			isa = PBXGroup;
+			children = (
+				B3FBAABB1AEF7D0900A3A6B4 /* CreateRoomViewController.h */,
+				B3FBAABC1AEF7D0900A3A6B4 /* CreateRoomViewController.m */,
+				B3FBAABE1AEF7EA500A3A6B4 /* AddUsersToRoomViewController.h */,
+				B3FBAABF1AEF7EA500A3A6B4 /* AddUsersToRoomViewController.m */,
+			);
+			name = Rooms;
 			sourceTree = "<group>";
 		};
 		B3FC7B8D1AA662D900034E58 /* Record */ = {
@@ -997,6 +1041,8 @@
 				73B20BF41AA61FC400A9C88F /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				B3BCD0101AA5FDB500261212 /* NameStoryViewController.m in Sources */,
 				B3A8D1871ACEB5EE00B09C34 /* Comment.m in Sources */,
+				B3FBAABD1AEF7D0900A3A6B4 /* CreateRoomViewController.m in Sources */,
+				B36DD6231AEE5928001FA8C5 /* RoomCache.m in Sources */,
 				73B3B3321AA7B45500FF7578 /* TagMenuViewController.m in Sources */,
 				73B3B3621AA7CA9100FF7578 /* ReadModeContainerViewController.m in Sources */,
 				B35AD0441ABF339200527C0D /* ArrayDataSource.m in Sources */,
@@ -1013,11 +1059,13 @@
 				B3BCD0261AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m in Sources */,
 				B3A8D18A1ACECB1A00B09C34 /* AddFriendViewController.m in Sources */,
 				B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */,
+				B34FEE971AEAB7A200A7E57B /* HelpModalViewController.m in Sources */,
 				B3BCD0061AA5F0CE00261212 /* NewStoryViewController.m in Sources */,
 				B3A8D18E1ACED0EC00B09C34 /* ProfileViewController.m in Sources */,
 				B3A8D17D1ACE7A3800B09C34 /* RoomController.m in Sources */,
 				B38621F41AE16C7200D2CA5A /* ShowCaseOverlay.m in Sources */,
 				B38B89621ACC146200799EDD /* MediaLibrary.m in Sources */,
+				B3FBAAC01AEF7EA500A3A6B4 /* AddUsersToRoomViewController.m in Sources */,
 				B3BCD01D1AA60D4C00261212 /* OrganizeStoryViewController.m in Sources */,
 				B38B89661ACC221600799EDD /* SRRecordButton.m in Sources */,
 				B35975F21ADFA29F00936E5E /* ImageUtils.m in Sources */,

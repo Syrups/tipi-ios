@@ -11,6 +11,7 @@
 #import "UserSession.h"
 #import "SWRevealViewController.h"
 #import "RoomRevealWrapperViewController.h"
+#import "CreateRoomViewController.h"
 #import "SHPathLibrary.h"
 
 @implementation ShowGroupsViewController {
@@ -26,6 +27,10 @@
     [manager fetchRoomsForUser:[[UserSession sharedSession] user]];
 }
 
+- (IBAction)createNewRoom:(id)sender {
+    UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"CreateRoom"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 #pragma mark - RoomFetcher
 
