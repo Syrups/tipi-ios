@@ -56,7 +56,7 @@
     UIBezierPath* path = [[UIBezierPath alloc] init];
     
     float width = inverted ? 0 : CGRectGetWidth(frame);
-    width -= 40;
+    //width -= 40;
     int invertFactor = (inverted ? -1 : 1);;
     
     
@@ -101,29 +101,29 @@
 + (UIBezierPath *) swippedRightCurvyBezierPathForRect: (CGRect ) frame{
     UIBezierPath* path = [[UIBezierPath alloc] init];
     
-    float width = -CGRectGetWidth(frame);
+    float width = 0;
     //float width = CGRectGetWidth(frame);
     
     //Top base straight square
     [path moveToPoint:CGPointMake(CGRectGetWidth(frame) * 1.5f, 0)];
-    [path addLineToPoint:CGPointMake(width * 1.1f , 0)];
+    [path addLineToPoint:CGPointMake(width - 20, 0)];
     
     
     //Top curve
     float half = CGRectGetMidY(frame);
     //[path moveToPoint:CGPointMake(width, half - 100)];
-    [path addLineToPoint:CGPointMake(width, half - 100)];
+    [path addLineToPoint:CGPointMake(width , half - 100)];
     
     
     float xpc1 = width - 20 ;
     float yTopHalf = half - 50;
     
     [path addCurveToPoint:CGPointMake(xpc1, yTopHalf)
-            controlPoint1:CGPointMake(xpc1 + 15 , half - 70)
+            controlPoint1:CGPointMake(xpc1 + 50 , half - 70)
             controlPoint2:CGPointMake(xpc1 , yTopHalf)];
     //Bump
-    float xcp1B = width - 20 ;
-    float bumpX = xcp1B - 25  ;
+    float xcp1B = width - 20;
+    float bumpX = xcp1B - 25;
     
     [path addCurveToPoint:CGPointMake(xcp1B, half + 50)
             controlPoint1:CGPointMake(bumpX, half - 10)
