@@ -99,7 +99,7 @@
     } else {
         [selectedFriends removeObject:friend.id];
         UILabel* label = (UILabel*)[cell.contentView viewWithTag:10];
-        label.alpha = .7f;
+        label.alpha = .4f;
     }
 }
 

@@ -55,6 +55,14 @@
 		B319338A1ADFB2B600603158 /* GTWalsheim Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B31933891ADFB2B600603158 /* GTWalsheim Bold.otf */; };
 		B319338D1ADFB4AE00603158 /* DoneStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B319338C1ADFB4AE00603158 /* DoneStoryViewController.m */; };
 		B31933911AE009D000603158 /* ZoomOutSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = B31933901AE009D000603158 /* ZoomOutSegue.m */; };
+		B319B23F1AF0CD1B00C819BD /* onde_bleu_clair.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B319B23A1AF0CD1B00C819BD /* onde_bleu_clair.pkai */; };
+		B319B2401AF0CD1B00C819BD /* onde_bleu.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B319B23B1AF0CD1B00C819BD /* onde_bleu.pkai */; };
+		B319B2411AF0CD1B00C819BD /* onde_voix.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B319B23C1AF0CD1B00C819BD /* onde_voix.pkai */; };
+		B319B2421AF0CD1B00C819BD /* star.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B319B23D1AF0CD1B00C819BD /* star.pkai */; };
+		B319B2461AF0CD5100C819BD /* PKAIDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = B319B2451AF0CD5100C819BD /* PKAIDecoder.m */; };
+		B319B2481AF0D13100C819BD /* tete.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B319B2471AF0D13100C819BD /* tete.pkai */; };
+		B319B24B1AF1020800C819BD /* Screen1.xib in Resources */ = {isa = PBXBuildFile; fileRef = B319B24A1AF1020800C819BD /* Screen1.xib */; };
+		B319B24E1AF1025A00C819BD /* WalkthroughScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = B319B24D1AF1025A00C819BD /* WalkthroughScreen.m */; };
 		B325A13A1ADE546A0041DF21 /* SandboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A1391ADE546A0041DF21 /* SandboxViewController.m */; };
 		B325A13D1ADE5AD80041DF21 /* PreviewBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A13C1ADE5AD80041DF21 /* PreviewBubble.m */; };
 		B325A1401ADEE6400041DF21 /* Timeline.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A13F1ADEE6400041DF21 /* Timeline.m */; };
@@ -113,6 +121,11 @@
 		B3DDF3461ADC6311009A9CAF /* NewStoryMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DDF3451ADC6311009A9CAF /* NewStoryMainController.m */; };
 		B3FBAABD1AEF7D0900A3A6B4 /* CreateRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAABC1AEF7D0900A3A6B4 /* CreateRoomViewController.m */; };
 		B3FBAAC01AEF7EA500A3A6B4 /* AddUsersToRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAABF1AEF7EA500A3A6B4 /* AddUsersToRoomViewController.m */; };
+		B3FBAAC31AEFB12F00A3A6B4 /* RequestListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAAC21AEFB12F00A3A6B4 /* RequestListViewController.m */; };
+		B3FBAAC61AEFB7A400A3A6B4 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAAC51AEFB7A400A3A6B4 /* SettingsViewController.m */; };
+		B3FBAAC91AEFC15A00A3A6B4 /* HomeBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAAC81AEFC15A00A3A6B4 /* HomeBubble.m */; };
+		B3FBAACD1AEFD5D200A3A6B4 /* WalkthroughViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAACC1AEFD5D200A3A6B4 /* WalkthroughViewController.m */; };
+		B3FBAAD01AEFD64300A3A6B4 /* WalkthroughScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAACF1AEFD64300A3A6B4 /* WalkthroughScreenViewController.m */; };
 		B3FC7B8C1AA662CC00034E58 /* RecordPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FC7B8B1AA662CC00034E58 /* RecordPageViewController.m */; };
 		B3FC7B8F1AA672DE00034E58 /* placeholder.gif in Resources */ = {isa = PBXBuildFile; fileRef = B3FC7B8E1AA672DE00034E58 /* placeholder.gif */; };
 /* End PBXBuildFile section */
@@ -203,6 +216,16 @@
 		B319338C1ADFB4AE00603158 /* DoneStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoneStoryViewController.m; sourceTree = "<group>"; };
 		B319338F1AE009D000603158 /* ZoomOutSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomOutSegue.h; sourceTree = "<group>"; };
 		B31933901AE009D000603158 /* ZoomOutSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomOutSegue.m; sourceTree = "<group>"; };
+		B319B23A1AF0CD1B00C819BD /* onde_bleu_clair.pkai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = onde_bleu_clair.pkai; path = Resources/pkai/onde_bleu_clair.pkai; sourceTree = "<group>"; };
+		B319B23B1AF0CD1B00C819BD /* onde_bleu.pkai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = onde_bleu.pkai; path = Resources/pkai/onde_bleu.pkai; sourceTree = "<group>"; };
+		B319B23C1AF0CD1B00C819BD /* onde_voix.pkai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = onde_voix.pkai; path = Resources/pkai/onde_voix.pkai; sourceTree = "<group>"; };
+		B319B23D1AF0CD1B00C819BD /* star.pkai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = star.pkai; path = Resources/pkai/star.pkai; sourceTree = "<group>"; };
+		B319B2441AF0CD5100C819BD /* PKAIDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKAIDecoder.h; sourceTree = "<group>"; };
+		B319B2451AF0CD5100C819BD /* PKAIDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKAIDecoder.m; sourceTree = "<group>"; };
+		B319B2471AF0D13100C819BD /* tete.pkai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tete.pkai; sourceTree = "<group>"; };
+		B319B24A1AF1020800C819BD /* Screen1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Screen1.xib; sourceTree = "<group>"; };
+		B319B24C1AF1025A00C819BD /* WalkthroughScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalkthroughScreen.h; sourceTree = "<group>"; };
+		B319B24D1AF1025A00C819BD /* WalkthroughScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalkthroughScreen.m; sourceTree = "<group>"; };
 		B325A1381ADE546A0041DF21 /* SandboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandboxViewController.h; sourceTree = "<group>"; };
 		B325A1391ADE546A0041DF21 /* SandboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandboxViewController.m; sourceTree = "<group>"; };
 		B325A13B1ADE5AD80041DF21 /* PreviewBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewBubble.h; sourceTree = "<group>"; };
@@ -314,6 +337,16 @@
 		B3FBAABC1AEF7D0900A3A6B4 /* CreateRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateRoomViewController.m; sourceTree = "<group>"; };
 		B3FBAABE1AEF7EA500A3A6B4 /* AddUsersToRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddUsersToRoomViewController.h; sourceTree = "<group>"; };
 		B3FBAABF1AEF7EA500A3A6B4 /* AddUsersToRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddUsersToRoomViewController.m; sourceTree = "<group>"; };
+		B3FBAAC11AEFB12F00A3A6B4 /* RequestListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestListViewController.h; sourceTree = "<group>"; };
+		B3FBAAC21AEFB12F00A3A6B4 /* RequestListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestListViewController.m; sourceTree = "<group>"; };
+		B3FBAAC41AEFB7A400A3A6B4 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		B3FBAAC51AEFB7A400A3A6B4 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		B3FBAAC71AEFC15A00A3A6B4 /* HomeBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeBubble.h; sourceTree = "<group>"; };
+		B3FBAAC81AEFC15A00A3A6B4 /* HomeBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeBubble.m; sourceTree = "<group>"; };
+		B3FBAACB1AEFD5D200A3A6B4 /* WalkthroughViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalkthroughViewController.h; sourceTree = "<group>"; };
+		B3FBAACC1AEFD5D200A3A6B4 /* WalkthroughViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalkthroughViewController.m; sourceTree = "<group>"; };
+		B3FBAACE1AEFD64300A3A6B4 /* WalkthroughScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalkthroughScreenViewController.h; sourceTree = "<group>"; };
+		B3FBAACF1AEFD64300A3A6B4 /* WalkthroughScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalkthroughScreenViewController.m; sourceTree = "<group>"; };
 		B3FC7B8A1AA662CC00034E58 /* RecordPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordPageViewController.h; sourceTree = "<group>"; };
 		B3FC7B8B1AA662CC00034E58 /* RecordPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordPageViewController.m; sourceTree = "<group>"; };
 		B3FC7B8E1AA672DE00034E58 /* placeholder.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = placeholder.gif; sourceTree = "<group>"; };
@@ -357,6 +390,8 @@
 			children = (
 				73B20BEA1AA5FF0800A9C88F /* BaseHomeViewController.h */,
 				73B20BEB1AA5FF0800A9C88F /* BaseHomeViewController.m */,
+				B3FBAAC71AEFC15A00A3A6B4 /* HomeBubble.h */,
+				B3FBAAC81AEFC15A00A3A6B4 /* HomeBubble.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -505,6 +540,8 @@
 				B3065A3A1AB98ACC00C10AD9 /* LoginViewController.m */,
 				B3065A521ABB35D700C10AD9 /* SignUpViewController.h */,
 				B3065A531ABB35D700C10AD9 /* SignUpViewController.m */,
+				B3FBAAC41AEFB7A400A3A6B4 /* SettingsViewController.h */,
+				B3FBAAC51AEFB7A400A3A6B4 /* SettingsViewController.m */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -527,6 +564,28 @@
 				B31933901AE009D000603158 /* ZoomOutSegue.m */,
 			);
 			name = Segue;
+			sourceTree = "<group>";
+		};
+		B319B2391AF0CD1400C819BD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B319B2471AF0D13100C819BD /* tete.pkai */,
+				B319B23A1AF0CD1B00C819BD /* onde_bleu_clair.pkai */,
+				B319B23B1AF0CD1B00C819BD /* onde_bleu.pkai */,
+				B319B23C1AF0CD1B00C819BD /* onde_voix.pkai */,
+				B319B23D1AF0CD1B00C819BD /* star.pkai */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		B319B2491AF101F500C819BD /* Walkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				B319B24A1AF1020800C819BD /* Screen1.xib */,
+				B319B24C1AF1025A00C819BD /* WalkthroughScreen.h */,
+				B319B24D1AF1025A00C819BD /* WalkthroughScreen.m */,
+			);
+			name = Walkthrough;
 			sourceTree = "<group>";
 		};
 		B33B6FD41ACDC6E3009C0623 /* Controllers */ = {
@@ -633,6 +692,7 @@
 		B38B89631ACC21F300799EDD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B319B2491AF101F500C819BD /* Walkthrough */,
 				B3BCD0221AA622FA00261212 /* Components */,
 				73825C1B1ADE8B4300D43383 /* SHPathLibrary.h */,
 				73825C1C1ADE8B4300D43383 /* SHPathLibrary.m */,
@@ -643,6 +703,8 @@
 		B3A4CDC51AA71D860079F8D1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B319B2441AF0CD5100C819BD /* PKAIDecoder.h */,
+				B319B2451AF0CD5100C819BD /* PKAIDecoder.m */,
 				B3A4CDC61AA71DB90079F8D1 /* StoryWIPSaver.h */,
 				B3A4CDC71AA71DB90079F8D1 /* StoryWIPSaver.m */,
 				B35CDBD81AB87DD900BF9F82 /* StoryMediaRecorder.h */,
@@ -666,6 +728,8 @@
 				B3A8D1801ACE8C2F00B09C34 /* FriendListViewController.m */,
 				B3A8D1881ACECB1A00B09C34 /* AddFriendViewController.h */,
 				B3A8D1891ACECB1A00B09C34 /* AddFriendViewController.m */,
+				B3FBAAC11AEFB12F00A3A6B4 /* RequestListViewController.h */,
+				B3FBAAC21AEFB12F00A3A6B4 /* RequestListViewController.m */,
 			);
 			name = Friends;
 			sourceTree = "<group>";
@@ -706,6 +770,7 @@
 		B3BCCFCF1AA5C36C00261212 /* Wireframe */ = {
 			isa = PBXGroup;
 			children = (
+				B319B2391AF0CD1400C819BD /* Resources */,
 				B39C1DE51AC4B1620011D87E /* Wireframe.entitlements */,
 				B3065A371AB9887500C10AD9 /* Configuration.h */,
 				B3FC7B8E1AA672DE00034E58 /* placeholder.gif */,
@@ -756,6 +821,7 @@
 		B3BCCFFA1AA5C84B00261212 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B3FBAACA1AEFD57C00A3A6B4 /* Walkthrough */,
 				73559BA71AE2762B00547886 /* Base */,
 				B3065A381AB98AB700C10AD9 /* Account */,
 				73B20BED1AA6097700A9C88F /* View */,
@@ -829,6 +895,17 @@
 				B3FBAABF1AEF7EA500A3A6B4 /* AddUsersToRoomViewController.m */,
 			);
 			name = Rooms;
+			sourceTree = "<group>";
+		};
+		B3FBAACA1AEFD57C00A3A6B4 /* Walkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				B3FBAACB1AEFD5D200A3A6B4 /* WalkthroughViewController.h */,
+				B3FBAACC1AEFD5D200A3A6B4 /* WalkthroughViewController.m */,
+				B3FBAACE1AEFD64300A3A6B4 /* WalkthroughScreenViewController.h */,
+				B3FBAACF1AEFD64300A3A6B4 /* WalkthroughScreenViewController.m */,
+			);
+			name = Walkthrough;
 			sourceTree = "<group>";
 		};
 		B3FC7B8D1AA662D900034E58 /* Record */ = {
@@ -965,25 +1042,31 @@
 				73B3B34B1AA7BA3F00FF7578 /* home-noir.png in Resources */,
 				73B3B3471AA7BA3F00FF7578 /* croix-noire.png in Resources */,
 				B3BCCFF81AA5C4CB00261212 /* GTWalsheim Light.otf in Resources */,
+				B319B2401AF0CD1B00C819BD /* onde_bleu.pkai in Resources */,
 				B3BCCFF91AA5C4CB00261212 /* GTWalsheim Regular.otf in Resources */,
 				73B3B34E1AA7BA3F00FF7578 /* perso-blanc.png in Resources */,
 				73B3B3521AA7BA3F00FF7578 /* proches-petit.png in Resources */,
 				B3BCCFDC1AA5C36C00261212 /* Main.storyboard in Resources */,
 				B319338A1ADFB2B600603158 /* GTWalsheim Bold.otf in Resources */,
+				B319B2411AF0CD1B00C819BD /* onde_voix.pkai in Resources */,
 				B3D683891ADFB259006F9C50 /* Info.plist in Resources */,
+				B319B2421AF0CD1B00C819BD /* star.pkai in Resources */,
 				73B3B3511AA7BA3F00FF7578 /* proches-grand.png in Resources */,
 				73B3B34C1AA7BA3F00FF7578 /* loupe.png in Resources */,
+				B319B24B1AF1020800C819BD /* Screen1.xib in Resources */,
 				B3BCCFE11AA5C36C00261212 /* LaunchScreen.xib in Resources */,
 				73B3B3561AA7BA3F00FF7578 /* story.png in Resources */,
 				73B3B3541AA7BA3F00FF7578 /* replay-noir.png in Resources */,
 				B3FC7B8F1AA672DE00034E58 /* placeholder.gif in Resources */,
 				73B3B34D1AA7BA3F00FF7578 /* pause.png in Resources */,
 				B36941B11ACAF06800F3F95A /* pic.jpg in Resources */,
+				B319B23F1AF0CD1B00C819BD /* onde_bleu_clair.pkai in Resources */,
 				B3BCCFDE1AA5C36C00261212 /* Images.xcassets in Resources */,
 				73B3B34A1AA7BA3F00FF7578 /* home-blanc.png in Resources */,
 				73B3B3481AA7BA3F00FF7578 /* go-left.png in Resources */,
 				73B3B34F1AA7BA3F00FF7578 /* perso-noir.png in Resources */,
 				73B3B3551AA7BA3F00FF7578 /* roue-dentee.png in Resources */,
+				B319B2481AF0D13100C819BD /* tete.pkai in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1035,6 +1118,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3065A4E1ABAFD7600C10AD9 /* Room.m in Sources */,
+				B3FBAAD01AEFD64300A3A6B4 /* WalkthroughScreenViewController.m in Sources */,
 				B3065A4B1ABAFD1000C10AD9 /* RoomManager.m in Sources */,
 				73559BA61AE269A200547886 /* WaveSwipeTransitionAnimator.m in Sources */,
 				B3DDF3461ADC6311009A9CAF /* NewStoryMainController.m in Sources */,
@@ -1085,7 +1169,9 @@
 				B35AD0391ABF2B6600527C0D /* ReviewStoryViewController.m in Sources */,
 				B3065A481ABAF60E00C10AD9 /* UserSession.m in Sources */,
 				B33DE85B1ACDCE00008AE55F /* BaseModelController.m in Sources */,
+				B3FBAAC61AEFB7A400A3A6B4 /* SettingsViewController.m in Sources */,
 				B3065A511ABB29E200C10AD9 /* Story.m in Sources */,
+				B3FBAACD1AEFD5D200A3A6B4 /* WalkthroughViewController.m in Sources */,
 				B3065A541ABB35D700C10AD9 /* SignUpViewController.m in Sources */,
 				73825C1D1ADE8B4300D43383 /* SHPathLibrary.m in Sources */,
 				B3BCCFD31AA5C36C00261212 /* main.m in Sources */,
@@ -1099,11 +1185,15 @@
 				B3A8D1841ACEAD0A00B09C34 /* FriendManager.m in Sources */,
 				B38621FA1AE16DC200D2CA5A /* ShowCaseableViewController.m in Sources */,
 				B3BCCFFD1AA5C85B00261212 /* HomeViewController.m in Sources */,
+				B3FBAAC91AEFC15A00A3A6B4 /* HomeBubble.m in Sources */,
+				B3FBAAC31AEFB12F00A3A6B4 /* RequestListViewController.m in Sources */,
 				B3C85E571ACBF5260083C50A /* Media.m in Sources */,
 				B319338D1ADFB4AE00603158 /* DoneStoryViewController.m in Sources */,
 				B3BCD0001AA5E50D00261212 /* MediaPickerViewController.m in Sources */,
 				B36941AF1ACAE02500F3F95A /* FileUploader.m in Sources */,
 				B3BCD0131AA604DA00261212 /* RecordViewController.m in Sources */,
+				B319B24E1AF1025A00C819BD /* WalkthroughScreen.m in Sources */,
+				B319B2461AF0CD5100C819BD /* PKAIDecoder.m in Sources */,
 				B325A13D1ADE5AD80041DF21 /* PreviewBubble.m in Sources */,
 				B33B6FD71ACDC702009C0623 /* UserController.m in Sources */,
 				73B3B35A1AA7BC6100FF7578 /* GroupMembersViewController.m in Sources */,

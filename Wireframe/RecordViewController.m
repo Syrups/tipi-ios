@@ -276,6 +276,8 @@
     [self.view addSubview:done.view];
     [done didMoveToParentViewController:self];
     
+    self.donePopin = done;
+    
     [UIView animateWithDuration:.3f animations:^{
         done.view.alpha = 1;
     }];
@@ -289,6 +291,11 @@
     done.view.alpha = 0;
     [self.view addSubview:done.view];
     [done didMoveToParentViewController:self];
+    
+    [self.donePopin.view removeFromSuperview];
+    [self.donePopin removeFromParentViewController];
+    
+    self.namePopin = done;
     
     [UIView animateWithDuration:.3f animations:^{
         done.view.alpha = 1;

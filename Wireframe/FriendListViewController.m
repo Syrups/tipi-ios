@@ -57,4 +57,8 @@
     return self.friends.count;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
 @end

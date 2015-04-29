@@ -35,7 +35,17 @@
 }
 
 - (IBAction)back:(id)sender {
+//    [self.roomNameField resignFirstResponder];
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+//#pragma mark - UITextField
+//
+//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+//{
+//    NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+//    return !([newString length] > 30);
+//    
+//}
 
 @end
