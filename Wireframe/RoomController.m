@@ -100,6 +100,32 @@
     [op start];
 }
 
+- (void)deleteRoom:(Room*)room success:(void(^)(Room* room))success failure:(void(^)(NSError* error))failure{
+    NSString* path = [NSString stringWithFormat:@"/rooms/%@", room.id];
+    NSURLRequest* request = [BaseModelController getBaseRequestFor:path authenticated:YES method:@"GET"];
+    
+    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSError* err = nil;
+        Room* room = [[Room alloc] initWithDictionary:responseObject error:&err];
+        
+        if (err) { NSLog(@"%@", err); }
+        
+        success(room);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        failure(error);
+    }];
+    
+    [op start];
+}
+
+
 - (NSString*)httpBodyForUsers:(NSArray*)users {
     NSMutableString *usersJson = [NSMutableString stringWithString:@"["];
     int i = 0;

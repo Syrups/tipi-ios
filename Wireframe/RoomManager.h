@@ -8,12 +8,14 @@
 
 #import "BaseManager.h"
 #import "Room.h"
+#import "StoryManager.h"
 
 @interface RoomManager : BaseManager
 
 - (void)createRoomWithName:(NSString*)name andUsers:(NSArray*)users;
 - (void)fetchRoomWithId:(NSUInteger)roomId;
 - (void)fetchRoomsForUser:(User*)user;
+- (void)deleteRoom:(Room*)room;
 - (void)updateRoom:(Room*)room;
 
 @end
@@ -43,6 +45,12 @@
 @optional
 - (void)roomManager:(RoomManager *)manager failedToFetchRooms:(NSError*)error;
 
+@end
+
+@protocol RoomDeleterDelegate <NSObject>
+
+- (void)roomManager:(RoomManager*)manager successfullyDeletedRoom:(Room*)room;
+- (void)roomManager:(RoomManager *)manager failedToDeleteRoom:(Room*)room withError:(NSError*)error;
 @end
 
 @protocol RoomUpdaterDelegate <NSObject>

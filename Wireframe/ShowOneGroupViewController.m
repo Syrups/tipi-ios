@@ -36,6 +36,7 @@
     StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
     [manager fetchStoriesForRoomId:self.roomId];
     
+    
     [self customSetup];
     
     [SHPathLibrary addRightCurveBezierPathToView:self.view

@@ -8,6 +8,7 @@
 
 #import "CampToRoomNavigationDelegate.h"
 #import "WaveSwipeTransitionAnimator.h"
+#import "RoomRevealWrapperViewController.h"
 
 
 
@@ -22,28 +23,35 @@
 }
 
 
-- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController *)fromVC
+                                                 toViewController:(UIViewController *)toVC{
     
+    if( [toVC isKindOfClass:[RoomRevealWrapperViewController class]]
+       || [fromVC isKindOfClass:[RoomRevealWrapperViewController class]]){
+        return [[WaveSwipeTransitionAnimator alloc]init];
+    }
     
-    return [[WaveSwipeTransitionAnimator alloc]init];
+    return nil;
 }
 
-- (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController{
+- (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController
+                         interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController{
     return self.interactionController;
 }
 
 //1
 - (void)panned:(UIPanGestureRecognizer*)gestureRecognizer{
     
-    
     CGPoint velocity = [gestureRecognizer velocityInView:self.navigationController.view];
     
     BOOL toRight = velocity.x > 0;
     BOOL popingBack = self.navigationController.viewControllers.count > 1;
     
-   
+    
     NSLog(@"gesture went %@", toRight ? @"->" : @"<-");
-
+    
     switch(gestureRecognizer.state)
     {
         case UIGestureRecognizerStateBegan :
@@ -62,11 +70,11 @@
             
             break;
         case UIGestureRecognizerStateChanged :
-           
+            
             //Bug if I remove it
             [gestureRecognizer translationInView:self.navigationController.view];
             
-             int factor = popingBack ? -1 : 1;
+            int factor = popingBack ? -1 : 1;
             
             CGPoint translation = [gestureRecognizer translationInView:self.navigationController.view];
             
