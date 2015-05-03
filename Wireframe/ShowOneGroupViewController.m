@@ -10,6 +10,7 @@
 #import "ShowOneGroupViewController.h"
 #import "UserSession.h"
 #import "ReadModeContainerViewController.h"
+#import "AdminRoomViewController.h"
 #import "SHPathLibrary.h"
 
 
@@ -25,16 +26,16 @@
     
     //self.mStories = @[@"coup de chance", @"Conférence F.A.M.E", @"Plexus Gobelins"];
     RoomRevealWrapperViewController *parent = (RoomRevealWrapperViewController*)[self revealViewController];
-    self.roomId = parent.roomId;
+    self.room = parent.room;
+    [self.roomNameButton setTitle:self.room.name forState:UIControlStateNormal];
     
-    
-    NSLog(@"Room is %lu", (unsigned long)self.roomId);
+    NSLog(@"Room is %lu", (unsigned long)self.room.id);
     
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;
     
     StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
-    [manager fetchStoriesForRoomId:self.roomId];
+    [manager fetchStoriesForRoomId:[self.room.id integerValue]];
     
     
     [self customSetup];
@@ -42,7 +43,21 @@
     [SHPathLibrary addRightCurveBezierPathToView:self.view
                                        withColor:[UIColor colorWithRed:35/255.0  green:12/255.0 blue:11/255.0 alpha:1]
                                         inverted:YES];
+    
+    if ([self.room isAdmin:CurrentUser]) {
+        [self.roomNameButton addTarget:self action:@selector(didTapAdminButton:) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
+
+#pragma mark - Actions
+
+- (void)didTapAdminButton:(id)sender {
+    AdminRoomViewController* vc = (AdminRoomViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"AdminRoom"];
+    vc.room = self.room;
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+#pragma mark - TableView
 
 - (void)customSetup
 {

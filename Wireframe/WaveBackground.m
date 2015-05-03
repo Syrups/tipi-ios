@@ -109,7 +109,7 @@
 - (CGPathRef)pathForLayer {
     UIBezierPath* path = [[UIBezierPath alloc] init];
     
-    CGFloat o = self.frame.size.height - 40 - self.growingAmount * 10;
+    CGFloat o = self.growingAmount * 10;
     
     CGPoint start = CGPointMake(0, o + arc4random_uniform(20));
     CGPoint middle = CGPointMake(self.frame.size.width/2, start.y - 25 + arc4random_uniform(30));
@@ -123,8 +123,8 @@
     [path addCurveToPoint:middle controlPoint1:c1 controlPoint2:c2];
     [path addCurveToPoint:end controlPoint1:c3 controlPoint2:c4];
     
-    [path addLineToPoint:CGPointMake(self.frame.size.width, self.frame.size.height)];
-    [path addLineToPoint:CGPointMake(0, self.frame.size.height)];
+    [path addLineToPoint:CGPointMake(self.frame.size.width, 0)];
+    [path addLineToPoint:CGPointMake(0, 0)];
     [path addLineToPoint:start];
     
     return path.CGPath;

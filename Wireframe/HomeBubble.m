@@ -32,9 +32,9 @@
         UIImageView* voice = [[UIImageView alloc] initWithFrame:CGRectMake(midX - 130, midY - 60, 100, 40)];
         [PKAIDecoder builAnimatedImageIn:voice fromFile:@"onde_voix"];
         
-        [self addSubview:wave1];
-        [self addSubview:wave2];
-        [self addSubview:star1];
+//        [self addSubview:wave1];
+//        [self addSubview:wave2];
+//        [self addSubview:star1];
         [self addSubview:buddy];
     }
     return self;

@@ -128,7 +128,7 @@
         NSUInteger selectedRoom = [room.id integerValue];
         
         RoomRevealWrapperViewController* reveal = segue.destinationViewController;
-        reveal.roomId = selectedRoom;
+        reveal.room = room;
     }
 }
 

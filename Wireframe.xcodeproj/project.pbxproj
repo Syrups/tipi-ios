@@ -63,6 +63,7 @@
 		B319B2481AF0D13100C819BD /* tete.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B319B2471AF0D13100C819BD /* tete.pkai */; };
 		B319B24B1AF1020800C819BD /* Screen1.xib in Resources */ = {isa = PBXBuildFile; fileRef = B319B24A1AF1020800C819BD /* Screen1.xib */; };
 		B319B24E1AF1025A00C819BD /* WalkthroughScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = B319B24D1AF1025A00C819BD /* WalkthroughScreen.m */; };
+		B319B2511AF12D0F00C819BD /* AdminRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B319B2501AF12D0F00C819BD /* AdminRoomViewController.m */; };
 		B325A13A1ADE546A0041DF21 /* SandboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A1391ADE546A0041DF21 /* SandboxViewController.m */; };
 		B325A13D1ADE5AD80041DF21 /* PreviewBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A13C1ADE5AD80041DF21 /* PreviewBubble.m */; };
 		B325A1401ADEE6400041DF21 /* Timeline.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A13F1ADEE6400041DF21 /* Timeline.m */; };
@@ -226,6 +227,8 @@
 		B319B24A1AF1020800C819BD /* Screen1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Screen1.xib; sourceTree = "<group>"; };
 		B319B24C1AF1025A00C819BD /* WalkthroughScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalkthroughScreen.h; sourceTree = "<group>"; };
 		B319B24D1AF1025A00C819BD /* WalkthroughScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalkthroughScreen.m; sourceTree = "<group>"; };
+		B319B24F1AF12D0F00C819BD /* AdminRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminRoomViewController.h; sourceTree = "<group>"; };
+		B319B2501AF12D0F00C819BD /* AdminRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminRoomViewController.m; sourceTree = "<group>"; };
 		B325A1381ADE546A0041DF21 /* SandboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandboxViewController.h; sourceTree = "<group>"; };
 		B325A1391ADE546A0041DF21 /* SandboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandboxViewController.m; sourceTree = "<group>"; };
 		B325A13B1ADE5AD80041DF21 /* PreviewBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewBubble.h; sourceTree = "<group>"; };
@@ -445,6 +448,8 @@
 		73B3B35B1AA7C54D00FF7578 /* InRoom */ = {
 			isa = PBXGroup;
 			children = (
+				B319B24F1AF12D0F00C819BD /* AdminRoomViewController.h */,
+				B319B2501AF12D0F00C819BD /* AdminRoomViewController.m */,
 				73B20BF11AA6178200A9C88F /* ShowOneGroupViewController.h */,
 				73B20BF21AA6178200A9C88F /* ShowOneGroupViewController.m */,
 				73B3B3301AA7B45500FF7578 /* TagMenuViewController.h */,
@@ -1118,6 +1123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3065A4E1ABAFD7600C10AD9 /* Room.m in Sources */,
+				B319B2511AF12D0F00C819BD /* AdminRoomViewController.m in Sources */,
 				B3FBAAD01AEFD64300A3A6B4 /* WalkthroughScreenViewController.m in Sources */,
 				B3065A4B1ABAFD1000C10AD9 /* RoomManager.m in Sources */,
 				73559BA61AE269A200547886 /* WaveSwipeTransitionAnimator.m in Sources */,

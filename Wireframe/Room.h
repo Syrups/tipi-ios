@@ -16,4 +16,6 @@
 @property (strong, nonatomic) NSArray<User>* users;
 @property (strong, nonatomic) User* owner;
 
+- (BOOL)isAdmin:(User*)user;
+
 @end
