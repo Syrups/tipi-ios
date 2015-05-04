@@ -8,6 +8,7 @@
 
 #import "BaseModelController.h"
 #import "Room.h"
+#import "Story.h"
 
 @interface RoomController : BaseModelController
 

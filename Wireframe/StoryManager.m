@@ -79,6 +79,24 @@
     });
 }
 
+- (void)deleteStory:(Story *)story inRoom:(Room *)room {
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    [delegate.storyController deleteStory:story inRoom:room success:^(Room *room) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([self.delegate respondsToSelector:@selector(roomManager:successfullyDeletedStoryInRoom:)]) {
+                [self.delegate roomManager:self successfullyDeletedStoryInRoom:room];
+            }
+        });
+    } failure:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([self.delegate respondsToSelector:@selector(roomManager:failedToDeleteStory:inRoom:withError:)]) {
+                [self.delegate roomManager:self failedToDeleteStory:story inRoom:room withError:error];
+            }
+        });
+    }];
+}
+
+
 
 #pragma mark - Helpers
 

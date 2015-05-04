@@ -10,6 +10,7 @@
 #import "BaseManager.h"
 #import "Story.h"
 #import "User.h"
+#import "RoomManager.h"
 
 @interface StoryManager : BaseManager
 
@@ -26,6 +27,13 @@
 - (void)storyManager:(StoryManager *)manager failedToCreateStory:(NSError*)error;
 
 @end
+
+@protocol StoryDeleterDelegate <NSObject>
+
+- (void)roomManager:(StoryManager*)manager successfullyDeletedStoryInRoom:(Room*)room;
+- (void)roomManager:(StoryManager*)manager failedToDeleteStory:(Story*)story inRoom:(Room*)room withError:(NSError*)error;
+@end
+
 
 @protocol StoryFetcherDelegate <NSObject>
 

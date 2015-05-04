@@ -79,11 +79,12 @@
             controlPoint2:CGPointMake(xpc1 , yTopHalf)];
     //Bump
     float xcp1B = width - 20 * invertFactor;
-    float bumpX = xcp1B - 25  * invertFactor;
+    float bumpX = xcp1B - 25 * invertFactor;
     
     [path addCurveToPoint:CGPointMake(xcp1B, half + 50)
             controlPoint1:CGPointMake(bumpX, half - 10)
             controlPoint2:CGPointMake(bumpX, half + 10)];
+    
     //Bottom curve
     float yBotHalf = half+50;
     [path addCurveToPoint:CGPointMake(width, half + 100)
@@ -114,25 +115,27 @@
     //[path moveToPoint:CGPointMake(width, half - 100)];
     [path addLineToPoint:CGPointMake(width , half - 100)];
     
-    
-    float xpc1 = width - 20 ;
+
+    float xpc1 = width + 20 ;
     float yTopHalf = half - 50;
     
     [path addCurveToPoint:CGPointMake(xpc1, yTopHalf)
-            controlPoint1:CGPointMake(xpc1 + 50 , half - 70)
+            controlPoint1:CGPointMake(xpc1 - 15 , half - 70)
             controlPoint2:CGPointMake(xpc1 , yTopHalf)];
+    
     //Bump
-    float xcp1B = width - 20;
-    float bumpX = xcp1B - 25;
+    float xcp1B = width + 20;
+    float bumpX = xcp1B + 25;
     
     [path addCurveToPoint:CGPointMake(xcp1B, half + 50)
             controlPoint1:CGPointMake(bumpX, half - 10)
             controlPoint2:CGPointMake(bumpX, half + 10)];
+    
     //Bottom curve
     float yBotHalf = half+50;
     [path addCurveToPoint:CGPointMake(width, half + 100)
             controlPoint1:CGPointMake(xpc1, yBotHalf)
-            controlPoint2:CGPointMake(xpc1 + 15 , half + 70)];
+            controlPoint2:CGPointMake(xpc1 - 15 , half + 70)];
     
     
     //Bottom end straight square
