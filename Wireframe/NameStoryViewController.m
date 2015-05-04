@@ -16,6 +16,13 @@
     
     UserManager* manager = [[UserManager alloc] initWithDelegate:self];
     [manager fetchLatestTags];
+    
+    self.centerYConstraint.constant = self.view.frame.size.height;
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:.5f delay:0 usingSpringWithDamping:.7f initialSpringVelocity:.05f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.centerYConstraint.constant = 0;
+        [self.view layoutIfNeeded];
+    } completion:nil];
 }
 
 - (IBAction)close:(id)sender {
@@ -34,7 +41,7 @@
 
 - (void)userManager:(UserManager *)manager successfullyFetchedTags:(NSArray *)tags {
 //    [self.latestTagLabel setTitle:[@"Tag : " stringByAppendingString:tags[0]] forState:UIControlStateNormal];
-    [[StoryWIPSaver sharedSaver] setTag:tags[0]]; // by default set story tag to the latest one used
+//    [[StoryWIPSaver sharedSaver] setTag:tags[0]]; // by default set story tag to the latest one used
 }
 
 - (void)userManager:(UserManager *)manager failedToFetchTagsWithError:(NSError *)error {

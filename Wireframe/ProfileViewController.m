@@ -37,6 +37,7 @@
     // Don't forget to add the new root view to the current view hierarchy!
     self.pager.view.frame = CGRectMake(0, 180, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:self.pager.view];
+    [self.view sendSubviewToBack:self.pager.view];
     
     // And make sure to activate!
     [self.pager didMoveToParentViewController:self];

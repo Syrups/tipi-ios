@@ -109,7 +109,7 @@
 - (CGPathRef)pathForLayer {
     UIBezierPath* path = [[UIBezierPath alloc] init];
     
-    CGFloat o = self.growingAmount * 10;
+    CGFloat o = self.frame.size.width/2;
     
     CGPoint start = CGPointMake(0, o + arc4random_uniform(20));
     CGPoint middle = CGPointMake(self.frame.size.width/2, start.y - 25 + arc4random_uniform(30));

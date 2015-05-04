@@ -13,5 +13,6 @@
 
 @property (strong, nonatomic) IBOutlet UITextField* titleField;
 @property (strong, nonatomic) IBOutlet UIButton* latestTagLabel;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* centerYConstraint;
 
 @end

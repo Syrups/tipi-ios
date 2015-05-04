@@ -12,6 +12,8 @@
 #import "MediaCell.h"
 #import "HelpModalViewController.h"
 
+static float const fadePercentage = 0.2;
+
 @implementation MediaPickerViewController {
     NSMutableArray* selectedIndexes;
     NSUInteger currentOffset;
@@ -36,6 +38,30 @@
     
     currentOffset = 0;
     [self.library fetchMediasFromLibraryFrom:currentOffset to:currentOffset + kMediaPickerMediaLimit];
+
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
+    NSObject * transparent = (NSObject *) [[UIColor colorWithWhite:0 alpha:0] CGColor];
+    NSObject * opaque = (NSObject *) [[UIColor colorWithWhite:0 alpha:1] CGColor];
+    
+    CALayer * maskLayer = [CALayer layer];
+    maskLayer.frame = self.view.bounds;
+    
+    CAGradientLayer * gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = CGRectMake(self.mediaCollectionView.bounds.origin.x, 0,
+                                     self.mediaCollectionView.bounds.size.width, self.mediaCollectionView.bounds.size.height);
+    
+    gradientLayer.colors = [NSArray arrayWithObjects: transparent, opaque, nil];
+    
+    gradientLayer.locations = [NSArray arrayWithObjects: [NSNumber numberWithFloat:0],
+                               [NSNumber numberWithFloat:fadePercentage], nil];
+    
+    [maskLayer addSublayer:gradientLayer];
+//    self.mediaCollectionView.layer.mask = maskLayer;
 }
 
 - (IBAction)back:(id)sender {
@@ -67,7 +93,7 @@
     [self.medias addObjectsFromArray:reversed];
     
     [self.mediaCollectionView reloadData];
-        currentOffset += kMediaPickerMediaLimit + 1;
+    currentOffset += kMediaPickerMediaLimit + 1;
 
     
 }
@@ -118,6 +144,10 @@
     }
     
     return cell;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return UIEdgeInsetsMake(150, 0, 0, 0);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -186,6 +216,7 @@
 //        self.activityIndicator.hidden = NO;
         [self.library fetchMediasFromLibraryFrom:currentOffset to:currentOffset+10];
     }
+    
 }
 
 @end

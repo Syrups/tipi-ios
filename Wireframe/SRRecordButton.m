@@ -150,7 +150,7 @@
             
             float a = (i+1) * 360 / _bufferSize;
             r = radius + circleOffset;
-            float offset = sin(DEGREES_TO_RADIANS(a) * 6 + t) * 5 + delta;
+            float offset = sin(DEGREES_TO_RADIANS(a) * 6 + t) * 2 + delta;
             float cx = frame.size.width/2 + r * cos(a * M_PI / 180) + offset;
             float cy = frame.size.height/2 + r * sin(a * M_PI / 180) + offset;
             if (i == 0) CGContextMoveToPoint(ctx, cx, cy);

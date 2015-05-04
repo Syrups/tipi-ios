@@ -10,6 +10,7 @@
 
 @interface DoneStoryViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* centerYConstraint;
 @property (strong, nonatomic) IBOutlet UIView* popin;
 
 @end

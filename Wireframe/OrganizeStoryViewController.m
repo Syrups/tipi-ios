@@ -284,7 +284,7 @@
     
     [CATransaction commit];
     
-    [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseOut  animations:^{
+    [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseOut  animations:^{
         CGFloat scale = self.view.frame.size.height / cell.frame.size.height;
         cell.transform = CGAffineTransformMakeScale(scale, scale);
         self.replayButton.alpha = 0;
