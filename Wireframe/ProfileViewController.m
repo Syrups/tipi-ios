@@ -81,4 +81,9 @@
     return [self viewControllerAtIndex:1];
 }
 
+-(void)userManager:(UserManager *)manager successfullyFetchedUser:(User *)user{
+}
+- (void)userManager:(UserManager *)manager failedToFetchUserWithId:(NSUInteger)userId{
+}
+
 @end

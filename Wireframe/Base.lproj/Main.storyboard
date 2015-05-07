@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Lcv-xj-Ztq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Lcv-xj-Ztq">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -1012,7 +1012,7 @@ your voice</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="170" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="g0G-Aj-Nds">
-                                <rect key="frame" x="0.0" y="75" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="75" width="320" height="493"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1100,7 +1100,7 @@ your voice</string>
                             <constraint firstItem="s8i-o2-AH9" firstAttribute="top" secondItem="sfq-yK-eIA" secondAttribute="bottom" constant="7" id="ePI-lR-Wy0"/>
                             <constraint firstItem="s8i-o2-AH9" firstAttribute="leading" secondItem="U1N-mx-G0P" secondAttribute="trailing" constant="-9" id="gfV-tb-bfx"/>
                             <constraint firstItem="g0G-Aj-Nds" firstAttribute="top" secondItem="TcM-MN-UgJ" secondAttribute="bottom" constant="15" id="gr2-9o-DPX"/>
-                            <constraint firstItem="g0G-Aj-Nds" firstAttribute="height" secondItem="tfQ-KY-hLj" secondAttribute="height" id="hkX-Y3-hDG"/>
+                            <constraint firstItem="vTQ-If-aaN" firstAttribute="top" secondItem="g0G-Aj-Nds" secondAttribute="bottom" id="nxq-1Z-bJb"/>
                             <constraint firstItem="g0G-Aj-Nds" firstAttribute="leading" secondItem="tfQ-KY-hLj" secondAttribute="leadingMargin" constant="-16" id="quL-oX-1qJ"/>
                         </constraints>
                     </view>
@@ -1626,7 +1626,7 @@ your voice</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sélectionnez des photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9a-wT-iaD">
-                                <rect key="frame" x="74.5" y="14" width="170" height="31"/>
+                                <rect key="frame" x="75" y="14" width="170" height="31"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="fXR-aM-zvP"/>
@@ -2424,8 +2424,8 @@ votre histoire</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZo-X1-6V8">
-                                <rect key="frame" x="76" y="506" width="169" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZo-X1-6V8">
+                                <rect key="frame" x="102" y="507" width="116" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="mld-Rl-fqN"/>

@@ -13,7 +13,7 @@
 @interface RoomManager : BaseManager
 
 - (void)createRoomWithName:(NSString*)name andUsers:(NSArray*)users;
-- (void)fetchRoomWithId:(NSString*)roomId;
+- (void)fetchRoomWithId:(NSUInteger)roomId;
 - (void)fetchRoomsForUser:(User*)user;
 - (void)deleteRoom:(Room*)room;
 - (void)updateRoom:(Room*)room;

@@ -125,6 +125,11 @@
     [op start];
 }
 
+//TODO - (void)updateRoom:(Room*)room success:(void(^)(Room* room))success failure:(void(^)(NSError* error))failure;
+- (void)updateRoom:(Room*)room success:(void(^)(Room* room))success failure:(void(^)(NSError* error))failure{
+
+}
+
 
 - (NSString*)httpBodyForUsers:(NSArray*)users {
     NSMutableString *usersJson = [NSMutableString stringWithString:@"["];
