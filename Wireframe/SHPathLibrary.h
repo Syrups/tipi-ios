@@ -20,6 +20,8 @@
 
 + (UIBezierPath *) pathForHomeBubbleInRect:(CGRect)rect open:(BOOL)open;
 
-+ (UIBezierPath *) pathForTransitionToAdminInStories: (CGRect) rect invert:(BOOL) inverted;
++ (UIBezierPath *) pathForTransitionBeetweenStoriesAndAdmin: (CGRect) rect segueBack:(BOOL) back withFinalPath:(BOOL) finalPath;
++ (UIBezierPath *) pathForTransitionToAdminFromStories: (CGRect) rect withFinalPath:(BOOL) finalPath;
++ (UIBezierPath *) pathForTransitionFromAdminToStories: (CGRect) rect withFinalPath:(BOOL) finalPath;
 
 @end

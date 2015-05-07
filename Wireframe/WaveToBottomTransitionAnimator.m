@@ -31,8 +31,16 @@
     //4
     
     //TODO reverse
-    UIBezierPath* circleMaskPathInitial = [SHPathLibrary pathForTransitionToAdminInStories:toViewController.view.frame invert:!segueBack];
-    UIBezierPath* circleMaskPathFinal = [SHPathLibrary pathForTransitionToAdminInStories:toViewController.view.frame invert:segueBack];
+    UIBezierPath* circleMaskPathInitial = [SHPathLibrary
+                                           pathForTransitionBeetweenStoriesAndAdmin:toViewController.view.frame
+                                           segueBack:segueBack
+                                           withFinalPath: NO];
+    
+    UIBezierPath* circleMaskPathFinal = [SHPathLibrary
+                                         pathForTransitionBeetweenStoriesAndAdmin:toViewController.view.frame
+                                         segueBack:segueBack
+                                         withFinalPath: YES];
+    
     //5
     CAShapeLayer* maskLayer = [CAShapeLayer layer];
     maskLayer.path = circleMaskPathFinal.CGPath;
