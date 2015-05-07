@@ -9,8 +9,6 @@
 #import "ShowGroupsViewController.h"
 #import "ShowOneGroupViewController.h"
 #import "UserSession.h"
-#import "SWRevealViewController.h"
-#import "RoomRevealWrapperViewController.h"
 #import "CreateRoomViewController.h"
 #import "SHPathLibrary.h"
 
@@ -127,7 +125,7 @@
         Room* room = [self.mGroups objectAtIndex:indexPath.row];
         
         
-        RoomRevealWrapperViewController* reveal = segue.destinationViewController;
+        ShowOneGroupViewController* reveal = segue.destinationViewController;
         reveal.room = room;
     }
 }

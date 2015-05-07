@@ -10,7 +10,7 @@
 @import CoreGraphics;
 
 
-@interface CampToRoomNavigationDelegate : NSObject<UINavigationControllerDelegate>
+@interface RoomNavigationDelegate : NSObject<UINavigationControllerDelegate>
 
 @property UIPercentDrivenInteractiveTransition* interactionController;
 

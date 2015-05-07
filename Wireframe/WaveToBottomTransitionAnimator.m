@@ -1,16 +1,18 @@
 //
-//  WaveSwipeTransitionAnimator.m
+//  WaveToBottomTransitionAnimator.m
 //  Wireframe
 //
-//  Created by Glenn Sonna on 18/04/2015.
+//  Created by Glenn Sonna on 06/05/2015.
 //  Copyright (c) 2015 Syrup Apps. All rights reserved.
 //
 
-#import "WaveSwipeTransitionAnimator.h"
-#import "SHPathLibrary.h"
-#import "ShowOneGroupViewController.h"
 
-@implementation WaveSwipeTransitionAnimator
+#import "WaveToBottomTransitionAnimator.h"
+#import "SHPathLibrary.h"
+#import "AdminRoomViewController.h"
+
+@implementation WaveToBottomTransitionAnimator
+
 
 -(void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext{
     //1
@@ -20,8 +22,8 @@
     UIView* containerView = [transitionContext containerView];
     UIViewController* fromViewController=  [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController* toViewController=  [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-   
-    BOOL segueBack = [fromViewController isKindOfClass:[ShowOneGroupViewController class]] ;
+    
+    BOOL segueBack = [fromViewController isKindOfClass:[AdminRoomViewController class]] ;
     
     //3
     [containerView addSubview: toViewController.view];
@@ -29,10 +31,8 @@
     //4
     
     //TODO reverse
-    UIBezierPath* circleMaskPathInitial = [SHPathLibrary swipableRightCurvyBezierPathForRect:fromViewController.view.frame
-                                                                                    inverted:segueBack];
-    UIBezierPath* circleMaskPathFinal = [SHPathLibrary swippedRightCurvyBezierPathForRect:toViewController.view.frame
-                                                                                inverted:!segueBack ];
+    UIBezierPath* circleMaskPathInitial = [SHPathLibrary pathForTransitionToAdminInStories:toViewController.view.frame invert:!segueBack];
+    UIBezierPath* circleMaskPathFinal = [SHPathLibrary pathForTransitionToAdminInStories:toViewController.view.frame invert:segueBack];
     //5
     CAShapeLayer* maskLayer = [CAShapeLayer layer];
     maskLayer.path = circleMaskPathFinal.CGPath;
@@ -40,12 +40,12 @@
     
     //6
     CABasicAnimation* maskLayerAnimation = [CABasicAnimation animationWithKeyPath:@"path"];
-
+    
     maskLayerAnimation.fromValue = (__bridge id)(circleMaskPathInitial.CGPath);
     maskLayerAnimation.toValue = (__bridge id)(circleMaskPathFinal.CGPath);
     maskLayerAnimation.duration = [self transitionDuration:transitionContext];
     maskLayerAnimation.delegate = self;
-
+    
     //[maskLayerAnimation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
     [maskLayerAnimation setTimingFunction:[CAMediaTimingFunction functionWithControlPoints:.34 :.01 :.69 :1.37]];
     
@@ -59,6 +59,5 @@
 -(NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext{
     return 0.5;
 }
-
 
 @end
