@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Syrup Apps. All rights reserved.
 //
 
-#import "RoomRevealWrapperViewController.h"
 #import "ShowOneGroupViewController.h"
 #import "UserSession.h"
 #import "ReadModeContainerViewController.h"
@@ -24,9 +23,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.view.backgroundColor = [UIColor colorWithRed:178/255.0  green:47/255.0 blue:43/255.0 alpha:1];
+    UIView* backPath = [[UIView alloc]initWithFrame:self.view.frame];
+    [self.view insertSubview:backPath belowSubview:self.mTableView];
+    
+    [SHPathLibrary addBackgroundPathForstoriesToView:backPath];
+    
     //self.mStories = @[@"coup de chance", @"Conférence F.A.M.E", @"Plexus Gobelins"];
-    RoomRevealWrapperViewController *parent = (RoomRevealWrapperViewController*)[self revealViewController];
-    self.room = parent.room;
+  
     [self.roomNameButton setTitle:self.room.name forState:UIControlStateNormal];
     
     NSLog(@"Room is %lu", (unsigned long)self.room.id);
@@ -37,8 +41,6 @@
     StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
     [manager fetchStoriesForRoomId:[self.room.id integerValue]];
     
-    
-    [self customSetup];
     
     [SHPathLibrary addRightCurveBezierPathToView:self.view
                                        withColor:[UIColor colorWithRed:35/255.0  green:12/255.0 blue:11/255.0 alpha:1]
@@ -54,36 +56,13 @@
 - (void)didTapAdminButton:(id)sender {
     AdminRoomViewController* vc = (AdminRoomViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"AdminRoom"];
     vc.room = self.room;
-    [self presentViewController:vc animated:YES completion:nil];
+    //[self presentViewController:vc animated:YES completion:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - TableView
 
-- (void)customSetup
-{
-    SWRevealViewController *revealViewController = self.revealViewController;
-    if ( revealViewController )
-    {
-        [self.revealTag addTarget:self.revealViewController
-                           action:@selector(revealToggle:)
-           forControlEvents:UIControlEventTouchUpInside];
-        
-        [self.revealUsers addTarget:self.revealViewController
-                           action:@selector(rightRevealToggle:)
-                 forControlEvents:UIControlEventTouchUpInside];
-        
-        self.revealViewController.rightViewRevealWidth = 120;
-        self.revealViewController.rightViewRevealOverdraw = 0;
-        
-        self.revealViewController.rearViewRevealWidth = 120;
-        self.revealViewController.rearViewRevealOverdraw = 0;
-        
-        //self.revealViewController.bounceBackOnOverdraw = NO;
-        //self.revealViewController.bounceBackOnLeftOverdraw = NO;
-        
-        [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
-    }
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -126,9 +105,6 @@
     [self presentViewController:self.mShowOneGroupViewController animated:YES completion:nil];*/
 }
 
--(IBAction)prepareForGoBackToOneGroup:(UIStoryboardSegue *)segue {
-    
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showStory"]) {
@@ -143,8 +119,6 @@
     }
 }
 
-
-
 - (void)storyManager:(StoryManager *)manager successfullyFetchedStories:(NSArray *)stories{
     
     self.mStories = stories;
@@ -154,6 +128,11 @@
 -(void)storyManager:(StoryManager *)manager failedToFetchStories:(NSError *)error{
     //error
 }
+
+-(IBAction)prepareForGoBackToOneGroup:(UIStoryboardSegue *)segue {
+    
+}
+
 
 /*
 #pragma mark - Navigation

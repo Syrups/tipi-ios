@@ -15,8 +15,7 @@
 //@property (nonatomic) NSUInteger roomId;
 @property (strong, nonatomic) Room* room;
 @property (weak, nonatomic) IBOutlet UITableView *mTableView;
-@property (weak, nonatomic) IBOutlet UIButton *revealTag;
-@property (weak, nonatomic) IBOutlet UIButton *revealUsers;
+
 @property (strong, nonatomic)  NSArray *mStories;
 @property (strong, nonatomic) IBOutlet UIButton* roomNameButton;
 

@@ -9,8 +9,6 @@
 #import "ShowGroupsViewController.h"
 #import "ShowOneGroupViewController.h"
 #import "UserSession.h"
-#import "SWRevealViewController.h"
-#import "RoomRevealWrapperViewController.h"
 #import "CreateRoomViewController.h"
 #import "SHPathLibrary.h"
 
@@ -125,9 +123,9 @@
         
         NSIndexPath *indexPath = [self.mTableView indexPathForSelectedRow];
         Room* room = [self.mGroups objectAtIndex:indexPath.row];
-        NSUInteger selectedRoom = [room.id integerValue];
+        //NSUInteger selectedRoom = [room.id integerValue];
         
-        RoomRevealWrapperViewController* reveal = segue.destinationViewController;
+        ShowOneGroupViewController* reveal = segue.destinationViewController;
         reveal.room = room;
     }
 }

@@ -6,13 +6,15 @@
 //  Copyright (c) 2015 Syrup Apps. All rights reserved.
 //
 
-#import "CampToRoomNavigationDelegate.h"
+#import "AdminRoomViewController.h"
+#import "RoomNavigationDelegate.h"
+#import "ShowOneGroupViewController.h"
 #import "WaveSwipeTransitionAnimator.h"
-#import "RoomRevealWrapperViewController.h"
+#import "WaveToBottomTransitionAnimator.h"
 
 
 
-@implementation CampToRoomNavigationDelegate
+@implementation RoomNavigationDelegate
 
 - (void)awakeFromNib{
     [super awakeFromNib];
@@ -28,10 +30,15 @@
                                                fromViewController:(UIViewController *)fromVC
                                                  toViewController:(UIViewController *)toVC{
     
-    if( [toVC isKindOfClass:[RoomRevealWrapperViewController class]]
-       || [fromVC isKindOfClass:[RoomRevealWrapperViewController class]]){
+    if( [toVC isKindOfClass:[AdminRoomViewController class]]
+       || [fromVC isKindOfClass:[AdminRoomViewController class]]){
+        return [[WaveToBottomTransitionAnimator alloc]init];
+    }else if( [toVC isKindOfClass:[ShowOneGroupViewController class]]
+       || [fromVC isKindOfClass:[ShowOneGroupViewController class]]){
         return [[WaveSwipeTransitionAnimator alloc]init];
     }
+    
+    
     
     return nil;
 }

@@ -99,7 +99,7 @@
     return path;
 }
 
-+ (UIBezierPath *) swippedRightCurvyBezierPathForRect: (CGRect ) frame{
++ (UIBezierPath *) swippedRightCurvyBezierPathForRect: (CGRect ) frame inverted:(BOOL)inverted{
     UIBezierPath* path = [[UIBezierPath alloc] init];
     
     float width = 0;
@@ -148,6 +148,93 @@
 + (UIBezierPath *)pathForHomeBubbleInRect:(CGRect)rect open:(BOOL)open {
     CGRect smallRect = open ? CGRectMake(-rect.size.width, -rect.size.height, rect.size.width*3, rect.size.height*3) :CGRectMake(CGRectGetMidX(rect) - 125, 50, 250, 250);
     UIBezierPath* path = [UIBezierPath bezierPathWithOvalInRect:smallRect];
+    
+    return path;
+}
+
+
++ (void) addBackgroundPathForstoriesToView: (UIView *) view{
+    
+    float width = CGRectGetWidth(view.frame);
+    float height = CGRectGetHeight(view.frame);
+    
+    float midX = CGRectGetMidX(view.frame);
+    float midY = CGRectGetMidY(view.frame);
+    
+    UIBezierPath* path = [[UIBezierPath alloc] init];
+    [path moveToPoint:CGPointMake(0, midY)];
+    [path addQuadCurveToPoint: CGPointMake(width, midY) controlPoint: CGPointMake(midX, midY + 120)];
+    [path addLineToPoint:CGPointMake(width, height)]; //
+    [path addLineToPoint:CGPointMake(0, height)]; // <--
+    [path addLineToPoint:CGPointMake(0, midY)]; // __^
+    
+    //UIColor *pathColor = color ? color : [UIColor colorWithRed:46/255.0  green:13/255.0 blue:14/255.0 alpha:1];
+    
+    UIColor *pathColor = [UIColor colorWithRed:163/255.0  green:41/255.0 blue:38/255.0 alpha:1];
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    shapeLayer.path = [path CGPath];
+    shapeLayer.strokeColor = [[UIColor clearColor] CGColor];
+    shapeLayer.lineWidth = 3.0;
+    shapeLayer.fillColor = [pathColor CGColor];
+    
+    [view.layer addSublayer:shapeLayer];
+}
+
+
++ (UIBezierPath *) pathForTransitionToAdminInStories: (CGRect) rect invert:(BOOL) inverted{
+    
+    int bump = inverted ? 0 : 150;
+    
+    float width = CGRectGetWidth(rect);
+    float midX = CGRectGetMidX(rect);
+    
+    float height = inverted ? 0 : CGRectGetHeight(rect);
+    
+    UIBezierPath* path = [[UIBezierPath alloc] init];
+    [path moveToPoint:CGPointMake(0, 0)];
+    [path addLineToPoint:CGPointMake(width, 0)];
+    
+    [path addLineToPoint:CGPointMake(width, height)]; //
+    [path addQuadCurveToPoint: CGPointMake(0, height) controlPoint: CGPointMake(midX, height + bump)];//(
+    [path addLineToPoint:CGPointMake(0, 0)]; // __^
+    
+    return path;
+}
+
++ (UIBezierPath *) pathForTransitionToAdminInStories: (CGRect) rect{
+    
+    
+    float width = CGRectGetWidth(rect);
+    float midX = CGRectGetMidX(rect);
+    
+    float height = inverted ? 0 : CGRectGetHeight(rect);
+    
+    UIBezierPath* path = [[UIBezierPath alloc] init];
+    [path moveToPoint:CGPointMake(0, 0)];
+    [path addLineToPoint:CGPointMake(width, 0)];
+    
+    [path addLineToPoint:CGPointMake(width, height)]; //
+    [path addQuadCurveToPoint: CGPointMake(0, height) controlPoint: CGPointMake(midX, height + bump)];//(
+    [path addLineToPoint:CGPointMake(0, 0)]; // __^
+    
+    return path;
+}
+
++ (UIBezierPath *) pathForTransitionFromAdminInStories: (CGRect) rect{
+    
+    
+    float width = CGRectGetWidth(rect);
+    float midX = CGRectGetMidX(rect);
+    
+    float height = inverted ? 0 : CGRectGetHeight(rect);
+    
+    UIBezierPath* path = [[UIBezierPath alloc] init];
+    [path moveToPoint:CGPointMake(0, 0)];
+    [path addLineToPoint:CGPointMake(width, 0)];
+    
+    [path addLineToPoint:CGPointMake(width, height)]; //
+    [path addQuadCurveToPoint: CGPointMake(0, height) controlPoint: CGPointMake(midX, height + bump)];//(
+    [path addLineToPoint:CGPointMake(0, 0)]; // __^
     
     return path;
 }

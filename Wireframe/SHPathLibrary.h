@@ -12,10 +12,14 @@
 @interface SHPathLibrary : NSObject
 + (void) addRightCurveBezierPathToView: (UIView *) view inverted:(BOOL)inverted;
 + (void) addRightCurveBezierPathToView: (UIView *) view withColor:(UIColor*)color inverted:(BOOL)inverted;
++ (void) addBackgroundPathForstoriesToView: (UIView *) view;
 
 + (UIBezierPath *) swippedRightCurvyBezierPathForRect: (CGRect) frame;
 + (UIBezierPath *) swippedRightCurvyBezierPathForRect: (CGRect) frame inverted:(BOOL)inverted;
 + (UIBezierPath *) swipableRightCurvyBezierPathForRect: (CGRect) frame inverted:(BOOL)inverted;
+
 + (UIBezierPath *) pathForHomeBubbleInRect:(CGRect)rect open:(BOOL)open;
+
++ (UIBezierPath *) pathForTransitionToAdminInStories: (CGRect) rect invert:(BOOL) inverted;
 
 @end
