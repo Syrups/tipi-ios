@@ -23,11 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = [UIColor colorWithRed:178/255.0  green:47/255.0 blue:43/255.0 alpha:1];
-    UIView* backPath = [[UIView alloc]initWithFrame:self.view.frame];
-    [self.view insertSubview:backPath belowSubview:self.mTableView];
-    
-    [SHPathLibrary addBackgroundPathForstoriesToView:backPath];
+    [SHPathLibrary addBackgroundPathForstoriesToView:self.view];
     
     //self.mStories = @[@"coup de chance", @"Conférence F.A.M.E", @"Plexus Gobelins"];
   

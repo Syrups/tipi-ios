@@ -11,6 +11,38 @@
 
 @implementation SHPathLibrary
 
++ (void) addBackgroundPathForstoriesToView: (UIView *) mainView{
+    
+    mainView.backgroundColor = [UIColor colorWithRed:178/255.0  green:47/255.0 blue:43/255.0 alpha:1];
+    
+    UIView* view = [[UIView alloc]initWithFrame:mainView.frame];
+    [mainView insertSubview:view atIndex:0];
+    
+    float width = CGRectGetWidth(view.frame);
+    float height = CGRectGetHeight(view.frame);
+    
+    float midX = CGRectGetMidX(view.frame);
+    float midY = CGRectGetMidY(view.frame);
+    
+    UIBezierPath* path = [[UIBezierPath alloc] init];
+    [path moveToPoint:CGPointMake(0, midY)];
+    [path addQuadCurveToPoint: CGPointMake(width, midY) controlPoint: CGPointMake(midX, midY + 120)];
+    [path addLineToPoint:CGPointMake(width, height)]; //
+    [path addLineToPoint:CGPointMake(0, height)]; // <--
+    [path addLineToPoint:CGPointMake(0, midY)]; // __^
+    
+    //UIColor *pathColor = color ? color : [UIColor colorWithRed:46/255.0  green:13/255.0 blue:14/255.0 alpha:1];
+    
+    UIColor *pathColor = [UIColor colorWithRed:163/255.0  green:41/255.0 blue:38/255.0 alpha:1];
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    shapeLayer.path = [path CGPath];
+    shapeLayer.strokeColor = [[UIColor clearColor] CGColor];
+    shapeLayer.lineWidth = 3.0;
+    shapeLayer.fillColor = [pathColor CGColor];
+    
+    [view.layer addSublayer:shapeLayer];
+}
+
 
 + (void) addRightCurveBezierPathToView: (UIView *) view withColor:(UIColor*)color inverted:(BOOL)inverted{
     UIBezierPath* path = [SHPathLibrary swipableRightCurvyBezierPathForRect:view.frame inverted:inverted];
@@ -119,23 +151,32 @@
     float xpc1 = width + 20 ;
     float yTopHalf = half - 50;
     
-    [path addCurveToPoint:CGPointMake(xpc1, yTopHalf)
+    [path addCurveToPoint:CGPointMake(0, yTopHalf)
+            controlPoint1:CGPointMake(0 , half - 70)
+            controlPoint2:CGPointMake(0 , yTopHalf)];
+    
+    /*[path addCurveToPoint:CGPointMake(xpc1, yTopHalf)
             controlPoint1:CGPointMake(xpc1 - 15 , half - 70)
-            controlPoint2:CGPointMake(xpc1 , yTopHalf)];
+            controlPoint2:CGPointMake(xpc1 , yTopHalf)];*/
     
     //Bump
     float xcp1B = width + 20;
     float bumpX = xcp1B + 25;
     
-    [path addCurveToPoint:CGPointMake(xcp1B, half + 50)
-            controlPoint1:CGPointMake(bumpX, half - 10)
-            controlPoint2:CGPointMake(bumpX, half + 10)];
+    [path addCurveToPoint:CGPointMake(0, half + 50)
+            controlPoint1:CGPointMake(0, half - 10)
+            controlPoint2:CGPointMake(0, half + 10)];
     
     //Bottom curve
     float yBotHalf = half+50;
-    [path addCurveToPoint:CGPointMake(width, half + 100)
+    
+    [path addCurveToPoint:CGPointMake(0, half + 100)
+            controlPoint1:CGPointMake(0, yBotHalf)
+            controlPoint2:CGPointMake(0 - 15 , half + 70)];
+
+    /*[path addCurveToPoint:CGPointMake(width, half + 100)
             controlPoint1:CGPointMake(xpc1, yBotHalf)
-            controlPoint2:CGPointMake(xpc1 - 15 , half + 70)];
+            controlPoint2:CGPointMake(xpc1 - 15 , half + 70)];*/
     
     
     //Bottom end straight square
@@ -153,33 +194,8 @@
 }
 
 
-+ (void) addBackgroundPathForstoriesToView: (UIView *) view{
-    
-    float width = CGRectGetWidth(view.frame);
-    float height = CGRectGetHeight(view.frame);
-    
-    float midX = CGRectGetMidX(view.frame);
-    float midY = CGRectGetMidY(view.frame);
-    
-    UIBezierPath* path = [[UIBezierPath alloc] init];
-    [path moveToPoint:CGPointMake(0, midY)];
-    [path addQuadCurveToPoint: CGPointMake(width, midY) controlPoint: CGPointMake(midX, midY + 120)];
-    [path addLineToPoint:CGPointMake(width, height)]; //
-    [path addLineToPoint:CGPointMake(0, height)]; // <--
-    [path addLineToPoint:CGPointMake(0, midY)]; // __^
-    
-    //UIColor *pathColor = color ? color : [UIColor colorWithRed:46/255.0  green:13/255.0 blue:14/255.0 alpha:1];
-    
-    UIColor *pathColor = [UIColor colorWithRed:163/255.0  green:41/255.0 blue:38/255.0 alpha:1];
-    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-    shapeLayer.path = [path CGPath];
-    shapeLayer.strokeColor = [[UIColor clearColor] CGColor];
-    shapeLayer.lineWidth = 3.0;
-    shapeLayer.fillColor = [pathColor CGColor];
-    
-    [view.layer addSublayer:shapeLayer];
-}
 
+#pragma mark - Transition Beetween Stories And Admin
 
 + (UIBezierPath *) pathForTransitionBeetweenStoriesAndAdmin: (CGRect) rect segueBack:(BOOL) back withFinalPath:(BOOL) finalPath{
     
