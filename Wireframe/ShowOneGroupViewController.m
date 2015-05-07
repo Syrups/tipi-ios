@@ -53,11 +53,11 @@
 
 #pragma mark - Actions
 
-- (void)didTapAdminButton:(id)sender {
+- (IBAction)didTapAdminButton:(id)sender {
     AdminRoomViewController* vc = (AdminRoomViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"AdminRoom"];
     vc.room = self.room;
-    //[self presentViewController:vc animated:YES completion:nil];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self presentViewController:vc animated:YES completion:nil];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - TableView

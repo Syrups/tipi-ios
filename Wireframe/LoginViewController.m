@@ -17,8 +17,8 @@
 //    [[UserSession sharedSession] load];
     
     if ([[UserSession sharedSession] isAuthenticated]) {
-//        UIViewController* home = [self.storyboard instantiateViewControllerWithIdentifier:@"Home"];
-//        [self.navigationController setViewControllers:@[home]];
+        UIViewController* home = [self.storyboard instantiateViewControllerWithIdentifier:@"Home"];
+        [self.navigationController setViewControllers:@[home]];
     }
     
 }

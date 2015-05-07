@@ -123,7 +123,7 @@
         
         NSIndexPath *indexPath = [self.mTableView indexPathForSelectedRow];
         Room* room = [self.mGroups objectAtIndex:indexPath.row];
-        
+        //NSUInteger selectedRoom = [room.id integerValue];
         
         ShowOneGroupViewController* reveal = segue.destinationViewController;
         reveal.room = room;

@@ -202,7 +202,8 @@
 }
 
 + (UIBezierPath *) pathForTransitionToAdminInStories: (CGRect) rect{
-    
+    BOOL inverted = NO;
+    int bump = inverted ? 0 : 150;
     
     float width = CGRectGetWidth(rect);
     float midX = CGRectGetMidX(rect);
@@ -221,7 +222,8 @@
 }
 
 + (UIBezierPath *) pathForTransitionFromAdminInStories: (CGRect) rect{
-    
+    BOOL inverted = NO;
+    int bump = inverted ? 0 : 150;
     
     float width = CGRectGetWidth(rect);
     float midX = CGRectGetMidX(rect);
