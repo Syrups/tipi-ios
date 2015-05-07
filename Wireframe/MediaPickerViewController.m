@@ -137,7 +137,7 @@ static float const fadePercentage = 0.2;
         [cell.playerLayer removeFromSuperlayer];
     }
     
-    if ([selectedIndexes containsObject:indexPath]) {
+    if ([self.saver.medias containsObject:media]) {
         check.alpha = 1;
     } else {
         check.alpha = 0;
@@ -147,12 +147,14 @@ static float const fadePercentage = 0.2;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(150, 0, 0, 0);
+    return UIEdgeInsetsMake(150, 20, 100, 20);
 }
+
+
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    CGFloat s = self.mediaCollectionView.frame.size.width/2 - 15;
+    CGFloat s = self.mediaCollectionView.frame.size.width/2.6f;
     
     return CGSizeMake(s, s);
 }

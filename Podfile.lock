@@ -22,6 +22,7 @@ PODS:
     - AFNetworking/NSURLSession
   - EZAudio (0.0.6)
   - JSONModel (1.0.2)
+  - MLPAutoCompleteTextField (1.5)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
@@ -30,12 +31,14 @@ DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - EZAudio (~> 0.0.6)
   - JSONModel
+  - MLPAutoCompleteTextField
   - SDWebImage (~> 3.7)
 
 SPEC CHECKSUMS:
   AFNetworking: 10e85a00bb0f475124e4ff2677bf15693b2c1523
   EZAudio: feb8e1c3ec17d8933bc2efc66b59ead1f2e79e54
   JSONModel: 6ffcb4ffa3659c9e9a2e5d45d6c7705bab187c03
+  MLPAutoCompleteTextField: ba4d507bbff2bd4f139d4197814fc8dd39caf77e
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
 
 COCOAPODS: 0.35.0

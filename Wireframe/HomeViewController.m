@@ -109,4 +109,25 @@
     [self presentViewController:roomController animated:YES completion:nil];
     //[self.navigationController pushViewController:roomController animated:YES];
 }
+
+- (IBAction)openProfile:(id)sender {
+    UIViewController* profile = [self.storyboard instantiateViewControllerWithIdentifier:@"Profile"];
+    
+    [profile willMoveToParentViewController:self];
+    [self addChildViewController:profile];
+    CGRect frame = self.view.frame;
+    frame.origin.y = frame.size.height;
+    profile.view.frame = frame;
+    [self.view addSubview:profile.view];
+    [profile didMoveToParentViewController:self];
+    
+    [UIView animateWithDuration:.3f delay:0 usingSpringWithDamping:.5f initialSpringVelocity:.01f options:
+     UIViewAnimationOptionCurveEaseOut animations:^{
+         self.profileButton.hidden = YES;
+         CGRect frame = profile.view.frame;
+         frame.origin.y = 0;
+         profile.view.frame = frame;
+    } completion:nil];
+}
+
 @end

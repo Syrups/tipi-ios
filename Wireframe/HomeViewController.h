@@ -12,4 +12,7 @@
 - (IBAction)goRooms:(id)sender;
 
 //@property (nonatomic, strong)UIPageViewController *pager;
+
+@property (strong, nonatomic) IBOutlet UIButton* profileButton;
+
 @end

@@ -20,6 +20,8 @@
         self.searchField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.searchField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
     }
     
+    [self.searchField becomeFirstResponder];
+    
 }
 
 #pragma mark - UITextField

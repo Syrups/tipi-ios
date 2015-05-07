@@ -5,7 +5,8 @@ target 'Wireframe' do
 	pod 'AFNetworking', '~> 2.0'
 	pod 'EZAudio', '~> 0.0.6'
 	pod 'JSONModel'
-    pod 'SDWebImage', '~>3.7'
+  pod 'SDWebImage', '~>3.7'
+  pod 'MLPAutoCompleteTextField'
 end
 
 target 'WireframeTests' do

@@ -109,43 +109,45 @@
 - (CGPathRef)pathForLayer {
     UIBezierPath* path = [[UIBezierPath alloc] init];
     
-    CGFloat o = self.frame.size.width/2;
+    CGPoint start = CGPointMake(0, 150);
+    CGPoint middle = CGPointMake(CGRectGetMidX(self.frame), 250);
+    CGPoint end = CGPointMake(CGRectGetWidth(self.frame), 150);
     
-    CGPoint start = CGPointMake(0, o + arc4random_uniform(20));
-    CGPoint middle = CGPointMake(self.frame.size.width/2, start.y - 25 + arc4random_uniform(30));
-    CGPoint c1 = CGPointMake(CGRectGetMidX(self.frame)/2 - 10 - arc4random_uniform(20), start.y + arc4random_uniform(30) + 20);
-    CGPoint c2 = CGPointMake(CGRectGetMidX(self.frame)/2 + 10 + arc4random_uniform(20), start.y - (arc4random_uniform(30) + 20));
-    CGPoint c3 = CGPointMake(CGRectGetMidX(self.frame)*1.5 - 10 - arc4random_uniform(20), middle.y );
-    CGPoint c4 = CGPointMake(CGRectGetMidX(self.frame)*1.5 + 10 + arc4random_uniform(20), middle.y - (arc4random_uniform(30) + 20));
-    CGPoint end = CGPointMake(self.frame.size.width, start.y - 50 + arc4random_uniform(30));
+    // control points
+    CGPoint c1 = CGPointMake(CGRectGetMidX(self.frame)*.75f, 150);
+    CGPoint c2 = CGPointMake(CGRectGetMidX(self.frame)*.5f, 250);
+    
+    CGPoint c3 = CGPointMake(CGRectGetMidX(self.frame) + CGRectGetMidX(self.frame)*.5f, 250);
+    CGPoint c4 = CGPointMake(CGRectGetMidX(self.frame) + CGRectGetMidX(self.frame)*.25f, 150);
     
     [path moveToPoint:start];
     [path addCurveToPoint:middle controlPoint1:c1 controlPoint2:c2];
     [path addCurveToPoint:end controlPoint1:c3 controlPoint2:c4];
-    
-    [path addLineToPoint:CGPointMake(self.frame.size.width, 0)];
+    [path addLineToPoint:CGPointMake(CGRectGetWidth(self.frame), 0)];
     [path addLineToPoint:CGPointMake(0, 0)];
     [path addLineToPoint:start];
+    
+    
+//    CGFloat o = self.frame.size.width/2;
+//    
+//    CGPoint start = CGPointMake(0, o + arc4random_uniform(20));
+//    CGPoint middle = CGPointMake(self.frame.size.width/2, start.y - 25 + arc4random_uniform(30));
+//    CGPoint c1 = CGPointMake(CGRectGetMidX(self.frame)/2 - 10 - arc4random_uniform(20), start.y + arc4random_uniform(30) + 20);
+//    CGPoint c2 = CGPointMake(CGRectGetMidX(self.frame)/2 + 10 + arc4random_uniform(20), start.y - (arc4random_uniform(30) + 20));
+//    CGPoint c3 = CGPointMake(CGRectGetMidX(self.frame)*1.5 - 10 - arc4random_uniform(20), middle.y );
+//    CGPoint c4 = CGPointMake(CGRectGetMidX(self.frame)*1.5 + 10 + arc4random_uniform(20), middle.y - (arc4random_uniform(30) + 20));
+//    CGPoint end = CGPointMake(self.frame.size.width, start.y - 50 + arc4random_uniform(30));
+//    
+//    [path moveToPoint:start];
+//    [path addCurveToPoint:middle controlPoint1:c1 controlPoint2:c2];
+//    [path addCurveToPoint:end controlPoint1:c3 controlPoint2:c4];
+//    
+//    [path addLineToPoint:CGPointMake(self.frame.size.width, 0)];
+//    [path addLineToPoint:CGPointMake(0, 0)];
+//    [path addLineToPoint:start];
     
     return path.CGPath;
 }
 
-- (CGPathRef)pathForLayerGrownState {
-    UIBezierPath* path = [[UIBezierPath alloc] init];
-    
-    CGPoint start = CGPointMake(0, 80);
-    CGPoint end = CGPointMake(self.frame.size.width, 10);
-    CGPoint c1 = CGPointMake(CGRectGetMidX(self.frame) - 10, start.y);
-    CGPoint c2 = CGPointMake(CGRectGetMidX(self.frame) + 10, start.y - 20);
-    
-    [path moveToPoint:start];
-    [path addCurveToPoint:end controlPoint1:c1 controlPoint2:c2];
-    
-    [path addLineToPoint:CGPointMake(self.frame.size.width, self.frame.size.height)];
-    [path addLineToPoint:CGPointMake(0, self.frame.size.height)];
-    [path addLineToPoint:start];
-    
-    return path.CGPath;
-}
 
 @end

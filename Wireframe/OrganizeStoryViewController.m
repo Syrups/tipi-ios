@@ -100,7 +100,14 @@
     } completion:^(BOOL finished) {
        
         [self.saver.medias removeObjectAtIndex:index];
-        [self.collectionView reloadData];
+        [self.collectionView performBatchUpdates:^{
+            [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+        } completion:nil];
+        
+        // if all has been deleted, go back to picker
+        if (self.saver.medias.count == 0) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     }];
     
 }
@@ -154,8 +161,8 @@
     
     cell.contentView.tag = indexPath.row;
     
-    UISwipeGestureRecognizer* swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToRemove:)];
-    swipe.direction = UISwipeGestureRecognizerDirectionUp;
+    UIPanGestureRecognizer* swipe = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToRemove:)];
+    swipe.delegate = self;
     [cell.contentView addGestureRecognizer:swipe];
     
     return cell;
@@ -260,6 +267,18 @@
         cell.layer.zPosition = 0;
 //        cell.alpha = INACTIVE_CELL_OPACITY;
     } completion:nil];
+}
+
+#pragma mark - UIGestureRecognizer
+
+- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer {
+    CGPoint t = [gestureRecognizer translationInView:self.view];
+    
+    if (t.y < -2) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 #pragma mark - Navigation

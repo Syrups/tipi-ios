@@ -29,7 +29,7 @@
     self.room = parent.room;
     [self.roomNameButton setTitle:self.room.name forState:UIControlStateNormal];
     
-    NSLog(@"Room is %lu", (unsigned long)self.room.id);
+    NSLog(@"Room is %@", self.room.id);
     
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;
