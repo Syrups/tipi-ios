@@ -89,6 +89,7 @@
 		B38B895F1ACC08C500799EDD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38B895E1ACC08C500799EDD /* MediaPlayer.framework */; };
 		B38B89621ACC146200799EDD /* MediaLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = B38B89611ACC146200799EDD /* MediaLibrary.m */; };
 		B38B89661ACC221600799EDD /* SRRecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B38B89651ACC221600799EDD /* SRRecordButton.m */; };
+		B39942211AFBAEBD0040C749 /* SRUnderlinedField.m in Sources */ = {isa = PBXBuildFile; fileRef = B39942201AFBAEBD0040C749 /* SRUnderlinedField.m */; };
 		B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4CDC71AA71DB90079F8D1 /* StoryWIPSaver.m */; };
 		B3A8D17D1ACE7A3800B09C34 /* RoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D17C1ACE7A3800B09C34 /* RoomController.m */; };
 		B3A8D1811ACE8C2F00B09C34 /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D1801ACE8C2F00B09C34 /* FriendListViewController.m */; };
@@ -275,6 +276,8 @@
 		B38B89611ACC146200799EDD /* MediaLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaLibrary.m; sourceTree = "<group>"; };
 		B38B89641ACC221600799EDD /* SRRecordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecordButton.h; sourceTree = "<group>"; };
 		B38B89651ACC221600799EDD /* SRRecordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecordButton.m; sourceTree = "<group>"; };
+		B399421F1AFBAEBD0040C749 /* SRUnderlinedField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRUnderlinedField.h; sourceTree = "<group>"; };
+		B39942201AFBAEBD0040C749 /* SRUnderlinedField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRUnderlinedField.m; sourceTree = "<group>"; };
 		B39C1DE51AC4B1620011D87E /* Wireframe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Wireframe.entitlements; sourceTree = "<group>"; };
 		B3A4CDC61AA71DB90079F8D1 /* StoryWIPSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryWIPSaver.h; sourceTree = "<group>"; };
 		B3A4CDC71AA71DB90079F8D1 /* StoryWIPSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryWIPSaver.m; sourceTree = "<group>"; };
@@ -865,6 +868,8 @@
 				B38B89651ACC221600799EDD /* SRRecordButton.m */,
 				7338BF771AD2C167005FD5F0 /* SRAnimatedWaveView.h */,
 				7338BF781AD2C167005FD5F0 /* SRAnimatedWaveView.m */,
+				B399421F1AFBAEBD0040C749 /* SRUnderlinedField.h */,
+				B39942201AFBAEBD0040C749 /* SRUnderlinedField.m */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -1189,6 +1194,7 @@
 				B325A13D1ADE5AD80041DF21 /* PreviewBubble.m in Sources */,
 				B33B6FD71ACDC702009C0623 /* UserController.m in Sources */,
 				73B3B35A1AA7BC6100FF7578 /* GroupMembersViewController.m in Sources */,
+				B39942211AFBAEBD0040C749 /* SRUnderlinedField.m in Sources */,
 				B325A1431ADF0B4D0041DF21 /* OrganizerWave.m in Sources */,
 				B325A1401ADEE6400041DF21 /* Timeline.m in Sources */,
 				B3C85E541ACBF4C50083C50A /* Audio.m in Sources */,

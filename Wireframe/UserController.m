@@ -158,4 +158,26 @@
     [op start];
 }
 
+- (void)findUsersWithQuery:(NSString *)query success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
+    NSURLRequest* request = [UserController getBaseRequestFor:[NSString stringWithFormat:@"/users/search?query=%@", query] authenticated:YES method:@"GET"];
+    
+    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSError* err = nil;
+        NSArray* results = [User arrayOfModelsFromDictionaries:responseObject];
+        if (err) { NSLog(@"%@", err); }
+        
+        success(results);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        if (failure != nil) failure(error);
+    }];
+    
+    [op start];
+}
+
 @end

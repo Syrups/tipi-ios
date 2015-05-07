@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "UserManager.h"
+#import <MLPAutoCompleteTextField/MLPAutoCompleteTextField.h>
 
-@interface NameStoryViewController : UIViewController <UITextFieldDelegate, TagFetcherDelegate>
+@interface NameStoryViewController : UIViewController <UITextFieldDelegate, TagFetcherDelegate, MLPAutoCompleteTextFieldDataSource, MLPAutoCompleteTextFieldDelegate>
 
+@property (strong, nonatomic) NSArray* latestTags;
 @property (strong, nonatomic) IBOutlet UITextField* titleField;
 @property (strong, nonatomic) IBOutlet UIButton* latestTagLabel;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* centerYConstraint;
 
 @end

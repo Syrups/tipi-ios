@@ -173,7 +173,7 @@
     for (UIRoomTableViewCell *cell in self.roomsTableView.visibleCells) {
         CGPoint cellCenter = [scrollView convertPoint:cell.center toView:scrollView.superview];
         
-        int del = fabsf(scrollView.superview.center.y -  cellCenter.y)/ 4.5;
+        int del = fabs(scrollView.superview.center.y -  cellCenter.y)/ 4.5;
         
         cell.heightConstraint.constant = 120 - del;
         cell.widthConstraint.constant = 120 - del;
@@ -201,10 +201,12 @@
 }
 
 - (void)centerTable {
+    
     NSIndexPath *pathForCenterCell = [self.roomsTableView indexPathForRowAtPoint:CGPointMake(CGRectGetMidX(self.roomsTableView.bounds), CGRectGetMidY(self.roomsTableView.bounds) - 100)];
     [self.roomsTableView scrollToRowAtIndexPath:pathForCenterCell atScrollPosition:UITableViewScrollPositionTop animated:YES];
     
 }
+
 
 //- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
 //    [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{

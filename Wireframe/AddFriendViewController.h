@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "FriendManager.h"
+#import "UserManager.h"
 
-@interface AddFriendViewController : UIViewController <FriendAdderDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface AddFriendViewController : UIViewController <FriendAdderDelegate, UserFinderDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) NSArray* friends;
+@property (strong, nonatomic) IBOutlet UITextField* searchField;
 @property (strong, nonatomic) IBOutlet UITableView* resultsTableView;
+@property (strong, nonatomic) FriendManager* friendManager;
 
 @end

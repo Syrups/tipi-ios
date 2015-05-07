@@ -27,16 +27,36 @@
     // disable interaction with the background controller
     ((RecordViewController*)self.parentViewController).longPressRecognizer.enabled = NO;
     
+    self.centerYConstraint.constant = self.view.frame.size.height;
+    
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:.5f delay:0 usingSpringWithDamping:.7f initialSpringVelocity:.05f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.centerYConstraint.constant = 0;
+        [self.view layoutIfNeeded];
+    } completion:nil];
+    
 }
 
 - (IBAction)next:(id)sender {
-    [(RecordViewController*)self.parentViewController openNameStoryPopin];
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:.5f delay:0 usingSpringWithDamping:.7f initialSpringVelocity:.05f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.centerYConstraint.constant = -self.view.frame.size.height;
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        [(RecordViewController*)self.parentViewController openNameStoryPopin];
+    }];
 }
 
 - (IBAction)close:(id)sender {
     self.parentViewController.view.userInteractionEnabled = YES;
     [self.view removeFromSuperview];
     [self removeFromParentViewController];
+    
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:.5f delay:0 usingSpringWithDamping:.7f initialSpringVelocity:.05f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.centerYConstraint.constant = -self.view.frame.size.height;
+        [self.view layoutIfNeeded];
+    } completion:nil];
     
     ((RecordViewController*)self.parentViewController).longPressRecognizer.enabled = YES;
 }

@@ -92,6 +92,24 @@
     });
 }
 
-
+- (void)findUsersWithQuery:(NSString *)query {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        
+        [delegate.userController findUsersWithQuery:query success:^(NSArray *results) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(userManager:successfullyFindUsers:)]) {
+                    [self.delegate userManager:self successfullyFindUsers:results];
+                }
+            });
+        } failure:^(NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(userManager:failedToFindUsersWithError:)]) {
+                    [self.delegate userManager:self failedToFindUsersWithError:error];
+                }
+            });
+        }];
+    });
+}
 
 @end

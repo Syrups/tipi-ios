@@ -16,6 +16,7 @@
 - (void)authenticateUserWithUsername:(NSString*)username password:(NSString*)password;
 - (void)fetchUserWithId:(NSInteger)userId;
 - (void)fetchLatestTags;
+- (void)findUsersWithQuery:(NSString*)query;
 
 @end
 
@@ -23,6 +24,13 @@
 
 - (void)userManager:(UserManager*)manager successfullyCreatedUser:(User*)user;
 - (void)userManager:(UserManager*)manager failedToCreateUserWithStatusCode:(NSUInteger)statusCode;
+
+@end
+
+@protocol UserFinderDelegate <NSObject>
+
+- (void)userManager:(UserManager*)manager successfullyFindUsers:(NSArray*)results;
+- (void)userManager:(UserManager *)manager failedToFindUsersWithError:(NSError*)error;
 
 @end
 

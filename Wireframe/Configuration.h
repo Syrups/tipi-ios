@@ -35,4 +35,6 @@
 
 #define SRLog(msg) NSLog([@" [x] " stringByAppendingString:msg])
 
+#define P(x,y) CGPointMake(x,y)
+
 #endif

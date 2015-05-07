@@ -11,7 +11,13 @@
 
 @interface LoginViewController : UIViewController <UserAuthenticatorDelegate, UITextFieldDelegate>
 
+@property (strong, nonatomic) IBOutlet UIView* fieldsZone;
+@property (strong, nonatomic) IBOutlet UIButton* signUpButton;
 @property (strong, nonatomic) IBOutlet UITextField* usernameField;
 @property (strong, nonatomic) IBOutlet UITextField* passwordField;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* centerFieldsVerticalContraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* signInButtonVerticalSpace;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* signInButtonWidth;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* signInButtonHeight;
 
 @end

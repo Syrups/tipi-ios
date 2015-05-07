@@ -14,13 +14,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[UserSession sharedSession] load];
+//    [[UserSession sharedSession] load];
     
     if ([[UserSession sharedSession] isAuthenticated]) {
         UIViewController* home = [self.storyboard instantiateViewControllerWithIdentifier:@"Home"];
         [self.navigationController setViewControllers:@[home]];
     }
     
+}
+
+- (IBAction)openFields:(UIButton*)sender {
+    [self.view layoutIfNeeded];
+    
+    [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.fieldsZone.alpha = 1;
+        self.signInButtonVerticalSpace.constant -= 40;
+        self.signUpButton.alpha = 0;
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        [sender removeTarget:self action:@selector(openFields:) forControlEvents:UIControlEventTouchUpInside];
+        [sender addTarget:self action:@selector(attemptLogin:) forControlEvents:UIControlEventTouchUpInside];
+        [self.usernameField becomeFirstResponder];
+    }];
 }
 
 - (IBAction)attemptLogin:(id)sender {

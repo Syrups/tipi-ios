@@ -8,6 +8,7 @@
 
 #import "ProfileViewController.h"
 #import "FriendListViewController.h"
+#import "HomeViewController.h"
 
 @implementation ProfileViewController
 
@@ -35,8 +36,9 @@
     [self addChildViewController:self.pager];
     
     // Don't forget to add the new root view to the current view hierarchy!
-    self.pager.view.frame = CGRectMake(0, 180, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:self.pager.view];
+    self.pager.view.frame = CGRectMake(0, 80, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view.subviews[0] addSubview:self.pager.view];
+    [self.view.subviews[0] sendSubviewToBack:self.pager.view];
     
     // And make sure to activate!
     [self.pager didMoveToParentViewController:self];
@@ -45,7 +47,15 @@
 }
 
 - (IBAction)dismiss:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    HomeViewController* parent = (HomeViewController*)self.parentViewController;
+    
+    [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+        parent.profileButton.hidden = NO;
+    } completion:^(BOOL finished) {
+        [self.view removeFromSuperview];
+        [self removeFromParentViewController];
+    }];
 }
 
 #pragma mark - UIpageViewController
