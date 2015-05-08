@@ -19,21 +19,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.overlayView.alpha = 0;
     
     NSString* url = self.page.media.file;
-//    NSString *url = [NSString stringWithFormat:@"%@%@",kMediaRootUrl, [self.page.media.file lastPathComponent]];
-    ///api/v1/pages/:page_id/media
-    [self.image sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"placeholder.gif"]];
-    
-//    NSString *fileUrl = [NSString stringWithFormat:@"%@%@",kAudioRootUrl, [self.page.audio.file lastPathComponent]];
     NSString* fileUrl = self.page.audio.file;
+    
+    //TODO change placeholder and loadings
+    [self.image sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"placeholder.gif"]];
     [self downloadFileWithURL:fileUrl completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-
-        self.fileURL = filePath;
         
-        NSLog(@"File %@ downloaded to: %@",fileUrl, filePath);
+        self.fileURL = filePath;
+        //NSLog(@"File %@ downloaded to: %@",fileUrl, filePath);
     }];
+    
+    
+    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOverlayPlayer:)];
+    [self.view addGestureRecognizer:singleFingerTap];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,16 +43,34 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - Overlay View
+- (void)showOverlayPlayer:(UITapGestureRecognizer *)recognizer {
+    
+    
+    //CGPoint location = [recognizer locationInView:[recognizer.view superview]];
+    
+    [self.overlayTimer invalidate];
+    
+    [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.overlayView.alpha = self.overlayView.alpha == 0 ? 1.0 : 0;
+    } completion:^(BOOL finished) {
+        self.overlayTimer = [NSTimer timerWithTimeInterval:3
+                                                    target:self
+                                                  selector:@selector(hideOverlay:)
+                                                  userInfo:nil
+                                                   repeats:NO];
+        [[NSRunLoop currentRunLoop] addTimer:self.overlayTimer forMode:NSRunLoopCommonModes];
+    }];
 }
-*/
 
+- (void)hideOverlay:(NSTimer *)timer{
+    [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.overlayView.alpha = 0;
+    } completion:nil];
+}
+
+#pragma mark - Sound Playing
 - (IBAction)playSound:(id)sender {
     if(self.fileURL){
         [self.parent playSound:self.fileURL];

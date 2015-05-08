@@ -30,8 +30,7 @@ typedef void(^fadeOutCompletion)(BOOL);
     // Point the datasource back to this UIViewController.
     self.pager.dataSource = self;
     
-   
-    
+
     
     StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
     [manager fetchStoryWithId:self.storyId];
