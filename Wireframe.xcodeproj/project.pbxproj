@@ -400,7 +400,7 @@
 			name = Base;
 			sourceTree = "<group>";
 		};
-		73B20BED1AA6097700A9C88F /* Listnen */ = {
+		73B20BED1AA6097700A9C88F /* Listen */ = {
 			isa = PBXGroup;
 			children = (
 				B3FBAABA1AEF7CFC00A3A6B4 /* Rooms */,
@@ -414,7 +414,7 @@
 				73E7EBC11AE57CC8003579CD /* UIRoomTableViewCell.h */,
 				73E7EBC21AE57CC8003579CD /* UIRoomTableViewCell.m */,
 			);
-			name = Listnen;
+			name = Listen;
 			sourceTree = "<group>";
 		};
 		73B3B3331AA7BA3F00FF7578 /* exports */ = {
@@ -818,7 +818,7 @@
 				B3FBAACA1AEFD57C00A3A6B4 /* Walkthrough */,
 				73559BA71AE2762B00547886 /* Base */,
 				B3065A381AB98AB700C10AD9 /* Account */,
-				73B20BED1AA6097700A9C88F /* Listnen */,
+				73B20BED1AA6097700A9C88F /* Listen */,
 				B3BCD00D1AA5FD8000261212 /* Create */,
 				B3BCCFFB1AA5C85B00261212 /* HomeViewController.h */,
 				B3BCCFFC1AA5C85B00261212 /* HomeViewController.m */,

@@ -33,10 +33,22 @@
 #pragma mark - RoomFetcher
 
 - (void)roomManager:(RoomManager *)manager successfullyFetchedRooms:(NSArray *)rooms {
+    
+    BOOL first = !self.mGroups;
+    
     self.mGroups = rooms;
     
     [self.mTableView reloadData];
     [self.mTableView setContentOffset:CGPointMake(0.0f, -self.mTableView .contentInset.bottom) animated:NO];
+    
+    if(rooms.count >= 2){
+        NSIndexPath *pathForCenterCell = [NSIndexPath indexPathForRow:1 inSection:0];
+        [self.mTableView scrollToRowAtIndexPath:pathForCenterCell atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    }
+    
+    if(first){
+        [self animate];
+    }
 }
 
 - (void)roomManager:(RoomManager *)manager failedToFetchRooms:(NSError*)error{
@@ -128,6 +140,23 @@
         ShowOneGroupViewController* reveal = segue.destinationViewController;
         reveal.room = room;
     }
+}
+
+- (void)animate
+{
+    [[self.mTableView visibleCells] enumerateObjectsUsingBlock:^(UITableViewCell *cell, NSUInteger idx, BOOL *stop) {
+        
+        int endY = cell.frame.origin.y;
+        float delay = idx * 0.1;
+        
+        [cell setFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y + 150, cell.frame.size.width, cell.frame.size.height)];
+        [cell setAlpha:0];
+        
+        [UIView animateWithDuration:.5f delay:delay  options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [cell setFrame:CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height)];
+            [cell setAlpha:1];
+        } completion:nil];
+    }];
 }
 
 
