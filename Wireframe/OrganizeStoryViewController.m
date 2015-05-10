@@ -9,6 +9,7 @@
 #import "OrganizeStoryViewController.h"
 #import "RecordViewController.h"
 #import "DoneStoryViewController.h"
+#import "NameStoryViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "ImageUtils.h"
 #import "MediaCell.h"
@@ -37,7 +38,7 @@
     self.saver = [StoryWIPSaver sharedSaver];
     self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
     
-    // Okay, so we load the first XX images in full resolution
+    // We load the first XX images in full resolution
     // so they can display immediately on collection view,
     // while we load all the others in the background thread.
     
@@ -75,6 +76,14 @@
     [super viewWillAppear:animated];
     
     self.replayButton.alpha = 1;
+    
+    if ([self.recorder isComplete]) {
+        self.replayButton.hidden = YES;
+        self.finishButton.hidden = NO;
+    } else {
+        self.replayButton.hidden = NO;
+        self.finishButton.hidden = YES;
+    }
 }
 
 - (IBAction)back:(id)sender {
@@ -315,13 +324,39 @@
     }];
 }
 
-- (void)openDonePopin {
+- (IBAction)openDonePopin:(id)sender {
     DoneStoryViewController* done = (DoneStoryViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"DoneStory"];
     
     [self addChildViewController:done];
     done.view.frame = self.view.frame;
+    done.view.alpha = 0;
     [self.view addSubview:done.view];
     [done didMoveToParentViewController:self];
+    
+    self.donePopin = done;
+    
+    [UIView animateWithDuration:.3f animations:^{
+        done.view.alpha = 1;
+    }];
+}
+
+- (void)openNameStoryPopin {
+    NameStoryViewController* done = (NameStoryViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"NameStory"];
+    
+    [self addChildViewController:done];
+    done.view.frame = self.view.frame;
+    done.view.alpha = 0;
+    [self.view addSubview:done.view];
+    [done didMoveToParentViewController:self];
+    
+    [self.donePopin.view removeFromSuperview];
+    [self.donePopin removeFromParentViewController];
+    
+    self.namePopin = done;
+    
+    [UIView animateWithDuration:.3f animations:^{
+        done.view.alpha = 1;
+    }];
 }
 
 #pragma mark - Helper

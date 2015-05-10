@@ -20,6 +20,9 @@
 @property (strong, nonatomic) IBOutlet UILabel* pageLabel;
 @property (strong, nonatomic) IBOutlet OrganizerWave* wave;
 @property (strong, nonatomic) IBOutlet UIButton* replayButton;
+@property (strong, nonatomic) IBOutlet UIButton* finishButton;
+@property (strong, nonatomic) UIViewController* donePopin;
+@property (strong, nonatomic) UIViewController* namePopin;
 
 - (void)zoom;
 

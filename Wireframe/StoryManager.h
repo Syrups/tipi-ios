@@ -16,7 +16,7 @@
 
 - (void)createStoryWithName:(NSString*)name owner:(User*)owner inRooms:(NSArray*)rooms tag:(NSString*)tag medias:(NSArray*)medias audiosFiles:(NSArray*)audioFiles;
 
-- (void)fetchStoriesForRoomId:(NSUInteger )room ;
+- (void)fetchStoriesForRoomId:(NSUInteger )room filteredByTag:(NSString*)tag orUser:(User*)user;
 - (void)fetchStoryWithId:(NSUInteger)roomId ;
 
 @end

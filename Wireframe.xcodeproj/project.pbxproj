@@ -89,6 +89,7 @@
 		B38B895F1ACC08C500799EDD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38B895E1ACC08C500799EDD /* MediaPlayer.framework */; };
 		B38B89621ACC146200799EDD /* MediaLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = B38B89611ACC146200799EDD /* MediaLibrary.m */; };
 		B38B89661ACC221600799EDD /* SRRecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B38B89651ACC221600799EDD /* SRRecordButton.m */; };
+		B396C5C01AFE4EC700935725 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B396C5BF1AFE4EC700935725 /* FilterViewController.m */; };
 		B39942211AFBAEBD0040C749 /* SRUnderlinedField.m in Sources */ = {isa = PBXBuildFile; fileRef = B39942201AFBAEBD0040C749 /* SRUnderlinedField.m */; };
 		B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4CDC71AA71DB90079F8D1 /* StoryWIPSaver.m */; };
 		B3A8D17D1ACE7A3800B09C34 /* RoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D17C1ACE7A3800B09C34 /* RoomController.m */; };
@@ -276,6 +277,8 @@
 		B38B89611ACC146200799EDD /* MediaLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaLibrary.m; sourceTree = "<group>"; };
 		B38B89641ACC221600799EDD /* SRRecordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecordButton.h; sourceTree = "<group>"; };
 		B38B89651ACC221600799EDD /* SRRecordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecordButton.m; sourceTree = "<group>"; };
+		B396C5BE1AFE4EC700935725 /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
+		B396C5BF1AFE4EC700935725 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		B399421F1AFBAEBD0040C749 /* SRUnderlinedField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRUnderlinedField.h; sourceTree = "<group>"; };
 		B39942201AFBAEBD0040C749 /* SRUnderlinedField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRUnderlinedField.m; sourceTree = "<group>"; };
 		B39C1DE51AC4B1620011D87E /* Wireframe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Wireframe.entitlements; sourceTree = "<group>"; };
@@ -401,7 +404,7 @@
 			name = Base;
 			sourceTree = "<group>";
 		};
-		73B20BED1AA6097700A9C88F /* Listnen */ = {
+		73B20BED1AA6097700A9C88F /* Listen */ = {
 			isa = PBXGroup;
 			children = (
 				B3FBAABA1AEF7CFC00A3A6B4 /* Rooms */,
@@ -415,7 +418,7 @@
 				73E7EBC11AE57CC8003579CD /* UIRoomTableViewCell.h */,
 				73E7EBC21AE57CC8003579CD /* UIRoomTableViewCell.m */,
 			);
-			name = Listnen;
+			name = Listen;
 			sourceTree = "<group>";
 		};
 		73B3B3331AA7BA3F00FF7578 /* exports */ = {
@@ -448,14 +451,11 @@
 		73B3B35B1AA7C54D00FF7578 /* InRoom */ = {
 			isa = PBXGroup;
 			children = (
+				B3135A181AFF615200ED2620 /* Filters */,
 				B319B24F1AF12D0F00C819BD /* AdminRoomViewController.h */,
 				B319B2501AF12D0F00C819BD /* AdminRoomViewController.m */,
 				73B20BF11AA6178200A9C88F /* ShowOneGroupViewController.h */,
 				73B20BF21AA6178200A9C88F /* ShowOneGroupViewController.m */,
-				73B3B3301AA7B45500FF7578 /* TagMenuViewController.h */,
-				73B3B3311AA7B45500FF7578 /* TagMenuViewController.m */,
-				73B3B3581AA7BC6100FF7578 /* GroupMembersViewController.h */,
-				73B3B3591AA7BC6100FF7578 /* GroupMembersViewController.m */,
 			);
 			name = InRoom;
 			sourceTree = "<group>";
@@ -551,6 +551,19 @@
 				B33B6FD41ACDC6E3009C0623 /* Controllers */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		B3135A181AFF615200ED2620 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				73B3B3301AA7B45500FF7578 /* TagMenuViewController.h */,
+				73B3B3311AA7B45500FF7578 /* TagMenuViewController.m */,
+				73B3B3581AA7BC6100FF7578 /* GroupMembersViewController.h */,
+				73B3B3591AA7BC6100FF7578 /* GroupMembersViewController.m */,
+				B396C5BE1AFE4EC700935725 /* FilterViewController.h */,
+				B396C5BF1AFE4EC700935725 /* FilterViewController.m */,
+			);
+			name = Filters;
 			sourceTree = "<group>";
 		};
 		B319338E1AE009BA00603158 /* Segue */ = {
@@ -819,7 +832,7 @@
 				B3FBAACA1AEFD57C00A3A6B4 /* Walkthrough */,
 				73559BA71AE2762B00547886 /* Base */,
 				B3065A381AB98AB700C10AD9 /* Account */,
-				73B20BED1AA6097700A9C88F /* Listnen */,
+				73B20BED1AA6097700A9C88F /* Listen */,
 				B3BCD00D1AA5FD8000261212 /* Create */,
 				B3BCCFFB1AA5C85B00261212 /* HomeViewController.h */,
 				B3BCCFFC1AA5C85B00261212 /* HomeViewController.m */,
@@ -1191,6 +1204,7 @@
 				B3BCD0131AA604DA00261212 /* RecordViewController.m in Sources */,
 				B319B24E1AF1025A00C819BD /* WalkthroughScreen.m in Sources */,
 				B319B2461AF0CD5100C819BD /* PKAIDecoder.m in Sources */,
+				B396C5C01AFE4EC700935725 /* FilterViewController.m in Sources */,
 				B325A13D1ADE5AD80041DF21 /* PreviewBubble.m in Sources */,
 				B33B6FD71ACDC702009C0623 /* UserController.m in Sources */,
 				73B3B35A1AA7BC6100FF7578 /* GroupMembersViewController.m in Sources */,
