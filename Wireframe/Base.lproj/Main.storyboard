@@ -69,6 +69,7 @@
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1023,7 +1024,7 @@ your voice</string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pRv-Xl-RLc" id="4HD-IQ-vz2">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Journée finale et présentations" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1K-xM-13C">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Journée finale et présentations" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1K-xM-13C">
                                                     <rect key="frame" x="67" y="62" width="186" height="46"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="186" id="8Fi-I1-FAZ"/>
@@ -1032,7 +1033,7 @@ your voice</string>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8z-hE-wUw">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8z-hE-wUw">
                                                     <rect key="frame" x="63" y="123" width="186" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="186" id="ISW-Vg-8a6"/>
@@ -1096,7 +1097,7 @@ your voice</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="displayFiltersController:" destination="1J0-vr-FcQ" eventType="touchUpInside" id="E76-BV-HQx"/>
+                                    <segue destination="Sss-W5-0nG" kind="push" id="hAe-Mi-WQQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1250,12 +1251,10 @@ your voice</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" directionalLockEnabled="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oN9-4F-VJM">
-                                <rect key="frame" x="0.0" y="82" width="120" height="486"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="sao-Fu-CGJ"/>
-                                </constraints>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="68" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oN9-4F-VJM">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="tagItem" selectionStyle="none" indentationWidth="10" reuseIdentifier="tagItem" rowHeight="68" id="Ka3-fz-ZVV">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1263,10 +1262,14 @@ your voice</string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ka3-fz-ZVV" id="FyR-fI-us1">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="90" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xee-p4-N5U">
-                                                    <rect key="frame" x="8" y="34" width="104" height="17"/>
-                                                    <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.39999999999999963" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="va6-vT-w5s">
+                                                    <rect key="frame" x="29" y="18" width="263" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="263" id="OvX-QP-A1n"/>
+                                                        <constraint firstAttribute="height" constant="32" id="WlV-6l-2BR"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="21"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1279,7 +1282,7 @@ your voice</string>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Themes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4YY-u2-Enk">
+                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Themes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4YY-u2-Enk">
                                 <rect key="frame" x="16" y="37" width="90" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="kVZ-eZ-Xda"/>
@@ -2042,7 +2045,7 @@ E N R E G I S T R E R</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" alpha="0.0" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBk-aL-yaY">
-                                                    <rect key="frame" x="130.5" y="5.5" width="60" height="60"/>
+                                                    <rect key="frame" x="131" y="6" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="gxT-F4-c5I"/>
                                                         <constraint firstAttribute="height" constant="60" id="oDU-ig-nY6"/>
@@ -2607,7 +2610,7 @@ votre histoire</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" image="btn-back"/>
                                 <connections>
-                                    <action selector="dismiss:" destination="Sss-W5-0nG" eventType="touchUpInside" id="KfP-ko-JHb"/>
+                                    <segue destination="nn5-2d-8o6" kind="unwind" unwindAction="prepareForGoBackToOneGroup:" id="sE8-Ge-DiW"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2617,12 +2620,14 @@ votre histoire</string>
                             <constraint firstItem="UfM-mg-mwb" firstAttribute="top" secondItem="3Pd-10-fYo" secondAttribute="bottom" id="qiy-OM-QyC"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="QTJ-oa-o9A"/>
                     <connections>
                         <outlet property="filterTagButton" destination="yhB-9t-vBc" id="rwn-Bk-oFU"/>
                         <outlet property="filterUserButton" destination="xVx-lS-jjo" id="FKf-Mp-z1g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wmA-xG-lXs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="nn5-2d-8o6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4402" y="36"/>
         </scene>

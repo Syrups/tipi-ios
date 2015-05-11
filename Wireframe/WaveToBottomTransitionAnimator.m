@@ -10,6 +10,7 @@
 #import "WaveToBottomTransitionAnimator.h"
 #import "SHPathLibrary.h"
 #import "AdminRoomViewController.h"
+#import "FilterViewController.h"
 
 @implementation WaveToBottomTransitionAnimator
 
@@ -23,7 +24,7 @@
     UIViewController* fromViewController=  [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController* toViewController=  [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
-    BOOL segueBack = [fromViewController isKindOfClass:[AdminRoomViewController class]] ;
+    BOOL segueBack = [fromViewController isKindOfClass:[FilterViewController class]] ;
     
     //3
     [containerView addSubview: toViewController.view];

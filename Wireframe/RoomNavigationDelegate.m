@@ -11,6 +11,7 @@
 #import "ShowOneGroupViewController.h"
 #import "WaveSwipeTransitionAnimator.h"
 #import "WaveToBottomTransitionAnimator.h"
+#import "FilterViewController.h"
 
 
 
@@ -30,8 +31,8 @@
                                                fromViewController:(UIViewController *)fromVC
                                                  toViewController:(UIViewController *)toVC{
     
-    if( [toVC isKindOfClass:[AdminRoomViewController class]]
-       || [fromVC isKindOfClass:[AdminRoomViewController class]]){
+    if( [toVC isKindOfClass:[FilterViewController class]]
+       || [fromVC isKindOfClass:[FilterViewController class]]){
         return [[WaveToBottomTransitionAnimator alloc]init];
     }else if( [toVC isKindOfClass:[ShowOneGroupViewController class]]
        || [fromVC isKindOfClass:[ShowOneGroupViewController class]]){
