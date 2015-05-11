@@ -25,7 +25,7 @@
 //    } completion:nil];
     
     // disable interaction with the background controller
-    ((RecordViewController*)self.parentViewController).longPressRecognizer.enabled = NO;
+//    ((RecordViewController*)self.parentViewController).longPressRecognizer.enabled = NO;
     
     self.centerYConstraint.constant = self.view.frame.size.height;
     
@@ -43,7 +43,7 @@
         self.centerYConstraint.constant = -self.view.frame.size.height;
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
-        [(RecordViewController*)self.parentViewController openNameStoryPopin];
+        [self.parentViewController performSelector:@selector(openNameStoryPopin) withObject:nil];
     }];
 }
 
@@ -58,7 +58,7 @@
         [self.view layoutIfNeeded];
     } completion:nil];
     
-    ((RecordViewController*)self.parentViewController).longPressRecognizer.enabled = YES;
+//    ((RecordViewController*)self.parentViewController).longPressRecognizer.enabled = YES;
 }
 
 @end

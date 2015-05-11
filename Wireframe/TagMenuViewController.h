@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShowOneGroupViewController.h"
+#import "UserManager.h"
 
-@interface TagMenuViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface TagMenuViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, TagFetcherDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *mTableView;
 @property (strong, nonatomic)  NSArray *mTags;
+@property (strong, nonatomic) ShowOneGroupViewController* parent;
 @end

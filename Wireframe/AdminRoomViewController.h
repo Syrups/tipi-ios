@@ -13,5 +13,6 @@
 
 @property (strong, nonatomic) Room* room;
 @property (strong, nonatomic) IBOutlet UITableView* usersTableView;
+@property (strong, nonatomic) IBOutlet UITextField* roomNameField;
 
 @end

@@ -18,5 +18,9 @@
 
 @property (strong, nonatomic)  NSArray *mStories;
 @property (strong, nonatomic) IBOutlet UIButton* roomNameButton;
+@property (strong, nonatomic) User* filterUser;
+@property (strong, nonatomic) NSString* filterTag;
+
+- (void)applyFilters;
 
 @end

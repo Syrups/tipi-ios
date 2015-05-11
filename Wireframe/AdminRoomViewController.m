@@ -42,11 +42,21 @@
     UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     
     UILabel* label = (UILabel*)[cell.contentView viewWithTag:10];
-    [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        label.transform = CGAffineTransformMakeTranslation(100, 0);
-        label.alpha = .3f;
-    } completion:nil];
+    UIButton* delete = (UIButton*)[cell.contentView viewWithTag:20];
     
+    if (delete.alpha == 0) {
+        [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            label.transform = CGAffineTransformMakeTranslation(100, 0);
+            label.alpha = .3f;
+            delete.alpha = 1;
+        } completion:nil];
+    } else {
+        [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            label.transform = CGAffineTransformIdentity;
+            label.alpha = 1;
+            delete.alpha = 0;
+        } completion:nil];
+    }
 }
 
 #pragma mark - UITextField
@@ -56,6 +66,7 @@
 }
 
 -(IBAction)prepareForGoBackToOneGroup:(UIStoryboardSegue *)segue {
+    [self.roomNameField resignFirstResponder];
 }
 
 

@@ -31,7 +31,6 @@
 }
 
 
-
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *cellIdentifier = @"tagItem";
@@ -41,7 +40,7 @@
     }
     
     
-    UILabel *name = (UILabel*)[cell.contentView viewWithTag:90];
+    UILabel *name = (UILabel*)[cell.contentView viewWithTag:10];
     name.text = [self.mTags objectAtIndex:indexPath.row];
     
     return cell;
@@ -53,12 +52,17 @@
     return self.mTags.count;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    /*self.mShowOneGroupViewController =
-     [[ShowOneGroupViewController alloc] initWithNibName:@"ShowOneGroupViewController"
-     bundle:nil];
-     [self presentViewController:self.mShowOneGroupViewController animated:YES completion:nil];*/
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.parent setFilterTag:[self.mTags objectAtIndex:indexPath.row]];
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    UILabel *name = (UILabel*)[cell.contentView viewWithTag:10];
+    name.alpha = 1;
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    UILabel *name = (UILabel*)[cell.contentView viewWithTag:10];
+    name.alpha = .5f;
 }
 
 

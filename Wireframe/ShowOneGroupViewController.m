@@ -11,7 +11,7 @@
 #import "ReadModeContainerViewController.h"
 #import "AdminRoomViewController.h"
 #import "SHPathLibrary.h"
-
+#import "FilterViewController.h"
 
 @interface ShowOneGroupViewController ()
 
@@ -35,7 +35,7 @@
     self.mTableView.dataSource = self;
     
     StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
-    [manager fetchStoriesForRoomId:[self.room.id integerValue]];
+    [manager fetchStoriesForRoomId:[self.room.id integerValue] filteredByTag:nil orUser:nil];
     
     
     [SHPathLibrary addRightCurveBezierPathToView:self.view
@@ -56,9 +56,29 @@
 //    [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (IBAction)displayFiltersController:(id)sender {
+    FilterViewController* vc = (FilterViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"Filter"];
+    vc.room = self.room;
+    
+    [vc willMoveToParentViewController:self];
+    [self addChildViewController:vc];
+    vc.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:vc.view];
+    
+    [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        vc.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    } completion:nil];
+    [vc didMoveToParentViewController:self];
+}
+
+#pragma mark - Filters
+
+- (void)applyFilters {
+    StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
+    [manager fetchStoriesForRoomId:[self.room.id integerValue] filteredByTag:self.filterTag orUser:self.filterUser];
+}
+
 #pragma mark - TableView
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

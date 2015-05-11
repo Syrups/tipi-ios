@@ -35,12 +35,12 @@
     });
 }
 
-- (void)fetchStoriesForRoomId:(NSUInteger )room {
+- (void)fetchStoriesForRoomId:(NSUInteger )room filteredByTag:(NSString *)tag orUser:(User *)user {
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         
-        [delegate.storyController fetchStoriesForRoomId:room success:^(NSArray * stories) {
+        [delegate.storyController fetchStoriesForRoomId:room filteredByTag:tag orUser:user success:^(NSArray * stories) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 if ([self.delegate respondsToSelector:@selector(storyManager:successfullyFetchedStories:)]) {

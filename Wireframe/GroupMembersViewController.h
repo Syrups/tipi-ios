@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Room.h"
+#import "ShowOneGroupViewController.h"
 
 @interface GroupMembersViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+
 @property (weak, nonatomic) IBOutlet UITableView *mTableView;
-@property (strong, nonatomic)  NSArray *mUsers;
+@property (strong, nonatomic) Room* room;
+@property (strong, nonatomic) ShowOneGroupViewController* parent;
+
 @end

@@ -41,9 +41,16 @@
 }
 
 
-- (void)fetchStoriesForRoomId:(NSUInteger )room success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
+- (void)fetchStoriesForRoomId:(NSUInteger )room filteredByTag:(NSString *)tag orUser:(User *)user success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
     
     NSString* path = [NSString stringWithFormat:@"/rooms/%ld/stories", (long)room];
+    
+    if (tag != nil) {
+        path = [path stringByAppendingString:[NSString stringWithFormat:@"?tag=%@", tag]];
+    } else if (user != nil) {
+        path = [path stringByAppendingString:[NSString stringWithFormat:@"?user=%@", user.id]];
+    }
+    
     NSURLRequest* request = [StoryController getBaseRequestFor:path authenticated:YES method:@"GET"];
     
     AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
