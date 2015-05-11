@@ -329,9 +329,9 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
             highlightedImageView.layer.zPosition = 100;
             
             [UIView animateWithDuration:0.2f animations:^{
-                highlightedImageView.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(1.1f));
+                highlightedImageView.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(.05f));
                 
-                imageView.transform = CGAffineTransformMakeScale(1.2f, 1.2f);
+                imageView.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(.05f));
             }];
             
             
@@ -395,7 +395,7 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
                  animations:^{
                      __strong typeof(self) strongSelf = weakSelf;
                      if (strongSelf) {
-//                         strongSelf.currentView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+                         strongSelf.currentView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
 //                         strongSelf.currentView.alpha = 1;
                          strongSelf.currentView.center = layoutAttributes.center;
                      }

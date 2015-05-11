@@ -124,12 +124,21 @@
 - (CGPathRef)pathForLayer {
     UIBezierPath* path = [[UIBezierPath alloc] init];
     
-    [path moveToPoint:CGPointMake(self.frame.size.width, 150 - (4*expandOffset))];
+    CGPoint start = CGPointMake(self.frame.size.width, 200 - (4*expandOffset));
+    CGPoint end =   CGPointMake(self.frame.size.width, self.frame.size.height - 200 + (4*expandOffset));
+    CGPoint mid =   CGPointMake(self.frame.size.width - 100, self.frame.size.height/2);
+    CGPoint c1 =    CGPointMake(self.frame.size.width - 20, start.y + 20);
+    CGPoint c2 =    CGPointMake(self.frame.size.width - 100, start.y);
+    CGPoint c3 =    CGPointMake(self.frame.size.width - 100, end.y);
+    CGPoint c4 =    CGPointMake(self.frame.size.width - 20, end.y - 20);
+    
+    [path moveToPoint:start];
     
     if (self.hidden) {
         [path addLineToPoint:CGPointMake(self.frame.size.width, self.frame.size.height-150)];
     } else {
-        [path addQuadCurveToPoint:CGPointMake(self.frame.size.width, self.frame.size.height - 150) controlPoint:CGPointMake(self.frame.size.width/2.5f - (8*expandOffset), self.frame.size.height/2 + (4*expandOffset))];
+        [path addCurveToPoint:mid controlPoint1:c1 controlPoint2:c2];
+        [path addCurveToPoint:end controlPoint1:c3 controlPoint2:c4];
     }
     
     
@@ -139,10 +148,18 @@
 - (CGPathRef)pathForLayerExpanded {
     UIBezierPath* path = [[UIBezierPath alloc] init];
     
-    [path moveToPoint:CGPointMake(self.frame.size.width, -self.frame.size.height)];
-
-    [path addQuadCurveToPoint:CGPointMake(self.frame.size.width, 2*self.frame.size.height) controlPoint:CGPointMake(-self.frame.size.width*2, self.frame.size.height/2)];
+    CGPoint start = CGPointMake(self.frame.size.width, -self.frame.size.height);
+    CGPoint end =   CGPointMake(self.frame.size.width, self.frame.size.height*2);
+    CGPoint mid =   CGPointMake(-self.frame.size.width, self.frame.size.height/2);
+    CGPoint c1 =    CGPointMake(self.frame.size.width - 20, start.y + 20);
+    CGPoint c2 =    CGPointMake(-self.frame.size.width - 120, start.y);
+    CGPoint c3 =    CGPointMake(-self.frame.size.width - 120, end.y);
+    CGPoint c4 =    CGPointMake(self.frame.size.width - 20, end.y - 20);
     
+    [path moveToPoint:start];
+
+    [path addCurveToPoint:mid controlPoint1:c1 controlPoint2:c2];
+    [path addCurveToPoint:end controlPoint1:c3 controlPoint2:c4];
     
     return path.CGPath;
 

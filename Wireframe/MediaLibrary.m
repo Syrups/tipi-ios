@@ -28,6 +28,7 @@
     NSMutableArray* assetGroups = [NSMutableArray array];
     ALAssetsLibrary* library = [AppDelegate defaultAssetsLibrary];
     NSMutableArray* medias = [NSMutableArray array];
+    __block NSUInteger i = 0;
     
     [library enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
         if(group != nil) {
@@ -37,7 +38,9 @@
             
             [group enumerateAssetsWithOptions:0 usingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
                 
-                if (result != nil && index >= start && index <= limit) {
+                if (result != nil) {
+                    
+                    i++;
                     
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 //                        NSLog(@"asset - %ld / %ld", (unsigned long)index, (unsigned long)group.numberOfAssets);
@@ -63,10 +66,13 @@
                             if ([self.delegate respondsToSelector:@selector(mediaLibrary:successfullyFetchedMedia:)]) {
                                 [self.delegate mediaLibrary:self successfullyFetchedMedia:media];
                             }
-                            
-                            if (index == limit || index == group.numberOfAssets-1) {
+                        
+                        
+                        
+                            if ( i == self.totalMediasCount) {
                 
                                 dispatch_async(dispatch_get_main_queue(), ^{
+                                    
                                     if ([self.delegate respondsToSelector:@selector(mediaLibrary:successfullyFetchedMedias:from:to:)]) {
                                         [self.delegate mediaLibrary:self successfullyFetchedMedias:medias from:start to:limit];
                                     }

@@ -41,28 +41,6 @@ static float const fadePercentage = 0.2;
 
 }
 
-- (void)viewWillLayoutSubviews
-{
-    [super viewWillLayoutSubviews];
-    
-    NSObject * transparent = (NSObject *) [[UIColor colorWithWhite:0 alpha:0] CGColor];
-    NSObject * opaque = (NSObject *) [[UIColor colorWithWhite:0 alpha:1] CGColor];
-    
-    CALayer * maskLayer = [CALayer layer];
-    maskLayer.frame = self.view.bounds;
-    
-    CAGradientLayer * gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = CGRectMake(self.mediaCollectionView.bounds.origin.x, 0,
-                                     self.mediaCollectionView.bounds.size.width, self.mediaCollectionView.bounds.size.height);
-    
-    gradientLayer.colors = [NSArray arrayWithObjects: transparent, opaque, nil];
-    
-    gradientLayer.locations = [NSArray arrayWithObjects: [NSNumber numberWithFloat:0],
-                               [NSNumber numberWithFloat:fadePercentage], nil];
-    
-    [maskLayer addSublayer:gradientLayer];
-//    self.mediaCollectionView.layer.mask = maskLayer;
-}
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
@@ -131,11 +109,11 @@ static float const fadePercentage = 0.2;
 
     UIView* check = (UIView*)[cell.contentView viewWithTag:30];
     
-    if ([[media objectForKey:@"type"] isEqual:ALAssetTypeVideo]) {
-        [cell launchVideoPreviewWithUrl:[media objectForKey:@"url"]];
-    } else {
-        [cell.playerLayer removeFromSuperlayer];
-    }
+//    if ([[media objectForKey:@"type"] isEqual:ALAssetTypeVideo]) {
+//        [cell launchVideoPreviewWithUrl:[media objectForKey:@"url"]];
+//    } else {
+//        [cell.playerLayer removeFromSuperlayer];
+//    }
     
     if ([self.saver.medias containsObject:media]) {
         check.alpha = 1;
@@ -147,14 +125,14 @@ static float const fadePercentage = 0.2;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(150, 20, 100, 20);
+    return UIEdgeInsetsMake(150, 10, 100, 10);
 }
 
 
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    CGFloat s = self.mediaCollectionView.frame.size.width/2.6f;
+    CGFloat s = self.mediaCollectionView.frame.size.width/2.5f;
     
     return CGSizeMake(s, s);
 }
