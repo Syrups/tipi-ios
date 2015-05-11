@@ -45,6 +45,10 @@
     if ([self.room isAdmin:CurrentUser]) {
         [self.roomNameButton addTarget:self action:@selector(didTapAdminButton:) forControlEvents:UIControlEventTouchUpInside];
     }
+    
+    UISwipeGestureRecognizer* swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeCell:)];
+    swipe.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.mTableView addGestureRecognizer:swipe];
 }
 
 #pragma mark - Actions
@@ -81,6 +85,31 @@
     [UIView animateWithDuration:0.5 animations:^{
         filterViewController.view.alpha = 1;
     }];
+}
+
+- (void)didSwipeCell:(UISwipeGestureRecognizer*)swipe {
+    CGPoint location = [swipe locationInView:self.mTableView];
+    NSIndexPath* indexPath = [self.mTableView indexPathForRowAtPoint:location];
+    
+    if (indexPath) {
+        UITableViewCell* cell = [self.mTableView cellForRowAtIndexPath:indexPath];
+        UILabel* label = (UILabel*)[cell.contentView viewWithTag:10];
+        UIButton* delete = (UIButton*)[cell.contentView viewWithTag:30];
+        
+        if (delete.alpha == 0) {
+            [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                label.transform = CGAffineTransformMakeTranslation(100, 0);
+                label.alpha = .3f;
+                delete.alpha = 1;
+            } completion:nil];
+        } else {
+            [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                label.transform = CGAffineTransformIdentity;
+                label.alpha = 1;
+                delete.alpha = 0;
+            } completion:nil];
+        }
+    }
 }
 
 #pragma mark - Filters

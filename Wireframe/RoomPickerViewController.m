@@ -152,15 +152,22 @@
     
     if (![selectedRooms containsObject:room]) {
         [selectedRooms addObject:room];
-        
-        UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
-        name.textColor = [UIColor whiteColor];
-        
+        UIImageView* picto = (UIImageView*)[cell.contentView viewWithTag:90];
+        picto.image = [UIImage imageNamed:@"check-room"];
+        [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionAutoreverse animations:^{
+            picto.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
+        } completion:^(BOOL finished) {
+            picto.transform = CGAffineTransformIdentity;
+        }];
     } else {
         [selectedRooms removeObject:room];
-        
-        UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
-        name.textColor = [UIColor blackColor];
+        UIImageView* picto = (UIImageView*)[cell.contentView viewWithTag:90];
+        picto.image = [UIImage imageNamed:@"picto_lucifer"];
+        [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionAutoreverse animations:^{
+            picto.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
+        } completion:^(BOOL finished) {
+            picto.transform = CGAffineTransformIdentity;
+        }];
     }
 }
 

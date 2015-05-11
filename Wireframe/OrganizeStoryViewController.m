@@ -108,10 +108,12 @@
         cell.alpha = 0;
     } completion:^(BOOL finished) {
        
-        [self.saver.medias removeObjectAtIndex:index];
-        [self.collectionView performBatchUpdates:^{
-            [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
-        } completion:nil];
+        if (index < self.saver.medias.count) {
+            [self.saver.medias removeObjectAtIndex:index];
+            [self.collectionView performBatchUpdates:^{
+                [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+            } completion:nil];
+        }
         
         // if all has been deleted, go back to picker
         if (self.saver.medias.count == 0) {

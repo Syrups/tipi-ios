@@ -54,7 +54,13 @@
     self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
     self.recorder.delegate = self;
     
-    [self.recordTimer appear];
+    if ([self.recorder hasRecordedAtIndex:self.currentIndex]) {
+        self.replayButton.transform = CGAffineTransformMakeScale(1, 1);
+        [self.recordTimer hide];
+    } else {
+        [self.recordTimer appear];
+        self.overlay.alpha = 0;
+    }
     
     if (self.currentIndex != self.saver.medias.count-1)
         [self.previewBubble updateWithImage:[(NSDictionary*)[self.saver.medias objectAtIndex:1] objectForKey:@"full"]];
@@ -156,6 +162,7 @@
             [self.previewBubble appearWithCompletion:^{
                 [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
                     self.replayButton.transform = CGAffineTransformMakeScale(1, 1);
+                    self.overlay.alpha = 0.45f;
                 } completion:nil];
             }];
         }
@@ -205,6 +212,7 @@
             [self.recordTimer appear];
         }
         
+        self.overlay.alpha = 0;
         [self.recorder.player stop];
         [self.recorder setupForMediaWithIndex:self.currentIndex];
         [self.timeline updateWithIndex:self.currentIndex];

@@ -18,7 +18,7 @@
     
     if (self) {
         UIImageView* image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-        image.image = [UIImage imageNamed:@"wave-buddy-left.png"];
+//        image.image = [UIImage imageNamed:@"wave-buddy-left.png"];
         image.contentMode = UIViewContentModeScaleAspectFill;
         
         [self addSubview:image];

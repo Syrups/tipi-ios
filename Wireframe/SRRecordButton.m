@@ -62,6 +62,12 @@
     self.appeared = NO;
 }
 
+- (void)hide {
+    circleOffset = -self.frame.size.width/2 + 30;
+    self.appeared = NO;
+    [self setNeedsDisplay];
+}
+
 - (void)updateAppearing {
     
     circleOffset += 2;
@@ -146,11 +152,10 @@
     } else {
         for (int i = 0 ; i < _bufferSize ; i++) {
             
-            float delta = _buffer[i] * 30;
-            
             float a = (i+1) * 360 / _bufferSize;
-            r = radius + circleOffset;
-            float offset = sin(DEGREES_TO_RADIANS(a) * 6 + t) * 2 + delta;
+            float delta = _buffer[i] * 30 * sin(DEGREES_TO_RADIANS(a) * 6 + t);
+            r = radius + circleOffset + delta;
+            float offset = sin(DEGREES_TO_RADIANS(a) * 6 + t) * 2;
             float cx = frame.size.width/2 + r * cos(a * M_PI / 180) + offset;
             float cy = frame.size.height/2 + r * sin(a * M_PI / 180) + offset;
             if (i == 0) CGContextMoveToPoint(ctx, cx, cy);
