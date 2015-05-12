@@ -53,9 +53,18 @@
     ShowOneGroupViewController* parent = (ShowOneGroupViewController*)self.parentViewController;
     [parent applyFilters]; // apply filters that were eventually set with two child VCs
     
-    [self.view removeFromSuperview];
-    [self removeFromParentViewController];
+    //[self.view removeFromSuperview];
+    //[self removeFromParentViewController];
+    
+    [self.navigationController popViewControllerAnimated: YES];
 }
+
+-(IBAction)prepareForGoBackToOneGroup:(UIStoryboardSegue *)segue {
+    
+    ShowOneGroupViewController* parent = (ShowOneGroupViewController*)self.parentViewController;
+    [parent applyFilters];
+}
+
 
 - (IBAction)toFilterUser:(id)sender {
     UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"FilterUser"];

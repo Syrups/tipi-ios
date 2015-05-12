@@ -119,7 +119,6 @@
 		B3C2E5C61AD32A1B00868DA4 /* WaveBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C2E5C51AD32A1B00868DA4 /* WaveBackground.m */; };
 		B3C85E541ACBF4C50083C50A /* Audio.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C85E531ACBF4C50083C50A /* Audio.m */; };
 		B3C85E571ACBF5260083C50A /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C85E561ACBF5260083C50A /* Media.m */; };
-		B3D683891ADFB259006F9C50 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3BCCFD11AA5C36C00261212 /* Info.plist */; };
 		B3DDF3461ADC6311009A9CAF /* NewStoryMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DDF3451ADC6311009A9CAF /* NewStoryMainController.m */; };
 		B3FBAABD1AEF7D0900A3A6B4 /* CreateRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAABC1AEF7D0900A3A6B4 /* CreateRoomViewController.m */; };
 		B3FBAAC01AEF7EA500A3A6B4 /* AddUsersToRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAABF1AEF7EA500A3A6B4 /* AddUsersToRoomViewController.m */; };
@@ -1002,7 +1001,7 @@
 		B3BCCFC51AA5C36C00261212 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Syrup Apps";
 				TargetAttributes = {
 					B3BCCFCC1AA5C36C00261212 = {
@@ -1059,7 +1058,6 @@
 				B3BCCFDC1AA5C36C00261212 /* Main.storyboard in Resources */,
 				B319338A1ADFB2B600603158 /* GTWalsheim Bold.otf in Resources */,
 				B319B2411AF0CD1B00C819BD /* onde_voix.pkai in Resources */,
-				B3D683891ADFB259006F9C50 /* Info.plist in Resources */,
 				B319B2421AF0CD1B00C819BD /* star.pkai in Resources */,
 				73B3B3511AA7BA3F00FF7578 /* proches-grand.png in Resources */,
 				73B3B34C1AA7BA3F00FF7578 /* loupe.png in Resources */,

@@ -47,7 +47,7 @@
 
 - (void)microphone:(EZMicrophone *)microphone hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
     
-    NSUInteger scaledAmount = abs(buffer[0][0] * 1000);
+    //NSUInteger scaledAmount = fabsf(buffer[0][0] * 1000);
     
     [self.wave updateWithBuffer:buffer bufferSize:bufferSize withNumberOfChannels:numberOfChannels];
     

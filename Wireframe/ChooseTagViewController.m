@@ -30,7 +30,7 @@
 #pragma mark - TagFetcher
 
 - (void)userManager:(UserManager *)manager successfullyFetchedTags:(NSArray *)tags {
-    self.tags = tags;
+    self.tags = [NSMutableArray arrayWithArray:tags];
     [self.tagsTableView reloadData];
 }
 

@@ -17,5 +17,8 @@
     @property (strong,nonatomic) ReadModeContainerViewController *parent;
     @property (strong,nonatomic) NSURL* fileURL;
 
+@property (strong,nonatomic) NSTimer *overlayTimer;
+
+@property (weak, nonatomic) IBOutlet UIView *overlayView;
 - (IBAction)playSound:(id)sender;
 @end

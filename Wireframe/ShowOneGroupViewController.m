@@ -60,10 +60,12 @@
 //    [self.navigationController pushViewController:vc animated:YES];
 }
 
+
 - (IBAction)displayFiltersController:(id)sender {
-    FilterViewController* vc = (FilterViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"Filter"];
-    vc.room = self.room;
+    FilterViewController* filterViewController = (FilterViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"Filter"];
+    filterViewController.room = self.room;
     
+    /*
     [vc willMoveToParentViewController:self];
     [self addChildViewController:vc];
     vc.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
@@ -72,7 +74,17 @@
     [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         vc.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     } completion:nil];
-    [vc didMoveToParentViewController:self];
+    [vc didMoveToParentViewController:self];*/
+    
+    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [self presentViewController:filterViewController animated:NO completion:^{
+        
+    }];
+    
+    filterViewController.view.alpha = 0;
+    [UIView animateWithDuration:0.5 animations:^{
+        filterViewController.view.alpha = 1;
+    }];
 }
 
 - (void)didSwipeCell:(UISwipeGestureRecognizer*)swipe {
