@@ -10,7 +10,7 @@
 #import "Room.h"
 #import "StoryManager.h"
 
-@interface ShowOneGroupViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, StoryFetcherDelegate>
+@interface ShowOneGroupViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,UIViewControllerTransitioningDelegate, StoryFetcherDelegate>
 
 //@property (nonatomic) NSUInteger roomId;
 @property (strong, nonatomic) Room* room;

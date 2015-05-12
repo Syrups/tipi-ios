@@ -12,6 +12,7 @@
 #import "AdminRoomViewController.h"
 #import "SHPathLibrary.h"
 #import "FilterViewController.h"
+#import "WaveToBottomTransitionAnimator.h"
 
 @interface ShowOneGroupViewController ()
 
@@ -174,12 +175,29 @@
         ReadModeContainerViewController* reveal = segue.destinationViewController;
         reveal.storyId = selectedStory;
     }
+    
+    if([segue.identifier isEqualToString:@"showFilters"]) {
+       
+        FilterViewController* filterViewController = segue.destinationViewController;
+        filterViewController.room = self.room;
+        filterViewController.transitioningDelegate = self;
+    }
 }
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
+    return [[WaveToBottomTransitionAnimator alloc]init];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
+    return [[WaveToBottomTransitionAnimator alloc]init];
+}
+
 
 - (void)storyManager:(StoryManager *)manager successfullyFetchedStories:(NSArray *)stories{
     
     self.mStories = stories;
     [self.mTableView reloadData];
+    [self animate];
 }
 
 -(void)storyManager:(StoryManager *)manager failedToFetchStories:(NSError *)error{
@@ -188,6 +206,24 @@
 
 -(IBAction)prepareForGoBackToOneGroup:(UIStoryboardSegue *)segue {
     
+}
+
+
+- (void)animate
+{
+    [[self.mTableView visibleCells] enumerateObjectsUsingBlock:^(UITableViewCell *cell, NSUInteger idx, BOOL *stop) {
+        
+        int endY = cell.frame.origin.y;
+        float delay = idx * 0.1;
+        
+        [cell setFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y + 150, cell.frame.size.width, cell.frame.size.height)];
+        [cell setAlpha:0];
+        
+        [UIView animateWithDuration:.5f delay:delay  options:UIViewAnimationOptionCurveEaseOut animations:^{
+            [cell setFrame:CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height)];
+            [cell setAlpha:1];
+        } completion:nil];
+    }];
 }
 
 

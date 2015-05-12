@@ -9,6 +9,7 @@
             <string>GTWalsheim-Bold</string>
             <string>GTWalsheim-Bold</string>
             <string>GTWalsheim-Bold</string>
+            <string>GTWalsheim-Bold</string>
         </mutableArray>
         <mutableArray key="GTWalsheim Regular.otf">
             <string>GTWalsheim-Regular</string>
@@ -1105,7 +1106,7 @@ your voice</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Sss-W5-0nG" kind="push" id="hAe-Mi-WQQ"/>
+                                    <segue destination="Sss-W5-0nG" kind="modal" identifier="showFilters" modalPresentationStyle="currentContext" id="hAe-Mi-WQQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1678,7 +1679,7 @@ your voice</string>
                                     <action selector="openHelp:" destination="tUV-fc-U0L" eventType="touchUpInside" id="xkS-Ie-HXi"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sélectionnez des photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9a-wT-iaD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sélectionnez des photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9a-wT-iaD">
                                 <rect key="frame" x="75" y="14" width="170" height="31"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -1911,7 +1912,7 @@ your voice</string>
                         <subviews>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x1b-Ze-O3i" userLabel="Overlay">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZRE-jP-mkY" customClass="PreviewBubble">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -2503,7 +2504,7 @@ votre histoire</string>
                                     <outlet property="delegate" destination="UYI-ME-qVa" id="YN3-YA-MSp"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E N V O Y E R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5We-RD-KQM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="E N V O Y E R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5We-RD-KQM">
                                 <rect key="frame" x="62" y="28" width="195" height="52"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -2514,8 +2515,8 @@ votre histoire</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZo-X1-6V8">
-                                <rect key="frame" x="102" y="507" width="116" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZo-X1-6V8">
+                                <rect key="frame" x="103" y="482" width="116" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="mld-Rl-fqN"/>
