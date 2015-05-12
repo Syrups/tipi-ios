@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.mGroups = [NSArray array];
+    
     [self.mTableView setContentInset:UIEdgeInsetsMake(70,0,150,0)];
     [SHPathLibrary addRightCurveBezierPathToView:self.view inverted:NO];
     
@@ -34,7 +36,7 @@
 
 - (void)roomManager:(RoomManager *)manager successfullyFetchedRooms:(NSArray *)rooms {
     
-    BOOL first = !self.mGroups;
+    BOOL first = self.mGroups.count == 0;
     
     self.mGroups = rooms;
     
