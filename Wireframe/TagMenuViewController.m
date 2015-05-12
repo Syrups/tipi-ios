@@ -30,6 +30,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - TagFetcher
+
+- (void)userManager:(UserManager *)manager successfullyFetchedTags:(NSArray *)tags {
+    // TODO
+}
+
+- (void)userManager:(UserManager *)manager failedToFetchTagsWithError:(NSError *)error {
+    // TODO
+}
+
+#pragma mark - UITableView
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -65,15 +76,5 @@
     name.alpha = .5f;
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

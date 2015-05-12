@@ -148,7 +148,7 @@
     [path addLineToPoint:CGPointMake(width , half - 100)];
     
 
-    float xpc1 = width + 20 ;
+//    float xpc1 = width + 20 ;
     float yTopHalf = half - 50;
     
     [path addCurveToPoint:CGPointMake(0, yTopHalf)
@@ -161,7 +161,7 @@
     
     //Bump
     float xcp1B = width + 20;
-    float bumpX = xcp1B + 25;
+//    float bumpX = xcp1B + 25;
     
     [path addCurveToPoint:CGPointMake(0, half + 50)
             controlPoint1:CGPointMake(0, half - 10)

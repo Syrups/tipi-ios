@@ -18,6 +18,7 @@
     NSMutableArray* selectedRooms;
     NSUInteger uploadedAudiosCount;
     NSUInteger uploadedMediasCount;
+    CAGradientLayer* maskLayer;
 }
 
 - (void)viewDidLoad {
@@ -28,11 +29,37 @@
     RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
     [manager fetchRoomsForUser:[[UserSession sharedSession] user]];
     
+    self.rooms = [NSArray array];
     self.saver = [StoryWIPSaver sharedSaver];
     self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
     
     [self.roomsTableView setContentInset:UIEdgeInsetsMake(70,0,150,0)];
     [self centerTable];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (!maskLayer) {
+        maskLayer = [CAGradientLayer layer];
+        
+        CGColorRef outerColor = [UIColor colorWithWhite:1.0 alpha:0.0].CGColor;
+        CGColorRef innerColor = kListenBackgroundColor.CGColor;
+        
+        maskLayer.colors = [NSArray arrayWithObjects:(__bridge id)outerColor,
+                            (__bridge id)innerColor, (__bridge id)innerColor, (__bridge id)outerColor, nil];
+        maskLayer.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0],
+                               [NSNumber numberWithFloat:0.1],
+                               [NSNumber numberWithFloat:0.8],
+                               [NSNumber numberWithFloat:1.0], nil];
+        
+        maskLayer.bounds = CGRectMake(0, 0,
+                                      self.roomsTableView.frame.size.width,
+                                      self.roomsTableView.frame.size.height);
+        maskLayer.anchorPoint = CGPointZero;
+        
+        self.roomsTableView.layer.mask = maskLayer;
+    }
 }
 
 - (IBAction)back:(id)sender {
@@ -80,9 +107,16 @@
 #pragma mark - RoomFetcherDelegate
 
 - (void)roomManager:(RoomManager *)manager successfullyFetchedRooms:(NSArray *)rooms {
+    
+    BOOL first = self.rooms.count == 0;
+    
     self.rooms = rooms;
     
     [self.roomsTableView reloadData];
+    
+    if (first) {
+        [self animate];
+    }
 }
 
 - (void)roomManager:(RoomManager *)manager failedToFetchRooms:(NSError *)error {
@@ -177,6 +211,12 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     
+    // Keep gradient fixed in view
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
+    maskLayer.position = CGPointMake(0, scrollView.contentOffset.y);
+    [CATransaction commit];
+    
     for (UIRoomTableViewCell *cell in self.roomsTableView.visibleCells) {
         CGPoint cellCenter = [scrollView convertPoint:cell.center toView:scrollView.superview];
         
@@ -212,6 +252,23 @@
     NSIndexPath *pathForCenterCell = [self.roomsTableView indexPathForRowAtPoint:CGPointMake(CGRectGetMidX(self.roomsTableView.bounds), CGRectGetMidY(self.roomsTableView.bounds) - 100)];
     [self.roomsTableView scrollToRowAtIndexPath:pathForCenterCell atScrollPosition:UITableViewScrollPositionTop animated:YES];
     
+}
+
+- (void)animate
+{
+    [[self.roomsTableView visibleCells] enumerateObjectsUsingBlock:^(UITableViewCell *cell, NSUInteger idx, BOOL *stop) {
+        
+        int endY = cell.frame.origin.y;
+        float delay = idx * 0.1;
+        
+        [cell setFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y + 150, cell.frame.size.width, cell.frame.size.height)];
+        [cell setAlpha:0];
+        
+        [UIView animateWithDuration:.5f delay:delay  options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [cell setFrame:CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height)];
+            [cell setAlpha:1];
+        } completion:nil];
+    }];
 }
 
 

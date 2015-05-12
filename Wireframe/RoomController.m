@@ -46,33 +46,34 @@
     [RoomCache fetchCachedRoomsWithSuccess:^(NSArray *rooms) {
         success(rooms);
     } failure:^{
-        failure(nil);
-    }];
-    
-    NSString* path = [NSString stringWithFormat:@"/users/%@/rooms", user.id];
-    NSURLRequest* request = [BaseModelController getBaseRequestFor:path authenticated:YES method:@"GET"];
-    
-    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    
-    op.responseSerializer = [AFJSONResponseSerializer serializer];
-    
-    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        // if we fails to get from cache, make request to API
+        NSString* path = [NSString stringWithFormat:@"/users/%@/rooms", user.id];
+        NSURLRequest* request = [BaseModelController getBaseRequestFor:path authenticated:YES method:@"GET"];
         
-        NSError* err = nil;
-        NSArray* rooms = [Room arrayOfModelsFromDictionaries:responseObject];
+        AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
         
-        if (err) { NSLog(@"%@", err); }
+        op.responseSerializer = [AFJSONResponseSerializer serializer];
         
-        [RoomCache cacheRooms:rooms completion:^{
-            success(rooms);
+        [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            NSError* err = nil;
+            NSArray* rooms = [Room arrayOfModelsFromDictionaries:responseObject];
+            
+            if (err) { NSLog(@"%@", err); }
+            
+            [RoomCache cacheRooms:rooms completion:^{
+                success(rooms);
+            }];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@", error);
+            failure(error);
         }];
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
-        failure(error);
+        [op start];
     }];
     
-    [op start];
+    
 }
 
 - (void)fetchRoomWithId:(NSUInteger)roomId success:(void (^)(Room *))success failure:(void (^)(NSError *))failure {

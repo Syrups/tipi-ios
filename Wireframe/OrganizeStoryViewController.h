@@ -23,7 +23,8 @@
 @property (strong, nonatomic) IBOutlet UIButton* finishButton;
 @property (strong, nonatomic) UIViewController* donePopin;
 @property (strong, nonatomic) UIViewController* namePopin;
+@property (strong, nonatomic) IBOutlet UIView* overlay;
 
-- (void)zoom;
+- (void)animateAppearance;
 
 @end

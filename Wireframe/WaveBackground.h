@@ -11,10 +11,9 @@
 @interface WaveBackground : UIView
 
 @property CGFloat growingAmount;
+@property IBInspectable BOOL openByDefault;
 
-- (void)shuffle;
-- (void)grow;
-- (void)ungrow;
+- (void)appear;
 - (void)updateImage:(UIImage *)image;
 
 @end

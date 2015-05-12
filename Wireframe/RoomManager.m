@@ -77,4 +77,8 @@
     // TODO
 }
 
+- (void)deleteRoom:(Room *)room {
+    // TODO
+}
+
 @end

@@ -31,10 +31,6 @@
         
         [[UIApplication sharedApplication] registerForRemoteNotifications];
     }
-    else
-    {
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeNewsstandContentAvailability| UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-    }
     
     return YES;
 }

@@ -329,9 +329,10 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
             highlightedImageView.layer.zPosition = 100;
             
             [UIView animateWithDuration:0.2f animations:^{
-                highlightedImageView.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(.05f));
+                self.overlay.alpha = 0.2f;
+                highlightedImageView.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(0));
                 
-                imageView.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(.05f));
+                imageView.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(0));
             }];
             
             
@@ -395,6 +396,7 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
                  animations:^{
                      __strong typeof(self) strongSelf = weakSelf;
                      if (strongSelf) {
+                         self.overlay.alpha = 0;
                          strongSelf.currentView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
 //                         strongSelf.currentView.alpha = 1;
                          strongSelf.currentView.center = layoutAttributes.center;
@@ -428,6 +430,11 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
         case UIGestureRecognizerStateChanged: {
             self.panTranslationInCollectionView = [gestureRecognizer translationInView:self.collectionView];
             CGPoint viewCenter = self.currentView.center = LXS_CGPointAdd(self.currentViewCenter, self.panTranslationInCollectionView);
+            
+            [UIView animateWithDuration:.3f animations:^{
+                self.currentView.transform = self.panTranslationInCollectionView.x < 0 ? CGAffineTransformMakeRotation(-.1f) : CGAffineTransformMakeRotation(.1f);
+            }];
+            
             
             [self invalidateLayoutIfNecessary];
             

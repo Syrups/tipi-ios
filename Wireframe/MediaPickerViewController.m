@@ -19,6 +19,7 @@ static float const fadePercentage = 0.2;
     NSUInteger currentOffset;
     BOOL loading;
     NSMutableArray* unorderedMedias;
+    CAGradientLayer* maskLayer;
 }
 
 - (void)viewDidLoad {
@@ -39,8 +40,30 @@ static float const fadePercentage = 0.2;
     currentOffset = 0;
     [self.library fetchMediasFromLibraryFrom:currentOffset to:currentOffset + kMediaPickerMediaLimit];
 
+    self.continueButton.transform = CGAffineTransformConcat(CGAffineTransformMakeTranslation(0, 200), CGAffineTransformMakeRotation(-.3f));
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (!maskLayer) {
+        maskLayer = [CAGradientLayer layer];
+        
+        CGColorRef outerColor = [UIColor colorWithWhite:1.0 alpha:0.0].CGColor;
+        CGColorRef innerColor = RgbColorAlpha(41, 57, 92, 1).CGColor;
+        
+        maskLayer.colors = [NSArray arrayWithObjects:(__bridge id)outerColor, (__bridge id)innerColor, nil];
+        maskLayer.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.1],
+                               [NSNumber numberWithFloat:0.3], nil];
+        
+        maskLayer.bounds = CGRectMake(0, 0,
+                                      self.mediaCollectionView.frame.size.width,
+                                      self.mediaCollectionView.frame.size.height);
+        maskLayer.anchorPoint = CGPointZero;
+        
+        self.mediaCollectionView.layer.mask = maskLayer;
+    }
+}
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
@@ -58,6 +81,8 @@ static float const fadePercentage = 0.2;
 #pragma mark - MediaLibrary
 
 - (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedias:(NSArray *)medias from:(NSUInteger)start to:(NSUInteger)limit {
+
+    [self.wave appear];
     
     // reverse array
     NSMutableArray *reversed = [NSMutableArray arrayWithCapacity:[medias count]];
@@ -72,8 +97,8 @@ static float const fadePercentage = 0.2;
     
     [self.mediaCollectionView reloadData];
     currentOffset += kMediaPickerMediaLimit + 1;
-
     
+    [self animateButtonAppearance];
 }
 
 #pragma mark - UICollectionView
@@ -97,12 +122,13 @@ static float const fadePercentage = 0.2;
     
     [image setImage:[media objectForKey:@"image"]];
     
+    int endY = cell.frame.origin.y;
+    
     if (cell.tag == 0) {
-//        image.transform = CGAffineTransformMakeScale(0, 0);
-        image.alpha = 0;
-        [UIView animateWithDuration:0.2f delay:indexPath.row*0.03f options:UIViewAnimationOptionCurveEaseIn animations:^{
-//            image.transform = CGAffineTransformMakeScale(1, 1);
-            image.alpha = 1;
+        cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y + 500, cell.frame.size.width, cell.frame.size.height);
+        [UIView animateWithDuration:0.4f delay:indexPath.row*0.03f options:UIViewAnimationOptionCurveEaseOut animations:^{
+            cell.frame = CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height);
+
         } completion:nil];
         cell.tag = 1;
     }
@@ -161,7 +187,6 @@ static float const fadePercentage = 0.2;
         }];
         [selectedIndexes addObject:indexPath];
         [self.saver.medias addObject:[self.medias objectAtIndex:indexPath.row]];
-        [self.wave grow];
         
         [self.wave updateImage:[media objectForKey:@"image"]];
     } else {
@@ -170,7 +195,6 @@ static float const fadePercentage = 0.2;
         }];
         [selectedIndexes removeObject:indexPath];
         [self.saver.medias removeObject:[self.medias objectAtIndex:indexPath.row]];
-        [self.wave ungrow];
     }
     
     if (selectedIndexes.count > 0) {
@@ -187,6 +211,11 @@ static float const fadePercentage = 0.2;
 #pragma mark - UIScrollView
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
+    maskLayer.position = CGPointMake(0, scrollView.contentOffset.y);
+    [CATransaction commit];
+    
     NSArray* visibleIndexPaths = [self.mediaCollectionView indexPathsForVisibleItems];
     
     NSLog(@"%d / %d", self.medias.count, self.library.totalMediasCount);
@@ -198,5 +227,16 @@ static float const fadePercentage = 0.2;
     }
     
 }
+
+#pragma mark - Animation
+
+- (void)animateButtonAppearance {
+    [UIView animateWithDuration:.8f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.continueButton.transform = CGAffineTransformIdentity;
+    } completion:nil];
+}
+
+#pragma mark - Navigation
+
 
 @end
