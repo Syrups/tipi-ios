@@ -13,6 +13,7 @@
 #import "SHPathLibrary.h"
 
 @implementation ShowGroupsViewController {
+    CAGradientLayer* maskLayer;
 }
 
 - (void)viewDidLoad {
@@ -25,6 +26,31 @@
     
     RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
     [manager fetchRoomsForUser:[[UserSession sharedSession] user]];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (!maskLayer) {
+        maskLayer = [CAGradientLayer layer];
+        
+        CGColorRef outerColor = [UIColor colorWithWhite:1.0 alpha:0.0].CGColor;
+        CGColorRef innerColor = kListenBackgroundColor.CGColor;
+        
+        maskLayer.colors = [NSArray arrayWithObjects:(__bridge id)outerColor,
+                            (__bridge id)innerColor, (__bridge id)innerColor, (__bridge id)outerColor, nil];
+        maskLayer.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0],
+                               [NSNumber numberWithFloat:0.1],
+                               [NSNumber numberWithFloat:0.9],
+                               [NSNumber numberWithFloat:1.0], nil];
+        
+        maskLayer.bounds = CGRectMake(0, 0,
+                                      self.mTableView.frame.size.width,
+                                      self.mTableView.frame.size.height);
+        maskLayer.anchorPoint = CGPointZero;
+        
+        self.mTableView.layer.mask = maskLayer;
+    }
 }
 
 - (IBAction)createNewRoom:(id)sender {
@@ -88,6 +114,12 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    
+    // Keep the gradient fixed in view
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
+    maskLayer.position = CGPointMake(0, scrollView.contentOffset.y);
+    [CATransaction commit];
     
     for (UIRoomTableViewCell *cell in self.mTableView.visibleCells) {
         CGPoint cellCenter = [scrollView convertPoint:cell.center toView:scrollView.superview];

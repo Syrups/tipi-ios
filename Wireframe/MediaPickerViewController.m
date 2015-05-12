@@ -19,6 +19,7 @@ static float const fadePercentage = 0.2;
     NSUInteger currentOffset;
     BOOL loading;
     NSMutableArray* unorderedMedias;
+    CAGradientLayer* maskLayer;
 }
 
 - (void)viewDidLoad {
@@ -41,6 +42,27 @@ static float const fadePercentage = 0.2;
 
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (!maskLayer) {
+        maskLayer = [CAGradientLayer layer];
+        
+        CGColorRef outerColor = [UIColor colorWithWhite:1.0 alpha:0.0].CGColor;
+        CGColorRef innerColor = RgbColorAlpha(41, 57, 92, 1).CGColor;
+        
+        maskLayer.colors = [NSArray arrayWithObjects:(__bridge id)outerColor, (__bridge id)innerColor, nil];
+        maskLayer.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.1],
+                               [NSNumber numberWithFloat:0.3], nil];
+        
+        maskLayer.bounds = CGRectMake(0, 0,
+                                      self.mediaCollectionView.frame.size.width,
+                                      self.mediaCollectionView.frame.size.height);
+        maskLayer.anchorPoint = CGPointZero;
+        
+        self.mediaCollectionView.layer.mask = maskLayer;
+    }
+}
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
@@ -187,6 +209,11 @@ static float const fadePercentage = 0.2;
 #pragma mark - UIScrollView
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
+    maskLayer.position = CGPointMake(0, scrollView.contentOffset.y);
+    [CATransaction commit];
+    
     NSArray* visibleIndexPaths = [self.mediaCollectionView indexPathsForVisibleItems];
     
     NSLog(@"%d / %d", self.medias.count, self.library.totalMediasCount);

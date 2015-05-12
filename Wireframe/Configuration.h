@@ -37,4 +37,8 @@
 
 #define P(x,y) CGPointMake(x,y)
 
+// Colors
+
+#define kListenBackgroundColor RgbColorAlpha(35, 12, 11, 1)
+
 #endif
