@@ -81,6 +81,7 @@
 		B36941AF1ACAE02500F3F95A /* FileUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = B36941AE1ACAE02500F3F95A /* FileUploader.m */; };
 		B36941B11ACAF06800F3F95A /* pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B36941B01ACAF06800F3F95A /* pic.jpg */; };
 		B36DD6231AEE5928001FA8C5 /* RoomCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B36DD6221AEE5928001FA8C5 /* RoomCache.m */; };
+		B36FF2831B02250B00EF18F2 /* PickerToOrganizerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = B36FF2821B02250B00EF18F2 /* PickerToOrganizerSegue.m */; };
 		B3846F1D1ADD058B0030DBDE /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3846F1C1ADD058B0030DBDE /* CoreMotion.framework */; };
 		B3846F391ADD0F1D0030DBDE /* RoomListFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846F381ADD0F1D0030DBDE /* RoomListFlowLayout.m */; };
 		B3846F3C1ADD43170030DBDE /* AudioWave.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846F3B1ADD43170030DBDE /* AudioWave.m */; };
@@ -262,6 +263,8 @@
 		B36941B01ACAF06800F3F95A /* pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic.jpg; sourceTree = "<group>"; };
 		B36DD6211AEE5928001FA8C5 /* RoomCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomCache.h; sourceTree = "<group>"; };
 		B36DD6221AEE5928001FA8C5 /* RoomCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomCache.m; sourceTree = "<group>"; };
+		B36FF2811B02250B00EF18F2 /* PickerToOrganizerSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerToOrganizerSegue.h; sourceTree = "<group>"; };
+		B36FF2821B02250B00EF18F2 /* PickerToOrganizerSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerToOrganizerSegue.m; sourceTree = "<group>"; };
 		B3846F1C1ADD058B0030DBDE /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		B3846F371ADD0F1D0030DBDE /* RoomListFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomListFlowLayout.h; sourceTree = "<group>"; };
 		B3846F381ADD0F1D0030DBDE /* RoomListFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomListFlowLayout.m; sourceTree = "<group>"; };
@@ -473,6 +476,7 @@
 		B3065A2D1AB9714400C10AD9 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				B36FF2801B0224FB00EF18F2 /* Segue */,
 				B341F0491AE1A25D001D448A /* Cell */,
 				B3BCCFFE1AA5E50D00261212 /* MediaPickerViewController.h */,
 				B3BCCFFF1AA5E50D00261212 /* MediaPickerViewController.m */,
@@ -677,6 +681,15 @@
 				B36DD6221AEE5928001FA8C5 /* RoomCache.m */,
 			);
 			name = Cache;
+			sourceTree = "<group>";
+		};
+		B36FF2801B0224FB00EF18F2 /* Segue */ = {
+			isa = PBXGroup;
+			children = (
+				B36FF2811B02250B00EF18F2 /* PickerToOrganizerSegue.h */,
+				B36FF2821B02250B00EF18F2 /* PickerToOrganizerSegue.m */,
+			);
+			name = Segue;
 			sourceTree = "<group>";
 		};
 		B3846F361ADD0F020030DBDE /* Layout */ = {
@@ -1187,6 +1200,7 @@
 				B3C2E5C61AD32A1B00868DA4 /* WaveBackground.m in Sources */,
 				B3065A3E1AB98B4900C10AD9 /* UserManager.m in Sources */,
 				73E7EBC31AE57CC8003579CD /* UIRoomTableViewCell.m in Sources */,
+				B36FF2831B02250B00EF18F2 /* PickerToOrganizerSegue.m in Sources */,
 				B30317FD1ABC2759005EF73D /* Page.m in Sources */,
 				73B20BEC1AA5FF0800A9C88F /* BaseHomeViewController.m in Sources */,
 				B3A8D1841ACEAD0A00B09C34 /* FriendManager.m in Sources */,

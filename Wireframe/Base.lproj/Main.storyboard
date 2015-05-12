@@ -449,19 +449,13 @@ your voice</string>
                                     <constraint firstAttribute="height" constant="1" id="hXL-r0-1xP"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.20000000298023224" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QfZ-OM-fiu">
+                            <view alpha="0.20000000298023224" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QfZ-OM-fiu">
                                 <rect key="frame" x="30" y="139" width="268" height="1"/>
                                 <color key="backgroundColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="XC4-Ub-ghO"/>
-                                </constraints>
                             </view>
-                            <view alpha="0.20000000298023224" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gtd-Zz-jgn">
+                            <view alpha="0.20000000298023224" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gtd-Zz-jgn">
                                 <rect key="frame" x="26" y="184" width="268" height="1"/>
                                 <color key="backgroundColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="XLg-1C-U7F"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1572,7 +1566,7 @@ your voice</string>
                                                     <rect key="frame" x="0.0" y="0.0" width="127" height="127"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picker-check" translatesAutoresizingMaskIntoConstraints="NO" id="HPj-HS-e15">
-                                                            <rect key="frame" x="47.5" y="47.5" width="32" height="32"/>
+                                                            <rect key="frame" x="47" y="47" width="32" height="32"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="32" id="bUY-0b-AqW"/>
                                                                 <constraint firstAttribute="width" constant="32" id="qSY-4a-WQM"/>
@@ -1603,83 +1597,6 @@ your voice</string>
                                             <constraint firstItem="Wqi-yN-UKW" firstAttribute="top" secondItem="IgU-wM-TqO" secondAttribute="topMargin" constant="-8" id="kS4-EW-Qin"/>
                                             <constraint firstItem="f5h-85-Mbb" firstAttribute="leading" secondItem="IgU-wM-TqO" secondAttribute="leading" id="xll-h9-nPO"/>
                                         </constraints>
-                                        <size key="customSize" width="127" height="127"/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="PVE-JD-ZVN">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="127" height="127"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="customSize" width="127" height="127"/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="11i-st-dtm">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="127" height="127"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="customSize" width="127" height="127"/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="PKv-5k-eb3">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="127" height="127"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="customSize" width="127" height="127"/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="UnO-yF-ckr">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="127" height="127"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="customSize" width="127" height="127"/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="JXN-YU-2yn">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="127" height="127"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="customSize" width="127" height="127"/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ujw-fL-BWT">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="127" height="127"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="customSize" width="127" height="127"/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0qd-Zs-6gs">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="127" height="127"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <size key="customSize" width="127" height="127"/>
                                     </collectionViewCell>
                                 </cells>
@@ -1720,8 +1637,8 @@ your voice</string>
                                     <action selector="openHelp:" destination="tUV-fc-U0L" eventType="touchUpInside" id="xkS-Ie-HXi"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sélectionnez des photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9a-wT-iaD">
-                                <rect key="frame" x="75" y="14" width="170" height="31"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sélectionnez des photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9a-wT-iaD">
+                                <rect key="frame" x="75" y="16" width="170" height="31"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="fXR-aM-zvP"/>
@@ -1750,7 +1667,7 @@ your voice</string>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="HyC-CS-MSr" kind="push" id="gGV-Z8-Jxd"/>
+                                    <segue destination="HyC-CS-MSr" kind="custom" identifier="ToOrganizer" customClass="PickerToOrganizerSegue" id="gGV-Z8-Jxd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1798,9 +1715,16 @@ your voice</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t52-lF-KvP" customClass="OrganizerWave">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t52-lF-KvP" customClass="WaveBackground">
                                 <rect key="frame" x="0.0" y="-20" width="320" height="588"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="openByDefault" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wgV-Ql-LzF" userLabel="Overlay">
+                                <rect key="frame" x="0.0" y="-20" width="320" height="588"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vap-cp-gaf">
                                 <rect key="frame" x="0.0" y="-20" width="320" height="588"/>
@@ -1916,12 +1840,16 @@ your voice</string>
                             <constraint firstAttribute="centerX" secondItem="MkZ-Ih-ni5" secondAttribute="centerX" id="Dlx-fX-Nsi"/>
                             <constraint firstItem="MkZ-Ih-ni5" firstAttribute="top" secondItem="CBU-73-A3R" secondAttribute="bottom" constant="14" id="EZm-SN-jK1"/>
                             <constraint firstItem="iWB-j8-lff" firstAttribute="top" secondItem="Vap-cp-gaf" secondAttribute="bottom" id="J5L-y2-cd8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wgV-Ql-LzF" secondAttribute="trailing" constant="-16" id="LxG-j5-M8R"/>
                             <constraint firstItem="iWB-j8-lff" firstAttribute="top" secondItem="t52-lF-KvP" secondAttribute="bottom" id="MSX-km-cEb"/>
                             <constraint firstItem="Vap-cp-gaf" firstAttribute="leading" secondItem="UkW-iJ-Az8" secondAttribute="leading" id="O01-IM-5HD"/>
+                            <constraint firstItem="iWB-j8-lff" firstAttribute="top" secondItem="wgV-Ql-LzF" secondAttribute="bottom" id="Rdr-Zg-ipS"/>
                             <constraint firstAttribute="centerX" secondItem="gLk-gP-88L" secondAttribute="centerX" id="VWR-OY-iiY"/>
                             <constraint firstItem="Vap-cp-gaf" firstAttribute="top" secondItem="CBU-73-A3R" secondAttribute="bottom" constant="-20" id="ceX-hk-in7"/>
                             <constraint firstAttribute="trailing" secondItem="Vap-cp-gaf" secondAttribute="trailing" id="cfv-bV-OhD"/>
                             <constraint firstItem="t52-lF-KvP" firstAttribute="leading" secondItem="UkW-iJ-Az8" secondAttribute="leadingMargin" constant="-16" id="iLe-fs-wGN"/>
+                            <constraint firstItem="wgV-Ql-LzF" firstAttribute="top" secondItem="CBU-73-A3R" secondAttribute="bottom" constant="-20" id="jP0-JA-mKV"/>
+                            <constraint firstItem="wgV-Ql-LzF" firstAttribute="leading" secondItem="UkW-iJ-Az8" secondAttribute="leadingMargin" constant="-16" id="kI4-xF-YJT"/>
                             <constraint firstItem="iWB-j8-lff" firstAttribute="top" secondItem="gLk-gP-88L" secondAttribute="bottom" constant="60" id="mqQ-bB-gt9"/>
                             <constraint firstItem="t52-lF-KvP" firstAttribute="top" secondItem="CBU-73-A3R" secondAttribute="bottom" constant="-20" id="omJ-uW-HTb"/>
                             <constraint firstItem="iWB-j8-lff" firstAttribute="top" secondItem="JpL-a8-uHt" secondAttribute="bottom" constant="60" id="yxT-OZ-mZT"/>
@@ -1931,6 +1859,7 @@ your voice</string>
                     <connections>
                         <outlet property="collectionView" destination="Vap-cp-gaf" id="mew-3S-Uci"/>
                         <outlet property="finishButton" destination="JpL-a8-uHt" id="3fj-sh-5tf"/>
+                        <outlet property="overlay" destination="wgV-Ql-LzF" id="ws4-M6-XbL"/>
                         <outlet property="replayButton" destination="gLk-gP-88L" id="SW5-aj-cwE"/>
                         <outlet property="wave" destination="t52-lF-KvP" id="fS8-qC-ftl"/>
                     </connections>
@@ -2545,8 +2474,8 @@ votre histoire</string>
                                     <outlet property="delegate" destination="UYI-ME-qVa" id="YN3-YA-MSp"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZo-X1-6V8">
-                                <rect key="frame" x="102" y="507" width="116" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZo-X1-6V8">
+                                <rect key="frame" x="102" y="482" width="116" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="mld-Rl-fqN"/>

@@ -73,7 +73,6 @@ float w = 0;//starting x value.
     
     CGFloat fractionOfSecond = interval - floor(interval);
     
-    CGFloat yOffset = self.bounds.size.height * sin(fractionOfSecond * M_PI * 2.0);
     CGFloat xOffset = self.bounds.size.width * fractionOfSecond * M_PI * 2.0;
     
     NSLog(@"%f / %f for %f",xOffset, self.bounds.size.width, fractionOfSecond);

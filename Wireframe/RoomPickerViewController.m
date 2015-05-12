@@ -29,6 +29,7 @@
     RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
     [manager fetchRoomsForUser:[[UserSession sharedSession] user]];
     
+    self.rooms = [NSArray array];
     self.saver = [StoryWIPSaver sharedSaver];
     self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
     
@@ -106,9 +107,16 @@
 #pragma mark - RoomFetcherDelegate
 
 - (void)roomManager:(RoomManager *)manager successfullyFetchedRooms:(NSArray *)rooms {
+    
+    BOOL first = self.rooms.count == 0;
+    
     self.rooms = rooms;
     
     [self.roomsTableView reloadData];
+    
+    if (first) {
+        [self animate];
+    }
 }
 
 - (void)roomManager:(RoomManager *)manager failedToFetchRooms:(NSError *)error {
@@ -244,6 +252,23 @@
     NSIndexPath *pathForCenterCell = [self.roomsTableView indexPathForRowAtPoint:CGPointMake(CGRectGetMidX(self.roomsTableView.bounds), CGRectGetMidY(self.roomsTableView.bounds) - 100)];
     [self.roomsTableView scrollToRowAtIndexPath:pathForCenterCell atScrollPosition:UITableViewScrollPositionTop animated:YES];
     
+}
+
+- (void)animate
+{
+    [[self.roomsTableView visibleCells] enumerateObjectsUsingBlock:^(UITableViewCell *cell, NSUInteger idx, BOOL *stop) {
+        
+        int endY = cell.frame.origin.y;
+        float delay = idx * 0.1;
+        
+        [cell setFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y + 150, cell.frame.size.width, cell.frame.size.height)];
+        [cell setAlpha:0];
+        
+        [UIView animateWithDuration:.5f delay:delay  options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [cell setFrame:CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height)];
+            [cell setAlpha:1];
+        } completion:nil];
+    }];
 }
 
 

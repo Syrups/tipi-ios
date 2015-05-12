@@ -67,7 +67,7 @@
 }
 
 - (void)fetchUserWithId:(NSInteger)userId success:(void (^)(User *))success failure:(void (^)(NSError *))failure {
-    NSString* path = [NSString stringWithFormat:@"/users/%ld", userId];
+    NSString* path = [NSString stringWithFormat:@"/users/%ld", (long)userId];
     NSURLRequest* request = [UserController getBaseRequestFor:path authenticated:YES method:@"GET"];
     
     AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -178,6 +178,10 @@
     }];
     
     [op start];
+}
+
+- (void)fetchFriendsRequestsOfUser:(User *)user success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
+    // TODO
 }
 
 @end

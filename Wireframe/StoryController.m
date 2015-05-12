@@ -16,7 +16,7 @@
     NSString* path = [NSString stringWithFormat:@"/users/%@/stories", owner.id];
     NSMutableURLRequest* request = [StoryController getBaseRequestFor:path authenticated:YES method:@"POST"].mutableCopy;
     
-    [request setHTTPBody:[[NSString stringWithFormat:@"{ \"story\": { \"title\": \"%@\", \"page_count\": \"%ld\", \"tag\": \"%@\", \"rooms\": %@ } }", name, medias.count, tag, [self jsonArrayForRooms:rooms]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:[[NSString stringWithFormat:@"{ \"story\": { \"title\": \"%@\", \"page_count\": \"%ld\", \"tag\": \"%@\", \"rooms\": %@ } }", name, (unsigned long)medias.count, tag, [self jsonArrayForRooms:rooms]] dataUsingEncoding:NSUTF8StringEncoding]];
     
     
     
@@ -77,7 +77,7 @@
 }
 
 - (void)fetchStoryWithId:(NSUInteger)roomId success:(void (^)(Story *))success failure:(void (^)(NSError *))failure {
-    NSString* path = [NSString stringWithFormat:@"/stories/%ld", roomId];
+    NSString* path = [NSString stringWithFormat:@"/stories/%ld", (unsigned long)roomId];
     NSURLRequest* request = [StoryController getBaseRequestFor:path authenticated:YES method:@"GET"];
     
     AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];

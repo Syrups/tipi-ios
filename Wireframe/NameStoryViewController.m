@@ -44,7 +44,7 @@
 - (NSArray *)autoCompleteTextField:(MLPAutoCompleteTextField *)textField possibleCompletionsForString:(NSString *)string {
     NSMutableArray* possibles = [NSMutableArray array];
     for (NSString* tag in self.latestTags) {
-        if (tag != [NSNull null] && [tag containsString:string]) {
+        if (tag != (NSString*)[NSNull null] && [tag containsString:string]) {
             [possibles addObject:tag];
         }
     }

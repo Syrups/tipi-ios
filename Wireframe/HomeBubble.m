@@ -18,8 +18,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        CGFloat midX = CGRectGetMidX(self.frame);
-        CGFloat midY = CGRectGetMidY(self.frame);
+//        CGFloat midX = CGRectGetMidX(self.frame);
+//        CGFloat midY = CGRectGetMidY(self.frame);
         
 //        UIImageView* wave1 = [[UIImageView alloc] initWithFrame:CGRectMake(midX - 150, midY - 150, 100, 50)];
 //        [PKAIDecoder builAnimatedImageIn:wave1 fromFile:@"onde_bleu_clair"];
