@@ -17,9 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.mTableView.delegate = self;
-    self.mTableView.dataSource = self;
-    // Do any additional setup after loading the view.
+    
+    NSLog(@"%@", self.room);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +39,7 @@
  
     UILabel *name = (UILabel*)[cell.contentView viewWithTag:10];
     name.text = user.username;
+
     
     return cell;
 }

@@ -19,5 +19,6 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* signInButtonVerticalSpace;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* signInButtonWidth;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* signInButtonHeight;
+@property (strong, nonatomic) IBOutlet UIView* continousWaveView;
 
 @end

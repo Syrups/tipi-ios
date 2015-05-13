@@ -10,7 +10,9 @@
 
 @interface AbortModalViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIView* popin;
 @property (strong, nonatomic) IBOutlet UIButton* saveButton;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* popinVerticalCenterConstraint;
 
 @property (weak, nonatomic) UIViewController* currentParentController;
 

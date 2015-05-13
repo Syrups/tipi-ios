@@ -12,6 +12,10 @@
 #import "StoryMediaRecorder.h"
 #import "OrganizerWave.h"
 
+#define CELL_SIZE 190
+#define INACTIVE_CELL_OPACITY 0.3f
+#define ACTIVE_CELL_ROTATION 0.05f
+
 @interface OrganizeStoryViewController : UIViewController <LXReorderableCollectionViewDataSource, UICollectionViewDelegate, LXReorderableCollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) StoryWIPSaver* saver;

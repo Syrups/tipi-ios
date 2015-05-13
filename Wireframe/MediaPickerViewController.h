@@ -13,6 +13,7 @@
 
 @interface MediaPickerViewController : ShowCaseableViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, MediaLibraryDelegate>
 
+@property (strong, nonatomic) NSMutableArray* selectedIndexes;
 @property (strong, nonatomic) MediaLibrary* library;
 @property (strong, nonatomic) StoryWIPSaver* saver;
 @property (strong, nonatomic) NSMutableArray* medias;

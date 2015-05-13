@@ -13,18 +13,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    self.saveButton.layer.borderColor = [UIColor blackColor].CGColor;
-    self.saveButton.layer.borderWidth = 1;
+    self.popinVerticalCenterConstraint.constant = self.view.frame.size.height;
+    [self.view layoutIfNeeded];
+    
+    [UIView animateKeyframesWithDuration:.5f delay:0 options:0 animations:^{
+        [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.6f animations:^{
+            self.popinVerticalCenterConstraint.constant = -30;
+            [self.view layoutIfNeeded];
+        }];
+        
+        [UIView addKeyframeWithRelativeStartTime:.6f relativeDuration:.4f animations:^{
+            self.popinVerticalCenterConstraint.constant = 0;
+            [self.view layoutIfNeeded];
+        }];
+    } completion:nil];
 }
 
 - (IBAction)cancel:(id)sender {
-    [UIView animateWithDuration:0.2f animations:^{
-        self.view.alpha = 0;
+    
+    [UIView animateKeyframesWithDuration:.5f delay:0 options:0 animations:^{
+        [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.5f animations:^{
+            self.popinVerticalCenterConstraint.constant = 30;
+            [self.view layoutIfNeeded];
+        }];
+        [UIView addKeyframeWithRelativeStartTime:.5f relativeDuration:.5f animations:^{
+            self.popinVerticalCenterConstraint.constant = -self.view.frame.size.height;
+            [self.view layoutIfNeeded];
+        }];
     } completion:^(BOOL finished) {
-        [self.view removeFromSuperview];
-        [self removeFromParentViewController];
+        [UIView animateWithDuration:0.2f animations:^{
+            self.view.alpha = 0;
+        } completion:^(BOOL finished) {
+            [self.view removeFromSuperview];
+            [self removeFromParentViewController];
+        }];
     }];
 }
 
@@ -33,6 +56,8 @@
     UINavigationController* previous = (UINavigationController*)self.parentViewController.navigationController;
     [self removeFromParentViewController];
     [previous popToRootViewControllerAnimated:YES];
+    
+    
 }
 
 - (IBAction)save:(id)sender {

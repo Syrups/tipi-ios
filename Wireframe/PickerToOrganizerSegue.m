@@ -15,19 +15,32 @@
 - (void)perform {
     MediaPickerViewController* source = self.sourceViewController;
     OrganizeStoryViewController* dest = self.destinationViewController;
+    CGFloat midY = source.view.frame.size.height/2 - CELL_SIZE/2; // CELL_SIZE defined in OrganizeStoryViewController.h
+    CGFloat origX = source.view.frame.size.width;
     
-    NSUInteger count = source.mediaCollectionView.visibleCells.count;
+    __block NSUInteger i = 0;
     
     [source.mediaCollectionView.visibleCells enumerateObjectsUsingBlock:^(UICollectionViewCell* cell, NSUInteger idx, BOOL *stop) {
+
         
-        [UIView animateWithDuration:.4f delay:(count - idx)*.03f options:UIViewAnimationOptionCurveEaseIn animations:^{
-            cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y + 500, cell.frame.size.width, cell.frame.size.height);
+        NSIndexPath* indexPath = [source.mediaCollectionView indexPathForCell:cell];
+        
+        [UIView animateWithDuration:.4f animations:^{
+            [cell.contentView viewWithTag:30].alpha = 0; // checkmark
+            
+            if (indexPath && ![source.selectedIndexes containsObject:indexPath]) {
+                cell.alpha = 0;
+            } else {
+                cell.frame = CGRectMake(origX + i * CELL_SIZE, midY, CELL_SIZE, CELL_SIZE);
+
+                ++i;
+            }
         } completion:^(BOOL finished) {
             if (idx == source.mediaCollectionView.visibleCells.count-1) {
                 [source.navigationController pushViewController:dest animated:NO];
-                [dest animateAppearance];
             }
         }];
+        
     }];
 }
 

@@ -32,7 +32,7 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    CGPathRef path = self.openByDefault ? [self pathForLayer] : [self pathForLayerClosed];
+    CGPathRef path = self.openByDefault ? [self pathForLayerMaxAmplitude:NO] : [self pathForLayerClosed];
     CAShapeLayer* layer = [CAShapeLayer layer];
     layer.path = CGPathCreateCopy(path);
 //    layer.fillColor = RgbColorAlpha(43, 75, 122, 0).CGColor;
@@ -59,34 +59,46 @@
 }
 
 - (void)appear {
-    CABasicAnimation* morph = [CABasicAnimation animationWithKeyPath:@"path"];
-    morph.duration = 0.2f;
-    morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-    
+//    CABasicAnimation* morph = [CABasicAnimation animationWithKeyPath:@"path"];
+//    morph.duration = 0.3f;
+//    morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+//    
     CGPathRef from = shapeLayer.path;
-    CGPathRef to = [self pathForLayer];
+    CGPathRef mid = [self pathForLayerMaxAmplitude:YES];
+    CGPathRef to = [self pathForLayerMaxAmplitude:NO];
+//
+//    morph.fromValue = (__bridge id)(from);
+//    morph.toValue = (__bridge id)(to);
+//    
+//    [shapeLayer addAnimation:morph forKey:@"appearing"];
+//    
+//    [shapeLayer.modelLayer setPath:to];
     
-    morph.fromValue = (__bridge id)(from);
-    morph.toValue = (__bridge id)(to);
+    CAKeyframeAnimation* bounce = [CAKeyframeAnimation animationWithKeyPath:@"path"];
+    bounce.duration = 0.5f;
+    bounce.keyTimes = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0], [NSNumber numberWithFloat:.6f], [NSNumber numberWithFloat:1], nil];
+    bounce.values = [NSArray arrayWithObjects:(__bridge id)(from), (__bridge id)(mid), (__bridge id)(to), nil];
     
-    [shapeLayer addAnimation:morph forKey:@"appearing"];
-    
+    [shapeLayer addAnimation:bounce forKey:@"appearing"];
     [shapeLayer.modelLayer setPath:to];
 }
 
 
-- (CGPathRef)pathForLayer {
+- (CGPathRef)pathForLayerMaxAmplitude:(BOOL)max {
     UIBezierPath* path = [[UIBezierPath alloc] init];
     
-    CGPoint start = CGPointMake(0, 180);
-    CGPoint middle = CGPointMake(CGRectGetMidX(self.frame), 280);
-    CGPoint end = CGPointMake(CGRectGetWidth(self.frame), 180);
+    CGFloat y = max ? 210 : 180;
+    CGFloat amp = max ? 320 : 280;
+    
+    CGPoint start = CGPointMake(0, y);
+    CGPoint middle = CGPointMake(CGRectGetMidX(self.frame), amp);
+    CGPoint end = CGPointMake(CGRectGetWidth(self.frame), y);
     
     // control points
     CGPoint c1 = CGPointMake(CGRectGetMidX(self.frame)*.75f, 220);
-    CGPoint c2 = CGPointMake(CGRectGetMidX(self.frame)*.5f, 280);
+    CGPoint c2 = CGPointMake(CGRectGetMidX(self.frame)*.5f, amp);
     
-    CGPoint c3 = CGPointMake(CGRectGetMidX(self.frame) + CGRectGetMidX(self.frame)*.5f, 280);
+    CGPoint c3 = CGPointMake(CGRectGetMidX(self.frame) + CGRectGetMidX(self.frame)*.5f, amp);
     CGPoint c4 = CGPointMake(CGRectGetMidX(self.frame) + CGRectGetMidX(self.frame)*.25f, 220);
     
     [path moveToPoint:start];
