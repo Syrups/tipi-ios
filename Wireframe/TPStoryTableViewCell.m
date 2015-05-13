@@ -29,23 +29,17 @@
 
 - (void)setEditMode:(BOOL)editMode{
     
-    UILabel* label = (UILabel*)[self.contentView viewWithTag:10];
-    UIButton* delete = (UIButton*)[self.contentView viewWithTag:30];
-    
     [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        label.transform = !editMode? CGAffineTransformIdentity : CGAffineTransformMakeTranslation(100, 0);
-        label.alpha = !editMode?1 : .3f;
-        delete.alpha = !editMode?0 : 1;
+        self.titleLabel.transform = !editMode? CGAffineTransformIdentity : CGAffineTransformMakeTranslation(100, 0);
+        self.titleLabel.alpha = !editMode?1 : .3f;
+        self.deleteButton.alpha = !editMode?0 : 1;
     } completion:^(BOOL finished) {
         _editMode = editMode;
     }];
 }
 
 - (void)swipeGestureRecognizer:(UIPanGestureRecognizer*)gestureRecognizer {
-    
-    
-    UILabel* label = (UILabel*)[self.contentView viewWithTag:10];
-    UIButton* delete = (UIButton*)[self.contentView viewWithTag:30];
+
     
     CGPoint translation = [gestureRecognizer translationInView:self];
     CGPoint velocity = [gestureRecognizer velocityInView:self];
@@ -62,24 +56,24 @@
     {
         case UIGestureRecognizerStateBegan :{
             [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                label.transform = CGAffineTransformIdentity;
-                label.alpha = 1;
-                delete.alpha = 0.5;
+                self.titleLabel.transform = CGAffineTransformIdentity;
+                self.titleLabel.alpha = 1;
+                self.deleteButton.alpha = 0.5;
             } completion:nil];
             //[self setEditMode:NO];
         }
             break;
         case UIGestureRecognizerStateChanged :{
             
-            if ((toRight && label.transform.tx < endX)){
-                label.transform = CGAffineTransformMakeTranslation(translation.x, 0);
-            }else if(toLeft && (label.transform.tx > self.baseX)){
-                label.transform = CGAffineTransformMakeTranslation(translation.x, 0);
+            if ((toRight && self.titleLabel.transform.tx < endX)){
+                self.titleLabel.transform = CGAffineTransformMakeTranslation(translation.x, 0);
+            }else if(toLeft && (self.titleLabel.transform.tx > self.baseX)){
+                self.titleLabel.transform = CGAffineTransformMakeTranslation(translation.x, 0);
             }
         }
             break;
         case UIGestureRecognizerStateEnded :
-            [self setEditMode:(label.transform.tx > midEndX)];
+            [self setEditMode:(self.titleLabel.transform.tx > midEndX)];
             break;
             
         default :

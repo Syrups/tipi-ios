@@ -1072,7 +1072,7 @@ your voice</string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pRv-Xl-RLc" id="4HD-IQ-vz2">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Journée finale et présentations" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1K-xM-13C">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Journée finale et présentations" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1K-xM-13C" userLabel="Label">
                                                     <rect key="frame" x="67" y="62" width="186" height="46"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="186" id="8Fi-I1-FAZ"/>
@@ -1081,7 +1081,7 @@ your voice</string>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8z-hE-wUw">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8z-hE-wUw" userLabel="Date">
                                                     <rect key="frame" x="63" y="123" width="186" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="186" id="ISW-Vg-8a6"/>
@@ -1090,7 +1090,7 @@ your voice</string>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" alpha="0.0" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="InJ-cX-NP5">
+                                                <button opaque="NO" alpha="0.0" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="InJ-cX-NP5" userLabel="DeleteButton">
                                                     <rect key="frame" x="115" y="44" width="83" height="82"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="82" id="KGc-UT-Gzy"/>
@@ -1099,6 +1099,9 @@ your voice</string>
                                                     <state key="normal" image="btn-delete">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="deleteStory:" destination="1J0-vr-FcQ" eventType="touchUpInside" id="NPP-py-gyI"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1112,6 +1115,9 @@ your voice</string>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="dateLabel" destination="g8z-hE-wUw" id="ryF-E4-DuS"/>
+                                            <outlet property="deleteButton" destination="InJ-cX-NP5" id="r2K-oi-wor"/>
+                                            <outlet property="titleLabel" destination="F1K-xM-13C" id="lwd-8B-WhM"/>
                                             <segue destination="ygu-vl-5js" kind="modal" identifier="showStory" id="658-ec-q8g"/>
                                         </connections>
                                     </tableViewCell>

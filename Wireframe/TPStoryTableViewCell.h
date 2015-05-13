@@ -11,5 +11,8 @@
 @interface TPStoryTableViewCell : UITableViewCell<UIGestureRecognizerDelegate>
 @property int baseX;
 @property (nonatomic)BOOL editMode;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
 @end

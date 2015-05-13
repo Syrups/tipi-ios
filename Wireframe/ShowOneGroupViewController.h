@@ -21,6 +21,8 @@
 @property (strong, nonatomic) User* filterUser;
 @property (strong, nonatomic) NSString* filterTag;
 
+
 - (void)applyFilters;
+- (IBAction)deleteStory:(id)sender;
 
 @end

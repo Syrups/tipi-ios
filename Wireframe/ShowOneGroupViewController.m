@@ -94,6 +94,9 @@
 
 #pragma mark - Filters
 
+- (IBAction)deleteStory:(id)sender {
+}
+
 - (void)applyFilters {
     StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
     [manager fetchStoriesForRoomId:[self.room.id integerValue] filteredByTag:self.filterTag orUser:self.filterUser];
