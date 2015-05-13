@@ -194,6 +194,64 @@
 }
 
 
+#pragma mark - Transition Beetween Rooms And Stories
+
++ (UIBezierPath *) pathForTransitionBeetweenRoomsAndStories: (CGRect) rect segueBack:(BOOL) back withFinalPath:(BOOL) finalPath{
+    
+    if(!back){
+        return [SHPathLibrary pathForTransitionToStoriesFromRooms:rect withFinalPath:finalPath];
+    }else{
+        return [SHPathLibrary pathForTransitionToRoomsFromStories:rect withFinalPath:finalPath];
+    }
+}
+
++ (UIBezierPath *) pathForTransitionToStoriesFromRooms: (CGRect) rect withFinalPath:(BOOL) finalPath{
+    
+    float width = CGRectGetWidth(rect) * 1.5;
+    float height = CGRectGetHeight(rect);
+    float midY = CGRectGetMidY(rect);
+    
+    float edgesX = finalPath ? 0 : width;
+    
+    int bump = finalPath ? -150 : edgesX ;
+    
+    UIBezierPath* path = [[UIBezierPath alloc] init];
+    [path moveToPoint:CGPointMake(width, 0)];
+    //
+    [path addLineToPoint:CGPointMake(edgesX, 0)];
+    [path addQuadCurveToPoint:CGPointMake(edgesX, height) controlPoint:CGPointMake(bump, midY)];
+    [path addLineToPoint:CGPointMake(edgesX, height)];
+    //
+    [path addLineToPoint:CGPointMake(width, height)];
+    [path addLineToPoint:CGPointMake(width, 0)];
+    
+    return path;
+}
+
++ (UIBezierPath *) pathForTransitionToRoomsFromStories: (CGRect) rect withFinalPath:(BOOL) finalPath{
+    
+    float width = CGRectGetWidth(rect) * 1.5;
+    float height = CGRectGetHeight(rect);
+    float midY = CGRectGetMidY(rect);
+    
+    float edgesX = finalPath ? width : 0 ;
+    
+    int bump = finalPath ? edgesX : edgesX + 150;
+    
+    UIBezierPath* path = [[UIBezierPath alloc] init];
+    [path moveToPoint:CGPointMake(0, 0)];
+    //
+    [path addLineToPoint:CGPointMake(edgesX, 0)];
+    [path addQuadCurveToPoint:CGPointMake(edgesX, height) controlPoint:CGPointMake(bump, midY)];
+    [path addLineToPoint:CGPointMake(edgesX, height)];
+    //
+    [path addLineToPoint:CGPointMake(0, height)];
+    [path addLineToPoint:CGPointMake(0, 0)];
+    
+    return path;
+}
+
+
 
 #pragma mark - Transition Beetween Stories And Admin
 
@@ -214,6 +272,7 @@
     float midX = CGRectGetMidX(rect);
     
     float height = finalPath ? CGRectGetHeight(rect) : 0;
+    height -= 150;
     
     UIBezierPath* path = [[UIBezierPath alloc] init];
     [path moveToPoint:CGPointMake(0, 0)];

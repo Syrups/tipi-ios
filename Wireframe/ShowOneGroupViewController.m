@@ -12,6 +12,8 @@
 #import "AdminRoomViewController.h"
 #import "SHPathLibrary.h"
 #import "FilterViewController.h"
+#import "WaveToBottomTransitionAnimator.h"
+#import "TPStoryTableViewCell.h"
 
 @interface ShowOneGroupViewController ()
 
@@ -46,9 +48,12 @@
         [self.roomNameButton addTarget:self action:@selector(didTapAdminButton:) forControlEvents:UIControlEventTouchUpInside];
     }
     
-    UISwipeGestureRecognizer* swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeCell:)];
-    swipe.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.mTableView addGestureRecognizer:swipe];
+    //UISwipeGestureRecognizer* swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeCell:)];
+    //swipe.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    //UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeCell:)];
+    //[self addGestureRecognizer:panGesture];
+    //[self.mTableView addGestureRecognizer:panGesture];
 }
 
 #pragma mark - Actions
@@ -87,48 +92,33 @@
     }];
 }
 
-- (void)didSwipeCell:(UISwipeGestureRecognizer*)swipe {
-    CGPoint location = [swipe locationInView:self.mTableView];
-    NSIndexPath* indexPath = [self.mTableView indexPathForRowAtPoint:location];
-    
-    if (indexPath) {
-        UITableViewCell* cell = [self.mTableView cellForRowAtIndexPath:indexPath];
-        UILabel* label = (UILabel*)[cell.contentView viewWithTag:10];
-        UIButton* delete = (UIButton*)[cell.contentView viewWithTag:30];
-        
-        if (delete.alpha == 0) {
-            [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                label.transform = CGAffineTransformMakeTranslation(100, 0);
-                label.alpha = .3f;
-                delete.alpha = 1;
-            } completion:nil];
-        } else {
-            [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                label.transform = CGAffineTransformIdentity;
-                label.alpha = 1;
-                delete.alpha = 0;
-            } completion:nil];
-        }
-    }
-}
-
 #pragma mark - Filters
+
+- (IBAction)deleteStory:(id)sender {
+}
 
 - (void)applyFilters {
     StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
     [manager fetchStoriesForRoomId:[self.room.id integerValue] filteredByTag:self.filterTag orUser:self.filterUser];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    for (TPStoryTableViewCell *cell in self.mTableView.visibleCells) {
+        [cell setEditMode:false];
+    }
+}
+
 #pragma mark - TableView
 
 
-- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (TPStoryTableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *cellIdentifier = @"cellStory";
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    TPStoryTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        cell = [[TPStoryTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
+    
     
     Story* story = [self.mStories objectAtIndex:indexPath.row];
     
@@ -149,14 +139,6 @@
     return self.mStories.count;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    /*self.mShowOneGroupViewController =
-    [[ShowOneGroupViewController alloc] initWithNibName:@"ShowOneGroupViewController"
-                                                 bundle:nil];
-    [self presentViewController:self.mShowOneGroupViewController animated:YES completion:nil];*/
-}
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showStory"]) {
@@ -171,12 +153,29 @@
     } else if ([segue.identifier isEqualToString:@"ToFilters"]) {
         ((FilterViewController*)segue.destinationViewController).room = self.room;
     }
+    
+    if([segue.identifier isEqualToString:@"showFilters"]) {
+       
+        FilterViewController* filterViewController = segue.destinationViewController;
+        filterViewController.room = self.room;
+        filterViewController.transitioningDelegate = self;
+    }
 }
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
+    return [[WaveToBottomTransitionAnimator alloc]init];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
+    return [[WaveToBottomTransitionAnimator alloc]init];
+}
+
 
 - (void)storyManager:(StoryManager *)manager successfullyFetchedStories:(NSArray *)stories{
     
     self.mStories = stories;
     [self.mTableView reloadData];
+    [self animate];
 }
 
 -(void)storyManager:(StoryManager *)manager failedToFetchStories:(NSError *)error{
@@ -186,6 +185,26 @@
 -(IBAction)prepareForGoBackToOneGroup:(UIStoryboardSegue *)segue {
     
 }
+
+
+- (void)animate
+{
+    [[self.mTableView visibleCells] enumerateObjectsUsingBlock:^(UITableViewCell *cell, NSUInteger idx, BOOL *stop) {
+        
+        int endY = cell.frame.origin.y;
+        float delay = idx * 0.1;
+        
+        [cell setFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y + 150, cell.frame.size.width, cell.frame.size.height)];
+        [cell setAlpha:0];
+        
+        [UIView animateWithDuration:.5f delay:delay  options:UIViewAnimationOptionCurveEaseOut animations:^{
+            [cell setFrame:CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height)];
+            [cell setAlpha:1];
+        } completion:nil];
+    }];
+}
+
+
 
 
 /*

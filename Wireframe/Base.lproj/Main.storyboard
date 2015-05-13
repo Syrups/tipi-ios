@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Lcv-xj-Ztq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Lcv-xj-Ztq">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="GTWalsheim Bold.otf">
+            <string>GTWalsheim-Bold</string>
             <string>GTWalsheim-Bold</string>
             <string>GTWalsheim-Bold</string>
             <string>GTWalsheim-Bold</string>
@@ -1087,12 +1088,12 @@ avec votre voix</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellStory" id="pRv-Xl-RLc">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellStory" id="pRv-Xl-RLc" customClass="TPStoryTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pRv-Xl-RLc" id="4HD-IQ-vz2">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Journée finale et présentations" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1K-xM-13C">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Journée finale et présentations" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1K-xM-13C" userLabel="Label">
                                                     <rect key="frame" x="67" y="62" width="186" height="46"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="186" id="8Fi-I1-FAZ"/>
@@ -1101,7 +1102,7 @@ avec votre voix</string>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8z-hE-wUw">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8z-hE-wUw" userLabel="Date">
                                                     <rect key="frame" x="63" y="123" width="186" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="186" id="ISW-Vg-8a6"/>
@@ -1110,7 +1111,7 @@ avec votre voix</string>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" alpha="0.0" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="InJ-cX-NP5">
+                                                <button opaque="NO" alpha="0.0" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="InJ-cX-NP5" userLabel="DeleteButton">
                                                     <rect key="frame" x="115" y="44" width="83" height="82"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="82" id="KGc-UT-Gzy"/>
@@ -1119,6 +1120,9 @@ avec votre voix</string>
                                                     <state key="normal" image="btn-delete">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="deleteStory:" destination="1J0-vr-FcQ" eventType="touchUpInside" id="NPP-py-gyI"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1132,6 +1136,9 @@ avec votre voix</string>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="dateLabel" destination="g8z-hE-wUw" id="ryF-E4-DuS"/>
+                                            <outlet property="deleteButton" destination="InJ-cX-NP5" id="r2K-oi-wor"/>
+                                            <outlet property="titleLabel" destination="F1K-xM-13C" id="lwd-8B-WhM"/>
                                             <segue destination="ygu-vl-5js" kind="modal" identifier="showStory" id="658-ec-q8g"/>
                                         </connections>
                                     </tableViewCell>
@@ -1171,7 +1178,7 @@ avec votre voix</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Sss-W5-0nG" kind="push" identifier="ToFilters" id="hAe-Mi-WQQ"/>
+                                    <segue destination="Sss-W5-0nG" kind="modal" identifier="showFilters" modalPresentationStyle="currentContext" id="hAe-Mi-WQQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2499,8 +2506,19 @@ votre histoire</string>
                                     <outlet property="delegate" destination="UYI-ME-qVa" id="YN3-YA-MSp"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZo-X1-6V8">
-                                <rect key="frame" x="102" y="482" width="116" height="44"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="E N V O Y E R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5We-RD-KQM">
+                                <rect key="frame" x="62" y="28" width="195" height="52"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="195" id="gkT-Pj-NWX"/>
+                                    <constraint firstAttribute="height" constant="52" id="q9j-8J-Kkn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Bold" family="GTWalsheim" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZo-X1-6V8">
+                                <rect key="frame" x="103" y="482" width="116" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="mld-Rl-fqN"/>

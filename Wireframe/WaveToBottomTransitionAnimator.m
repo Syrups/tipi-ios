@@ -55,14 +55,14 @@
     maskLayerAnimation.duration = [self transitionDuration:transitionContext];
     maskLayerAnimation.delegate = self;
     
-    //[maskLayerAnimation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
-    [maskLayerAnimation setTimingFunction:[CAMediaTimingFunction functionWithControlPoints:.34 :.01 :.69 :1.37]];
+    [maskLayerAnimation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+    //[maskLayerAnimation setTimingFunction:[CAMediaTimingFunction functionWithControlPoints:.34 :.01 :.69 :1.37]];
     
     [maskLayer addAnimation:maskLayerAnimation forKey:@"growing"];
 }
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
     [self.transitionContext completeTransition:![self.transitionContext transitionWasCancelled]];
-    [self.transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey].view.layer.mask = nil;
+   //[self.transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey].view.layer.mask = nil;
 }
 
 -(NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext{

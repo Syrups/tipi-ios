@@ -20,9 +20,9 @@
 - (void)awakeFromNib{
     [super awakeFromNib];
     
-    UIPanGestureRecognizer * recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panned:)];
+    //UIPanGestureRecognizer * recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panned:)];
     //[recognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
-    [self.navigationController.view addGestureRecognizer:recognizer];
+    //[self.navigationController.view addGestureRecognizer:recognizer];
 }
 
 
