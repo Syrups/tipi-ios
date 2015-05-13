@@ -168,6 +168,8 @@
         
         ReadModeContainerViewController* reveal = segue.destinationViewController;
         reveal.storyId = selectedStory;
+    } else if ([segue.identifier isEqualToString:@"ToFilters"]) {
+        ((FilterViewController*)segue.destinationViewController).room = self.room;
     }
 }
 

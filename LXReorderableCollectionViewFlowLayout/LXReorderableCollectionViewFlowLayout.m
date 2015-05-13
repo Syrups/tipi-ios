@@ -330,9 +330,11 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
             
             [UIView animateWithDuration:0.2f animations:^{
                 self.overlay.alpha = 0.2f;
+                
                 highlightedImageView.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(0));
                 
                 imageView.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(0));
+                imageView.layer.zPosition = 100;
             }];
             
             

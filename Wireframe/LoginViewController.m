@@ -14,7 +14,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [[UserSession sharedSession] load];
+    self.continousWaveView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"wave-pattern.png"]];
+    
+    [UIView animateWithDuration:30 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+//        self.continousWaveView.transform = CGAffineTransformMakeTranslation(-self.continousWaveView.frame.size.width, 0);
+    } completion:nil];
     
     if ([[UserSession sharedSession] isAuthenticated]) {
         UIViewController* home = [self.storyboard instantiateViewControllerWithIdentifier:@"Home"];

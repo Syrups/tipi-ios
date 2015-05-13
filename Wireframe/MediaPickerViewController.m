@@ -15,7 +15,6 @@
 static float const fadePercentage = 0.2;
 
 @implementation MediaPickerViewController {
-    NSMutableArray* selectedIndexes;
     NSUInteger currentOffset;
     BOOL loading;
     NSMutableArray* unorderedMedias;
@@ -25,7 +24,7 @@ static float const fadePercentage = 0.2;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    selectedIndexes = [NSMutableArray array];
+    self.selectedIndexes = [NSMutableArray array];
     self.saver = [StoryWIPSaver sharedSaver];
     
     self.activityIndicator.hidden = NO;
@@ -122,11 +121,12 @@ static float const fadePercentage = 0.2;
     
     [image setImage:[media objectForKey:@"image"]];
     
+    CGFloat initialDelay = .35f;
     int endY = cell.frame.origin.y;
     
     if (cell.tag == 0) {
         cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y + 500, cell.frame.size.width, cell.frame.size.height);
-        [UIView animateWithDuration:0.4f delay:indexPath.row*0.03f options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [UIView animateWithDuration:0.4f delay:initialDelay + indexPath.row*0.05f options:UIViewAnimationOptionCurveEaseOut animations:^{
             cell.frame = CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height);
 
         } completion:nil];
@@ -179,13 +179,13 @@ static float const fadePercentage = 0.2;
     UIView* check = [cell.contentView viewWithTag:30];
     NSDictionary* media = [self.medias objectAtIndex:indexPath.row];
     
-    if (![selectedIndexes containsObject:indexPath]) {
+    if (![self.selectedIndexes containsObject:indexPath]) {
         ((UIView*)check.subviews[0]).transform = CGAffineTransformMakeScale(0, 0);
         [UIView animateWithDuration:0.3f animations:^{
             check.alpha = 1;
             ((UIView*)check.subviews[0]).transform = CGAffineTransformMakeScale(1, 1);
         }];
-        [selectedIndexes addObject:indexPath];
+        [self.selectedIndexes addObject:indexPath];
         [self.saver.medias addObject:[self.medias objectAtIndex:indexPath.row]];
         
         [self.wave updateImage:[media objectForKey:@"image"]];
@@ -193,11 +193,11 @@ static float const fadePercentage = 0.2;
         [UIView animateWithDuration:0.3f animations:^{
             check.alpha = 0;
         }];
-        [selectedIndexes removeObject:indexPath];
+        [self.selectedIndexes removeObject:indexPath];
         [self.saver.medias removeObject:[self.medias objectAtIndex:indexPath.row]];
     }
     
-    if (selectedIndexes.count > 0) {
+    if (self.selectedIndexes.count > 0) {
         self.continueButton.enabled = YES;
         self.continueButton.alpha = 1;
     } else {
@@ -205,7 +205,7 @@ static float const fadePercentage = 0.2;
         self.continueButton.alpha = 0.3f;
     }
     
-    self.selectedCount.text = [NSString stringWithFormat:@"%ld médias sélectionnés", (unsigned long)selectedIndexes.count];
+    self.selectedCount.text = [NSString stringWithFormat:@"%ld médias sélectionnés", (unsigned long)self.selectedIndexes.count];
 }
 
 #pragma mark - UIScrollView

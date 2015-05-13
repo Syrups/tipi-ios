@@ -14,10 +14,6 @@
 #import "ImageUtils.h"
 #import "MediaCell.h"
 
-#define CELL_SIZE 190
-#define INACTIVE_CELL_OPACITY 0.3f
-#define ACTIVE_CELL_ROTATION 0.05f
-
 @implementation OrganizeStoryViewController {
     NSString* oldHelpText;
     NSUInteger selectedPageIndex;
@@ -246,11 +242,6 @@
 
 #pragma mark - UIScrollView
 
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-    
-
-}
-
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
     [self centerCollectionView];
 }
@@ -300,15 +291,22 @@
     
     [CATransaction commit];
     
-    [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseOut  animations:^{
-        CGFloat scale = self.view.frame.size.height / cell.frame.size.height;
-        cell.transform = CGAffineTransformMakeScale(scale, scale);
+    __block CGFloat scale = 0;
+    
+    [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseOut  animations:^{
+        scale = self.view.frame.size.height / cell.frame.size.height;
+        cell.transform = CGAffineTransformMakeScale(scale+.1f, scale+.1f);
         self.replayButton.alpha = 0;
+        
     } completion:^(BOOL finished) {
-        [self.navigationController pushViewController:vc animated:NO];
-        image.layer.mask = originalMask;
-        cell.transform = CGAffineTransformMakeScale(1, 1);
-        cell.frame = originalCellFrame;
+        [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            cell.transform = CGAffineTransformMakeScale(scale, scale);
+        } completion:^(BOOL finished) {
+            [self.navigationController pushViewController:vc animated:NO];
+            image.layer.mask = originalMask;
+            cell.transform = CGAffineTransformMakeScale(1, 1);
+            cell.frame = originalCellFrame;
+        }];
     }];
 }
 
@@ -378,10 +376,13 @@
 }
 
 - (void)animateAppearance {
-    self.collectionView.transform = CGAffineTransformMakeTranslation(-200 * self.saver.medias.count, 0);
-    [UIView animateWithDuration:.5f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        self.collectionView.transform = CGAffineTransformIdentity;
-    } completion:nil];
+    [self.collectionView.visibleCells enumerateObjectsUsingBlock:^(UICollectionViewCell* cell, NSUInteger idx, BOOL *stop) {
+        cell.transform = CGAffineTransformMakeTranslation((idx+1) * CELL_SIZE, 0);
+        
+        [UIView animateWithDuration:.4f delay:idx*0.05f options:UIViewAnimationOptionCurveEaseOut animations:^{
+            cell.transform = CGAffineTransformIdentity;
+        } completion:nil];
+    }];
 }
 
 
