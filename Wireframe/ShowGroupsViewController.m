@@ -58,6 +58,10 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (IBAction)backToHome:(id)sender {
+    [self dismissViewControllerAnimated:NO completion:nil];
+}
+
 #pragma mark - RoomFetcher
 
 - (void)roomManager:(RoomManager *)manager successfullyFetchedRooms:(NSArray *)rooms {
