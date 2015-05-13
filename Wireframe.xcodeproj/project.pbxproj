@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7328120B1B03E44300C0087A /* TPStoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7328120A1B03E44300C0087A /* TPStoryTableViewCell.m */; };
 		7338BF791AD2C167005FD5F0 /* SRAnimatedWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7338BF781AD2C167005FD5F0 /* SRAnimatedWaveView.m */; };
 		73559BA21AE2686000547886 /* RoomNavigationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 73559BA11AE2686000547886 /* RoomNavigationDelegate.m */; };
 		73559BA61AE269A200547886 /* WaveSwipeTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 73559BA51AE269A200547886 /* WaveSwipeTransitionAnimator.m */; };
@@ -144,6 +145,8 @@
 
 /* Begin PBXFileReference section */
 		668F960769FF3C13F992EB88 /* Pods-Wireframe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wireframe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wireframe/Pods-Wireframe.debug.xcconfig"; sourceTree = "<group>"; };
+		732812091B03E44300C0087A /* TPStoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPStoryTableViewCell.h; sourceTree = "<group>"; };
+		7328120A1B03E44300C0087A /* TPStoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPStoryTableViewCell.m; sourceTree = "<group>"; };
 		7338BF771AD2C167005FD5F0 /* SRAnimatedWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRAnimatedWaveView.h; sourceTree = "<group>"; };
 		7338BF781AD2C167005FD5F0 /* SRAnimatedWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRAnimatedWaveView.m; sourceTree = "<group>"; };
 		73559BA01AE2686000547886 /* RoomNavigationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomNavigationDelegate.h; sourceTree = "<group>"; };
@@ -410,7 +413,6 @@
 			isa = PBXGroup;
 			children = (
 				B3FBAABA1AEF7CFC00A3A6B4 /* Rooms */,
-				73559BA31AE2697500547886 /* Specials */,
 				73B3B35C1AA7C55500FF7578 /* ReadStory */,
 				73B3B35B1AA7C54D00FF7578 /* InRoom */,
 				73B20BEE1AA609DB00A9C88F /* ShowGroupsViewController.h */,
@@ -713,10 +715,13 @@
 		B38B89631ACC21F300799EDD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				73559BA31AE2697500547886 /* Specials */,
 				B319B2491AF101F500C819BD /* Walkthrough */,
 				B3BCD0221AA622FA00261212 /* Components */,
 				73825C1B1ADE8B4300D43383 /* SHPathLibrary.h */,
 				73825C1C1ADE8B4300D43383 /* SHPathLibrary.m */,
+				732812091B03E44300C0087A /* TPStoryTableViewCell.h */,
+				7328120A1B03E44300C0087A /* TPStoryTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1195,6 +1200,7 @@
 				B3065A511ABB29E200C10AD9 /* Story.m in Sources */,
 				B3FBAACD1AEFD5D200A3A6B4 /* WalkthroughViewController.m in Sources */,
 				B3065A541ABB35D700C10AD9 /* SignUpViewController.m in Sources */,
+				7328120B1B03E44300C0087A /* TPStoryTableViewCell.m in Sources */,
 				73825C1D1ADE8B4300D43383 /* SHPathLibrary.m in Sources */,
 				B3BCCFD31AA5C36C00261212 /* main.m in Sources */,
 				B3C2E5C61AD32A1B00868DA4 /* WaveBackground.m in Sources */,

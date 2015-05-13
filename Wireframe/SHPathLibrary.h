@@ -24,4 +24,6 @@
 + (UIBezierPath *) pathForTransitionToAdminFromStories: (CGRect) rect withFinalPath:(BOOL) finalPath;
 + (UIBezierPath *) pathForTransitionFromAdminToStories: (CGRect) rect withFinalPath:(BOOL) finalPath;
 
++ (UIBezierPath *) pathForTransitionBeetweenRoomsAndStories: (CGRect) rect segueBack:(BOOL) back withFinalPath:(BOOL) finalPath;
+
 @end

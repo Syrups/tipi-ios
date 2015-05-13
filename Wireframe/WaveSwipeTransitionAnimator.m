@@ -29,10 +29,10 @@
     //4
     
     //TODO reverse
-    UIBezierPath* circleMaskPathInitial = [SHPathLibrary swipableRightCurvyBezierPathForRect:fromViewController.view.frame
-                                                                                    inverted:segueBack];
-    UIBezierPath* circleMaskPathFinal = [SHPathLibrary swippedRightCurvyBezierPathForRect:toViewController.view.frame
-                                                                                inverted:!segueBack ];
+    UIBezierPath* circleMaskPathInitial = [SHPathLibrary pathForTransitionBeetweenRoomsAndStories:toViewController.view.frame segueBack:segueBack withFinalPath:NO];
+    //[SHPathLibrary swipableRightCurvyBezierPathForRect:fromViewController.view.frame inverted:segueBack];
+    UIBezierPath* circleMaskPathFinal = [SHPathLibrary pathForTransitionBeetweenRoomsAndStories:toViewController.view.frame segueBack:segueBack withFinalPath:YES];
+    //[SHPathLibrary swippedRightCurvyBezierPathForRect:toViewController.view.frame inverted:!segueBack ];
     //5
     CAShapeLayer* maskLayer = [CAShapeLayer layer];
     maskLayer.path = circleMaskPathFinal.CGPath;
