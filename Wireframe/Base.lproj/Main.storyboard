@@ -1175,7 +1175,7 @@ avec votre voix</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Sss-W5-0nG" kind="modal" identifier="showFilters" modalPresentationStyle="currentContext" id="hAe-Mi-WQQ"/>
+                                    <segue destination="Sss-W5-0nG" kind="push" identifier="ToFilters" id="hAe-Mi-WQQ"/>
                                 </connections>
                             </button>
                         </subviews>

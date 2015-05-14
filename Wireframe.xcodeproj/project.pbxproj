@@ -387,7 +387,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		73559BA31AE2697500547886 /* Specials */ = {
+		73559BA31AE2697500547886 /* Animators */ = {
 			isa = PBXGroup;
 			children = (
 				73559BA41AE269A200547886 /* WaveSwipeTransitionAnimator.h */,
@@ -395,7 +395,7 @@
 				735FE0C21AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.h */,
 				735FE0C31AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m */,
 			);
-			name = Specials;
+			name = Animators;
 			sourceTree = "<group>";
 		};
 		73559BA71AE2762B00547886 /* Base */ = {
@@ -715,7 +715,7 @@
 		B38B89631ACC21F300799EDD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				73559BA31AE2697500547886 /* Specials */,
+				73559BA31AE2697500547886 /* Animators */,
 				B319B2491AF101F500C819BD /* Walkthrough */,
 				B3BCD0221AA622FA00261212 /* Components */,
 				73825C1B1ADE8B4300D43383 /* SHPathLibrary.h */,
