@@ -25,7 +25,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [SHPathLibrary addBackgroundPathForstoriesToView:self.view];
+    //[SHPathLibrary addBackgroundPathForstoriesToView:self.view];
+    self.view.backgroundColor = [UIColor colorWithRed:178/255.0  green:47/255.0 blue:43/255.0 alpha:1];
     
     //self.mStories = @[@"coup de chance", @"Conférence F.A.M.E", @"Plexus Gobelins"];
   
@@ -38,11 +39,6 @@
     
     StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
     [manager fetchStoriesForRoomId:[self.room.id integerValue] filteredByTag:nil orUser:nil];
-    
-    
-    [SHPathLibrary addRightCurveBezierPathToView:self.view
-                                       withColor:[UIColor colorWithRed:35/255.0  green:12/255.0 blue:11/255.0 alpha:1]
-                                        inverted:YES];
     
     if ([self.room isAdmin:CurrentUser]) {
         [self.roomNameButton addTarget:self action:@selector(didTapAdminButton:) forControlEvents:UIControlEventTouchUpInside];
