@@ -18,5 +18,9 @@
 @property (strong, nonatomic) IBOutlet UILabel* usernameLabel;
 @property (strong, nonatomic) IBOutlet UIButton* addButton;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* addButtonYConstraint;
+@property (strong, nonatomic) IBOutlet UIButton* friendsTabButton;
+@property (strong, nonatomic) IBOutlet UIButton* requestsTabButton;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* friendsTabButtonYConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* requestsTabButtonYConstraint;
 
 @end

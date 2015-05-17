@@ -46,7 +46,9 @@
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    [AnimationLibrary animateBouncingView:self.addButton usingConstraint:self.addButtonYConstraint ofType:AnimationLibraryBottomSpaceConstraint relativeToSuperview:self.view];
+    [AnimationLibrary animateBouncingView:self.addButton usingConstraint:self.addButtonYConstraint ofType:AnimationLibraryTopSpaceConstraint relativeToSuperview:self.addButton.superview inverted:NO];
+    [AnimationLibrary animateBouncingView:self.friendsTabButton usingConstraint:self.friendsTabButtonYConstraint ofType:AnimationLibraryTopSpaceConstraint relativeToSuperview:self.friendsTabButton.superview inverted:YES];
+    [AnimationLibrary animateBouncingView:self.requestsTabButton usingConstraint:self.requestsTabButtonYConstraint ofType:AnimationLibraryTopSpaceConstraint relativeToSuperview:self.requestsTabButton.superview inverted:YES];
     
     self.backButton.transform = CGAffineTransformMakeTranslation(0, -100);
     self.settingsButton.transform = CGAffineTransformMakeTranslation(0, -100);
@@ -62,12 +64,30 @@
     HomeViewController* parent = (HomeViewController*)self.parentViewController;
     
     [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.backButton.alpha = 0;
+        self.settingsButton.alpha = 0;
         self.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
         parent.profileButton.hidden = NO;
     } completion:^(BOOL finished) {
         [self.view removeFromSuperview];
         [self removeFromParentViewController];
     }];
+}
+
+#pragma mark - Navigation
+
+- (IBAction)toFriendList:(id)sender {
+    UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"FriendList"];
+    [self.pager setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+    self.requestsTabButton.alpha = .5f;
+    self.friendsTabButton.alpha = 1;
+}
+
+- (IBAction)toRequestList:(id)sender {
+    UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RequestList"];
+    [self.pager setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    self.friendsTabButton.alpha = .5f;
+    self.requestsTabButton.alpha = 1;
 }
 
 #pragma mark - UIpageViewController

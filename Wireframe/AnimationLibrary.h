@@ -17,6 +17,6 @@ typedef enum : NSUInteger {
 @interface AnimationLibrary : NSObject
 
 + (void)animateBouncingView:(UIView*)view;
-+ (void)animateBouncingView:(UIView *)view usingConstraint:(NSLayoutConstraint*)constraint ofType:(AnimationLibraryConstraintType)type relativeToSuperview:(UIView*)superview;
++ (void)animateBouncingView:(UIView *)view usingConstraint:(NSLayoutConstraint*)constraint ofType:(AnimationLibraryConstraintType)type relativeToSuperview:(UIView*)superview inverted:(BOOL)inverted;
 
 @end

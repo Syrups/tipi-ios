@@ -30,14 +30,13 @@ static const float totalBounceDuration = 1.3f;
     } completion:nil];
 }
 
-+ (void)animateBouncingView:(UIView *)view usingConstraint:(NSLayoutConstraint *)constraint ofType:(AnimationLibraryConstraintType)type relativeToSuperview:(UIView *)superview {
++ (void)animateBouncingView:(UIView *)view usingConstraint:(NSLayoutConstraint *)constraint ofType:(AnimationLibraryConstraintType)type relativeToSuperview:(UIView *)superview inverted:(BOOL)inverted {
     
-    CGFloat initialConstant = constraint.constant;
+    __block CGFloat initialConstant = constraint.constant;
     
-    int factor = 1;
-//    if (type == AnimationLibraryTopSpaceConstraint || type == AnimationLibraryVerticalAlignConstraint) {
-//        factor = -1;
-//    }
+    int factor = type == AnimationLibraryTopSpaceConstraint ? -1 : 1;
+    
+    if (inverted) factor = -factor;
     
     constraint.constant = initialConstant - kInitialYOffset * factor;
     view.alpha = 0;
@@ -57,7 +56,6 @@ static const float totalBounceDuration = 1.3f;
             [superview layoutIfNeeded];
         }];
         
-        [superview layoutIfNeeded];
     } completion:nil];
 }
 
