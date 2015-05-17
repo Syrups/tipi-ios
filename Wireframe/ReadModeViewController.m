@@ -30,6 +30,9 @@
     [self downloadFileWithURL:fileUrl completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
         
         self.fileURL = filePath;
+        if(self.idx <= 0){
+            [self playSound:self];
+        }
         //NSLog(@"File %@ downloaded to: %@",fileUrl, filePath);
     }];
     

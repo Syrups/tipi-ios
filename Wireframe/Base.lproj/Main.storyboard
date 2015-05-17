@@ -1150,7 +1150,7 @@ avec votre voix</string>
                                             <outlet property="dateLabel" destination="g8z-hE-wUw" id="ryF-E4-DuS"/>
                                             <outlet property="deleteButton" destination="InJ-cX-NP5" id="r2K-oi-wor"/>
                                             <outlet property="titleLabel" destination="F1K-xM-13C" id="lwd-8B-WhM"/>
-                                            <segue destination="ygu-vl-5js" kind="modal" identifier="showStory" id="658-ec-q8g"/>
+                                            <segue destination="ygu-vl-5js" kind="push" identifier="showStory" id="658-ec-q8g"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1189,7 +1189,7 @@ avec votre voix</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Sss-W5-0nG" kind="modal" identifier="showFilters" modalPresentationStyle="currentContext" id="hAe-Mi-WQQ"/>
+                                    <segue destination="Sss-W5-0nG" kind="push" identifier="ToFilters" id="hAe-Mi-WQQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1235,7 +1235,7 @@ avec votre voix</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tvq-96-2oQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4826" y="-551"/>
+            <point key="canvasLocation" x="4813" y="-597"/>
         </scene>
         <!--Read Mode View Controller-->
         <scene sceneID="2xy-M7-cS4">
@@ -1329,7 +1329,7 @@ avec votre voix</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NRN-Qx-x0E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5170" y="-551"/>
+            <point key="canvasLocation" x="5166" y="-597"/>
         </scene>
         <!--Tag Menu View Controller-->
         <scene sceneID="3HQ-kh-db2">
