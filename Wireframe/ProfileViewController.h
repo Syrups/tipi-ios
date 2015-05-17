@@ -13,6 +13,10 @@
 
 @property (strong, nonatomic) UIPageViewController* pager;
 @property (strong, nonatomic) User* user;
+@property (strong, nonatomic) IBOutlet UIButton* backButton;
+@property (strong, nonatomic) IBOutlet UIButton* settingsButton;
 @property (strong, nonatomic) IBOutlet UILabel* usernameLabel;
+@property (strong, nonatomic) IBOutlet UIButton* addButton;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* addButtonYConstraint;
 
 @end

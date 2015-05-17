@@ -8,6 +8,7 @@
 
 #import "FriendListViewController.h"
 #import "UserSession.h"
+#import "AnimationLibrary.h"
 
 @interface FriendListViewController ()
 
@@ -33,6 +34,7 @@
 - (void)friendManager:(FriendManager *)manager successfullyFetchedFriends:(NSArray *)friends ofUser:(User *)user {
     self.friends = friends.mutableCopy;
     [self.friendsTableView reloadData];
+    [self animate];
     
     NSLog(@"%@", self.friends);
 }
@@ -60,5 +62,17 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
+
+#pragma mark - Animations
+
+- (void)animate {
+    [self.friendsTableView.visibleCells enumerateObjectsUsingBlock:^(UITableViewCell* cell, NSUInteger idx, BOOL *stop) {
+        
+        [AnimationLibrary animateBouncingView:cell];
+        
+    }];
+    
+}
+
 
 @end

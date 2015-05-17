@@ -9,6 +9,7 @@
 #import "ProfileViewController.h"
 #import "FriendListViewController.h"
 #import "HomeViewController.h"
+#import "AnimationLibrary.h"
 
 @implementation ProfileViewController
 
@@ -44,6 +45,17 @@
     [self.pager didMoveToParentViewController:self];
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    [AnimationLibrary animateBouncingView:self.addButton usingConstraint:self.addButtonYConstraint ofType:AnimationLibraryBottomSpaceConstraint relativeToSuperview:self.view];
+    
+    self.backButton.transform = CGAffineTransformMakeTranslation(0, -100);
+    self.settingsButton.transform = CGAffineTransformMakeTranslation(0, -100);
+    [UIView animateWithDuration:.6f delay:.5f options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.backButton.alpha = 1;
+        self.settingsButton.alpha = 1;
+        self.backButton.transform = CGAffineTransformIdentity;
+        self.settingsButton.transform = CGAffineTransformIdentity;
+    } completion:nil];
 }
 
 - (IBAction)dismiss:(id)sender {

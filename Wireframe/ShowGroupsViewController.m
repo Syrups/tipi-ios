@@ -53,10 +53,10 @@
     }
 }
 
-- (IBAction)createNewRoom:(id)sender {
-    UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"CreateRoom"];
-    [self.navigationController pushViewController:vc animated:YES];
-}
+//- (IBAction)createNewRoom:(id)sender {
+//    UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"CreateRoom"];
+//    [self.navigationController pushViewController:vc animated:YES];
+//}
 
 - (IBAction)backToHome:(id)sender {
     [self dismissViewControllerAnimated:NO completion:nil];

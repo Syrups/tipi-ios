@@ -49,7 +49,7 @@
     [self.view addSubview:profile.view];
     [profile didMoveToParentViewController:self];
     
-    [UIView animateWithDuration:.3f delay:0 usingSpringWithDamping:.5f initialSpringVelocity:.01f options:
+    [UIView animateWithDuration:.3f delay:0 options:
      UIViewAnimationOptionCurveEaseOut animations:^{
          self.profileButton.hidden = YES;
          CGRect frame = profile.view.frame;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Lcv-xj-Ztq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Lcv-xj-Ztq">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -327,36 +327,10 @@ avec votre voix</string>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4N-zU-xlj">
-                                        <rect key="frame" x="98" y="301" width="132" height="44"/>
-                                        <color key="backgroundColor" red="0.16078431900000001" green="0.22352941330000001" blue="0.36078432199999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="UG5-O4-Y0K"/>
-                                            <constraint firstAttribute="width" constant="132" id="zh2-H4-5LG"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
-                                        <state key="normal" title="ajouter un ami">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="22"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="UzG-Qy-awI" kind="modal" id="vtt-2B-38C"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="M4N-zU-xlj" secondAttribute="bottom" constant="29" id="IQw-7k-mfY"/>
-                                    <constraint firstAttribute="centerX" secondItem="M4N-zU-xlj" secondAttribute="centerX" id="YmM-cz-iba"/>
-                                </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b03-gf-oDw">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b03-gf-oDw">
                                 <rect key="frame" x="5" y="17" width="60" height="55"/>
                                 <state key="normal" image="btn-back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -365,7 +339,7 @@ avec votre voix</string>
                                     <action selector="dismiss:" destination="q8P-Bo-aUc" eventType="touchUpInside" id="cHC-to-sSe"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XuJ-hG-P97">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XuJ-hG-P97">
                                 <rect key="frame" x="252" y="20" width="52" height="52"/>
                                 <state key="normal" image="roue-dentee">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -374,16 +348,46 @@ avec votre voix</string>
                                     <segue destination="ifW-J1-eHh" kind="modal" id="Fot-bp-fGQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4N-zU-xlj">
+                                <rect key="frame" x="94" y="487" width="132" height="44"/>
+                                <color key="backgroundColor" red="0.16078431900000001" green="0.22352941330000001" blue="0.36078432199999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="UG5-O4-Y0K"/>
+                                    <constraint firstAttribute="width" constant="132" id="zh2-H4-5LG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
+                                <state key="normal" title="ajouter un ami">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="UzG-Qy-awI" kind="modal" id="vtt-2B-38C"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wCc-OZ-jkN" firstAttribute="leading" secondItem="6xX-Ld-hak" secondAttribute="leadingMargin" constant="-20" id="X8X-UN-C9d"/>
                             <constraint firstItem="HOZ-4b-5BN" firstAttribute="top" secondItem="wCc-OZ-jkN" secondAttribute="bottom" id="bcF-h1-wdC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wCc-OZ-jkN" secondAttribute="trailing" constant="-20" id="fUV-cf-5HJ"/>
+                            <constraint firstAttribute="centerX" secondItem="M4N-zU-xlj" secondAttribute="centerX" id="iIZ-bd-xbI"/>
                             <constraint firstItem="wCc-OZ-jkN" firstAttribute="top" secondItem="h8P-ev-iqb" secondAttribute="bottom" constant="174" id="jWO-C5-K3e"/>
+                            <constraint firstAttribute="centerY" secondItem="M4N-zU-xlj" secondAttribute="centerY" constant="-225" id="v5r-zg-7oa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PeK-1R-BlF"/>
+                    <connections>
+                        <outlet property="addButton" destination="M4N-zU-xlj" id="fmc-TM-4Eh"/>
+                        <outlet property="addButtonYConstraint" destination="v5r-zg-7oa" id="FrK-sb-JQ0"/>
+                        <outlet property="backButton" destination="b03-gf-oDw" id="sV5-hw-f2t"/>
+                        <outlet property="settingsButton" destination="XuJ-hG-P97" id="lQW-pY-hVs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PzY-GD-ebA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -474,6 +478,13 @@ avec votre voix</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5Q2-12-Zvp"/>
+                    <connections>
+                        <outletCollection property="rows" destination="Hil-Yb-zp0" id="KSb-Za-Bpa"/>
+                        <outletCollection property="rows" destination="QfZ-OM-fiu" id="Fxq-Rx-yCp"/>
+                        <outletCollection property="rows" destination="iWo-uV-mRQ" id="etg-d5-ZLG"/>
+                        <outletCollection property="rows" destination="gtd-Zz-jgn" id="9zU-IV-WHN"/>
+                        <outletCollection property="rows" destination="rWJ-Er-SnD" id="t0n-oW-WRI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S7k-qn-yIB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1028,7 +1039,7 @@ avec votre voix</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="createNewRoom:" destination="rxv-4M-dHT" eventType="touchUpInside" id="fXF-uy-7bm"/>
+                                    <segue destination="GUm-qQ-5Vx" kind="push" id="6nk-vc-LSX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="10" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ea-vd-1aP">
