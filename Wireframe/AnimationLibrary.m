@@ -9,7 +9,7 @@
 #import "AnimationLibrary.h"
 
 static const int kInitialYOffset = 100;
-static const float totalBounceDuration = 1.3f;
+static const float totalBounceDuration = 1;
 
 @implementation AnimationLibrary
 
@@ -18,11 +18,11 @@ static const float totalBounceDuration = 1.3f;
     view.alpha = 0;
     [UIView animateKeyframesWithDuration:totalBounceDuration delay:0 options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
         [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.4f animations:^{
-            view.transform = CGAffineTransformMakeTranslation(0, -15);
+            view.transform = CGAffineTransformMakeTranslation(0, -10);
             view.alpha = 1;
         }];
         [UIView addKeyframeWithRelativeStartTime:.4f relativeDuration:.4f animations:^{
-            view.transform = CGAffineTransformMakeTranslation(0, 10);
+            view.transform = CGAffineTransformMakeTranslation(0, 8);
         }];
         [UIView addKeyframeWithRelativeStartTime:.8f relativeDuration:.2f animations:^{
             view.transform = CGAffineTransformIdentity;

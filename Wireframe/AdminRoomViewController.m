@@ -7,6 +7,7 @@
 //
 
 #import "AdminRoomViewController.h"
+#import "AddUsersToRoomViewController.h"
 #import "SHPathLibrary.h"
 
 @interface AdminRoomViewController ()
@@ -20,6 +21,12 @@
     // Do any additional setup after loading the view.
     
     [SHPathLibrary addBackgroundPathForstoriesToView:self.view];
+}
+
+- (IBAction)addUsersToRoom:(id)sender {
+    AddUsersToRoomViewController* vc = (AddUsersToRoomViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"AddUsersToRoom"];
+    vc.room = self.room;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark - UITableView

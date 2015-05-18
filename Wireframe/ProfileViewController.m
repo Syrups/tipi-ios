@@ -37,7 +37,7 @@
     [self addChildViewController:self.pager];
     
     // Don't forget to add the new root view to the current view hierarchy!
-    self.pager.view.frame = CGRectMake(0, 80, self.view.frame.size.width, self.view.frame.size.height);
+    self.pager.view.frame = CGRectMake(0, 80, self.view.frame.size.width, self.view.frame.size.height - 80);
     [self.view.subviews[0] addSubview:self.pager.view];
     [self.view.subviews[0] sendSubviewToBack:self.pager.view];
     
@@ -47,8 +47,26 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [AnimationLibrary animateBouncingView:self.addButton usingConstraint:self.addButtonYConstraint ofType:AnimationLibraryTopSpaceConstraint relativeToSuperview:self.addButton.superview inverted:NO];
-    [AnimationLibrary animateBouncingView:self.friendsTabButton usingConstraint:self.friendsTabButtonYConstraint ofType:AnimationLibraryTopSpaceConstraint relativeToSuperview:self.friendsTabButton.superview inverted:YES];
-    [AnimationLibrary animateBouncingView:self.requestsTabButton usingConstraint:self.requestsTabButtonYConstraint ofType:AnimationLibraryTopSpaceConstraint relativeToSuperview:self.requestsTabButton.superview inverted:YES];
+    
+    CGFloat initialConstant = self.friendsTabButtonYConstraint.constant;
+    self.friendsTabButtonYConstraint.constant -= 50;
+    self.friendsTabButton.alpha = 0;
+    [self.friendsTabButton.superview layoutIfNeeded];
+    [UIView animateWithDuration:.3f delay:.3f options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.friendsTabButtonYConstraint.constant = initialConstant;
+        self.friendsTabButton.alpha = 1;
+        [self.friendsTabButton.superview layoutIfNeeded];
+    } completion:nil];
+    
+    initialConstant = self.requestsTabButtonYConstraint.constant;
+    self.requestsTabButtonYConstraint.constant -= 50;
+    self.requestsTabButton.alpha = 0;
+    [self.requestsTabButton.superview layoutIfNeeded];
+    [UIView animateWithDuration:.3f delay:.3f options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.requestsTabButtonYConstraint.constant = initialConstant;
+        self.requestsTabButton.alpha = 1;
+        [self.requestsTabButton.superview layoutIfNeeded];
+    } completion:nil];
     
     self.backButton.transform = CGAffineTransformMakeTranslation(0, -100);
     self.settingsButton.transform = CGAffineTransformMakeTranslation(0, -100);

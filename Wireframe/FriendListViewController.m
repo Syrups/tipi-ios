@@ -9,17 +9,23 @@
 #import "FriendListViewController.h"
 #import "UserSession.h"
 #import "AnimationLibrary.h"
+#import "TPLoader.h"
 
 @interface FriendListViewController ()
 
 @end
 
-@implementation FriendListViewController
+@implementation FriendListViewController {
+    TPLoader* loader;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.friends = [NSMutableArray array];
+    
+    loader = [[TPLoader alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:loader];
     
     FriendManager* manager = [[FriendManager alloc] initWithDelegate:self];
     [manager fetchFriendsOfUser:CurrentUser];
@@ -35,6 +41,8 @@
     self.friends = friends.mutableCopy;
     [self.friendsTableView reloadData];
     [self animate];
+    
+    [loader removeFromSuperview];
     
     NSLog(@"%@", self.friends);
 }

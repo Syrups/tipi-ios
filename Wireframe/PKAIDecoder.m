@@ -66,7 +66,16 @@
     
     NSArray *images = [PKAIDecoder decodeImageFromFile:file];
     imageView.animationImages = images;
-    imageView.animationDuration = 3.2f;
+    imageView.animationDuration = 1.4f;
+    [imageView setTintColor:[UIColor blackColor]];
+    [imageView startAnimating];
+}
+
++ (void) builAnimatedImageIn:(UIImageView *) imageView  fromFile:(NSString *)file withAnimationDuration:(CGFloat)duration {
+    
+    NSArray *images = [PKAIDecoder decodeImageFromFile:file];
+    imageView.animationImages = images;
+    imageView.animationDuration = duration;
     [imageView setTintColor:[UIColor blackColor]];
     [imageView startAnimating];
 }

@@ -7,7 +7,7 @@
 //
 
 #import "SandboxViewController.h"
-
+#import "PKAIDecoder.h"
 
 @implementation SandboxViewController {
     CGFloat lastValue;
@@ -42,6 +42,8 @@
     self.audioWave.deployed = YES;
     self.audioWave.isSexy = YES;
     self.audioWave.isInlined = YES;
+    
+    [PKAIDecoder builAnimatedImageIn:self.loader fromFile:@"loader"];
 }
 
 

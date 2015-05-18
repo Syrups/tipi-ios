@@ -14,12 +14,15 @@
 #import "FilterViewController.h"
 #import "WaveToBottomTransitionAnimator.h"
 #import "TPStoryTableViewCell.h"
+#import "TPLoader.h"
 
 @interface ShowOneGroupViewController ()
 
 @end
 
-@implementation ShowOneGroupViewController
+@implementation ShowOneGroupViewController {
+    TPLoader* loader;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,6 +39,10 @@
     
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;
+    
+    loader = [[TPLoader alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:loader];
+    [self.view sendSubviewToBack:loader];
     
     StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
     [manager fetchStoriesForRoomId:[self.room.id integerValue] filteredByTag:nil orUser:nil];
@@ -168,6 +175,8 @@
 
 
 - (void)storyManager:(StoryManager *)manager successfullyFetchedStories:(NSArray *)stories{
+    
+    [loader removeFromSuperview];
     
     self.mStories = stories;
     [self.mTableView reloadData];
