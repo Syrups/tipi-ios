@@ -16,7 +16,8 @@
 @property (nonatomic, strong) NSMutableArray *commentsQueue;
 @property (nonatomic, strong) NSMutableArray *referencesQueue;
 @property (nonatomic, strong) NSMutableArray *statesQueue;
-@property (nonatomic, strong) NSMutableDictionary *commQueue;
+@property (nonatomic, strong) NSMutableArray *namesQueue;
+//@property (nonatomic, strong) NSMutableDictionary *commQueue;
 //@property (nonatomic, strong) NSMutableArray *commentsTimers;
 @property (nonatomic, assign) id delegate;
 

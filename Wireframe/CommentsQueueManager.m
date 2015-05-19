@@ -51,6 +51,7 @@
          [self.referencesQueue insertObject:@(index) atIndex:0];
         [self.commentsQueue insertObject:comment atIndex:0];
         [self.statesQueue insertObject:@YES atIndex:0];
+        [self.namesQueue insertObject:[self findCapForuser: comment.user] atIndex:0];
         
         [self.delegate commentsQueueManager:self didPushedComment:comment withReference:@(index)];
         
@@ -66,6 +67,11 @@
     
     [self.commentsQueue removeObject:comment];
     [self.delegate commentsQueueManager:self didRemovedComment:comment withReference:@(index)];
+}
+
+- (NSString *)findCapForuser:(User*)user{
+
+    return [user.username substringToIndex:2];
 }
 
 @end

@@ -75,7 +75,7 @@
     cell.accessoryView.transform = CGAffineTransformMakeScale (1,-1);
     
     UILabel *label = (UILabel*)[cell viewWithTag:10];
-    label.text =  comment.file;
+    label.text =  comment.user.username;
     
     return cell;
 }

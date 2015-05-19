@@ -215,8 +215,15 @@ typedef void(^fadeOutCompletion)(BOOL);
 
 -(void)pushCommentAtindex:(NSInteger) index{
     //NSLog(@"|___________BIM_______________|");
+    
+    NSArray* mockNames = @[@"Andy", @"Anne", @"France", @"Marc"];
+    
+    User* user = [User new];
+    user.username = [mockNames objectAtIndex: arc4random() % [mockNames count]];
+    
     Comment* comment = [Comment new]; 
     comment.file = [NSString stringWithFormat:@"com %ld", index];
+    comment.user = user;
     //[self.page.comments objectAtIndex:index];
     [self.commentsQueueManager pushInQueueComment:comment  atIndex:index];
 }
