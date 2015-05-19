@@ -201,11 +201,12 @@ typedef void(^fadeOutCompletion)(BOOL);
     
     for ( int i = 0; i < mockComment.count; i++) {
         
-        NSTimeInterval comment = round([[mockComment objectAtIndex:i] doubleValue]);
+        NSTimeInterval commentTime = round([[mockComment objectAtIndex:i] doubleValue]);
         
         //NSLog(@"__________________________|%f", comment);
         
-        if(comment == currentPlayerTime){
+
+        if(commentTime == currentPlayerTime){
             //NSLog(@"|___________BIM_______________|");
             [self pushCommentAtindex:i];
         }

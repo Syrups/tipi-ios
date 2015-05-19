@@ -21,24 +21,38 @@
     
 }
 
-- (void)commentsQueueManager:(CommentsQueueManager *)manager didPushedComment:(Comment*)comment atIndex:(NSUInteger)index{
+- (void)commentsQueueManager:(CommentsQueueManager *)manager didPushedComment:(Comment*)comment withReference:(NSNumber*)ref{
     self.comments = manager.commentsQueue;
-    [self.commentsList reloadData];
-    
     
     NSArray *arr = @[[NSIndexPath indexPathForRow:0 inSection:0]];
-    [self.commentsList reloadRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationLeft];
-    //[self.commentsList reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
-}
-
-- (void)commentsQueueManager:(CommentsQueueManager *)manager didRemovedComment:(Comment*)comment atIndex:(NSUInteger)index{
-    self.comments = manager.commentsQueue;
+    NSMutableArray *indexes = [NSMutableArray new];
+    
+    if(self.comments.count > 1){
+        for (int i = 1; i < self.comments.count ; i++) {
+            [indexes addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+        }
+    }
     
     [self.commentsList reloadData];
-    //NSArray *arr = @[[NSIndexPath indexPathForRow:0 inSection:0]];
-    //[self.commentsList reloadRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationRight];
+    
+    [self.commentsList reloadRowsAtIndexPaths:indexes withRowAnimation:UITableViewRowAnimationBottom];
+    [self.commentsList reloadRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationRight];
+    
 }
 
+- (void)commentsQueueManager:(CommentsQueueManager *)manager didRemovedComment:(Comment *)comment withReference:(NSNumber *)ref{
+    self.comments = manager.commentsQueue;
+    
+    [self.commentsList beginUpdates];
+    
+    NSUInteger index = [manager.referencesQueue indexOfObject:ref];
+    
+    NSArray *arr = @[[NSIndexPath indexPathForRow:index inSection:0]];
+    [self.commentsList deleteRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationLeft];
+    [self.commentsList endUpdates];
+    
+    [self.commentsList reloadData];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.comments.count;

@@ -14,7 +14,9 @@
 @interface CommentsQueueManager : NSObject
 
 @property (nonatomic, strong) NSMutableArray *commentsQueue;
-@property (nonatomic, strong) NSMutableArray *indexesQueue;
+@property (nonatomic, strong) NSMutableArray *referencesQueue;
+@property (nonatomic, strong) NSMutableArray *statesQueue;
+@property (nonatomic, strong) NSMutableDictionary *commQueue;
 //@property (nonatomic, strong) NSMutableArray *commentsTimers;
 @property (nonatomic, assign) id delegate;
 
@@ -30,9 +32,9 @@
 @protocol CommentsQueueDelegate <NSObject>
 
 @required
-- (void)commentsQueueManager:(CommentsQueueManager *)manager didPushedComment:(Comment*)comment atIndex:(NSUInteger)index;
+- (void)commentsQueueManager:(CommentsQueueManager *)manager didPushedComment:(Comment*)comment withReference:(NSNumber*)ref;
 @required
-- (void)commentsQueueManager:(CommentsQueueManager *)manager didRemovedComment:(Comment*)comment atIndex:(NSUInteger)index;
+- (void)commentsQueueManager:(CommentsQueueManager *)manager didRemovedComment:(Comment*)comment withReference:(NSNumber*)ref;
 @end
 
 

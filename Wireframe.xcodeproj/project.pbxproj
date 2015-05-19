@@ -755,6 +755,8 @@
 				73825C1C1ADE8B4300D43383 /* SHPathLibrary.m */,
 				732812091B03E44300C0087A /* TPStoryTableViewCell.h */,
 				7328120A1B03E44300C0087A /* TPStoryTableViewCell.m */,
+				B30CDD701B077B83007BAEA8 /* AnimationLibrary.h */,
+				B30CDD711B077B83007BAEA8 /* AnimationLibrary.m */,
 				730CFF211B0BBC52001045E4 /* UICommentSideCell.h */,
 				730CFF221B0BBC52001045E4 /* UICommentSideCell.m */,
 			);
@@ -938,6 +940,8 @@
 				7338BF781AD2C167005FD5F0 /* SRAnimatedWaveView.m */,
 				B399421F1AFBAEBD0040C749 /* SRUnderlinedField.h */,
 				B39942201AFBAEBD0040C749 /* SRUnderlinedField.m */,
+				B33618681B0A16FC0047013C /* TPLoader.h */,
+				B33618691B0A16FC0047013C /* TPLoader.m */,
 				730CFF1E1B0B857A001045E4 /* TPSideCommentsView.h */,
 				730CFF1F1B0B857A001045E4 /* TPSideCommentsView.m */,
 			);
