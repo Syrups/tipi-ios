@@ -8,17 +8,48 @@
 
 #import <UIKit/UIKit.h>
 #import "Page.h"
-#import "ReadModeContainerViewController.h"
+
+#import "TPSideCommentsView.h"
+
+#import "StoryWIPSaver.h"
+#import "StoryMediaRecorder.h"
 
 @interface ReadModeViewController : UIViewController
-    @property (weak, nonatomic) IBOutlet UIImageView *image;
-    @property (nonatomic) NSUInteger idx;
-    @property (nonatomic) Page *page;
-    @property (strong,nonatomic) ReadModeContainerViewController *parent;
-    @property (strong,nonatomic) NSURL* fileURL;
+@property (nonatomic) int idx;
+@property (nonatomic) Page *page;
+@property (nonatomic, assign) id delegate;
 
-@property (strong,nonatomic) NSTimer *overlayTimer;
 
+@property (weak, nonatomic) IBOutlet TPSideCommentsView *commentsView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UIView *overlayView;
+@property (weak, nonatomic) IBOutlet UIButton *playerView;
+
+@property (strong, nonatomic) CommentsQueueManager *commentsQueueManager;
+@property (strong, nonatomic) StoryWIPSaver* saver;
+@property (strong, nonatomic) StoryMediaRecorder* recorder;
+
+@property (nonatomic, strong) AVAudioPlayer* player;
+@property (nonatomic, strong) NSTimer* audioListenTimer;
+
+@property (strong,nonatomic) NSURL* fileURL;
+@property (strong,nonatomic) NSTimer *overlayTimer;
+@property (nonatomic) NSTimeInterval trueCurrentTime;
+
+
+
+- (IBAction)quitStory:(id)sender;
+
 - (IBAction)playSound:(id)sender;
+- (void)pauseSound;
+@end
+
+
+@protocol ReadModeViewDelegate <NSObject>
+
+@optional
+- (void)readModeViewController:(ReadModeViewController *)controller didFinishReadingPage: (Page*) page;
+@required
+- (void)readModeViewController:(ReadModeViewController *)controller requestedToQuitStoryAtPage: (Page*) page;
 @end
