@@ -55,6 +55,7 @@
 		B3065A4E1ABAFD7600C10AD9 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A4D1ABAFD7600C10AD9 /* Room.m */; };
 		B3065A511ABB29E200C10AD9 /* Story.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A501ABB29E200C10AD9 /* Story.m */; };
 		B3065A541ABB35D700C10AD9 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A531ABB35D700C10AD9 /* SignUpViewController.m */; };
+		B30CDD721B077B83007BAEA8 /* AnimationLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = B30CDD711B077B83007BAEA8 /* AnimationLibrary.m */; };
 		B319338A1ADFB2B600603158 /* GTWalsheim Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B31933891ADFB2B600603158 /* GTWalsheim Bold.otf */; };
 		B319338D1ADFB4AE00603158 /* DoneStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B319338C1ADFB4AE00603158 /* DoneStoryViewController.m */; };
 		B31933911AE009D000603158 /* ZoomOutSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = B31933901AE009D000603158 /* ZoomOutSegue.m */; };
@@ -71,6 +72,10 @@
 		B325A13D1ADE5AD80041DF21 /* PreviewBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A13C1ADE5AD80041DF21 /* PreviewBubble.m */; };
 		B325A1401ADEE6400041DF21 /* Timeline.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A13F1ADEE6400041DF21 /* Timeline.m */; };
 		B325A1431ADF0B4D0041DF21 /* OrganizerWave.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A1421ADF0B4D0041DF21 /* OrganizerWave.m */; };
+		B33618631B09E9150047013C /* SCSiriWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = B33618621B09E9150047013C /* SCSiriWaveformView.m */; };
+		B33618671B0A15370047013C /* loader.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B33618661B0A15370047013C /* loader.pkai */; };
+		B336186A1B0A16FC0047013C /* TPLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B33618691B0A16FC0047013C /* TPLoader.m */; };
+		B336186C1B0A241A0047013C /* waves.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B336186B1B0A241A0047013C /* waves.pkai */; };
 		B33B6FD71ACDC702009C0623 /* UserController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33B6FD61ACDC702009C0623 /* UserController.m */; };
 		B33DE8581ACDCC66008AE55F /* StoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DE8571ACDCC66008AE55F /* StoryController.m */; };
 		B33DE85B1ACDCE00008AE55F /* BaseModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DE85A1ACDCE00008AE55F /* BaseModelController.m */; };
@@ -223,6 +228,8 @@
 		B3065A501ABB29E200C10AD9 /* Story.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Story.m; sourceTree = "<group>"; };
 		B3065A521ABB35D700C10AD9 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		B3065A531ABB35D700C10AD9 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		B30CDD701B077B83007BAEA8 /* AnimationLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationLibrary.h; sourceTree = "<group>"; };
+		B30CDD711B077B83007BAEA8 /* AnimationLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationLibrary.m; sourceTree = "<group>"; };
 		B31933891ADFB2B600603158 /* GTWalsheim Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTWalsheim Bold.otf"; sourceTree = "<group>"; };
 		B319338B1ADFB4AE00603158 /* DoneStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoneStoryViewController.h; sourceTree = "<group>"; };
 		B319338C1ADFB4AE00603158 /* DoneStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoneStoryViewController.m; sourceTree = "<group>"; };
@@ -248,6 +255,12 @@
 		B325A13F1ADEE6400041DF21 /* Timeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timeline.m; sourceTree = "<group>"; };
 		B325A1411ADF0B4D0041DF21 /* OrganizerWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrganizerWave.h; sourceTree = "<group>"; };
 		B325A1421ADF0B4D0041DF21 /* OrganizerWave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrganizerWave.m; sourceTree = "<group>"; };
+		B33618611B09E9150047013C /* SCSiriWaveformView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSiriWaveformView.h; sourceTree = "<group>"; };
+		B33618621B09E9150047013C /* SCSiriWaveformView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSiriWaveformView.m; sourceTree = "<group>"; };
+		B33618661B0A15370047013C /* loader.pkai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = loader.pkai; sourceTree = "<group>"; };
+		B33618681B0A16FC0047013C /* TPLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPLoader.h; sourceTree = "<group>"; };
+		B33618691B0A16FC0047013C /* TPLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPLoader.m; sourceTree = "<group>"; };
+		B336186B1B0A241A0047013C /* waves.pkai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = waves.pkai; sourceTree = "<group>"; };
 		B33B6FD51ACDC702009C0623 /* UserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserController.h; sourceTree = "<group>"; };
 		B33B6FD61ACDC702009C0623 /* UserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserController.m; sourceTree = "<group>"; };
 		B33DE8561ACDCC66008AE55F /* StoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryController.h; sourceTree = "<group>"; };
@@ -613,6 +626,15 @@
 			name = Walkthrough;
 			sourceTree = "<group>";
 		};
+		B33618601B09E9150047013C /* SCSiriWaveformView */ = {
+			isa = PBXGroup;
+			children = (
+				B33618611B09E9150047013C /* SCSiriWaveformView.h */,
+				B33618621B09E9150047013C /* SCSiriWaveformView.m */,
+			);
+			path = SCSiriWaveformView;
+			sourceTree = "<group>";
+		};
 		B33B6FD41ACDC6E3009C0623 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -785,6 +807,9 @@
 		B3BCCFC41AA5C36C00261212 = {
 			isa = PBXGroup;
 			children = (
+				B336186B1B0A241A0047013C /* waves.pkai */,
+				B33618661B0A15370047013C /* loader.pkai */,
+				B33618601B09E9150047013C /* SCSiriWaveformView */,
 				B31933891ADFB2B600603158 /* GTWalsheim Bold.otf */,
 				B3BCD01E1AA6148100261212 /* LXReorderableCollectionViewFlowLayout */,
 				73B3B3331AA7BA3F00FF7578 /* exports */,
@@ -1094,6 +1119,7 @@
 				B319B2421AF0CD1B00C819BD /* star.pkai in Resources */,
 				73B3B3511AA7BA3F00FF7578 /* proches-grand.png in Resources */,
 				73B3B34C1AA7BA3F00FF7578 /* loupe.png in Resources */,
+				B33618671B0A15370047013C /* loader.pkai in Resources */,
 				B319B24B1AF1020800C819BD /* Screen1.xib in Resources */,
 				B3BCCFE11AA5C36C00261212 /* LaunchScreen.xib in Resources */,
 				73B3B3561AA7BA3F00FF7578 /* story.png in Resources */,
@@ -1102,6 +1128,7 @@
 				73B3B34D1AA7BA3F00FF7578 /* pause.png in Resources */,
 				B36941B11ACAF06800F3F95A /* pic.jpg in Resources */,
 				B319B23F1AF0CD1B00C819BD /* onde_bleu_clair.pkai in Resources */,
+				B336186C1B0A241A0047013C /* waves.pkai in Resources */,
 				B3BCCFDE1AA5C36C00261212 /* Images.xcassets in Resources */,
 				73B3B34A1AA7BA3F00FF7578 /* home-blanc.png in Resources */,
 				73B3B3481AA7BA3F00FF7578 /* go-left.png in Resources */,
@@ -1175,6 +1202,7 @@
 				B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */,
 				B3065A3B1AB98ACC00C10AD9 /* LoginViewController.m in Sources */,
 				73559BA21AE2686000547886 /* RoomNavigationDelegate.m in Sources */,
+				B33618631B09E9150047013C /* SCSiriWaveformView.m in Sources */,
 				B3065A331AB9868100C10AD9 /* StoryManager.m in Sources */,
 				B3065A411AB98D6700C10AD9 /* BaseManager.m in Sources */,
 				730CFF201B0B857A001045E4 /* TPSideCommentsView.m in Sources */,
@@ -1227,6 +1255,7 @@
 				B30317FD1ABC2759005EF73D /* Page.m in Sources */,
 				73B20BEC1AA5FF0800A9C88F /* BaseHomeViewController.m in Sources */,
 				B3A8D1841ACEAD0A00B09C34 /* FriendManager.m in Sources */,
+				B336186A1B0A16FC0047013C /* TPLoader.m in Sources */,
 				B38621FA1AE16DC200D2CA5A /* ShowCaseableViewController.m in Sources */,
 				730CFF231B0BBC52001045E4 /* UICommentSideCell.m in Sources */,
 				B3BCCFFD1AA5C85B00261212 /* HomeViewController.m in Sources */,
@@ -1243,6 +1272,7 @@
 				B396C5C01AFE4EC700935725 /* FilterViewController.m in Sources */,
 				B325A13D1ADE5AD80041DF21 /* PreviewBubble.m in Sources */,
 				B33B6FD71ACDC702009C0623 /* UserController.m in Sources */,
+				B30CDD721B077B83007BAEA8 /* AnimationLibrary.m in Sources */,
 				73B3B35A1AA7BC6100FF7578 /* GroupMembersViewController.m in Sources */,
 				B39942211AFBAEBD0040C749 /* SRUnderlinedField.m in Sources */,
 				B325A1431ADF0B4D0041DF21 /* OrganizerWave.m in Sources */,

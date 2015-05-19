@@ -51,6 +51,8 @@ static UserSession* sharedSession;
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:kSessionStoreId];
     [defaults synchronize];
+    
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
 
 @end

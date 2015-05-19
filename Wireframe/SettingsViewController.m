@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "AnimationLibrary.h"
 
 @interface SettingsViewController ()
 
@@ -17,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self animate];
 }
 
 - (IBAction)logout:(id)sender {
@@ -32,6 +34,15 @@
 
 - (IBAction)dismiss:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)animate {
+    [self.rows enumerateObjectsUsingBlock:^(UIView* view, NSUInteger idx, BOOL *stop) {
+        
+        [AnimationLibrary animateBouncingView:view];
+        
+    }];
+    
 }
 
 @end

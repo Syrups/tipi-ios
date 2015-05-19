@@ -18,5 +18,6 @@
 @property (nonatomic, strong) AVAudioRecorder *recorder;
 @property (weak, nonatomic) IBOutlet AudioWave *audioWave;
 @property (strong, nonatomic) EZMicrophone* microphone;
+@property (strong, nonatomic) IBOutlet UIImageView* loader;
 
 @end

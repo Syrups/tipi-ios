@@ -8,23 +8,62 @@
 
 #import "LoginViewController.h"
 #import "UserSession.h"
+#import "PKAIDecoder.h"
+#import "AnimationLibrary.h"
 
 @implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.continousWaveView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"wave-pattern.png"]];
-    
-    [UIView animateWithDuration:30 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-//        self.continousWaveView.transform = CGAffineTransformMakeTranslation(-self.continousWaveView.frame.size.width, 0);
-    } completion:nil];
+
     
     if ([[UserSession sharedSession] isAuthenticated]) {
         UIViewController* home = [self.storyboard instantiateViewControllerWithIdentifier:@"Home"];
         [self.navigationController setViewControllers:@[home]];
     }
     
+    NSURL *url = [NSURL fileURLWithPath:@"/dev/null"];
+    
+    NSDictionary *settings = @{AVSampleRateKey:          [NSNumber numberWithFloat: 44100.0],
+                               AVFormatIDKey:            [NSNumber numberWithInt: kAudioFormatAppleLossless],
+                               AVNumberOfChannelsKey:    [NSNumber numberWithInt: 2],
+                               AVEncoderAudioQualityKey: [NSNumber numberWithInt: AVAudioQualityMin]};
+    
+    NSError *error;
+    self.recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
+    
+    if(error) {
+        NSLog(@"Ups, could not create recorder %@", error);
+        return;
+    }
+    
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+    
+    if (error) {
+        NSLog(@"Error setting category: %@", [error description]);
+    }
+    
+    [self.recorder prepareToRecord];
+    [self.recorder setMeteringEnabled:YES];
+    [self.recorder record];
+    
+    CADisplayLink *displaylink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateMeters)];
+    [displaylink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+    
+    [PKAIDecoder builAnimatedImageIn:self.littleWaves fromFile:@"waves" withAnimationDuration:6];
+    
+    [AnimationLibrary animateBouncingView:self.signInButton usingConstraint:self.signInButtonVerticalSpace ofType:AnimationLibraryBottomSpaceConstraint relativeToSuperview:self.view inverted:NO];
+    [AnimationLibrary animateBouncingView:self.signUpButton usingConstraint:self.signUpButtonVerticalSpace ofType:AnimationLibraryBottomSpaceConstraint relativeToSuperview:self.view inverted:NO];
+}
+
+- (void)updateMeters
+{
+    [self.recorder updateMeters];
+    
+    CGFloat normalizedValue = pow (10, [self.recorder averagePowerForChannel:0] / 20);
+    
+    [self.waveformView updateWithLevel:normalizedValue];
+    [self.secondWaveformView updateWithLevel:normalizedValue];
 }
 
 - (IBAction)openFields:(UIButton*)sender {

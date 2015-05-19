@@ -7,6 +7,7 @@
 //
 
 #import "AdminRoomViewController.h"
+#import "AddUsersToRoomViewController.h"
 #import "SHPathLibrary.h"
 
 @interface AdminRoomViewController ()
@@ -20,6 +21,12 @@
     // Do any additional setup after loading the view.
     
     [SHPathLibrary addBackgroundPathForstoriesToView:self.view];
+}
+
+- (IBAction)addUsersToRoom:(id)sender {
+    AddUsersToRoomViewController* vc = (AddUsersToRoomViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"AddUsersToRoom"];
+    vc.room = self.room;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark - UITableView
@@ -45,13 +52,13 @@
     UIButton* delete = (UIButton*)[cell.contentView viewWithTag:20];
     
     if (delete.alpha == 0) {
-        [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             label.transform = CGAffineTransformMakeTranslation(100, 0);
             label.alpha = .3f;
             delete.alpha = 1;
         } completion:nil];
     } else {
-        [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             label.transform = CGAffineTransformIdentity;
             label.alpha = 1;
             delete.alpha = 0;

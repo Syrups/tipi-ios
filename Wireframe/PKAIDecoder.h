@@ -16,6 +16,7 @@
 
 + (void) builAnimatedImageIn:(UIImageView *) imageView  fromFile:(NSString *)file;
 + (void) builAnimatedImageInButton:(UIButton *) button  fromFile:(NSString *)file withColor:(UIColor*)color;
++ (void) builAnimatedImageIn:(UIImageView *) imageView  fromFile:(NSString *)file withAnimationDuration:(CGFloat)duration;
 + (void)updateAnimatedImageTintInButton: (UIButton *) button withColor:(UIColor*)color ;
 + (void)updateAnimatedImageTintInButton: (UIButton *) button withColor:(UIColor*)color withAnimation:(BOOL)animated;
 @end

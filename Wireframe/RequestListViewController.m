@@ -7,6 +7,7 @@
 //
 
 #import "RequestListViewController.h"
+#import "AnimationLibrary.h"
 
 @interface RequestListViewController ()
 
@@ -17,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self animate];
 }
 
 #pragma mark - UITableView
@@ -39,4 +42,16 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
+
+#pragma mark - Animations
+
+- (void)animate {
+    [self.requestsTableView.visibleCells enumerateObjectsUsingBlock:^(UITableViewCell* cell, NSUInteger idx, BOOL *stop) {
+        
+        [AnimationLibrary animateBouncingView:cell];
+        
+    }];
+    
+}
+
 @end

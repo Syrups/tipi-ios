@@ -27,7 +27,7 @@
         }];
         
         [UIView addKeyframeWithRelativeStartTime:.6f relativeDuration:.4f animations:^{
-            self.centerYConstraint.constant = 0;
+            self.centerYConstraint.constant = 100;
             [self.view layoutIfNeeded];
         }];
     } completion:^(BOOL finished) {
