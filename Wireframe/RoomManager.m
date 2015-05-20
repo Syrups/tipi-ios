@@ -73,6 +73,26 @@
     });
 }
 
+- (void)inviteUsers:(NSArray *)userIds toRoom:(Room *)room {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        
+        [delegate.roomController inviteUsers:userIds toRoom:room success:^(Room *room) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(roomManager:successfullyInvitedUsersToRoom:)]) {
+                    [self.delegate roomManager:self successfullyInvitedUsersToRoom:room];
+                }
+            });
+        } failure:^(NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(roomManager:failedToInviteUsersToRoom:withError:)]) {
+                    [self.delegate roomManager:self failedToInviteUsersToRoom:room withError:error];
+                }
+            });
+        }];
+    });
+}
+
 - (void)updateRoom:(Room *)room {
     // TODO
 }

@@ -16,5 +16,6 @@
 - (void)fetchRoomWithId:(NSUInteger)roomId success:(void(^)(Room* room))success failure:(void(^)(NSError* error))failure;
 - (void)fetchRoomsForUser:(User*)user success:(void(^)(NSArray* rooms))success failure:(void(^)(NSError* error))failure;
 - (void)updateRoom:(Room*)room success:(void(^)(Room* room))success failure:(void(^)(NSError* error))failure;
+- (void)inviteUsers:(NSArray*)users toRoom:(Room*)room success:(void(^)(Room* room))success failure:(void(^)(NSError* error))failure;
 
 @end

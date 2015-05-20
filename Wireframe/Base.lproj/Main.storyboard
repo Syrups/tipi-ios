@@ -68,6 +68,7 @@
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -116,10 +117,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z6R-0s-Tw9" userLabel="Waves">
-                                <rect key="frame" x="31" y="191" width="245" height="192"/>
+                                <rect key="frame" x="31" y="66" width="245" height="192"/>
                             </imageView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbl-C2-b2A">
-                                <rect key="frame" x="50" y="180" width="220" height="140"/>
+                                <rect key="frame" x="50" y="200" width="220" height="140"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dlV-TY-5wX" customClass="SRUnderlinedField">
                                         <rect key="frame" x="20" y="90" width="180" height="30"/>
@@ -163,7 +164,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMc-T4-6sy">
-                                <rect key="frame" x="94" y="341" width="136" height="44"/>
+                                <rect key="frame" x="94" y="369" width="136" height="44"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.25098039220000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="JN0-nS-pNg"/>
@@ -185,7 +186,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5iZ-Qv-tRF">
-                                <rect key="frame" x="94" y="407" width="136" height="44"/>
+                                <rect key="frame" x="94" y="427" width="136" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Nao-A6-JkY"/>
@@ -207,7 +208,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QhP-Ah-VYA">
-                                <rect key="frame" x="-22" y="125" width="364" height="79"/>
+                                <rect key="frame" x="-22" y="165" width="364" height="79"/>
                                 <string key="text">Racontez des histoires
 avec votre voix</string>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="22"/>
@@ -218,11 +219,11 @@ avec votre voix</string>
                         <color key="backgroundColor" red="0.92941176889999999" green="0.92941176889999999" blue="0.92941176889999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="5iZ-Qv-tRF" secondAttribute="centerX" constant="-2" id="AnO-Df-8Bb"/>
-                            <constraint firstAttribute="centerY" secondItem="vbl-C2-b2A" secondAttribute="centerY" constant="34" id="Kld-Bi-JRy"/>
+                            <constraint firstAttribute="centerY" secondItem="vbl-C2-b2A" secondAttribute="centerY" constant="14" id="Kld-Bi-JRy"/>
                             <constraint firstAttribute="centerX" secondItem="bMc-T4-6sy" secondAttribute="centerX" constant="-2" id="MpI-Gt-4Am"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="5iZ-Qv-tRF" secondAttribute="bottom" constant="117" id="OZb-fa-I1f"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="5iZ-Qv-tRF" secondAttribute="bottom" constant="97" id="OZb-fa-I1f"/>
                             <constraint firstAttribute="centerX" secondItem="vbl-C2-b2A" secondAttribute="centerX" id="Xgd-6x-PIe"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="bMc-T4-6sy" secondAttribute="bottom" constant="183" id="fIe-9f-v8t"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="bMc-T4-6sy" secondAttribute="bottom" constant="155" id="fIe-9f-v8t"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7ru-Od-4IV"/>
@@ -353,7 +354,7 @@ avec votre voix</string>
                                             <constraint firstAttribute="width" constant="139" id="neX-gO-oR1"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="14"/>
-                                        <state key="normal" title="Mes amis">
+                                        <state key="normal" title="Proches">
                                             <color key="titleColor" red="0.16078431900000001" green="0.22352941330000001" blue="0.36078432199999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -368,7 +369,7 @@ avec votre voix</string>
                                             <constraint firstAttribute="height" constant="47" id="lBB-Pa-3bb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="14"/>
-                                        <state key="normal" title="Ils m'ont ajouté">
+                                        <state key="normal" title="Notifications">
                                             <color key="titleColor" red="0.16078431900000001" green="0.22352941330000001" blue="0.36078432199999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -920,7 +921,7 @@ avec votre voix</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0Zn-Wf-UYD">
-                                <rect key="frame" x="34" y="90" width="253" height="392"/>
+                                <rect key="frame" x="34" y="179" width="253" height="303"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -955,7 +956,7 @@ avec votre voix</string>
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gc0-TB-rjD">
-                                <rect key="frame" x="98" y="504" width="124" height="44"/>
+                                <rect key="frame" x="98" y="489" width="124" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="124" id="Q06-4c-teS"/>
@@ -964,7 +965,7 @@ avec votre voix</string>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="tKK-as-KIB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
-                                <state key="normal" title="créer">
+                                <state key="normal" title="valider">
                                     <color key="titleColor" red="0.023529411760000001" green="0.031372549020000001" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -993,23 +994,41 @@ avec votre voix</string>
                                     <action selector="back:" destination="fXm-Cd-emW" eventType="touchUpInside" id="n0x-MS-n6a"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="nom d'utilisateur ou e-mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OoW-vf-2zU" customClass="SRUnderlinedField">
+                                <rect key="frame" x="46" y="102" width="228" height="41"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.38582631945610046" green="0.33233025670051575" blue="0.32970204949378967" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="fXm-Cd-emW" id="hKF-WY-Zkq"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="gc0-TB-rjD" secondAttribute="centerX" id="4qY-j7-nIy"/>
                             <constraint firstItem="0Zn-Wf-UYD" firstAttribute="leading" secondItem="dUU-bu-X9V" secondAttribute="leadingMargin" constant="18" id="IBA-Zf-PTq"/>
                             <constraint firstItem="Ihe-Ac-asj" firstAttribute="top" secondItem="dUU-bu-X9V" secondAttribute="top" constant="22" id="IRQ-In-Bis"/>
-                            <constraint firstItem="0Zn-Wf-UYD" firstAttribute="top" secondItem="2t3-W6-2T0" secondAttribute="bottom" constant="70" id="Joy-7u-B7N"/>
+                            <constraint firstItem="0Zn-Wf-UYD" firstAttribute="top" secondItem="2t3-W6-2T0" secondAttribute="bottom" constant="159" id="Joy-7u-B7N"/>
                             <constraint firstItem="1HC-CW-L0k" firstAttribute="top" secondItem="2t3-W6-2T0" secondAttribute="bottom" constant="9" id="P7v-oj-LP1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0Zn-Wf-UYD" secondAttribute="trailing" constant="17" id="WnY-Pp-Zfe"/>
                             <constraint firstAttribute="centerX" secondItem="1HC-CW-L0k" secondAttribute="centerX" id="Zmw-cn-Kmh"/>
                             <constraint firstItem="ndR-f2-gz3" firstAttribute="top" secondItem="0Zn-Wf-UYD" secondAttribute="bottom" constant="86" id="fLu-Xv-VuA"/>
-                            <constraint firstItem="ndR-f2-gz3" firstAttribute="top" secondItem="gc0-TB-rjD" secondAttribute="bottom" constant="20" id="hnR-XW-13o"/>
+                            <constraint firstItem="ndR-f2-gz3" firstAttribute="top" secondItem="gc0-TB-rjD" secondAttribute="bottom" constant="35" id="hnR-XW-13o"/>
                             <constraint firstItem="Ihe-Ac-asj" firstAttribute="leading" secondItem="dUU-bu-X9V" secondAttribute="leading" constant="16" id="z3i-Bc-bgK"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="friendsTableView" destination="0Zn-Wf-UYD" id="pqe-hb-fDP"/>
+                        <outlet property="searchField" destination="OoW-vf-2zU" id="Pp8-AI-JEp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egn-xz-yvv" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "RoomManager.h"
 #import "FriendManager.h"
+#import "UserManager.h"
+#import "SRUnderlinedField.h"
 
-@interface AddUsersToRoomViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, RoomCreatorDelegate, FriendFetcherDelegate>
+@interface AddUsersToRoomViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, RoomCreatorDelegate, FriendFetcherDelegate, UserFinderDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) NSString* roomName;
 @property (strong, nonatomic) Room* room;
 @property (strong, nonatomic) NSArray* friends;
+@property (strong, nonatomic) IBOutlet SRUnderlinedField* searchField;
 @property (strong, nonatomic) IBOutlet UITableView* friendsTableView;
 
 @end

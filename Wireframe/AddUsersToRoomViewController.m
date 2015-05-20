@@ -28,12 +28,19 @@
 }
 
 - (IBAction)create:(id)sender {
-    RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
-    [manager createRoomWithName:self.roomName andUsers:selectedFriends];
+    if (self.room == nil) { // This is a new room being created
+        RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
+        [manager createRoomWithName:self.roomName andUsers:selectedFriends];
+    } else { // Adding people to existing room
+        RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
+        NSLog(@"%@", selectedFriends);
+        [manager inviteUsers:selectedFriends toRoom:self.room];
+    }
+    
 }
 
 - (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - FriendFetcher
@@ -45,7 +52,7 @@
 }
 
 - (void)friendManager:(FriendManager *)manager failedToFetchFriendsOfUser:(User *)user withError:(NSError *)error {
-    ErrorAlert(@"Une erreur est survenu, merci de réessayer plus tard");
+    ErrorAlert(@"Une erreur est survenue, merci de réessayer plus tard");
 }
 
 #pragma mark - RoomCreator
@@ -59,7 +66,7 @@
 }
 
 - (void)roomManager:(RoomManager *)manager failedToCreateRoom:(NSError *)error {
-    ErrorAlert(@"Une erreur est survenu, merci de réessayer plus tard");
+    ErrorAlert(@"Une erreur est survenue, merci de réessayer plus tard");
 }
 
 #pragma mark - UITableView
@@ -101,6 +108,36 @@
         UILabel* label = (UILabel*)[cell.contentView viewWithTag:10];
         label.alpha = .4f;
     }
+}
+
+#pragma mark - UserFinder
+
+- (void)userManager:(UserManager *)manager successfullyFindUsers:(NSArray *)results {
+    self.friends = results;
+    [self.friendsTableView reloadData];
+    
+    NSLog(@"%@", results);
+}
+
+- (void)userManager:(UserManager *)manager failedToFindUsersWithError:(NSError *)error {
+    ErrorAlert(@"Une erreur est survenue. Merci de réessayer plus tard");
+}
+
+#pragma mark - UITextField
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [textField resignFirstResponder];
+    
+    NSLog(@"%@", textField.text);
+    
+    UserManager* manager = [[UserManager alloc] initWithDelegate:self];
+    [manager findUsersWithQuery:[self.searchField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    
+    return YES;
 }
 
 @end

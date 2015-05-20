@@ -17,7 +17,7 @@
     self.popinVerticalCenterConstraint.constant = self.view.frame.size.height;
     [self.view layoutIfNeeded];
     
-    [UIView animateKeyframesWithDuration:.5f delay:0 options:0 animations:^{
+    [UIView animateKeyframesWithDuration:.7f delay:0 options:0 animations:^{
         [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.6f animations:^{
             self.popinVerticalCenterConstraint.constant = -30;
             [self.view layoutIfNeeded];

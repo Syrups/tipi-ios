@@ -17,6 +17,7 @@
 - (void)fetchRoomsForUser:(User*)user;
 - (void)deleteRoom:(Room*)room;
 - (void)updateRoom:(Room*)room;
+- (void)inviteUsers:(NSArray*)userIds toRoom:(Room*)room;
 
 @end
 
@@ -57,5 +58,12 @@
 
 - (void)roomManager:(RoomManager*)manager successfullyUpdatedRoom:(Room*)room;
 - (void)roomManager:(RoomManager *)manager failedToUpdateRoom:(Room*)room withError:(NSError*)error;
+
+@end
+
+@protocol RoomInviterDelegate <NSObject>
+
+- (void)roomManager:(RoomManager*)manager successfullyInvitedUsersToRoom:(Room*)room;
+- (void)roomManager:(RoomManager *)manager failedToInviteUsersToRoom:(Room*)room withError:(NSError*)error;
 
 @end

@@ -73,6 +73,7 @@
     [UIView animateWithDuration:.2f animations:^{
         self.audioWave.alpha = 1;
     }];
+
 }
 
 - (IBAction)replay:(id)sender {
@@ -83,12 +84,14 @@
     [self.navigationController popViewControllerAnimated:NO];
 }
 
+
 #pragma mark - StoryMediaRecorder
 
 - (void)mediaRecorder:(StoryMediaRecorder *)recorder hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
     
-    [self.audioWave updateWithBuffer:buffer bufferSize:bufferSize withNumberOfChannels:numberOfChannels];
+//    [self.audioWave updateWithBuffer:buffer bufferSize:bufferSize withNumberOfChannels:numberOfChannels];
     [self.recordTimer updateWithBuffer:buffer bufferSize:bufferSize withNumberOfChannels:numberOfChannels];
+
 }
 
 #pragma mark - UISwipeGestureRecognizer

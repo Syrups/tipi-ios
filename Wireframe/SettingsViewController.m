@@ -24,8 +24,11 @@
 - (IBAction)logout:(id)sender {
     [[UserSession sharedSession] destroy];
     
+    UIViewController* parent = self.presentingViewController.parentViewController;
+    [self dismissViewControllerAnimated:NO completion:nil];
+
     UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
-    [self.navigationController setViewControllers:@[vc] animated:YES];
+    [parent.navigationController setViewControllers:@[vc] animated:YES];
 }
 
 - (IBAction)openTerms:(id)sender {

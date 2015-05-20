@@ -188,7 +188,7 @@ static float const fadePercentage = 0.2;
         [self.selectedIndexes addObject:indexPath];
         [self.saver.medias addObject:[self.medias objectAtIndex:indexPath.row]];
         
-        [self.wave updateImage:[media objectForKey:@"image"]];
+//        [self.wave updateImage:[media objectForKey:@"image"]];
     } else {
         [UIView animateWithDuration:0.3f animations:^{
             check.alpha = 0;

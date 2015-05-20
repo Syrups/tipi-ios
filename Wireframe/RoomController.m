@@ -42,36 +42,37 @@
 
 - (void)fetchRoomsForUser:(User *)user success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
     
-    // first use cache
-    [RoomCache fetchCachedRoomsWithSuccess:^(NSArray *rooms) {
-        success(rooms);
-    } failure:^{
-        // if we fails to get from cache, make request to API
-        NSString* path = [NSString stringWithFormat:@"/users/%@/rooms", user.id];
-        NSURLRequest* request = [BaseModelController getBaseRequestFor:path authenticated:YES method:@"GET"];
+    NSString* path = [NSString stringWithFormat:@"/users/%@/rooms", user.id];
+    NSURLRequest* request = [BaseModelController getBaseRequestFor:path authenticated:YES method:@"GET"];
+    
+    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        NSError* err = nil;
+        NSArray* rooms = [Room arrayOfModelsFromDictionaries:responseObject];
         
-        op.responseSerializer = [AFJSONResponseSerializer serializer];
+        if (err) { NSLog(@"%@", err); }
         
-        [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-            
-            NSError* err = nil;
-            NSArray* rooms = [Room arrayOfModelsFromDictionaries:responseObject];
-            
-            if (err) { NSLog(@"%@", err); }
-            
-            [RoomCache cacheRooms:rooms completion:^{
-                success(rooms);
-            }];
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"%@", error);
-            failure(error);
+        [RoomCache cacheRooms:rooms completion:^{
+            success(rooms);
         }];
         
-        [op start];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        failure(error);
+        
+        [RoomCache fetchCachedRoomsWithSuccess:^(NSArray *rooms) {
+            success(rooms);
+        } failure:^{
+            
+        }];
+
     }];
+    
+    [op start];
     
     
 }
@@ -104,6 +105,34 @@
 - (void)deleteRoom:(Room*)room success:(void(^)(Room* room))success failure:(void(^)(NSError* error))failure{
     NSString* path = [NSString stringWithFormat:@"/rooms/%@", room.id];
     NSURLRequest* request = [BaseModelController getBaseRequestFor:path authenticated:YES method:@"GET"];
+    
+    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSError* err = nil;
+        Room* room = [[Room alloc] initWithDictionary:responseObject error:&err];
+        
+        if (err) { NSLog(@"%@", err); }
+        
+        success(room);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        failure(error);
+    }];
+    
+    [op start];
+}
+
+- (void)inviteUsers:(NSArray *)usersIds toRoom:(Room *)room success:(void (^)(Room *))success failure:(void (^)(NSError *))failure {
+    
+    NSString* path = [NSString stringWithFormat:@"/rooms/%@/invite", room.id];
+    NSMutableURLRequest* request = [BaseModelController getBaseRequestFor:path authenticated:YES method:@"POST"].mutableCopy;
+    
+    [request setHTTPBody:[[NSString stringWithFormat:@"{ \"users\": %@ }", [self httpBodyForUsers:usersIds]] dataUsingEncoding:NSUTF8StringEncoding]];
     
     AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
