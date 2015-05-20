@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "Page.h"
 
+
 #import "TPSideCommentsView.h"
 
+#import "FileUploader.h"
 #import "StoryWIPSaver.h"
 #import "StoryMediaRecorder.h"
 
-@interface ReadModeViewController : UIViewController
+@interface ReadModeViewController : UIViewController<FileUploaderDelegate>
 @property (nonatomic) int idx;
 @property (nonatomic) Page *page;
 @property (nonatomic, assign) id delegate;

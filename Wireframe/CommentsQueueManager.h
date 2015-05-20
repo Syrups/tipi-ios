@@ -26,16 +26,17 @@
 - (instancetype) initWithDelegate:(id)delegate andCapacity:(NSUInteger)capacity;
 
 - (void) pushInQueueComment: (Comment *) comment atIndex:(NSUInteger) index;
-- (void) removeComment:(Comment *) comment atIndex:(NSUInteger) index;
+//- (void) removeComment:(Comment *) comment atIndex:(NSUInteger) index;
+- (void)removeCommentRef:(NSDictionary *) ref atIndex:(NSUInteger) index;
 
 @end
 
 @protocol CommentsQueueDelegate <NSObject>
 
 @required
-- (void)commentsQueueManager:(CommentsQueueManager *)manager didPushedComment:(Comment*)comment withReference:(NSNumber*)ref;
+- (void)commentsQueueManager:(CommentsQueueManager *)manager didPushedComment:(NSDictionary*)comment withReference:(NSNumber*)ref;
 @required
-- (void)commentsQueueManager:(CommentsQueueManager *)manager didRemovedComment:(Comment*)comment withReference:(NSNumber*)ref;
+- (void)commentsQueueManager:(CommentsQueueManager *)manager didRemovedComment:(NSDictionary*)comment withReference:(NSNumber*)ref;
 @end
 
 

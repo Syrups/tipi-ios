@@ -14,14 +14,14 @@
 - (void)awakeFromNib{
     
     self.comments = [NSMutableArray new];
+    
     self.commentsList.dataSource = self;
     self.commentsList.delegate = self;
-    
     self.commentsList.transform = CGAffineTransformMakeScale (1,-1);
     
 }
 
-- (void)commentsQueueManager:(CommentsQueueManager *)manager didPushedComment:(Comment*)comment withReference:(NSNumber*)ref{
+- (void)commentsQueueManager:(CommentsQueueManager *)manager didPushedComment:(NSDictionary *)comment withReference:(NSNumber*)ref{
     self.comments = manager.commentsQueue;
     
     NSArray *arr = @[[NSIndexPath indexPathForRow:0 inSection:0]];
@@ -40,7 +40,7 @@
     
 }
 
-- (void)commentsQueueManager:(CommentsQueueManager *)manager didRemovedComment:(Comment *)comment withReference:(NSNumber *)ref{
+- (void)commentsQueueManager:(CommentsQueueManager *)manager didRemovedComment:(NSDictionary *)comment withReference:(NSNumber *)ref{
     self.comments = manager.commentsQueue;
     
     [self.commentsList beginUpdates];
@@ -59,7 +59,7 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    Comment* comment = [self.comments objectAtIndex:indexPath.row];
+    NSDictionary* comment = [self.comments objectAtIndex:indexPath.row];
     
     static NSString *cellIdentifier = @"popCommentCell";
     UICommentSideCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -75,7 +75,7 @@
     cell.accessoryView.transform = CGAffineTransformMakeScale (1,-1);
     
     UILabel *label = (UILabel*)[cell viewWithTag:10];
-    label.text =  comment.user.username;
+    label.text =  [comment objectForKey:@"cap"];
     
     return cell;
 }

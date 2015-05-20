@@ -6,10 +6,13 @@
 //  Copyright (c) 2015 Syrup Apps. All rights reserved.
 //
 
-#import "ReadModeViewController.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 #import "Configuration.h"
+#import "ReadModeViewController.h"
+
+
+#import <SDWebImage/UIImageView+WebCache.h>
 #import <AFURLSessionManager.h>
+
 @import AVFoundation;
 
 typedef void(^fadeOutCompletion)(BOOL);
@@ -216,10 +219,14 @@ typedef void(^fadeOutCompletion)(BOOL);
 -(void)pushCommentAtindex:(NSInteger) index{
     //NSLog(@"|___________BIM_______________|");
     
-    NSArray* mockNames = @[@"Andy", @"Anne", @"France", @"Marc"];
+    NSArray* mockNames = @[@"Anne", @"Andy", @"France", @"Marc"];
+    NSArray* mockIds= @[@1234, @7654, @98745, @3];
+    
+    //int randIndex = arc4random() % [mockNames count];
     
     User* user = [User new];
-    user.username = [mockNames objectAtIndex: arc4random() % [mockNames count]];
+    user.username = [mockNames objectAtIndex: index];
+    user.id = [mockIds objectAtIndex: index];
     
     Comment* comment = [Comment new]; 
     comment.file = [NSString stringWithFormat:@"com %ld", index];
@@ -235,8 +242,8 @@ typedef void(^fadeOutCompletion)(BOOL);
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         NSLog(@"begin touch");
         [self pauseSound];
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-        //[self.recorder startRecording];
+        //AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        [self.recorder startRecording];
         
         /*if (!self.recordTimer.appeared) {
             self.replayButton.transform = CGAffineTransformMakeScale(0, 0);
@@ -261,7 +268,7 @@ typedef void(^fadeOutCompletion)(BOOL);
     }
     if (recognizer.state == UIGestureRecognizerStateEnded) {
         NSLog(@"ended touch");
-        //[self.recorder stopRecording];
+        [self.recorder stopRecording];
         //[self.recordTimer pause];
         //[self.recordTimer close];
         
@@ -282,8 +289,13 @@ typedef void(^fadeOutCompletion)(BOOL);
         // Open done popin if everything has been recorded
         if ([self.recorder isComplete]) {
             //[self openDonePopin];
+            FileUploader* uploader = [[FileUploader alloc] init];
+            uploader.delegate = self;
+            
+            NSString* audioPath = [NSString stringWithFormat:@"/pages/%@/comments", self.page.id];
+            [uploader uploadFileWithData:[self.recorder dataOfAudioWithIndex:0] toPath:audioPath ofType:kUploadTypeAudio];
+            
         }
-        
         /*if ([self currentPage].moviePlayer != nil) {
             [[self currentPage].moviePlayer pause];
         }*/

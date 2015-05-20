@@ -83,14 +83,33 @@
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     [delegate.storyController deleteStory:story inRoom:room success:^(Room *room) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            if ([self.delegate respondsToSelector:@selector(roomManager:successfullyDeletedStoryInRoom:)]) {
-                [self.delegate roomManager:self successfullyDeletedStoryInRoom:room];
+            if ([self.delegate respondsToSelector:@selector(storyManager:successfullyDeletedStoryInRoom:)]) {
+                [self.delegate storyManager:self successfullyDeletedStoryInRoom:room];
             }
         });
     } failure:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            if ([self.delegate respondsToSelector:@selector(roomManager:failedToDeleteStory:inRoom:withError:)]) {
-                [self.delegate roomManager:self failedToDeleteStory:story inRoom:room withError:error];
+            if ([self.delegate respondsToSelector:@selector(storyManager:failedToDeleteStory:inRoom:withError:)]) {
+                [self.delegate storyManager:self failedToDeleteStory:story inRoom:room withError:error];
+            }
+        });
+    }];
+}
+
+
+- (void)addCommentOnPage:(Page *)page atTime:(NSUInteger)time withAudioFile:(NSString *)audioFile{
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+
+    [delegate.storyController addCommentOnPage:page atTime:time withAudioFile:audioFile success:^(Comment *comment) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([self.delegate respondsToSelector:@selector(storyManager:successfullyCreatedComment:)]) {
+                [self.delegate storyManager:self successfullyCreatedComment:comment];
+            }
+        });
+    } failure:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([self.delegate respondsToSelector:@selector(storyManager:failedToCreateComment:)]) {
+                [self.delegate storyManager:self failedToCreateComment:error];
             }
         });
     }];

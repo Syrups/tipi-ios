@@ -19,6 +19,9 @@
 - (void)fetchStoriesForRoomId:(NSUInteger )room filteredByTag:(NSString*)tag orUser:(User*)user;
 - (void)fetchStoryWithId:(NSUInteger)roomId ;
 
+
+- (void)addCommentOnPage:(Page *)page atTime:(NSUInteger)time withAudioFile:(NSString *)audioFile;
+
 @end
 
 @protocol StoryCreatorDelegate <NSObject>
@@ -30,8 +33,8 @@
 
 @protocol StoryDeleterDelegate <NSObject>
 
-- (void)roomManager:(StoryManager*)manager successfullyDeletedStoryInRoom:(Room*)room;
-- (void)roomManager:(StoryManager*)manager failedToDeleteStory:(Story*)story inRoom:(Room*)room withError:(NSError*)error;
+- (void)storyManager:(StoryManager*)manager successfullyDeletedStoryInRoom:(Room*)room;
+- (void)storyManager:(StoryManager*)manager failedToDeleteStory:(Story*)story inRoom:(Room*)room withError:(NSError*)error;
 @end
 
 
@@ -49,4 +52,10 @@
 @optional
 - (void)storyManager:(StoryManager *)manager failedToFetchStoryWithId:(NSUInteger)id;
 
+@end
+
+@protocol CommentCreatorDelegate <NSObject>
+
+- (void)storyManager:(StoryManager*)manager successfullyCreatedComment:(Comment*)story;
+- (void)storyManager:(StoryManager*)manager failedToCreateComment:(NSError*)error;
 @end
