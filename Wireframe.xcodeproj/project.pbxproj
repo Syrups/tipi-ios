@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		730CFF1D1B0B7D78001045E4 /* CommentsQueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 730CFF1C1B0B7D78001045E4 /* CommentsQueueManager.m */; };
+		730CFF201B0B857A001045E4 /* TPSideCommentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 730CFF1F1B0B857A001045E4 /* TPSideCommentsView.m */; };
+		730CFF231B0BBC52001045E4 /* UICommentSideCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 730CFF221B0BBC52001045E4 /* UICommentSideCell.m */; };
 		7328120B1B03E44300C0087A /* TPStoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7328120A1B03E44300C0087A /* TPStoryTableViewCell.m */; };
 		7338BF791AD2C167005FD5F0 /* SRAnimatedWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7338BF781AD2C167005FD5F0 /* SRAnimatedWaveView.m */; };
 		73559BA21AE2686000547886 /* RoomNavigationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 73559BA11AE2686000547886 /* RoomNavigationDelegate.m */; };
@@ -150,6 +153,12 @@
 
 /* Begin PBXFileReference section */
 		668F960769FF3C13F992EB88 /* Pods-Wireframe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wireframe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wireframe/Pods-Wireframe.debug.xcconfig"; sourceTree = "<group>"; };
+		730CFF1B1B0B7D78001045E4 /* CommentsQueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsQueueManager.h; sourceTree = "<group>"; };
+		730CFF1C1B0B7D78001045E4 /* CommentsQueueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsQueueManager.m; sourceTree = "<group>"; };
+		730CFF1E1B0B857A001045E4 /* TPSideCommentsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPSideCommentsView.h; sourceTree = "<group>"; };
+		730CFF1F1B0B857A001045E4 /* TPSideCommentsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPSideCommentsView.m; sourceTree = "<group>"; };
+		730CFF211B0BBC52001045E4 /* UICommentSideCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICommentSideCell.h; sourceTree = "<group>"; };
+		730CFF221B0BBC52001045E4 /* UICommentSideCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICommentSideCell.m; sourceTree = "<group>"; };
 		732812091B03E44300C0087A /* TPStoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPStoryTableViewCell.h; sourceTree = "<group>"; };
 		7328120A1B03E44300C0087A /* TPStoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPStoryTableViewCell.m; sourceTree = "<group>"; };
 		7338BF771AD2C167005FD5F0 /* SRAnimatedWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRAnimatedWaveView.h; sourceTree = "<group>"; };
@@ -567,6 +576,8 @@
 				B33B6FD81ACDC717009C0623 /* Entities */,
 				B3065A301AB9866000C10AD9 /* Managers */,
 				B33B6FD41ACDC6E3009C0623 /* Controllers */,
+				730CFF1B1B0B7D78001045E4 /* CommentsQueueManager.h */,
+				730CFF1C1B0B7D78001045E4 /* CommentsQueueManager.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -746,6 +757,8 @@
 				7328120A1B03E44300C0087A /* TPStoryTableViewCell.m */,
 				B30CDD701B077B83007BAEA8 /* AnimationLibrary.h */,
 				B30CDD711B077B83007BAEA8 /* AnimationLibrary.m */,
+				730CFF211B0BBC52001045E4 /* UICommentSideCell.h */,
+				730CFF221B0BBC52001045E4 /* UICommentSideCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -929,6 +942,8 @@
 				B39942201AFBAEBD0040C749 /* SRUnderlinedField.m */,
 				B33618681B0A16FC0047013C /* TPLoader.h */,
 				B33618691B0A16FC0047013C /* TPLoader.m */,
+				730CFF1E1B0B857A001045E4 /* TPSideCommentsView.h */,
+				730CFF1F1B0B857A001045E4 /* TPSideCommentsView.m */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -1194,6 +1209,7 @@
 				B33618631B09E9150047013C /* SCSiriWaveformView.m in Sources */,
 				B3065A331AB9868100C10AD9 /* StoryManager.m in Sources */,
 				B3065A411AB98D6700C10AD9 /* BaseManager.m in Sources */,
+				730CFF201B0B857A001045E4 /* TPSideCommentsView.m in Sources */,
 				B3BCD00C1AA5FCF400261212 /* ChooseTagViewController.m in Sources */,
 				B325A13A1ADE546A0041DF21 /* SandboxViewController.m in Sources */,
 				B3846F391ADD0F1D0030DBDE /* RoomListFlowLayout.m in Sources */,
@@ -1222,6 +1238,7 @@
 				7338BF791AD2C167005FD5F0 /* SRAnimatedWaveView.m in Sources */,
 				B31933911AE009D000603158 /* ZoomOutSegue.m in Sources */,
 				73B20BF01AA609DB00A9C88F /* ShowGroupsViewController.m in Sources */,
+				730CFF1D1B0B7D78001045E4 /* CommentsQueueManager.m in Sources */,
 				B3BCD0091AA5F3D300261212 /* RoomPickerViewController.m in Sources */,
 				B3065A451AB99BB700C10AD9 /* User.m in Sources */,
 				B35AD03C1ABF2D2500527C0D /* ReviewPageViewController.m in Sources */,
@@ -1244,6 +1261,7 @@
 				B3A8D1841ACEAD0A00B09C34 /* FriendManager.m in Sources */,
 				B336186A1B0A16FC0047013C /* TPLoader.m in Sources */,
 				B38621FA1AE16DC200D2CA5A /* ShowCaseableViewController.m in Sources */,
+				730CFF231B0BBC52001045E4 /* UICommentSideCell.m in Sources */,
 				B3BCCFFD1AA5C85B00261212 /* HomeViewController.m in Sources */,
 				B3FBAAC91AEFC15A00A3A6B4 /* HomeBubble.m in Sources */,
 				B3FBAAC31AEFB12F00A3A6B4 /* RequestListViewController.m in Sources */,

@@ -12,7 +12,7 @@
 #import <AFURLSessionManager.h>
 
 
-typedef void(^fadeOutCompletion)(BOOL);
+
 
 @interface ReadModeContainerViewController ()
 @end
@@ -22,17 +22,19 @@ typedef void(^fadeOutCompletion)(BOOL);
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.mPages  = @[@1, @1, @1];
     
-    // Create it.
+    // Mock
+    self.mPages  = @[];
+    
+    // Page
     self.pager = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-    
-    // Point the datasource back to this UIViewController.
     self.pager.dataSource = self;
+    self.pager.delegate = self;
     
+    // Managers
     StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
     [manager fetchStoryWithId:self.storyId];
-    
+
 }
 
 // Factory method
@@ -49,10 +51,13 @@ typedef void(^fadeOutCompletion)(BOOL);
     ReadModeViewController *newController = [self.storyboard instantiateViewControllerWithIdentifier: @"ReadMode"];
     newController.idx = i;
     newController.page = [self.mPages objectAtIndex:i];
-    newController.parent = self;
+    newController.delegate = self;
     
     return newController;
 }
+
+
+#pragma mark - UIPageViewController
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     ReadModeViewController *p = (ReadModeViewController *)viewController;
@@ -64,6 +69,13 @@ typedef void(^fadeOutCompletion)(BOOL);
     return [self viewControllerAtIndex:(p.idx + 1)];
 }
 
+-(void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed{
+    [self.currentPageViewController pauseSound];
+    self.currentPageViewController = (ReadModeViewController*)[self.pager.viewControllers objectAtIndex:0];
+}
+
+
+#pragma mark - StoryManager
 - (void)storyManager:(StoryManager*)manager successfullyFetchedStory:(Story *)story{
     self.story = story;
     self.mPages = self.story.pages;
@@ -72,8 +84,9 @@ typedef void(^fadeOutCompletion)(BOOL);
     int initialIndex = 0;
     
     // Assuming you have a SomePageViewController which extends UIViewController so you can do custom things.
-    ReadModeViewController *initialViewController = (ReadModeViewController *)[self viewControllerAtIndex:initialIndex];
-    NSArray *initialViewControllers = [NSArray arrayWithObject:initialViewController];
+    self.currentPageViewController = (ReadModeViewController *)[self viewControllerAtIndex:initialIndex];
+    
+    NSArray *initialViewControllers = [NSArray arrayWithObject:self.currentPageViewController];
     
     // animated:NO is important so the view just pops into existence.
     // direction: doesn't matter because it's not animating in.
@@ -96,77 +109,13 @@ typedef void(^fadeOutCompletion)(BOOL);
 }
 
 
+
 - (void)storyManager:(StoryManager *)manager failedToFetchStoryWithId:(NSUInteger)id{
     
 }
 
-
-- (void)playSound:(NSURL*)filePath {
-    
-    if(self.player != nil){
-        
-        if(self.player.isPlaying){
-            
-            //Same file means pause
-            if([self.player.url isEqual:filePath]){
-                [self doVolumeFadeAndPause];
-            }else{//Different file mean stop for current and play for new
-                
-                [self doVolumeFadeAndStop];
-                //Stop callback
-                self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:filePath error:nil];
-            }
-        }else{//Not playing
-            //DoFadeInAndPlay
-            if(![self.player.url isEqual:filePath]){
-                self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:filePath error:nil];
-            }
-            [self.player play];
-        }
-    }else{
-        self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:filePath error:nil];
-        [self.player play];
-    }
-    
+- (void)readModeViewController:(ReadModeViewController *)controller requestedToQuitStoryAtPage:(Page *)page{
+    [self.navigationController popViewControllerAnimated:YES];
 }
-
--(void)doVolumeFadeAndStop{
-  [self doVolumeFade:^(BOOL stop) {
-      // Stop and get the sound ready for playing again
-      [self.player stop];
-      self.player.currentTime = 0;
-      [self.player prepareToPlay];
-      self.player.volume = 1.0;
-  }];
-}
-
--(void)doVolumeFadeAndPause{
-    [self doVolumeFade:^(BOOL stop)  {
-        // Stop and get the sound ready for playing again
-        [self.player stop];
-        self.player.currentTime = 0;
-        [self.player prepareToPlay];
-        self.player.volume = 1.0;
-    }];
-}
-
--(void)doVolumeFade: (fadeOutCompletion) completion{
-    if (self.player.volume > 0.1) {
-        self.player.volume = self.player.volume - 0.1;
-        [self performSelector:@selector(doVolumeFade:) withObject:completion afterDelay:0.1];
-    } else {
-        completion(YES);
-    }
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
