@@ -18,41 +18,44 @@
     self.commentsList.dataSource = self;
     self.commentsList.delegate = self;
     self.commentsList.transform = CGAffineTransformMakeScale (1,-1);
+    self.commentsList.alwaysBounceVertical = NO;
     
 }
 
 - (void)commentsQueueManager:(CommentsQueueManager *)manager didPushedComment:(NSDictionary *)comment withReference:(NSNumber*)ref{
     self.comments = manager.commentsQueue;
+    NSLog(@"didPushedComment %@", ref);
     
-    NSArray *arr = @[[NSIndexPath indexPathForRow:0 inSection:0]];
-    NSMutableArray *indexes = [NSMutableArray new];
     
-    if(self.comments.count > 1){
-        for (int i = 1; i < self.comments.count ; i++) {
-            [indexes addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-        }
-    }
+    [self.commentsList insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     
-    [self.commentsList reloadData];
     
-    [self.commentsList reloadRowsAtIndexPaths:indexes withRowAnimation:UITableViewRowAnimationBottom];
-    [self.commentsList reloadRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationRight];
-    
+    //[self performSelector:@selector(doTheFuckinReloadWithArray:) withObject:arr afterDelay:1];
 }
 
 - (void)commentsQueueManager:(CommentsQueueManager *)manager didRemovedComment:(NSDictionary *)comment withReference:(NSNumber *)ref{
     self.comments = manager.commentsQueue;
-    
-    [self.commentsList beginUpdates];
+  
     
     NSUInteger index = [manager.referencesQueue indexOfObject:ref];
-    
     NSArray *arr = @[[NSIndexPath indexPathForRow:index inSection:0]];
+    
+    [self.commentsList beginUpdates];
     [self.commentsList deleteRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationLeft];
     [self.commentsList endUpdates];
-    
-    [self.commentsList reloadData];
 }
+
+- (void)commentsQueueManager:(CommentsQueueManager *)manager isReadyComment:(NSDictionary *)comment withReference:(NSNumber *)ref atIndexPath:(NSIndexPath *)indexpath{
+    
+    self.comments = manager.commentsQueue;
+    
+    NSUInteger index = [self.comments indexOfObject:comment];
+    
+    [self.commentsList beginUpdates];
+    [self.commentsList reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationRight];
+    [self.commentsList endUpdates];
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.comments.count;
@@ -60,18 +63,17 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary* comment = [self.comments objectAtIndex:indexPath.row];
+    BOOL shown = [[comment objectForKeyedSubscript:@"state"] boolValue];
     
-    static NSString *cellIdentifier = @"popCommentCell";
+    NSString *cellIdentifier = shown ? @"popCommentCell" : @"hiddenCommentCell" ;
     UICommentSideCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (!cell) {
         cell = [[UICommentSideCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
-    //cell.roomName.text = room.name;
-    
+    cell.contentView.alpha = shown ? 1 : 0;
     cell.contentView.transform = CGAffineTransformMakeScale (1,-1);
-    // if you have an accessory view
     cell.accessoryView.transform = CGAffineTransformMakeScale (1,-1);
     
     UILabel *label = (UILabel*)[cell viewWithTag:10];
@@ -83,11 +85,11 @@
 
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 @end

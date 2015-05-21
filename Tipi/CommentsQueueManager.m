@@ -52,17 +52,39 @@
         //[self.statesQueue insertObject:@YES atIndex:0];
         //[self.namesQueue insertObject:[self findCapForuser: comment.user] atIndex:0];
         
-        NSDictionary *commentWraper = @{@"comment": comment, @"cap": [self findCapForuser: comment.user], @"state" : @YES};
+        NSMutableDictionary *commentWraper = [@{@"comment": comment, @"cap": [self findCapForuser: comment.user], @"state" : @NO} mutableCopy];
         [self.commentsQueue insertObject:commentWraper atIndex:0];
         [self.referencesQueue insertObject:@(index) atIndex:0];
         
         [self.delegate commentsQueueManager:self didPushedComment:commentWraper withReference:@(index)];
+      
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [commentWraper setValue:@YES forKey:@"state"];
+           
+            [self.delegate commentsQueueManager:self isReadyComment:commentWraper withReference:@(index) atIndexPath:[self indexPathForCommentRef:commentWraper]];
+        });
         
         //TODO should be duration plus .8f
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 8 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             [self removeCommentRef:commentWraper atIndex:index];
         });
     }
+}
+
+- (void) isReadyCommentWithArgs: (NSDictionary *)args{
+    
+    NSMutableDictionary *commentWraper;
+    NSNumber *ref;
+    
+    [self.delegate commentsQueueManager:self isReadyComment:commentWraper withReference:ref atIndexPath:[self indexPathForCommentRef:commentWraper]];
+}
+- (NSIndexPath*)indexPathForCommentRef:(NSMutableDictionary*) ref{
+    return [NSIndexPath indexPathForRow:[self.referencesQueue indexOfObject:ref] inSection:0];
+}
+
+- (NSArray*)indexPathArrayForCommentRef:(NSMutableDictionary*) ref{
+    NSUInteger index = [self.referencesQueue indexOfObject:ref];
+    return @[[NSIndexPath indexPathForRow:index inSection:0]];
 }
 
 - (void)removeCommentRef:(NSDictionary *) ref atIndex:(NSUInteger) index{
