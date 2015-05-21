@@ -19,7 +19,6 @@
     [request setHTTPBody:[[NSString stringWithFormat:@"{ \"story\": { \"title\": \"%@\", \"page_count\": \"%ld\", \"tag\": \"%@\", \"rooms\": %@ } }", name, (unsigned long)medias.count, tag, [self jsonArrayForRooms:rooms]] dataUsingEncoding:NSUTF8StringEncoding]];
     
     
-    
     AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
     op.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -105,9 +104,12 @@
     [op start];
 }
 
-- (void)addCommentOnPage:(Page *)page atTime:(NSUInteger)time withAudioFile:(NSString *)audioFile success:(void (^)(Comment *))success failure:(void (^)(NSError *))failure {
+- (void)addCommentOnPage:(Page *)page atTime:(NSUInteger)timecode withAudioFile:(NSString *)audioFile success:(void (^)(Comment *))success failure:(void (^)(NSError *))failure {
     NSString* path = [NSString stringWithFormat:@"/pages/%@/comments", page.id];
     NSMutableURLRequest* request = [StoryController getBaseRequestFor:path authenticated:YES method:@"POST"].mutableCopy;
+    
+    NSString *jsonParams = [NSString stringWithFormat:@"{ \"comment\": { \"file\": \"%@\", \"timecode\": \"%lu\" } }", audioFile,(unsigned long)timecode];
+    [request setHTTPBody: [jsonParams dataUsingEncoding:NSUTF8StringEncoding]];
     
     AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
