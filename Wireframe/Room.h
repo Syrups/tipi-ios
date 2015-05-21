@@ -13,7 +13,7 @@
 
 @property (strong, nonatomic) NSString* id;
 @property (strong, nonatomic) NSString* name;
-@property (strong, nonatomic) NSArray<User>* users;
+@property (strong, nonatomic) NSArray<User, Optional>* users;
 @property (strong, nonatomic) User* owner;
 
 - (BOOL)isAdmin:(User*)user;
