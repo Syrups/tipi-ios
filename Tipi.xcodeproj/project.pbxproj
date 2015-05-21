@@ -43,7 +43,7 @@
 		73B3B35F1AA7CA5100FF7578 /* ReadModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B3B35E1AA7CA5100FF7578 /* ReadModeViewController.m */; };
 		73B3B3621AA7CA9100FF7578 /* ReadModeContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B3B3611AA7CA9100FF7578 /* ReadModeContainerViewController.m */; };
 		73E7EBC31AE57CC8003579CD /* UIRoomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E7EBC21AE57CC8003579CD /* UIRoomTableViewCell.m */; };
-		825B10453DF4C5EAFBC589D9 /* libPods-Wireframe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9894FA4EEDEAF922FCD71B9 /* libPods-Wireframe.a */; };
+		825B10453DF4C5EAFBC589D9 /* libPods-Tipi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9894FA4EEDEAF922FCD71B9 /* libPods-Tipi.a */; };
 		B30317FD1ABC2759005EF73D /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = B30317FC1ABC2759005EF73D /* Page.m */; };
 		B3065A331AB9868100C10AD9 /* StoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A321AB9868100C10AD9 /* StoryManager.m */; };
 		B3065A3B1AB98ACC00C10AD9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3065A3A1AB98ACC00C10AD9 /* LoginViewController.m */; };
@@ -113,7 +113,7 @@
 		B3BCCFDC1AA5C36C00261212 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3BCCFDA1AA5C36C00261212 /* Main.storyboard */; };
 		B3BCCFDE1AA5C36C00261212 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3BCCFDD1AA5C36C00261212 /* Images.xcassets */; };
 		B3BCCFE11AA5C36C00261212 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3BCCFDF1AA5C36C00261212 /* LaunchScreen.xib */; };
-		B3BCCFED1AA5C36C00261212 /* WireframeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFEC1AA5C36C00261212 /* WireframeTests.m */; };
+		B3BCCFED1AA5C36C00261212 /* TipiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFEC1AA5C36C00261212 /* TipiTests.m */; };
 		B3BCCFF81AA5C4CB00261212 /* GTWalsheim Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B3BCCFF61AA5C4CB00261212 /* GTWalsheim Light.otf */; };
 		B3BCCFF91AA5C4CB00261212 /* GTWalsheim Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B3BCCFF71AA5C4CB00261212 /* GTWalsheim Regular.otf */; };
 		B3BCCFFD1AA5C85B00261212 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFFC1AA5C85B00261212 /* HomeViewController.m */; };
@@ -147,12 +147,12 @@
 			containerPortal = B3BCCFC51AA5C36C00261212 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = B3BCCFCC1AA5C36C00261212;
-			remoteInfo = Wireframe;
+			remoteInfo = Tipi;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		668F960769FF3C13F992EB88 /* Pods-Wireframe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wireframe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wireframe/Pods-Wireframe.debug.xcconfig"; sourceTree = "<group>"; };
+		668F960769FF3C13F992EB88 /* Pods-Tipi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tipi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tipi/Pods-Tipi.debug.xcconfig"; sourceTree = "<group>"; };
 		730CFF1B1B0B7D78001045E4 /* CommentsQueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsQueueManager.h; sourceTree = "<group>"; };
 		730CFF1C1B0B7D78001045E4 /* CommentsQueueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsQueueManager.m; sourceTree = "<group>"; };
 		730CFF1E1B0B857A001045E4 /* TPSideCommentsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPSideCommentsView.h; sourceTree = "<group>"; };
@@ -308,7 +308,7 @@
 		B396C5BF1AFE4EC700935725 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		B399421F1AFBAEBD0040C749 /* SRUnderlinedField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRUnderlinedField.h; sourceTree = "<group>"; };
 		B39942201AFBAEBD0040C749 /* SRUnderlinedField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRUnderlinedField.m; sourceTree = "<group>"; };
-		B39C1DE51AC4B1620011D87E /* Wireframe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Wireframe.entitlements; sourceTree = "<group>"; };
+		B39C1DE51AC4B1620011D87E /* Tipi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Tipi.entitlements; sourceTree = "<group>"; };
 		B3A4CDC61AA71DB90079F8D1 /* StoryWIPSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryWIPSaver.h; sourceTree = "<group>"; };
 		B3A4CDC71AA71DB90079F8D1 /* StoryWIPSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryWIPSaver.m; sourceTree = "<group>"; };
 		B3A8D17B1ACE7A3800B09C34 /* RoomController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomController.h; sourceTree = "<group>"; };
@@ -323,7 +323,7 @@
 		B3A8D1891ACECB1A00B09C34 /* AddFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendViewController.m; sourceTree = "<group>"; };
 		B3A8D18C1ACED0EC00B09C34 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		B3A8D18D1ACED0EC00B09C34 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		B3BCCFCD1AA5C36C00261212 /* Wireframe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wireframe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3BCCFCD1AA5C36C00261212 /* Tipi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3BCCFD11AA5C36C00261212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3BCCFD21AA5C36C00261212 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B3BCCFD41AA5C36C00261212 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -331,9 +331,9 @@
 		B3BCCFDB1AA5C36C00261212 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B3BCCFDD1AA5C36C00261212 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B3BCCFE01AA5C36C00261212 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		B3BCCFE61AA5C36C00261212 /* WireframeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WireframeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3BCCFE61AA5C36C00261212 /* TipiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3BCCFEB1AA5C36C00261212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B3BCCFEC1AA5C36C00261212 /* WireframeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WireframeTests.m; sourceTree = "<group>"; };
+		B3BCCFEC1AA5C36C00261212 /* TipiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipiTests.m; sourceTree = "<group>"; };
 		B3BCCFF61AA5C4CB00261212 /* GTWalsheim Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTWalsheim Light.otf"; sourceTree = "<group>"; };
 		B3BCCFF71AA5C4CB00261212 /* GTWalsheim Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTWalsheim Regular.otf"; sourceTree = "<group>"; };
 		B3BCCFFB1AA5C85B00261212 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -383,8 +383,8 @@
 		B3FC7B8A1AA662CC00034E58 /* RecordPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordPageViewController.h; sourceTree = "<group>"; };
 		B3FC7B8B1AA662CC00034E58 /* RecordPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordPageViewController.m; sourceTree = "<group>"; };
 		B3FC7B8E1AA672DE00034E58 /* placeholder.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = placeholder.gif; sourceTree = "<group>"; };
-		DD8907F5BD3F36E16C299571 /* Pods-Wireframe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wireframe.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wireframe/Pods-Wireframe.release.xcconfig"; sourceTree = "<group>"; };
-		E9894FA4EEDEAF922FCD71B9 /* libPods-Wireframe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Wireframe.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD8907F5BD3F36E16C299571 /* Pods-Tipi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tipi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tipi/Pods-Tipi.release.xcconfig"; sourceTree = "<group>"; };
+		E9894FA4EEDEAF922FCD71B9 /* libPods-Tipi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tipi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,7 +395,7 @@
 				B3846F1D1ADD058B0030DBDE /* CoreMotion.framework in Frameworks */,
 				B38B895F1ACC08C500799EDD /* MediaPlayer.framework in Frameworks */,
 				B35CDBDC1AB8863C00BF9F82 /* AVFoundation.framework in Frameworks */,
-				825B10453DF4C5EAFBC589D9 /* libPods-Wireframe.a in Frameworks */,
+				825B10453DF4C5EAFBC589D9 /* libPods-Tipi.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,7 +471,7 @@
 				73B3B3451AA7BA3F00FF7578 /* Thumbs.db */,
 			);
 			name = exports;
-			path = Wireframe/exports;
+			path = Tipi/exports;
 			sourceTree = "<group>";
 		};
 		73B3B35B1AA7C54D00FF7578 /* InRoom */ = {
@@ -815,8 +815,8 @@
 				B31933891ADFB2B600603158 /* GTWalsheim Bold.otf */,
 				B3BCD01E1AA6148100261212 /* LXReorderableCollectionViewFlowLayout */,
 				73B3B3331AA7BA3F00FF7578 /* exports */,
-				B3BCCFCF1AA5C36C00261212 /* Wireframe */,
-				B3BCCFE91AA5C36C00261212 /* WireframeTests */,
+				B3BCCFCF1AA5C36C00261212 /* Tipi */,
+				B3BCCFE91AA5C36C00261212 /* TipiTests */,
 				B3BCCFCE1AA5C36C00261212 /* Products */,
 				F9734E072F11CD68BC1D8E3B /* Pods */,
 				DCA76F8ACE4F9EBC399AF0C2 /* Frameworks */,
@@ -826,17 +826,17 @@
 		B3BCCFCE1AA5C36C00261212 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B3BCCFCD1AA5C36C00261212 /* Wireframe.app */,
-				B3BCCFE61AA5C36C00261212 /* WireframeTests.xctest */,
+				B3BCCFCD1AA5C36C00261212 /* Tipi.app */,
+				B3BCCFE61AA5C36C00261212 /* TipiTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B3BCCFCF1AA5C36C00261212 /* Wireframe */ = {
+		B3BCCFCF1AA5C36C00261212 /* Tipi */ = {
 			isa = PBXGroup;
 			children = (
 				B319B2391AF0CD1400C819BD /* Resources */,
-				B39C1DE51AC4B1620011D87E /* Wireframe.entitlements */,
+				B39C1DE51AC4B1620011D87E /* Tipi.entitlements */,
 				B3065A371AB9887500C10AD9 /* Configuration.h */,
 				B3FC7B8E1AA672DE00034E58 /* placeholder.gif */,
 				B38B89631ACC21F300799EDD /* Views */,
@@ -853,7 +853,7 @@
 				B3BCCFDF1AA5C36C00261212 /* LaunchScreen.xib */,
 				B3BCCFD01AA5C36C00261212 /* Supporting Files */,
 			);
-			path = Wireframe;
+			path = Tipi;
 			sourceTree = "<group>";
 		};
 		B3BCCFD01AA5C36C00261212 /* Supporting Files */ = {
@@ -866,13 +866,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B3BCCFE91AA5C36C00261212 /* WireframeTests */ = {
+		B3BCCFE91AA5C36C00261212 /* TipiTests */ = {
 			isa = PBXGroup;
 			children = (
-				B3BCCFEC1AA5C36C00261212 /* WireframeTests.m */,
+				B3BCCFEC1AA5C36C00261212 /* TipiTests.m */,
 				B3BCCFEA1AA5C36C00261212 /* Supporting Files */,
 			);
-			path = WireframeTests;
+			path = TipiTests;
 			sourceTree = "<group>";
 		};
 		B3BCCFEA1AA5C36C00261212 /* Supporting Files */ = {
@@ -1003,7 +1003,7 @@
 				B3846F1C1ADD058B0030DBDE /* CoreMotion.framework */,
 				B38B895E1ACC08C500799EDD /* MediaPlayer.framework */,
 				B35CDBDB1AB8863C00BF9F82 /* AVFoundation.framework */,
-				E9894FA4EEDEAF922FCD71B9 /* libPods-Wireframe.a */,
+				E9894FA4EEDEAF922FCD71B9 /* libPods-Tipi.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1011,8 +1011,8 @@
 		F9734E072F11CD68BC1D8E3B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				668F960769FF3C13F992EB88 /* Pods-Wireframe.debug.xcconfig */,
-				DD8907F5BD3F36E16C299571 /* Pods-Wireframe.release.xcconfig */,
+				668F960769FF3C13F992EB88 /* Pods-Tipi.debug.xcconfig */,
+				DD8907F5BD3F36E16C299571 /* Pods-Tipi.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1020,9 +1020,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B3BCCFCC1AA5C36C00261212 /* Wireframe */ = {
+		B3BCCFCC1AA5C36C00261212 /* Tipi */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B3BCCFF01AA5C36C00261212 /* Build configuration list for PBXNativeTarget "Wireframe" */;
+			buildConfigurationList = B3BCCFF01AA5C36C00261212 /* Build configuration list for PBXNativeTarget "Tipi" */;
 			buildPhases = (
 				79ED44D1A4FEE23663B57AD6 /* Check Pods Manifest.lock */,
 				B3BCCFC91AA5C36C00261212 /* Sources */,
@@ -1034,14 +1034,14 @@
 			);
 			dependencies = (
 			);
-			name = Wireframe;
-			productName = Wireframe;
-			productReference = B3BCCFCD1AA5C36C00261212 /* Wireframe.app */;
+			name = Tipi;
+			productName = Tipi;
+			productReference = B3BCCFCD1AA5C36C00261212 /* Tipi.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B3BCCFE51AA5C36C00261212 /* WireframeTests */ = {
+		B3BCCFE51AA5C36C00261212 /* TipiTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B3BCCFF31AA5C36C00261212 /* Build configuration list for PBXNativeTarget "WireframeTests" */;
+			buildConfigurationList = B3BCCFF31AA5C36C00261212 /* Build configuration list for PBXNativeTarget "TipiTests" */;
 			buildPhases = (
 				B3BCCFE21AA5C36C00261212 /* Sources */,
 				B3BCCFE31AA5C36C00261212 /* Frameworks */,
@@ -1052,9 +1052,9 @@
 			dependencies = (
 				B3BCCFE81AA5C36C00261212 /* PBXTargetDependency */,
 			);
-			name = WireframeTests;
-			productName = WireframeTests;
-			productReference = B3BCCFE61AA5C36C00261212 /* WireframeTests.xctest */;
+			name = TipiTests;
+			productName = TipiTests;
+			productReference = B3BCCFE61AA5C36C00261212 /* TipiTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1081,7 +1081,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B3BCCFC81AA5C36C00261212 /* Build configuration list for PBXProject "Wireframe" */;
+			buildConfigurationList = B3BCCFC81AA5C36C00261212 /* Build configuration list for PBXProject "Tipi" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1094,8 +1094,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B3BCCFCC1AA5C36C00261212 /* Wireframe */,
-				B3BCCFE51AA5C36C00261212 /* WireframeTests */,
+				B3BCCFCC1AA5C36C00261212 /* Tipi */,
+				B3BCCFE51AA5C36C00261212 /* TipiTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1164,7 +1164,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wireframe/Pods-Wireframe-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tipi/Pods-Tipi-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		79ED44D1A4FEE23663B57AD6 /* Check Pods Manifest.lock */ = {
@@ -1289,7 +1289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3BCCFED1AA5C36C00261212 /* WireframeTests.m in Sources */,
+				B3BCCFED1AA5C36C00261212 /* TipiTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1298,7 +1298,7 @@
 /* Begin PBXTargetDependency section */
 		B3BCCFE81AA5C36C00261212 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B3BCCFCC1AA5C36C00261212 /* Wireframe */;
+			target = B3BCCFCC1AA5C36C00261212 /* Tipi */;
 			targetProxy = B3BCCFE71AA5C36C00261212 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1401,30 +1401,30 @@
 		};
 		B3BCCFF11AA5C36C00261212 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 668F960769FF3C13F992EB88 /* Pods-Wireframe.debug.xcconfig */;
+			baseConfigurationReference = 668F960769FF3C13F992EB88 /* Pods-Tipi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
-				INFOPLIST_FILE = Wireframe/Info.plist;
+				INFOPLIST_FILE = Tipi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Tipi;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		B3BCCFF21AA5C36C00261212 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD8907F5BD3F36E16C299571 /* Pods-Wireframe.release.xcconfig */;
+			baseConfigurationReference = DD8907F5BD3F36E16C299571 /* Pods-Tipi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
-				INFOPLIST_FILE = Wireframe/Info.plist;
+				INFOPLIST_FILE = Tipi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Tipi;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -1441,10 +1441,10 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = WireframeTests/Info.plist;
+				INFOPLIST_FILE = TipiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wireframe.app/Wireframe";
+				PRODUCT_NAME = TipiTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tipi.app/Tipi";
 			};
 			name = Debug;
 		};
@@ -1456,17 +1456,17 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = WireframeTests/Info.plist;
+				INFOPLIST_FILE = TipiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wireframe.app/Wireframe";
+				PRODUCT_NAME = TipiTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tipi.app/Tipi";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B3BCCFC81AA5C36C00261212 /* Build configuration list for PBXProject "Wireframe" */ = {
+		B3BCCFC81AA5C36C00261212 /* Build configuration list for PBXProject "Tipi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3BCCFEE1AA5C36C00261212 /* Debug */,
@@ -1475,7 +1475,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B3BCCFF01AA5C36C00261212 /* Build configuration list for PBXNativeTarget "Wireframe" */ = {
+		B3BCCFF01AA5C36C00261212 /* Build configuration list for PBXNativeTarget "Tipi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3BCCFF11AA5C36C00261212 /* Debug */,
@@ -1484,7 +1484,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B3BCCFF31AA5C36C00261212 /* Build configuration list for PBXNativeTarget "WireframeTests" */ = {
+		B3BCCFF31AA5C36C00261212 /* Build configuration list for PBXNativeTarget "TipiTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3BCCFF41AA5C36C00261212 /* Debug */,

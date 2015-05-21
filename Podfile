@@ -1,7 +1,7 @@
 # Uncomment this line to define a global platform for your project
 # platform :ios, '6.0'
 
-target 'Wireframe' do
+target 'Tipi' do
 	pod 'AFNetworking', '~> 2.0'
 	pod 'EZAudio', '~> 0.0.6'
 	pod 'JSONModel'
@@ -9,7 +9,7 @@ target 'Wireframe' do
   pod 'MLPAutoCompleteTextField'
 end
 
-target 'WireframeTests' do
+target 'TipiTests' do
 
 end
 
