@@ -15,33 +15,48 @@
 - (void)perform {
     MediaPickerViewController* source = self.sourceViewController;
     OrganizeStoryViewController* dest = self.destinationViewController;
-    CGFloat midY = source.view.frame.size.height/2 - CELL_SIZE/2; // CELL_SIZE defined in OrganizeStoryViewController.h
-    CGFloat origX = source.view.frame.size.width;
+    CGFloat midY = source.mediaCollectionView.contentOffset.y + source.view.frame.size.height/2 - CELL_SIZE/2 - 10; // CELL_SIZE defined in OrganizeStoryViewController.h
+    CGFloat origX = source.view.frame.size.width/2 - CELL_SIZE/2 - 15;
     
     __block NSUInteger i = 0;
     
     [source.mediaCollectionView.visibleCells enumerateObjectsUsingBlock:^(UICollectionViewCell* cell, NSUInteger idx, BOOL *stop) {
-
-        
         NSIndexPath* indexPath = [source.mediaCollectionView indexPathForCell:cell];
         
-        [UIView animateWithDuration:.4f animations:^{
+        if (![source.selectedIndexes containsObject:indexPath]) {
+            [UIView animateWithDuration:.3f animations:^{
+                cell.alpha = 0;
+            }];
+        }
+    }];
+    
+    [source.selectedIndexes enumerateObjectsUsingBlock:^(NSIndexPath* indexPath, NSUInteger idx, BOOL *stop) {
+        UICollectionViewCell* cell = [source.mediaCollectionView cellForItemAtIndexPath:indexPath];
+        [UIView animateWithDuration:.3f animations:^{
             [cell.contentView viewWithTag:30].alpha = 0; // checkmark
             
             if (indexPath && ![source.selectedIndexes containsObject:indexPath]) {
                 cell.alpha = 0;
             } else {
-                cell.frame = CGRectMake(origX + i * CELL_SIZE, midY, CELL_SIZE, CELL_SIZE);
-
+                cell.frame = CGRectMake(origX + i * (CELL_SIZE + 15), midY, CELL_SIZE, CELL_SIZE);
                 ++i;
             }
         } completion:^(BOOL finished) {
-            if (idx == source.mediaCollectionView.visibleCells.count-1) {
+            if (idx == source.selectedIndexes.count-1) {
                 [source.navigationController pushViewController:dest animated:NO];
+                
+                dest.replayButton.transform = CGAffineTransformMakeScale(0, 0);
+                [UIView animateWithDuration:.3f animations:^{
+                    dest.replayButton.transform = CGAffineTransformIdentity;
+                }];
             }
         }];
-        
     }];
+
+    [UIView animateWithDuration:.3f animations:^{
+        source.continueButton.transform = CGAffineTransformMakeTranslation(0, 200);
+    }];
+    
 }
 
 @end

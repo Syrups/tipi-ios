@@ -32,12 +32,12 @@
 #pragma mark - UITableView
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.room.users.count;
+    return self.room.participants.count;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell"];
-    User* user = [self.room.users objectAtIndex:indexPath.row];
+    User* user = [self.room.participants objectAtIndex:indexPath.row];
     
     UILabel* label = (UILabel*)[cell.contentView viewWithTag:10];
     label.text = user.username;
@@ -68,7 +68,17 @@
 
 #pragma mark - UITextField
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch* touch = [[event allTouches] anyObject];
+    
+    if ([self.roomNameField isFirstResponder] && [touch view] != self.roomNameField) {
+        [self.roomNameField resignFirstResponder];
+    }
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    
     return YES;
 }
 

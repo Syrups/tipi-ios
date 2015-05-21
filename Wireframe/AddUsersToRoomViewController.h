@@ -12,7 +12,7 @@
 #import "UserManager.h"
 #import "SRUnderlinedField.h"
 
-@interface AddUsersToRoomViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, RoomCreatorDelegate, FriendFetcherDelegate, UserFinderDelegate, UITextFieldDelegate>
+@interface AddUsersToRoomViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, RoomCreatorDelegate, FriendFetcherDelegate, UserFinderDelegate, RoomInviterDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) NSString* roomName;
 @property (strong, nonatomic) Room* room;

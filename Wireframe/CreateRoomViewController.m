@@ -35,8 +35,8 @@
 }
 
 - (IBAction)back:(id)sender {
-//    [self.roomNameField resignFirstResponder];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.roomNameField resignFirstResponder];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 //#pragma mark - UITextField

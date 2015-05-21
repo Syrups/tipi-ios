@@ -46,9 +46,9 @@
             UIImage* full = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
             [media setObject:full forKey:@"full"];
             
-            if (idx == 0) {
-                [self.wave updateImage:[ImageUtils convertImageToGrayScale:full]];
-            }
+//            if (idx == 0) {
+//                [self.wave updateImage:[ImageUtils convertImageToGrayScale:full]];
+//            }
         }
         
     }];

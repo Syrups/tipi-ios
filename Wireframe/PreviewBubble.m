@@ -106,7 +106,7 @@
     
     CABasicAnimation* morph = [CABasicAnimation animationWithKeyPath:@"path"];
     morph.duration = 0.2f;
-    morph.timingFunction = [CAMediaTimingFunction functionWithControlPoints:.45f :.14f :.84f :.48f];
+    morph.timingFunction = [CAMediaTimingFunction functionWithControlPoints:1:.23:.9:.59];
     
     CGPathRef from = shapeLayer.path;
     CGPathRef to = [self pathForLayer];

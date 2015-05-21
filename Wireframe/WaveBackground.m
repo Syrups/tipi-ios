@@ -87,12 +87,13 @@
 - (CGPathRef)pathForLayerMaxAmplitude:(BOOL)max {
     UIBezierPath* path = [[UIBezierPath alloc] init];
     
-    CGFloat y = max ? 210 : 180;
+    CGFloat y = max ? 210 : 160;
     CGFloat amp = max ? 320 : 280;
+    CGFloat x = -100;
     
-    CGPoint start = CGPointMake(0, y);
+    CGPoint start = CGPointMake(x, y);
     CGPoint middle = CGPointMake(CGRectGetMidX(self.frame), amp);
-    CGPoint end = CGPointMake(CGRectGetWidth(self.frame), y);
+    CGPoint end = CGPointMake(CGRectGetWidth(self.frame) + fabs(x), y);
     
     // control points
     CGPoint c1 = CGPointMake(CGRectGetMidX(self.frame)*.75f, 220);
@@ -104,8 +105,8 @@
     [path moveToPoint:start];
     [path addCurveToPoint:middle controlPoint1:c1 controlPoint2:c2];
     [path addCurveToPoint:end controlPoint1:c3 controlPoint2:c4];
-    [path addLineToPoint:CGPointMake(CGRectGetWidth(self.frame), 0)];
-    [path addLineToPoint:CGPointMake(0, 0)];
+    [path addLineToPoint:CGPointMake(CGRectGetWidth(self.frame) + fabs(x), 0)];
+    [path addLineToPoint:CGPointMake(x, 0)];
     [path addLineToPoint:start];
     
     return path.CGPath;

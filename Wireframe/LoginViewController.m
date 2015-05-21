@@ -10,8 +10,11 @@
 #import "UserSession.h"
 #import "PKAIDecoder.h"
 #import "AnimationLibrary.h"
+#import "TPLoader.h"
 
-@implementation LoginViewController
+@implementation LoginViewController {
+    TPLoader* loader;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,7 +53,7 @@
     CADisplayLink *displaylink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateMeters)];
     [displaylink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
     
-    [PKAIDecoder builAnimatedImageIn:self.littleWaves fromFile:@"waves" withAnimationDuration:6];
+    [PKAIDecoder builAnimatedImageIn:self.littleWaves fromFile:@"waves" withAnimationDuration:7];
     
     [AnimationLibrary animateBouncingView:self.signInButton usingConstraint:self.signInButtonVerticalSpace ofType:AnimationLibraryBottomSpaceConstraint relativeToSuperview:self.view inverted:NO];
     [AnimationLibrary animateBouncingView:self.signUpButton usingConstraint:self.signUpButtonVerticalSpace ofType:AnimationLibraryBottomSpaceConstraint relativeToSuperview:self.view inverted:NO];
@@ -60,7 +63,7 @@
 {
     [self.recorder updateMeters];
     
-    CGFloat normalizedValue = pow (10, [self.recorder averagePowerForChannel:0] / 20);
+    CGFloat normalizedValue = pow (10, [self.recorder averagePowerForChannel:0] / 10);
     
     [self.waveformView updateWithLevel:normalizedValue];
     [self.secondWaveformView updateWithLevel:normalizedValue];
@@ -88,6 +91,9 @@
     NSString* password = [self.passwordField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     [manager authenticateUserWithUsername:username password:password];
+    
+    loader = [[TPLoader alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:loader];
 }
 
 #pragma mark - UserManager

@@ -7,6 +7,7 @@
 //
 
 #import "AddUsersToRoomViewController.h"
+#import "TPLoader.h"
 
 @interface AddUsersToRoomViewController ()
 
@@ -14,6 +15,7 @@
 
 @implementation AddUsersToRoomViewController {
     NSMutableArray* selectedFriends;
+    TPLoader* loader;
 }
 
 - (void)viewDidLoad {
@@ -23,11 +25,14 @@
     selectedFriends = [NSMutableArray array];
     self.friends = [NSArray array];
     
-    FriendManager* manager = [[FriendManager alloc] initWithDelegate:self];
-    [manager fetchFriendsOfUser:CurrentUser];
+//    FriendManager* manager = [[FriendManager alloc] initWithDelegate:self];
+//    [manager fetchFriendsOfUser:CurrentUser];
 }
 
 - (IBAction)create:(id)sender {
+    loader = [[TPLoader alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:loader];
+    
     if (self.room == nil) { // This is a new room being created
         RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
         [manager createRoomWithName:self.roomName andUsers:selectedFriends];
@@ -59,13 +64,31 @@
 
 - (void)roomManager:(RoomManager *)manager successfullyCreatedRoom:(Room *)room {
     // success
+    [loader removeFromSuperview];
     
     // pop to rooms list
     
-    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)roomManager:(RoomManager *)manager failedToCreateRoom:(NSError *)error {
+    [loader removeFromSuperview];
+    ErrorAlert(@"Une erreur est survenue, merci de réessayer plus tard");
+}
+
+#pragma mark - RoomInviter
+
+- (void)roomManager:(RoomManager *)manager successfullyInvitedUsersToRoom:(Room *)room {
+    [loader removeFromSuperview];
+    
+    // pop to room
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)roomManager:(RoomManager *)manager failedToInviteUsersToRoom:(Room *)room withError:(NSError *)error {
+    [loader removeFromSuperview];
     ErrorAlert(@"Une erreur est survenue, merci de réessayer plus tard");
 }
 

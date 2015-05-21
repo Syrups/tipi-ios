@@ -70,6 +70,8 @@
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -86,15 +88,21 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7HU-AZ-Ups" userLabel="Waveform" customClass="SCSiriWaveformView">
-                                <rect key="frame" x="0.0" y="135" width="640" height="190"/>
+                                <rect key="frame" x="0.0" y="15" width="640" height="435"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="segmented" value="NO"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="phaseShift">
-                                        <real key="value" value="-0.080000000000000002"/>
+                                        <real key="value" value="-0.12"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="frequency">
                                         <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="amplitude">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="density">
+                                        <real key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -107,13 +115,13 @@
                                         <real key="value" value="1.5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="idleAmplitude">
-                                        <real key="value" value="0.40000000000000002"/>
+                                        <real key="value" value="0.29999999999999999"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="amplitude">
                                         <real key="value" value="0.80000000000000004"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="phaseShift">
-                                        <real key="value" value="-0.080000000000000002"/>
+                                        <real key="value" value="-0.14999999999999999"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -123,9 +131,9 @@
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbl-C2-b2A">
                                 <rect key="frame" x="50" y="200" width="220" height="140"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dlV-TY-5wX" customClass="SRUnderlinedField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mot de passe" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dlV-TY-5wX" customClass="SRUnderlinedField">
                                         <rect key="frame" x="20" y="90" width="180" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
@@ -140,9 +148,9 @@
                                             <outlet property="delegate" destination="vXZ-lx-hvc" id="oDk-6s-0hG"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zCu-M7-YNE" customClass="SRUnderlinedField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="nom d'utilisateur" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zCu-M7-YNE" customClass="SRUnderlinedField">
                                         <rect key="frame" x="20" y="30" width="180" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
@@ -151,7 +159,6 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                 <color key="value" red="0.16078431900000001" green="0.22352941330000001" blue="0.36078432199999999" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="username"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="delegate" destination="vXZ-lx-hvc" id="del-By-AnQ"/>
@@ -209,7 +216,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QhP-Ah-VYA">
-                                <rect key="frame" x="-22" y="165" width="364" height="79"/>
+                                <rect key="frame" x="-22" y="125" width="364" height="79"/>
                                 <string key="text">Racontez des histoires
 avec votre voix</string>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="22"/>
@@ -931,7 +938,7 @@ avec votre voix</string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TRA-aR-PM6" id="Zzf-RX-KHl">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.39999999999999963" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgh-92-Ofc">
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.39999999999999963" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgh-92-Ofc">
                                                     <rect key="frame" x="13" y="26" width="216" height="38"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
@@ -978,7 +985,6 @@ avec votre voix</string>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="create:" destination="fXm-Cd-emW" eventType="touchUpInside" id="xMi-92-04Q"/>
-                                    <action selector="next:" destination="GUm-qQ-5Vx" eventType="touchUpInside" id="aFg-7B-Qr0"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ihe-Ac-asj">
@@ -998,7 +1004,7 @@ avec votre voix</string>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="nom d'utilisateur ou e-mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OoW-vf-2zU" customClass="SRUnderlinedField">
                                 <rect key="frame" x="46" y="102" width="228" height="41"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
@@ -2177,7 +2183,7 @@ avec votre voix</string>
                                 </connections>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="71" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fld-6g-qqx">
-                                <rect key="frame" x="0.0" y="163" width="320" height="372"/>
+                                <rect key="frame" x="0.0" y="194" width="320" height="341"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -3322,7 +3328,7 @@ partager avec tes amis !</string>
         <image name="menu-btn" width="17" height="17"/>
         <image name="page-replay-btn" width="79" height="79"/>
         <image name="pause.png" width="28" height="32"/>
-        <image name="picker-check" width="45" height="45"/>
+        <image name="picker-check" width="38" height="38"/>
         <image name="picto_lucifer" width="88" height="88"/>
         <image name="placeholder.gif" width="1000" height="1000"/>
         <image name="play.png" width="28" height="32"/>

@@ -62,7 +62,7 @@
     self.requestsTabButtonYConstraint.constant -= 50;
     self.requestsTabButton.alpha = 0;
     [self.requestsTabButton.superview layoutIfNeeded];
-    [UIView animateWithDuration:.3f delay:.3f options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:.3f delay:.5f options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.requestsTabButtonYConstraint.constant = initialConstant;
         self.requestsTabButton.alpha = 1;
         [self.requestsTabButton.superview layoutIfNeeded];

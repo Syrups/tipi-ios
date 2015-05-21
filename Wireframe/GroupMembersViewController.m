@@ -31,7 +31,7 @@
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *cellIdentifier = @"membersItem";
-    User* user = [self.room.users objectAtIndex:indexPath.row];
+    User* user = [self.room.participants objectAtIndex:indexPath.row];
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
@@ -47,11 +47,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.room.users.count;
+    return self.room.participants.count;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.parent setFilterUser:[self.room.users objectAtIndex:indexPath.row]];
+    [self.parent setFilterUser:[self.room.participants objectAtIndex:indexPath.row]];
     UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     UILabel *name = (UILabel*)[cell.contentView viewWithTag:10];
     name.alpha = 1;

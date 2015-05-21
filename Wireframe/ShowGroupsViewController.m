@@ -10,10 +10,12 @@
 #import "ShowOneGroupViewController.h"
 #import "UserSession.h"
 #import "CreateRoomViewController.h"
+#import "TPLoader.h"
 #import "SHPathLibrary.h"
 
 @implementation ShowGroupsViewController {
     CAGradientLayer* maskLayer;
+    TPLoader* loader;
 }
 
 - (void)viewDidLoad {
@@ -25,6 +27,10 @@
     
     RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
     [manager fetchRoomsForUser:[[UserSession sharedSession] user]];
+    
+    loader = [[TPLoader alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:loader];
+    [self.view sendSubviewToBack:loader];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -66,6 +72,8 @@
 - (void)roomManager:(RoomManager *)manager successfullyFetchedRooms:(NSArray *)rooms {
     
     BOOL first = self.mGroups.count == 0;
+    
+    [loader removeFromSuperview];
     
     self.mGroups = rooms;
     

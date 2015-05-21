@@ -24,8 +24,8 @@
     
     self.friends = [NSMutableArray array];
     
-    loader = [[TPLoader alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:loader];
+//    loader = [[TPLoader alloc] initWithFrame:self.view.frame];
+//    [self.view addSubview:loader];
     
     FriendManager* manager = [[FriendManager alloc] initWithDelegate:self];
     [manager fetchFriendsOfUser:CurrentUser];

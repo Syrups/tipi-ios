@@ -37,9 +37,9 @@ static float const fadePercentage = 0.2;
     unorderedMedias = [NSMutableArray array];
     
     currentOffset = 0;
-    [self.library fetchMediasFromLibraryFrom:currentOffset to:currentOffset + kMediaPickerMediaLimit];
 
     self.continueButton.transform = CGAffineTransformConcat(CGAffineTransformMakeTranslation(0, 200), CGAffineTransformMakeRotation(-.3f));
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -64,6 +64,12 @@ static float const fadePercentage = 0.2;
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.library fetchMediasFromLibraryFrom:currentOffset to:currentOffset + kMediaPickerMediaLimit];
+}
+
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -80,7 +86,7 @@ static float const fadePercentage = 0.2;
 #pragma mark - MediaLibrary
 
 - (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedias:(NSArray *)medias from:(NSUInteger)start to:(NSUInteger)limit {
-
+    
     [self.wave appear];
     
     // reverse array
@@ -121,16 +127,22 @@ static float const fadePercentage = 0.2;
     
     [image setImage:[media objectForKey:@"image"]];
     
-    CGFloat initialDelay = .35f;
+    CGFloat initialDelay = .3f;
     int endY = cell.frame.origin.y;
     
-    if (cell.tag == 0) {
+    if (cell.tag == 0) { // not animated yet
         cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y + 500, cell.frame.size.width, cell.frame.size.height);
-        [UIView animateWithDuration:0.4f delay:initialDelay + indexPath.row*0.05f options:UIViewAnimationOptionCurveEaseOut animations:^{
-            cell.frame = CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height);
-
+        
+        [UIView animateKeyframesWithDuration:.8f delay:initialDelay + indexPath.row*0.04f options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
+            [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.5f animations:^{
+                cell.frame = CGRectMake(cell.frame.origin.x, endY - 10, cell.frame.size.width, cell.frame.size.height);
+            }];
+            [UIView addKeyframeWithRelativeStartTime:.5f relativeDuration:.5f animations:^{
+                cell.frame = CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height);
+            }];
         } completion:nil];
-        cell.tag = 1;
+        
+        cell.tag = 1; // animated
     }
 
     UIView* check = (UIView*)[cell.contentView viewWithTag:30];
