@@ -10,6 +10,7 @@
 		730CFF1D1B0B7D78001045E4 /* CommentsQueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 730CFF1C1B0B7D78001045E4 /* CommentsQueueManager.m */; };
 		730CFF201B0B857A001045E4 /* TPSideCommentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 730CFF1F1B0B857A001045E4 /* TPSideCommentsView.m */; };
 		730CFF231B0BBC52001045E4 /* UICommentSideCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 730CFF221B0BBC52001045E4 /* UICommentSideCell.m */; };
+		7322855D1B0F41CA00481C2B /* FileDownLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7322855C1B0F41CA00481C2B /* FileDownLoader.m */; };
 		7328120B1B03E44300C0087A /* TPStoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7328120A1B03E44300C0087A /* TPStoryTableViewCell.m */; };
 		7338BF791AD2C167005FD5F0 /* SRAnimatedWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7338BF781AD2C167005FD5F0 /* SRAnimatedWaveView.m */; };
 		73559BA21AE2686000547886 /* RoomNavigationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 73559BA11AE2686000547886 /* RoomNavigationDelegate.m */; };
@@ -159,6 +160,8 @@
 		730CFF1F1B0B857A001045E4 /* TPSideCommentsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPSideCommentsView.m; sourceTree = "<group>"; };
 		730CFF211B0BBC52001045E4 /* UICommentSideCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICommentSideCell.h; sourceTree = "<group>"; };
 		730CFF221B0BBC52001045E4 /* UICommentSideCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICommentSideCell.m; sourceTree = "<group>"; };
+		7322855B1B0F41CA00481C2B /* FileDownLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownLoader.h; sourceTree = "<group>"; };
+		7322855C1B0F41CA00481C2B /* FileDownLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDownLoader.m; sourceTree = "<group>"; };
 		732812091B03E44300C0087A /* TPStoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPStoryTableViewCell.h; sourceTree = "<group>"; };
 		7328120A1B03E44300C0087A /* TPStoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPStoryTableViewCell.m; sourceTree = "<group>"; };
 		7338BF771AD2C167005FD5F0 /* SRAnimatedWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRAnimatedWaveView.h; sourceTree = "<group>"; };
@@ -576,8 +579,6 @@
 				B33B6FD81ACDC717009C0623 /* Entities */,
 				B3065A301AB9866000C10AD9 /* Managers */,
 				B33B6FD41ACDC6E3009C0623 /* Controllers */,
-				730CFF1B1B0B7D78001045E4 /* CommentsQueueManager.h */,
-				730CFF1C1B0B7D78001045E4 /* CommentsQueueManager.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -766,6 +767,8 @@
 		B3A4CDC51AA71D860079F8D1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				730CFF1B1B0B7D78001045E4 /* CommentsQueueManager.h */,
+				730CFF1C1B0B7D78001045E4 /* CommentsQueueManager.m */,
 				B319B2441AF0CD5100C819BD /* PKAIDecoder.h */,
 				B319B2451AF0CD5100C819BD /* PKAIDecoder.m */,
 				B3A4CDC61AA71DB90079F8D1 /* StoryWIPSaver.h */,
@@ -780,6 +783,8 @@
 				B38B89611ACC146200799EDD /* MediaLibrary.m */,
 				B35975F01ADFA29F00936E5E /* ImageUtils.h */,
 				B35975F11ADFA29F00936E5E /* ImageUtils.m */,
+				7322855B1B0F41CA00481C2B /* FileDownLoader.h */,
+				7322855C1B0F41CA00481C2B /* FileDownLoader.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -1219,6 +1224,7 @@
 				B3A8D18A1ACECB1A00B09C34 /* AddFriendViewController.m in Sources */,
 				B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */,
 				B34FEE971AEAB7A200A7E57B /* HelpModalViewController.m in Sources */,
+				7322855D1B0F41CA00481C2B /* FileDownLoader.m in Sources */,
 				B3BCD0061AA5F0CE00261212 /* NewStoryViewController.m in Sources */,
 				B3A8D18E1ACED0EC00B09C34 /* ProfileViewController.m in Sources */,
 				B3A8D17D1ACE7A3800B09C34 /* RoomController.m in Sources */,

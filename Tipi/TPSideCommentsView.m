@@ -24,18 +24,14 @@
 
 - (void)commentsQueueManager:(CommentsQueueManager *)manager didPushedComment:(NSDictionary *)comment withReference:(NSNumber*)ref{
     self.comments = manager.commentsQueue;
-    NSLog(@"didPushedComment %@", ref);
-    
     
     [self.commentsList insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-    
-    
     //[self performSelector:@selector(doTheFuckinReloadWithArray:) withObject:arr afterDelay:1];
 }
 
 - (void)commentsQueueManager:(CommentsQueueManager *)manager didRemovedComment:(NSDictionary *)comment withReference:(NSNumber *)ref{
     self.comments = manager.commentsQueue;
-  
+    
     
     NSUInteger index = [manager.referencesQueue indexOfObject:ref];
     NSArray *arr = @[[NSIndexPath indexPathForRow:index inSection:0]];
@@ -61,7 +57,26 @@
     return self.comments.count;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UICommentSideCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSDictionary* comment = [self.comments objectAtIndex:indexPath.row];
+    BOOL shown = [[comment objectForKeyedSubscript:@"state"] boolValue];
+    
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor = [UIColor clearColor];
+    cell.backgroundView.backgroundColor = [UIColor clearColor];
+    
+    cell.contentView.backgroundColor = [UIColor clearColor];
+    cell.contentView.layer.masksToBounds = NO;
+    
+    if(shown){
+        cell.circleContainer.layer.cornerRadius = 25;
+        [cell.circleContainer setBackgroundColor :[UIColor whiteColor]];
+    }
+}
+
+-(UICommentSideCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary* comment = [self.comments objectAtIndex:indexPath.row];
     BOOL shown = [[comment objectForKeyedSubscript:@"state"] boolValue];
     
@@ -72,7 +87,6 @@
         cell = [[UICommentSideCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
-    cell.contentView.alpha = shown ? 1 : 0;
     cell.contentView.transform = CGAffineTransformMakeScale (1,-1);
     cell.accessoryView.transform = CGAffineTransformMakeScale (1,-1);
     
@@ -82,6 +96,22 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICommentSideCell* cell = (UICommentSideCell*)[tableView cellForRowAtIndexPath:indexPath];
+    [cell updateState];
+    
+    /*Comment *comment = [[self.comments objectAtIndex:indexPath.row] objectForKey:@"comment"];
+    [self.delegate sideCommentsView:self didSelectedComment:comment withFile:comment.file];*/
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    UICommentSideCell* cell = (UICommentSideCell*)[tableView cellForRowAtIndexPath:indexPath];
+    [cell updateState];
+    
+    /*Comment *comment = [[self.comments objectAtIndex:indexPath.row] objectForKey:@"comment"];
+    [self.delegate sideCommentsView:self didDeselectedComment:comment withFile:comment.file];*/
+}
 
 
 /*

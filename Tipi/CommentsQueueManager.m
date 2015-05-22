@@ -29,38 +29,32 @@
         self.delegate = delegate;
         self.commentsQueue = [NSMutableArray new];
         self.referencesQueue = [NSMutableArray new];
-        self.statesQueue = [NSMutableArray new];
-        
     }
     return self;
 }
 
 - (void)pushInQueueComment : (Comment *) comment atIndex:(NSUInteger) index{
-    
-    /*NSDictionary *commentRef = [self.commQueue objectForKey:@(index)];
-     if (!queueItem) {
-     self.commQueue[@(index)] = @{@"comments": comment, @"state" : @YES};
-     [self.delegate commentsQueueManager:self didPushedCommentReference:commentRef];
-     
-     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-     [self removeComment:comment atIndex:index];
-     });
-     }*/
-    
+
     if(![self.referencesQueue containsObject: @(index)]){
         
-        //[self.statesQueue insertObject:@YES atIndex:0];
-        //[self.namesQueue insertObject:[self findCapForuser: comment.user] atIndex:0];
-        
-        NSMutableDictionary *commentWraper = [@{@"comment": comment, @"cap": [self findCapForuser: comment.user], @"state" : @NO} mutableCopy];
+        NSMutableDictionary *commentWraper = [@{@"comment": comment, @"cap": [self findCapForuser: comment.user], @"state" : @NO, @"unrolled" : @NO} mutableCopy];
         [self.commentsQueue insertObject:commentWraper atIndex:0];
         [self.referencesQueue insertObject:@(index) atIndex:0];
         
         [self.delegate commentsQueueManager:self didPushedComment:commentWraper withReference:@(index)];
-      
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        
+        /*NSTimer *timeToStay = [NSTimer timerWithTimeInterval:3
+                                                target:self
+                                              selector:@selector(hideOverlay:)
+                                              userInfo:nil
+                                               repeats:NO];
+        [[NSRunLoop currentRunLoop] addTimer:timeToStay forMode:NSRunLoopCommonModes];
+        [commentWraper setValue:timeToStay forKey:@"timer"];*/
+        
+        //[self.overlayTimer invalidate];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             [commentWraper setValue:@YES forKey:@"state"];
-           
             [self.delegate commentsQueueManager:self isReadyComment:commentWraper withReference:@(index) atIndexPath:[self indexPathForCommentRef:commentWraper]];
         });
         
@@ -71,20 +65,10 @@
     }
 }
 
-- (void) isReadyCommentWithArgs: (NSDictionary *)args{
-    
-    NSMutableDictionary *commentWraper;
-    NSNumber *ref;
-    
-    [self.delegate commentsQueueManager:self isReadyComment:commentWraper withReference:ref atIndexPath:[self indexPathForCommentRef:commentWraper]];
-}
-- (NSIndexPath*)indexPathForCommentRef:(NSMutableDictionary*) ref{
-    return [NSIndexPath indexPathForRow:[self.referencesQueue indexOfObject:ref] inSection:0];
-}
-
-- (NSArray*)indexPathArrayForCommentRef:(NSMutableDictionary*) ref{
-    NSUInteger index = [self.referencesQueue indexOfObject:ref];
-    return @[[NSIndexPath indexPathForRow:index inSection:0]];
+- (void)hideOverlay:(NSTimer *)timer{
+    /*[UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.overlayView.alpha = 0;
+    } completion:nil];*/
 }
 
 - (void)removeCommentRef:(NSDictionary *) ref atIndex:(NSUInteger) index{
@@ -94,44 +78,32 @@
     [self.delegate commentsQueueManager:self didRemovedComment:ref withReference:@(index)];
 }
 
-/*
-- (void)removeComment:(Comment *) comment atIndex:(NSUInteger) index{
-    //[self.commQueue removeObjectForKey:@(index)];
-    
-    [self.commentsQueue removeObject:comment];
-    [self.delegate commentsQueueManager:self didRemovedComment:comment withReference:@(index)];
-}*/
 
 - (NSString *)findCapForuser:(User*)user{
-    
-    /*NSString*(^checkCapBeetweenUser)(User*comUser, NSUInteger index) = ^(User* comUser, NSUInteger index) {
-        
-        NSString *userCap = [user.username substringToIndex:index];
-        NSString *cap1 = [comUser.username substringToIndex:index];
-        
-        
-        if([userCap isEqual:cap1] && index < user.username.length){
-            userCap = checkCapBeetweenUser(comUser, index+1);
-        }
-        
-        return userCap;
-    };*/
     
     NSString *cap = [user.username substringToIndex:2];
     
     for (NSDictionary *comRef in self.commentsQueue) {
         Comment *com = [comRef objectForKey:@"comment"];
         if(user.id != com.user.id){
-            cap = [self checkCapBeetweenUser:user andComUser:com.user andUserwithIndex:2];
-            //cap = checkCapBeetweenUser(com.user, 2);
+            cap = [CommentsQueueManager checkCapBeetweenUser:user andComUser:com.user andUserwithIndex:2];
         }
     }
 
     return cap;
 }
 
+- (NSIndexPath*)indexPathForCommentRef:(NSMutableDictionary*) ref{
+    return [NSIndexPath indexPathForRow:[self.referencesQueue indexOfObject:ref] inSection:0];
+}
 
-- (NSString *)checkCapBeetweenUser:(User*)user andComUser:(User*)comUser andUserwithIndex:(NSUInteger)index{
+- (NSArray*)indexPathArrayForCommentRef:(NSMutableDictionary*) ref{
+    NSUInteger index = [self.referencesQueue indexOfObject:ref];
+    return @[[NSIndexPath indexPathForRow:index inSection:0]];
+}
+
+
++ (NSString *)checkCapBeetweenUser:(User*)user andComUser:(User*)comUser andUserwithIndex:(NSUInteger)index{
     
     NSString *userCap = [user.username substringToIndex:index];
     NSString *cap1 = [comUser.username substringToIndex:index];

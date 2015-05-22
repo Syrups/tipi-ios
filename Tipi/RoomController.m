@@ -19,7 +19,6 @@
     
     [request setHTTPBody:[[NSString stringWithFormat:@"{ \"room\" : { \"name\" : \"%@\", \"users\" : %@ } }", name, [self httpBodyForUsers:users]] dataUsingEncoding:NSUTF8StringEncoding]];
     
-    NSLog(@"%@", request.HTTPBody);
     AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
     op.responseSerializer = [AFJSONResponseSerializer serializer];

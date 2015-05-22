@@ -16,7 +16,7 @@
 #import "StoryWIPSaver.h"
 #import "StoryMediaRecorder.h"
 
-@interface ReadModeViewController : UIViewController<FileUploaderDelegate>
+@interface ReadModeViewController : UIViewController<FileUploaderDelegate, TPSideCommentsDelegate>
 @property (nonatomic) int idx;
 @property (nonatomic) Page *page;
 @property (nonatomic, assign) id delegate;
