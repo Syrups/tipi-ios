@@ -9,14 +9,21 @@
 #import "PickerToOrganizerSegue.h"
 #import "OrganizeStoryViewController.h"
 #import "MediaPickerViewController.h"
+#import "TPLoader.h"
 
 @implementation PickerToOrganizerSegue
 
 - (void)perform {
+    
     MediaPickerViewController* source = self.sourceViewController;
     OrganizeStoryViewController* dest = self.destinationViewController;
+    
+    TPLoader* loader = [[TPLoader alloc] initWithFrame:source.view.frame];
+    [source.view addSubview:loader];
+//    loader.infoLabel.text = @"Chargement des photos...";
+    
     CGFloat midY = source.mediaCollectionView.contentOffset.y + source.view.frame.size.height/2 - CELL_SIZE/2 - 10; // CELL_SIZE defined in OrganizeStoryViewController.h
-    CGFloat origX = source.view.frame.size.width/2 - CELL_SIZE/2 - 15;
+    CGFloat origX = source.view.frame.size.width/2 - CELL_SIZE/2 - 24;
     
     __block NSUInteger i = 0;
     
@@ -38,11 +45,12 @@
             if (indexPath && ![source.selectedIndexes containsObject:indexPath]) {
                 cell.alpha = 0;
             } else {
-                cell.frame = CGRectMake(origX + i * (CELL_SIZE + 15), midY, CELL_SIZE, CELL_SIZE);
+                cell.frame = CGRectMake(origX + i * (CELL_SIZE + 10), midY, CELL_SIZE, CELL_SIZE);
                 ++i;
             }
         } completion:^(BOOL finished) {
-            if (idx == source.selectedIndexes.count-1) {
+            if (idx == source.selectedIndexes.count/2) {
+                NSLog(@"here");
                 [source.navigationController pushViewController:dest animated:NO];
                 
                 dest.replayButton.transform = CGAffineTransformMakeScale(0, 0);
@@ -54,7 +62,8 @@
     }];
 
     [UIView animateWithDuration:.3f animations:^{
-        source.continueButton.transform = CGAffineTransformMakeTranslation(0, 200);
+        source.continueButtonYConstraint.constant -= 100;
+        [source.view layoutIfNeeded];
     }];
     
 }

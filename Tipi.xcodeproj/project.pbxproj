@@ -73,6 +73,8 @@
 		B325A13D1ADE5AD80041DF21 /* PreviewBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A13C1ADE5AD80041DF21 /* PreviewBubble.m */; };
 		B325A1401ADEE6400041DF21 /* Timeline.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A13F1ADEE6400041DF21 /* Timeline.m */; };
 		B325A1431ADF0B4D0041DF21 /* OrganizerWave.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A1421ADF0B4D0041DF21 /* OrganizerWave.m */; };
+		B3297F661B0E2C0B00249DA0 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3297F651B0E2C0B00249DA0 /* WebViewController.m */; };
+		B3297F691B0E2CD900249DA0 /* terms.html in Resources */ = {isa = PBXBuildFile; fileRef = B3297F681B0E2CD900249DA0 /* terms.html */; };
 		B33618631B09E9150047013C /* SCSiriWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = B33618621B09E9150047013C /* SCSiriWaveformView.m */; };
 		B33618671B0A15370047013C /* loader.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B33618661B0A15370047013C /* loader.pkai */; };
 		B336186A1B0A16FC0047013C /* TPLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B33618691B0A16FC0047013C /* TPLoader.m */; };
@@ -258,6 +260,9 @@
 		B325A13F1ADEE6400041DF21 /* Timeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timeline.m; sourceTree = "<group>"; };
 		B325A1411ADF0B4D0041DF21 /* OrganizerWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrganizerWave.h; sourceTree = "<group>"; };
 		B325A1421ADF0B4D0041DF21 /* OrganizerWave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrganizerWave.m; sourceTree = "<group>"; };
+		B3297F641B0E2C0B00249DA0 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		B3297F651B0E2C0B00249DA0 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		B3297F681B0E2CD900249DA0 /* terms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = terms.html; sourceTree = "<group>"; };
 		B33618611B09E9150047013C /* SCSiriWaveformView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSiriWaveformView.h; sourceTree = "<group>"; };
 		B33618621B09E9150047013C /* SCSiriWaveformView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSiriWaveformView.m; sourceTree = "<group>"; };
 		B33618661B0A15370047013C /* loader.pkai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = loader.pkai; sourceTree = "<group>"; };
@@ -568,6 +573,8 @@
 				B3065A531ABB35D700C10AD9 /* SignUpViewController.m */,
 				B3FBAAC41AEFB7A400A3A6B4 /* SettingsViewController.h */,
 				B3FBAAC51AEFB7A400A3A6B4 /* SettingsViewController.m */,
+				B3297F641B0E2C0B00249DA0 /* WebViewController.h */,
+				B3297F651B0E2C0B00249DA0 /* WebViewController.m */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -625,6 +632,17 @@
 				B319B24D1AF1025A00C819BD /* WalkthroughScreen.m */,
 			);
 			name = Walkthrough;
+			sourceTree = "<group>";
+		};
+		B3297F671B0E2CC700249DA0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B336186B1B0A241A0047013C /* waves.pkai */,
+				B33618661B0A15370047013C /* loader.pkai */,
+				73B3B3331AA7BA3F00FF7578 /* exports */,
+				B3297F681B0E2CD900249DA0 /* terms.html */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		B33618601B09E9150047013C /* SCSiriWaveformView */ = {
@@ -814,12 +832,10 @@
 		B3BCCFC41AA5C36C00261212 = {
 			isa = PBXGroup;
 			children = (
-				B336186B1B0A241A0047013C /* waves.pkai */,
-				B33618661B0A15370047013C /* loader.pkai */,
+				B3297F671B0E2CC700249DA0 /* Resources */,
 				B33618601B09E9150047013C /* SCSiriWaveformView */,
 				B31933891ADFB2B600603158 /* GTWalsheim Bold.otf */,
 				B3BCD01E1AA6148100261212 /* LXReorderableCollectionViewFlowLayout */,
-				73B3B3331AA7BA3F00FF7578 /* exports */,
 				B3BCCFCF1AA5C36C00261212 /* Tipi */,
 				B3BCCFE91AA5C36C00261212 /* TipiTests */,
 				B3BCCFCE1AA5C36C00261212 /* Products */,
@@ -1113,6 +1129,7 @@
 				73B3B3571AA7BA3F00FF7578 /* Thumbs.db in Resources */,
 				73B3B3491AA7BA3F00FF7578 /* go-right.png in Resources */,
 				73B3B3531AA7BA3F00FF7578 /* replay-gris.png in Resources */,
+				B3297F691B0E2CD900249DA0 /* terms.html in Resources */,
 				73B3B3501AA7BA3F00FF7578 /* play.png in Resources */,
 				73B3B3461AA7BA3F00FF7578 /* croix-blanche.png in Resources */,
 				73B3B34B1AA7BA3F00FF7578 /* home-noir.png in Resources */,
@@ -1242,6 +1259,7 @@
 				B3846F3C1ADD43170030DBDE /* AudioWave.m in Sources */,
 				B35CDBDA1AB87DD900BF9F82 /* StoryMediaRecorder.m in Sources */,
 				7338BF791AD2C167005FD5F0 /* SRAnimatedWaveView.m in Sources */,
+				B3297F661B0E2C0B00249DA0 /* WebViewController.m in Sources */,
 				B31933911AE009D000603158 /* ZoomOutSegue.m in Sources */,
 				73B20BF01AA609DB00A9C88F /* ShowGroupsViewController.m in Sources */,
 				730CFF1D1B0B7D78001045E4 /* CommentsQueueManager.m in Sources */,

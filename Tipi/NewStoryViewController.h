@@ -10,6 +10,7 @@
 #import "BaseHomeViewController.h"
 #import <EZAudio/EZAudio.h>
 #import "AudioWave.h"
+#import "HomeBubble.h"
 
 @interface NewStoryViewController : BaseHomeViewController <EZMicrophoneDelegate>
 
@@ -17,5 +18,15 @@
 @property (strong, nonatomic) IBOutlet UIButton* secondaryButton;
 @property (strong, nonatomic) EZMicrophone* microphone;
 @property (strong, nonatomic) IBOutlet AudioWave* wave;
+@property (strong, nonatomic) IBOutlet UIView* bottom;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* bottomViewYConstraint;
+@property (strong, nonatomic) IBOutlet HomeBubble* bubble;
+
+@property (strong, nonatomic) IBOutlet UIButton* profileButton;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* topControlsYConstraint;
+
+- (void)transitionToFires;
+- (void)transitionFromFires;
+- (void)transitionFromProfile;
 
 @end

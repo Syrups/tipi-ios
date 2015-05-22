@@ -18,5 +18,8 @@
 @property (strong, nonatomic) ShowOneGroupViewController *mShowOneGroupViewController;
 @property (weak, nonatomic) IBOutlet UITableView *mTableView;
 @property (strong, nonatomic)  NSArray *mGroups;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* topControlsYConstraint;
+
+- (void)animate;
 
 @end

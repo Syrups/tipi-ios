@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "BaseHomeViewController.h"
+#import "NewStoryViewController.h"
 
 @interface HomeViewController ()
 
@@ -20,7 +21,11 @@
     [super viewDidLoad];
 
     self.edgesForExtendedLayout = UIRectEdgeNone;
-
+    
+    self.storyViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NewStoryViewController"];
+    self.groupsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ShowGroupsNavViewController"];
+    
+    [self displayChildViewController:self.storyViewController];
 }
 
 
@@ -30,32 +35,36 @@
 
 - (IBAction)goRooms:(id)sender
 {
-    
-    // Assuming you have SomePageViewController.xib
-    UINavigationController *roomController = [self.storyboard instantiateViewControllerWithIdentifier: @"ShowGroupsNavViewController"];
-    
-    [self presentViewController:roomController animated:NO completion:nil];
-    //[self.navigationController pushViewController:roomController animated:YES];
+    [self switchChildViewController];
 }
 
-- (IBAction)openProfile:(id)sender {
-    UIViewController* profile = [self.storyboard instantiateViewControllerWithIdentifier:@"Profile"];
+#pragma mark - Navigation
+
+- (void)switchChildViewController {
+    UIViewController* vc = self.currentViewController == self.storyViewController ? self.groupsViewController : self.storyViewController;
     
-    [profile willMoveToParentViewController:self];
-    [self addChildViewController:profile];
-    CGRect frame = self.view.frame;
-    frame.origin.y = frame.size.height;
-    profile.view.frame = frame;
-    [self.view addSubview:profile.view];
-    [profile didMoveToParentViewController:self];
+    [self displayChildViewController:vc];
+}
+
+- (void)displayChildViewController:(UIViewController *)viewController {
     
-    [UIView animateWithDuration:.3f delay:0 options:
-     UIViewAnimationOptionCurveEaseOut animations:^{
-         self.profileButton.hidden = YES;
-         CGRect frame = profile.view.frame;
-         frame.origin.y = 0;
-         profile.view.frame = frame;
-    } completion:nil];
+    // remove old child vc if any
+    if (self.currentViewController != nil) {
+        [self.currentViewController.view removeFromSuperview];
+        [self.currentViewController removeFromParentViewController];
+    }
+    
+    [self addChildViewController:viewController];
+    viewController.view.frame = self.view.frame;
+    [self.view addSubview:viewController.view];
+    [self.view sendSubviewToBack:viewController.view];
+    [viewController didMoveToParentViewController:self];
+
+    self.currentViewController = viewController;
+    
+    if ([self.currentViewController respondsToSelector:@selector(transitionFromFires)]) {
+        [self.currentViewController performSelector:@selector(transitionFromFires)];
+    }
 }
 
 @end

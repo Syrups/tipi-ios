@@ -10,6 +10,7 @@
 #import "ShowOneGroupViewController.h"
 #import "UserSession.h"
 #import "CreateRoomViewController.h"
+#import "HomeViewController.h"
 #import "TPLoader.h"
 #import "SHPathLibrary.h"
 
@@ -32,6 +33,14 @@
     loader = [[TPLoader alloc] initWithFrame:self.view.frame];
     [self.view addSubview:loader];
     [self.view sendSubviewToBack:loader];
+    
+    CGFloat initialConstant = self.topControlsYConstraint.constant;
+    self.topControlsYConstraint.constant = -100;
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:.5f animations:^{
+        self.topControlsYConstraint.constant = initialConstant;
+        [self.view layoutIfNeeded];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -65,7 +74,8 @@
 //}
 
 - (IBAction)backToHome:(id)sender {
-    [self dismissViewControllerAnimated:NO completion:nil];
+    HomeViewController* parent = (HomeViewController*)self.parentViewController.parentViewController;
+    [parent displayChildViewController:parent.storyViewController];
 }
 
 #pragma mark - RoomFetcher
@@ -198,7 +208,7 @@
         [cell setFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y + 150, cell.frame.size.width, cell.frame.size.height)];
         [cell setAlpha:0];
         
-        [UIView animateWithDuration:.5f delay:delay  options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [UIView animateWithDuration:.3f delay:delay  options:UIViewAnimationOptionCurveEaseInOut animations:^{
             [cell setFrame:CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height)];
             [cell setAlpha:1];
         } completion:nil];

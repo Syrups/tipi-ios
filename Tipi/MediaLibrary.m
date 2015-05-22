@@ -36,13 +36,13 @@
             
             self.totalMediasCount += group.numberOfAssets;
             
-            [group enumerateAssetsWithOptions:0 usingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
+            [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
+                
                 
                 if (result != nil) {
                     
                     i++;
                     
-                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 //                        NSLog(@"asset - %ld / %ld", (unsigned long)index, (unsigned long)group.numberOfAssets);
                         NSURL *url= (NSURL*) [[result defaultRepresentation]url];
 
@@ -71,16 +71,14 @@
                         
                             if ( i == self.totalMediasCount) {
                 
-                                dispatch_async(dispatch_get_main_queue(), ^{
                                     
                                     if ([self.delegate respondsToSelector:@selector(mediaLibrary:successfullyFetchedMedias:from:to:)]) {
                                         [self.delegate mediaLibrary:self successfullyFetchedMedias:medias from:start to:limit];
                                     }
-                                });
+                             
                             }
                         
-                        
-                    });
+                    
                     
                 }
                 

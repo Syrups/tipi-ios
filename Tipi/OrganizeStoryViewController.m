@@ -20,6 +20,7 @@
     CGFloat lastOffset;
     NSUInteger currentMedia;
     BOOL firstLoad;
+    BOOL removing;
 }
 
 - (void)viewDidLoad {
@@ -66,6 +67,7 @@
             }
         }];
     });
+    
 
 }
 
@@ -74,13 +76,23 @@
     
     self.replayButton.alpha = 1;
     
-    if ([self.recorder isComplete]) {
+    if ([self.recorder isComplete] && ![self.recorder isEmpty]) {
         self.replayButton.hidden = YES;
         self.finishButton.hidden = NO;
-    } else {
+    } else if ([self.recorder isEmpty]) {
+        self.replayButton.hidden = YES;
+    }else {
         self.replayButton.hidden = NO;
         self.finishButton.hidden = YES;
     }
+}
+
+- (IBAction)start:(id)sender {
+    [UIView animateWithDuration:.3f animations:^{
+        self.collectionView.contentOffset = CGPointMake(0, self.collectionView.contentOffset.y);
+    } completion:^(BOOL finished) {
+        [self zoomAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+    }];
 }
 
 - (IBAction)back:(id)sender {
@@ -96,6 +108,11 @@
 }
 
 - (IBAction)swipeToRemove:(UISwipeGestureRecognizer*)sender {
+    
+    if (removing) return;
+    
+    removing = YES;
+    
     NSInteger index = sender.view.tag;
     
     UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
@@ -109,7 +126,9 @@
             [self.saver.medias removeObjectAtIndex:index];
             [self.collectionView performBatchUpdates:^{
                 [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
-            } completion:nil];
+            } completion:^(BOOL finished) {
+                removing = NO;
+            }];
         }
         
         // if all has been deleted, go back to picker
@@ -164,8 +183,8 @@
         //        cell.alpha = INACTIVE_CELL_OPACITY;
     }
     
-    UIView* gouigoui = [cell.contentView viewWithTag:30];
-    gouigoui.hidden = ![self.recorder hasRecordedAtIndex:indexPath.row];
+//    UIView* gouigoui = [cell.contentView viewWithTag:30];
+//    gouigoui.hidden = ![self.recorder hasRecordedAtIndex:indexPath.row];
     
     cell.contentView.tag = indexPath.row;
     

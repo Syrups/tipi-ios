@@ -186,11 +186,19 @@
     return path;
 }
 
+#pragma mark - Home bubble
+
 + (UIBezierPath *)pathForHomeBubbleInRect:(CGRect)rect open:(BOOL)open {
-    CGRect smallRect = open ? CGRectMake(-rect.size.width, -rect.size.height, rect.size.width*3, rect.size.height*3) :CGRectMake(CGRectGetMidX(rect) - 125, 50, 250, 250);
+    CGRect smallRect = open ? CGRectMake(-rect.size.width/2, -rect.size.height/2, rect.size.width*2, rect.size.height*2) :CGRectMake(CGRectGetMidX(rect) - 135, 100, 270, 270);
     UIBezierPath* path = [UIBezierPath bezierPathWithOvalInRect:smallRect];
     
     return path;
+}
+
++ (UIBezierPath *)pathForHomeBubbleStickyToTopInRect:(CGRect)rect {
+    CGRect smallRect = CGRectMake(-50, -rect.size.height/3, rect.size.width + 100, rect.size.height/1.5f );
+    
+    return [UIBezierPath bezierPathWithOvalInRect:smallRect];
 }
 
 

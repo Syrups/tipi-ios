@@ -139,11 +139,12 @@
     self.friends = results;
     [self.friendsTableView reloadData];
     
-    NSLog(@"%@", results);
+    self.activityIndicator.hidden = YES;
 }
 
 - (void)userManager:(UserManager *)manager failedToFindUsersWithError:(NSError *)error {
     ErrorAlert(@"Une erreur est survenue. Merci de réessayer plus tard");
+    self.activityIndicator.hidden = YES;
 }
 
 #pragma mark - UITextField
@@ -151,7 +152,7 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     [textField resignFirstResponder];
     
-    NSLog(@"%@", textField.text);
+    self.activityIndicator.hidden = NO;
     
     UserManager* manager = [[UserManager alloc] initWithDelegate:self];
     [manager findUsersWithQuery:[self.searchField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
