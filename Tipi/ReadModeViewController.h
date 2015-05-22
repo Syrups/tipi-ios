@@ -45,6 +45,8 @@
 
 - (IBAction)playSound:(id)sender;
 - (void)pauseSound;
+
+
 @end
 
 
@@ -55,3 +57,4 @@
 @required
 - (void)readModeViewController:(ReadModeViewController *)controller requestedToQuitStoryAtPage: (Page*) page;
 @end
+

@@ -23,8 +23,7 @@
     
     [self.contentView layoutIfNeeded]; // Ensures that all pending layout operations have been completed
     [UIView animateWithDuration:.5f animations:^{
-        
-        self.circleContainerWidth.constant = self.unRolled ? 120 : 60;
+        self.circleContainerWidth.constant = self.unRolled ? 100 : 40;
         self.capLabel.alpha = self.unRolled ? 0 : 1;
         self.fullNameLabel.alpha = self.unRolled ? 1 : 0;
         

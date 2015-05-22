@@ -71,7 +71,7 @@
     cell.contentView.layer.masksToBounds = NO;
     
     if(shown){
-        cell.circleContainer.layer.cornerRadius = 25;
+        cell.circleContainer.layer.cornerRadius = 20;
         [cell.circleContainer setBackgroundColor :[UIColor whiteColor]];
     }
 }

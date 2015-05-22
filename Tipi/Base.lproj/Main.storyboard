@@ -72,6 +72,8 @@
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1343,7 +1345,7 @@ avec votre voix</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUE-OA-RqI" customClass="TPSideCommentsView">
                                 <rect key="frame" x="0.0" y="61" width="160" height="447"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eQo-fV-WyC">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eQo-fV-WyC">
                                         <rect key="frame" x="0.0" y="0.0" width="160" height="447"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <prototypes>
@@ -1354,23 +1356,24 @@ avec votre voix</string>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="go-right.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rtv-DZ-6Vs">
-                                                            <rect key="frame" x="8" y="8" width="50" height="34"/>
+                                                            <rect key="frame" x="8" y="8" width="50" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="50" id="eb7-Pj-dcB"/>
+                                                                <constraint firstAttribute="height" constant="40" id="fsX-kU-Ph8"/>
                                                             </constraints>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5e-tD-kS0" userLabel="CircleView">
-                                                            <rect key="frame" x="58" y="-7" width="60" height="60"/>
+                                                            <rect key="frame" x="58" y="8" width="40" height="40"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cap" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Tz-7x-2AW">
-                                                                    <rect key="frame" x="14" y="20" width="32" height="21"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <rect key="frame" x="5" y="13" width="31" height="16"/>
+                                                                    <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capitale" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXk-lS-GNd">
-                                                                    <rect key="frame" x="9" y="20" width="42" height="21"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <rect key="frame" x="9" y="13" width="22" height="16"/>
+                                                                    <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -1381,17 +1384,16 @@ avec votre voix</string>
                                                                 <constraint firstAttribute="trailing" secondItem="EXk-lS-GNd" secondAttribute="trailing" constant="9" id="5xr-qc-TPY"/>
                                                                 <constraint firstAttribute="centerY" secondItem="EXk-lS-GNd" secondAttribute="centerY" constant="-0.5" id="6km-XJ-6et"/>
                                                                 <constraint firstAttribute="centerY" secondItem="2Tz-7x-2AW" secondAttribute="centerY" constant="-0.5" id="AlX-B1-oTC"/>
-                                                                <constraint firstAttribute="height" constant="60" id="D0T-2h-AE3"/>
-                                                                <constraint firstAttribute="width" constant="60" id="NWR-DL-gLE"/>
+                                                                <constraint firstAttribute="height" constant="40" id="D0T-2h-AE3"/>
+                                                                <constraint firstAttribute="width" constant="40" id="NWR-DL-gLE"/>
                                                                 <constraint firstItem="EXk-lS-GNd" firstAttribute="leading" secondItem="n5e-tD-kS0" secondAttribute="leading" constant="9" id="zzX-FC-rH5"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="n5e-tD-kS0" firstAttribute="leading" secondItem="Rtv-DZ-6Vs" secondAttribute="trailing" id="54Z-BB-TSW"/>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="Rtv-DZ-6Vs" secondAttribute="bottom" id="JFT-tM-eo4"/>
+                                                        <constraint firstItem="Rtv-DZ-6Vs" firstAttribute="centerY" secondItem="n5e-tD-kS0" secondAttribute="centerY" id="CSX-zo-fWi"/>
                                                         <constraint firstItem="Rtv-DZ-6Vs" firstAttribute="leading" secondItem="Zcm-jR-nb1" secondAttribute="leadingMargin" id="JGi-EO-UIb"/>
-                                                        <constraint firstAttribute="centerY" secondItem="n5e-tD-kS0" secondAttribute="centerY" constant="2" id="Q5g-xK-KzN"/>
                                                         <constraint firstItem="Rtv-DZ-6Vs" firstAttribute="top" secondItem="Zcm-jR-nb1" secondAttribute="topMargin" id="p1c-w9-8Bd"/>
                                                     </constraints>
                                                 </tableViewCellContentView>

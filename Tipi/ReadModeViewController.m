@@ -26,7 +26,8 @@ typedef void(^fadeOutCompletion)(BOOL);
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.overlayView.alpha = 0;
+    //self.overlayView.alpha = 0;
+    self.overlayView.userInteractionEnabled = NO;
     
     NSString* url = self.page.media.file;
     NSString* fileUrl = self.page.audio.file;
@@ -46,12 +47,15 @@ typedef void(^fadeOutCompletion)(BOOL);
     
     
     // View
+    self.image.userInteractionEnabled = YES;
     UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOverlayPlayer:)];
+    singleFingerTap.numberOfTapsRequired = 1;
     [self.image addGestureRecognizer:singleFingerTap];
     
     UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     longPressRecognizer.minimumPressDuration = .5f;
     [self.playerView addGestureRecognizer:longPressRecognizer];
+    
     
     // Manager
     self.commentsView.delegate = self;
@@ -61,6 +65,8 @@ typedef void(^fadeOutCompletion)(BOOL);
     self.saver = [StoryWIPSaver sharedSaver];
     self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
     self.recorder.delegate = self;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,8 +91,11 @@ typedef void(^fadeOutCompletion)(BOOL);
     
     [self.overlayTimer invalidate];
     
+    //self.overlayView.hidden = NO;
+    
     [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.overlayView.alpha = self.overlayView.alpha == 0 ? 1.0 : 0;
+        //self.overlayView.userInteractionEnabled = NO;
     } completion:^(BOOL finished) {
         self.overlayTimer = [NSTimer timerWithTimeInterval:3
                                                     target:self
