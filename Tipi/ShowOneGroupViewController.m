@@ -37,9 +37,6 @@
     
     NSLog(@"Room is %@", self.room.id);
     
-    self.mTableView.delegate = self;
-    self.mTableView.dataSource = self;
-    
     loader = [[TPLoader alloc] initWithFrame:self.view.frame];
     [self.view addSubview:loader];
     [self.view sendSubviewToBack:loader];

@@ -7,12 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NewStoryViewController.h"
+#import "ShowGroupsViewController.h"
 
 @interface HomeViewController : UIViewController //<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 - (IBAction)goRooms:(id)sender;
 
-//@property (nonatomic, strong)UIPageViewController *pager;
+@property (strong, nonatomic) UIViewController* currentViewController;
+@property (strong, nonatomic) NewStoryViewController* storyViewController;
+@property (strong, nonatomic) ShowGroupsViewController* groupsViewController;
 
-@property (strong, nonatomic) IBOutlet UIButton* profileButton;
+- (void)displayChildViewController:(UIViewController*)viewController;
+- (void)switchChildViewController;
 
 @end

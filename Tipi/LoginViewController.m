@@ -25,30 +25,6 @@
         [self.navigationController setViewControllers:@[home]];
     }
     
-    NSURL *url = [NSURL fileURLWithPath:@"/dev/null"];
-    
-    NSDictionary *settings = @{AVSampleRateKey:          [NSNumber numberWithFloat: 44100.0],
-                               AVFormatIDKey:            [NSNumber numberWithInt: kAudioFormatAppleLossless],
-                               AVNumberOfChannelsKey:    [NSNumber numberWithInt: 2],
-                               AVEncoderAudioQualityKey: [NSNumber numberWithInt: AVAudioQualityMin]};
-    
-    NSError *error;
-    self.recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
-    
-    if(error) {
-        NSLog(@"Ups, could not create recorder %@", error);
-        return;
-    }
-    
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
-    
-    if (error) {
-        NSLog(@"Error setting category: %@", [error description]);
-    }
-    
-    [self.recorder prepareToRecord];
-    [self.recorder setMeteringEnabled:YES];
-    [self.recorder record];
     
     CADisplayLink *displaylink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateMeters)];
     [displaylink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
@@ -61,12 +37,8 @@
 
 - (void)updateMeters
 {
-    [self.recorder updateMeters];
-    
-    CGFloat normalizedValue = pow (10, [self.recorder averagePowerForChannel:0] / 10);
-    
-    [self.waveformView updateWithLevel:normalizedValue];
-    [self.secondWaveformView updateWithLevel:normalizedValue];
+    [self.waveformView updateWithLevel:.5f];
+    [self.secondWaveformView updateWithLevel:.5f];
 }
 
 - (IBAction)openFields:(UIButton*)sender {

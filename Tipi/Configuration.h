@@ -40,5 +40,6 @@
 // Colors
 
 #define kListenBackgroundColor RgbColorAlpha(35, 12, 11, 1)
+#define kCreateBackgroundColor RgbColorAlpha(23, 46, 79, 1)
 
 #endif

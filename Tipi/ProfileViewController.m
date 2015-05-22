@@ -8,7 +8,7 @@
 
 #import "ProfileViewController.h"
 #import "FriendListViewController.h"
-#import "HomeViewController.h"
+#import "NewStoryViewController.h"
 #import "AnimationLibrary.h"
 
 @implementation ProfileViewController
@@ -79,13 +79,14 @@
 }
 
 - (IBAction)dismiss:(id)sender {
-    HomeViewController* parent = (HomeViewController*)self.parentViewController;
+    NewStoryViewController* parent = (NewStoryViewController*)self.parentViewController;
+    
+    [parent transitionFromProfile];
     
     [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.backButton.alpha = 0;
         self.settingsButton.alpha = 0;
         self.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-        parent.profileButton.hidden = NO;
     } completion:^(BOOL finished) {
         [self.view removeFromSuperview];
         [self removeFromParentViewController];

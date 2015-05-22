@@ -22,5 +22,6 @@
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView* activityIndicator;
 @property (strong, nonatomic) IBOutlet UIButton* continueButton;
 @property (strong, nonatomic) IBOutlet WaveBackground* wave;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* continueButtonYConstraint;
 
 @end

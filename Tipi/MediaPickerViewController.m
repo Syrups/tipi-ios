@@ -87,8 +87,6 @@ static float const fadePercentage = 0.2;
 
 - (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedias:(NSArray *)medias from:(NSUInteger)start to:(NSUInteger)limit {
     
-    [self.wave appear];
-    
     // reverse array
     NSMutableArray *reversed = [NSMutableArray arrayWithCapacity:[medias count]];
     NSEnumerator *enumerator = [medias reverseObjectEnumerator];
@@ -127,13 +125,12 @@ static float const fadePercentage = 0.2;
     
     [image setImage:[media objectForKey:@"image"]];
     
-    CGFloat initialDelay = .3f;
     int endY = cell.frame.origin.y;
     
     if (cell.tag == 0) { // not animated yet
         cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y + 500, cell.frame.size.width, cell.frame.size.height);
         
-        [UIView animateKeyframesWithDuration:.8f delay:initialDelay + indexPath.row*0.04f options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
+        [UIView animateKeyframesWithDuration:.7f delay:indexPath.row*0.04f options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
             [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.5f animations:^{
                 cell.frame = CGRectMake(cell.frame.origin.x, endY - 10, cell.frame.size.width, cell.frame.size.height);
             }];

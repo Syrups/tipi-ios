@@ -100,6 +100,17 @@
     return true;
 }
 
+- (BOOL)isEmpty {
+    NSUInteger count = [[StoryWIPSaver sharedSaver].medias count];
+    for (int i = 0 ; i < count; ++i) {
+        if ([self hasRecordedAtIndex:i]) {
+            return false;
+        }
+    }
+    
+    return true;
+}
+
 - (void)configureAudioSession {
     AVAudioSession* session = [AVAudioSession sharedInstance];
     

@@ -39,7 +39,15 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-//#pragma mark - UITextField
+#pragma mark - UITextField
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [self back:textField];
+    
+    return YES;
+}
+
 //
 //- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 //{

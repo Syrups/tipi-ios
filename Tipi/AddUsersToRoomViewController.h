@@ -19,5 +19,6 @@
 @property (strong, nonatomic) NSArray* friends;
 @property (strong, nonatomic) IBOutlet SRUnderlinedField* searchField;
 @property (strong, nonatomic) IBOutlet UITableView* friendsTableView;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView* activityIndicator;
 
 @end

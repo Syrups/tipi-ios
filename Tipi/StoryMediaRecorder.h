@@ -29,6 +29,7 @@
 - (NSData*)dataOfAudioWithIndex:(NSUInteger)index;
 - (BOOL)hasRecordedAtIndex:(NSUInteger)index;
 - (BOOL)isComplete;
+- (BOOL)isEmpty;
 
 @end
 

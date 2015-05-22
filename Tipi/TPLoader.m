@@ -19,11 +19,24 @@
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         [self addSubview:imageView];
         
-        self.backgroundColor = RgbColorAlpha(0, 0, 0, .4f);
+        self.infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.frame.size.height/2, self.frame.size.width, self.frame.size.height/2)];
+        self.infoLabel.textColor = [UIColor whiteColor];
+        self.infoLabel.font = [UIFont fontWithName:@"GTWalsheim-Regular" size:16];
+        self.infoLabel.textAlignment = NSTextAlignmentCenter;
+        [self addSubview:self.infoLabel];
+        
+        self.backgroundColor = RgbColorAlpha(0, 0, 0, .6f);
         
         [PKAIDecoder builAnimatedImageIn:imageView fromFile:@"loader"];
     }
     return self;
+}
+
+- (void)didMoveToSuperview {
+    self.alpha = 0;
+    [UIView animateWithDuration:.3f animations:^{
+        self.alpha = 1;
+    }];
 }
 
 @end

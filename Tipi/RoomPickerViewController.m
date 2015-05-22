@@ -13,12 +13,14 @@
 #import "StoryWIPSaver.h"
 #import "Configuration.h"
 #import "UIRoomTableViewCell.h"
+#import "TPLoader.h"
 
 @implementation RoomPickerViewController {
     NSMutableArray* selectedRooms;
     NSUInteger uploadedAudiosCount;
     NSUInteger uploadedMediasCount;
     CAGradientLayer* maskLayer;
+    TPLoader* loader;
 }
 
 - (void)viewDidLoad {
@@ -68,7 +70,7 @@
 
 - (IBAction)createNewRoom:(id)sender {
     UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"CreateRoom"];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (IBAction)send:(id)sender {
@@ -77,6 +79,9 @@
     NSArray* medias = [[StoryWIPSaver sharedSaver] medias];
     NSString* tag = [[StoryWIPSaver sharedSaver] tag];
     NSString* title = [[StoryWIPSaver sharedSaver] title];
+    
+    TPLoader* loader = [[TPLoader alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:loader];
     
     [manager createStoryWithName:title owner:user inRooms:selectedRooms tag:tag medias:medias audiosFiles:medias];
 }
@@ -91,11 +96,14 @@
         uploadedMediasCount++;
     }
     
+//    NSUInteger percent = ((uploadedAudiosCount+uploadedMediasCount) * 100) / (self.saver.medias.count*2);
+//    loader.infoLabel.text = [NSString stringWithFormat:@"Envoi de l'histoire...(%d %%)", percent];
+    
     // all good
     if (uploadedMediasCount == self.saver.medias.count && uploadedAudiosCount == self.saver.medias.count) {
+        [loader removeFromSuperview];
         [self.navigationController popToRootViewControllerAnimated:NO];
         
-        NSLog(@"%@", self.navigationController.parentViewController);
         [self.navigationController.parentViewController.navigationController popToRootViewControllerAnimated:YES];
     }
 }

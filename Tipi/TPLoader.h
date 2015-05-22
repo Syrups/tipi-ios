@@ -10,4 +10,6 @@
 
 @interface TPLoader : UIView
 
+@property (strong, nonatomic) UILabel* infoLabel;
+
 @end

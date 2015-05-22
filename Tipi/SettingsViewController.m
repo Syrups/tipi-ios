@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Syrup Apps. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "SettingsViewController.h"
 #import "AnimationLibrary.h"
 
@@ -24,11 +25,9 @@
 - (IBAction)logout:(id)sender {
     [[UserSession sharedSession] destroy];
     
-    UIViewController* parent = self.presentingViewController.parentViewController;
-    [self dismissViewControllerAnimated:NO completion:nil];
-
+    UINavigationController* rootNav = (UINavigationController *)((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController;
     UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
-    [parent.navigationController setViewControllers:@[vc] animated:YES];
+    [rootNav setViewControllers:@[vc] animated:YES];
 }
 
 - (IBAction)openTerms:(id)sender {

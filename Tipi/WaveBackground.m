@@ -7,6 +7,7 @@
 //
 
 #import "WaveBackground.h"
+#import "SHPathLibrary.h"
 
 @implementation WaveBackground {
     CAShapeLayer* shapeLayer;
@@ -23,7 +24,7 @@
         
         [self addSubview:image];
         
-        self.backgroundColor = RgbColorAlpha(43, 75, 122, 1);
+        self.backgroundColor = kCreateBackgroundColor;
         
         _image = image;
     }
@@ -32,7 +33,7 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    CGPathRef path = self.openByDefault ? [self pathForLayerMaxAmplitude:NO] : [self pathForLayerClosed];
+    CGPathRef path = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame].CGPath;
     CAShapeLayer* layer = [CAShapeLayer layer];
     layer.path = CGPathCreateCopy(path);
 //    layer.fillColor = RgbColorAlpha(43, 75, 122, 0).CGColor;
