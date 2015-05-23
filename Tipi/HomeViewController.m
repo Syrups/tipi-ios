@@ -24,8 +24,8 @@
 
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    self.storyViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NewStoryViewController"];
-    self.groupsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ShowGroupsNavViewController"];
+    self.storyViewController = [[UIStoryboard storyboardWithName:kStoryboardStoryBuilder bundle:nil] instantiateViewControllerWithIdentifier:@"NewStoryViewController"];
+    self.groupsViewController = [[UIStoryboard storyboardWithName:kStoryboardRooms bundle:nil] instantiateViewControllerWithIdentifier:@"ShowGroupsNavViewController"];
     
     [self displayChildViewController:self.storyViewController];
     

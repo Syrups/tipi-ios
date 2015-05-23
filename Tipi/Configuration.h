@@ -17,6 +17,10 @@
 #define kMediaRootUrl @"http://52.16.102.93/uploads/media/"
 #define kAudioRootUrl @"http://52.16.102.93/uploads/audio/"
 
+#define kStoryboardStoryBuilder @"StoryBuilder"
+#define kStoryboardRooms        @"Rooms"
+#define kStoryboardProfile      @"Profile"
+
 #define kApiTestUserToken @"bf4d45e51878831054e37991d16860ac991a2e7668b7c7011f994ead021118f8"
 
 #define kSessionStoreId    @"user.id"

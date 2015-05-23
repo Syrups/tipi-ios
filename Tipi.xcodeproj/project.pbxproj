@@ -86,7 +86,6 @@
 		B35975F21ADFA29F00936E5E /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B35975F11ADFA29F00936E5E /* ImageUtils.m */; };
 		B35AD0391ABF2B6600527C0D /* ReviewStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD0381ABF2B6600527C0D /* ReviewStoryViewController.m */; };
 		B35AD03C1ABF2D2500527C0D /* ReviewPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD03B1ABF2D2500527C0D /* ReviewPageViewController.m */; };
-		B35AD0441ABF339200527C0D /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD0431ABF339200527C0D /* ArrayDataSource.m */; };
 		B35CDBDA1AB87DD900BF9F82 /* StoryMediaRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = B35CDBD91AB87DD900BF9F82 /* StoryMediaRecorder.m */; };
 		B35CDBDC1AB8863C00BF9F82 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35CDBDB1AB8863C00BF9F82 /* AVFoundation.framework */; };
 		B36941AF1ACAE02500F3F95A /* FileUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = B36941AE1ACAE02500F3F95A /* FileUploader.m */; };
@@ -129,6 +128,9 @@
 		B3BCD0261AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD0251AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m */; };
 		B3C2E5C61AD32A1B00868DA4 /* WaveBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C2E5C51AD32A1B00868DA4 /* WaveBackground.m */; };
 		B3C470881B0F6FE7003231D3 /* Tipi.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = B39C1DE51AC4B1620011D87E /* Tipi.entitlements */; };
+		B3C4708B1B10C2F5003231D3 /* StoryBuilder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C4708A1B10C2F5003231D3 /* StoryBuilder.storyboard */; };
+		B3C4708D1B10C3C3003231D3 /* Rooms.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C4708C1B10C3C3003231D3 /* Rooms.storyboard */; };
+		B3C4708F1B10C400003231D3 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C4708E1B10C400003231D3 /* Profile.storyboard */; };
 		B3C85E541ACBF4C50083C50A /* Audio.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C85E531ACBF4C50083C50A /* Audio.m */; };
 		B3C85E571ACBF5260083C50A /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C85E561ACBF5260083C50A /* Media.m */; };
 		B3DDF3461ADC6311009A9CAF /* NewStoryMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DDF3451ADC6311009A9CAF /* NewStoryMainController.m */; };
@@ -232,7 +234,7 @@
 		B3065A531ABB35D700C10AD9 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		B30CDD701B077B83007BAEA8 /* AnimationLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationLibrary.h; sourceTree = "<group>"; };
 		B30CDD711B077B83007BAEA8 /* AnimationLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationLibrary.m; sourceTree = "<group>"; };
-		B31933891ADFB2B600603158 /* GTWalsheim Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTWalsheim Bold.otf"; sourceTree = "<group>"; };
+		B31933891ADFB2B600603158 /* GTWalsheim Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GTWalsheim Bold.otf"; path = "../GTWalsheim Bold.otf"; sourceTree = "<group>"; };
 		B319338B1ADFB4AE00603158 /* DoneStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoneStoryViewController.h; sourceTree = "<group>"; };
 		B319338C1ADFB4AE00603158 /* DoneStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoneStoryViewController.m; sourceTree = "<group>"; };
 		B319338F1AE009D000603158 /* ZoomOutSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomOutSegue.h; sourceTree = "<group>"; };
@@ -283,8 +285,6 @@
 		B35AD0381ABF2B6600527C0D /* ReviewStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewStoryViewController.m; sourceTree = "<group>"; };
 		B35AD03A1ABF2D2500527C0D /* ReviewPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewPageViewController.h; sourceTree = "<group>"; };
 		B35AD03B1ABF2D2500527C0D /* ReviewPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewPageViewController.m; sourceTree = "<group>"; };
-		B35AD0421ABF339200527C0D /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
-		B35AD0431ABF339200527C0D /* ArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataSource.m; sourceTree = "<group>"; };
 		B35CDBD81AB87DD900BF9F82 /* StoryMediaRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryMediaRecorder.h; sourceTree = "<group>"; };
 		B35CDBD91AB87DD900BF9F82 /* StoryMediaRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryMediaRecorder.m; sourceTree = "<group>"; };
 		B35CDBDB1AB8863C00BF9F82 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -363,6 +363,9 @@
 		B3BCD0251AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKCollectionViewStickyHeaderFlowLayout.m; sourceTree = "<group>"; };
 		B3C2E5C41AD32A1B00868DA4 /* WaveBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveBackground.h; sourceTree = "<group>"; };
 		B3C2E5C51AD32A1B00868DA4 /* WaveBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveBackground.m; sourceTree = "<group>"; };
+		B3C4708A1B10C2F5003231D3 /* StoryBuilder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoryBuilder.storyboard; sourceTree = "<group>"; };
+		B3C4708C1B10C3C3003231D3 /* Rooms.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rooms.storyboard; sourceTree = "<group>"; };
+		B3C4708E1B10C400003231D3 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		B3C85E521ACBF4C50083C50A /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audio.h; sourceTree = "<group>"; };
 		B3C85E531ACBF4C50083C50A /* Audio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Audio.m; sourceTree = "<group>"; };
 		B3C85E551ACBF5260083C50A /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
@@ -611,6 +614,10 @@
 		B319B2391AF0CD1400C819BD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B3BCCFF61AA5C4CB00261212 /* GTWalsheim Light.otf */,
+				B3BCCFF71AA5C4CB00261212 /* GTWalsheim Regular.otf */,
+				B31933891ADFB2B600603158 /* GTWalsheim Bold.otf */,
+				B3FC7B8E1AA672DE00034E58 /* placeholder.gif */,
 				B319B2471AF0D13100C819BD /* tete.pkai */,
 				B319B23A1AF0CD1B00C819BD /* onde_bleu_clair.pkai */,
 				B319B23B1AF0CD1B00C819BD /* onde_bleu.pkai */,
@@ -715,15 +722,6 @@
 			name = Review;
 			sourceTree = "<group>";
 		};
-		B35AD0411ABF338300527C0D /* DataSources */ = {
-			isa = PBXGroup;
-			children = (
-				B35AD0421ABF339200527C0D /* ArrayDataSource.h */,
-				B35AD0431ABF339200527C0D /* ArrayDataSource.m */,
-			);
-			name = DataSources;
-			sourceTree = "<group>";
-		};
 		B36DD6201AEE5909001FA8C5 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
@@ -754,6 +752,7 @@
 		B38B89631ACC21F300799EDD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B3BCCFDF1AA5C36C00261212 /* LaunchScreen.xib */,
 				73559BA31AE2697500547886 /* Animators */,
 				B319B2491AF101F500C819BD /* Walkthrough */,
 				B3BCD0221AA622FA00261212 /* Components */,
@@ -817,7 +816,6 @@
 			children = (
 				B3297F671B0E2CC700249DA0 /* Resources */,
 				B33618601B09E9150047013C /* SCSiriWaveformView */,
-				B31933891ADFB2B600603158 /* GTWalsheim Bold.otf */,
 				B3BCD01E1AA6148100261212 /* LXReorderableCollectionViewFlowLayout */,
 				B3BCCFCF1AA5C36C00261212 /* Tipi */,
 				B3BCCFE91AA5C36C00261212 /* TipiTests */,
@@ -839,22 +837,17 @@
 		B3BCCFCF1AA5C36C00261212 /* Tipi */ = {
 			isa = PBXGroup;
 			children = (
-				B319B2391AF0CD1400C819BD /* Resources */,
 				B39C1DE51AC4B1620011D87E /* Tipi.entitlements */,
 				B3065A371AB9887500C10AD9 /* Configuration.h */,
-				B3FC7B8E1AA672DE00034E58 /* placeholder.gif */,
+				B319B2391AF0CD1400C819BD /* Resources */,
 				B38B89631ACC21F300799EDD /* Views */,
-				B35AD0411ABF338300527C0D /* DataSources */,
 				B3065A421AB99BA700C10AD9 /* Models */,
 				B3A4CDC51AA71D860079F8D1 /* Services */,
 				B3BCCFFA1AA5C84B00261212 /* Controllers */,
-				B3BCCFF61AA5C4CB00261212 /* GTWalsheim Light.otf */,
-				B3BCCFF71AA5C4CB00261212 /* GTWalsheim Regular.otf */,
+				B3C470891B10C272003231D3 /* Storyboards */,
 				B3BCCFD41AA5C36C00261212 /* AppDelegate.h */,
 				B3BCCFD51AA5C36C00261212 /* AppDelegate.m */,
-				B3BCCFDA1AA5C36C00261212 /* Main.storyboard */,
 				B3BCCFDD1AA5C36C00261212 /* Images.xcassets */,
-				B3BCCFDF1AA5C36C00261212 /* LaunchScreen.xib */,
 				B3BCCFD01AA5C36C00261212 /* Supporting Files */,
 			);
 			path = Tipi;
@@ -959,6 +952,17 @@
 				B3BCD0251AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m */,
 			);
 			name = Layout;
+			sourceTree = "<group>";
+		};
+		B3C470891B10C272003231D3 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B3BCCFDA1AA5C36C00261212 /* Main.storyboard */,
+				B3C4708A1B10C2F5003231D3 /* StoryBuilder.storyboard */,
+				B3C4708C1B10C3C3003231D3 /* Rooms.storyboard */,
+				B3C4708E1B10C400003231D3 /* Profile.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		B3FBAABA1AEF7CFC00A3A6B4 /* Rooms */ = {
@@ -1116,6 +1120,7 @@
 				73B3B3501AA7BA3F00FF7578 /* play.png in Resources */,
 				73B3B3461AA7BA3F00FF7578 /* croix-blanche.png in Resources */,
 				73B3B34B1AA7BA3F00FF7578 /* home-noir.png in Resources */,
+				B3C4708D1B10C3C3003231D3 /* Rooms.storyboard in Resources */,
 				73B3B3471AA7BA3F00FF7578 /* croix-noire.png in Resources */,
 				B3BCCFF81AA5C4CB00261212 /* GTWalsheim Light.otf in Resources */,
 				B319B2401AF0CD1B00C819BD /* onde_bleu.pkai in Resources */,
@@ -1126,6 +1131,7 @@
 				B319338A1ADFB2B600603158 /* GTWalsheim Bold.otf in Resources */,
 				B319B2411AF0CD1B00C819BD /* onde_voix.pkai in Resources */,
 				B319B2421AF0CD1B00C819BD /* star.pkai in Resources */,
+				B3C4708F1B10C400003231D3 /* Profile.storyboard in Resources */,
 				73B3B3511AA7BA3F00FF7578 /* proches-grand.png in Resources */,
 				73B3B34C1AA7BA3F00FF7578 /* loupe.png in Resources */,
 				B33618671B0A15370047013C /* loader.pkai in Resources */,
@@ -1143,6 +1149,7 @@
 				73B3B34A1AA7BA3F00FF7578 /* home-blanc.png in Resources */,
 				73B3B3481AA7BA3F00FF7578 /* go-left.png in Resources */,
 				73B3B34F1AA7BA3F00FF7578 /* perso-noir.png in Resources */,
+				B3C4708B1B10C2F5003231D3 /* StoryBuilder.storyboard in Resources */,
 				73B3B3551AA7BA3F00FF7578 /* roue-dentee.png in Resources */,
 				B319B2481AF0D13100C819BD /* tete.pkai in Resources */,
 			);
@@ -1208,7 +1215,6 @@
 				B36DD6231AEE5928001FA8C5 /* RoomCache.m in Sources */,
 				73B3B3321AA7B45500FF7578 /* TagMenuViewController.m in Sources */,
 				73B3B3621AA7CA9100FF7578 /* ReadModeContainerViewController.m in Sources */,
-				B35AD0441ABF339200527C0D /* ArrayDataSource.m in Sources */,
 				B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */,
 				B3065A3B1AB98ACC00C10AD9 /* LoginViewController.m in Sources */,
 				73559BA21AE2686000547886 /* RoomNavigationDelegate.m in Sources */,

@@ -71,7 +71,7 @@
 }
 
 - (IBAction)createNewRoom:(id)sender {
-    UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"CreateRoom"];
+    UIViewController* vc = [[UIStoryboard storyboardWithName:kStoryboardRooms bundle:nil] instantiateViewControllerWithIdentifier:@"CreateRoom"];
     [self presentViewController:vc animated:YES completion:nil];
 }
 

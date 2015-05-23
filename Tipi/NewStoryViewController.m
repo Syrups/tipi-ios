@@ -92,7 +92,7 @@
 
 - (IBAction)openProfile:(id)sender {
     
-    UIViewController* profile = [self.storyboard instantiateViewControllerWithIdentifier:@"Profile"];
+    UIViewController* profile = [[UIStoryboard storyboardWithName:kStoryboardProfile bundle:nil] instantiateViewControllerWithIdentifier:@"Profile"];
     
     [profile willMoveToParentViewController:self];
     [self addChildViewController:profile];
