@@ -7,6 +7,7 @@
 //
 
 #import "AbortModalViewController.h"
+#import "HomeViewController.h"
 #import "StoryWIPSaver.h"
 
 @implementation AbortModalViewController
@@ -56,7 +57,7 @@
     UINavigationController* previous = (UINavigationController*)self.parentViewController.navigationController;
     [self removeFromParentViewController];
     [previous setViewControllers:@[previous.viewControllers[0]]];
-    
+    [((HomeViewController*)previous.viewControllers[0]).storyViewController transitionFromStoryBuilder];
     
 }
 
@@ -65,8 +66,8 @@
     
     UINavigationController* previous = (UINavigationController*)self.parentViewController.navigationController;
     [self removeFromParentViewController];
-    [previous popToRootViewControllerAnimated:YES];
-
+    [previous setViewControllers:@[previous.viewControllers[0]]];
+    [((HomeViewController*)previous.viewControllers[0]).storyViewController  transitionFromStoryBuilder];
 }
 
 @end

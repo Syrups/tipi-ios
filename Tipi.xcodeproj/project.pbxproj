@@ -94,7 +94,6 @@
 		B36DD6231AEE5928001FA8C5 /* RoomCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B36DD6221AEE5928001FA8C5 /* RoomCache.m */; };
 		B36FF2831B02250B00EF18F2 /* PickerToOrganizerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = B36FF2821B02250B00EF18F2 /* PickerToOrganizerSegue.m */; };
 		B3846F1D1ADD058B0030DBDE /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3846F1C1ADD058B0030DBDE /* CoreMotion.framework */; };
-		B3846F391ADD0F1D0030DBDE /* RoomListFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846F381ADD0F1D0030DBDE /* RoomListFlowLayout.m */; };
 		B3846F3C1ADD43170030DBDE /* AudioWave.m in Sources */ = {isa = PBXBuildFile; fileRef = B3846F3B1ADD43170030DBDE /* AudioWave.m */; };
 		B38621F41AE16C7200D2CA5A /* ShowCaseOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = B38621F31AE16C7200D2CA5A /* ShowCaseOverlay.m */; };
 		B38621FA1AE16DC200D2CA5A /* ShowCaseableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38621F91AE16DC200D2CA5A /* ShowCaseableViewController.m */; };
@@ -129,12 +128,13 @@
 		B3BCD01D1AA60D4C00261212 /* OrganizeStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD01C1AA60D4C00261212 /* OrganizeStoryViewController.m */; };
 		B3BCD0261AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD0251AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m */; };
 		B3C2E5C61AD32A1B00868DA4 /* WaveBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C2E5C51AD32A1B00868DA4 /* WaveBackground.m */; };
+		B3C470881B0F6FE7003231D3 /* Tipi.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = B39C1DE51AC4B1620011D87E /* Tipi.entitlements */; };
 		B3C85E541ACBF4C50083C50A /* Audio.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C85E531ACBF4C50083C50A /* Audio.m */; };
 		B3C85E571ACBF5260083C50A /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C85E561ACBF5260083C50A /* Media.m */; };
 		B3DDF3461ADC6311009A9CAF /* NewStoryMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DDF3451ADC6311009A9CAF /* NewStoryMainController.m */; };
 		B3FBAABD1AEF7D0900A3A6B4 /* CreateRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAABC1AEF7D0900A3A6B4 /* CreateRoomViewController.m */; };
 		B3FBAAC01AEF7EA500A3A6B4 /* AddUsersToRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAABF1AEF7EA500A3A6B4 /* AddUsersToRoomViewController.m */; };
-		B3FBAAC31AEFB12F00A3A6B4 /* RequestListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAAC21AEFB12F00A3A6B4 /* RequestListViewController.m */; };
+		B3FBAAC31AEFB12F00A3A6B4 /* NotificationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAAC21AEFB12F00A3A6B4 /* NotificationListViewController.m */; };
 		B3FBAAC61AEFB7A400A3A6B4 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAAC51AEFB7A400A3A6B4 /* SettingsViewController.m */; };
 		B3FBAAC91AEFC15A00A3A6B4 /* HomeBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAAC81AEFC15A00A3A6B4 /* HomeBubble.m */; };
 		B3FBAACD1AEFD5D200A3A6B4 /* WalkthroughViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAACC1AEFD5D200A3A6B4 /* WalkthroughViewController.m */; };
@@ -296,8 +296,6 @@
 		B36FF2811B02250B00EF18F2 /* PickerToOrganizerSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerToOrganizerSegue.h; sourceTree = "<group>"; };
 		B36FF2821B02250B00EF18F2 /* PickerToOrganizerSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerToOrganizerSegue.m; sourceTree = "<group>"; };
 		B3846F1C1ADD058B0030DBDE /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		B3846F371ADD0F1D0030DBDE /* RoomListFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomListFlowLayout.h; sourceTree = "<group>"; };
-		B3846F381ADD0F1D0030DBDE /* RoomListFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomListFlowLayout.m; sourceTree = "<group>"; };
 		B3846F3A1ADD43170030DBDE /* AudioWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioWave.h; sourceTree = "<group>"; };
 		B3846F3B1ADD43170030DBDE /* AudioWave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioWave.m; sourceTree = "<group>"; };
 		B38621F21AE16C7200D2CA5A /* ShowCaseOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowCaseOverlay.h; sourceTree = "<group>"; };
@@ -375,8 +373,8 @@
 		B3FBAABC1AEF7D0900A3A6B4 /* CreateRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateRoomViewController.m; sourceTree = "<group>"; };
 		B3FBAABE1AEF7EA500A3A6B4 /* AddUsersToRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddUsersToRoomViewController.h; sourceTree = "<group>"; };
 		B3FBAABF1AEF7EA500A3A6B4 /* AddUsersToRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddUsersToRoomViewController.m; sourceTree = "<group>"; };
-		B3FBAAC11AEFB12F00A3A6B4 /* RequestListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestListViewController.h; sourceTree = "<group>"; };
-		B3FBAAC21AEFB12F00A3A6B4 /* RequestListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestListViewController.m; sourceTree = "<group>"; };
+		B3FBAAC11AEFB12F00A3A6B4 /* NotificationListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationListViewController.h; sourceTree = "<group>"; };
+		B3FBAAC21AEFB12F00A3A6B4 /* NotificationListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationListViewController.m; sourceTree = "<group>"; };
 		B3FBAAC41AEFB7A400A3A6B4 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		B3FBAAC51AEFB7A400A3A6B4 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		B3FBAAC71AEFC15A00A3A6B4 /* HomeBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeBubble.h; sourceTree = "<group>"; };
@@ -522,7 +520,6 @@
 		B3065A2E1AB9717200C10AD9 /* Rooms */ = {
 			isa = PBXGroup;
 			children = (
-				B3846F361ADD0F020030DBDE /* Layout */,
 				B3BCD0071AA5F3D300261212 /* RoomPickerViewController.h */,
 				B3BCD0081AA5F3D300261212 /* RoomPickerViewController.m */,
 			);
@@ -745,15 +742,6 @@
 			name = Segue;
 			sourceTree = "<group>";
 		};
-		B3846F361ADD0F020030DBDE /* Layout */ = {
-			isa = PBXGroup;
-			children = (
-				B3846F371ADD0F1D0030DBDE /* RoomListFlowLayout.h */,
-				B3846F381ADD0F1D0030DBDE /* RoomListFlowLayout.m */,
-			);
-			name = Layout;
-			sourceTree = "<group>";
-		};
 		B38621F11AE16C6100D2CA5A /* ShowCase */ = {
 			isa = PBXGroup;
 			children = (
@@ -809,8 +797,8 @@
 				B3A8D1801ACE8C2F00B09C34 /* FriendListViewController.m */,
 				B3A8D1881ACECB1A00B09C34 /* AddFriendViewController.h */,
 				B3A8D1891ACECB1A00B09C34 /* AddFriendViewController.m */,
-				B3FBAAC11AEFB12F00A3A6B4 /* RequestListViewController.h */,
-				B3FBAAC21AEFB12F00A3A6B4 /* RequestListViewController.m */,
+				B3FBAAC11AEFB12F00A3A6B4 /* NotificationListViewController.h */,
+				B3FBAAC21AEFB12F00A3A6B4 /* NotificationListViewController.m */,
 			);
 			name = Friends;
 			sourceTree = "<group>";
@@ -1146,6 +1134,7 @@
 				73B3B3561AA7BA3F00FF7578 /* story.png in Resources */,
 				73B3B3541AA7BA3F00FF7578 /* replay-noir.png in Resources */,
 				B3FC7B8F1AA672DE00034E58 /* placeholder.gif in Resources */,
+				B3C470881B0F6FE7003231D3 /* Tipi.entitlements in Resources */,
 				73B3B34D1AA7BA3F00FF7578 /* pause.png in Resources */,
 				B36941B11ACAF06800F3F95A /* pic.jpg in Resources */,
 				B319B23F1AF0CD1B00C819BD /* onde_bleu_clair.pkai in Resources */,
@@ -1229,7 +1218,6 @@
 				730CFF201B0B857A001045E4 /* TPSideCommentsView.m in Sources */,
 				B3BCD00C1AA5FCF400261212 /* ChooseTagViewController.m in Sources */,
 				B325A13A1ADE546A0041DF21 /* SandboxViewController.m in Sources */,
-				B3846F391ADD0F1D0030DBDE /* RoomListFlowLayout.m in Sources */,
 				73B3B35F1AA7CA5100FF7578 /* ReadModeViewController.m in Sources */,
 				B3FC7B8C1AA662CC00034E58 /* RecordPageViewController.m in Sources */,
 				B3BCD0261AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m in Sources */,
@@ -1282,7 +1270,7 @@
 				730CFF231B0BBC52001045E4 /* UICommentSideCell.m in Sources */,
 				B3BCCFFD1AA5C85B00261212 /* HomeViewController.m in Sources */,
 				B3FBAAC91AEFC15A00A3A6B4 /* HomeBubble.m in Sources */,
-				B3FBAAC31AEFB12F00A3A6B4 /* RequestListViewController.m in Sources */,
+				B3FBAAC31AEFB12F00A3A6B4 /* NotificationListViewController.m in Sources */,
 				B3C85E571ACBF5260083C50A /* Media.m in Sources */,
 				B319338D1ADFB4AE00603158 /* DoneStoryViewController.m in Sources */,
 				735FE0C41AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m in Sources */,
@@ -1428,7 +1416,7 @@
 				INFOPLIST_FILE = Tipi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Tipi;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d6344b74-44d9-4c4e-b9c2-eef600de1ba5";
 			};
 			name = Debug;
 		};
@@ -1443,7 +1431,7 @@
 				INFOPLIST_FILE = Tipi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Tipi;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d6344b74-44d9-4c4e-b9c2-eef600de1ba5";
 			};
 			name = Release;
 		};

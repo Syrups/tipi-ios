@@ -93,6 +93,26 @@
     });
 }
 
+- (void)joinRoom:(Room *)room {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        
+        [delegate.roomController joinRoom:room success:^(Room *room) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(roomManager:successfullyJoinedRoom:)]) {
+                    [self.delegate roomManager:self successfullyJoinedRoom:room];
+                }
+            });
+        } failure:^(NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(roomManager:failedToJoinRoomWithError:)]) {
+                    [self.delegate roomManager:self failedToJoinRoomWithError:error];
+                }
+            });
+        }];
+    });
+}
+
 - (void)updateRoom:(Room *)room {
     // TODO
 }

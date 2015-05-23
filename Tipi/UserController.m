@@ -8,6 +8,7 @@
 
 #import "UserController.h"
 #import "UserSession.h"
+#import "Room.h"
 #import <AFNetworking/AFNetworking.h>
 
 @implementation UserController
@@ -182,6 +183,28 @@
 
 - (void)fetchFriendsRequestsOfUser:(User *)user success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
     // TODO
+}
+
+- (void)fetchRoomInvitationsOfUser:(User *)user success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
+    NSURLRequest* request = [UserController getBaseRequestFor:[NSString stringWithFormat:@"/users/%@/invitations", user.id] authenticated:YES method:@"GET"];
+    
+    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSError* err = nil;
+        NSArray* results = [Room arrayOfModelsFromDictionaries:responseObject error:&err];
+        if (err) { NSLog(@"%@", err); }
+        
+        success(results);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        if (failure != nil) failure(error);
+    }];
+    
+    [op start];
 }
 
 @end

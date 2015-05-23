@@ -9,6 +9,8 @@
 #import "HomeViewController.h"
 #import "BaseHomeViewController.h"
 #import "NewStoryViewController.h"
+#import "ShowGroupsViewController.h"
+#import "AppDelegate.h"
 
 @interface HomeViewController ()
 
@@ -26,6 +28,22 @@
     self.groupsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ShowGroupsNavViewController"];
     
     [self displayChildViewController:self.storyViewController];
+    
+    // check for notifications
+    UserManager* manager = [[UserManager alloc] initWithDelegate:self];
+    [manager fetchRoomInvitationsOfUser:CurrentUser];
+}
+
+#pragma mark - InvitationFetcher
+
+- (void)userManager:(UserManager *)manager successfullyFetchedInvitations:(NSArray *)invitations {
+    if ([invitations count] > 0) {
+        self.storyViewController.notificationsAlert.hidden = NO;
+    }
+}
+
+- (void)userManager:(UserManager *)manager failedToFetchInvitationsWithError:(NSError *)error {
+    // TODO
 }
 
 
@@ -62,8 +80,10 @@
 
     self.currentViewController = viewController;
     
-    if ([self.currentViewController respondsToSelector:@selector(transitionFromFires)]) {
-        [self.currentViewController performSelector:@selector(transitionFromFires)];
+    if (self.currentViewController == self.storyViewController) {
+        [self.storyViewController transitionFromFires];
+    } else {
+        [(ShowGroupsViewController*)self.groupsViewController.childViewControllers[0] animate];
     }
 }
 

@@ -17,6 +17,8 @@
 - (void)fetchUserWithId:(NSInteger)userId success:(void(^)(User* user))success failure:(void(^)(NSError* error))failure;
 - (void)fetchFriendsOfUser:(User*)user success:(void(^)(NSArray* friends))success failure:(void(^)(NSError* error))failure;
 - (void)fetchFriendsRequestsOfUser:(User*)user success:(void(^)(NSArray* requesting))success failure:(void(^)(NSError* error))failure;
+- (void)fetchRoomInvitationsOfUser:(User*)user success:(void(^)(NSArray* invitations))success failure:(void(^)(NSError* error))failure;
+
 - (void)addFriend:(User*)user success:(void(^)())success failure:(void(^)(NSError* error))failure;
 - (void)acceptFriend:(User*)user success:(void(^)(User* friend))success failure:(void(^)(NSError* error))failure;
 - (void)dismissFriend:(User*)user success:(void(^)())success failure:(void(^)(NSError* error))failure;

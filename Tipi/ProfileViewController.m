@@ -83,7 +83,7 @@
     
     [parent transitionFromProfile];
     
-    [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:.3f delay:.1f options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.backButton.alpha = 0;
         self.settingsButton.alpha = 0;
         self.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
@@ -97,14 +97,14 @@
 
 - (IBAction)toFriendList:(id)sender {
     UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"FriendList"];
-    [self.pager setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+    [self.pager setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
     self.requestsTabButton.alpha = .5f;
     self.friendsTabButton.alpha = 1;
 }
 
 - (IBAction)toRequestList:(id)sender {
     UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RequestList"];
-    [self.pager setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    [self.pager setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
     self.friendsTabButton.alpha = .5f;
     self.requestsTabButton.alpha = 1;
 }
@@ -117,7 +117,7 @@
         return nil;
     }
     
-    NSString * indentifier = i == 0 ? @"FriendList" : @"RequestList";//ShowGroupsViewController
+    NSString * indentifier = i == 0 ? @"RequestList" : @"FriendList";//ShowGroupsViewController
     
     UIViewController *newController = [self.storyboard instantiateViewControllerWithIdentifier: indentifier];
     

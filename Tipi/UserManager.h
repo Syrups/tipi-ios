@@ -17,6 +17,7 @@
 - (void)fetchUserWithId:(NSInteger)userId;
 - (void)fetchLatestTags;
 - (void)findUsersWithQuery:(NSString*)query;
+- (void)fetchRoomInvitationsOfUser:(User*)user;
 
 @end
 
@@ -59,5 +60,12 @@
 
 - (void)userManager:(UserManager*)manager successfullyFetchedTags:(NSArray*)tags;
 - (void)userManager:(UserManager *)manager failedToFetchTagsWithError:(NSError*)error;
+
+@end
+
+@protocol InvitationFetcherDelegate <NSObject>
+
+- (void)userManager:(UserManager*)manager successfullyFetchedInvitations:(NSArray*)invitations;
+- (void)userManager:(UserManager*)manager failedToFetchInvitationsWithError:(NSError*)error;
 
 @end

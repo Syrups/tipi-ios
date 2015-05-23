@@ -7,7 +7,6 @@
 //
 
 #import "RoomPickerViewController.h"
-#import "RoomListFlowLayout.h"
 #import "UserSession.h"
 #import "StoryManager.h"
 #import "StoryWIPSaver.h"
@@ -37,6 +36,8 @@
     
     [self.roomsTableView setContentInset:UIEdgeInsetsMake(70,0,150,0)];
     [self centerTable];
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -65,6 +66,7 @@
 }
 
 - (IBAction)back:(id)sender {
+    self.roomsTableView.delegate = nil;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -102,6 +104,7 @@
     // all good
     if (uploadedMediasCount == self.saver.medias.count && uploadedAudiosCount == self.saver.medias.count) {
         [loader removeFromSuperview];
+        self.roomsTableView.delegate = nil;
         [self.navigationController popToRootViewControllerAnimated:NO];
         
         [self.navigationController.parentViewController.navigationController popToRootViewControllerAnimated:YES];
