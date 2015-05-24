@@ -25,6 +25,7 @@
     self.mGroups = [NSArray array];
     
     [self.mTableView setContentInset:UIEdgeInsetsMake(70,0,150,0)];
+    self.mTableView.alwaysBounceVertical = NO;
     
     RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
     [manager fetchRoomsForUser:[[UserSession sharedSession] user]];

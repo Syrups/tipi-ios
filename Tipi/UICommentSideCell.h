@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface UICommentSideCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIView *circleContainer;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *circleContainerWidth;
+@property (weak, nonatomic) IBOutlet UILabel *capLabel;
+@property (weak, nonatomic) IBOutlet UILabel *fullNameLabel;
+@property (nonatomic) BOOL unRolled;
 
+-(void)updateState;
 @end

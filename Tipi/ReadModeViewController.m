@@ -9,9 +9,10 @@
 #import "Configuration.h"
 #import "ReadModeViewController.h"
 
+#import "FileDownLoader.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <AFURLSessionManager.h>
+
 
 @import AVFoundation;
 
@@ -25,14 +26,29 @@ typedef void(^fadeOutCompletion)(BOOL);
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // View
     self.overlayView.alpha = 0;
     
+    //(
+    UITapGestureRecognizer *tapOnImageView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOverlayPlayer:)];
+    tapOnImageView.numberOfTapsRequired = 1;
+    
+    UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    longPressRecognizer.minimumPressDuration = .5f;
+    //)
+    
+    self.image.userInteractionEnabled = YES;
+    [self.image addGestureRecognizer:tapOnImageView];
+    
+    [self.playerView addGestureRecognizer:longPressRecognizer];
+    
+    //Files
     NSString* url = self.page.media.file;
     NSString* fileUrl = self.page.audio.file;
     
     //TODO change placeholder and loadings
     [self.image sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"placeholder.gif"]];
-    [self downloadFileWithURL:fileUrl completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+    [FileDownLoader downloadFileWithURL:fileUrl completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
         
         self.fileURL = filePath;
         self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:self.fileURL error:nil];
@@ -43,23 +59,18 @@ typedef void(^fadeOutCompletion)(BOOL);
         //NSLog(@"File %@ downloaded to: %@",fileUrl, filePath);
     }];
     
-    
-    // View
-    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOverlayPlayer:)];
-    [self.view addGestureRecognizer:singleFingerTap];
-    
-    UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    longPressRecognizer.minimumPressDuration = .5f;
-    [self.playerView addGestureRecognizer:longPressRecognizer];
+    //Data
+    self.commentsPlayers = [NSMutableArray new];
     
     // Manager
+    self.commentsView.delegate = self;
     self.commentsQueueManager = [[CommentsQueueManager alloc] initWithDelegate:self.commentsView andCapacity:10];
-    
     
     // Recording
     self.saver = [StoryWIPSaver sharedSaver];
     self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
     self.recorder.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,21 +79,14 @@ typedef void(^fadeOutCompletion)(BOOL);
 }
 
 
-- (void) downloadFileWithURL: (NSString *) fileURL  completionHandler:(void (^)(NSURLResponse *response, NSURL *filePath, NSError *error)) completionHandler{
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-    
-    NSURL *URL = [NSURL URLWithString:fileURL];
-    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-    
-    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
-        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-        return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
-    } completionHandler:completionHandler];
-    
-    [downloadTask resume];
+#pragma mark - Side Comments View
+- (void)sideCommentsView:(TPSideCommentsView *)manager didSelectedComment:(Comment *)comment withFile:(NSString *)fileUrl{
+
 }
 
+- (void)sideCommentsView:(TPSideCommentsView *)manager didDeselectedComment:(Comment *)comment withFile:(NSString *)fileUrl{
+
+}
 
 #pragma mark - Overlay View
 - (void)showOverlayPlayer:(UITapGestureRecognizer *)recognizer {
@@ -94,17 +98,15 @@ typedef void(^fadeOutCompletion)(BOOL);
     [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.overlayView.alpha = self.overlayView.alpha == 0 ? 1.0 : 0;
     } completion:^(BOOL finished) {
-        self.overlayTimer = [NSTimer timerWithTimeInterval:3
-                                                    target:self
-                                                  selector:@selector(hideOverlay:)
-                                                  userInfo:nil
+        self.overlayTimer = [NSTimer timerWithTimeInterval:3 target:self selector:@selector(hideOverlay:) userInfo:nil
                                                    repeats:NO];
         [[NSRunLoop currentRunLoop] addTimer:self.overlayTimer forMode:NSRunLoopCommonModes];
     }];
 }
 
 - (void)hideOverlay:(NSTimer *)timer{
-    [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    
+    [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.overlayView.alpha = 0;
     } completion:nil];
 }
@@ -233,6 +235,16 @@ typedef void(^fadeOutCompletion)(BOOL);
     comment.user = user;
     //[self.page.comments objectAtIndex:index];
     [self.commentsQueueManager pushInQueueComment:comment  atIndex:index];
+}
+
+#pragma mark - Sound Tracking
+
+- (void)fileUploader:(FileUploader *)uploader successfullyUploadedFileOfType:(NSString *)type toPath:(NSString *)path withFileName:(NSString *)filename{
+
+}
+
+- (void)fileUploader:(FileUploader *)uploader failedToUploadFileOfType:(NSString *)type toPath:(NSString *)path{
+
 }
 
 

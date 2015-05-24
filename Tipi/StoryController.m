@@ -61,8 +61,6 @@
         NSError* err = nil;
         NSArray* stories = [Story arrayOfModelsFromDictionaries:responseObject];
         
-           NSLog(@"%@",responseObject);
-        
         if (err) { NSLog(@"%@", err); }
         
         success(stories);
@@ -85,8 +83,6 @@
     
     [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        
-        NSLog(@"blubli %@", responseObject);
         
         NSError* err = nil;
         Story* story = [[Story alloc] initWithDictionary:responseObject error:&err];

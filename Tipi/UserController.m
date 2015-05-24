@@ -20,7 +20,6 @@
     
     [request setHTTPBody:[[NSString stringWithFormat:@"{ \"username\": \"%@\", \"password\": \"%@\", \"email\" : \"%@\", \"device_type\" : \"ios\", \"device_token\": \"%@\" }", username, password, email, deviceToken] dataUsingEncoding:NSUTF8StringEncoding]];
     
-    NSLog(@"%@", request.HTTPBody);
     AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
     op.responseSerializer = [AFJSONResponseSerializer serializer];

@@ -16,7 +16,7 @@
 #import "StoryWIPSaver.h"
 #import "StoryMediaRecorder.h"
 
-@interface ReadModeViewController : UIViewController<FileUploaderDelegate>
+@interface ReadModeViewController : UIViewController<FileUploaderDelegate, TPSideCommentsDelegate>
 @property (nonatomic) int idx;
 @property (nonatomic) Page *page;
 @property (nonatomic, assign) id delegate;
@@ -38,13 +38,15 @@
 @property (strong,nonatomic) NSURL* fileURL;
 @property (strong,nonatomic) NSTimer *overlayTimer;
 @property (nonatomic) NSTimeInterval trueCurrentTime;
-
+@property (strong, nonatomic) NSMutableArray *commentsPlayers;
 
 
 - (IBAction)quitStory:(id)sender;
 
 - (IBAction)playSound:(id)sender;
 - (void)pauseSound;
+
+
 @end
 
 
@@ -55,3 +57,4 @@
 @required
 - (void)readModeViewController:(ReadModeViewController *)controller requestedToQuitStoryAtPage: (Page*) page;
 @end
+

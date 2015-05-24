@@ -15,10 +15,6 @@
 
 @property (nonatomic, strong) NSMutableArray *commentsQueue;
 @property (nonatomic, strong) NSMutableArray *referencesQueue;
-@property (nonatomic, strong) NSMutableArray *statesQueue;
-@property (nonatomic, strong) NSMutableArray *namesQueue;
-//@property (nonatomic, strong) NSMutableDictionary *commQueue;
-//@property (nonatomic, strong) NSMutableArray *commentsTimers;
 @property (nonatomic, assign) id delegate;
 
 
@@ -26,7 +22,6 @@
 - (instancetype) initWithDelegate:(id)delegate andCapacity:(NSUInteger)capacity;
 
 - (void) pushInQueueComment: (Comment *) comment atIndex:(NSUInteger) index;
-//- (void) removeComment:(Comment *) comment atIndex:(NSUInteger) index;
 - (void)removeCommentRef:(NSDictionary *) ref atIndex:(NSUInteger) index;
 
 @end
@@ -37,6 +32,9 @@
 - (void)commentsQueueManager:(CommentsQueueManager *)manager didPushedComment:(NSDictionary*)comment withReference:(NSNumber*)ref;
 @required
 - (void)commentsQueueManager:(CommentsQueueManager *)manager didRemovedComment:(NSDictionary*)comment withReference:(NSNumber*)ref;
+
+@optional
+- (void)commentsQueueManager:(CommentsQueueManager *)manager isReadyComment:(NSDictionary *)comment withReference:(NSNumber*)ref atIndexPath:(NSIndexPath *) indexpath;
 @end
 
 
