@@ -154,6 +154,31 @@
     [op start];
 }
 
+- (void)joinRoom:(Room *)room success:(void (^)(Room *))success failure:(void (^)(NSError *))failure {
+    NSString* path = [NSString stringWithFormat:@"/rooms/%@/join", room.id];
+    NSURLRequest* request = [BaseModelController getBaseRequestFor:path authenticated:YES method:@"POST"];
+    
+    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSError* err = nil;
+        Room* room = [[Room alloc] initWithDictionary:responseObject error:&err];
+        
+        if (err) { NSLog(@"%@", err); }
+        
+        success(room);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        failure(error);
+    }];
+    
+    [op start];
+}
+
 //TODO - (void)updateRoom:(Room*)room success:(void(^)(Room* room))success failure:(void(^)(NSError* error))failure;
 - (void)updateRoom:(Room*)room success:(void(^)(Room* room))success failure:(void(^)(NSError* error))failure{
 

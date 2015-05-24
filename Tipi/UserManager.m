@@ -112,4 +112,24 @@
     });
 }
 
+- (void)fetchRoomInvitationsOfUser:(User *)user {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        
+        [delegate.userController fetchRoomInvitationsOfUser:user success:^(NSArray *invitations) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(userManager:successfullyFetchedInvitations:)]) {
+                    [self.delegate userManager:self successfullyFetchedInvitations:invitations];
+                }
+            });
+        } failure:^(NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(userManager:failedToFetchInvitationsWithError:)]) {
+                    [self.delegate userManager:self failedToFetchInvitationsWithError:error];
+                }
+            });
+        }];
+    });
+}
+
 @end

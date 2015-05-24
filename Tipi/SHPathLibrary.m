@@ -189,7 +189,7 @@
 #pragma mark - Home bubble
 
 + (UIBezierPath *)pathForHomeBubbleInRect:(CGRect)rect open:(BOOL)open {
-    CGRect smallRect = open ? CGRectMake(-rect.size.width/2, -rect.size.height/2, rect.size.width*2, rect.size.height*2) :CGRectMake(CGRectGetMidX(rect) - 135, 100, 270, 270);
+    CGRect smallRect = open ? CGRectMake(-rect.size.width, -rect.size.height/2, rect.size.width*3, rect.size.height*2) :CGRectMake(CGRectGetMidX(rect) - 135, 80, 270, 270);
     UIBezierPath* path = [UIBezierPath bezierPathWithOvalInRect:smallRect];
     
     return path;

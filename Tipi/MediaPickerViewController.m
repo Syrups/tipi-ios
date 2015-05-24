@@ -37,9 +37,14 @@ static float const fadePercentage = 0.2;
     unorderedMedias = [NSMutableArray array];
     
     currentOffset = 0;
-
-    self.continueButton.transform = CGAffineTransformConcat(CGAffineTransformMakeTranslation(0, 200), CGAffineTransformMakeRotation(-.3f));
     
+    self.topControlsYConstraint.constant = -100;
+    self.continueButtonYConstraint.constant = -200;
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:.3f animations:^{
+        self.topControlsYConstraint.constant = 0;
+        [self.view layoutIfNeeded];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -206,15 +211,18 @@ static float const fadePercentage = 0.2;
         [self.saver.medias removeObject:[self.medias objectAtIndex:indexPath.row]];
     }
     
-    if (self.selectedIndexes.count > 0) {
-        self.continueButton.enabled = YES;
-        self.continueButton.alpha = 1;
-    } else {
-        self.continueButton.enabled = NO;
-        self.continueButton.alpha = 0.3f;
-    }
+    [UIView animateWithDuration:.3f animations:^{
+        if (self.selectedIndexes.count > 0) {
+            self.continueButton.enabled = YES;
+            self.continueButtonYConstraint.constant = 42;
+            [self.continueButton layoutIfNeeded];
+        } else {
+            self.continueButton.enabled = NO;
+            self.continueButtonYConstraint.constant = -200;
+            [self.continueButton layoutIfNeeded];
+        }
+    }];
     
-    self.selectedCount.text = [NSString stringWithFormat:@"%ld médias sélectionnés", (unsigned long)self.selectedIndexes.count];
 }
 
 #pragma mark - UIScrollView

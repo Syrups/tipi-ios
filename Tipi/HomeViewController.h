@@ -8,14 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "NewStoryViewController.h"
-#import "ShowGroupsViewController.h"
+#import "UserManager.h"
 
-@interface HomeViewController : UIViewController //<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface HomeViewController : UIViewController <InvitationFetcherDelegate>
+
 - (IBAction)goRooms:(id)sender;
 
 @property (strong, nonatomic) UIViewController* currentViewController;
 @property (strong, nonatomic) NewStoryViewController* storyViewController;
-@property (strong, nonatomic) ShowGroupsViewController* groupsViewController;
+@property (strong, nonatomic) UINavigationController* groupsViewController;
 
 - (void)displayChildViewController:(UIViewController*)viewController;
 - (void)switchChildViewController;

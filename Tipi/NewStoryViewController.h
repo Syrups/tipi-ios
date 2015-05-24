@@ -25,8 +25,11 @@
 @property (strong, nonatomic) IBOutlet UIButton* profileButton;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* topControlsYConstraint;
 
+@property (strong, nonatomic) IBOutlet UIView* notificationsAlert;
+
 - (void)transitionToFires;
 - (void)transitionFromFires;
 - (void)transitionFromProfile;
+- (void)transitionFromStoryBuilder;
 
 @end

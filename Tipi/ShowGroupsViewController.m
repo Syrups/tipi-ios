@@ -34,13 +34,8 @@
     [self.view addSubview:loader];
     [self.view sendSubviewToBack:loader];
     
-    CGFloat initialConstant = self.topControlsYConstraint.constant;
-    self.topControlsYConstraint.constant = -100;
-    [self.view layoutIfNeeded];
-    [UIView animateWithDuration:.5f animations:^{
-        self.topControlsYConstraint.constant = initialConstant;
-        [self.view layoutIfNeeded];
-    }];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -74,6 +69,7 @@
 //}
 
 - (IBAction)backToHome:(id)sender {
+    self.mTableView.delegate = nil;
     HomeViewController* parent = (HomeViewController*)self.parentViewController.parentViewController;
     [parent displayChildViewController:parent.storyViewController];
 }
@@ -213,6 +209,7 @@
             [cell setAlpha:1];
         } completion:nil];
     }];
+
 }
 
 
