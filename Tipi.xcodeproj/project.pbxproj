@@ -43,6 +43,7 @@
 		73B3B35A1AA7BC6100FF7578 /* GroupMembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B3B3591AA7BC6100FF7578 /* GroupMembersViewController.m */; };
 		73B3B35F1AA7CA5100FF7578 /* ReadModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B3B35E1AA7CA5100FF7578 /* ReadModeViewController.m */; };
 		73B3B3621AA7CA9100FF7578 /* ReadModeContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B3B3611AA7CA9100FF7578 /* ReadModeContainerViewController.m */; };
+		73D0C2701B0F7A1A00BDFA14 /* UIViewTouchUnder.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D0C26F1B0F7A1A00BDFA14 /* UIViewTouchUnder.m */; };
 		73E7EBC31AE57CC8003579CD /* UIRoomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E7EBC21AE57CC8003579CD /* UIRoomTableViewCell.m */; };
 		825B10453DF4C5EAFBC589D9 /* libPods-Tipi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9894FA4EEDEAF922FCD71B9 /* libPods-Tipi.a */; };
 		B30317FD1ABC2759005EF73D /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = B30317FC1ABC2759005EF73D /* Page.m */; };
@@ -208,6 +209,8 @@
 		73B3B35E1AA7CA5100FF7578 /* ReadModeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadModeViewController.m; sourceTree = "<group>"; };
 		73B3B3601AA7CA9100FF7578 /* ReadModeContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadModeContainerViewController.h; sourceTree = "<group>"; };
 		73B3B3611AA7CA9100FF7578 /* ReadModeContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadModeContainerViewController.m; sourceTree = "<group>"; };
+		73D0C26E1B0F7A1A00BDFA14 /* UIViewTouchUnder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewTouchUnder.h; sourceTree = "<group>"; };
+		73D0C26F1B0F7A1A00BDFA14 /* UIViewTouchUnder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewTouchUnder.m; sourceTree = "<group>"; };
 		73E7EBC11AE57CC8003579CD /* UIRoomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIRoomTableViewCell.h; sourceTree = "<group>"; };
 		73E7EBC21AE57CC8003579CD /* UIRoomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIRoomTableViewCell.m; sourceTree = "<group>"; };
 		B30317FB1ABC2759005EF73D /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Page.h; sourceTree = "<group>"; };
@@ -778,6 +781,8 @@
 				B30CDD711B077B83007BAEA8 /* AnimationLibrary.m */,
 				730CFF211B0BBC52001045E4 /* UICommentSideCell.h */,
 				730CFF221B0BBC52001045E4 /* UICommentSideCell.m */,
+				73D0C26E1B0F7A1A00BDFA14 /* UIViewTouchUnder.h */,
+				73D0C26F1B0F7A1A00BDFA14 /* UIViewTouchUnder.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1250,6 +1255,7 @@
 				B3FBAAC01AEF7EA500A3A6B4 /* AddUsersToRoomViewController.m in Sources */,
 				B3BCD01D1AA60D4C00261212 /* OrganizeStoryViewController.m in Sources */,
 				B38B89661ACC221600799EDD /* SRRecordButton.m in Sources */,
+				73D0C2701B0F7A1A00BDFA14 /* UIViewTouchUnder.m in Sources */,
 				B35975F21ADFA29F00936E5E /* ImageUtils.m in Sources */,
 				B3BCD0031AA5F03D00261212 /* AbortModalViewController.m in Sources */,
 				B33DE8581ACDCC66008AE55F /* StoryController.m in Sources */,

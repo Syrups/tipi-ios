@@ -38,7 +38,7 @@
 @property (strong,nonatomic) NSURL* fileURL;
 @property (strong,nonatomic) NSTimer *overlayTimer;
 @property (nonatomic) NSTimeInterval trueCurrentTime;
-
+@property (strong, nonatomic) NSMutableArray *commentsPlayers;
 
 
 - (IBAction)quitStory:(id)sender;

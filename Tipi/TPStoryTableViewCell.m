@@ -82,10 +82,14 @@
     }
 }
 
-- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)panGestureRecognizer
+- (BOOL)gestureRecognizerShouldBegin:(id )panGestureRecognizer
 {
-    CGPoint translation = [panGestureRecognizer translationInView:[self superview] ];
-    return (fabs(translation.x) / fabs(translation.y) > 1) ? YES : NO;
+    if([panGestureRecognizer respondsToSelector:@selector(translationInView:)]){
+        CGPoint translation = [panGestureRecognizer translationInView:[self superview] ];
+        return (fabs(translation.x) / fabs(translation.y) > 1) ? YES : NO;
+    }
+    
+    return NO;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {

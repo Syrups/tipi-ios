@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "CommentsQueueManager.h"
+#import "UIViewTouchUnder.h"
 
-@interface TPSideCommentsView : UIView <CommentsQueueDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface TPSideCommentsView : UIViewTouchUnder <CommentsQueueDelegate, UITableViewDelegate, UITableViewDataSource>
 @property(strong, nonatomic) NSMutableArray *comments;
 @property (weak, nonatomic) IBOutlet UITableView *commentsList;
 @property (nonatomic, assign) id delegate;
