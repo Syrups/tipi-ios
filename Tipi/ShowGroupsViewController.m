@@ -33,12 +33,14 @@
     [self.view addSubview:loader];
     [self.view sendSubviewToBack:loader];
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
+//    self.automaticallyAdjustsScrollViewInsets = NO;
     
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    self.mTableView.delegate = self;
     
     if (!maskLayer) {
         maskLayer = [CAGradientLayer layer];

@@ -9,6 +9,7 @@
 #import "HomeBubble.h"
 #import "SHPathLibrary.h"
 #import "PKAIDecoder.h"
+#import "AnimationLibrary.h"
 
 @implementation HomeBubble {
     CAShapeLayer* shapeLayer;
@@ -22,21 +23,34 @@
         CGFloat midX = CGRectGetMidX(self.frame);
         CGFloat midY = CGRectGetMidY(self.frame);
         
-        UIImageView* wave1 = [[UIImageView alloc] initWithFrame:CGRectMake(midX - 50, midY - 50, 100, 50)];
+        CGFloat headSize = 250;
+        
+        UIImageView* wave1 = [[UIImageView alloc] initWithFrame:CGRectMake(midX - 120, midY - 150, 100, 50)];
         [PKAIDecoder builAnimatedImageIn:wave1 fromFile:@"onde_bleu_clair" withAnimationDuration:3];
         UIImageView* wave2 = [[UIImageView alloc] initWithFrame:CGRectMake(midX + 50, midY - 30, 100, 50)];
         [PKAIDecoder builAnimatedImageIn:wave2 fromFile:@"onde_bleu" withAnimationDuration:3];
-        UIImageView* star1 = [[UIImageView alloc] initWithFrame:CGRectMake(midX - 20, midY + 50, 60, 60)];
+        UIImageView* star1 = [[UIImageView alloc] initWithFrame:CGRectMake(midX + 60, midY - 110, 60, 60)];
         [PKAIDecoder builAnimatedImageIn:star1 fromFile:@"star" withAnimationDuration:3];
-        UIImageView* buddy = [[UIImageView alloc] initWithFrame:self.frame];
+        UIImageView* buddy = [[UIImageView alloc] initWithFrame:CGRectMake(midX - headSize/2 - 10, midY - headSize/2, headSize, headSize)];
 //        buddy.transform = CGAffineTransformMakeTranslation(0, 100);
-        [PKAIDecoder builAnimatedImageIn:buddy fromFile:@"tete" withAnimationDuration:4];
+        [PKAIDecoder builAnimatedImageIn:buddy fromFile:@"tete-sanstete" withAnimationDuration:1.4f];
 //        UIImageView* voice = [[UIImageView alloc] initWithFrame:CGRectMake(midX - 130, midY - 60, 100, 40)];
 //        [PKAIDecoder builAnimatedImageIn:voice fromFile:@"onde_voix" withAnimationDuration:3];
+        
+        UIView* buddyHead = [[UIView alloc] initWithFrame:CGRectMake(midX - headSize/3.6f, midY - headSize/3.6f, headSize/1.8f, headSize/1.8f)];
+        buddyHead.layer.cornerRadius = headSize/3.6f;
+        buddyHead.layer.masksToBounds = YES;
+        buddyHead.backgroundColor = RgbColorAlpha(41, 80, 127, 1);
+        [self addSubview:buddyHead];
+        
         [self addSubview:buddy];
         [self addSubview:wave1];
         [self addSubview:wave2];
         [self addSubview:star1];
+        
+        [AnimationLibrary animateGizzlingView:wave1];
+        [AnimationLibrary animateGizzlingView:wave2];
+        [AnimationLibrary animateGizzlingView:star1];
         
 //        [self addSubview:voice];
         

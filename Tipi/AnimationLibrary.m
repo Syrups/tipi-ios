@@ -59,4 +59,24 @@ static const float totalBounceDuration = 1;
     } completion:nil];
 }
 
++ (void)animateGizzlingView:(UIView *)view {
+    [UIView animateKeyframesWithDuration:2 delay:0 options:UIViewKeyframeAnimationOptionRepeat animations:^{
+        [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.2f animations:^{
+            view.transform = CGAffineTransformMakeTranslation(1 + arc4random_uniform(3), 1 + arc4random_uniform(3));
+        }];
+        [UIView addKeyframeWithRelativeStartTime:.2f relativeDuration:.2f animations:^{
+            view.transform = CGAffineTransformMakeTranslation(1 + arc4random_uniform(3), 1 -arc4random_uniform(3));
+        }];
+        [UIView addKeyframeWithRelativeStartTime:.4f relativeDuration:.2f animations:^{
+            view.transform = CGAffineTransformMakeTranslation(1-arc4random_uniform(3), 1+arc4random_uniform(3));
+        }];
+        [UIView addKeyframeWithRelativeStartTime:.6f relativeDuration:.2f animations:^{
+            view.transform = CGAffineTransformMakeTranslation(1-arc4random_uniform(3), 1+arc4random_uniform(3));
+        }];
+        [UIView addKeyframeWithRelativeStartTime:.8f relativeDuration:.2f animations:^{
+            view.transform = CGAffineTransformIdentity;
+        }];
+    } completion:nil];
+}
+
 @end

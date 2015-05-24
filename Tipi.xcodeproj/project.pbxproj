@@ -131,6 +131,7 @@
 		B3C4708B1B10C2F5003231D3 /* StoryBuilder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C4708A1B10C2F5003231D3 /* StoryBuilder.storyboard */; };
 		B3C4708D1B10C3C3003231D3 /* Rooms.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C4708C1B10C3C3003231D3 /* Rooms.storyboard */; };
 		B3C4708F1B10C400003231D3 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C4708E1B10C400003231D3 /* Profile.storyboard */; };
+		B3C470931B10C9A1003231D3 /* tete-sanstete.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B3C470921B10C9A1003231D3 /* tete-sanstete.pkai */; };
 		B3C85E541ACBF4C50083C50A /* Audio.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C85E531ACBF4C50083C50A /* Audio.m */; };
 		B3C85E571ACBF5260083C50A /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C85E561ACBF5260083C50A /* Media.m */; };
 		B3DDF3461ADC6311009A9CAF /* NewStoryMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DDF3451ADC6311009A9CAF /* NewStoryMainController.m */; };
@@ -366,6 +367,7 @@
 		B3C4708A1B10C2F5003231D3 /* StoryBuilder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoryBuilder.storyboard; sourceTree = "<group>"; };
 		B3C4708C1B10C3C3003231D3 /* Rooms.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rooms.storyboard; sourceTree = "<group>"; };
 		B3C4708E1B10C400003231D3 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		B3C470921B10C9A1003231D3 /* tete-sanstete.pkai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "tete-sanstete.pkai"; sourceTree = "<group>"; };
 		B3C85E521ACBF4C50083C50A /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audio.h; sourceTree = "<group>"; };
 		B3C85E531ACBF4C50083C50A /* Audio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Audio.m; sourceTree = "<group>"; };
 		B3C85E551ACBF5260083C50A /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
@@ -614,6 +616,7 @@
 		B319B2391AF0CD1400C819BD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B3C470921B10C9A1003231D3 /* tete-sanstete.pkai */,
 				B3BCCFF61AA5C4CB00261212 /* GTWalsheim Light.otf */,
 				B3BCCFF71AA5C4CB00261212 /* GTWalsheim Regular.otf */,
 				B31933891ADFB2B600603158 /* GTWalsheim Bold.otf */,
@@ -1124,6 +1127,7 @@
 				73B3B3471AA7BA3F00FF7578 /* croix-noire.png in Resources */,
 				B3BCCFF81AA5C4CB00261212 /* GTWalsheim Light.otf in Resources */,
 				B319B2401AF0CD1B00C819BD /* onde_bleu.pkai in Resources */,
+				B3C470931B10C9A1003231D3 /* tete-sanstete.pkai in Resources */,
 				B3BCCFF91AA5C4CB00261212 /* GTWalsheim Regular.otf in Resources */,
 				73B3B34E1AA7BA3F00FF7578 /* perso-blanc.png in Resources */,
 				73B3B3521AA7BA3F00FF7578 /* proches-petit.png in Resources */,

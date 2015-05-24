@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "SettingsViewController.h"
 #import "AnimationLibrary.h"
+#import "TPLoader.h"
 
 @interface SettingsViewController ()
 
@@ -26,7 +27,12 @@
     [[UserSession sharedSession] destroy];
     
     UINavigationController* rootNav = (UINavigationController *)((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController;
-    UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
+    UIViewController* vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Login"];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    TPLoader* loader = [[TPLoader alloc] initWithFrame:self.view.frame];
+    [self.parentViewController.view addSubview:loader];
+    
     [rootNav setViewControllers:@[vc] animated:YES];
 }
 
