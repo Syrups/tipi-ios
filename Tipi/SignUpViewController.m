@@ -20,6 +20,10 @@
     [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
 }
 
+- (IBAction)back:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)updateMeters
 {
     [self.waveformView updateWithLevel:.5f];

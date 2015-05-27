@@ -18,8 +18,6 @@
 @property (strong, nonatomic) StoryWIPSaver* saver;
 @property (strong, nonatomic) NSMutableArray* medias;
 @property (strong, nonatomic) IBOutlet UICollectionView* mediaCollectionView;
-@property (strong, nonatomic) IBOutlet UILabel* selectedCount;
-@property (strong, nonatomic) IBOutlet UIActivityIndicatorView* activityIndicator;
 @property (strong, nonatomic) IBOutlet UIButton* continueButton;
 @property (strong, nonatomic) IBOutlet WaveBackground* wave;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* continueButtonYConstraint;

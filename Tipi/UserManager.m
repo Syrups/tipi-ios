@@ -42,10 +42,10 @@
                     [self.delegate userManager:self successfullyAuthenticatedUser:user];
                 }
             });
-        } failure:^(NSError *error) {
+        } failure:^(NSError *error, NSUInteger code) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                if ([self.delegate respondsToSelector:@selector(userManager:failedToAuthenticateUserWithUsername:)]) {
-                    [self.delegate userManager:self failedToAuthenticateUserWithUsername:username];
+                if ([self.delegate respondsToSelector:@selector(userManager:failedToAuthenticateUserWithUsername:withStatusCode:)]) {
+                    [self.delegate userManager:self failedToAuthenticateUserWithUsername:username withStatusCode:code];
                 }
             });
         }];

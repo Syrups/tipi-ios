@@ -310,16 +310,29 @@
     
     [CATransaction commit];
     
+    CGFloat ratio = (image.image.size.width / image.image.size.height);
+    BOOL landscape = ratio > 1;
+    
     __block CGFloat scale = 0;
     
     [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseOut  animations:^{
         scale = self.view.frame.size.height / cell.frame.size.height;
-        cell.transform = CGAffineTransformMakeScale(scale+.1f, scale+.1f);
+        
+        if (landscape) {
+            cell.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(scale * ratio, scale * ratio), CGAffineTransformMakeTranslation(150, 100));
+        } else {
+            cell.transform = CGAffineTransformMakeScale(scale+.1f, scale+.1f);
+        }
+        
         self.replayButton.alpha = 0;
         
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-            cell.transform = CGAffineTransformMakeScale(scale, scale);
+            if (landscape) {
+                cell.transform = CGAffineTransformMakeScale(scale * ratio, scale * ratio);
+            } else {
+                cell.transform = CGAffineTransformMakeScale(scale, scale);
+            }
         } completion:^(BOOL finished) {
             [self.navigationController pushViewController:vc animated:NO];
             image.layer.mask = originalMask;

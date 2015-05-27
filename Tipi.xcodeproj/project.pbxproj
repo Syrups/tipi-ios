@@ -67,8 +67,7 @@
 		B319B2421AF0CD1B00C819BD /* star.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B319B23D1AF0CD1B00C819BD /* star.pkai */; };
 		B319B2461AF0CD5100C819BD /* PKAIDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = B319B2451AF0CD5100C819BD /* PKAIDecoder.m */; };
 		B319B2481AF0D13100C819BD /* tete.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B319B2471AF0D13100C819BD /* tete.pkai */; };
-		B319B24B1AF1020800C819BD /* Screen1.xib in Resources */ = {isa = PBXBuildFile; fileRef = B319B24A1AF1020800C819BD /* Screen1.xib */; };
-		B319B24E1AF1025A00C819BD /* WalkthroughScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = B319B24D1AF1025A00C819BD /* WalkthroughScreen.m */; };
+		B319B24B1AF1020800C819BD /* Screen0.xib in Resources */ = {isa = PBXBuildFile; fileRef = B319B24A1AF1020800C819BD /* Screen0.xib */; };
 		B319B2511AF12D0F00C819BD /* AdminRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B319B2501AF12D0F00C819BD /* AdminRoomViewController.m */; };
 		B325A13A1ADE546A0041DF21 /* SandboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A1391ADE546A0041DF21 /* SandboxViewController.m */; };
 		B325A13D1ADE5AD80041DF21 /* PreviewBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A13C1ADE5AD80041DF21 /* PreviewBubble.m */; };
@@ -110,6 +109,8 @@
 		B3A8D1871ACEB5EE00B09C34 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D1861ACEB5EE00B09C34 /* Comment.m */; };
 		B3A8D18A1ACECB1A00B09C34 /* AddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D1891ACECB1A00B09C34 /* AddFriendViewController.m */; };
 		B3A8D18E1ACED0EC00B09C34 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D18D1ACED0EC00B09C34 /* ProfileViewController.m */; };
+		B3B4DB6B1B15EE7400DE905E /* Screen1.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3B4DB6A1B15EE7400DE905E /* Screen1.xib */; };
+		B3B4DB6D1B15EE7900DE905E /* Screen2.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3B4DB6C1B15EE7900DE905E /* Screen2.xib */; };
 		B3BCCFD31AA5C36C00261212 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFD21AA5C36C00261212 /* main.m */; };
 		B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFD51AA5C36C00261212 /* AppDelegate.m */; };
 		B3BCCFDC1AA5C36C00261212 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3BCCFDA1AA5C36C00261212 /* Main.storyboard */; };
@@ -253,9 +254,7 @@
 		B319B2441AF0CD5100C819BD /* PKAIDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKAIDecoder.h; sourceTree = "<group>"; };
 		B319B2451AF0CD5100C819BD /* PKAIDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKAIDecoder.m; sourceTree = "<group>"; };
 		B319B2471AF0D13100C819BD /* tete.pkai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tete.pkai; sourceTree = "<group>"; };
-		B319B24A1AF1020800C819BD /* Screen1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Screen1.xib; sourceTree = "<group>"; };
-		B319B24C1AF1025A00C819BD /* WalkthroughScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalkthroughScreen.h; sourceTree = "<group>"; };
-		B319B24D1AF1025A00C819BD /* WalkthroughScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalkthroughScreen.m; sourceTree = "<group>"; };
+		B319B24A1AF1020800C819BD /* Screen0.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Screen0.xib; sourceTree = "<group>"; };
 		B319B24F1AF12D0F00C819BD /* AdminRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminRoomViewController.h; sourceTree = "<group>"; };
 		B319B2501AF12D0F00C819BD /* AdminRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminRoomViewController.m; sourceTree = "<group>"; };
 		B325A1381ADE546A0041DF21 /* SandboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandboxViewController.h; sourceTree = "<group>"; };
@@ -333,6 +332,8 @@
 		B3A8D1891ACECB1A00B09C34 /* AddFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendViewController.m; sourceTree = "<group>"; };
 		B3A8D18C1ACED0EC00B09C34 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		B3A8D18D1ACED0EC00B09C34 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		B3B4DB6A1B15EE7400DE905E /* Screen1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Screen1.xib; sourceTree = "<group>"; };
+		B3B4DB6C1B15EE7900DE905E /* Screen2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Screen2.xib; sourceTree = "<group>"; };
 		B3BCCFCD1AA5C36C00261212 /* Tipi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3BCCFD11AA5C36C00261212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3BCCFD21AA5C36C00261212 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -637,9 +638,9 @@
 		B319B2491AF101F500C819BD /* Walkthrough */ = {
 			isa = PBXGroup;
 			children = (
-				B319B24A1AF1020800C819BD /* Screen1.xib */,
-				B319B24C1AF1025A00C819BD /* WalkthroughScreen.h */,
-				B319B24D1AF1025A00C819BD /* WalkthroughScreen.m */,
+				B319B24A1AF1020800C819BD /* Screen0.xib */,
+				B3B4DB6A1B15EE7400DE905E /* Screen1.xib */,
+				B3B4DB6C1B15EE7900DE905E /* Screen2.xib */,
 			);
 			name = Walkthrough;
 			sourceTree = "<group>";
@@ -1130,6 +1131,7 @@
 				73B3B3491AA7BA3F00FF7578 /* go-right.png in Resources */,
 				73B3B3531AA7BA3F00FF7578 /* replay-gris.png in Resources */,
 				B3297F691B0E2CD900249DA0 /* terms.html in Resources */,
+				B3B4DB6D1B15EE7900DE905E /* Screen2.xib in Resources */,
 				73B3B3501AA7BA3F00FF7578 /* play.png in Resources */,
 				73B3B3461AA7BA3F00FF7578 /* croix-blanche.png in Resources */,
 				73B3B34B1AA7BA3F00FF7578 /* home-noir.png in Resources */,
@@ -1149,7 +1151,8 @@
 				73B3B3511AA7BA3F00FF7578 /* proches-grand.png in Resources */,
 				73B3B34C1AA7BA3F00FF7578 /* loupe.png in Resources */,
 				B33618671B0A15370047013C /* loader.pkai in Resources */,
-				B319B24B1AF1020800C819BD /* Screen1.xib in Resources */,
+				B319B24B1AF1020800C819BD /* Screen0.xib in Resources */,
+				B3B4DB6B1B15EE7400DE905E /* Screen1.xib in Resources */,
 				B3BCCFE11AA5C36C00261212 /* LaunchScreen.xib in Resources */,
 				73B3B3561AA7BA3F00FF7578 /* story.png in Resources */,
 				73B3B3541AA7BA3F00FF7578 /* replay-noir.png in Resources */,
@@ -1299,7 +1302,6 @@
 				B3BCD0001AA5E50D00261212 /* MediaPickerViewController.m in Sources */,
 				B36941AF1ACAE02500F3F95A /* FileUploader.m in Sources */,
 				B3BCD0131AA604DA00261212 /* RecordViewController.m in Sources */,
-				B319B24E1AF1025A00C819BD /* WalkthroughScreen.m in Sources */,
 				B319B2461AF0CD5100C819BD /* PKAIDecoder.m in Sources */,
 				B396C5C01AFE4EC700935725 /* FilterViewController.m in Sources */,
 				B325A13D1ADE5AD80041DF21 /* PreviewBubble.m in Sources */,

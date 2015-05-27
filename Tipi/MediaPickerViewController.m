@@ -11,14 +11,14 @@
 #import "PKCollectionViewStickyHeaderFlowLayout.h"
 #import "MediaCell.h"
 #import "HelpModalViewController.h"
-
-static float const fadePercentage = 0.2;
+#import "TPLoader.h"
 
 @implementation MediaPickerViewController {
     NSUInteger currentOffset;
     BOOL loading;
     NSMutableArray* unorderedMedias;
     CAGradientLayer* maskLayer;
+    TPLoader* loader;
 }
 
 - (void)viewDidLoad {
@@ -26,8 +26,6 @@ static float const fadePercentage = 0.2;
     
     self.selectedIndexes = [NSMutableArray array];
     self.saver = [StoryWIPSaver sharedSaver];
-    
-    self.activityIndicator.hidden = NO;
     
     self.library = [[MediaLibrary alloc] init];
     self.library.delegate = self;
@@ -72,7 +70,10 @@ static float const fadePercentage = 0.2;
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self.library fetchMediasFromLibraryFrom:currentOffset to:currentOffset + kMediaPickerMediaLimit];
+    [self.library fetchMediasFromLibrary];
+    
+    loader = [[TPLoader alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:loader];
 }
 
 - (IBAction)back:(id)sender {
@@ -90,23 +91,23 @@ static float const fadePercentage = 0.2;
 
 #pragma mark - MediaLibrary
 
-- (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedias:(NSArray *)medias from:(NSUInteger)start to:(NSUInteger)limit {
-    
+- (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedias:(NSArray *)medias {
+
     // reverse array
     NSMutableArray *reversed = [NSMutableArray arrayWithCapacity:[medias count]];
     NSEnumerator *enumerator = [medias reverseObjectEnumerator];
     for (id element in enumerator) {
         [reversed addObject:element];
     }
-
-    self.activityIndicator.hidden = YES;
+    
+    self.medias = reversed;
+    
     loading = NO;
-    [self.medias addObjectsFromArray:reversed];
-    
+
     [self.mediaCollectionView reloadData];
-    currentOffset += kMediaPickerMediaLimit + 1;
-    
+
     [self animateButtonAppearance];
+    [loader removeFromSuperview];
 }
 
 #pragma mark - UICollectionView
@@ -232,16 +233,6 @@ static float const fadePercentage = 0.2;
     [CATransaction setDisableActions:YES];
     maskLayer.position = CGPointMake(0, scrollView.contentOffset.y);
     [CATransaction commit];
-    
-    NSArray* visibleIndexPaths = [self.mediaCollectionView indexPathsForVisibleItems];
-    
-    NSLog(@"%d / %d", self.medias.count, self.library.totalMediasCount);
-    
-    if ([visibleIndexPaths containsObject:[NSIndexPath indexPathForItem:self.medias.count-1 inSection:0]] && !loading && self.medias.count < self.library.totalMediasCount) {
-        loading = YES;
-//        self.activityIndicator.hidden = NO;
-        [self.library fetchMediasFromLibraryFrom:currentOffset to:currentOffset+10];
-    }
     
 }
 

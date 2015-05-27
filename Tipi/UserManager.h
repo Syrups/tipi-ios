@@ -38,7 +38,7 @@
 @protocol UserAuthenticatorDelegate <NSObject>
 
 - (void)userManager:(UserManager*)manager successfullyAuthenticatedUser:(User*)user;
-- (void)userManager:(UserManager*)manager failedToAuthenticateUserWithUsername:(NSString*)username;
+- (void)userManager:(UserManager*)manager failedToAuthenticateUserWithUsername:(NSString*)username withStatusCode:(NSInteger)code;
 
 @end
 

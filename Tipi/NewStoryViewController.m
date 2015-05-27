@@ -121,6 +121,7 @@
     
     [self.view layoutIfNeeded];
     [UIView animateWithDuration:.5f animations:^{
+//        self.bubbleCenterXConstraint.constant = self.view.frame.size.width;
         self.bottomViewYConstraint.constant = -500;
         self.topControlsYConstraint.constant = -500;
         [self.view layoutIfNeeded];

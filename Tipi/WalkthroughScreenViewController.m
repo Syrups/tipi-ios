@@ -18,9 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    HomeBubble* bubble = [[HomeBubble alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:bubble];
-    bubble.userInteractionEnabled = NO;
+    NSLog(@"%d", self.index);
+    
+    [[NSBundle mainBundle] loadNibNamed:[NSString stringWithFormat:@"Screen%d", self.index] owner:self options:nil];
+    [self.view addSubview:self.screenView];
 }
 
 

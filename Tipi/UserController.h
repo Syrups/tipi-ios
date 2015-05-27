@@ -13,7 +13,7 @@
 @interface UserController : BaseModelController
 
 - (void)createUserWithUsername:(NSString*)username password:(NSString*)password email:(NSString*)email success:(void(^)(User* user))success failure:(void(^)(NSError* error, NSUInteger statusCode))failure;
-- (void)authenticateUserWithUsername:(NSString*)username password:(NSString*)password success:(void(^)(User* user))success failure:(void(^)(NSError* error))failure;
+- (void)authenticateUserWithUsername:(NSString*)username password:(NSString*)password success:(void(^)(User* user))success failure:(void(^)(NSError* error, NSUInteger code))failure;
 - (void)fetchUserWithId:(NSInteger)userId success:(void(^)(User* user))success failure:(void(^)(NSError* error))failure;
 - (void)fetchFriendsOfUser:(User*)user success:(void(^)(NSArray* friends))success failure:(void(^)(NSError* error))failure;
 - (void)fetchFriendsRequestsOfUser:(User*)user success:(void(^)(NSArray* requesting))success failure:(void(^)(NSError* error))failure;

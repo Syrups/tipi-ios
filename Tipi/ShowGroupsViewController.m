@@ -34,6 +34,14 @@
     [self.view addSubview:loader];
     [self.view sendSubviewToBack:loader];
     
+    CGFloat initialConstant = self.topControlsYConstraint.constant;
+    self.topControlsYConstraint.constant = - 150;
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:.3f animations:^{
+        self.topControlsYConstraint.constant = initialConstant;
+        [self.view layoutIfNeeded];
+    }];
+    
 //    self.automaticallyAdjustsScrollViewInsets = NO;
     
 }

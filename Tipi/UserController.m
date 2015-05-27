@@ -40,7 +40,7 @@
     [op start];
 }
 
-- (void)authenticateUserWithUsername:(NSString *)username password:(NSString *)password success:(void (^)(User *))success failure:(void (^)(NSError *))failure {
+- (void)authenticateUserWithUsername:(NSString *)username password:(NSString *)password success:(void (^)(User *))success failure:(void (^)(NSError *, NSUInteger))failure {
     
     NSMutableURLRequest* request = [UserController getBaseRequestFor:@"/authenticate" authenticated:NO method:@"POST"].mutableCopy;
     [request setHTTPBody:[[NSString stringWithFormat:@"{ \"username\": \"%@\", \"password\": \"%@\" }", username, password] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -60,7 +60,7 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        if (failure != nil) failure(error);
+        if (failure != nil) failure(error, operation.response.statusCode);
     }];
     
     [op start];

@@ -11,5 +11,6 @@
 @interface WalkthroughScreenViewController : UIViewController
 
 @property NSUInteger index;
+@property (strong, nonatomic) IBOutlet UIView* screenView;
 
 @end

@@ -24,6 +24,7 @@
 
 @property (strong, nonatomic) IBOutlet UIButton* profileButton;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* topControlsYConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* bubbleCenterXConstraint;
 
 @property (strong, nonatomic) IBOutlet UIView* notificationsAlert;
 

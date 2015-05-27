@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UIView* fieldsZone;
 @property (strong, nonatomic) IBOutlet UIButton* signUpButton;
 @property (strong, nonatomic) IBOutlet UIButton* signInButton;
+@property (strong, nonatomic) IBOutlet UIButton* backButton;
 @property (strong, nonatomic) IBOutlet UITextField* usernameField;
 @property (strong, nonatomic) IBOutlet UITextField* passwordField;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* centerFieldsVerticalContraint;
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* signUpButtonVerticalSpace;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* signInButtonWidth;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* signInButtonHeight;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* backButtonTopConstraint;
 @property (nonatomic, strong) AVAudioRecorder *recorder;
 @property (nonatomic, weak) IBOutlet SCSiriWaveformView *waveformView;
 @property (nonatomic, weak) IBOutlet SCSiriWaveformView *secondWaveformView;

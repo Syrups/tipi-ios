@@ -90,7 +90,7 @@
         overlay.backgroundColor = kListenBackgroundColor;
         overlay.alpha = 0;
         [self addSubview:overlay];
-        [UIView animateWithDuration:.4f animations:^{
+        [UIView animateWithDuration:.3f animations:^{
             overlay.alpha = 1;
         } completion:^(BOOL finished) {
             [overlay removeFromSuperview];
@@ -101,7 +101,7 @@
     [CATransaction setCompletionBlock:completionBlock];
     
     CABasicAnimation* morph = [CABasicAnimation animationWithKeyPath:@"path"];
-    morph.duration = 0.4f;
+    morph.duration = 0.3f;
     morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     
     CGPathRef from = shapeLayer.path;
@@ -124,7 +124,7 @@
         overlay.backgroundColor = kListenBackgroundColor;
         overlay.alpha = 1;
         [self addSubview:overlay];
-        [UIView animateWithDuration:.3f animations:^{
+        [UIView animateWithDuration:.2f animations:^{
             overlay.alpha = 0;
         } completion:^(BOOL finished) {
             [overlay removeFromSuperview];

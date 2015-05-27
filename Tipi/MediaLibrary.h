@@ -16,14 +16,13 @@
 @property (strong, nonatomic) NSMutableArray* assets;
 @property NSUInteger totalMediasCount;
 
-- (void)fetchMediasFromLibraryFrom:(NSUInteger)start to:(NSUInteger)limit;
+- (void)fetchMediasFromLibrary;
 
 @end
 
 @protocol MediaLibraryDelegate <NSObject>
 
-- (void)mediaLibrary:(MediaLibrary*)library successfullyFetchedMedias:(NSArray*)medias from:(NSUInteger)start to:(NSUInteger)limit;
+- (void)mediaLibrary:(MediaLibrary*)library successfullyFetchedMedias:(NSArray*)medias;
 - (void)mediaLibrary:(MediaLibrary *)library failedToFetchMediasWithError:(NSError*)error;
-- (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedia:(NSDictionary *)media;
 
 @end
