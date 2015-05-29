@@ -9,6 +9,7 @@
 #import "NewStoryViewController.h"
 #import "HomeViewController.h"
 #import "StoryWIPSaver.h"
+#import "AnimationLibrary.h"
 
 @interface NewStoryViewController ()
 
@@ -56,7 +57,6 @@
 - (IBAction)launchStoryBuilder:(id)sender {
     [UIView animateWithDuration:.3f delay:0 options:
      UIViewAnimationOptionCurveEaseOut animations:^{
-         [self.bubble reduceWithCompletion:nil backgroundFading:NO];
          self.topControlsYConstraint.constant = -150;
          self.bottomViewYConstraint.constant = -500;
          [self.view layoutIfNeeded];
@@ -91,7 +91,7 @@
 }
 
 - (IBAction)openProfile:(id)sender {
-    
+        
     UIViewController* profile = [[UIStoryboard storyboardWithName:kStoryboardProfile bundle:nil] instantiateViewControllerWithIdentifier:@"Profile"];
     
     [profile willMoveToParentViewController:self];
@@ -102,7 +102,7 @@
     [self.view addSubview:profile.view];
     [profile didMoveToParentViewController:self];
     
-    [UIView animateWithDuration:.3f delay:0 options:
+    [UIView animateWithDuration:.3f delay:.2f options:
      UIViewAnimationOptionCurveEaseOut animations:^{
          [self.bubble expandWithCompletion:nil backgroundFading:NO];
          self.topControlsYConstraint.constant = -150;

@@ -27,7 +27,7 @@
     currentMedia = 1;
     LXReorderableCollectionViewFlowLayout* layout = [[LXReorderableCollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    layout.longPressGestureRecognizer.minimumPressDuration = 0;
+    layout.longPressGestureRecognizer.minimumPressDuration = .05f;
     layout.scrollingSpeed = 400;
     layout.overlay = self.overlay;
     
@@ -42,15 +42,11 @@
     
     [self.saver.medias enumerateObjectsUsingBlock:^(NSMutableDictionary* media, NSUInteger idx, BOOL *stop) {
         
-        if (idx < 4) {
+//        if (idx < 4) {
             ALAsset* asset = (ALAsset*)[media objectForKey:@"asset"];
             UIImage* full = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
             [media setObject:full forKey:@"full"];
-            
-//            if (idx == 0) {
-//                [self.wave updateImage:[ImageUtils convertImageToGrayScale:full]];
-//            }
-        }
+//        }
         
     }];
     
@@ -68,6 +64,7 @@
         }];
     });
     
+    [NSTimer scheduledTimerWithTimeInterval:.5f target:self selector:@selector(animateForTutorial) userInfo:nil repeats:NO];
 
 }
 
@@ -407,15 +404,50 @@
     return maskLayer;
 }
 
-- (void)animateAppearance {
-    [self.collectionView.visibleCells enumerateObjectsUsingBlock:^(UICollectionViewCell* cell, NSUInteger idx, BOOL *stop) {
-        cell.transform = CGAffineTransformMakeTranslation((idx+1) * CELL_SIZE, 0);
-        
-        [UIView animateWithDuration:.4f delay:idx*0.05f options:UIViewAnimationOptionCurveEaseOut animations:^{
+#pragma mark - Tutorial
+
+- (void)animateForTutorial {
+    UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+    self.collectionView.scrollEnabled = NO;
+    
+    // coachmark animation to tap the image
+    [UIView animateKeyframesWithDuration:2 delay:0 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
+        [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.4f animations:^{
+            self.overlay.alpha = .8f;
+            self.helpLabel.alpha = 1;
+            cell.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
+        }];
+        [UIView addKeyframeWithRelativeStartTime:.6f relativeDuration:.4f animations:^{
             cell.transform = CGAffineTransformIdentity;
-        } completion:nil];
+        }];
+    } completion:^(BOOL finished) {
+        [self animateCoachmarkImageDrag];
     }];
 }
 
+- (void)animateCoachmarkImageDrag {
+    UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+
+    [UIView animateKeyframesWithDuration:2 delay:1 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
+        
+        // coachmark animation to move the image
+        [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.2f animations:^{
+            self.helpLabel.text = @"Glissez les images pour réorganiser votre histoire";
+            cell.transform = CGAffineTransformConcat(CGAffineTransformMakeRotation(.1f), CGAffineTransformMakeTranslation(50, 0));
+        }];
+        [UIView addKeyframeWithRelativeStartTime:.3f relativeDuration:.3f animations:^{
+            cell.transform = CGAffineTransformConcat(CGAffineTransformMakeRotation(-.1f), CGAffineTransformMakeTranslation(-50, 0));
+        }];
+        [UIView addKeyframeWithRelativeStartTime:.7f relativeDuration:.2f animations:^{
+            cell.transform = CGAffineTransformMakeRotation(0);
+        }];
+        
+        [UIView addKeyframeWithRelativeStartTime:.9f relativeDuration:.1f animations:^{
+            self.overlay.alpha = 0;
+            self.helpLabel.alpha = 0;
+            self.collectionView.scrollEnabled = YES;
+        }];
+    } completion:nil];
+}
 
 @end

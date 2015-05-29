@@ -28,6 +28,7 @@
 @property (strong, nonatomic) UIViewController* donePopin;
 @property (strong, nonatomic) UIViewController* namePopin;
 @property (strong, nonatomic) IBOutlet UIView* overlay;
+@property (strong, nonatomic) IBOutlet UILabel* helpLabel;
 
 - (void)animateAppearance;
 

@@ -44,7 +44,7 @@
                                         <real key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="amplitude">
-                                        <real key="value" value="0.5"/>
+                                        <real key="value" value="0.29999999999999999"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="density">
                                         <real key="value" value="3"/>
@@ -220,7 +220,7 @@ avec votre voix</string>
         <!--Walkthrough View Controller-->
         <scene sceneID="ekG-wL-Bdm">
             <objects>
-                <viewController id="Bj6-qm-Nni" customClass="WalkthroughViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Walkthrough" id="Bj6-qm-Nni" customClass="WalkthroughViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nqr-az-B2H"/>
                         <viewControllerLayoutGuide type="bottom" id="pfq-sx-sON"/>
@@ -381,7 +381,7 @@ avec votre voix</string>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lVv-1e-3JI" customClass="SRUnderlinedField">
                                 <rect key="frame" x="70" y="200" width="180" height="30"/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                         <color key="value" red="0.16078431900000001" green="0.22352941330000001" blue="0.36078432199999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -397,7 +397,7 @@ avec votre voix</string>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YmA-af-bTO" customClass="SRUnderlinedField">
                                 <rect key="frame" x="70" y="328" width="180" height="30"/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                         <color key="value" red="0.16078431900000001" green="0.22352941330000001" blue="0.36078432199999999" alpha="1" colorSpace="calibratedRGB"/>

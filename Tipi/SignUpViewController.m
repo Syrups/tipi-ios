@@ -55,8 +55,13 @@
 
 - (void)userManager:(UserManager *)manager successfullyCreatedUser:(User *)user {
     // success
+    
+    UIViewController* walkthrough = [self.storyboard instantiateViewControllerWithIdentifier:@"Walkthrough"];
+    
     [loader removeFromSuperview];
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self.presentingViewController.navigationController pushViewController:walkthrough animated:YES];
 }
 
 - (void)userManager:(UserManager *)manager failedToCreateUserWithStatusCode:(NSUInteger)statusCode {

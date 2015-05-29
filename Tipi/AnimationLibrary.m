@@ -79,4 +79,15 @@ static const float totalBounceDuration = 1;
     } completion:nil];
 }
 
++ (void)animateZoomBouncingView:(UIView *)view {
+    [UIView animateKeyframesWithDuration:.4f delay:0 options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
+        [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.5f animations:^{
+            view.transform = CGAffineTransformMakeScale(1.2f, 1.2f);
+        }];
+        [UIView addKeyframeWithRelativeStartTime:.5f relativeDuration:.5f animations:^{
+            view.transform = CGAffineTransformMakeScale(1, 1);
+        }];
+    } completion:nil];
+}
+
 @end

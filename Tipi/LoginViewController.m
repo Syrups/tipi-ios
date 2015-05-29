@@ -55,7 +55,7 @@
     } completion:^(BOOL finished) {
         [sender removeTarget:self action:@selector(openFields:) forControlEvents:UIControlEventTouchUpInside];
         [sender addTarget:self action:@selector(attemptLogin:) forControlEvents:UIControlEventTouchUpInside];
-        [self.usernameField becomeFirstResponder];
+//        [self.usernameField becomeFirstResponder];
     }];
 }
 

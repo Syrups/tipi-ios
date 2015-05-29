@@ -56,7 +56,7 @@
         
         maskLayer.colors = [NSArray arrayWithObjects:(__bridge id)outerColor, (__bridge id)innerColor, nil];
         maskLayer.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.1],
-                               [NSNumber numberWithFloat:0.3], nil];
+                               [NSNumber numberWithFloat:0.2], nil];
         
         maskLayer.bounds = CGRectMake(0, 0,
                                       self.mediaCollectionView.frame.size.width,
@@ -133,7 +133,7 @@
     
     int endY = cell.frame.origin.y;
     
-    if (cell.tag == 0) { // not animated yet
+    if (cell.tag == 0 && indexPath.row < 8) { // not animated yet, we only animate the first cells
         cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y + 500, cell.frame.size.width, cell.frame.size.height);
         
         [UIView animateKeyframesWithDuration:.7f delay:indexPath.row*0.04f options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
@@ -173,7 +173,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    CGFloat s = self.mediaCollectionView.frame.size.width/2.5f;
+    CGFloat s = self.mediaCollectionView.frame.size.width/2.3f;
     
     return CGSizeMake(s, s);
 }
