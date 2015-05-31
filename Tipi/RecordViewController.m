@@ -82,6 +82,11 @@
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:NO];
+    
+    [UIView animateWithDuration:.3f animations:^{
+        self.organizeViewController.topControlsYConstraint.constant = 0;
+        [self.organizeViewController.view layoutIfNeeded];
+    }];
 }
 
 

@@ -21,6 +21,7 @@
     NSUInteger currentMedia;
     BOOL firstLoad;
     BOOL removing;
+    NSUInteger pendingCellToRemoveIndex;
 }
 
 - (void)viewDidLoad {
@@ -42,11 +43,11 @@
     
     [self.saver.medias enumerateObjectsUsingBlock:^(NSMutableDictionary* media, NSUInteger idx, BOOL *stop) {
         
-//        if (idx < 4) {
+        if (idx < 4) {
             ALAsset* asset = (ALAsset*)[media objectForKey:@"asset"];
             UIImage* full = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
             [media setObject:full forKey:@"full"];
-//        }
+        }
         
     }];
     
@@ -64,7 +65,7 @@
         }];
     });
     
-    [NSTimer scheduledTimerWithTimeInterval:.5f target:self selector:@selector(animateForTutorial) userInfo:nil repeats:NO];
+//    [NSTimer scheduledTimerWithTimeInterval:.5f target:self selector:@selector(animateForTutorial) userInfo:nil repeats:NO];
 
 }
 
@@ -104,36 +105,58 @@
     [self.collectionView reloadData];
 }
 
-- (IBAction)swipeToRemove:(UISwipeGestureRecognizer*)sender {
+#pragma mark - Media deletion
+
+- (IBAction)toggleRemoveState:(UIPanGestureRecognizer*)sender {
     
+    CGPoint t = [sender translationInView:self.view];
+    
+    if (sender.view.tag != pendingCellToRemoveIndex && t.y < -2) {
+        pendingCellToRemoveIndex = sender.view.tag;
+        
+        UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:pendingCellToRemoveIndex inSection:0]];
+        
+        [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            UIButton *delete = (UIButton*)[cell.contentView viewWithTag:30];
+            delete.alpha = 1;
+            delete.enabled = YES;
+            cell.transform = CGAffineTransformMakeTranslation(0, -100);
+            cell.alpha = .8f;
+        } completion:nil];
+    } else if (t.y > 2) {
+        UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:pendingCellToRemoveIndex inSection:0]];
+        
+        [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            UIButton *delete = (UIButton*)[cell.contentView viewWithTag:30];
+            delete.alpha = 0;
+            delete.enabled = NO;
+            cell.transform = CGAffineTransformIdentity;
+            cell.alpha = 1;
+        } completion:^(BOOL finished) {
+            pendingCellToRemoveIndex = -1;
+        }];
+    }
+}
+
+- (IBAction)deleteMedia:(UIView*)sender {
     if (removing) return;
-    
     removing = YES;
     
-    NSInteger index = sender.view.tag;
+    NSUInteger index = sender.tag;
     
-    UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+    if (index < self.saver.medias.count) {
+        [self.saver.medias removeObjectAtIndex:index];
+        [self.collectionView performBatchUpdates:^{
+            [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+        } completion:^(BOOL finished) {
+            removing = NO;
+        }];
+    }
     
-    [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        cell.transform = CGAffineTransformMakeTranslation(0, -100);
-        cell.alpha = 0;
-    } completion:^(BOOL finished) {
-       
-        if (index < self.saver.medias.count) {
-            [self.saver.medias removeObjectAtIndex:index];
-            [self.collectionView performBatchUpdates:^{
-                [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
-            } completion:^(BOOL finished) {
-                removing = NO;
-            }];
-        }
-        
-        // if all has been deleted, go back to picker
-        if (self.saver.medias.count == 0) {
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-    }];
-    
+    // if all has been deleted, go back to picker
+    if (self.saver.medias.count == 0) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark - UICollectionView
@@ -172,22 +195,14 @@
     image.contentMode = UIViewContentModeScaleAspectFill;
     image.clipsToBounds = YES;
     
-    
-    if (indexPath.row == 0 && !firstLoad) {
-        //        cell.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.2f, 1.2f), CGAffineTransformMakeRotation(ACTIVE_CELL_ROTATION));
-        firstLoad = YES;
-    } else {
-        //        cell.alpha = INACTIVE_CELL_OPACITY;
-    }
-    
-//    UIView* gouigoui = [cell.contentView viewWithTag:30];
-//    gouigoui.hidden = ![self.recorder hasRecordedAtIndex:indexPath.row];
-    
     cell.contentView.tag = indexPath.row;
     
-    UIPanGestureRecognizer* swipe = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToRemove:)];
-    swipe.delegate = self;
-    [cell.contentView addGestureRecognizer:swipe];
+    UIButton* del = (UIButton*)[cell.contentView viewWithTag:30];
+    del.tag = indexPath.row;
+    
+    UIPanGestureRecognizer* pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(toggleRemoveState:)];
+    pan.delegate = self;
+    [cell.contentView addGestureRecognizer:pan];
     
     return cell;
 }
@@ -256,6 +271,14 @@
     return visibleIndexPath.row == indexPath.row;
 }
 
+#pragma mark - UIGestureRecognizer
+
+- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer {
+    CGPoint t = [gestureRecognizer translationInView:self.view];
+    
+    return t.y < -2 || t.y > 2;
+}
+
 #pragma mark - UIScrollView
 
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -273,23 +296,12 @@
     } completion:nil];
 }
 
-#pragma mark - UIGestureRecognizer
-
-- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer {
-    CGPoint t = [gestureRecognizer translationInView:self.view];
-    
-    if (t.y < -2) {
-        return YES;
-    }
-    
-    return NO;
-}
-
 #pragma mark - Navigation
 
 - (void)zoomAtIndexPath:(NSIndexPath*)indexPath {
     RecordViewController* vc = (RecordViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"Record"];
     vc.currentIndex = selectedPageIndex;
+    vc.organizeViewController = self;
     
     UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:indexPath];
 
@@ -322,6 +334,9 @@
         }
         
         self.replayButton.alpha = 0;
+        
+        self.topControlsYConstraint.constant = -100;
+        [self.view layoutIfNeeded];
         
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{

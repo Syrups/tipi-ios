@@ -10,6 +10,7 @@
 #import "Configuration.h"
 
 #define DEGREES_TO_RADIANS(deg) deg * (M_PI / 180)
+#define SEGMENTED YES
 
 @implementation SRRecordButton {
     NSTimer* timer;
@@ -21,6 +22,7 @@
     float* _buffer;
     UInt32 _bufferSize;
     UInt32 t;
+    BOOL recording;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -70,7 +72,7 @@
 
 - (void)updateAppearing {
     
-    circleOffset += 2;
+    circleOffset += 3;
     
     if (circleOffset >= 10) {
         circleOffset = 10;
@@ -108,14 +110,18 @@
 
 - (void)start {
     timer = [NSTimer scheduledTimerWithTimeInterval:0.05f target:self selector:@selector(update) userInfo:nil repeats:YES];
+
+    recording = YES;
 }
 
 - (void)pause {
     [timer invalidate];
+    recording = NO;
 }
 
 - (void)reset {
     [timer invalidate];
+    recording = NO;
     self.currentTime = 0;
     circleOffset = 10;
     
@@ -133,7 +139,7 @@
     
     CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
     CGContextSetStrokeColorWithColor(ctx, [UIColor whiteColor].CGColor);
-    CGContextSetLineWidth(ctx, 6.0f);
+    CGContextSetLineWidth(ctx, 8.0f);
     
     // draw first circle
 
@@ -141,37 +147,57 @@
         for (int a = 0 ; a < 360 ; a++) {
             
             r = radius + circleOffset;
-            float offset = sin(DEGREES_TO_RADIANS(a) * 6 + t) * 5;
+//            float offset = sin(DEGREES_TO_RADIANS(a) * 6 + t) * 5;
+            float offset = 0;
             float cx = frame.size.width/2 + r * cos(a * M_PI / 180) + offset;
             float cy = frame.size.height/2 + r * sin(a * M_PI / 180) + offset;
             if (a == 0) CGContextMoveToPoint(ctx, cx, cy);
-            CGContextAddLineToPoint(ctx, cx, cy);
+            
+            if (SEGMENTED) {
+                if ((a + t) % 3 == 0) {
+                    CGContextAddEllipseInRect(ctx, CGRectMake(cx - 1, cy - 1, 2, 2));
+                    CGContextFillPath(ctx);
+                }
+            } else {
+                CGContextAddLineToPoint(ctx, cx, cy);
+            }
             
         }
     } else {
         for (int i = 0 ; i < _bufferSize ; i++) {
             
-            float a = (i+1) * 360 / _bufferSize;
-            float delta = _buffer[i] * 30 * sin(DEGREES_TO_RADIANS(a) * 6 + t);
+            
+            // Here is magic!
+            // serioulsy no idea what I'm doing, just testing some random
+            // math stuff, but it seems to work out pretty
+            
+            int a = (i+1) * 360 / _bufferSize;
+            float delta = _buffer[i] * 100 * sin(DEGREES_TO_RADIANS(a) * 8 + t);
             r = radius + circleOffset + delta;
             float offset = sin(DEGREES_TO_RADIANS(a) * 6 + t) * 2;
             float cx = frame.size.width/2 + r * cos(a * M_PI / 180) + offset;
             float cy = frame.size.height/2 + r * sin(a * M_PI / 180) + offset;
             if (i == 0) CGContextMoveToPoint(ctx, cx, cy);
-            CGContextAddLineToPoint(ctx, cx, cy);
+            
+            if (SEGMENTED) {
+                if ((a + t) % 3 == 0) {
+                    CGContextAddEllipseInRect(ctx, CGRectMake(cx - 1 - offset/2, cy - 1 - offset/2, 2 + offset, 2 + offset));
+                    CGContextFillPath(ctx);
+                }
+            } else {
+                CGContextAddLineToPoint(ctx, cx, cy);
+            }
+            
           
         }
     }
     
-    
-    CGContextClosePath(ctx);
-    
-//    CGContextFillPath(ctx);
-    CGContextStrokePath(ctx);
-    
-    
+    if (!SEGMENTED) {
+        CGContextClosePath(ctx);
+        CGContextStrokePath(ctx);
+    }
+
     CGContextRestoreGState(ctx);
-    
     
     // outer circle
     
@@ -213,13 +239,17 @@
     
     t++;
     
-    if (self.duration <= self.currentTime) return;
+    if (recording) {
     
-    self.currentTime += 0.05f;
-    [self setNeedsDisplay];
-    [self setContentMode:UIViewContentModeRedraw];
-    
-    circleOffset -= 0.05f;
+        if (self.duration <= self.currentTime) return;
+        
+        self.currentTime += 0.05f;
+        [self setNeedsDisplay];
+        [self setContentMode:UIViewContentModeRedraw];
+        
+        circleOffset -= 0.05f;
+        
+    }
 }
 
 - (void)updateWithBuffer:(float **)buffer bufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {

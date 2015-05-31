@@ -55,7 +55,7 @@
 #pragma mark - Navigation
 
 - (IBAction)launchStoryBuilder:(id)sender {
-    [UIView animateWithDuration:.3f delay:0 options:
+    [UIView animateWithDuration:.6f delay:0 options:
      UIViewAnimationOptionCurveEaseOut animations:^{
          self.topControlsYConstraint.constant = -150;
          self.bottomViewYConstraint.constant = -500;

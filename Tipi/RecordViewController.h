@@ -14,10 +14,12 @@
 #import "AudioWave.h"
 #import "PreviewBubble.h"
 #import "Timeline.h"
+#import "OrganizeStoryViewController.h"
 
 @interface RecordViewController : UIViewController <EZMicrophoneDelegate, StoryMediaRecorderDelegate, UIGestureRecognizerDelegate, PreviewBubbleDelegate>
 
 @property NSUInteger currentIndex;
+@property (strong, nonatomic) OrganizeStoryViewController* organizeViewController;
 @property (strong, nonatomic) IBOutlet UIButton* recordButton;
 @property (strong, nonatomic) IBOutlet UIView* eraseWarning;
 @property (strong, nonatomic) IBOutlet SRRecordButton* recordTimer;
@@ -29,7 +31,6 @@
 @property (strong, nonatomic) IBOutlet UIButton* replayButton;
 @property (strong, nonatomic) UILongPressGestureRecognizer* longPressRecognizer;
 @property (strong, nonatomic) IBOutlet UIView* overlay;
-
 @property (strong, nonatomic) UIViewController* donePopin;
 @property (strong, nonatomic) UIViewController* namePopin;
 
