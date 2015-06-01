@@ -16,6 +16,8 @@
 #import "TPStoryTableViewCell.h"
 #import "TPLoader.h"
 
+#import <SDWebImage/UIImageView+WebCache.h>
+
 @interface ShowOneGroupViewController ()
 
 @end
@@ -54,6 +56,11 @@
     //UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeCell:)];
     //[self addGestureRecognizer:panGesture];
     //[self.mTableView addGestureRecognizer:panGesture];
+    
+    UILongPressGestureRecognizer *previewModeGesture = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressPreviewMode:)];
+    previewModeGesture.minimumPressDuration = 0.5; //seconds
+    previewModeGesture.delegate = self;
+    [self.mTableView addGestureRecognizer:previewModeGesture];
 }
 
 #pragma mark - Actions
@@ -173,6 +180,8 @@
 
 - (void)storyManager:(StoryManager *)manager successfullyFetchedStories:(NSArray *)stories{
     
+    
+    
     [loader removeFromSuperview];
     
     self.mStories = stories;
@@ -206,6 +215,78 @@
     }];
 }
 
+
+-(void)longPressPreviewMode:(UILongPressGestureRecognizer *)gestureRecognizer
+{
+    CGPoint p = [gestureRecognizer locationInView:self.mTableView];
+    
+    NSIndexPath *indexPath = [self.mTableView indexPathForRowAtPoint:p];
+    if (indexPath == nil) {
+    } else if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        [self startPreviewForRowAtIndexPath:indexPath];
+    
+    } else if(gestureRecognizer.state == UIGestureRecognizerStateEnded
+              || gestureRecognizer.state ==UIGestureRecognizerStateCancelled){
+        [self stopPreview];
+    }else {
+        NSLog(@"gestureRecognizer.state = %ld", (long)gestureRecognizer.state);
+    }
+}
+
+-(void)startPreviewForRowAtIndexPath:(NSIndexPath*)indexPath {
+    
+    self.isPreviewMode = YES;
+    self.previewImageView.alpha = 0;
+    
+    Story* story = [self.mStories objectAtIndex:indexPath.row];
+    Page* first = [story.pages objectAtIndex:0];
+
+    Audio* audio = first.audio;
+    Media* media = first.media;
+    
+    NSURL *audioUrl = [[NSURL alloc]initWithString:audio.file];
+    NSURL *mediaUrl = [[NSURL alloc]initWithString:media.file];
+    
+    AVPlayerItem *aPlayerItem = [[AVPlayerItem alloc] initWithURL:audioUrl];
+    self.previewAudioPlayer = [[AVPlayer alloc] initWithPlayerItem:aPlayerItem];
+    self.previewAudioPlayer.volume = 1;
+    
+    SDImageCache *previewCache = [SDImageCache sharedImageCache];
+    [previewCache queryDiskCacheForKey:@"roomPreview" done:^(UIImage *image, SDImageCacheType cacheType) {
+
+        if(image){
+            [self startPreviewWithImage:image];
+        }else{
+            [self.previewImageView sd_setImageWithURL:mediaUrl
+                                     placeholderImage:[UIImage imageNamed:@"walkscreen"]
+                                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                                [[SDImageCache sharedImageCache] storeImage:image forKey:@"roomPreview"];
+                                                [self startPreviewWithImage:image];
+                                            }];
+        }
+    }];
+}
+
+
+-(void)startPreviewWithImage:(UIImage*)image{
+    self.previewImageView.image = image;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.previewImageView.alpha = 1;
+    } completion:^(BOOL finished) {
+        [self.previewAudioPlayer play];
+    }];
+}
+
+-(void)stopPreview {
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.previewImageView.alpha = 0;
+        self.previewAudioPlayer.volume = 0;
+    } completion:^(BOOL finished) {
+        [self.previewAudioPlayer pause];
+    }];
+}
 
 
 

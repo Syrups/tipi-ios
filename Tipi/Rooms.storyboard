@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -449,6 +449,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vFn-aL-262">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="170" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5wV-UV-Yh4">
                                 <rect key="frame" x="0.0" y="75" width="320" height="493"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -562,8 +565,12 @@
                             <constraint firstAttribute="centerX" secondItem="zjU-3A-GHW" secondAttribute="centerX" id="Dkw-Vg-O9u"/>
                             <constraint firstItem="5wV-UV-Yh4" firstAttribute="width" secondItem="NIb-yM-wrc" secondAttribute="width" id="DpH-ER-625"/>
                             <constraint firstItem="5wV-UV-Yh4" firstAttribute="top" secondItem="rE0-rx-iPp" secondAttribute="bottom" constant="55" id="EYR-dW-FM7"/>
+                            <constraint firstAttribute="centerY" secondItem="vFn-aL-262" secondAttribute="centerY" id="FN1-Ou-stb"/>
+                            <constraint firstItem="vFn-aL-262" firstAttribute="height" secondItem="NIb-yM-wrc" secondAttribute="height" id="KhU-hT-Ljz"/>
                             <constraint firstItem="Gcr-vA-Vul" firstAttribute="top" secondItem="rE0-rx-iPp" secondAttribute="bottom" constant="4" id="OFY-Le-IGf"/>
                             <constraint firstItem="Iw4-K6-JMw" firstAttribute="top" secondItem="rE0-rx-iPp" secondAttribute="bottom" constant="1" id="WFk-Ii-JFq"/>
+                            <constraint firstItem="vFn-aL-262" firstAttribute="width" secondItem="NIb-yM-wrc" secondAttribute="width" id="cWG-FI-qZr"/>
+                            <constraint firstAttribute="centerX" secondItem="vFn-aL-262" secondAttribute="centerX" id="fIy-Zw-zVe"/>
                             <constraint firstItem="Iw4-K6-JMw" firstAttribute="leading" secondItem="NIb-yM-wrc" secondAttribute="leadingMargin" id="jXT-MZ-pEr"/>
                             <constraint firstAttribute="trailing" secondItem="Gcr-vA-Vul" secondAttribute="trailing" constant="16" id="qkx-nx-fge"/>
                             <constraint firstItem="zjU-3A-GHW" firstAttribute="top" secondItem="rE0-rx-iPp" secondAttribute="bottom" constant="9" id="xVY-xu-RP3"/>
@@ -572,6 +579,7 @@
                     <navigationItem key="navigationItem" id="g1y-Sp-Jhq"/>
                     <connections>
                         <outlet property="mTableView" destination="5wV-UV-Yh4" id="M1p-cJ-2dW"/>
+                        <outlet property="previewImageView" destination="vFn-aL-262" id="kRH-0T-8md"/>
                         <outlet property="roomNameButton" destination="zjU-3A-GHW" id="2pU-DC-qEb"/>
                     </connections>
                 </viewController>
