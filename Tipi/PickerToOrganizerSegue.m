@@ -18,7 +18,7 @@
     MediaPickerViewController* source = self.sourceViewController;
     OrganizeStoryViewController* dest = self.destinationViewController;
     
-    TPLoader* loader = [[TPLoader alloc] initWithFrame:source.view.frame];
+    __block TPLoader* loader = [[TPLoader alloc] initWithFrame:source.view.frame];
     [source.view addSubview:loader];
 //    loader.infoLabel.text = @"Chargement des photos...";
     
@@ -57,6 +57,11 @@
                 [UIView animateWithDuration:.3f animations:^{
                     dest.replayButton.transform = CGAffineTransformIdentity;
                 }];
+                
+                // reset previous VC layout
+                
+                [source.mediaCollectionView reloadData];
+                [loader removeFromSuperview];
             }
         }];
     }];

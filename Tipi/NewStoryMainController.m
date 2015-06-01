@@ -33,4 +33,8 @@
     }];
 }
 
+- (IBAction)popCurrentController:(id)sender {
+    [(UINavigationController*)self.childViewControllers[0] popViewControllerAnimated:YES];
+}
+
 @end

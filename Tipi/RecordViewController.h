@@ -25,7 +25,6 @@
 @property (strong, nonatomic) IBOutlet SRRecordButton* recordTimer;
 @property (strong, nonatomic) StoryWIPSaver* saver;
 @property (strong, nonatomic) StoryMediaRecorder* recorder;
-@property (strong, nonatomic) IBOutlet AudioWave* audioWave;
 @property (strong, nonatomic) IBOutlet PreviewBubble* previewBubble;
 @property (strong, nonatomic) IBOutlet Timeline* timeline;
 @property (strong, nonatomic) IBOutlet UIButton* replayButton;
@@ -33,6 +32,8 @@
 @property (strong, nonatomic) IBOutlet UIView* overlay;
 @property (strong, nonatomic) UIViewController* donePopin;
 @property (strong, nonatomic) UIViewController* namePopin;
+@property (strong, nonatomic) IBOutlet UIImageView* coachmarkSprite;
+@property (strong, nonatomic) IBOutlet UILabel* helpLabel;
 
 @property BOOL lastPage;
 

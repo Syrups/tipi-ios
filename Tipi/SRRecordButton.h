@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SCSiriWaveformView.h"
 
 @interface SRRecordButton : UIView
 
@@ -15,6 +16,7 @@
 @property CGFloat duration;
 @property CGFloat currentTime;
 @property BOOL appeared;
+@property (strong, nonatomic) SCSiriWaveformView* wave;
 
 - (void)appear;
 - (void)close;

@@ -136,7 +136,7 @@
     if (cell.tag == 0 && indexPath.row < 8) { // not animated yet, we only animate the first cells
         cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y + 500, cell.frame.size.width, cell.frame.size.height);
         
-        [UIView animateKeyframesWithDuration:.7f delay:indexPath.row*0.04f options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
+        [UIView animateKeyframesWithDuration:.7f delay:indexPath.row*0.05f options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
             [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.5f animations:^{
                 cell.frame = CGRectMake(cell.frame.origin.x, endY - 10, cell.frame.size.width, cell.frame.size.height);
             }];

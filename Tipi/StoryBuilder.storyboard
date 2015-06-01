@@ -241,7 +241,7 @@
                                     <constraint firstAttribute="width" constant="50" id="3h6-Ip-bXt"/>
                                     <constraint firstAttribute="height" constant="51" id="rtV-9A-mR3"/>
                                 </constraints>
-                                <state key="normal" image="menu-btn">
+                                <state key="normal" image="btn-back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -251,7 +251,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="displayAbortModal:" destination="tkQ-Xa-Txq" eventType="touchUpInside" id="R3N-Yt-wA5"/>
+                                    <action selector="popCurrentController:" destination="tkQ-Xa-Txq" eventType="touchUpInside" id="z7E-Pw-IbD"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -447,10 +447,10 @@ plus tard</string>
                                                     <rect key="frame" x="0.0" y="0.0" width="127" height="127"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picker-check" translatesAutoresizingMaskIntoConstraints="NO" id="Yia-mt-PbW">
-                                                            <rect key="frame" x="47" y="47" width="32" height="32"/>
+                                                            <rect key="frame" x="42" y="42" width="42" height="42"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="32" id="QOm-1x-s4G"/>
-                                                                <constraint firstAttribute="width" constant="32" id="hI0-NN-4Le"/>
+                                                                <constraint firstAttribute="height" constant="42" id="QOm-1x-s4G"/>
+                                                                <constraint firstAttribute="width" constant="42" id="hI0-NN-4Le"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
@@ -607,6 +607,32 @@ plus tard</string>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="openByDefault" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhH-nR-yie" userLabel="Finish">
+                                <rect key="frame" x="124" y="436" width="72" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="cCK-jK-OuJ"/>
+                                    <constraint firstAttribute="height" constant="72" id="v78-1m-xdC"/>
+                                </constraints>
+                                <state key="normal" image="btn-finish">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="openDonePopin:" destination="1dF-UM-HnX" eventType="touchUpInside" id="1S2-7e-Cu6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgO-Jw-DUq" userLabel="Replay">
+                                <rect key="frame" x="124" y="436" width="72" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="9A0-q7-Pl5"/>
+                                    <constraint firstAttribute="height" constant="72" id="F2G-dl-oLX"/>
+                                </constraints>
+                                <state key="normal" image="btn-replay">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="6P9-nl-8Du" kind="modal" id="zor-Eg-xaA"/>
+                                </connections>
+                            </button>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WTU-6e-ZWF" userLabel="Overlay">
                                 <rect key="frame" x="0.0" y="-20" width="320" height="588"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -642,6 +668,9 @@ plus tard</string>
                                                     <state key="normal" image="btn-delete">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="deleteMedia:" destination="1dF-UM-HnX" eventType="touchUpInside" id="gKG-Rm-9wr"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -668,38 +697,16 @@ plus tard</string>
                                     <outlet property="delegate" destination="1dF-UM-HnX" id="74L-xu-BS7"/>
                                 </connections>
                             </collectionView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhH-nR-yie" userLabel="Finish">
-                                <rect key="frame" x="124" y="436" width="72" height="72"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="72" id="cCK-jK-OuJ"/>
-                                    <constraint firstAttribute="height" constant="72" id="v78-1m-xdC"/>
-                                </constraints>
-                                <state key="normal" image="btn-finish">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="openDonePopin:" destination="1dF-UM-HnX" eventType="touchUpInside" id="1S2-7e-Cu6"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgO-Jw-DUq" userLabel="Replay">
-                                <rect key="frame" x="124" y="436" width="72" height="72"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="72" id="9A0-q7-Pl5"/>
-                                    <constraint firstAttribute="height" constant="72" id="F2G-dl-oLX"/>
-                                </constraints>
-                                <state key="normal" image="btn-replay">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="6P9-nl-8Du" kind="modal" id="zor-Eg-xaA"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Touchez une photo pour l'ouvrir en mode enregistrement" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glm-md-hy0">
-                                <rect key="frame" x="40" y="395" width="238" height="113"/>
+                                <rect key="frame" x="40" y="420" width="238" height="113"/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CuD-yq-s4M" userLabel="CoachMarkSprite">
+                                <rect key="frame" x="84" y="291" width="150" height="147"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MP3-3I-a5N" userLabel="Top">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                                 <subviews>
@@ -724,6 +731,7 @@ plus tard</string>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="animateCoachmark:" destination="1dF-UM-HnX" eventType="touchUpInside" id="Ddm-C1-j2n"/>
                                             <action selector="openHelp:" destination="N3w-4s-RLa" eventType="touchUpInside" id="HJq-L2-YRL"/>
                                         </connections>
                                     </button>
@@ -763,6 +771,7 @@ plus tard</string>
                     </view>
                     <navigationItem key="navigationItem" id="EAg-mK-bpV"/>
                     <connections>
+                        <outlet property="coachmarkSprite" destination="CuD-yq-s4M" id="3T3-vx-hnv"/>
                         <outlet property="collectionView" destination="Yz5-qh-T2v" id="ngJ-Js-LzJ"/>
                         <outlet property="finishButton" destination="IhH-nR-yie" id="4zV-nR-GCK"/>
                         <outlet property="helpLabel" destination="glm-md-hy0" id="a8x-0P-xZz"/>
@@ -774,7 +783,7 @@ plus tard</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s9Y-0H-L1s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5195.5" y="-1996"/>
+            <point key="canvasLocation" x="5195" y="-1996"/>
         </scene>
         <!--Record View Controller-->
         <scene sceneID="uLk-Ul-aCf">
@@ -796,31 +805,9 @@ plus tard</string>
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GRS-r2-Dg1" customClass="AudioWave">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Maintenez appuyé pour enregistrer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGv-Mf-SGb">
-                                        <rect key="frame" x="69" y="14" width="182" height="31"/>
-                                        <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="182" id="buD-Ij-vJw"/>
-                                            <constraint firstAttribute="height" constant="31" id="sdX-ZT-BEZ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
-                                <gestureRecognizers/>
-                            </view>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jqh-ES-HBc" customClass="SRRecordButton">
-                                <rect key="frame" x="38" y="161" width="244" height="246"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="244" id="iBZ-JE-Xw1"/>
-                                    <constraint firstAttribute="height" constant="246" id="ucx-Lp-Rgf"/>
-                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="duration">
                                         <integer key="value" value="60"/>
@@ -833,6 +820,12 @@ plus tard</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Touchez une photo pour l'ouvrir en mode enregistrement" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRx-Fb-nni">
+                                <rect key="frame" x="40" y="409" width="238" height="113"/>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vtt-ei-eqa">
                                 <rect key="frame" x="123" y="247" width="74" height="74"/>
                                 <constraints>
@@ -846,26 +839,28 @@ plus tard</string>
                                     <action selector="replay:" destination="UzX-jJ-ocM" eventType="touchUpInside" id="Qae-WZ-yhO"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mCg-co-lXX" userLabel="CoachMarkSprite">
+                                <rect key="frame" x="85" y="216" width="150" height="147"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="GRS-r2-Dg1" firstAttribute="leading" secondItem="Swq-LE-DNt" secondAttribute="leadingMargin" constant="-16" id="26w-hc-hmV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="GRS-r2-Dg1" secondAttribute="trailing" constant="-16" id="3ak-oW-gAP"/>
-                            <constraint firstItem="GRS-r2-Dg1" firstAttribute="top" secondItem="iep-Zd-f9S" secondAttribute="bottom" constant="-20" id="3r8-YX-XRr"/>
+                            <constraint firstItem="Jqh-ES-HBc" firstAttribute="leading" secondItem="Swq-LE-DNt" secondAttribute="leadingMargin" constant="-16" id="0AO-NN-sXW"/>
                             <constraint firstItem="kaU-eC-uax" firstAttribute="top" secondItem="iep-Zd-f9S" secondAttribute="bottom" constant="-20" id="EzT-8X-JnQ"/>
                             <constraint firstItem="Ry7-pQ-Jrq" firstAttribute="top" secondItem="iep-Zd-f9S" secondAttribute="bottom" constant="-20" id="HyY-zU-wwJ"/>
                             <constraint firstAttribute="centerY" secondItem="vtt-ei-eqa" secondAttribute="centerY" id="KhQ-Jg-oLW"/>
                             <constraint firstAttribute="centerX" secondItem="vtt-ei-eqa" secondAttribute="centerX" id="LYV-1j-bkR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ry7-pQ-Jrq" secondAttribute="trailing" constant="-16" id="SP0-Pt-UBE"/>
-                            <constraint firstAttribute="centerX" secondItem="Jqh-ES-HBc" secondAttribute="centerX" id="X44-np-vdW"/>
-                            <constraint firstItem="UKV-wh-6dE" firstAttribute="top" secondItem="GRS-r2-Dg1" secondAttribute="bottom" id="ZzO-YJ-nAB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Jqh-ES-HBc" secondAttribute="trailing" constant="-16" id="V45-CH-yvl"/>
                             <constraint firstItem="Ry7-pQ-Jrq" firstAttribute="leading" secondItem="Swq-LE-DNt" secondAttribute="leadingMargin" constant="-16" id="amD-ph-Lwb"/>
+                            <constraint firstItem="UKV-wh-6dE" firstAttribute="top" secondItem="Jqh-ES-HBc" secondAttribute="bottom" id="eZb-Vo-lcU"/>
                             <constraint firstItem="UKV-wh-6dE" firstAttribute="top" secondItem="kaU-eC-uax" secondAttribute="bottom" id="mV2-8g-Czx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kaU-eC-uax" secondAttribute="trailing" constant="-16" id="n0X-Ig-sXM"/>
                             <constraint firstItem="kaU-eC-uax" firstAttribute="leading" secondItem="Swq-LE-DNt" secondAttribute="leadingMargin" constant="-16" id="oGT-m3-veX"/>
+                            <constraint firstItem="Jqh-ES-HBc" firstAttribute="top" secondItem="iep-Zd-f9S" secondAttribute="bottom" constant="-20" id="rhg-1f-6dK"/>
                             <constraint firstItem="UKV-wh-6dE" firstAttribute="top" secondItem="Ry7-pQ-Jrq" secondAttribute="bottom" id="tPG-Fg-gUF"/>
-                            <constraint firstAttribute="centerY" secondItem="Jqh-ES-HBc" secondAttribute="centerY" id="ulc-C6-QFt"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="nkw-9K-b8N" appends="YES" id="rcW-8a-9vX"/>
@@ -873,7 +868,8 @@ plus tard</string>
                     </view>
                     <navigationItem key="navigationItem" id="NPN-bC-pBy"/>
                     <connections>
-                        <outlet property="audioWave" destination="GRS-r2-Dg1" id="UTW-eo-wSf"/>
+                        <outlet property="coachmarkSprite" destination="mCg-co-lXX" id="dko-lw-OVO"/>
+                        <outlet property="helpLabel" destination="KRx-Fb-nni" id="sSG-R5-jwt"/>
                         <outlet property="overlay" destination="Ry7-pQ-Jrq" id="xBO-sE-3Ju"/>
                         <outlet property="previewBubble" destination="kaU-eC-uax" id="Ibw-Vh-dXx"/>
                         <outlet property="recordTimer" destination="Jqh-ES-HBc" id="wiW-BP-DPy"/>
@@ -957,7 +953,6 @@ plus tard</string>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="dismiss:" destination="6P9-nl-8Du" eventType="touchUpInside" id="hGB-Ta-hjz"/>
-                                    <action selector="displayAbortModal:" destination="tkQ-Xa-Txq" eventType="touchUpInside" id="g5X-YD-t4Z"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1048,7 +1043,7 @@ votre histoire</string>
                                             <outlet property="delegate" destination="BqE-KL-crR" id="F4H-Ym-R8g"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lix-LL-xyD">
+                                    <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lix-LL-xyD">
                                         <rect key="frame" x="54" y="173" width="132" height="44"/>
                                         <color key="backgroundColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -1108,27 +1103,6 @@ votre histoire</string>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" tag="10" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STr-UM-OdM">
-                                <rect key="frame" x="10" y="10" width="50" height="51"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="JWQ-rL-vaO"/>
-                                    <constraint firstAttribute="height" constant="51" id="aNz-Ls-Yic"/>
-                                </constraints>
-                                <state key="normal" image="btn-back">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="close:" destination="BqE-KL-crR" eventType="touchUpInside" id="ZNc-35-e4m"/>
-                                    <action selector="displayAbortModal:" destination="tkQ-Xa-Txq" eventType="touchUpInside" id="3Li-fP-LRk"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.023529411760000001" green="0.031372549020000001" blue="0.1137254902" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1138,14 +1112,14 @@ votre histoire</string>
                             <constraint firstItem="pJ1-t0-4Z6" firstAttribute="top" secondItem="Asu-uD-eMk" secondAttribute="bottom" constant="-20" id="LSk-zt-vvZ"/>
                             <constraint firstAttribute="centerX" secondItem="gfg-U0-yeU" secondAttribute="centerX" id="P1U-4w-W0f"/>
                             <constraint firstItem="pJ1-t0-4Z6" firstAttribute="leading" secondItem="Xm4-Qz-BBw" secondAttribute="leadingMargin" constant="-16" id="Xif-3X-gOS"/>
-                            <constraint firstItem="STr-UM-OdM" firstAttribute="leading" secondItem="Xm4-Qz-BBw" secondAttribute="leadingMargin" constant="-6" id="pMh-FX-6Tw"/>
-                            <constraint firstItem="STr-UM-OdM" firstAttribute="top" secondItem="Asu-uD-eMk" secondAttribute="bottom" constant="-10" id="sJG-UK-J2l"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YTp-lx-9Kh"/>
                     <connections>
                         <outlet property="centerYConstraint" destination="HnA-Xn-KBn" id="2A3-ca-Rks"/>
+                        <outlet property="tagField" destination="wvk-Lo-RD7" id="8A6-Ub-FbK"/>
                         <outlet property="titleField" destination="hJu-3d-eM9" id="Z9H-jq-eY6"/>
+                        <outlet property="validateButton" destination="lix-LL-xyD" id="hak-cj-3Ba"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iNR-mq-yMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1550,7 +1524,6 @@ partager avec tes amis !</string>
         <image name="btn-replay-grey" width="87" height="87"/>
         <image name="check-room" width="80" height="80"/>
         <image name="help-btn" width="28" height="28"/>
-        <image name="menu-btn" width="17" height="17"/>
         <image name="page-replay-btn" width="79" height="79"/>
         <image name="picker-check" width="38" height="38"/>
         <image name="picto_lucifer" width="88" height="88"/>

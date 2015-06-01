@@ -75,6 +75,10 @@
 		B325A1431ADF0B4D0041DF21 /* OrganizerWave.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A1421ADF0B4D0041DF21 /* OrganizerWave.m */; };
 		B3297F661B0E2C0B00249DA0 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3297F651B0E2C0B00249DA0 /* WebViewController.m */; };
 		B3297F691B0E2CD900249DA0 /* terms.html in Resources */ = {isa = PBXBuildFile; fileRef = B3297F681B0E2CD900249DA0 /* terms.html */; };
+		B33389D31B1C5AE3003BAC78 /* help-drag.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B33389D21B1C5AE3003BAC78 /* help-drag.pkai */; };
+		B33389D51B1C5D61003BAC78 /* help-tap.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B33389D41B1C5D61003BAC78 /* help-tap.pkai */; };
+		B33389D91B1C60DE003BAC78 /* CoachmarkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B33389D81B1C60DE003BAC78 /* CoachmarkManager.m */; };
+		B33389DB1B1CA5BE003BAC78 /* help-record.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B33389DA1B1CA5BE003BAC78 /* help-record.pkai */; };
 		B33618631B09E9150047013C /* SCSiriWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = B33618621B09E9150047013C /* SCSiriWaveformView.m */; };
 		B33618671B0A15370047013C /* loader.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B33618661B0A15370047013C /* loader.pkai */; };
 		B336186A1B0A16FC0047013C /* TPLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B33618691B0A16FC0047013C /* TPLoader.m */; };
@@ -137,6 +141,8 @@
 		B3C470931B10C9A1003231D3 /* tete-sanstete.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B3C470921B10C9A1003231D3 /* tete-sanstete.pkai */; };
 		B3C85E541ACBF4C50083C50A /* Audio.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C85E531ACBF4C50083C50A /* Audio.m */; };
 		B3C85E571ACBF5260083C50A /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C85E561ACBF5260083C50A /* Media.m */; };
+		B3D64CE71B1CB1B000AEABD2 /* facebook_1_2.png in Resources */ = {isa = PBXBuildFile; fileRef = B3D64CE61B1CB1B000AEABD2 /* facebook_1_2.png */; };
+		B3D64CE91B1CBE3700AEABD2 /* test.JPG in Resources */ = {isa = PBXBuildFile; fileRef = B3D64CE81B1CBE3700AEABD2 /* test.JPG */; };
 		B3DDF3461ADC6311009A9CAF /* NewStoryMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DDF3451ADC6311009A9CAF /* NewStoryMainController.m */; };
 		B3FBAABD1AEF7D0900A3A6B4 /* CreateRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAABC1AEF7D0900A3A6B4 /* CreateRoomViewController.m */; };
 		B3FBAAC01AEF7EA500A3A6B4 /* AddUsersToRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAABF1AEF7EA500A3A6B4 /* AddUsersToRoomViewController.m */; };
@@ -268,6 +274,11 @@
 		B3297F641B0E2C0B00249DA0 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		B3297F651B0E2C0B00249DA0 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		B3297F681B0E2CD900249DA0 /* terms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = terms.html; sourceTree = "<group>"; };
+		B33389D21B1C5AE3003BAC78 /* help-drag.pkai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "help-drag.pkai"; sourceTree = "<group>"; };
+		B33389D41B1C5D61003BAC78 /* help-tap.pkai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "help-tap.pkai"; sourceTree = "<group>"; };
+		B33389D71B1C60DE003BAC78 /* CoachmarkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoachmarkManager.h; sourceTree = "<group>"; };
+		B33389D81B1C60DE003BAC78 /* CoachmarkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoachmarkManager.m; sourceTree = "<group>"; };
+		B33389DA1B1CA5BE003BAC78 /* help-record.pkai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "help-record.pkai"; sourceTree = "<group>"; };
 		B33618611B09E9150047013C /* SCSiriWaveformView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSiriWaveformView.h; sourceTree = "<group>"; };
 		B33618621B09E9150047013C /* SCSiriWaveformView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSiriWaveformView.m; sourceTree = "<group>"; };
 		B33618661B0A15370047013C /* loader.pkai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = loader.pkai; sourceTree = "<group>"; };
@@ -379,6 +390,8 @@
 		B3C85E531ACBF4C50083C50A /* Audio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Audio.m; sourceTree = "<group>"; };
 		B3C85E551ACBF5260083C50A /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
 		B3C85E561ACBF5260083C50A /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media.m; sourceTree = "<group>"; };
+		B3D64CE61B1CB1B000AEABD2 /* facebook_1_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_1_2.png; sourceTree = "<group>"; };
+		B3D64CE81B1CBE3700AEABD2 /* test.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.JPG; sourceTree = "<group>"; };
 		B3DDF3441ADC6311009A9CAF /* NewStoryMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStoryMainController.h; sourceTree = "<group>"; };
 		B3DDF3451ADC6311009A9CAF /* NewStoryMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStoryMainController.m; sourceTree = "<group>"; };
 		B3FBAABB1AEF7D0900A3A6B4 /* CreateRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateRoomViewController.h; sourceTree = "<group>"; };
@@ -648,6 +661,11 @@
 		B3297F671B0E2CC700249DA0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B3D64CE81B1CBE3700AEABD2 /* test.JPG */,
+				B3D64CE61B1CB1B000AEABD2 /* facebook_1_2.png */,
+				B33389DA1B1CA5BE003BAC78 /* help-record.pkai */,
+				B33389D41B1C5D61003BAC78 /* help-tap.pkai */,
+				B33389D21B1C5AE3003BAC78 /* help-drag.pkai */,
 				B336186B1B0A241A0047013C /* waves.pkai */,
 				B33618661B0A15370047013C /* loader.pkai */,
 				73B3B3331AA7BA3F00FF7578 /* exports */,
@@ -715,6 +733,8 @@
 			children = (
 				B34FEE951AEAB7A200A7E57B /* HelpModalViewController.h */,
 				B34FEE961AEAB7A200A7E57B /* HelpModalViewController.m */,
+				B33389D71B1C60DE003BAC78 /* CoachmarkManager.h */,
+				B33389D81B1C60DE003BAC78 /* CoachmarkManager.m */,
 			);
 			name = Help;
 			sourceTree = "<group>";
@@ -1133,8 +1153,10 @@
 				B3297F691B0E2CD900249DA0 /* terms.html in Resources */,
 				B3B4DB6D1B15EE7900DE905E /* Screen2.xib in Resources */,
 				73B3B3501AA7BA3F00FF7578 /* play.png in Resources */,
+				B3D64CE91B1CBE3700AEABD2 /* test.JPG in Resources */,
 				73B3B3461AA7BA3F00FF7578 /* croix-blanche.png in Resources */,
 				73B3B34B1AA7BA3F00FF7578 /* home-noir.png in Resources */,
+				B33389DB1B1CA5BE003BAC78 /* help-record.pkai in Resources */,
 				B3C4708D1B10C3C3003231D3 /* Rooms.storyboard in Resources */,
 				73B3B3471AA7BA3F00FF7578 /* croix-noire.png in Resources */,
 				B3BCCFF81AA5C4CB00261212 /* GTWalsheim Light.otf in Resources */,
@@ -1142,6 +1164,7 @@
 				B3C470931B10C9A1003231D3 /* tete-sanstete.pkai in Resources */,
 				B3BCCFF91AA5C4CB00261212 /* GTWalsheim Regular.otf in Resources */,
 				73B3B34E1AA7BA3F00FF7578 /* perso-blanc.png in Resources */,
+				B3D64CE71B1CB1B000AEABD2 /* facebook_1_2.png in Resources */,
 				73B3B3521AA7BA3F00FF7578 /* proches-petit.png in Resources */,
 				B3BCCFDC1AA5C36C00261212 /* Main.storyboard in Resources */,
 				B319338A1ADFB2B600603158 /* GTWalsheim Bold.otf in Resources */,
@@ -1153,6 +1176,8 @@
 				B33618671B0A15370047013C /* loader.pkai in Resources */,
 				B319B24B1AF1020800C819BD /* Screen0.xib in Resources */,
 				B3B4DB6B1B15EE7400DE905E /* Screen1.xib in Resources */,
+				B33389D31B1C5AE3003BAC78 /* help-drag.pkai in Resources */,
+				B33389D51B1C5D61003BAC78 /* help-tap.pkai in Resources */,
 				B3BCCFE11AA5C36C00261212 /* LaunchScreen.xib in Resources */,
 				73B3B3561AA7BA3F00FF7578 /* story.png in Resources */,
 				73B3B3541AA7BA3F00FF7578 /* replay-noir.png in Resources */,
@@ -1262,6 +1287,7 @@
 				B33DE8581ACDCC66008AE55F /* StoryController.m in Sources */,
 				73B20BF31AA6178200A9C88F /* ShowOneGroupViewController.m in Sources */,
 				B341F04C1AE1A272001D448A /* MediaCell.m in Sources */,
+				B33389D91B1C60DE003BAC78 /* CoachmarkManager.m in Sources */,
 				B3A8D1811ACE8C2F00B09C34 /* FriendListViewController.m in Sources */,
 				B3846F3C1ADD43170030DBDE /* AudioWave.m in Sources */,
 				B35CDBDA1AB87DD900BF9F82 /* StoryMediaRecorder.m in Sources */,

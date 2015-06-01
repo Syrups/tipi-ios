@@ -13,6 +13,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "ImageUtils.h"
 #import "MediaCell.h"
+#import "CoachmarkManager.h"
 
 @implementation OrganizeStoryViewController {
     NSString* oldHelpText;
@@ -21,7 +22,7 @@
     NSUInteger currentMedia;
     BOOL firstLoad;
     BOOL removing;
-    NSUInteger pendingCellToRemoveIndex;
+    NSInteger pendingCellToRemoveIndex;
 }
 
 - (void)viewDidLoad {
@@ -31,6 +32,8 @@
     layout.longPressGestureRecognizer.minimumPressDuration = .05f;
     layout.scrollingSpeed = 400;
     layout.overlay = self.overlay;
+    
+    pendingCellToRemoveIndex = -1;
     
     self.collectionView.collectionViewLayout = layout;
     
@@ -65,8 +68,7 @@
         }];
     });
     
-//    [NSTimer scheduledTimerWithTimeInterval:.5f target:self selector:@selector(animateForTutorial) userInfo:nil repeats:NO];
-
+    [NSTimer scheduledTimerWithTimeInterval:.5f target:self selector:@selector(animateCoachmark:) userInfo:nil repeats:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -78,7 +80,7 @@
         self.replayButton.hidden = YES;
         self.finishButton.hidden = NO;
     } else if ([self.recorder isEmpty]) {
-        self.replayButton.hidden = YES;
+        self.replayButton.enabled = NO;
     }else {
         self.replayButton.hidden = NO;
         self.finishButton.hidden = YES;
@@ -116,40 +118,47 @@
         
         UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:pendingCellToRemoveIndex inSection:0]];
         
-        [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             UIButton *delete = (UIButton*)[cell.contentView viewWithTag:30];
+            
             delete.alpha = 1;
             delete.enabled = YES;
             cell.transform = CGAffineTransformMakeTranslation(0, -100);
-            cell.alpha = .8f;
+            self.overlay.alpha = .5f;
         } completion:nil];
     } else if (t.y > 2) {
         UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:pendingCellToRemoveIndex inSection:0]];
         
-        [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             UIButton *delete = (UIButton*)[cell.contentView viewWithTag:30];
             delete.alpha = 0;
             delete.enabled = NO;
             cell.transform = CGAffineTransformIdentity;
-            cell.alpha = 1;
+            self.overlay.alpha = 0;
         } completion:^(BOOL finished) {
             pendingCellToRemoveIndex = -1;
         }];
     }
 }
 
-- (IBAction)deleteMedia:(UIView*)sender {
+- (IBAction)deleteMedia:(id)sender {
     if (removing) return;
     removing = YES;
     
-    NSUInteger index = sender.tag;
-    
-    if (index < self.saver.medias.count) {
-        [self.saver.medias removeObjectAtIndex:index];
-        [self.collectionView performBatchUpdates:^{
-            [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+    if (pendingCellToRemoveIndex < self.saver.medias.count) {
+        
+        UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:pendingCellToRemoveIndex inSection:0]];
+        
+        [UIView animateWithDuration:.3f animations:^{
+            cell.transform = CGAffineTransformMakeScale(0, 0);
         } completion:^(BOOL finished) {
-            removing = NO;
+            [self.saver.medias removeObjectAtIndex:pendingCellToRemoveIndex];
+            [self.collectionView performBatchUpdates:^{
+                [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+            } completion:^(BOOL finished) {
+                removing = NO;
+                pendingCellToRemoveIndex = -1;
+            }];
         }];
     }
     
@@ -198,7 +207,6 @@
     cell.contentView.tag = indexPath.row;
     
     UIButton* del = (UIButton*)[cell.contentView viewWithTag:30];
-    del.tag = indexPath.row;
     
     UIPanGestureRecognizer* pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(toggleRemoveState:)];
     pan.delegate = self;
@@ -276,7 +284,7 @@
 - (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer {
     CGPoint t = [gestureRecognizer translationInView:self.view];
     
-    return t.y < -2 || t.y > 2;
+    return t.y < -.5f || t.y > .5f;
 }
 
 #pragma mark - UIScrollView
@@ -419,50 +427,10 @@
     return maskLayer;
 }
 
-#pragma mark - Tutorial
+#pragma mark - Coachmark
 
-- (void)animateForTutorial {
-    UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-    self.collectionView.scrollEnabled = NO;
-    
-    // coachmark animation to tap the image
-    [UIView animateKeyframesWithDuration:2 delay:0 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
-        [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.4f animations:^{
-            self.overlay.alpha = .8f;
-            self.helpLabel.alpha = 1;
-            cell.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
-        }];
-        [UIView addKeyframeWithRelativeStartTime:.6f relativeDuration:.4f animations:^{
-            cell.transform = CGAffineTransformIdentity;
-        }];
-    } completion:^(BOOL finished) {
-        [self animateCoachmarkImageDrag];
-    }];
-}
-
-- (void)animateCoachmarkImageDrag {
-    UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-
-    [UIView animateKeyframesWithDuration:2 delay:1 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
-        
-        // coachmark animation to move the image
-        [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.2f animations:^{
-            self.helpLabel.text = @"Glissez les images pour réorganiser votre histoire";
-            cell.transform = CGAffineTransformConcat(CGAffineTransformMakeRotation(.1f), CGAffineTransformMakeTranslation(50, 0));
-        }];
-        [UIView addKeyframeWithRelativeStartTime:.3f relativeDuration:.3f animations:^{
-            cell.transform = CGAffineTransformConcat(CGAffineTransformMakeRotation(-.1f), CGAffineTransformMakeTranslation(-50, 0));
-        }];
-        [UIView addKeyframeWithRelativeStartTime:.7f relativeDuration:.2f animations:^{
-            cell.transform = CGAffineTransformMakeRotation(0);
-        }];
-        
-        [UIView addKeyframeWithRelativeStartTime:.9f relativeDuration:.1f animations:^{
-            self.overlay.alpha = 0;
-            self.helpLabel.alpha = 0;
-            self.collectionView.scrollEnabled = YES;
-        }];
-    } completion:nil];
+- (IBAction)animateCoachmark:(id)sender {
+    [CoachmarkManager launchCoachmarkAnimationForOrganizerController:self];
 }
 
 @end

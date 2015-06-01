@@ -11,13 +11,11 @@
 #import <AVFoundation/AVFoundation.h>
 #import "AudioWave.h"
 #import <EZMicrophone.h>
+#import "MediaLibrary.h"
 
-@interface SandboxViewController : UIViewController <EZMicrophoneDelegate>
+@interface SandboxViewController : UIViewController <MediaLibraryDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
-@property (strong, nonatomic) IBOutlet SRRecordButton* button;
-@property (nonatomic, strong) AVAudioRecorder *recorder;
-@property (weak, nonatomic) IBOutlet AudioWave *audioWave;
-@property (strong, nonatomic) EZMicrophone* microphone;
-@property (strong, nonatomic) IBOutlet UIImageView* loader;
+@property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
+@property (strong, nonatomic) NSArray* photos;
 
 @end

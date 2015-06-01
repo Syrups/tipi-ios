@@ -54,7 +54,7 @@ IB_DESIGNABLE
 /*
  * The current amplitude
  */
-@property (nonatomic, assign, readonly) IBInspectable CGFloat amplitude;
+@property (nonatomic, assign) IBInspectable CGFloat amplitude;
 
 /*
  * The lines are joined stepwise, the more dense you draw, the more CPU power is used.
