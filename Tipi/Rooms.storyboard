@@ -508,7 +508,6 @@
                                             <outlet property="dateLabel" destination="VO3-W6-dlT" id="B78-mf-HEo"/>
                                             <outlet property="deleteButton" destination="j5S-X8-GPt" id="yTm-a0-LOU"/>
                                             <outlet property="titleLabel" destination="tvM-ut-zHC" id="mCi-ZH-1se"/>
-                                            <segue destination="scg-Hc-izr" kind="push" identifier="showStory" id="5c5-Wl-hul"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -581,6 +580,7 @@
                         <outlet property="mTableView" destination="5wV-UV-Yh4" id="M1p-cJ-2dW"/>
                         <outlet property="previewImageView" destination="vFn-aL-262" id="kRH-0T-8md"/>
                         <outlet property="roomNameButton" destination="zjU-3A-GHW" id="2pU-DC-qEb"/>
+                        <segue destination="scg-Hc-izr" kind="push" identifier="showStory" id="0ae-YS-LNz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HvR-dR-T1V" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -153,6 +153,15 @@
     return self.mStories.count;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    [self startCoverModeWithAnimatingCell:cell atIndexPath:indexPath withCompletionBlock:^(BOOL done) {
+        [self performSegueWithIdentifier:@"showStory" sender:self];
+    }];
+}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showStory"]) {
@@ -186,8 +195,6 @@
 
 
 - (void)storyManager:(StoryManager *)manager successfullyFetchedStories:(NSArray *)stories{
-    
-    
     
     [loader removeFromSuperview];
     
@@ -276,20 +283,10 @@
     // Subscribe to the AVPlayerItem's DidPlayToEndTime notification.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemDidFinishPlaying:) name:AVPlayerItemDidPlayToEndTimeNotification object:aPlayerItem];
     
-    SDImageCache *previewCache = [SDImageCache sharedImageCache];
-    [previewCache queryDiskCacheForKey:@"roomPreview" done:^(UIImage *image, SDImageCacheType cacheType) {
-
-        if(image){
-            [self startPreviewWithImage:image];
-        }else{
-            [self.previewImageView sd_setImageWithURL:mediaUrl
-                                     placeholderImage:[UIImage imageNamed:@"walkscreen"]
-                                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                                [[SDImageCache sharedImageCache] storeImage:image forKey:@"roomPreview"];
-                                                [self startPreviewWithImage:image];
-                                            }];
-        }
+    [self loadPreviewMediaAtURL:mediaUrl withCompletionBlock:^(UIImage *image) {
+        [self startPreviewWithImage:image];
     }];
+
 }
 
 -(void)itemDidFinishPlaying:(NSNotification *) notification {
@@ -334,8 +331,64 @@
     }];
 }
 
-- (void)startCoverModeWithStoryAtIndexPath:(NSIndexPath*)indexpath{
 
+- (void)startCoverModeWithAnimatingCell:(UITableViewCell*)selectedCell atIndexPath:(NSIndexPath*)indexPath withCompletionBlock:(void (^)(BOOL))block
+{
+    
+    [self.view addSubview:loader];
+    
+    Story* story = [self.mStories objectAtIndex:indexPath.row];
+    Page* first = [story.pages objectAtIndex:0];
+    
+    Media* media = first.media;
+    
+    NSURL *mediaUrl = [[NSURL alloc]initWithString:media.file];
+    [self loadPreviewMediaAtURL:mediaUrl withCompletionBlock:^(UIImage *image) {
+        [loader removeFromSuperview];
+        
+        self.previewImageView.image = image;
+        self.previewImageView.clipsToBounds = YES;
+        
+        [UIView animateWithDuration:1 animations:^{
+            self.previewImageView.transform = CGAffineTransformMakeScale(1.2,1.2);
+            self.previewImageView.alpha = 1;
+            
+            for (UITableViewCell *cell in [self.mTableView visibleCells]) {
+                if(cell != selectedCell){
+                    cell.alpha = 0;
+                }
+            }
+            
+            selectedCell.frame = CGRectMake(CGRectGetMinX(selectedCell.frame), 0, CGRectGetWidth(selectedCell.frame), CGRectGetHeight(selectedCell.frame));
+            selectedCell.alpha = 1;
+            
+        } completion:^(BOOL finished) {
+            double delayInSeconds = 2.0;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                block(finished);
+            });
+        }];
+    }];
+}
+
+-(void)loadPreviewMediaAtURL:(NSURL*)mediaUrl withCompletionBlock:(void (^)(UIImage*))block{
+
+    //SDImageCache *previewCache = [SDImageCache sharedImageCache];
+    [self.previewImageView sd_setImageWithURL:mediaUrl
+                             placeholderImage:[UIImage imageNamed:@"walkscreen"]
+                                    completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                        [[SDImageCache sharedImageCache] storeImage:image forKey:@"roomPreview"];
+                                        block(image);
+                                    }];
+    /*[previewCache queryDiskCacheForKey:@"roomPreview" done:^(UIImage *image, SDImageCacheType cacheType) {
+        
+        if(image){
+            block(image);
+        }else{
+           
+        }
+    }];*/
 }
 
 
