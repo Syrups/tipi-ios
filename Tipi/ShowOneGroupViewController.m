@@ -61,6 +61,13 @@
     previewModeGesture.minimumPressDuration = 0.5; //seconds
     previewModeGesture.delegate = self;
     [self.mTableView addGestureRecognizer:previewModeGesture];
+    
+    //Preview Init
+    UIView *overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.previewImageView.frame.size.width, self.previewImageView.frame.size.height)];
+    [overlay setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
+    overlay.tag = 2048;
+    [self.previewImageView addSubview:overlay];
+    self.previewImageView.alpha = 0;
 }
 
 #pragma mark - Actions
@@ -221,23 +228,38 @@
     CGPoint p = [gestureRecognizer locationInView:self.mTableView];
     
     NSIndexPath *indexPath = [self.mTableView indexPathForRowAtPoint:p];
-    if (indexPath == nil) {
-    } else if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-        [self startPreviewForRowAtIndexPath:indexPath];
     
-    } else if(gestureRecognizer.state == UIGestureRecognizerStateEnded
-              || gestureRecognizer.state ==UIGestureRecognizerStateCancelled){
-        [self stopPreview];
-    }else {
-        NSLog(@"gestureRecognizer.state = %ld", (long)gestureRecognizer.state);
+    if (indexPath != nil) {
+        
+        switch (gestureRecognizer.state) {
+            case UIGestureRecognizerStateBegan:
+                 [self startPreviewForRowAtIndexPath:indexPath];
+                break;
+                
+            case UIGestureRecognizerStateEnded:
+                [self stopPreview];
+                break;
+                
+            case UIGestureRecognizerStateCancelled:
+                [self stopPreview];
+                break;
+                
+            default:
+                break;
+        }
+    }else if(self.isPreviewMode){
+        if(gestureRecognizer.state == UIGestureRecognizerStateEnded ||
+           gestureRecognizer.state == UIGestureRecognizerStateCancelled){
+            
+            [self stopPreview];
+        }
     }
 }
 
 -(void)startPreviewForRowAtIndexPath:(NSIndexPath*)indexPath {
     
     self.isPreviewMode = YES;
-    self.previewImageView.alpha = 0;
-    
+   
     Story* story = [self.mStories objectAtIndex:indexPath.row];
     Page* first = [story.pages objectAtIndex:0];
 
@@ -250,6 +272,9 @@
     AVPlayerItem *aPlayerItem = [[AVPlayerItem alloc] initWithURL:audioUrl];
     self.previewAudioPlayer = [[AVPlayer alloc] initWithPlayerItem:aPlayerItem];
     self.previewAudioPlayer.volume = 1;
+    
+    // Subscribe to the AVPlayerItem's DidPlayToEndTime notification.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemDidFinishPlaying:) name:AVPlayerItemDidPlayToEndTimeNotification object:aPlayerItem];
     
     SDImageCache *previewCache = [SDImageCache sharedImageCache];
     [previewCache queryDiskCacheForKey:@"roomPreview" done:^(UIImage *image, SDImageCacheType cacheType) {
@@ -267,11 +292,23 @@
     }];
 }
 
+-(void)itemDidFinishPlaying:(NSNotification *) notification {
+    // Will be called when AVPlayer finishes playing playerItem
+    [self stopPreview];
+}
 
 -(void)startPreviewWithImage:(UIImage*)image{
     self.previewImageView.image = image;
+    self.previewImageView.clipsToBounds = YES;
     
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:1 animations:^{
+        self.previewImageView.transform = CGAffineTransformMakeScale(1.2,1.2);
+        for (UIView *view in [self.view subviews] ) {
+            if(view != self.previewImageView){
+                view.alpha = 0.4;
+            }
+        }
+        
         self.previewImageView.alpha = 1;
     } completion:^(BOOL finished) {
         [self.previewAudioPlayer play];
@@ -280,12 +317,25 @@
 
 -(void)stopPreview {
     
-    [UIView animateWithDuration:0.5 animations:^{
+    self.isPreviewMode = NO;
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        for (UIView *view in [self.view subviews] ) {
+            if(view != self.previewImageView){
+                view.alpha = 1;
+            }
+        }
+        
         self.previewImageView.alpha = 0;
         self.previewAudioPlayer.volume = 0;
+        self.previewImageView.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
         [self.previewAudioPlayer pause];
     }];
+}
+
+- (void)startCoverModeWithStoryAtIndexPath:(NSIndexPath*)indexpath{
+
 }
 
 
