@@ -67,9 +67,8 @@ typedef void(^fadeOutCompletion)(BOOL);
     self.commentsQueueManager = [[CommentsQueueManager alloc] initWithDelegate:self.commentsView andCapacity:10];
     
     // Recording
-    self.saver = [StoryWIPSaver sharedSaver];
-    self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
-    self.recorder.delegate = self;
+    self.commentRecorder = [[CommentAudioRecorder alloc] init];
+    self.commentRecorder.delegate = self;
     
 }
 
@@ -255,7 +254,7 @@ typedef void(^fadeOutCompletion)(BOOL);
         NSLog(@"begin touch");
         [self pauseSound];
         //AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-        [self.recorder startRecording];
+        [self.commentRecorder startRecording];
         
         /*if (!self.recordTimer.appeared) {
             self.replayButton.transform = CGAffineTransformMakeScale(0, 0);
@@ -280,7 +279,7 @@ typedef void(^fadeOutCompletion)(BOOL);
     }
     if (recognizer.state == UIGestureRecognizerStateEnded) {
         NSLog(@"ended touch");
-        [self.recorder stopRecording];
+        [self.commentRecorder stopRecording];
         //[self.recordTimer pause];
         //[self.recordTimer close];
         
@@ -299,15 +298,14 @@ typedef void(^fadeOutCompletion)(BOOL);
         //[self.audioWave hide];
         
         // Open done popin if everything has been recorded
-        if ([self.recorder isComplete]) {
-            //[self openDonePopin];
+                    //[self openDonePopin];
             FileUploader* uploader = [[FileUploader alloc] init];
             uploader.delegate = self;
             
             NSString* audioPath = [NSString stringWithFormat:@"/pages/%@/comments", self.page.id];
-            [uploader uploadFileWithData:[self.recorder dataOfAudioWithIndex:0] toPath:audioPath ofType:kUploadTypeAudio];
+            [uploader uploadFileWithData:[self.commentRecorder dataOfAudioWithIndex:0] toPath:audioPath ofType:kUploadTypeAudio];
             
-        }
+        
         /*if ([self currentPage].moviePlayer != nil) {
             [[self currentPage].moviePlayer pause];
         }*/

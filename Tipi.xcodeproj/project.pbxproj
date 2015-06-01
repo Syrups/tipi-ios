@@ -17,6 +17,7 @@
 		73559BA61AE269A200547886 /* WaveSwipeTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 73559BA51AE269A200547886 /* WaveSwipeTransitionAnimator.m */; };
 		735FE0C41AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 735FE0C31AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m */; };
 		73825C1D1ADE8B4300D43383 /* SHPathLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 73825C1C1ADE8B4300D43383 /* SHPathLibrary.m */; };
+		73A188D31B19A80800E164E0 /* CommentAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A188D21B19A80800E164E0 /* CommentAudioRecorder.m */; };
 		73B20BEC1AA5FF0800A9C88F /* BaseHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B20BEB1AA5FF0800A9C88F /* BaseHomeViewController.m */; };
 		73B20BF01AA609DB00A9C88F /* ShowGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B20BEF1AA609DB00A9C88F /* ShowGroupsViewController.m */; };
 		73B20BF31AA6178200A9C88F /* ShowOneGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B20BF21AA6178200A9C88F /* ShowOneGroupViewController.m */; };
@@ -187,6 +188,8 @@
 		735FE0C31AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveToBottomTransitionAnimator.m; sourceTree = "<group>"; };
 		73825C1B1ADE8B4300D43383 /* SHPathLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHPathLibrary.h; sourceTree = "<group>"; };
 		73825C1C1ADE8B4300D43383 /* SHPathLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHPathLibrary.m; sourceTree = "<group>"; };
+		73A188D11B19A80800E164E0 /* CommentAudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentAudioRecorder.h; sourceTree = "<group>"; };
+		73A188D21B19A80800E164E0 /* CommentAudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentAudioRecorder.m; sourceTree = "<group>"; };
 		73B20BEA1AA5FF0800A9C88F /* BaseHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseHomeViewController.h; sourceTree = "<group>"; };
 		73B20BEB1AA5FF0800A9C88F /* BaseHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseHomeViewController.m; sourceTree = "<group>"; };
 		73B20BEE1AA609DB00A9C88F /* ShowGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowGroupsViewController.h; sourceTree = "<group>"; };
@@ -819,6 +822,8 @@
 				B35975F11ADFA29F00936E5E /* ImageUtils.m */,
 				7322855B1B0F41CA00481C2B /* FileDownLoader.h */,
 				7322855C1B0F41CA00481C2B /* FileDownLoader.m */,
+				73A188D11B19A80800E164E0 /* CommentAudioRecorder.h */,
+				73A188D21B19A80800E164E0 /* CommentAudioRecorder.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -1307,6 +1312,7 @@
 				B3FBAACD1AEFD5D200A3A6B4 /* WalkthroughViewController.m in Sources */,
 				B3065A541ABB35D700C10AD9 /* SignUpViewController.m in Sources */,
 				7328120B1B03E44300C0087A /* TPStoryTableViewCell.m in Sources */,
+				73A188D31B19A80800E164E0 /* CommentAudioRecorder.m in Sources */,
 				73825C1D1ADE8B4300D43383 /* SHPathLibrary.m in Sources */,
 				B3BCCFD31AA5C36C00261212 /* main.m in Sources */,
 				B3C2E5C61AD32A1B00868DA4 /* WaveBackground.m in Sources */,
@@ -1466,7 +1472,7 @@
 				INFOPLIST_FILE = Tipi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Tipi;
-				PROVISIONING_PROFILE = "d6344b74-44d9-4c4e-b9c2-eef600de1ba5";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1481,7 +1487,7 @@
 				INFOPLIST_FILE = Tipi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Tipi;
-				PROVISIONING_PROFILE = "d6344b74-44d9-4c4e-b9c2-eef600de1ba5";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

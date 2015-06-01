@@ -15,6 +15,7 @@
 #import "FileUploader.h"
 #import "StoryWIPSaver.h"
 #import "StoryMediaRecorder.h"
+#import "CommentAudioRecorder.h"
 
 @interface ReadModeViewController : UIViewController<FileUploaderDelegate, TPSideCommentsDelegate>
 @property (nonatomic) int idx;
@@ -30,7 +31,7 @@
 
 @property (strong, nonatomic) CommentsQueueManager *commentsQueueManager;
 @property (strong, nonatomic) StoryWIPSaver* saver;
-@property (strong, nonatomic) StoryMediaRecorder* recorder;
+@property (strong, nonatomic) CommentAudioRecorder* commentRecorder;
 
 @property (nonatomic, strong) AVAudioPlayer* player;
 @property (nonatomic, strong) NSTimer* audioListenTimer;
@@ -45,6 +46,8 @@
 
 - (IBAction)playSound:(id)sender;
 - (void)pauseSound;
+
+
 
 
 @end

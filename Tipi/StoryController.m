@@ -66,7 +66,7 @@
         success(stories);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
+        NSLog(@"TIPI :  error %@", error);
         failure(error);
     }];
     
