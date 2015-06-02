@@ -25,7 +25,8 @@
 
 @property (weak, nonatomic) IBOutlet TPSideCommentsView *commentsView;
 
-@property (weak, nonatomic) IBOutlet UIImageView *image;
+@property (weak, nonatomic) IBOutlet UIImage *mediaImage;
+@property (weak, nonatomic) IBOutlet UIImageView *mediaImageView;
 @property (weak, nonatomic) IBOutlet UIView *overlayView;
 @property (weak, nonatomic) IBOutlet UIButton *playerView;
 
@@ -46,8 +47,6 @@
 
 - (IBAction)playSound:(id)sender;
 - (void)pauseSound;
-
-
 
 
 @end

@@ -13,6 +13,7 @@
 		7322855D1B0F41CA00481C2B /* FileDownLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7322855C1B0F41CA00481C2B /* FileDownLoader.m */; };
 		7328120B1B03E44300C0087A /* TPStoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7328120A1B03E44300C0087A /* TPStoryTableViewCell.m */; };
 		7338BF791AD2C167005FD5F0 /* SRAnimatedWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7338BF781AD2C167005FD5F0 /* SRAnimatedWaveView.m */; };
+		7345C23D1B1DDA010099EA58 /* ReadStoryTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7345C23C1B1DDA010099EA58 /* ReadStoryTransitionAnimator.m */; };
 		73559BA21AE2686000547886 /* RoomNavigationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 73559BA11AE2686000547886 /* RoomNavigationDelegate.m */; };
 		73559BA61AE269A200547886 /* WaveSwipeTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 73559BA51AE269A200547886 /* WaveSwipeTransitionAnimator.m */; };
 		735FE0C41AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 735FE0C31AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m */; };
@@ -174,6 +175,8 @@
 		7328120A1B03E44300C0087A /* TPStoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPStoryTableViewCell.m; sourceTree = "<group>"; };
 		7338BF771AD2C167005FD5F0 /* SRAnimatedWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRAnimatedWaveView.h; sourceTree = "<group>"; };
 		7338BF781AD2C167005FD5F0 /* SRAnimatedWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRAnimatedWaveView.m; sourceTree = "<group>"; };
+		7345C23B1B1DDA010099EA58 /* ReadStoryTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadStoryTransitionAnimator.h; sourceTree = "<group>"; };
+		7345C23C1B1DDA010099EA58 /* ReadStoryTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadStoryTransitionAnimator.m; sourceTree = "<group>"; };
 		73559BA01AE2686000547886 /* RoomNavigationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomNavigationDelegate.h; sourceTree = "<group>"; };
 		73559BA11AE2686000547886 /* RoomNavigationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomNavigationDelegate.m; sourceTree = "<group>"; };
 		73559BA41AE269A200547886 /* WaveSwipeTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveSwipeTransitionAnimator.h; sourceTree = "<group>"; };
@@ -434,6 +437,8 @@
 				73559BA51AE269A200547886 /* WaveSwipeTransitionAnimator.m */,
 				735FE0C21AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.h */,
 				735FE0C31AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m */,
+				7345C23B1B1DDA010099EA58 /* ReadStoryTransitionAnimator.h */,
+				7345C23C1B1DDA010099EA58 /* ReadStoryTransitionAnimator.m */,
 			);
 			name = Animators;
 			sourceTree = "<group>";
@@ -1241,6 +1246,7 @@
 				B3065A3B1AB98ACC00C10AD9 /* LoginViewController.m in Sources */,
 				73559BA21AE2686000547886 /* RoomNavigationDelegate.m in Sources */,
 				B33618631B09E9150047013C /* SCSiriWaveformView.m in Sources */,
+				7345C23D1B1DDA010099EA58 /* ReadStoryTransitionAnimator.m in Sources */,
 				B3065A331AB9868100C10AD9 /* StoryManager.m in Sources */,
 				B3065A411AB98D6700C10AD9 /* BaseManager.m in Sources */,
 				730CFF201B0B857A001045E4 /* TPSideCommentsView.m in Sources */,

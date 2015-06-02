@@ -8,7 +8,6 @@
 
 #import "ShowOneGroupViewController.h"
 #import "UserSession.h"
-#import "ReadModeContainerViewController.h"
 #import "AdminRoomViewController.h"
 #import "SHPathLibrary.h"
 #import "FilterViewController.h"
@@ -28,13 +27,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self configureAVAudioSession];
     // Do any additional setup after loading the view.
     
     //[SHPathLibrary addBackgroundPathForstoriesToView:self.view];
     self.view.backgroundColor = [UIColor colorWithRed:178/255.0  green:47/255.0 blue:43/255.0 alpha:1];
     
     //self.mStories = @[@"coup de chance", @"Conférence F.A.M.E", @"Plexus Gobelins"];
-  
+    
     [self.roomNameButton setTitle:self.room.name forState:UIControlStateNormal];
     
     NSLog(@"Room is %@", self.room.id);
@@ -76,7 +76,7 @@
     AdminRoomViewController* vc = (AdminRoomViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"AdminRoom"];
     vc.room = self.room;
     [self presentViewController:vc animated:YES completion:nil];
-//    [self.navigationController pushViewController:vc animated:YES];
+    //    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
@@ -85,15 +85,15 @@
     filterViewController.room = self.room;
     
     /*
-    [vc willMoveToParentViewController:self];
-    [self addChildViewController:vc];
-    vc.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:vc.view];
-    
-    [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        vc.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    } completion:nil];
-    [vc didMoveToParentViewController:self];*/
+     [vc willMoveToParentViewController:self];
+     [self addChildViewController:vc];
+     vc.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+     [self.view addSubview:vc.view];
+     
+     [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+     vc.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+     } completion:nil];
+     [vc didMoveToParentViewController:self];*/
     
     self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
     [self presentViewController:filterViewController animated:NO completion:^{
@@ -105,6 +105,7 @@
         filterViewController.view.alpha = 1;
     }];
 }
+
 
 #pragma mark - Filters
 
@@ -136,7 +137,7 @@
     
     Story* story = [self.mStories objectAtIndex:indexPath.row];
     
-   
+    
     //NSLog(@"%@", [story toJSONString]);
     
     UILabel *name = (UILabel*)[cell.contentView viewWithTag:10];
@@ -158,7 +159,52 @@
     UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     
     [self startCoverModeWithAnimatingCell:cell atIndexPath:indexPath withCompletionBlock:^(BOOL done) {
-        [self performSegueWithIdentifier:@"showStory" sender:self];
+        Story* story = [self.mStories objectAtIndex:indexPath.row];
+        
+        self.readModeContainer = [self.storyboard instantiateViewControllerWithIdentifier:@"ReadModeContainer"];
+        
+        self.readModeContainer.storyId = [story.id integerValue];;
+        self.readModeContainer.textBaseFrame = [self.mTableView  convertRect:cell.frame toView:self.view];
+        self.readModeContainer.delegate = self;
+        
+        [self prepareReadModeContainerControllerWith:self toViewController:self.readModeContainer ];
+    }];
+}
+
+- (void) prepareReadModeContainerControllerWith:(UIViewController*) fromController
+                               toViewController:(UIViewController*) toController
+{
+    toController.view.frame = self.readContainer.bounds;
+    [toController willMoveToParentViewController:nil];//  1
+    [self.readContainer addSubview:toController.view];
+    [self addChildViewController:toController];
+    [toController didMoveToParentViewController:self];
+    
+    /*[self transitionFromViewController:fromController
+     toViewController:toController
+     duration:0.2
+     options:direction | UIViewAnimationOptionCurveEaseIn
+     animations:nil
+     completion:^(BOOL finished) {
+     
+     
+     }];*/
+}
+
+- (void)readModeContainerViewController:(ReadModeContainerViewController *)controller didFinishedLoadingStory:(Story *)story{
+    
+    [UIView animateWithDuration:1 animations:^{
+        self.previewImageView.transform = CGAffineTransformMakeScale(1.2,1.2);
+        self.previewImageView.alpha = 0;
+        
+        self.topBar.alpha = 0;
+        self.mTableView.alpha = 0;
+        
+        loader.alpha = 0;
+    } completion:^(BOOL finished) {
+        
+         [loader removeFromSuperview];
+        //[fromController removeFromParentViewController];    //  3
     }];
 }
 
@@ -171,14 +217,18 @@
         Story* story = [self.mStories objectAtIndex:indexPath.row];
         NSUInteger selectedStory = [story.id integerValue];
         
+        UITableViewCell *cell = [self.mTableView cellForRowAtIndexPath:indexPath];
+        
         ReadModeContainerViewController* reveal = segue.destinationViewController;
         reveal.storyId = selectedStory;
+        reveal.textBaseFrame = [self.mTableView  convertRect:cell.frame toView:self.view];
+        
     } else if ([segue.identifier isEqualToString:@"ToFilters"]) {
         ((FilterViewController*)segue.destinationViewController).room = self.room;
     }
     
     if([segue.identifier isEqualToString:@"showFilters"]) {
-       
+        
         FilterViewController* filterViewController = segue.destinationViewController;
         filterViewController.room = self.room;
         filterViewController.transitioningDelegate = self;
@@ -208,7 +258,8 @@
 }
 
 -(IBAction)prepareForGoBackToOneGroup:(UIStoryboardSegue *)segue {
-    
+    [self.view.layer removeAllAnimations];
+    [self removeCoverModer];
 }
 
 
@@ -240,7 +291,7 @@
         
         switch (gestureRecognizer.state) {
             case UIGestureRecognizerStateBegan:
-                 [self startPreviewForRowAtIndexPath:indexPath];
+                [self startPreviewForRowAtIndexPath:indexPath];
                 break;
                 
             case UIGestureRecognizerStateEnded:
@@ -266,10 +317,10 @@
 -(void)startPreviewForRowAtIndexPath:(NSIndexPath*)indexPath {
     
     self.isPreviewMode = YES;
-   
+    
     Story* story = [self.mStories objectAtIndex:indexPath.row];
     Page* first = [story.pages objectAtIndex:0];
-
+    
     Audio* audio = first.audio;
     Media* media = first.media;
     
@@ -286,7 +337,7 @@
     [self loadPreviewMediaAtURL:mediaUrl withCompletionBlock:^(UIImage *image) {
         [self startPreviewWithImage:image];
     }];
-
+    
 }
 
 -(void)itemDidFinishPlaying:(NSNotification *) notification {
@@ -337,6 +388,7 @@
     
     [self.view addSubview:loader];
     
+    
     Story* story = [self.mStories objectAtIndex:indexPath.row];
     Page* first = [story.pages objectAtIndex:0];
     
@@ -344,13 +396,11 @@
     
     NSURL *mediaUrl = [[NSURL alloc]initWithString:media.file];
     [self loadPreviewMediaAtURL:mediaUrl withCompletionBlock:^(UIImage *image) {
-        [loader removeFromSuperview];
         
         self.previewImageView.image = image;
         self.previewImageView.clipsToBounds = YES;
         
         [UIView animateWithDuration:1 animations:^{
-            self.previewImageView.transform = CGAffineTransformMakeScale(1.2,1.2);
             self.previewImageView.alpha = 1;
             
             for (UITableViewCell *cell in [self.mTableView visibleCells]) {
@@ -372,8 +422,13 @@
     }];
 }
 
--(void)loadPreviewMediaAtURL:(NSURL*)mediaUrl withCompletionBlock:(void (^)(UIImage*))block{
+-(void) removeCoverModer{
+    self.previewImageView.alpha = 0.0;
+    [self.mTableView reloadInputViews];
+}
 
+-(void)loadPreviewMediaAtURL:(NSURL*)mediaUrl withCompletionBlock:(void (^)(UIImage*))block{
+    
     //SDImageCache *previewCache = [SDImageCache sharedImageCache];
     [self.previewImageView sd_setImageWithURL:mediaUrl
                              placeholderImage:[UIImage imageNamed:@"walkscreen"]
@@ -382,25 +437,54 @@
                                         block(image);
                                     }];
     /*[previewCache queryDiskCacheForKey:@"roomPreview" done:^(UIImage *image, SDImageCacheType cacheType) {
-        
-        if(image){
-            block(image);
-        }else{
-           
-        }
-    }];*/
+     
+     if(image){
+     block(image);
+     }else{
+     
+     }
+     }];*/
+}
+
+- (void) configureAVAudioSession
+{
+    //get your app's audioSession singleton object
+    AVAudioSession* session = [AVAudioSession sharedInstance];
+    
+    //error handling
+    BOOL success;
+    NSError* error;
+    
+    //set the audioSession category.
+    //Needs to be Record or PlayAndRecord to use audioRouteOverride:
+    
+    success = [session setCategory:AVAudioSessionCategoryPlayAndRecord
+                             error:&error];
+    
+    if (!success)  NSLog(@"AVAudioSession error setting category:%@",error);
+    
+    //set the audioSession override
+    success = [session overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker
+                                         error:&error];
+    if (!success)  NSLog(@"AVAudioSession error overrideOutputAudioPort:%@",error);
+    
+    //activate the audio session
+    success = [session setActive:YES error:&error];
+    if (!success) NSLog(@"AVAudioSession error activating: %@",error);
+    else NSLog(@"audioSession active");
+    
 }
 
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

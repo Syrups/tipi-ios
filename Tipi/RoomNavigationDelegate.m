@@ -12,6 +12,9 @@
 #import "WaveSwipeTransitionAnimator.h"
 #import "WaveToBottomTransitionAnimator.h"
 #import "FilterViewController.h"
+#import "ReadModeContainerViewController.h"
+
+#import "ReadStoryTransitionAnimator.h"
 
 
 
@@ -31,7 +34,16 @@
                                                fromViewController:(UIViewController *)fromVC
                                                  toViewController:(UIViewController *)toVC{
     
-    if( [toVC isKindOfClass:[FilterViewController class]]
+        /*if (operation == UINavigationControllerOperationPush)
+            return [[PushAnimator alloc] init];
+        
+        if (operation == UINavigationControllerOperationPop)
+            return [[PopAnimator alloc] init];*/
+        
+    if([toVC isKindOfClass:[ReadModeContainerViewController class]]
+       || [fromVC isKindOfClass:[ReadModeContainerViewController class]]){
+         return [[ReadStoryTransitionAnimator alloc]init];
+    }else if( [toVC isKindOfClass:[FilterViewController class]]
        || [fromVC isKindOfClass:[FilterViewController class]]){
         return [[WaveToBottomTransitionAnimator alloc]init];
     }else if( [toVC isKindOfClass:[ShowOneGroupViewController class]]

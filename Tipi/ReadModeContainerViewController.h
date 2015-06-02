@@ -19,14 +19,20 @@
 
 @interface ReadModeContainerViewController : UIViewController<UIPageViewControllerDataSource,UIPageViewControllerDelegate, ReadModeViewDelegate, StoryFetcherDelegate, EZMicrophoneDelegate, EZAudioFileDelegate>
 
+@property (nonatomic, assign) id delegate;
+@property (nonatomic, assign) NSUInteger loadedPagesCount;
+
 @property (nonatomic, strong) UIPageViewController *pager;
 @property (nonatomic) ReadModeViewController *currentPageViewController;
+@property (nonatomic) CGRect textBaseFrame;
 //@property (nonatomic) NSUInteger currentPageIndex;
 
 
 @property (strong, nonatomic) NSArray *mPages;
 @property (nonatomic ) NSUInteger storyId;
 @property (nonatomic ) Story *story;
+@property (nonatomic ) NSMutableArray *audioPlayers;
+@property (nonatomic ) NSMutableArray *mediaFiles;
 //@property (nonatomic) Page *currentPage;
 
 @property (nonatomic, strong) NSMutableArray *soundsArray;
@@ -34,5 +40,12 @@
 //@property (nonatomic, strong) AVAudioPlayer* player;
 //@property (nonatomic, strong) NSTimer* audioListenTimer;
 
+
+@end
+
+@protocol ReadModeContainerDelegate <NSObject>
+
+@required
+- (void)readModeContainerViewController:(ReadModeContainerViewController *)controller didFinishedLoadingStory: (Story*) story;
 
 @end
