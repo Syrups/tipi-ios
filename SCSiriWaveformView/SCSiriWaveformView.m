@@ -20,7 +20,6 @@ static const CGFloat kDefaultSecondaryLineWidth = 1.0f;
 @interface SCSiriWaveformView ()
 
 @property (nonatomic, assign) CGFloat phase;
-@property (nonatomic, assign) CGFloat amplitude;
 
 @end
 

@@ -14,7 +14,8 @@
 
 @property (strong, nonatomic) NSArray* latestTags;
 @property (strong, nonatomic) IBOutlet UITextField* titleField;
-@property (strong, nonatomic) IBOutlet UIButton* latestTagLabel;
+@property (strong, nonatomic) IBOutlet MLPAutoCompleteTextField* tagField;
+@property (strong, nonatomic) IBOutlet UIButton* validateButton;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* centerYConstraint;
 
 @end

@@ -41,18 +41,28 @@
         buddyHead.layer.cornerRadius = headSize/3.6f;
         buddyHead.layer.masksToBounds = YES;
         buddyHead.backgroundColor = RgbColorAlpha(41, 80, 127, 1);
-        [self addSubview:buddyHead];
+//        [self addSubview:buddyHead];
         
-        [self addSubview:buddy];
-        [self addSubview:wave1];
-        [self addSubview:wave2];
-        [self addSubview:star1];
+//        [self addSubview:buddy];
+//        [self addSubview:wave1];
+//        [self addSubview:wave2];
+//        [self addSubview:star1];
         
-        [AnimationLibrary animateGizzlingView:wave1];
-        [AnimationLibrary animateGizzlingView:wave2];
-        [AnimationLibrary animateGizzlingView:star1];
+//        [AnimationLibrary animateGizzlingView:wave1];
+//        [AnimationLibrary animateGizzlingView:wave2];
+//        [AnimationLibrary animateGizzlingView:star1];
         
 //        [self addSubview:voice];
+        
+        UIImageView* imageView = [[UIImageView alloc] initWithFrame:self.frame];
+        imageView.image = [UIImage imageNamed:@"test.JPG"];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        
+        [self addSubview:imageView];
+        
+        UIView* overlay = [[UIView alloc] initWithFrame:self.frame];
+        overlay.backgroundColor = RgbColorAlpha(40, 53, 85, .8f);
+        [self addSubview:overlay];
         
         self.layer.backgroundColor = self.backgroundColor.CGColor;
     }

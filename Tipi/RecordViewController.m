@@ -10,6 +10,7 @@
 #import "RecordPageViewController.h"
 #import "DoneStoryViewController.h"
 #import "NameStoryViewController.h"
+#import "CoachmarkManager.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <CoreMotion/CoreMotion.h>
 
@@ -68,12 +69,8 @@
     self.timeline = [[Timeline alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 10, self.view.frame.size.width, 10) mediaCount:self.saver.medias.count];
 //    [self.view addSubview:self.timeline];
     
-    self.audioWave.alpha = 0;
+    [CoachmarkManager launchCoachmarkAnimationForRecordController:self];
     
-    [UIView animateWithDuration:.2f animations:^{
-        self.audioWave.alpha = 1;
-    }];
-
 }
 
 - (IBAction)replay:(id)sender {
@@ -82,6 +79,11 @@
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:NO];
+    
+    [UIView animateWithDuration:.3f animations:^{
+        self.organizeViewController.topControlsYConstraint.constant = 0;
+        [self.organizeViewController.view layoutIfNeeded];
+    }];
 }
 
 
@@ -89,7 +91,6 @@
 
 - (void)mediaRecorder:(StoryMediaRecorder *)recorder hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
     
-//    [self.audioWave updateWithBuffer:buffer bufferSize:bufferSize withNumberOfChannels:numberOfChannels];
     [self.recordTimer updateWithBuffer:buffer bufferSize:bufferSize withNumberOfChannels:numberOfChannels];
 
 }
@@ -128,7 +129,6 @@
 - (void)handleLongPress:(UILongPressGestureRecognizer*)recognizer {
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         NSLog(@"begin touch");
-//        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         [self.recorder startRecording];
         
         if (!self.recordTimer.appeared) {
@@ -139,9 +139,7 @@
         [self.recordTimer reset];
         [self.recordTimer start];
         
-        self.audioWave.deployed = YES;
         [self.previewBubble hideWithCompletion:^{
-            
         }];
         
         // Pause gyroscope panning
@@ -151,6 +149,10 @@
             [[self currentPage].moviePlayer play];
             [[self currentPage].view.layer insertSublayer:[self currentPage].moviePlayerLayer atIndex:10];
         }
+        
+        [UIView animateWithDuration:.2f animations:^{
+            self.overlay.alpha = .7f;
+        }];
     }
     if (recognizer.state == UIGestureRecognizerStateEnded) {
         NSLog(@"ended touch");
@@ -165,12 +167,10 @@
             [self.previewBubble appearWithCompletion:^{
                 [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
                     self.replayButton.transform = CGAffineTransformMakeScale(1, 1);
-                    self.overlay.alpha = 0.45f;
                 } completion:nil];
             }];
         }
         
-        [self.audioWave hide];
         
         // Open done popin if everything has been recorded
         if ([self.recorder isComplete]) {

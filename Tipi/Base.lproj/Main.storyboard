@@ -17,6 +17,9 @@
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -284,15 +287,158 @@ avec votre voix</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4UG-G4-yyy">
-                                <rect key="frame" x="102" y="230" width="116" height="109"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WDV-bD-KGc">
+                                <rect key="frame" x="0.0" y="0.0" width="324" height="569"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vWD-dL-qNe">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="2mc-74-kys">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xpc-BR-n2t">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="Xpc-BR-n2t" firstAttribute="top" secondItem="2mc-74-kys" secondAttribute="topMargin" constant="-8" id="Avu-qL-wEp"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="Xpc-BR-n2t" secondAttribute="bottom" constant="-8" id="CDX-9v-viQ"/>
+                                            <constraint firstItem="Xpc-BR-n2t" firstAttribute="leading" secondItem="2mc-74-kys" secondAttribute="leadingMargin" constant="-8" id="lTZ-mM-uCp"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Xpc-BR-n2t" secondAttribute="trailing" constant="-8" id="phm-eR-Kph"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="ICF-5f-zLq" id="D93-eu-u9i"/>
+                                    <outlet property="delegate" destination="ICF-5f-zLq" id="b6U-lF-7du"/>
+                                </connections>
+                            </collectionView>
+                            <view alpha="0.74999999999999978" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eij-K2-aCs">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYl-3x-Bfl">
+                                <rect key="frame" x="42" y="243" width="236" height="83"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="236" id="EQw-n8-AgP"/>
+                                    <constraint firstAttribute="height" constant="83" id="UC2-B6-2FS"/>
+                                </constraints>
+                                <string key="text">Racontez une histoire
+à vos proches grâce
+à votre voix</string>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gO0-jX-B1t" userLabel="Top">
+                                <rect key="frame" x="-4" y="-1" width="328" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" tag="10" contentMode="scaleAspectFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7me-CN-bXj">
+                                        <rect key="frame" x="20" y="30" width="59" height="59"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="59" id="gdh-dX-AO2"/>
+                                            <constraint firstAttribute="height" constant="59" id="xuZ-Zu-WnG"/>
+                                        </constraints>
+                                        <state key="normal" image="btn-profile">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgB-6l-jlt">
+                                        <rect key="frame" x="248" y="30" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="FRI-s4-UXx"/>
+                                            <constraint firstAttribute="height" constant="60" id="emn-B0-t9F"/>
+                                        </constraints>
+                                        <state key="normal" image="btn-listen">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rr3-7M-3V4" userLabel="Led">
+                                        <rect key="frame" x="55" y="70" width="12" height="12"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.25098039220000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </imageView>
+                                <constraints>
+                                    <constraint firstItem="7me-CN-bXj" firstAttribute="leading" secondItem="gO0-jX-B1t" secondAttribute="leading" constant="20" id="6il-9f-kf5"/>
+                                    <constraint firstItem="WgB-6l-jlt" firstAttribute="top" secondItem="gO0-jX-B1t" secondAttribute="top" constant="30" id="cU6-rm-dW9"/>
+                                    <constraint firstAttribute="trailing" secondItem="WgB-6l-jlt" secondAttribute="trailing" constant="20" id="faD-bp-z6P"/>
+                                    <constraint firstAttribute="height" constant="100" id="lHh-sA-2bO"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5Q-Os-RTP" userLabel="Bottom">
+                                <rect key="frame" x="0.0" y="349" width="320" height="220"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDn-6E-PBb">
+                                        <rect key="frame" x="95" y="94" width="131" height="44"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="131" id="WzN-Gh-ygV"/>
+                                            <constraint firstAttribute="height" constant="44" id="ijV-ZX-Xrv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
+                                        <state key="normal" title="commencer">
+                                            <color key="titleColor" red="0.023529411760000001" green="0.031372549020000001" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="22"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gni-xG-685">
+                                        <rect key="frame" x="86" y="156" width="149" height="51"/>
+                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
+                                        <state key="normal" title="or tell a new one">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="hDn-6E-PBb" secondAttribute="bottom" constant="82" id="9vx-Q8-6Oh"/>
+                                    <constraint firstAttribute="height" constant="220" id="Yqt-oX-RAe"/>
+                                    <constraint firstAttribute="centerX" secondItem="hDn-6E-PBb" secondAttribute="centerX" constant="-0.5" id="ht3-kh-y75"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gO0-jX-B1t" firstAttribute="top" secondItem="hDo-7g-6y1" secondAttribute="bottom" constant="-21" id="Bhv-I9-X3R"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="f5Q-Os-RTP" secondAttribute="trailing" constant="-16" id="Cdu-X6-qWs"/>
+                            <constraint firstItem="f5Q-Os-RTP" firstAttribute="leading" secondItem="2kb-TX-GYH" secondAttribute="leadingMargin" constant="-16" id="LmU-sQ-JpO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gO0-jX-B1t" secondAttribute="trailing" constant="-20" id="iFt-J3-IFA"/>
+                            <constraint firstItem="gO0-jX-B1t" firstAttribute="leading" secondItem="2kb-TX-GYH" secondAttribute="leadingMargin" constant="-20" id="mO4-Wg-Ksa"/>
+                            <constraint firstItem="HRk-UA-BO5" firstAttribute="top" secondItem="f5Q-Os-RTP" secondAttribute="bottom" constant="-1" id="rOq-5S-bSQ"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="loader" destination="4UG-G4-yyy" id="WTA-No-c8g"/>
+                        <outlet property="collectionView" destination="WDV-bD-KGc" id="7R5-VH-N6W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uhJ-Sv-bnn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -550,6 +696,8 @@ avec votre voix</string>
     </scenes>
     <resources>
         <image name="btn-back-dark" width="43" height="42"/>
+        <image name="btn-listen" width="60" height="60"/>
+        <image name="btn-profile" width="60" height="60"/>
         <image name="btn-replay" width="87" height="87"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

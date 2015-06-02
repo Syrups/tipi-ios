@@ -29,6 +29,8 @@
 @property (strong, nonatomic) UIViewController* namePopin;
 @property (strong, nonatomic) IBOutlet UIView* overlay;
 @property (strong, nonatomic) IBOutlet UILabel* helpLabel;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* topControlsYConstraint;
+@property (strong, nonatomic) IBOutlet UIImageView* coachmarkSprite;
 
 - (void)animateAppearance;
 

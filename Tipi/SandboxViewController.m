@@ -15,42 +15,40 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    //[self.button appear];
-    
-    NSError *error;
-    
-    self.microphone = [EZMicrophone microphoneWithDelegate:self];
-    [self.microphone startFetchingAudio];
-    
-    if(error) {
-        NSLog(@"Ups, could not create recorder %@", error);
-        return;
-    }
-    
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
-    
-    if (error) {
-        NSLog(@"Error setting category: %@", [error description]);
-    }
-    
-    [self.recorder prepareToRecord];
-    [self.recorder setMeteringEnabled:YES];
-    [self.recorder record];
-    
-    self.audioWave.deployed = YES;
-    self.audioWave.isSexy = YES;
-    self.audioWave.isInlined = YES;
-    
-    [PKAIDecoder builAnimatedImageIn:self.loader fromFile:@"loader"];
+
+    MediaLibrary* library = [[MediaLibrary alloc] init];
+    library.delegate = self;
+    [library fetchMediasFromLibrary];
 }
 
-
-- (void)microphone:(EZMicrophone *)microphone hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
-    
-    //[self.audioWave updateWithBuffer:buffer bufferSize:bufferSize withNumberOfChannels:numberOfChannels];
+- (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedias:(NSArray *)medias {
+    self.photos = medias;
+    [self.collectionView reloadData];
 }
 
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCell" forIndexPath:indexPath];
+    
+    UIImageView* image = (UIImageView*)[cell.contentView viewWithTag:10];
+    image.image = [(NSDictionary*)[self.photos objectAtIndex:indexPath.row] objectForKey:@"image"];
+    
+    return cell;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.photos.count;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 0;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 0;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(self.view.frame.size.width/3, self.view.frame.size.width/3);
+}
 
 @end

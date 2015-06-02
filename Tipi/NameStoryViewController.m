@@ -7,12 +7,17 @@
 //
 
 #import "NameStoryViewController.h"
+#import "RecordViewController.h"
 #import "StoryWIPSaver.h"
 
 @implementation NameStoryViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if ([self.parentViewController isKindOfClass:[RecordViewController class]]) {
+        ((RecordViewController*)self.parentViewController).longPressRecognizer.enabled = NO;
+    }
     
     UserManager* manager = [[UserManager alloc] initWithDelegate:self];
     [manager fetchLatestTags];
@@ -36,6 +41,10 @@
 }
 
 - (IBAction)close:(id)sender {
+    if ([self.parentViewController isKindOfClass:[RecordViewController class]]) {
+        ((RecordViewController*)self.parentViewController).longPressRecognizer.enabled = YES;
+    }
+    
     [UIView animateKeyframesWithDuration:.5f delay:0 options:0 animations:^{
         [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.5f animations:^{
             self.centerYConstraint.constant = 30;
@@ -57,6 +66,7 @@
 
 - (IBAction)next:(id)sender {
     [[StoryWIPSaver sharedSaver] setTitle:[self.titleField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+    [[StoryWIPSaver sharedSaver] setTag:[self.tagField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     
     UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RoomPicker"];
     [self.parentViewController.navigationController.parentViewController.navigationController pushViewController:vc animated:YES];
@@ -96,6 +106,16 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if ([textField.text length] > 0) {
+        self.validateButton.enabled = YES;
+        self.validateButton.alpha = 1;
+    } else {
+        self.validateButton.enabled = NO;
+        self.validateButton.alpha = .7f;
+    }
 }
 
 @end
