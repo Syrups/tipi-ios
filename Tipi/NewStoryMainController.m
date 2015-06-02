@@ -8,6 +8,7 @@
 
 #import "NewStoryMainController.h"
 #import "AbortModalViewController.h"
+#import "HomeViewController.h"
 
 @implementation NewStoryMainController
 
@@ -34,7 +35,18 @@
 }
 
 - (IBAction)popCurrentController:(id)sender {
-    [(UINavigationController*)self.childViewControllers[0] popViewControllerAnimated:YES];
+    UINavigationController* nav = (UINavigationController*)self.childViewControllers[0];
+    
+    // If we are at the first view controller, pop to the home
+    if ([[nav visibleViewController] isEqual:[nav.viewControllers objectAtIndex:0]]) {
+
+        HomeViewController* home = (HomeViewController*)[self.navigationController.viewControllers objectAtIndex:0];
+        [self.navigationController popToRootViewControllerAnimated:NO];
+        [home.storyViewController transitionFromStoryBuilder];
+    } else {
+        [nav popViewControllerAnimated:YES];
+    }
+    
 }
 
 @end

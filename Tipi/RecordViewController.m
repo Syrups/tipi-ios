@@ -55,21 +55,19 @@
     self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
     self.recorder.delegate = self;
     
-    if ([self.recorder hasRecordedAtIndex:self.currentIndex]) {
-        self.replayButton.transform = CGAffineTransformMakeScale(1, 1);
-        [self.recordTimer hide];
-    } else {
-        [self.recordTimer appear];
-        self.overlay.alpha = 0;
-    }
     
     if (self.currentIndex != self.saver.medias.count-1)
         [self.previewBubble updateWithImage:[(NSDictionary*)[self.saver.medias objectAtIndex:1] objectForKey:@"full"]];
     
-    self.timeline = [[Timeline alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 10, self.view.frame.size.width, 10) mediaCount:self.saver.medias.count];
-//    [self.view addSubview:self.timeline];
-    
-    [CoachmarkManager launchCoachmarkAnimationForRecordController:self];
+    [CoachmarkManager launchCoachmarkAnimationForRecordController:self withCompletion:^{
+        if ([self.recorder hasRecordedAtIndex:self.currentIndex]) {
+            self.replayButton.transform = CGAffineTransformMakeScale(1, 1);
+            [self.recordTimer hide];
+        } else {
+            [self.recordTimer appear];
+            self.overlay.alpha = 0;
+        }
+    }];
     
 }
 

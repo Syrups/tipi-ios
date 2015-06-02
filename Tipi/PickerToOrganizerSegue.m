@@ -22,7 +22,7 @@
     [source.view addSubview:loader];
 //    loader.infoLabel.text = @"Chargement des photos...";
     
-    CGFloat midY = source.mediaCollectionView.contentOffset.y + source.view.frame.size.height/2 - CELL_SIZE/2 - 10; // CELL_SIZE defined in OrganizeStoryViewController.h
+    CGFloat midY = source.mediaCollectionView.contentOffset.y + source.view.frame.size.height/2 - CELL_SIZE/2 - 18; // CELL_SIZE defined in OrganizeStoryViewController.h
     CGFloat origX = source.view.frame.size.width/2 - CELL_SIZE/2 - 24;
     
     __block NSUInteger i = 0;

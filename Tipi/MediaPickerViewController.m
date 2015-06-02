@@ -14,7 +14,6 @@
 #import "TPLoader.h"
 
 @implementation MediaPickerViewController {
-    NSUInteger currentOffset;
     BOOL loading;
     NSMutableArray* unorderedMedias;
     CAGradientLayer* maskLayer;
@@ -29,12 +28,9 @@
     
     self.library = [[MediaLibrary alloc] init];
     self.library.delegate = self;
-//    [self.library preload];
     
     self.medias = [self.library cachedMedias];
     unorderedMedias = [NSMutableArray array];
-    
-    currentOffset = 0;
     
     self.topControlsYConstraint.constant = -100;
     self.continueButtonYConstraint.constant = -200;
@@ -43,6 +39,11 @@
         self.topControlsYConstraint.constant = 0;
         [self.view layoutIfNeeded];
     }];
+    
+    [self.library fetchMediasFromLibrary];
+    
+//    loader = [[TPLoader alloc] initWithFrame:self.view.frame];
+//    [self.view addSubview:loader];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -65,19 +66,6 @@
         
         self.mediaCollectionView.layer.mask = maskLayer;
     }
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    [self.library fetchMediasFromLibrary];
-    
-    loader = [[TPLoader alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:loader];
-}
-
-- (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)openHelp:(id)sender {
@@ -106,7 +94,6 @@
 
     [self.mediaCollectionView reloadData];
 
-    [self animateButtonAppearance];
     [loader removeFromSuperview];
 }
 
@@ -178,17 +165,6 @@
     return CGSizeMake(s, s);
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    UICollectionReusableView* reusable = nil;
-    if (kind == UICollectionElementKindSectionHeader) {
-        UICollectionReusableView* header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"MediaHeader" forIndexPath:indexPath];
-        reusable = header;
-        
-    }
-    
-    return reusable;
-}
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
     UIView* check = [cell.contentView viewWithTag:30];
@@ -233,18 +209,7 @@
     [CATransaction setDisableActions:YES];
     maskLayer.position = CGPointMake(0, scrollView.contentOffset.y);
     [CATransaction commit];
-    
 }
-
-#pragma mark - Animation
-
-- (void)animateButtonAppearance {
-    [UIView animateWithDuration:.8f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        self.continueButton.transform = CGAffineTransformIdentity;
-    } completion:nil];
-}
-
-#pragma mark - Navigation
 
 
 @end

@@ -41,10 +41,6 @@
     self.friends = friends.mutableCopy;
     [self.friendsTableView reloadData];
     [self animate];
-    
-    [loader removeFromSuperview];
-    
-    NSLog(@"%@", self.friends);
 }
 
 - (void)friendManager:(FriendManager *)manager failedToFetchFriendsOfUser:(User *)user withError:(NSError *)error {

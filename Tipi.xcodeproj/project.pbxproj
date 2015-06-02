@@ -21,7 +21,6 @@
 		73B20BEC1AA5FF0800A9C88F /* BaseHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B20BEB1AA5FF0800A9C88F /* BaseHomeViewController.m */; };
 		73B20BF01AA609DB00A9C88F /* ShowGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B20BEF1AA609DB00A9C88F /* ShowGroupsViewController.m */; };
 		73B20BF31AA6178200A9C88F /* ShowOneGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B20BF21AA6178200A9C88F /* ShowOneGroupViewController.m */; };
-		73B20BF41AA61FC400A9C88F /* LXReorderableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCD0201AA6148100261212 /* LXReorderableCollectionViewFlowLayout.m */; };
 		73B3B3321AA7B45500FF7578 /* TagMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B3B3311AA7B45500FF7578 /* TagMenuViewController.m */; };
 		73B3B3461AA7BA3F00FF7578 /* croix-blanche.png in Resources */ = {isa = PBXBuildFile; fileRef = 73B3B3341AA7BA3F00FF7578 /* croix-blanche.png */; };
 		73B3B3471AA7BA3F00FF7578 /* croix-noire.png in Resources */ = {isa = PBXBuildFile; fileRef = 73B3B3351AA7BA3F00FF7578 /* croix-noire.png */; };
@@ -142,7 +141,7 @@
 		B3C470931B10C9A1003231D3 /* tete-sanstete.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B3C470921B10C9A1003231D3 /* tete-sanstete.pkai */; };
 		B3C85E541ACBF4C50083C50A /* Audio.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C85E531ACBF4C50083C50A /* Audio.m */; };
 		B3C85E571ACBF5260083C50A /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C85E561ACBF5260083C50A /* Media.m */; };
-		B3D64CE71B1CB1B000AEABD2 /* facebook_1_2.png in Resources */ = {isa = PBXBuildFile; fileRef = B3D64CE61B1CB1B000AEABD2 /* facebook_1_2.png */; };
+		B3D1B0781B1E496800000C81 /* RAReorderableLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D1B0771B1E496800000C81 /* RAReorderableLayout.swift */; };
 		B3D64CE91B1CBE3700AEABD2 /* test.JPG in Resources */ = {isa = PBXBuildFile; fileRef = B3D64CE81B1CBE3700AEABD2 /* test.JPG */; };
 		B3DDF3461ADC6311009A9CAF /* NewStoryMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DDF3451ADC6311009A9CAF /* NewStoryMainController.m */; };
 		B3FBAABD1AEF7D0900A3A6B4 /* CreateRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAABC1AEF7D0900A3A6B4 /* CreateRoomViewController.m */; };
@@ -379,8 +378,6 @@
 		B3BCD0121AA604DA00261212 /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
 		B3BCD01B1AA60D4C00261212 /* OrganizeStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrganizeStoryViewController.h; sourceTree = "<group>"; };
 		B3BCD01C1AA60D4C00261212 /* OrganizeStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrganizeStoryViewController.m; sourceTree = "<group>"; };
-		B3BCD01F1AA6148100261212 /* LXReorderableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXReorderableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
-		B3BCD0201AA6148100261212 /* LXReorderableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXReorderableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		B3BCD0241AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKCollectionViewStickyHeaderFlowLayout.h; sourceTree = "<group>"; };
 		B3BCD0251AA6232600261212 /* PKCollectionViewStickyHeaderFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKCollectionViewStickyHeaderFlowLayout.m; sourceTree = "<group>"; };
 		B3C2E5C41AD32A1B00868DA4 /* WaveBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveBackground.h; sourceTree = "<group>"; };
@@ -393,6 +390,8 @@
 		B3C85E531ACBF4C50083C50A /* Audio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Audio.m; sourceTree = "<group>"; };
 		B3C85E551ACBF5260083C50A /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
 		B3C85E561ACBF5260083C50A /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media.m; sourceTree = "<group>"; };
+		B3D1B0771B1E496800000C81 /* RAReorderableLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAReorderableLayout.swift; sourceTree = "<group>"; };
+		B3D1B07A1B1E4B0F00000C81 /* Swift-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Swift-Header.h"; sourceTree = "<group>"; };
 		B3D64CE61B1CB1B000AEABD2 /* facebook_1_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_1_2.png; sourceTree = "<group>"; };
 		B3D64CE81B1CBE3700AEABD2 /* test.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.JPG; sourceTree = "<group>"; };
 		B3DDF3441ADC6311009A9CAF /* NewStoryMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStoryMainController.h; sourceTree = "<group>"; };
@@ -661,7 +660,7 @@
 			name = Walkthrough;
 			sourceTree = "<group>";
 		};
-		B3297F671B0E2CC700249DA0 /* Resources */ = {
+		B3297F671B0E2CC700249DA0 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
 				B3D64CE81B1CBE3700AEABD2 /* test.JPG */,
@@ -674,7 +673,7 @@
 				73B3B3331AA7BA3F00FF7578 /* exports */,
 				B3297F681B0E2CD900249DA0 /* terms.html */,
 			);
-			name = Resources;
+			name = Assets;
 			sourceTree = "<group>";
 		};
 		B33618601B09E9150047013C /* SCSiriWaveformView */ = {
@@ -853,9 +852,7 @@
 		B3BCCFC41AA5C36C00261212 = {
 			isa = PBXGroup;
 			children = (
-				B3297F671B0E2CC700249DA0 /* Resources */,
-				B33618601B09E9150047013C /* SCSiriWaveformView */,
-				B3BCD01E1AA6148100261212 /* LXReorderableCollectionViewFlowLayout */,
+				B3297F671B0E2CC700249DA0 /* Assets */,
 				B3BCCFCF1AA5C36C00261212 /* Tipi */,
 				B3BCCFE91AA5C36C00261212 /* TipiTests */,
 				B3BCCFCE1AA5C36C00261212 /* Products */,
@@ -956,15 +953,6 @@
 			name = Create;
 			sourceTree = "<group>";
 		};
-		B3BCD01E1AA6148100261212 /* LXReorderableCollectionViewFlowLayout */ = {
-			isa = PBXGroup;
-			children = (
-				B3BCD01F1AA6148100261212 /* LXReorderableCollectionViewFlowLayout.h */,
-				B3BCD0201AA6148100261212 /* LXReorderableCollectionViewFlowLayout.m */,
-			);
-			path = LXReorderableCollectionViewFlowLayout;
-			sourceTree = "<group>";
-		};
 		B3BCD0221AA622FA00261212 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -1002,6 +990,15 @@
 				B3C4708E1B10C400003231D3 /* Profile.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		B3D1B0761B1E496800000C81 /* RAReorderableLayout */ = {
+			isa = PBXGroup;
+			children = (
+				B3D1B0771B1E496800000C81 /* RAReorderableLayout.swift */,
+				B3D1B07A1B1E4B0F00000C81 /* Swift-Header.h */,
+			);
+			path = RAReorderableLayout;
 			sourceTree = "<group>";
 		};
 		B3FBAABA1AEF7CFC00A3A6B4 /* Rooms */ = {
@@ -1047,6 +1044,8 @@
 		DCA76F8ACE4F9EBC399AF0C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3D1B0761B1E496800000C81 /* RAReorderableLayout */,
+				B33618601B09E9150047013C /* SCSiriWaveformView */,
 				B3846F1C1ADD058B0030DBDE /* CoreMotion.framework */,
 				B38B895E1ACC08C500799EDD /* MediaPlayer.framework */,
 				B35CDBDB1AB8863C00BF9F82 /* AVFoundation.framework */,
@@ -1169,7 +1168,6 @@
 				B3C470931B10C9A1003231D3 /* tete-sanstete.pkai in Resources */,
 				B3BCCFF91AA5C4CB00261212 /* GTWalsheim Regular.otf in Resources */,
 				73B3B34E1AA7BA3F00FF7578 /* perso-blanc.png in Resources */,
-				B3D64CE71B1CB1B000AEABD2 /* facebook_1_2.png in Resources */,
 				73B3B3521AA7BA3F00FF7578 /* proches-petit.png in Resources */,
 				B3BCCFDC1AA5C36C00261212 /* Main.storyboard in Resources */,
 				B319338A1ADFB2B600603158 /* GTWalsheim Bold.otf in Resources */,
@@ -1255,7 +1253,6 @@
 				B3065A4B1ABAFD1000C10AD9 /* RoomManager.m in Sources */,
 				73559BA61AE269A200547886 /* WaveSwipeTransitionAnimator.m in Sources */,
 				B3DDF3461ADC6311009A9CAF /* NewStoryMainController.m in Sources */,
-				73B20BF41AA61FC400A9C88F /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				B3BCD0101AA5FDB500261212 /* NameStoryViewController.m in Sources */,
 				B3A8D1871ACEB5EE00B09C34 /* Comment.m in Sources */,
 				B3FBAABD1AEF7D0900A3A6B4 /* CreateRoomViewController.m in Sources */,
@@ -1293,6 +1290,7 @@
 				73B20BF31AA6178200A9C88F /* ShowOneGroupViewController.m in Sources */,
 				B341F04C1AE1A272001D448A /* MediaCell.m in Sources */,
 				B33389D91B1C60DE003BAC78 /* CoachmarkManager.m in Sources */,
+				B3D1B0781B1E496800000C81 /* RAReorderableLayout.swift in Sources */,
 				B3A8D1811ACE8C2F00B09C34 /* FriendListViewController.m in Sources */,
 				B3846F3C1ADD43170030DBDE /* AudioWave.m in Sources */,
 				B35CDBDA1AB87DD900BF9F82 /* StoryMediaRecorder.m in Sources */,
@@ -1468,11 +1466,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = Tipi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Tipi;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "RAReorderableLayout/Swift-Header.h";
 			};
 			name = Debug;
 		};
@@ -1483,11 +1483,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = Tipi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Tipi;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "RAReorderableLayout/Swift-Header.h";
 			};
 			name = Release;
 		};

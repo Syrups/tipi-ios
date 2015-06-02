@@ -35,7 +35,7 @@
     [self setContentMode:UIViewContentModeRedraw];
     
     CGPoint center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
-    self.wave = [[SCSiriWaveformView alloc] initWithFrame:CGRectMake(center.x - 94, center.y - 94, 188, 188)];
+    self.wave = [[SCSiriWaveformView alloc] initWithFrame:CGRectMake(center.x - 80, center.y - 80, 160, 160)];
     self.wave.backgroundColor = [UIColor clearColor];
     self.wave.idleAmplitude = .1f;
     self.wave.frequency = 2;
