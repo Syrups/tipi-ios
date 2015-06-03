@@ -7,7 +7,6 @@
 //
 
 #import "HomeViewController.h"
-#import "BaseHomeViewController.h"
 #import "NewStoryViewController.h"
 #import "ShowGroupsViewController.h"
 #import "AppDelegate.h"
@@ -72,6 +71,8 @@
         [self.currentViewController removeFromParentViewController];
     }
     
+    UIViewController* previous = self.currentViewController;
+    
     [self addChildViewController:viewController];
     viewController.view.frame = self.view.frame;
     [self.view addSubview:viewController.view];
@@ -80,7 +81,7 @@
 
     self.currentViewController = viewController;
     
-    if (self.currentViewController == self.storyViewController) {
+    if (self.currentViewController == self.storyViewController && previous != nil) {
         [self.storyViewController transitionFromFires];
     } else {
         [(ShowGroupsViewController*)self.groupsViewController.childViewControllers[0] animate];

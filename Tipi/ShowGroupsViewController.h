@@ -7,13 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseHomeViewController.h"
 #import "ShowOneGroupViewController.h"
 #import "RoomManager.h"
 #import "UIRoomTableViewCell.h"
 
 
-@interface ShowGroupsViewController : BaseHomeViewController<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, RoomFetcherDelegate>
+@interface ShowGroupsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, RoomFetcherDelegate>
 
 @property (strong, nonatomic) ShowOneGroupViewController *mShowOneGroupViewController;
 @property (weak, nonatomic) IBOutlet UITableView *mTableView;

@@ -12,9 +12,9 @@
 #import "MediaCell.h"
 #import "HelpModalViewController.h"
 #import "TPLoader.h"
+#import "ImageUtils.h"
 
 @implementation MediaPickerViewController {
-    NSUInteger currentOffset;
     BOOL loading;
     NSMutableArray* unorderedMedias;
     CAGradientLayer* maskLayer;
@@ -29,12 +29,9 @@
     
     self.library = [[MediaLibrary alloc] init];
     self.library.delegate = self;
-//    [self.library preload];
     
     self.medias = [self.library cachedMedias];
     unorderedMedias = [NSMutableArray array];
-    
-    currentOffset = 0;
     
     self.topControlsYConstraint.constant = -100;
     self.continueButtonYConstraint.constant = -200;
@@ -43,10 +40,16 @@
         self.topControlsYConstraint.constant = 0;
         [self.view layoutIfNeeded];
     }];
+    
+    [self.library fetchMediasFromLibrary];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    if (self.selectedIndexes.count > 0) {
+        self.continueButtonYConstraint.constant = 42;
+    }
     
     if (!maskLayer) {
         maskLayer = [CAGradientLayer layer];
@@ -67,19 +70,6 @@
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    [self.library fetchMediasFromLibrary];
-    
-    loader = [[TPLoader alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:loader];
-}
-
-- (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 - (IBAction)openHelp:(id)sender {
     HelpModalViewController* helpVc = (HelpModalViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"HelpModal"];
     
@@ -92,6 +82,10 @@
 #pragma mark - MediaLibrary
 
 - (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedias:(NSArray *)medias {
+    
+    ALAsset* asset = [(NSDictionary*)[medias objectAtIndex:0] objectForKey:@"asset"];
+    UIImage* image = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
+    [self.wave updateImage:[ImageUtils convertImageToGrayScale:image]];
 
     // reverse array
     NSMutableArray *reversed = [NSMutableArray arrayWithCapacity:[medias count]];
@@ -106,7 +100,6 @@
 
     [self.mediaCollectionView reloadData];
 
-    [self animateButtonAppearance];
     [loader removeFromSuperview];
 }
 
@@ -178,17 +171,6 @@
     return CGSizeMake(s, s);
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    UICollectionReusableView* reusable = nil;
-    if (kind == UICollectionElementKindSectionHeader) {
-        UICollectionReusableView* header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"MediaHeader" forIndexPath:indexPath];
-        reusable = header;
-        
-    }
-    
-    return reusable;
-}
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
     UIView* check = [cell.contentView viewWithTag:30];
@@ -233,18 +215,7 @@
     [CATransaction setDisableActions:YES];
     maskLayer.position = CGPointMake(0, scrollView.contentOffset.y);
     [CATransaction commit];
-    
 }
-
-#pragma mark - Animation
-
-- (void)animateButtonAppearance {
-    [UIView animateWithDuration:.8f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        self.continueButton.transform = CGAffineTransformIdentity;
-    } completion:nil];
-}
-
-#pragma mark - Navigation
 
 
 @end

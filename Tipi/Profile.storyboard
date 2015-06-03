@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="GTWalsheim Regular.otf">
+            <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
@@ -169,15 +170,28 @@
                                     <segue destination="1u4-8d-cCC" kind="modal" id="XXo-jh-Vge"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon profil" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7g-ui-9k0">
+                                <rect key="frame" x="75" y="33" width="170" height="31"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="D49-CI-9AR"/>
+                                    <constraint firstAttribute="height" constant="31" id="QWA-dO-Blz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="wcU-aa-PSw" secondAttribute="width" id="Die-1Y-GCM"/>
+                            <constraint firstAttribute="centerX" secondItem="I7g-ui-9k0" secondAttribute="centerX" id="JsA-do-qwP"/>
                             <constraint firstItem="7Jy-oa-bTk" firstAttribute="top" secondItem="Erq-DU-RNu" secondAttribute="bottom" constant="-3" id="Orr-op-qtT"/>
                             <constraint firstAttribute="centerY" secondItem="wcU-aa-PSw" secondAttribute="centerY" constant="-97" id="UXn-YJ-Qpp"/>
                             <constraint firstItem="7Jy-oa-bTk" firstAttribute="leading" secondItem="YeR-2B-G3e" secondAttribute="leadingMargin" constant="-11" id="VKn-AN-GMI"/>
                             <constraint firstItem="wcU-aa-PSw" firstAttribute="top" secondItem="Erq-DU-RNu" secondAttribute="bottom" constant="174" id="bLV-lQ-GAB"/>
                             <constraint firstAttribute="centerX" secondItem="wcU-aa-PSw" secondAttribute="centerX" id="isi-zL-Pvj"/>
+                            <constraint firstItem="I7g-ui-9k0" firstAttribute="top" secondItem="Erq-DU-RNu" secondAttribute="bottom" constant="13" id="n8E-D4-EcV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7fZ-sD-Po2"/>
@@ -433,23 +447,37 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y62-tg-cYG" id="EmJ-FX-Llu">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aG-CA-3To">
-                                                    <rect key="frame" x="33" y="12" width="225" height="48"/>
-                                                    <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aG-CA-3To">
+                                                    <rect key="frame" x="48" y="12" width="225" height="48"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="48" id="mTK-pE-BqX"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="23"/>
                                                     <color key="textColor" red="0.16078431900000001" green="0.22352941330000001" blue="0.36078432199999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" tag="20" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWt-va-4DI">
-                                                    <rect key="frame" x="255" y="12" width="49" height="30"/>
-                                                    <state key="normal" title="Accept">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldj-Ju-kvr">
+                                                    <rect key="frame" x="237" y="11" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="3WE-P0-dNT"/>
+                                                        <constraint firstAttribute="height" constant="50" id="KhS-GH-BrA"/>
+                                                    </constraints>
+                                                    <state key="normal" image="btn-accept">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="acceptInvitation:" destination="GWx-Lz-Nky" eventType="touchUpInside" id="SQU-Rw-Le6"/>
+                                                        <action selector="acceptInvitation:" destination="GWx-Lz-Nky" eventType="touchUpInside" id="ROx-iO-2mi"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="7aG-CA-3To" firstAttribute="leading" secondItem="EmJ-FX-Llu" secondAttribute="leadingMargin" constant="40" id="ED5-XV-xda"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Ldj-Ju-kvr" secondAttribute="trailing" constant="25" id="cnB-5e-EXL"/>
+                                                <constraint firstAttribute="centerY" secondItem="Ldj-Ju-kvr" secondAttribute="centerY" constant="0.5" id="kTX-JZ-Bkp"/>
+                                                <constraint firstAttribute="centerY" secondItem="7aG-CA-3To" secondAttribute="centerY" constant="0.5" id="prq-ET-bRY"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="7aG-CA-3To" secondAttribute="trailing" constant="39" id="wkq-qV-1ee"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
@@ -486,6 +514,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="btn-accept" width="35" height="35"/>
         <image name="btn-back" width="43" height="42"/>
         <image name="btn-back-dark" width="43" height="42"/>
         <image name="btn-settings" width="41" height="40"/>

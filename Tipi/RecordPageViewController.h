@@ -22,6 +22,4 @@
 @property (strong, nonatomic) CMMotionManager* motionManager;
 @property BOOL imagePanningEnabled;
 
-- (void)applySepiaFilter;
-
 @end

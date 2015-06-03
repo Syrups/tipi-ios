@@ -16,9 +16,7 @@
 #import "CoachmarkManager.h"
 
 @implementation OrganizeStoryViewController {
-    NSString* oldHelpText;
     NSUInteger selectedPageIndex;
-    CGFloat lastOffset;
     NSUInteger currentMedia;
     BOOL firstLoad;
     BOOL removing;
@@ -27,11 +25,11 @@
 
 - (void)viewDidLoad {
     currentMedia = 1;
-    LXReorderableCollectionViewFlowLayout* layout = [[LXReorderableCollectionViewFlowLayout alloc] init];
+    RAReorderableLayout* layout = [[RAReorderableLayout alloc] init];
+    layout.delegate = self;
+    layout.datasource = self;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    layout.longPressGestureRecognizer.minimumPressDuration = .05f;
-    layout.scrollingSpeed = 400;
-    layout.overlay = self.overlay;
+    layout.scrollSpeedValue = 5;
     
     pendingCellToRemoveIndex = -1;
     
@@ -62,13 +60,14 @@
             
             if (idx == self.saver.medias.count-1) {
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.wave updateImage:[ImageUtils convertImageToGrayScale:full]];
                     [self.collectionView reloadData];
                 });
             }
         }];
     });
     
-    [NSTimer scheduledTimerWithTimeInterval:.5f target:self selector:@selector(animateCoachmark:) userInfo:nil repeats:NO];
+//    [NSTimer scheduledTimerWithTimeInterval:.5f target:self selector:@selector(animateCoachmark:) userInfo:nil repeats:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -80,36 +79,16 @@
         self.replayButton.hidden = YES;
         self.finishButton.hidden = NO;
     } else if ([self.recorder isEmpty]) {
-        self.replayButton.enabled = NO;
-    }else {
+        self.replayButton.hidden = YES;
+    } else {
         self.replayButton.hidden = NO;
         self.finishButton.hidden = YES;
     }
 }
 
-- (IBAction)start:(id)sender {
-    [UIView animateWithDuration:.3f animations:^{
-        self.collectionView.contentOffset = CGPointMake(0, self.collectionView.contentOffset.y);
-    } completion:^(BOOL finished) {
-        [self zoomAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-    }];
-}
-
-- (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (IBAction)appendBlankMedia:(id)sender {
-    CGPoint point = CGPointMake(self.collectionView.contentOffset.x + self.collectionView.frame.size.width/2, self.collectionView.frame.size.height/2);
-    NSIndexPath* indexPath = [self.collectionView indexPathForItemAtPoint:point];
-    [self.saver appendBlankMediaAfterIndex:indexPath.row];
-//    NSArray* indexPaths = @[[NSIndexPath indexPathForItem:self.saver.medias.count-1 inSection:0]];
-    [self.collectionView reloadData];
-}
-
 #pragma mark - Media deletion
 
-- (IBAction)toggleRemoveState:(UIPanGestureRecognizer*)sender {
+- (void)toggleRemoveState:(UIPanGestureRecognizer*)sender {
     
     CGPoint t = [sender translationInView:self.view];
     
@@ -117,14 +96,21 @@
         pendingCellToRemoveIndex = sender.view.tag;
         
         UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:pendingCellToRemoveIndex inSection:0]];
+        UIButton *delete = (UIButton*)[cell.contentView viewWithTag:30];
         
-        [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            UIButton *delete = (UIButton*)[cell.contentView viewWithTag:30];
+        [UIView animateKeyframesWithDuration:.3f delay:0 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
             
-            delete.alpha = 1;
-            delete.enabled = YES;
-            cell.transform = CGAffineTransformMakeTranslation(0, -100);
-            self.overlay.alpha = .5f;
+            [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.4f animations:^{
+                delete.alpha = 1;
+                delete.enabled = YES;
+                cell.transform = CGAffineTransformMakeTranslation(0, -120);
+                self.overlay.alpha = .5f;
+            }];
+            
+            [UIView addKeyframeWithRelativeStartTime:.4f relativeDuration:.6f animations:^{
+                cell.transform = CGAffineTransformMakeTranslation(0, -80);
+            }];
+            
         } completion:nil];
     } else if (t.y > 2) {
         UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:pendingCellToRemoveIndex inSection:0]];
@@ -187,10 +173,6 @@
     
     NSDictionary* media = [self.saver.medias objectAtIndex:indexPath.row];
     
-    if ([[media objectForKey:@"audio_only"] isEqual:[NSNumber numberWithBool:YES]]) {
-        return [self cellForBlankMediaAtIndexPath:indexPath];
-    }
-    
 //    if ([[media objectForKey:@"type"] isEqual:ALAssetTypeVideo]) {
 //        [cell launchVideoPreviewWithUrl:[media objectForKey:@"url"]];
 //    } else {
@@ -206,21 +188,9 @@
     
     cell.contentView.tag = indexPath.row;
     
-    UIButton* del = (UIButton*)[cell.contentView viewWithTag:30];
-    
     UIPanGestureRecognizer* pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(toggleRemoveState:)];
     pan.delegate = self;
     [cell.contentView addGestureRecognizer:pan];
-    
-    return cell;
-}
-
-- (UICollectionViewCell*)cellForBlankMediaAtIndexPath:(NSIndexPath*)indexPath {
-    UICollectionViewCell* cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"MediaCell" forIndexPath:indexPath];
-    
-    if (cell == nil) {
-        cell = [[UICollectionViewCell alloc] init];
-    }
     
     return cell;
 }
@@ -246,7 +216,7 @@
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(110, (collectionView.frame.size.width-CELL_SIZE)/2, 120, collectionView.frame.size.width/2);
+    return UIEdgeInsetsMake((collectionView.frame.size.height-CELL_SIZE)/2, (collectionView.frame.size.width-CELL_SIZE)/2, (collectionView.frame.size.height-CELL_SIZE)/2, collectionView.frame.size.width/2);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -257,12 +227,12 @@
     [self zoomAtIndexPath:indexPath];
 }
 
-- (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath didMoveToIndexPath:(NSIndexPath *)toIndexPath {
+- (void)collectionView:(UICollectionView *)collectionView atIndexPath:(NSIndexPath *)atIndexPath didMoveToIndexPath:(NSIndexPath *)toIndexPath {
     
-    UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:fromIndexPath];
+    UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:atIndexPath];
     
-    id media = [self.saver.medias objectAtIndex:fromIndexPath.row];
-    [self.saver.medias removeObjectAtIndex:fromIndexPath.row];
+    id media = [self.saver.medias objectAtIndex:atIndexPath.row];
+    [self.saver.medias removeObjectAtIndex:atIndexPath.row];
     [self.saver.medias insertObject:media atIndex:toIndexPath.row];
     
     
@@ -271,12 +241,16 @@
     [collectionView reloadData];
 }
 
+- (void)collectionView:(UICollectionView *)collectionView collectionViewLayout:(RAReorderableLayout *)layout didEndDraggingItemToIndexPath:(NSIndexPath *)indexPath {
+    [self centerCollectionView];
+}
 
-- (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath {
+
+- (BOOL)collectionView:(UICollectionView *)collectionView atIndexPath:(NSIndexPath *)atIndexPath canMoveToIndexPath:(NSIndexPath *)canMoveToIndexPath {
     CGPoint point = CGPointMake(self.collectionView.contentOffset.x + self.collectionView.frame.size.width/2, self.collectionView.frame.size.height/2);
     NSIndexPath* visibleIndexPath = [self.collectionView indexPathForItemAtPoint:point];
     
-    return visibleIndexPath.row == indexPath.row;
+    return visibleIndexPath.row == atIndexPath.row;
 }
 
 #pragma mark - UIGestureRecognizer
@@ -288,10 +262,6 @@
 }
 
 #pragma mark - UIScrollView
-
-- (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self centerCollectionView];
-}
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -355,6 +325,11 @@
             }
         } completion:^(BOOL finished) {
             [self.navigationController pushViewController:vc animated:NO];
+            
+//            [self.view addSubview:vc.view];
+//            [self addChildViewController:vc];
+//            [vc didMoveToParentViewController:self];
+            
             image.layer.mask = originalMask;
             cell.transform = CGAffineTransformMakeScale(1, 1);
             cell.frame = originalCellFrame;
@@ -419,7 +394,7 @@
 
 - (CAShapeLayer*)maskForCell:(UICollectionViewCell*)cell expanded:(BOOL)expanded {
     CAShapeLayer* maskLayer = [[CAShapeLayer alloc] init];
-    CGRect maskRect = expanded ? cell.bounds : CGRectMake(0, cell.frame.size.height/2 - CELL_SIZE/2 + 10, CELL_SIZE, CELL_SIZE);
+    CGRect maskRect = expanded ? cell.bounds : CGRectMake(0, cell.frame.size.height/2 - CELL_SIZE/2, CELL_SIZE, CELL_SIZE);
     CGPathRef path = CGPathCreateWithRect(maskRect, NULL);
     maskLayer.path = path;
     CGPathRelease(path);
@@ -430,7 +405,9 @@
 #pragma mark - Coachmark
 
 - (IBAction)animateCoachmark:(id)sender {
-    [CoachmarkManager launchCoachmarkAnimationForOrganizerController:self];
+    [CoachmarkManager launchCoachmarkAnimationForOrganizerController:self withCompletion:^{
+        
+    }];
 }
 
 @end

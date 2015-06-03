@@ -21,7 +21,6 @@
 }
 
 - (void)launchVideoPreviewWithUrl:(NSURL *)videoUrl {
-    NSLog(@"%@", videoUrl);
     AVURLAsset* asset = [AVURLAsset URLAssetWithURL:videoUrl options:nil];
     AVPlayerItem* item = [AVPlayerItem playerItemWithAsset:asset];
     self.moviePlayer = [AVPlayer playerWithPlayerItem:item];
@@ -29,10 +28,10 @@
     self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.moviePlayer];
     self.moviePlayer.volume = 0;
     
-    self.playerLayer.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height + 100);
-    
     UIView* preview = [self.contentView viewWithTag:40];
-    [preview.layer insertSublayer:self.playerLayer atIndex:0];
+    
+    self.playerLayer.frame = CGRectMake(-preview.frame.size.width/2, -preview.frame.size.height/2, preview.frame.size.width*2, preview.frame.size.height*2);
+    [preview.layer addSublayer:self.playerLayer];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:AVPlayerItemDidPlayToEndTimeNotification object:item queue:nil usingBlock:^(NSNotification *note) {
         AVPlayerItem* item = [note object];

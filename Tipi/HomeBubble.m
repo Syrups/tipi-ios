@@ -42,7 +42,7 @@
         buddyHead.layer.masksToBounds = YES;
         buddyHead.backgroundColor = RgbColorAlpha(41, 80, 127, 1);
 //        [self addSubview:buddyHead];
-        
+//        
 //        [self addSubview:buddy];
 //        [self addSubview:wave1];
 //        [self addSubview:wave2];
@@ -54,20 +54,24 @@
         
 //        [self addSubview:voice];
         
-        UIImageView* imageView = [[UIImageView alloc] initWithFrame:self.frame];
-        imageView.image = [UIImage imageNamed:@"test.JPG"];
-        imageView.contentMode = UIViewContentModeScaleAspectFill;
-        
-        [self addSubview:imageView];
-        
-        UIView* overlay = [[UIView alloc] initWithFrame:self.frame];
-        overlay.backgroundColor = RgbColorAlpha(40, 53, 85, .8f);
-        [self addSubview:overlay];
+//        UIImageView* imageView = [[UIImageView alloc] initWithFrame:self.frame];
+//        imageView.image = [UIImage imageNamed:@"test.JPG"];
+//        imageView.contentMode = UIViewContentModeScaleAspectFill;
+//        
+//        [self addSubview:imageView];
+//        
+//        UIView* overlay = [[UIView alloc] initWithFrame:self.frame];
+//        overlay.backgroundColor = RgbColorAlpha(40, 53, 85, .8f);
+//        [self addSubview:overlay];
         
         self.layer.backgroundColor = self.backgroundColor.CGColor;
+        
+        self.expanded = YES;
     }
     return self;
 }
+
+#pragma mark - Drawing and animation methods
 
 - (void)expand {
     CGPathRef to = [SHPathLibrary pathForHomeBubbleInRect:self.frame open:YES].CGPath;
@@ -173,8 +177,8 @@
     [CATransaction setCompletionBlock:completionBlock];
     
     CABasicAnimation* morph = [CABasicAnimation animationWithKeyPath:@"path"];
-    morph.duration = 0.3f;
-    morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    morph.duration = 0.7f;
+    morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     
     CGPathRef from = shapeLayer.path;
     CGPathRef to = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame].CGPath;
@@ -200,7 +204,6 @@
     CGPathRef path = [SHPathLibrary pathForHomeBubbleInRect:self.frame open:self.expanded].CGPath;
     CAShapeLayer* layer = [CAShapeLayer layer];
     layer.path = CGPathCreateCopy(path);
-    //    layer.fillColor = RgbColorAlpha(43, 75, 122, 0.8f).CGColor;
     self.layer.mask = layer;
     shapeLayer = layer;
 }

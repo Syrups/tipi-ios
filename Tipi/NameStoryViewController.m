@@ -32,7 +32,7 @@
         }];
         
         [UIView addKeyframeWithRelativeStartTime:.6f relativeDuration:.4f animations:^{
-            self.centerYConstraint.constant = 100;
+            self.centerYConstraint.constant = 80;
             [self.view layoutIfNeeded];
         }];
     } completion:^(BOOL finished) {
@@ -69,7 +69,7 @@
     [[StoryWIPSaver sharedSaver] setTag:[self.tagField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     
     UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RoomPicker"];
-    [self.parentViewController.navigationController.parentViewController.navigationController pushViewController:vc animated:YES];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - MLPAutoCompleteTextField
@@ -108,7 +108,7 @@
     return YES;
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     if ([textField.text length] > 0) {
         self.validateButton.enabled = YES;
         self.validateButton.alpha = 1;
@@ -116,6 +116,8 @@
         self.validateButton.enabled = NO;
         self.validateButton.alpha = .7f;
     }
+    
+    return YES;
 }
 
 @end

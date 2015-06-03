@@ -12,8 +12,9 @@
 #import "StoryWIPSaver.h"
 #import "StoryMediaRecorder.h"
 #import "FileUploader.h"
+#import "HelpModalViewController.h"
 
-@interface RoomPickerViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, RoomFetcherDelegate, StoryCreatorDelegate, FileUploaderDelegate>
+@interface RoomPickerViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, RoomFetcherDelegate, StoryCreatorDelegate, FileUploaderDelegate, HelpModalViewControllerDelegate>
 
 @property (strong, nonatomic) StoryWIPSaver* saver;
 @property (strong, nonatomic) StoryMediaRecorder* recorder;

@@ -7,21 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LXReorderableCollectionViewFlowLayout.h"
 #import "StoryWIPSaver.h"
 #import "StoryMediaRecorder.h"
 #import "OrganizerWave.h"
+#import "Tipi-Swift.h"
 
 #define CELL_SIZE 190
 #define INACTIVE_CELL_OPACITY 0.3f
 #define ACTIVE_CELL_ROTATION 0.05f
 
-@interface OrganizeStoryViewController : UIViewController <LXReorderableCollectionViewDataSource, UICollectionViewDelegate, LXReorderableCollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
+@interface OrganizeStoryViewController : UIViewController <UIGestureRecognizerDelegate, RAReorderableLayoutDataSource, RAReorderableLayoutDelegate>
 
 @property (strong, nonatomic) StoryWIPSaver* saver;
 @property (strong, nonatomic) StoryMediaRecorder* recorder;
 @property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
-@property (strong, nonatomic) IBOutlet UILabel* pageLabel;
 @property (strong, nonatomic) IBOutlet OrganizerWave* wave;
 @property (strong, nonatomic) IBOutlet UIButton* replayButton;
 @property (strong, nonatomic) IBOutlet UIButton* finishButton;
@@ -31,7 +30,5 @@
 @property (strong, nonatomic) IBOutlet UILabel* helpLabel;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* topControlsYConstraint;
 @property (strong, nonatomic) IBOutlet UIImageView* coachmarkSprite;
-
-- (void)animateAppearance;
 
 @end

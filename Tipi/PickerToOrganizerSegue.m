@@ -18,11 +18,13 @@
     MediaPickerViewController* source = self.sourceViewController;
     OrganizeStoryViewController* dest = self.destinationViewController;
     
+    NSMutableArray* hiddenCells = [NSMutableArray array];
+    
     __block TPLoader* loader = [[TPLoader alloc] initWithFrame:source.view.frame];
     [source.view addSubview:loader];
 //    loader.infoLabel.text = @"Chargement des photos...";
     
-    CGFloat midY = source.mediaCollectionView.contentOffset.y + source.view.frame.size.height/2 - CELL_SIZE/2 - 10; // CELL_SIZE defined in OrganizeStoryViewController.h
+    CGFloat midY = source.mediaCollectionView.contentOffset.y + source.view.frame.size.height/2 - CELL_SIZE/2 - 18; // CELL_SIZE defined in OrganizeStoryViewController.h
     CGFloat origX = source.view.frame.size.width/2 - CELL_SIZE/2 - 24;
     
     __block NSUInteger i = 0;
@@ -31,6 +33,7 @@
         NSIndexPath* indexPath = [source.mediaCollectionView indexPathForCell:cell];
         
         if (![source.selectedIndexes containsObject:indexPath]) {
+            [hiddenCells addObject:[source.mediaCollectionView cellForItemAtIndexPath:indexPath]];
             [UIView animateWithDuration:.3f animations:^{
                 cell.alpha = 0;
             }];
@@ -44,6 +47,7 @@
             
             if (indexPath && ![source.selectedIndexes containsObject:indexPath]) {
                 cell.alpha = 0;
+                [hiddenCells addObject:cell];
             } else {
                 cell.frame = CGRectMake(origX + i * (CELL_SIZE + 10), midY, CELL_SIZE, CELL_SIZE);
                 ++i;
@@ -62,6 +66,10 @@
                 
                 [source.mediaCollectionView reloadData];
                 [loader removeFromSuperview];
+                
+                for (UICollectionViewCell* cell in hiddenCells) {
+                    cell.alpha = 1;
+                }
             }
         }];
     }];

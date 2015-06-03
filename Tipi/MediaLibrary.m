@@ -57,9 +57,6 @@
                     
                     [medias addObject:media];
                     
-                    NSLog(@"%d / %d", i, self.totalMediasCount);
-                    
-                    
                     if ( i == self.totalMediasCount) {
                         
                         if ([self.delegate respondsToSelector:@selector(mediaLibrary:successfullyFetchedMedias:)]) {

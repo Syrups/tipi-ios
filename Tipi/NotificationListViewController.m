@@ -42,6 +42,7 @@
     self.invitations = invitations;
     NSLog(@"%@", invitations);
     [self.requestsTableView reloadData];
+//    [self animate];
 }
 
 - (void)userManager:(UserManager *)manager failedToFetchInvitationsWithError:(NSError *)error {
@@ -66,7 +67,7 @@
     Room* invitation = [self.invitations objectAtIndex:indexPath.row];
     
     UILabel* label = (UILabel*)[cell.contentView viewWithTag:10];
-    label.text = [NSString stringWithFormat:@"%@ vous invite à participer à %@", invitation.owner.username, invitation.name];
+    label.text = [NSString stringWithFormat:@"%@", invitation.name];
     
     return cell;
 }

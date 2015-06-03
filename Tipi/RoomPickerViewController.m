@@ -13,6 +13,8 @@
 #import "Configuration.h"
 #import "UIRoomTableViewCell.h"
 #import "TPLoader.h"
+#import "HomeViewController.h"
+#import "HelpModalViewController.h"
 
 @implementation RoomPickerViewController {
     NSMutableArray* selectedRooms;
@@ -72,7 +74,7 @@
 
 - (IBAction)createNewRoom:(id)sender {
     UIViewController* vc = [[UIStoryboard storyboardWithName:kStoryboardRooms bundle:nil] instantiateViewControllerWithIdentifier:@"CreateRoom"];
-    [self presentViewController:vc animated:YES completion:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)send:(id)sender {
@@ -98,16 +100,14 @@
         uploadedMediasCount++;
     }
     
-//    NSUInteger percent = ((uploadedAudiosCount+uploadedMediasCount) * 100) / (self.saver.medias.count*2);
-//    loader.infoLabel.text = [NSString stringWithFormat:@"Envoi de l'histoire...(%d %%)", percent];
-    
+    NSLog(@"%d files downloaded (%d total)", uploadedAudiosCount+uploadedMediasCount, self.saver.medias.count*2);
+
     // all good
     if (uploadedMediasCount == self.saver.medias.count && uploadedAudiosCount == self.saver.medias.count) {
         [loader removeFromSuperview];
         self.roomsTableView.delegate = nil;
-        [self.navigationController popToRootViewControllerAnimated:NO];
         
-        [self.navigationController.parentViewController.navigationController popToRootViewControllerAnimated:YES];
+        [self displayModalViewController];
     }
 }
 
@@ -156,6 +156,18 @@
 
 - (void)storyManager:(StoryManager *)manager failedToCreateStory:(NSError *)error {
     NSLog(@"%@", error);
+}
+
+#pragma mark - Modal
+
+- (void)displayModalViewController {
+    [HelpModalViewController instantiateModalViewOnParentController:self withDelegate:self andMessage:@"Et voilà ! votre histoire a bien été partagée"];
+}
+
+- (void)modalViewControllerDidAcknowledgedMessage:(HelpModalViewController *)controller {
+    UINavigationController* rootNav = self.navigationController.parentViewController.navigationController;
+    [rootNav popToRootViewControllerAnimated:YES];
+    [[(HomeViewController*)rootNav.viewControllers[0] storyViewController] transitionFromStoryBuilder];
 }
 
 #pragma mark - UITableView
@@ -283,26 +295,5 @@
 }
 
 
-//- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-//    [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-//        CGPoint point = CGPointMake(self.roomsTableView.frame.size.width/2, self.roomsTableView.contentOffset.y + 100);
-//        NSIndexPath* indexPath = [self.roomsTableView indexPathForRowAtPoint:point];
-//        UITableViewCell* cell = [self.roomsTableView cellForRowAtIndexPath:indexPath];
-//        
-//        
-//        UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
-//        name.alpha = 1;
-//        
-//        [[self.roomsTableView indexPathsForVisibleRows] enumerateObjectsUsingBlock:^(NSIndexPath* _indexPath, NSUInteger idx, BOOL *stop) {
-//            if (indexPath.row != _indexPath.row) {
-//                UITableViewCell* cell = [self.roomsTableView cellForRowAtIndexPath:_indexPath];
-//
-//                UILabel* name = (UILabel*)[cell.contentView viewWithTag:10];
-//                name.alpha = 0.6f;
-//            }
-//        }];
-//
-//    } completion:nil];
-//}
 
 @end
