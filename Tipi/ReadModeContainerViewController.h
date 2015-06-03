@@ -14,16 +14,20 @@
 
 #import "StoryManager.h"
 
+#import "TPSwipableViewController.h"
+
 @import AVFoundation;
 @import AudioToolbox;
 
-@interface ReadModeContainerViewController : UIViewController<UIPageViewControllerDataSource,UIPageViewControllerDelegate, ReadModeViewDelegate, StoryFetcherDelegate, EZMicrophoneDelegate, EZAudioFileDelegate>
+@interface ReadModeContainerViewController : UIViewController<UIPageViewControllerDataSource,UIPageViewControllerDelegate,TPSwipableViewControllerDelegate, ReadModeViewDelegate, StoryFetcherDelegate, EZMicrophoneDelegate, EZAudioFileDelegate>
 
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, assign) NSUInteger loadedPagesCount;
 
 @property (nonatomic, strong) UIPageViewController *pager;
-@property (nonatomic) ReadModeViewController *currentPageViewController;
+@property (nonatomic, strong) TPSwipableViewController *swiper;
+
+//@property (nonatomic) ReadModeViewController *currentPageViewController;
 @property (nonatomic) CGRect textBaseFrame;
 //@property (nonatomic) NSUInteger currentPageIndex;
 

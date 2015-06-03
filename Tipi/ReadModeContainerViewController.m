@@ -65,7 +65,7 @@
 
 
 #pragma mark - UIPageViewController
-
+/*
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     ReadModeViewController *p = (ReadModeViewController *)viewController;
     return [self viewControllerAtIndex:(p.idx - 1)];
@@ -79,8 +79,15 @@
 -(void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed{
     [self.currentPageViewController pauseSound];
     self.currentPageViewController = (ReadModeViewController*)[self.pager.viewControllers objectAtIndex:0];
+}*/
+
+#pragma mark - TPSwipableViewController
+
+- (void)swipableViewController:(TPSwipableViewController *)containerViewController didFinishedTransitionToViewController:(UIViewController *)viewController{
 }
 
+- (void)swipableViewController:(TPSwipableViewController *)containerViewController didSelectViewController:(UIViewController *)viewController{
+}
 
 #pragma mark - StoryManager
 - (void)storyManager:(StoryManager*)manager successfullyFetchedStory:(Story *)story{
@@ -88,10 +95,11 @@
     self.mPages = self.story.pages;
     
     [self loadMediaAndAudioInPages:self.mPages withCompletion:^{
-        //self.delegate
+   
         
+        //Pager
         // Start at the first page of the array?
-        int initialIndex = 0;
+        /*int initialIndex = 0;
         
         // Assuming you have a SomePageViewController which extends UIViewController so you can do custom things.
         self.currentPageViewController = (ReadModeViewController *)[self viewControllerAtIndex:initialIndex];
@@ -101,24 +109,42 @@
         // animated:NO is important so the view just pops into existence.
         // direction: doesn't matter because it's not animating in.
         [self.pager setViewControllers:initialViewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-        
-        // Tell the child view to get ready
         [self.pager willMoveToParentViewController:self];
-        
-        // Actually add the child view controller
         [self addChildViewController:self.pager];
-        
-        // Don't forget to add the new root view to the current view hierarchy!
         [self.view addSubview:self.pager.view];
         [self.view sendSubviewToBack:self.pager.view];
+    
+        [self.pager didMoveToParentViewController:self];*/
         
-        // And make sure to activate!
-        [self.pager didMoveToParentViewController:self];
+       
         
-        self.edgesForExtendedLayout = UIRectEdgeNone;
+        //Swiper
+        NSArray *childViewControllers = [self readmodeControllersWithPages:self.mPages];
+        self.swiper = [[TPSwipableViewController alloc] initWithViewControllers:childViewControllers];
+        self.swiper.view.frame = self.view.frame;
+        [self.swiper willMoveToParentViewController:self];
+        [self addChildViewController:self.swiper];
+        [self.view addSubview:self.pager.view];
+        [self.view sendSubviewToBack:self.pager.view];
+    
+        [self.swiper didMoveToParentViewController:self];
         
-        [self.delegate readModeContainerViewController:self didFinishedLoadingStory:self.story];
+        
+         self.edgesForExtendedLayout = UIRectEdgeNone;
+        
+         [self.delegate readModeContainerViewController:self didFinishedLoadingStory:self.story];
     }];
+}
+
+- (NSArray *)readmodeControllersWithPages:(NSArray*)pages {
+    
+    NSMutableArray *childViewControllers = [[NSMutableArray alloc] initWithCapacity:[pages count]];
+    
+    for (int i = 0; i < [pages count]; i++) {
+        [childViewControllers addObject:[self viewControllerAtIndex:i]];
+    }
+    
+    return childViewControllers;
 }
 
 
@@ -160,6 +186,7 @@
                           options:0
                          progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                              // progression tracking code
+                             NSLog(@"loadedImage %lu/%lu of file %@", receivedSize,expectedSize, url);
                          }
                         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                             if (image) {

@@ -205,6 +205,10 @@ static CGFloat const kButtonSlotHeight = 44;
 
 - (void)_finishTransitionToChildViewController:(UIViewController *)toViewController {
     _selectedViewController = toViewController;
+    
+    if ([self.delegate respondsToSelector:@selector (swipableViewController:didFinishedTransitionToViewController:)]) {
+        [self.delegate swipableViewController:self didFinishedTransitionToViewController:toViewController];
+    }
     //[self _updateButtonSelection];
 }
 
