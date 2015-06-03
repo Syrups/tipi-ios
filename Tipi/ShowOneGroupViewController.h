@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SRRecordButton.h"
 #import "Room.h"
 #import "StoryManager.h"
+#import "ReadModeContainerViewController.h"
+
 @import AVFoundation;
 
-@interface ShowOneGroupViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate,StoryFetcherDelegate>
+@interface ShowOneGroupViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate,StoryFetcherDelegate, ReadModeContainerDelegate>
 
 //@property (nonatomic) NSUInteger roomId;
 @property (strong, nonatomic) Room* room;
@@ -26,6 +29,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *previewImageView;
 @property (nonatomic) BOOL isPreviewMode;
 
+@property (weak, nonatomic) IBOutlet UIView *readContainer;
+@property (weak, nonatomic) IBOutlet UIView *topBar;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBarTopConstraint;
+@property (weak, nonatomic) ReadModeContainerViewController *readModeContainer;
 
 - (void)applyFilters;
 - (IBAction)deleteStory:(id)sender;

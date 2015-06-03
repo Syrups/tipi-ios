@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SRRecordButton.h"
+
 
 @interface TPStoryTableViewCell : UITableViewCell<UIGestureRecognizerDelegate>
 @property int baseX;
@@ -14,5 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+
+@property (weak, nonatomic) IBOutlet SRRecordButton *recordButton;
 
 @end

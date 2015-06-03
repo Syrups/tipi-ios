@@ -37,27 +37,15 @@ typedef void(^fadeOutCompletion)(BOOL);
     longPressRecognizer.minimumPressDuration = .5f;
     //)
     
-    self.image.userInteractionEnabled = YES;
-    [self.image addGestureRecognizer:tapOnImageView];
+    self.view.clipsToBounds = YES;
+    self.mediaImageView.image = self.mediaImage;
+    self.mediaImageView.clipsToBounds = YES;
+    self.mediaImageView.transform = CGAffineTransformMakeScale(1.2,1.2);
+    
+    self.mediaImageView.userInteractionEnabled = YES;
+    [self.mediaImageView addGestureRecognizer:tapOnImageView];
     
     [self.playerView addGestureRecognizer:longPressRecognizer];
-    
-    //Files
-    NSString* url = self.page.media.file;
-    NSString* fileUrl = self.page.audio.file;
-    
-    //TODO change placeholder and loadings
-    [self.image sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"placeholder.gif"]];
-    [FileDownLoader downloadFileWithURL:fileUrl completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-        
-        self.fileURL = filePath;
-        self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:self.fileURL error:nil];
-        
-        if(self.idx <= 0){
-            [self playAndTrack];
-        }
-        //NSLog(@"File %@ downloaded to: %@",fileUrl, filePath);
-    }];
     
     //Data
     self.commentsPlayers = [NSMutableArray new];
@@ -69,12 +57,18 @@ typedef void(^fadeOutCompletion)(BOOL);
     // Recording
     self.commentRecorder = [[CommentAudioRecorder alloc] init];
     self.commentRecorder.delegate = self;
-    
+
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+-(void)startPreviewMode{
+    
 }
 
 

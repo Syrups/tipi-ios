@@ -12,9 +12,10 @@
 #import <EZMicrophone.h>
 #import "MediaLibrary.h"
 
-@interface SandboxViewController : UIViewController <MediaLibraryDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface SandboxViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
 @property (strong, nonatomic) NSArray* photos;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @end

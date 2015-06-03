@@ -8,6 +8,7 @@
 
 #import "SandboxViewController.h"
 #import "PKAIDecoder.h"
+#import "TPSwipableViewController.h"
 
 @implementation SandboxViewController {
     CGFloat lastValue;
@@ -15,11 +16,51 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    MediaLibrary* library = [[MediaLibrary alloc] init];
-    library.delegate = self;
-    [library fetchMediasFromLibrary];
+    
+    
+    NSArray *childViewControllers = [self _configuredChildViewControllers];
+	TPSwipableViewController *tps = [[TPSwipableViewController alloc] initWithViewControllers:childViewControllers];
+    
+    [self addChildViewController:tps];                 // 1
+    tps.view.frame = self.view.frame; // 2
+    [self.containerView addSubview:tps.view];
+    [tps didMoveToParentViewController:self];          // 3
+    //MediaLibrary* library = [[MediaLibrary alloc] init];
+    //library.delegate = self;
+    //[library fetchMediasFromLibrary];
 }
+
+
+- (NSArray *)_configuredChildViewControllers {
+    
+    // Set colors, titles and tab bar button icons which are used by the ContainerViewController class for display in its button pane.
+    
+    NSMutableArray *childViewControllers = [[NSMutableArray alloc] initWithCapacity:3];
+    NSArray *configurations = @[
+                                @{@"title": @"First", @"color": [UIColor colorWithRed:0.4f green:0.8f blue:1 alpha:1]},
+                                @{@"title": @"Second", @"color": [UIColor colorWithRed:1 green:0.4f blue:0.8f alpha:1]},
+                                @{@"title": @"Third", @"color": [UIColor colorWithRed:1 green:0.8f blue:0.4f alpha:1]},
+                                ];
+    
+    for (NSDictionary *configuration in configurations) {
+        UIViewController *childViewController = [[UIViewController alloc] init];
+        
+        childViewController.view.backgroundColor = configuration[@"color"];
+        childViewController.view.frame = self.view.frame;
+       
+        [childViewControllers addObject:childViewController];
+    }
+    
+    return childViewControllers;
+}
+
+
+
+
+
+
+
+
 
 - (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedias:(NSArray *)medias {
     self.photos = medias;

@@ -24,7 +24,6 @@
     UIViewController* toViewController=  [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     //fromViewController.view.layer.backgroundColor = [UIColor orangeColor].CGColor;
     
-    
     BOOL segueBack = [fromViewController isKindOfClass:[ShowOneGroupViewController class]] ;
     if(!segueBack){
         toViewController.view.transform = CGAffineTransformMakeTranslation(CGRectGetWidth(containerView.frame) * 0.2, 0);
