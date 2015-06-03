@@ -19,17 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.lastPage = NO;
-    
     self.saver = [StoryWIPSaver sharedSaver];
     
     self.replayButton.transform = CGAffineTransformMakeScale(0, 0);
-    
-    self.previewBubble.delegate = self;
-    
-    self.recordButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.recordButton.layer.cornerRadius = 40;
-    self.recordButton.layer.borderWidth = 10;
 
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
@@ -42,84 +34,33 @@
     self.longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     self.longPressRecognizer.minimumPressDuration = 0.2f;
     
-    UISwipeGestureRecognizer* swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
-    swipe.direction = UISwipeGestureRecognizerDirectionLeft;
-    
-    UISwipeGestureRecognizer* swipeBack = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeBack:)];
-    swipeBack.direction = UISwipeGestureRecognizerDirectionRight;
-    
-    [self.view addGestureRecognizer:swipe];
-    [self.view addGestureRecognizer:swipeBack];
     [self.view addGestureRecognizer:self.longPressRecognizer];
     
     self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
     self.recorder.delegate = self;
     
-    
-    if (self.currentIndex != self.saver.medias.count-1)
-        [self.previewBubble updateWithImage:[(NSDictionary*)[self.saver.medias objectAtIndex:1] objectForKey:@"full"]];
-    
-    [CoachmarkManager launchCoachmarkAnimationForRecordController:self withCompletion:^{
-        if ([self.recorder hasRecordedAtIndex:self.currentIndex]) {
-            self.replayButton.transform = CGAffineTransformMakeScale(1, 1);
-            [self.recordTimer hide];
-        } else {
-            [self.recordTimer appear];
-            self.overlay.alpha = 0;
-        }
-    }];
-    
+    [CoachmarkManager launchCoachmarkAnimationForRecordController:self withCompletion:nil];
 }
 
 - (IBAction)replay:(id)sender {
     [self.recorder playAudio];
 }
 
-- (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:NO];
-    
-    [UIView animateWithDuration:.3f animations:^{
-        self.organizeViewController.topControlsYConstraint.constant = 0;
-        [self.organizeViewController.view layoutIfNeeded];
-    }];
-}
-
-
 #pragma mark - StoryMediaRecorder
 
 - (void)mediaRecorder:(StoryMediaRecorder *)recorder hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
     
     [self.recordTimer updateWithBuffer:buffer bufferSize:bufferSize withNumberOfChannels:numberOfChannels];
-
 }
 
 #pragma mark - UISwipeGestureRecognizer
 
-- (void)handleSwipe:(UISwipeGestureRecognizer*)swipe {
-    if (self.previewBubble.hidden) {
-        [self.previewBubble appearWithCompletion:^{
-            [self.previewBubble expandWithCompletion:^{
-                [self goNextPage];
-            }];
-        }];
-    } else {
-        [self.previewBubble expandWithCompletion:^{
-            [self goNextPage];
-        }];
-    }
-    
+- (IBAction)handleSwipe:(UISwipeGestureRecognizer*)swipe {
+    [self goNextPage];
 }
 
-- (void)handleSwipeBack:(UISwipeGestureRecognizer*)swipe {
+- (IBAction)handleSwipeBack:(UISwipeGestureRecognizer*)swipe {
     [self goPreviousPage];
-}
-
-#pragma mark - PreviewBubble
-
-- (void)previewBubbleDidDragToExpand:(PreviewBubble *)bubble {
-    [self.previewBubble expandWithCompletion:^{
-        [self goNextPage];
-    }];
 }
 
 #pragma mark - UILongPressGestureRecognizer
@@ -129,6 +70,8 @@
         NSLog(@"begin touch");
         [self.recorder startRecording];
         
+        [CoachmarkManager dismissCoachmarkAnimationForRecordController:self];
+        
         if (!self.recordTimer.appeared) {
             self.replayButton.transform = CGAffineTransformMakeScale(0, 0);
             [self.recordTimer appear];
@@ -136,10 +79,7 @@
         
         [self.recordTimer reset];
         [self.recordTimer start];
-        
-        [self.previewBubble hideWithCompletion:^{
-        }];
-        
+
         // Pause gyroscope panning
         [self currentPage].imagePanningEnabled = NO;
         
@@ -162,11 +102,9 @@
         [self currentPage].imagePanningEnabled = YES;
 
         if (self.currentIndex != self.saver.medias.count-1) {
-            [self.previewBubble appearWithCompletion:^{
                 [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
                     self.replayButton.transform = CGAffineTransformMakeScale(1, 1);
                 } completion:nil];
-            }];
         }
         
         
@@ -185,11 +123,20 @@
 #pragma mark - Navigation and view controller
 
 - (void)goNextPage {
+    
+    if (self.currentIndex == self.saver.medias.count - 1) {
+        return;
+    }
+    
     self.currentIndex++;
     [self presentRequestedPage];
 }
 
 - (void)goPreviousPage {
+    if (self.currentIndex == 0) {
+        return;
+    }
+    
     self.currentIndex--;
     [self presentRequestedPage];
 }
@@ -216,18 +163,12 @@
         self.overlay.alpha = 0;
         [self.recorder.player stop];
         [self.recorder setupForMediaWithIndex:self.currentIndex];
-        [self.timeline updateWithIndex:self.currentIndex];
-        
-        if (self.currentIndex != self.saver.medias.count-1) {
-            [self.previewBubble updateWithImage:[(NSDictionary*)[self.saver.medias objectAtIndex:self.currentIndex+1] objectForKey:@"full"]];
-        }
         
         [self addChildViewController:next];
         [self.view addSubview:next.view];
         [self.view sendSubviewToBack:next.view];
         [next didMoveToParentViewController:self];
         
-        [self.previewBubble close];
     }
 }
 
@@ -268,9 +209,7 @@
     } else {
         page.image = [(NSDictionary*)[self.saver.medias objectAtIndex:index] objectForKey:@"full"];
     }
-    
-//    [self.previewBubble updateWithImage:[(NSDictionary*)[self.saver.medias objectAtIndex:index+1] objectForKey:@"full"]];
-    
+        
     return page;
 }
 
@@ -315,12 +254,6 @@
 
 - (RecordPageViewController*)currentPage {
     return (RecordPageViewController*)self.childViewControllers[0];
-}
-
-#pragma mark - Stuff
-
-- (IBAction)applySepiaFilter:(id)sender {
-    [[self currentPage] applySepiaFilter];
 }
 
 @end

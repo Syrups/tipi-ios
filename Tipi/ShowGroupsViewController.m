@@ -79,9 +79,11 @@
 //}
 
 - (IBAction)backToHome:(id)sender {
-    self.mTableView.delegate = nil;
-    HomeViewController* parent = (HomeViewController*)self.parentViewController.parentViewController;
-    [parent displayChildViewController:parent.storyViewController];
+    [self animateBackWithCompletion:^(BOOL finished) {
+        self.mTableView.delegate = nil;
+        HomeViewController* parent = (HomeViewController*)self.parentViewController.parentViewController;
+        [parent displayChildViewController:parent.storyViewController];
+    }];
 }
 
 #pragma mark - RoomFetcher
@@ -186,10 +188,7 @@
     
 }
 
-#pragma mark - UIStoryboardSegue
-
--(IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
-}
+#pragma mark - Navigation
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -204,8 +203,9 @@
     }
 }
 
-- (void)animate
-{
+#pragma mark - Animation
+
+- (void)animate {
     [[self.mTableView visibleCells] enumerateObjectsUsingBlock:^(UITableViewCell *cell, NSUInteger idx, BOOL *stop) {
         
         int endY = cell.frame.origin.y;
@@ -219,7 +219,23 @@
             [cell setAlpha:1];
         } completion:nil];
     }];
+}
 
+- (void)animateBackWithCompletion:(void(^)(BOOL finished))completion {
+    [[self.mTableView visibleCells] enumerateObjectsUsingBlock:^(UITableViewCell *cell, NSUInteger idx, BOOL *stop) {
+        
+        int endY = cell.frame.origin.y + 150;
+        float delay = (self.mTableView.visibleCells.count - idx - 1) * 0.2;
+        
+        [UIView animateWithDuration:.3f delay:delay  options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [cell setFrame:CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height)];
+            [cell setAlpha:0];
+        } completion:^(BOOL finished) {
+            if (idx == self.mTableView.visibleCells.count - 1) {
+                completion(finished);
+            }
+        }];
+    }];
 }
 
 

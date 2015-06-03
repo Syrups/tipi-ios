@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RoomManager.h"
 
-@interface CreateRoomViewController : UIViewController <UITextFieldDelegate>
+@interface CreateRoomViewController : UIViewController <UITextFieldDelegate, RoomCreatorDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField* roomNameField;
 

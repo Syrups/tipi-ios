@@ -8,12 +8,15 @@
 
 #import "CreateRoomViewController.h"
 #import "AddUsersToRoomViewController.h"
+#import "TPLoader.h"
 
 @interface CreateRoomViewController ()
 
 @end
 
-@implementation CreateRoomViewController
+@implementation CreateRoomViewController {
+    TPLoader* loader;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,17 +29,30 @@
     [self.roomNameField becomeFirstResponder];
 }
 
-- (IBAction)next:(id)sender {
-    AddUsersToRoomViewController* vc = (AddUsersToRoomViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"AddUsersToRoom"];
+- (IBAction)create:(id)sender {
+    RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
+    [manager createRoomWithName:[self.roomNameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] andUsers:@[]];
     
-    vc.roomName = [self.roomNameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-    [self presentViewController:vc animated:YES completion:nil];
+    loader = [[TPLoader alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:loader];
 }
 
 - (IBAction)back:(id)sender {
     [self.roomNameField resignFirstResponder];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+#pragma mark - RoomCreator
+
+- (void)roomManager:(RoomManager *)manager successfullyCreatedRoom:(Room *)room {
+    [loader removeFromSuperview];
+    AddUsersToRoomViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"AddUsersToRoom"];
+    vc.room = room;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)roomManager:(RoomManager *)manager failedToCreateRoom:(NSError *)error {
+    [loader removeFromSuperview];
 }
 
 #pragma mark - UITextField
@@ -48,12 +64,5 @@
     return YES;
 }
 
-//
-//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-//{
-//    NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-//    return !([newString length] > 30);
-//    
-//}
 
 @end

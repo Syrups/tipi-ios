@@ -12,6 +12,7 @@
 #import "MediaCell.h"
 #import "HelpModalViewController.h"
 #import "TPLoader.h"
+#import "ImageUtils.h"
 
 @implementation MediaPickerViewController {
     BOOL loading;
@@ -41,13 +42,14 @@
     }];
     
     [self.library fetchMediasFromLibrary];
-    
-//    loader = [[TPLoader alloc] initWithFrame:self.view.frame];
-//    [self.view addSubview:loader];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    if (self.selectedIndexes.count > 0) {
+        self.continueButtonYConstraint.constant = 42;
+    }
     
     if (!maskLayer) {
         maskLayer = [CAGradientLayer layer];
@@ -80,6 +82,10 @@
 #pragma mark - MediaLibrary
 
 - (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedias:(NSArray *)medias {
+    
+    ALAsset* asset = [(NSDictionary*)[medias objectAtIndex:0] objectForKey:@"asset"];
+    UIImage* image = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
+    [self.wave updateImage:[ImageUtils convertImageToGrayScale:image]];
 
     // reverse array
     NSMutableArray *reversed = [NSMutableArray arrayWithCapacity:[medias count]];

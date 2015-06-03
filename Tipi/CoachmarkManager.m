@@ -72,38 +72,28 @@
 }
 
 + (void)launchCoachmarkAnimationForRecordController:(RecordViewController *)controller withCompletion:(void (^)())completion {
-    UIView* overlay = [[UIView alloc] initWithFrame:controller.view.frame];
-    overlay.backgroundColor = RgbColorAlpha(0, 0, 0, 1);
-    overlay.alpha = 0;
-    [controller.view addSubview:overlay];
     
     [controller.view bringSubviewToFront:controller.coachmarkSprite];
     [controller.view bringSubviewToFront:controller.helpLabel];
     
-    controller.helpLabel.text = @"Maintenez appuyé sur l'écran pour enregistrer votre voix";
+    controller.helpLabel.text = @"Appuyez pour enregistrer";
  
     [PKAIDecoder builAnimatedImageIn:controller.coachmarkSprite fromFile:@"help-record" withAnimationDuration:3.2f];
     
     controller.coachmarkSprite.alpha = 0;
+    [UIView animateWithDuration:.3f animations:^{
+        controller.overlay.alpha = .8f;
+        controller.coachmarkSprite.alpha = 1;
+        controller.helpLabel.alpha = 1;
+    }];
     
-    // coachmark animation to press the image
-    [UIView animateKeyframesWithDuration:4 delay:0 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
-        [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.2f animations:^{
-            overlay.alpha = .8f;
-            controller.coachmarkSprite.alpha = 1;
-            controller.helpLabel.alpha = 1;
-        }];
-        [UIView addKeyframeWithRelativeStartTime:.8f relativeDuration:.2f animations:^{
-            overlay.alpha = 0;
-            controller.helpLabel.alpha = 0;
-            controller.coachmarkSprite.alpha = 0;
-        }];
-    } completion:^(BOOL finished) {
-        controller.coachmarkSprite.hidden = YES;
-        controller.coachmarkSprite.animationImages = [NSArray array];
-        
-        if (completion)
-            completion();
+}
+
++ (void)dismissCoachmarkAnimationForRecordController:(RecordViewController *)controller {
+    [UIView animateWithDuration:.1f animations:^{
+        controller.overlay.alpha = 0;
+        controller.coachmarkSprite.alpha = 0;
+        controller.helpLabel.alpha = 0;
     }];
 }
 

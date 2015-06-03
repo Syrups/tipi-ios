@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "SRRecordButton.h"
 #import <AVFoundation/AVFoundation.h>
-#import "AudioWave.h"
 #import <EZMicrophone.h>
 #import "MediaLibrary.h"
 

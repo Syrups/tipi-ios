@@ -44,7 +44,7 @@
         [self.navigationController popToRootViewControllerAnimated:NO];
         [home.storyViewController transitionFromStoryBuilder];
     } else {
-        [nav popViewControllerAnimated:YES];
+        [nav popViewControllerAnimated:NO];
     }
     
 }

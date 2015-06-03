@@ -14,5 +14,6 @@
 
 + (void)launchCoachmarkAnimationForOrganizerController:(OrganizeStoryViewController*)controller withCompletion:(void(^)())completion;
 + (void)launchCoachmarkAnimationForRecordController:(RecordViewController *)controller withCompletion:(void(^)())completion;
++ (void)dismissCoachmarkAnimationForRecordController:(RecordViewController*)controller;
 
 @end

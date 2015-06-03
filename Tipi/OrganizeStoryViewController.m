@@ -16,9 +16,7 @@
 #import "CoachmarkManager.h"
 
 @implementation OrganizeStoryViewController {
-    NSString* oldHelpText;
     NSUInteger selectedPageIndex;
-    CGFloat lastOffset;
     NSUInteger currentMedia;
     BOOL firstLoad;
     BOOL removing;
@@ -62,6 +60,7 @@
             
             if (idx == self.saver.medias.count-1) {
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.wave updateImage:[ImageUtils convertImageToGrayScale:full]];
                     [self.collectionView reloadData];
                 });
             }
@@ -217,7 +216,7 @@
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(110, (collectionView.frame.size.width-CELL_SIZE)/2, 120, collectionView.frame.size.width/2);
+    return UIEdgeInsetsMake((collectionView.frame.size.height-CELL_SIZE)/2, (collectionView.frame.size.width-CELL_SIZE)/2, (collectionView.frame.size.height-CELL_SIZE)/2, collectionView.frame.size.width/2);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {

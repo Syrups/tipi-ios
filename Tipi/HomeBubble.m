@@ -177,8 +177,8 @@
     [CATransaction setCompletionBlock:completionBlock];
     
     CABasicAnimation* morph = [CABasicAnimation animationWithKeyPath:@"path"];
-    morph.duration = 0.3f;
-    morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    morph.duration = 0.7f;
+    morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     
     CGPathRef from = shapeLayer.path;
     CGPathRef to = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame].CGPath;

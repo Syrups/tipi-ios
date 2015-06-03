@@ -20,27 +20,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     selectedFriends = [NSMutableArray array];
     self.friends = [NSArray array];
-    
-//    FriendManager* manager = [[FriendManager alloc] initWithDelegate:self];
-//    [manager fetchFriendsOfUser:CurrentUser];
 }
 
-- (IBAction)create:(id)sender {
+- (IBAction)validate:(id)sender {
     loader = [[TPLoader alloc] initWithFrame:self.view.frame];
     [self.view addSubview:loader];
     
-    if (self.room == nil) { // This is a new room being created
-        RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
-        [manager createRoomWithName:self.roomName andUsers:selectedFriends];
-    } else { // Adding people to existing room
-        RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
-        NSLog(@"%@", selectedFriends);
-        [manager inviteUsers:selectedFriends toRoom:self.room];
-    }
+    RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
+    [manager inviteUsers:selectedFriends toRoom:self.room];
     
 }
 
@@ -60,23 +50,6 @@
     ErrorAlert(@"Une erreur est survenue, merci de réessayer plus tard");
 }
 
-#pragma mark - RoomCreator
-
-- (void)roomManager:(RoomManager *)manager successfullyCreatedRoom:(Room *)room {
-    // success
-    [loader removeFromSuperview];
-    
-    // pop to rooms list
-    
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)roomManager:(RoomManager *)manager failedToCreateRoom:(NSError *)error {
-    [loader removeFromSuperview];
-    ErrorAlert(@"Une erreur est survenue, merci de réessayer plus tard");
-}
-
 #pragma mark - RoomInviter
 
 - (void)roomManager:(RoomManager *)manager successfullyInvitedUsersToRoom:(Room *)room {
@@ -84,7 +57,7 @@
     
     // pop to room
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)roomManager:(RoomManager *)manager failedToInviteUsersToRoom:(Room *)room withError:(NSError *)error {

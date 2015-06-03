@@ -10,7 +10,18 @@
 
 @interface HelpModalViewController : UIViewController
 
++ (HelpModalViewController*)instantiateModalViewOnParentController:(UIViewController*)controller withDelegate:(id)delegate andMessage:(NSString*)message;
+
+@property (weak, nonatomic) id delegate;
 @property (strong, nonatomic) IBOutlet UILabel* helpLabel;
 @property (weak, nonatomic) UIViewController* currentParentController;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* centerYContraint;
+
+@end
+
+@protocol HelpModalViewControllerDelegate <NSObject>
+
+- (void)modalViewControllerDidAcknowledgedMessage:(HelpModalViewController*)controller;
+- (void)modalViewControllerDidDismiss:(HelpModalViewController *)controller;
 
 @end

@@ -696,8 +696,8 @@ avec votre voix</string>
     </scenes>
     <resources>
         <image name="btn-back-dark" width="43" height="42"/>
-        <image name="btn-listen" width="60" height="60"/>
-        <image name="btn-profile" width="60" height="60"/>
+        <image name="btn-listen" width="51" height="49"/>
+        <image name="btn-profile" width="51" height="49"/>
         <image name="btn-replay" width="87" height="87"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

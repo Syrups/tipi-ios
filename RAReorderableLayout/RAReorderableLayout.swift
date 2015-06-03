@@ -212,6 +212,28 @@ public class RAReorderableLayout: UICollectionViewFlowLayout, UIGestureRecognize
         return attributesArray
     }
     
+    override public func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+        
+        let collectionViewSize = self.collectionView!.frame.size
+        var proposedContentOffsetCenterX = proposedContentOffset.x + collectionViewSize.width * 0.5
+        
+        var proposedRect = self.collectionView?.bounds
+        
+        var candidateAttributes:UICollectionViewLayoutAttributes = UICollectionViewLayoutAttributes()
+        
+        if let attributes = self.layoutAttributesForElementsInRect(proposedRect!) {
+            for object in attributes {
+                let attributes:UICollectionViewLayoutAttributes = object as UICollectionViewLayoutAttributes
+                
+                if (abs(attributes.center.x - proposedContentOffsetCenterX) < abs(candidateAttributes.center.x - proposedContentOffsetCenterX)) {
+                    candidateAttributes = attributes;
+                }
+            }
+        }
+        
+        return CGPointMake(candidateAttributes.center.x - collectionViewSize.width * 0.5, proposedContentOffset.y)
+    }
+    
     override public func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if keyPath == "collectionView" {
             self.setUpGestureRecognizers()
@@ -481,6 +503,12 @@ public class RAReorderableLayout: UICollectionViewFlowLayout, UIGestureRecognize
             case .Changed:
                 self.cellFakeView!.center.x = self.fakeCellCenter!.x + panTranslation!.x
                 self.cellFakeView!.center.y = self.fakeCellCenter!.y + panTranslation!.y
+                
+                UIView.animateWithDuration(0.2, animations: {
+                    self.cellFakeView?.transform = self.panTranslation?.x > 0 ? CGAffineTransformMakeRotation(0.1) : CGAffineTransformMakeRotation(-0.1)
+                    return
+                })
+                
                 
                 self.beginScrollIfNeeded()
                 self.moveItemIfNeeded()

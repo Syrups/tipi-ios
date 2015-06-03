@@ -11,22 +11,15 @@
 #import "StoryWIPSaver.h"
 #import "StoryMediaRecorder.h"
 #import "SRRecordButton.h"
-#import "AudioWave.h"
-#import "PreviewBubble.h"
-#import "Timeline.h"
 #import "OrganizeStoryViewController.h"
 
-@interface RecordViewController : UIViewController <EZMicrophoneDelegate, StoryMediaRecorderDelegate, UIGestureRecognizerDelegate, PreviewBubbleDelegate>
+@interface RecordViewController : UIViewController <EZMicrophoneDelegate, StoryMediaRecorderDelegate, UIGestureRecognizerDelegate>
 
 @property NSUInteger currentIndex;
 @property (strong, nonatomic) OrganizeStoryViewController* organizeViewController;
-@property (strong, nonatomic) IBOutlet UIButton* recordButton;
-@property (strong, nonatomic) IBOutlet UIView* eraseWarning;
 @property (strong, nonatomic) IBOutlet SRRecordButton* recordTimer;
 @property (strong, nonatomic) StoryWIPSaver* saver;
 @property (strong, nonatomic) StoryMediaRecorder* recorder;
-@property (strong, nonatomic) IBOutlet PreviewBubble* previewBubble;
-@property (strong, nonatomic) IBOutlet Timeline* timeline;
 @property (strong, nonatomic) IBOutlet UIButton* replayButton;
 @property (strong, nonatomic) UILongPressGestureRecognizer* longPressRecognizer;
 @property (strong, nonatomic) IBOutlet UIView* overlay;

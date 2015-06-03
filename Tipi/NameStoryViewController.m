@@ -69,7 +69,7 @@
     [[StoryWIPSaver sharedSaver] setTag:[self.tagField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     
     UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RoomPicker"];
-    [self.parentViewController.navigationController.parentViewController.navigationController pushViewController:vc animated:YES];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - MLPAutoCompleteTextField
