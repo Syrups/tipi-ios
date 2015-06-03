@@ -108,7 +108,7 @@
     
     [self.bubble stickTopTopWithCompletion:nil];
 
-    [UIView animateWithDuration:.7f delay:0 options:
+    [UIView animateWithDuration:.4f delay:0 options:
      UIViewAnimationOptionCurveEaseOut animations:^{
          self.topControlsYConstraint.constant = -150;
          self.bottomViewYConstraint.constant = -200;

@@ -177,7 +177,7 @@
     [CATransaction setCompletionBlock:completionBlock];
     
     CABasicAnimation* morph = [CABasicAnimation animationWithKeyPath:@"path"];
-    morph.duration = 0.7f;
+    morph.duration = 0.4f;
     morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     
     CGPathRef from = shapeLayer.path;

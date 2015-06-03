@@ -216,7 +216,7 @@
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake((collectionView.frame.size.height-CELL_SIZE)/2, (collectionView.frame.size.width-CELL_SIZE)/2, (collectionView.frame.size.height-CELL_SIZE)/2, collectionView.frame.size.width/2);
+    return UIEdgeInsetsMake(120, (collectionView.frame.size.width-CELL_SIZE)/2, 120, collectionView.frame.size.width/2);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {

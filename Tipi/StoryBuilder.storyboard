@@ -1380,15 +1380,13 @@ votre histoire</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0GQ-t2-bVo">
                                 <rect key="frame" x="40" y="164" width="240" height="240"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57r-g6-blt">
-                                        <rect key="frame" x="6" y="41" width="229" height="76"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Votre histoire a bien été partagée !" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57r-g6-blt">
+                                        <rect key="frame" x="5" y="56" width="229" height="76"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="76" id="XLa-SR-c9y"/>
                                             <constraint firstAttribute="width" constant="229" id="eUN-dj-xeu"/>
                                         </constraints>
-                                        <string key="text">Raconte un souvenir, un évènement marquant, ou toute autre chose que tu souhaite 
-partager avec tes amis !</string>
-                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBO-9P-0U7">
@@ -1421,7 +1419,7 @@ partager avec tes amis !</string>
                                     <constraint firstAttribute="width" constant="240" id="Z95-qg-YRP"/>
                                     <constraint firstAttribute="centerX" secondItem="nBO-9P-0U7" secondAttribute="centerX" id="eH3-QZ-aM7"/>
                                     <constraint firstAttribute="height" constant="240" id="j5Y-Mj-O0l"/>
-                                    <constraint firstItem="57r-g6-blt" firstAttribute="top" secondItem="0GQ-t2-bVo" secondAttribute="top" constant="41" id="mtO-Pf-C4i"/>
+                                    <constraint firstItem="57r-g6-blt" firstAttribute="top" secondItem="0GQ-t2-bVo" secondAttribute="top" constant="56" id="mtO-Pf-C4i"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
