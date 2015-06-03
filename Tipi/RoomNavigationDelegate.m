@@ -51,8 +51,6 @@
         return [[WaveSwipeTransitionAnimator alloc]init];
     }
     
-    
-    
     return nil;
 }
 

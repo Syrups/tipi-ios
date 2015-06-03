@@ -18,6 +18,7 @@
 		73559BA61AE269A200547886 /* WaveSwipeTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 73559BA51AE269A200547886 /* WaveSwipeTransitionAnimator.m */; };
 		735FE0C41AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 735FE0C31AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m */; };
 		73825C1D1ADE8B4300D43383 /* SHPathLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 73825C1C1ADE8B4300D43383 /* SHPathLibrary.m */; };
+		739BEC501B1F013400756770 /* TPSwipableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 739BEC4F1B1F013400756770 /* TPSwipableViewController.m */; };
 		73A188D31B19A80800E164E0 /* CommentAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A188D21B19A80800E164E0 /* CommentAudioRecorder.m */; };
 		73B20BEC1AA5FF0800A9C88F /* BaseHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B20BEB1AA5FF0800A9C88F /* BaseHomeViewController.m */; };
 		73B20BF01AA609DB00A9C88F /* ShowGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B20BEF1AA609DB00A9C88F /* ShowGroupsViewController.m */; };
@@ -46,6 +47,9 @@
 		73B3B35F1AA7CA5100FF7578 /* ReadModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B3B35E1AA7CA5100FF7578 /* ReadModeViewController.m */; };
 		73B3B3621AA7CA9100FF7578 /* ReadModeContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B3B3611AA7CA9100FF7578 /* ReadModeContainerViewController.m */; };
 		73D0C2701B0F7A1A00BDFA14 /* UIViewTouchUnder.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D0C26F1B0F7A1A00BDFA14 /* UIViewTouchUnder.m */; };
+		73E0BDAD1B1F153400AD540D /* AWPercentDrivenInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E0BDAC1B1F153400AD540D /* AWPercentDrivenInteractiveTransition.m */; };
+		73E0BDB01B1F159300AD540D /* PanGestureInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E0BDAF1B1F159300AD540D /* PanGestureInteractiveTransition.m */; };
+		73E0BDB31B1F195D00AD540D /* TPCardAnimatedTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E0BDB21B1F195D00AD540D /* TPCardAnimatedTransition.m */; };
 		73E7EBC31AE57CC8003579CD /* UIRoomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E7EBC21AE57CC8003579CD /* UIRoomTableViewCell.m */; };
 		825B10453DF4C5EAFBC589D9 /* libPods-Tipi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9894FA4EEDEAF922FCD71B9 /* libPods-Tipi.a */; };
 		B30317FD1ABC2759005EF73D /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = B30317FC1ABC2759005EF73D /* Page.m */; };
@@ -143,7 +147,6 @@
 		B3C470931B10C9A1003231D3 /* tete-sanstete.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B3C470921B10C9A1003231D3 /* tete-sanstete.pkai */; };
 		B3C85E541ACBF4C50083C50A /* Audio.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C85E531ACBF4C50083C50A /* Audio.m */; };
 		B3C85E571ACBF5260083C50A /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C85E561ACBF5260083C50A /* Media.m */; };
-		B3D64CE71B1CB1B000AEABD2 /* facebook_1_2.png in Resources */ = {isa = PBXBuildFile; fileRef = B3D64CE61B1CB1B000AEABD2 /* facebook_1_2.png */; };
 		B3D64CE91B1CBE3700AEABD2 /* test.JPG in Resources */ = {isa = PBXBuildFile; fileRef = B3D64CE81B1CBE3700AEABD2 /* test.JPG */; };
 		B3DDF3461ADC6311009A9CAF /* NewStoryMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DDF3451ADC6311009A9CAF /* NewStoryMainController.m */; };
 		B3FBAABD1AEF7D0900A3A6B4 /* CreateRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FBAABC1AEF7D0900A3A6B4 /* CreateRoomViewController.m */; };
@@ -191,6 +194,8 @@
 		735FE0C31AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveToBottomTransitionAnimator.m; sourceTree = "<group>"; };
 		73825C1B1ADE8B4300D43383 /* SHPathLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHPathLibrary.h; sourceTree = "<group>"; };
 		73825C1C1ADE8B4300D43383 /* SHPathLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHPathLibrary.m; sourceTree = "<group>"; };
+		739BEC4E1B1F013400756770 /* TPSwipableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPSwipableViewController.h; sourceTree = "<group>"; };
+		739BEC4F1B1F013400756770 /* TPSwipableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPSwipableViewController.m; sourceTree = "<group>"; };
 		73A188D11B19A80800E164E0 /* CommentAudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentAudioRecorder.h; sourceTree = "<group>"; };
 		73A188D21B19A80800E164E0 /* CommentAudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentAudioRecorder.m; sourceTree = "<group>"; };
 		73B20BEA1AA5FF0800A9C88F /* BaseHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseHomeViewController.h; sourceTree = "<group>"; };
@@ -227,6 +232,12 @@
 		73B3B3611AA7CA9100FF7578 /* ReadModeContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadModeContainerViewController.m; sourceTree = "<group>"; };
 		73D0C26E1B0F7A1A00BDFA14 /* UIViewTouchUnder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewTouchUnder.h; sourceTree = "<group>"; };
 		73D0C26F1B0F7A1A00BDFA14 /* UIViewTouchUnder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewTouchUnder.m; sourceTree = "<group>"; };
+		73E0BDAB1B1F153400AD540D /* AWPercentDrivenInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWPercentDrivenInteractiveTransition.h; sourceTree = "<group>"; };
+		73E0BDAC1B1F153400AD540D /* AWPercentDrivenInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWPercentDrivenInteractiveTransition.m; sourceTree = "<group>"; };
+		73E0BDAE1B1F159300AD540D /* PanGestureInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanGestureInteractiveTransition.h; sourceTree = "<group>"; };
+		73E0BDAF1B1F159300AD540D /* PanGestureInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanGestureInteractiveTransition.m; sourceTree = "<group>"; };
+		73E0BDB11B1F195D00AD540D /* TPCardAnimatedTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCardAnimatedTransition.h; sourceTree = "<group>"; };
+		73E0BDB21B1F195D00AD540D /* TPCardAnimatedTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPCardAnimatedTransition.m; sourceTree = "<group>"; };
 		73E7EBC11AE57CC8003579CD /* UIRoomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIRoomTableViewCell.h; sourceTree = "<group>"; };
 		73E7EBC21AE57CC8003579CD /* UIRoomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIRoomTableViewCell.m; sourceTree = "<group>"; };
 		B30317FB1ABC2759005EF73D /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Page.h; sourceTree = "<group>"; };
@@ -396,7 +407,6 @@
 		B3C85E531ACBF4C50083C50A /* Audio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Audio.m; sourceTree = "<group>"; };
 		B3C85E551ACBF5260083C50A /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
 		B3C85E561ACBF5260083C50A /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media.m; sourceTree = "<group>"; };
-		B3D64CE61B1CB1B000AEABD2 /* facebook_1_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_1_2.png; sourceTree = "<group>"; };
 		B3D64CE81B1CBE3700AEABD2 /* test.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.JPG; sourceTree = "<group>"; };
 		B3DDF3441ADC6311009A9CAF /* NewStoryMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStoryMainController.h; sourceTree = "<group>"; };
 		B3DDF3451ADC6311009A9CAF /* NewStoryMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStoryMainController.m; sourceTree = "<group>"; };
@@ -465,6 +475,21 @@
 				B3FBAAC81AEFC15A00A3A6B4 /* HomeBubble.m */,
 			);
 			name = Base;
+			sourceTree = "<group>";
+		};
+		739BEC4D1B1F010C00756770 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				739BEC4E1B1F013400756770 /* TPSwipableViewController.h */,
+				739BEC4F1B1F013400756770 /* TPSwipableViewController.m */,
+				73E0BDAB1B1F153400AD540D /* AWPercentDrivenInteractiveTransition.h */,
+				73E0BDAC1B1F153400AD540D /* AWPercentDrivenInteractiveTransition.m */,
+				73E0BDAE1B1F159300AD540D /* PanGestureInteractiveTransition.h */,
+				73E0BDAF1B1F159300AD540D /* PanGestureInteractiveTransition.m */,
+				73E0BDB11B1F195D00AD540D /* TPCardAnimatedTransition.h */,
+				73E0BDB21B1F195D00AD540D /* TPCardAnimatedTransition.m */,
+			);
+			name = Components;
 			sourceTree = "<group>";
 		};
 		73B20BED1AA6097700A9C88F /* Listen */ = {
@@ -670,7 +695,6 @@
 			isa = PBXGroup;
 			children = (
 				B3D64CE81B1CBE3700AEABD2 /* test.JPG */,
-				B3D64CE61B1CB1B000AEABD2 /* facebook_1_2.png */,
 				B33389DA1B1CA5BE003BAC78 /* help-record.pkai */,
 				B33389D41B1C5D61003BAC78 /* help-tap.pkai */,
 				B33389D21B1C5AE3003BAC78 /* help-drag.pkai */,
@@ -927,6 +951,7 @@
 		B3BCCFFA1AA5C84B00261212 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				739BEC4D1B1F010C00756770 /* Components */,
 				B3FBAACA1AEFD57C00A3A6B4 /* Walkthrough */,
 				73559BA71AE2762B00547886 /* Base */,
 				B3065A381AB98AB700C10AD9 /* Account */,
@@ -1174,7 +1199,6 @@
 				B3C470931B10C9A1003231D3 /* tete-sanstete.pkai in Resources */,
 				B3BCCFF91AA5C4CB00261212 /* GTWalsheim Regular.otf in Resources */,
 				73B3B34E1AA7BA3F00FF7578 /* perso-blanc.png in Resources */,
-				B3D64CE71B1CB1B000AEABD2 /* facebook_1_2.png in Resources */,
 				73B3B3521AA7BA3F00FF7578 /* proches-petit.png in Resources */,
 				B3BCCFDC1AA5C36C00261212 /* Main.storyboard in Resources */,
 				B319338A1ADFB2B600603158 /* GTWalsheim Bold.otf in Resources */,
@@ -1259,6 +1283,7 @@
 				B3FBAAD01AEFD64300A3A6B4 /* WalkthroughScreenViewController.m in Sources */,
 				B3065A4B1ABAFD1000C10AD9 /* RoomManager.m in Sources */,
 				73559BA61AE269A200547886 /* WaveSwipeTransitionAnimator.m in Sources */,
+				73E0BDB31B1F195D00AD540D /* TPCardAnimatedTransition.m in Sources */,
 				B3DDF3461ADC6311009A9CAF /* NewStoryMainController.m in Sources */,
 				73B20BF41AA61FC400A9C88F /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				B3BCD0101AA5FDB500261212 /* NameStoryViewController.m in Sources */,
@@ -1269,6 +1294,7 @@
 				73B3B3621AA7CA9100FF7578 /* ReadModeContainerViewController.m in Sources */,
 				B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */,
 				B3065A3B1AB98ACC00C10AD9 /* LoginViewController.m in Sources */,
+				73E0BDAD1B1F153400AD540D /* AWPercentDrivenInteractiveTransition.m in Sources */,
 				73559BA21AE2686000547886 /* RoomNavigationDelegate.m in Sources */,
 				B33618631B09E9150047013C /* SCSiriWaveformView.m in Sources */,
 				7345C23D1B1DDA010099EA58 /* ReadStoryTransitionAnimator.m in Sources */,
@@ -1287,6 +1313,7 @@
 				B3BCD0061AA5F0CE00261212 /* NewStoryViewController.m in Sources */,
 				B3A8D18E1ACED0EC00B09C34 /* ProfileViewController.m in Sources */,
 				B3A8D17D1ACE7A3800B09C34 /* RoomController.m in Sources */,
+				739BEC501B1F013400756770 /* TPSwipableViewController.m in Sources */,
 				B38621F41AE16C7200D2CA5A /* ShowCaseOverlay.m in Sources */,
 				B38B89621ACC146200799EDD /* MediaLibrary.m in Sources */,
 				B3FBAAC01AEF7EA500A3A6B4 /* AddUsersToRoomViewController.m in Sources */,
@@ -1326,6 +1353,7 @@
 				73E7EBC31AE57CC8003579CD /* UIRoomTableViewCell.m in Sources */,
 				B36FF2831B02250B00EF18F2 /* PickerToOrganizerSegue.m in Sources */,
 				B30317FD1ABC2759005EF73D /* Page.m in Sources */,
+				73E0BDB01B1F159300AD540D /* PanGestureInteractiveTransition.m in Sources */,
 				73B20BEC1AA5FF0800A9C88F /* BaseHomeViewController.m in Sources */,
 				B3A8D1841ACEAD0A00B09C34 /* FriendManager.m in Sources */,
 				B336186A1B0A16FC0047013C /* TPLoader.m in Sources */,

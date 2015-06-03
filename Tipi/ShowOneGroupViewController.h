@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SRRecordButton.h"
 #import "Room.h"
 #import "StoryManager.h"
 #import "ReadModeContainerViewController.h"

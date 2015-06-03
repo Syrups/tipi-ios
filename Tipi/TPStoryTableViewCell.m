@@ -19,6 +19,8 @@
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGestureRecognizer:)];
     panGesture.delegate = self;
     [self addGestureRecognizer:panGesture];
+    
+    [self.recordButton appear];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

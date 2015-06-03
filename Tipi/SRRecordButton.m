@@ -239,7 +239,6 @@
     CGContextStrokePath(ctx);
 
     [super drawRect:rect];
-    
 }
 
 - (CGFloat)getAnglePercent {
