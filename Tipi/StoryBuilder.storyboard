@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -497,7 +497,7 @@ plus tard</string>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="1dF-UM-HnX" kind="custom" identifier="ToOrganizer" customClass="PickerToOrganizerSegue" id="17T-PZ-QTr"/>
+                                    <segue destination="UzX-jJ-ocM" kind="push" identifier="ToOrganizer" id="dY5-fO-c46"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fus-Uh-mLW" userLabel="Top">
@@ -577,7 +577,7 @@ plus tard</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sPN-0g-HYP" customClass="WaveBackground">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sPN-0g-HYP" customClass="WaveBackground">
                                 <rect key="frame" x="0.0" y="-20" width="320" height="588"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
@@ -610,11 +610,11 @@ plus tard</string>
                                     <segue destination="6P9-nl-8Du" kind="modal" id="zor-Eg-xaA"/>
                                 </connections>
                             </button>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WTU-6e-ZWF" userLabel="Overlay">
+                            <view alpha="0.0" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WTU-6e-ZWF" userLabel="Overlay">
                                 <rect key="frame" x="0.0" y="-20" width="320" height="588"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Yz5-qh-T2v">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Yz5-qh-T2v">
                                 <rect key="frame" x="0.0" y="-20" width="320" height="588"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ues-Ez-kcj">
@@ -689,7 +689,7 @@ plus tard</string>
                                 <rect key="frame" x="84" y="201" width="150" height="147"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MP3-3I-a5N" userLabel="Top">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MP3-3I-a5N" userLabel="Top">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organiser" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pw-cE-vfN">
@@ -779,45 +779,12 @@ plus tard</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ry7-pQ-Jrq" userLabel="Overlay">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jqh-ES-HBc" customClass="SRRecordButton">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="duration">
-                                        <integer key="value" value="60"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                        <color key="value" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Touchez une photo pour l'ouvrir en mode enregistrement" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRx-Fb-nni">
                                 <rect key="frame" x="40" y="409" width="238" height="113"/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vtt-ei-eqa">
-                                <rect key="frame" x="123" y="247" width="74" height="74"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="74" id="F06-uL-YaS"/>
-                                    <constraint firstAttribute="width" constant="74" id="LbZ-hc-gcH"/>
-                                </constraints>
-                                <state key="normal" image="page-replay-btn">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="replay:" destination="UzX-jJ-ocM" eventType="touchUpInside" id="Qae-WZ-yhO"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mCg-co-lXX" userLabel="CoachMarkSprite">
                                 <rect key="frame" x="85" y="216" width="150" height="147"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -825,43 +792,14 @@ plus tard</string>
                         </subviews>
                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="Jqh-ES-HBc" firstAttribute="leading" secondItem="Swq-LE-DNt" secondAttribute="leadingMargin" constant="-16" id="0AO-NN-sXW"/>
-                            <constraint firstItem="Ry7-pQ-Jrq" firstAttribute="top" secondItem="iep-Zd-f9S" secondAttribute="bottom" constant="-20" id="HyY-zU-wwJ"/>
-                            <constraint firstAttribute="centerY" secondItem="vtt-ei-eqa" secondAttribute="centerY" id="KhQ-Jg-oLW"/>
-                            <constraint firstAttribute="centerX" secondItem="vtt-ei-eqa" secondAttribute="centerX" id="LYV-1j-bkR"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Ry7-pQ-Jrq" secondAttribute="trailing" constant="-16" id="SP0-Pt-UBE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Jqh-ES-HBc" secondAttribute="trailing" constant="-16" id="V45-CH-yvl"/>
-                            <constraint firstItem="Ry7-pQ-Jrq" firstAttribute="leading" secondItem="Swq-LE-DNt" secondAttribute="leadingMargin" constant="-16" id="amD-ph-Lwb"/>
-                            <constraint firstItem="UKV-wh-6dE" firstAttribute="top" secondItem="Jqh-ES-HBc" secondAttribute="bottom" id="eZb-Vo-lcU"/>
-                            <constraint firstItem="Jqh-ES-HBc" firstAttribute="top" secondItem="iep-Zd-f9S" secondAttribute="bottom" constant="-20" id="rhg-1f-6dK"/>
-                            <constraint firstItem="UKV-wh-6dE" firstAttribute="top" secondItem="Ry7-pQ-Jrq" secondAttribute="bottom" id="tPG-Fg-gUF"/>
-                        </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="ESf-Jn-GHy" appends="YES" id="xh3-Ra-zpl"/>
-                            <outletCollection property="gestureRecognizers" destination="fEZ-rh-eZW" appends="YES" id="Zym-PK-mLG"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="NPN-bC-pBy"/>
                     <connections>
                         <outlet property="coachmarkSprite" destination="mCg-co-lXX" id="dko-lw-OVO"/>
                         <outlet property="helpLabel" destination="KRx-Fb-nni" id="sSG-R5-jwt"/>
-                        <outlet property="overlay" destination="Ry7-pQ-Jrq" id="xBO-sE-3Ju"/>
-                        <outlet property="recordTimer" destination="Jqh-ES-HBc" id="wiW-BP-DPy"/>
-                        <outlet property="replayButton" destination="vtt-ei-eqa" id="Ikc-I4-6NU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1H-PC-K7Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="fEZ-rh-eZW">
-                    <connections>
-                        <action selector="handleSwipeBack:" destination="UzX-jJ-ocM" id="zLZ-5N-C3l"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="left" id="ESf-Jn-GHy">
-                    <connections>
-                        <action selector="handleSwipe:" destination="UzX-jJ-ocM" id="LhD-Ie-Xr6"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="5648" y="-1990"/>
         </scene>
@@ -877,27 +815,73 @@ plus tard</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.gif" translatesAutoresizingMaskIntoConstraints="NO" id="som-9j-pRs">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.gif" translatesAutoresizingMaskIntoConstraints="NO" id="som-9j-pRs" userLabel="Image">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAX-g0-2bO" userLabel="Overlay">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MqC-tD-UkB" customClass="SRRecordButton">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                                        <integer key="value" value="60"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dlx-ST-lNN" userLabel="ReplayButton">
+                                <rect key="frame" x="123" y="247" width="74" height="74"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="i1Z-cB-joi"/>
+                                    <constraint firstAttribute="height" constant="74" id="mTX-7m-qb6"/>
+                                </constraints>
+                                <state key="normal" image="page-replay-btn">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="replay:" destination="Qmv-hk-vtP" eventType="touchUpInside" id="jQP-Mk-9NH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="0gF-Pk-Sld" firstAttribute="top" secondItem="MqC-tD-UkB" secondAttribute="bottom" id="64G-Bl-nAS"/>
+                            <constraint firstItem="MqC-tD-UkB" firstAttribute="leading" secondItem="CiJ-Fm-xhD" secondAttribute="leadingMargin" constant="-16" id="CoT-PP-NtK"/>
                             <constraint firstItem="som-9j-pRs" firstAttribute="top" secondItem="CiJ-Fm-xhD" secondAttribute="top" id="DFU-v7-yGw"/>
+                            <constraint firstItem="jAX-g0-2bO" firstAttribute="top" secondItem="7Cc-8f-xyn" secondAttribute="bottom" constant="-20" id="JER-hP-6KL"/>
+                            <constraint firstItem="MqC-tD-UkB" firstAttribute="top" secondItem="7Cc-8f-xyn" secondAttribute="bottom" constant="-20" id="MzE-wk-2sr"/>
                             <constraint firstAttribute="trailing" secondItem="som-9j-pRs" secondAttribute="trailing" id="S9C-6M-sVg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jAX-g0-2bO" secondAttribute="trailing" constant="-16" id="Sby-0o-e0c"/>
+                            <constraint firstAttribute="centerX" secondItem="Dlx-ST-lNN" secondAttribute="centerX" id="iFN-iv-lGv"/>
                             <constraint firstItem="0gF-Pk-Sld" firstAttribute="top" secondItem="som-9j-pRs" secondAttribute="bottom" id="iui-yB-pQi"/>
                             <constraint firstItem="som-9j-pRs" firstAttribute="leading" secondItem="CiJ-Fm-xhD" secondAttribute="leading" id="jnJ-wi-bhM"/>
+                            <constraint firstItem="0gF-Pk-Sld" firstAttribute="top" secondItem="jAX-g0-2bO" secondAttribute="bottom" id="nHc-G7-Bww"/>
+                            <constraint firstAttribute="centerY" secondItem="Dlx-ST-lNN" secondAttribute="centerY" id="obo-jn-0Od"/>
+                            <constraint firstItem="jAX-g0-2bO" firstAttribute="leading" secondItem="CiJ-Fm-xhD" secondAttribute="leadingMargin" constant="-16" id="tlu-Ao-BiC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MqC-tD-UkB" secondAttribute="trailing" constant="-16" id="ywY-uT-4tx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hnk-V6-pLS"/>
                     <connections>
                         <outlet property="imageView" destination="som-9j-pRs" id="UOE-QR-bGS"/>
+                        <outlet property="overlay" destination="jAX-g0-2bO" id="kgc-bg-0ai"/>
+                        <outlet property="recordTimer" destination="MqC-tD-UkB" id="i8i-Qw-0ql"/>
+                        <outlet property="replayButton" destination="Dlx-ST-lNN" id="7x3-pH-ETH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2M7-y8-3lZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5195" y="-1358"/>
+            <point key="canvasLocation" x="5648" y="-1354"/>
         </scene>
         <!--Review Story View Controller-->
         <scene sceneID="XrZ-9e-PHS">
@@ -911,7 +895,7 @@ plus tard</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" tag="10" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Xf-0g-R9F">
+                            <button opaque="NO" tag="10" contentMode="scaleAspectFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Xf-0g-R9F">
                                 <rect key="frame" x="12" y="10" width="50" height="51"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>

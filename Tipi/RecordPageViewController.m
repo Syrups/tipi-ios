@@ -53,6 +53,11 @@
     [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:[self gyroUpdateHandler]];
 }
 
+- (IBAction)replay:(id)sender {
+    // replay on record view controller
+    [self.parentViewController.parentViewController performSelector:@selector(replay:) withObject:nil];
+}
+
 - (void(^)(CMDeviceMotion *gyroData, NSError *error)) gyroUpdateHandler {
     return ^void(CMDeviceMotion* gyroData, NSError* error) {
         

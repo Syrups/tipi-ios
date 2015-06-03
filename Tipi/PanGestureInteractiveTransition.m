@@ -37,12 +37,12 @@
         CGPoint translation = [recognizer translationInView:recognizer.view];
         CGFloat d = translation.x / CGRectGetWidth(recognizer.view.bounds);
         if (!_leftToRightTransition) d *= -1;
-        [self updateInteractiveTransition:d*0.5];
+        [self updateInteractiveTransition:d];
     } else if (recognizer.state >= UIGestureRecognizerStateEnded) {
         if (self.percentComplete > 0.2) {
             [self finishInteractiveTransition];
         } else {
-            [self cancelInteractiveTransition];
+            [self finishInteractiveTransition];
         }
     }
 }

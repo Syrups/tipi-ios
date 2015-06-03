@@ -284,21 +284,24 @@ avec votre voix</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WE9-Ai-sav">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q7n-2T-yeg" customClass="SRRecordButton">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </containerView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                                        <integer key="value" value="60"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="WE9-Ai-sav" secondAttribute="width" id="5Fg-ff-dcF"/>
-                            <constraint firstAttribute="height" secondItem="WE9-Ai-sav" secondAttribute="height" id="MMP-vS-Kw6"/>
-                            <constraint firstAttribute="centerX" secondItem="WE9-Ai-sav" secondAttribute="centerX" id="ek6-g5-mek"/>
-                            <constraint firstAttribute="centerY" secondItem="WE9-Ai-sav" secondAttribute="centerY" id="os9-LI-kK0"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="containerView" destination="WE9-Ai-sav" id="4pd-6w-VP4"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uhJ-Sv-bnn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -485,25 +488,6 @@ avec votre voix</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CH9-4c-Rua" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="570" y="-598"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="8vg-jD-2Xm">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="vY4-hK-FrQ" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="QNa-AS-yJK"/>
-                        <viewControllerLayoutGuide type="bottom" id="pxf-gh-rGB"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="SuC-jA-EXl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zMO-Zf-Uk2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-322" y="-775"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="Vc8-w6-kCo">

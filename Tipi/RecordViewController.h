@@ -12,17 +12,16 @@
 #import "StoryMediaRecorder.h"
 #import "SRRecordButton.h"
 #import "OrganizeStoryViewController.h"
+#import "TPSwipableViewController.h"
 
-@interface RecordViewController : UIViewController <EZMicrophoneDelegate, StoryMediaRecorderDelegate, UIGestureRecognizerDelegate>
+@interface RecordViewController : UIViewController <EZMicrophoneDelegate, StoryMediaRecorderDelegate, UIGestureRecognizerDelegate, TPSwipableViewControllerDelegate>
 
 @property NSUInteger currentIndex;
+@property (strong, nonatomic) TPSwipableViewController* swipablePager;
 @property (strong, nonatomic) OrganizeStoryViewController* organizeViewController;
-@property (strong, nonatomic) IBOutlet SRRecordButton* recordTimer;
 @property (strong, nonatomic) StoryWIPSaver* saver;
 @property (strong, nonatomic) StoryMediaRecorder* recorder;
-@property (strong, nonatomic) IBOutlet UIButton* replayButton;
 @property (strong, nonatomic) UILongPressGestureRecognizer* longPressRecognizer;
-@property (strong, nonatomic) IBOutlet UIView* overlay;
 @property (strong, nonatomic) UIViewController* donePopin;
 @property (strong, nonatomic) UIViewController* namePopin;
 @property (strong, nonatomic) IBOutlet UIImageView* coachmarkSprite;
