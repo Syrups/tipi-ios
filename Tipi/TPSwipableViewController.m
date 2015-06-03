@@ -29,7 +29,7 @@ static CGFloat const kButtonSlotHeight = 44;
 
 @interface TPSwipableViewController ()
 @property (nonatomic, copy, readwrite) NSArray *viewControllers;
-@property (nonatomic, strong) UIView *privateButtonsView;
+//@property (nonatomic, strong) UIView *privateButtonsView;
 @property (nonatomic, strong) UIView *privateContainerView;
 
 @end
@@ -56,14 +56,14 @@ static CGFloat const kButtonSlotHeight = 44;
     self.privateContainerView.backgroundColor = [UIColor blackColor];
     self.privateContainerView.opaque = YES;
     
-    self.privateButtonsView = [[UIView alloc] init];
-    self.privateButtonsView.backgroundColor = [UIColor clearColor];
-    self.privateButtonsView.tintColor = [UIColor colorWithWhite:1 alpha:0.75f];
+    //self.privateButtonsView = [[UIView alloc] init];
+    //self.privateButtonsView.backgroundColor = [UIColor clearColor];
+    //self.privateButtonsView.tintColor = [UIColor colorWithWhite:1 alpha:0.75f];
     
     [self.privateContainerView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.privateButtonsView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    //[self.privateButtonsView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [rootView addSubview:self.privateContainerView];
-    [rootView addSubview:self.privateButtonsView];
+    //[rootView addSubview:self.privateButtonsView];
     
     // Container view fills out entire root view.
     [rootView addConstraint:[NSLayoutConstraint constraintWithItem:self.privateContainerView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
@@ -72,12 +72,11 @@ static CGFloat const kButtonSlotHeight = 44;
     [rootView addConstraint:[NSLayoutConstraint constraintWithItem:self.privateContainerView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
     
     // Place buttons view in the top half, horizontally centered.
-    [rootView addConstraint:[NSLayoutConstraint constraintWithItem:self.privateButtonsView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:[self.viewControllers count] * kButtonSlotWidth]];
+    /*[rootView addConstraint:[NSLayoutConstraint constraintWithItem:self.privateButtonsView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:[self.viewControllers count] * kButtonSlotWidth]];
     [rootView addConstraint:[NSLayoutConstraint constraintWithItem:self.privateButtonsView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.privateContainerView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
     [rootView addConstraint:[NSLayoutConstraint constraintWithItem:self.privateButtonsView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:kButtonSlotHeight]];
-    [rootView addConstraint:[NSLayoutConstraint constraintWithItem:self.privateButtonsView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.privateContainerView attribute:NSLayoutAttributeCenterY multiplier:0.4f constant:0]];
+    [rootView addConstraint:[NSLayoutConstraint constraintWithItem:self.privateButtonsView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.privateContainerView attribute:NSLayoutAttributeCenterY multiplier:0.4f constant:0]];*/
     
-    [self _addChildViewControllerButtons];
     
     __weak typeof(self) wself = self;
     self.defaultInteractionController = [[PanGestureInteractiveTransition alloc]
@@ -116,41 +115,20 @@ static CGFloat const kButtonSlotHeight = 44;
     NSParameterAssert (selectedViewController);
     [self _transitionToChildViewController:selectedViewController];
     _selectedViewController = selectedViewController;
-    [self _updateButtonSelection];
+    //[self _updateButtonSelection];
 }
 
-- (void)_addChildViewControllerButtons {
-    
-    [self.viewControllers enumerateObjectsUsingBlock:^(UIViewController *childViewController, NSUInteger idx, BOOL *stop) {
-        
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        UIImage *icon = [childViewController.tabBarItem.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        [button setImage:icon forState:UIControlStateNormal];
-        UIImage *selectedIcon = [childViewController.tabBarItem.selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        [button setImage:selectedIcon forState:UIControlStateSelected];
-        
-        button.backgroundColor = [UIColor redColor];
-        button.tag = idx;
-        [button addTarget:self action:@selector(_buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [self.privateButtonsView addSubview:button];
-        [button setTranslatesAutoresizingMaskIntoConstraints:NO];
-        
-        [self.privateButtonsView addConstraint:[NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.privateButtonsView attribute:NSLayoutAttributeLeading multiplier:1 constant:(idx + 0.5f) * kButtonSlotWidth]];
-        [self.privateButtonsView addConstraint:[NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.privateButtonsView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
-    }];
-}
-
-- (void)_buttonTapped:(UIButton *)button {
-    UIViewController *selectedViewController = self.viewControllers[button.tag];
+- (void)setSelectedViewControllerViewControllerAtIndex:(NSUInteger)index{
+    UIViewController *selectedViewController = self.viewControllers[index];
     self.selectedViewController = selectedViewController;
 }
 
+/*
 - (void)_updateButtonSelection {
     [self.privateButtonsView.subviews enumerateObjectsUsingBlock:^(UIButton *button, NSUInteger idx, BOOL *stop) {
         button.selected = (self.viewControllers[idx] == self.selectedViewController);
     }];
-}
+}*/
 
 
 - (void)_transitionToChildViewController:(UIViewController *)toViewController {
@@ -211,10 +189,12 @@ static CGFloat const kButtonSlotHeight = 44;
         if ([animator respondsToSelector:@selector (animationEnded:)]) {
             [animator animationEnded:didComplete];
         }
-        self.privateButtonsView.userInteractionEnabled = YES;
+        //self.privateButtonsView.userInteractionEnabled = YES;
     };
     
-    self.privateButtonsView.userInteractionEnabled = NO; // Prevent user tapping buttons mid-transition, messing up state
+    //self.privateButtonsView.userInteractionEnabled = NO;
+    // Prevent user tapping buttons mid-transition, messing up state
+    
     if ([transitionContext isInteractive]) {
         [interactionController startInteractiveTransition:transitionContext];
     } else {
@@ -225,7 +205,7 @@ static CGFloat const kButtonSlotHeight = 44;
 
 - (void)_finishTransitionToChildViewController:(UIViewController *)toViewController {
     _selectedViewController = toViewController;
-    [self _updateButtonSelection];
+    //[self _updateButtonSelection];
 }
 
 - (id<UIViewControllerInteractiveTransitioning>)_interactionControllerForAnimator:(id<UIViewControllerAnimatedTransitioning>)animationController animatorIsDefault:(BOOL)animatorIsDefault {

@@ -21,7 +21,9 @@
 @property (nonatomic, assign) UIViewController *selectedViewController;
 
 @property PanGestureInteractiveTransition *defaultInteractionController;
+
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers;
+- (void)setSelectedViewControllerViewControllerAtIndex:(NSUInteger)index;
 
 @end
 
