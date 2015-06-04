@@ -10,6 +10,7 @@
 		730CFF1D1B0B7D78001045E4 /* CommentsQueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 730CFF1C1B0B7D78001045E4 /* CommentsQueueManager.m */; };
 		730CFF201B0B857A001045E4 /* TPSideCommentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 730CFF1F1B0B857A001045E4 /* TPSideCommentsView.m */; };
 		730CFF231B0BBC52001045E4 /* UICommentSideCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 730CFF221B0BBC52001045E4 /* UICommentSideCell.m */; };
+		7314E6A51B204FC40074BD2B /* suitcase.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7314E6A41B204FC40074BD2B /* suitcase.mp3 */; };
 		7322855D1B0F41CA00481C2B /* FileDownLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7322855C1B0F41CA00481C2B /* FileDownLoader.m */; };
 		7328120B1B03E44300C0087A /* TPStoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7328120A1B03E44300C0087A /* TPStoryTableViewCell.m */; };
 		7338BF791AD2C167005FD5F0 /* SRAnimatedWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7338BF781AD2C167005FD5F0 /* SRAnimatedWaveView.m */; };
@@ -17,8 +18,10 @@
 		73559BA21AE2686000547886 /* RoomNavigationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 73559BA11AE2686000547886 /* RoomNavigationDelegate.m */; };
 		73559BA61AE269A200547886 /* WaveSwipeTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 73559BA51AE269A200547886 /* WaveSwipeTransitionAnimator.m */; };
 		735FE0C41AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 735FE0C31AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m */; };
+		737646591B1F32F500034108 /* RAReorderableLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737646571B1F32F500034108 /* RAReorderableLayout.swift */; };
 		73825C1D1ADE8B4300D43383 /* SHPathLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 73825C1C1ADE8B4300D43383 /* SHPathLibrary.m */; };
 		739BEC501B1F013400756770 /* TPSwipableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 739BEC4F1B1F013400756770 /* TPSwipableViewController.m */; };
+		739FFB801B1F615300FA726F /* TPCircleWaverControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 739FFB7F1B1F615300FA726F /* TPCircleWaverControl.m */; };
 		73A188D31B19A80800E164E0 /* CommentAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A188D21B19A80800E164E0 /* CommentAudioRecorder.m */; };
 		73B20BF01AA609DB00A9C88F /* ShowGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B20BEF1AA609DB00A9C88F /* ShowGroupsViewController.m */; };
 		73B20BF31AA6178200A9C88F /* ShowOneGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B20BF21AA6178200A9C88F /* ShowOneGroupViewController.m */; };
@@ -171,6 +174,7 @@
 		730CFF1F1B0B857A001045E4 /* TPSideCommentsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPSideCommentsView.m; sourceTree = "<group>"; };
 		730CFF211B0BBC52001045E4 /* UICommentSideCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICommentSideCell.h; sourceTree = "<group>"; };
 		730CFF221B0BBC52001045E4 /* UICommentSideCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICommentSideCell.m; sourceTree = "<group>"; };
+		7314E6A41B204FC40074BD2B /* suitcase.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = suitcase.mp3; sourceTree = "<group>"; };
 		7322855B1B0F41CA00481C2B /* FileDownLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownLoader.h; sourceTree = "<group>"; };
 		7322855C1B0F41CA00481C2B /* FileDownLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDownLoader.m; sourceTree = "<group>"; };
 		732812091B03E44300C0087A /* TPStoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPStoryTableViewCell.h; sourceTree = "<group>"; };
@@ -185,10 +189,14 @@
 		73559BA51AE269A200547886 /* WaveSwipeTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveSwipeTransitionAnimator.m; sourceTree = "<group>"; };
 		735FE0C21AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveToBottomTransitionAnimator.h; sourceTree = "<group>"; };
 		735FE0C31AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveToBottomTransitionAnimator.m; sourceTree = "<group>"; };
+		737646571B1F32F500034108 /* RAReorderableLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAReorderableLayout.swift; sourceTree = "<group>"; };
+		737646581B1F32F500034108 /* Swift-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swift-Header.h"; sourceTree = "<group>"; };
 		73825C1B1ADE8B4300D43383 /* SHPathLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHPathLibrary.h; sourceTree = "<group>"; };
 		73825C1C1ADE8B4300D43383 /* SHPathLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHPathLibrary.m; sourceTree = "<group>"; };
 		739BEC4E1B1F013400756770 /* TPSwipableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPSwipableViewController.h; sourceTree = "<group>"; };
 		739BEC4F1B1F013400756770 /* TPSwipableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPSwipableViewController.m; sourceTree = "<group>"; };
+		739FFB7E1B1F615300FA726F /* TPCircleWaverControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCircleWaverControl.h; sourceTree = "<group>"; };
+		739FFB7F1B1F615300FA726F /* TPCircleWaverControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPCircleWaverControl.m; sourceTree = "<group>"; };
 		73A188D11B19A80800E164E0 /* CommentAudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentAudioRecorder.h; sourceTree = "<group>"; };
 		73A188D21B19A80800E164E0 /* CommentAudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentAudioRecorder.m; sourceTree = "<group>"; };
 		73B20BEE1AA609DB00A9C88F /* ShowGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowGroupsViewController.h; sourceTree = "<group>"; };
@@ -443,17 +451,6 @@
 				7345C23C1B1DDA010099EA58 /* ReadStoryTransitionAnimator.m */,
 			);
 			name = Animators;
-			sourceTree = "<group>";
-		};
-		73559BA71AE2762B00547886 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				73B20BEA1AA5FF0800A9C88F /* BaseHomeViewController.h */,
-				73B20BEB1AA5FF0800A9C88F /* BaseHomeViewController.m */,
-				B3FBAAC71AEFC15A00A3A6B4 /* HomeBubble.h */,
-				B3FBAAC81AEFC15A00A3A6B4 /* HomeBubble.m */,
-			);
-			name = Base;
 			sourceTree = "<group>";
 		};
 		739BEC4D1B1F010C00756770 /* Components */ = {
@@ -850,6 +847,7 @@
 		B3BCCFC41AA5C36C00261212 = {
 			isa = PBXGroup;
 			children = (
+				7314E6A41B204FC40074BD2B /* suitcase.mp3 */,
 				B3297F671B0E2CC700249DA0 /* Assets */,
 				B3BCCFCF1AA5C36C00261212 /* Tipi */,
 				B3BCCFE91AA5C36C00261212 /* TipiTests */,
@@ -960,6 +958,8 @@
 				B3BCD0231AA6230100261212 /* Layout */,
 				B38B89641ACC221600799EDD /* SRRecordButton.h */,
 				B38B89651ACC221600799EDD /* SRRecordButton.m */,
+				739FFB7E1B1F615300FA726F /* TPCircleWaverControl.h */,
+				739FFB7F1B1F615300FA726F /* TPCircleWaverControl.m */,
 				7338BF771AD2C167005FD5F0 /* SRAnimatedWaveView.h */,
 				7338BF781AD2C167005FD5F0 /* SRAnimatedWaveView.m */,
 				B399421F1AFBAEBD0040C749 /* SRUnderlinedField.h */,
@@ -995,8 +995,8 @@
 		B3D1B0761B1E496800000C81 /* RAReorderableLayout */ = {
 			isa = PBXGroup;
 			children = (
-				B3D1B0771B1E496800000C81 /* RAReorderableLayout.swift */,
-				B3D1B07A1B1E4B0F00000C81 /* Swift-Header.h */,
+				737646571B1F32F500034108 /* RAReorderableLayout.swift */,
+				737646581B1F32F500034108 /* Swift-Header.h */,
 			);
 			path = RAReorderableLayout;
 			sourceTree = "<group>";
@@ -1171,6 +1171,7 @@
 				73B3B34C1AA7BA3F00FF7578 /* loupe.png in Resources */,
 				B33618671B0A15370047013C /* loader.pkai in Resources */,
 				B319B24B1AF1020800C819BD /* Screen0.xib in Resources */,
+				7314E6A51B204FC40074BD2B /* suitcase.mp3 in Resources */,
 				B3B4DB6B1B15EE7400DE905E /* Screen1.xib in Resources */,
 				B33389D31B1C5AE3003BAC78 /* help-drag.pkai in Resources */,
 				B33389D51B1C5D61003BAC78 /* help-tap.pkai in Resources */,
@@ -1255,6 +1256,7 @@
 				73B3B3621AA7CA9100FF7578 /* ReadModeContainerViewController.m in Sources */,
 				B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */,
 				B3065A3B1AB98ACC00C10AD9 /* LoginViewController.m in Sources */,
+				739FFB801B1F615300FA726F /* TPCircleWaverControl.m in Sources */,
 				73E0BDAD1B1F153400AD540D /* AWPercentDrivenInteractiveTransition.m in Sources */,
 				73559BA21AE2686000547886 /* RoomNavigationDelegate.m in Sources */,
 				B33618631B09E9150047013C /* SCSiriWaveformView.m in Sources */,
@@ -1286,7 +1288,6 @@
 				73B20BF31AA6178200A9C88F /* ShowOneGroupViewController.m in Sources */,
 				B341F04C1AE1A272001D448A /* MediaCell.m in Sources */,
 				B33389D91B1C60DE003BAC78 /* CoachmarkManager.m in Sources */,
-				B3D1B0781B1E496800000C81 /* RAReorderableLayout.swift in Sources */,
 				B3A8D1811ACE8C2F00B09C34 /* FriendListViewController.m in Sources */,
 				B35CDBDA1AB87DD900BF9F82 /* StoryMediaRecorder.m in Sources */,
 				7338BF791AD2C167005FD5F0 /* SRAnimatedWaveView.m in Sources */,
@@ -1313,7 +1314,7 @@
 				B36FF2831B02250B00EF18F2 /* PickerToOrganizerSegue.m in Sources */,
 				B30317FD1ABC2759005EF73D /* Page.m in Sources */,
 				73E0BDB01B1F159300AD540D /* PanGestureInteractiveTransition.m in Sources */,
-				73B20BEC1AA5FF0800A9C88F /* BaseHomeViewController.m in Sources */,
+				737646591B1F32F500034108 /* RAReorderableLayout.swift in Sources */,
 				B3A8D1841ACEAD0A00B09C34 /* FriendManager.m in Sources */,
 				B336186A1B0A16FC0047013C /* TPLoader.m in Sources */,
 				B38621FA1AE16DC200D2CA5A /* ShowCaseableViewController.m in Sources */,

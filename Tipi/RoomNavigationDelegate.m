@@ -13,6 +13,7 @@
 #import "WaveToBottomTransitionAnimator.h"
 #import "FilterViewController.h"
 #import "ReadModeContainerViewController.h"
+#import "CreateRoomViewController.h"
 
 #import "ReadStoryTransitionAnimator.h"
 

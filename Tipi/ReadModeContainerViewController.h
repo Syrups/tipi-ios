@@ -19,12 +19,11 @@
 @import AVFoundation;
 @import AudioToolbox;
 
-@interface ReadModeContainerViewController : UIViewController<UIPageViewControllerDataSource,UIPageViewControllerDelegate,TPSwipableViewControllerDelegate, ReadModeViewDelegate, StoryFetcherDelegate, EZMicrophoneDelegate, EZAudioFileDelegate>
+@interface ReadModeContainerViewController : UIViewController<TPSwipableViewControllerDelegate, ReadModeViewDelegate, StoryFetcherDelegate, EZMicrophoneDelegate, EZAudioFileDelegate>
 
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, assign) NSUInteger loadedPagesCount;
 
-@property (nonatomic, strong) UIPageViewController *pager;
 @property (nonatomic, strong) TPSwipableViewController *swiper;
 
 //@property (nonatomic) ReadModeViewController *currentPageViewController;

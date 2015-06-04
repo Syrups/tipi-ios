@@ -13,9 +13,8 @@
 #import "MediaLibrary.h"
 
 @interface SandboxViewController : UIViewController
+@property (nonatomic, strong) AVAudioPlayer *audioPlayer;
+@property (nonatomic, strong) AVPlayer *sandbPlayer;
 
-@property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
-@property (strong, nonatomic) NSArray* photos;
-@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @end
