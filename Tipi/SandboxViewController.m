@@ -10,6 +10,10 @@
 #import "PKAIDecoder.h"
 #import "TPSwipableViewController.h"
 
+#import "TPCircleWaverControl.h"
+@import AVFoundation;
+@import AVKit;
+
 @implementation SandboxViewController {
     CGFloat lastValue;
 }

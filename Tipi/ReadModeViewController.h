@@ -16,6 +16,7 @@
 #import "StoryWIPSaver.h"
 #import "StoryMediaRecorder.h"
 #import "CommentAudioRecorder.h"
+#import "SRRecordButton.h"
 
 @interface ReadModeViewController : UIViewController<FileUploaderDelegate, TPSideCommentsDelegate>
 @property (nonatomic) int idx;
@@ -28,7 +29,8 @@
 @property (weak, nonatomic) IBOutlet UIImage *mediaImage;
 @property (weak, nonatomic) IBOutlet UIImageView *mediaImageView;
 @property (weak, nonatomic) IBOutlet UIView *overlayView;
-@property (weak, nonatomic) IBOutlet UIButton *playerView;
+
+@property (weak, nonatomic) IBOutlet SRRecordButton *playerView;
 
 @property (strong, nonatomic) CommentsQueueManager *commentsQueueManager;
 @property (strong, nonatomic) StoryWIPSaver* saver;

@@ -57,7 +57,8 @@ typedef void(^fadeOutCompletion)(BOOL);
     // Recording
     self.commentRecorder = [[CommentAudioRecorder alloc] init];
     self.commentRecorder.delegate = self;
-
+    
+    [self.playerView appear];
 }
 
 

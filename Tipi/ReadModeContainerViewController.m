@@ -32,17 +32,13 @@
     // Mock
     self.mPages  = @[];
     
-    // Page
-    self.pager = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-    self.pager.dataSource = self;
-    self.pager.delegate = self;
     
     // Managers
     StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
     [manager fetchStoryWithId:self.storyId];
 }
 
-// Factory method
+#pragma mark - Factory methods
 - (UIViewController *)viewControllerAtIndex:(int)i {
     // Asking for a page that is out of bounds??
     if (i<0) {
@@ -64,26 +60,26 @@
 }
 
 
-#pragma mark - UIPageViewController
-/*
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
-    ReadModeViewController *p = (ReadModeViewController *)viewController;
-    return [self viewControllerAtIndex:(p.idx - 1)];
+- (NSArray *)readmodeControllersWithPages:(NSArray*)pages {
+    
+    NSMutableArray *childViewControllers = [[NSMutableArray alloc] initWithCapacity:[pages count]];
+    
+    for (int i = 0; i < [pages count]; i++) {
+        [childViewControllers addObject:[self viewControllerAtIndex:i]];
+    }
+    
+    return childViewControllers;
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
-    ReadModeViewController *p = (ReadModeViewController *)viewController;
-    return [self viewControllerAtIndex:(p.idx + 1)];
-}
-
--(void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed{
-    [self.currentPageViewController pauseSound];
-    self.currentPageViewController = (ReadModeViewController*)[self.pager.viewControllers objectAtIndex:0];
-}*/
 
 #pragma mark - TPSwipableViewController
 
 - (void)swipableViewController:(TPSwipableViewController *)containerViewController didFinishedTransitionToViewController:(UIViewController *)viewController{
+    ReadModeViewController *currentController = (ReadModeViewController *)viewController;
+    
+    if(currentController.player.isPlaying){
+        [currentController pauseSound];
+    }
 }
 
 - (void)swipableViewController:(TPSwipableViewController *)containerViewController didSelectViewController:(UIViewController *)viewController{
@@ -96,57 +92,24 @@
     
     [self loadMediaAndAudioInPages:self.mPages withCompletion:^{
    
-        
-        //Pager
-        // Start at the first page of the array?
-        /*int initialIndex = 0;
-        
-        // Assuming you have a SomePageViewController which extends UIViewController so you can do custom things.
-        self.currentPageViewController = (ReadModeViewController *)[self viewControllerAtIndex:initialIndex];
-        
-        NSArray *initialViewControllers = [NSArray arrayWithObject:self.currentPageViewController];
-        
-        // animated:NO is important so the view just pops into existence.
-        // direction: doesn't matter because it's not animating in.
-        [self.pager setViewControllers:initialViewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-        [self.pager willMoveToParentViewController:self];
-        [self addChildViewController:self.pager];
-        [self.view addSubview:self.pager.view];
-        [self.view sendSubviewToBack:self.pager.view];
-    
-        [self.pager didMoveToParentViewController:self];*/
-        
-       
-        
         //Swiper
         NSArray *childViewControllers = [self readmodeControllersWithPages:self.mPages];
         self.swiper = [[TPSwipableViewController alloc] initWithViewControllers:childViewControllers];
         self.swiper.view.frame = self.view.frame;
+        self.swiper.delegate = self;
+        
         [self.swiper willMoveToParentViewController:self];
         [self addChildViewController:self.swiper];
-        [self.view addSubview:self.pager.view];
-        [self.view sendSubviewToBack:self.pager.view];
+        [self.view addSubview:self.swiper.view];
+        [self.view sendSubviewToBack:self.swiper.view];
     
         [self.swiper didMoveToParentViewController:self];
         
+        self.edgesForExtendedLayout = UIRectEdgeNone;
         
-         self.edgesForExtendedLayout = UIRectEdgeNone;
-        
-         [self.delegate readModeContainerViewController:self didFinishedLoadingStory:self.story];
+        [self.delegate readModeContainerViewController:self didFinishedLoadingStory:self.story];
     }];
 }
-
-- (NSArray *)readmodeControllersWithPages:(NSArray*)pages {
-    
-    NSMutableArray *childViewControllers = [[NSMutableArray alloc] initWithCapacity:[pages count]];
-    
-    for (int i = 0; i < [pages count]; i++) {
-        [childViewControllers addObject:[self viewControllerAtIndex:i]];
-    }
-    
-    return childViewControllers;
-}
-
 
 - (void)storyManager:(StoryManager *)manager failedToFetchStoryWithId:(NSUInteger)id{
     
@@ -181,6 +144,7 @@
 }
 
 - (void)loadMediaWithURL:(NSURL*)url withCompletion:(void(^)())completion{
+    NSLog(@"loadMediaWithURL %@",url);
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
     [manager downloadImageWithURL:url
                           options:0
