@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -549,7 +549,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gcr-vA-Vul" userLabel="FilterButton">
-                                        <rect key="frame" x="275" y="26" width="45" height="41"/>
+                                        <rect key="frame" x="270" y="26" width="45" height="41"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="Gps-eG-Fwx"/>
                                             <constraint firstAttribute="height" constant="41" id="zjY-hq-rhm"/>
@@ -562,7 +562,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iw4-K6-JMw" userLabel="BackButton">
-                                        <rect key="frame" x="8" y="23" width="40" height="40"/>
+                                        <rect key="frame" x="18" y="23" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Np1-GG-S7P"/>
                                             <constraint firstAttribute="width" constant="40" id="SYI-XK-uTl"/>
@@ -577,11 +577,11 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="67" id="E4i-ZD-eXg"/>
                                     <constraint firstItem="Iw4-K6-JMw" firstAttribute="centerY" secondItem="zjU-3A-GHW" secondAttribute="centerY" constant="-3" id="EBu-wK-apW"/>
-                                    <constraint firstItem="Iw4-K6-JMw" firstAttribute="leading" secondItem="iMr-xz-Sbo" secondAttribute="leading" constant="8" id="eCe-nw-6JH"/>
+                                    <constraint firstItem="Iw4-K6-JMw" firstAttribute="leading" secondItem="iMr-xz-Sbo" secondAttribute="leading" constant="18" id="eCe-nw-6JH"/>
                                     <constraint firstItem="Iw4-K6-JMw" firstAttribute="centerY" secondItem="Gcr-vA-Vul" secondAttribute="centerY" constant="-3.5" id="h38-kT-9vH"/>
                                     <constraint firstAttribute="centerY" secondItem="Iw4-K6-JMw" secondAttribute="centerY" constant="-9.5" id="hnq-LS-YaL"/>
                                     <constraint firstAttribute="centerX" secondItem="zjU-3A-GHW" secondAttribute="centerX" id="r0p-QT-oye"/>
-                                    <constraint firstAttribute="trailing" secondItem="Gcr-vA-Vul" secondAttribute="trailing" id="sFL-fM-POy"/>
+                                    <constraint firstAttribute="trailing" secondItem="Gcr-vA-Vul" secondAttribute="trailing" constant="5" id="sFL-fM-POy"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1228,7 +1228,6 @@
         <image name="btn-filter" width="42" height="39"/>
         <image name="croix-noire.png" width="26" height="27"/>
         <image name="go-right.png" width="23" height="22"/>
-        <image name="pause.png" width="28" height="32"/>
         <image name="picto-fire-a" width="84" height="84"/>
         <image name="placeholder.gif" width="1000" height="1000"/>
     </resources>

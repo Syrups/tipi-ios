@@ -194,7 +194,7 @@ public class RAReorderableLayout: UICollectionViewFlowLayout, UIGestureRecognize
         var attributesArray = super.layoutAttributesForElementsInRect(rect)
         if attributesArray != nil {
             for attribute in attributesArray! {
-                var layoutAttribute = attribute as! UICollectionViewLayoutAttributes
+                var layoutAttribute = attribute as UICollectionViewLayoutAttributes
                 if layoutAttribute.representedElementCategory == .Cell {
                     if layoutAttribute.indexPath.isEqual(self.cellFakeView?.indexPath) {
                         var cellAlpha: CGFloat = 0
@@ -215,7 +215,7 @@ public class RAReorderableLayout: UICollectionViewFlowLayout, UIGestureRecognize
     override public func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         
         let collectionViewSize = self.collectionView!.frame.size
-        var proposedContentOffsetCenterX = proposedContentOffset.x + collectionViewSize.width * 0.5
+        var proposedContentOffsetCenterX = proposedContentOffset.x
         
         var proposedRect = self.collectionView?.bounds
         
@@ -223,15 +223,15 @@ public class RAReorderableLayout: UICollectionViewFlowLayout, UIGestureRecognize
         
         if let attributes = self.layoutAttributesForElementsInRect(proposedRect!) {
             for object in attributes {
-                let attributes:UICollectionViewLayoutAttributes = object as! UICollectionViewLayoutAttributes
+                let attributes:UICollectionViewLayoutAttributes = object as UICollectionViewLayoutAttributes
                 
-                if (abs(attributes.center.x - proposedContentOffsetCenterX) < abs(candidateAttributes.center.x - proposedContentOffsetCenterX)) {
+                if (abs(attributes.frame.origin.x - proposedContentOffsetCenterX) < abs(candidateAttributes.frame.origin.x - proposedContentOffsetCenterX)) {
                     candidateAttributes = attributes;
                 }
             }
         }
         
-        return CGPointMake(candidateAttributes.center.x - collectionViewSize.width * 0.5, proposedContentOffset.y)
+        return CGPointMake(candidateAttributes.frame.origin.x - 15, proposedContentOffset.y)
     }
     
     override public func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {

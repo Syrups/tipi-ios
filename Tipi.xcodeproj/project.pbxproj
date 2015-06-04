@@ -18,7 +18,6 @@
 		73559BA21AE2686000547886 /* RoomNavigationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 73559BA11AE2686000547886 /* RoomNavigationDelegate.m */; };
 		73559BA61AE269A200547886 /* WaveSwipeTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 73559BA51AE269A200547886 /* WaveSwipeTransitionAnimator.m */; };
 		735FE0C41AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 735FE0C31AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m */; };
-		737646591B1F32F500034108 /* RAReorderableLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737646571B1F32F500034108 /* RAReorderableLayout.swift */; };
 		73825C1D1ADE8B4300D43383 /* SHPathLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 73825C1C1ADE8B4300D43383 /* SHPathLibrary.m */; };
 		739BEC501B1F013400756770 /* TPSwipableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 739BEC4F1B1F013400756770 /* TPSwipableViewController.m */; };
 		739FFB801B1F615300FA726F /* TPCircleWaverControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 739FFB7F1B1F615300FA726F /* TPCircleWaverControl.m */; };
@@ -94,6 +93,7 @@
 		B34FEE971AEAB7A200A7E57B /* HelpModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34FEE961AEAB7A200A7E57B /* HelpModalViewController.m */; };
 		B35279361B2058290023C42C /* AVAudioPlayer+AVAudioPlayer_Fading.m in Sources */ = {isa = PBXBuildFile; fileRef = B35279351B2058290023C42C /* AVAudioPlayer+AVAudioPlayer_Fading.m */; };
 		B35279391B2097A40023C42C /* TPTiltingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B35279381B2097A40023C42C /* TPTiltingImageView.m */; };
+		B352793C1B20CF140023C42C /* TPAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = B352793B1B20CF140023C42C /* TPAlert.m */; };
 		B35975F21ADFA29F00936E5E /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B35975F11ADFA29F00936E5E /* ImageUtils.m */; };
 		B35AD0391ABF2B6600527C0D /* ReviewStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD0381ABF2B6600527C0D /* ReviewStoryViewController.m */; };
 		B35AD03C1ABF2D2500527C0D /* ReviewPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD03B1ABF2D2500527C0D /* ReviewPageViewController.m */; };
@@ -193,8 +193,6 @@
 		73559BA51AE269A200547886 /* WaveSwipeTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveSwipeTransitionAnimator.m; sourceTree = "<group>"; };
 		735FE0C21AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveToBottomTransitionAnimator.h; sourceTree = "<group>"; };
 		735FE0C31AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveToBottomTransitionAnimator.m; sourceTree = "<group>"; };
-		737646571B1F32F500034108 /* RAReorderableLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAReorderableLayout.swift; sourceTree = "<group>"; };
-		737646581B1F32F500034108 /* Swift-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swift-Header.h"; sourceTree = "<group>"; };
 		73825C1B1ADE8B4300D43383 /* SHPathLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHPathLibrary.h; sourceTree = "<group>"; };
 		73825C1C1ADE8B4300D43383 /* SHPathLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHPathLibrary.m; sourceTree = "<group>"; };
 		739BEC4E1B1F013400756770 /* TPSwipableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPSwipableViewController.h; sourceTree = "<group>"; };
@@ -314,6 +312,8 @@
 		B35279351B2058290023C42C /* AVAudioPlayer+AVAudioPlayer_Fading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AVAudioPlayer+AVAudioPlayer_Fading.m"; sourceTree = "<group>"; };
 		B35279371B2097A40023C42C /* TPTiltingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTiltingImageView.h; sourceTree = "<group>"; };
 		B35279381B2097A40023C42C /* TPTiltingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTiltingImageView.m; sourceTree = "<group>"; };
+		B352793A1B20CF140023C42C /* TPAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPAlert.h; sourceTree = "<group>"; };
+		B352793B1B20CF140023C42C /* TPAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPAlert.m; sourceTree = "<group>"; };
 		B35975F01ADFA29F00936E5E /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
 		B35975F11ADFA29F00936E5E /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
 		B35AD0371ABF2B6600527C0D /* ReviewStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewStoryViewController.h; sourceTree = "<group>"; };
@@ -468,8 +468,6 @@
 		739BEC4D1B1F010C00756770 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				B35279371B2097A40023C42C /* TPTiltingImageView.h */,
-				B35279381B2097A40023C42C /* TPTiltingImageView.m */,
 				739BEC4E1B1F013400756770 /* TPSwipableViewController.h */,
 				739BEC4F1B1F013400756770 /* TPSwipableViewController.m */,
 				73E0BDAB1B1F153400AD540D /* AWPercentDrivenInteractiveTransition.h */,
@@ -993,6 +991,10 @@
 				B33618691B0A16FC0047013C /* TPLoader.m */,
 				730CFF1E1B0B857A001045E4 /* TPSideCommentsView.h */,
 				730CFF1F1B0B857A001045E4 /* TPSideCommentsView.m */,
+				B35279371B2097A40023C42C /* TPTiltingImageView.h */,
+				B35279381B2097A40023C42C /* TPTiltingImageView.m */,
+				B352793A1B20CF140023C42C /* TPAlert.h */,
+				B352793B1B20CF140023C42C /* TPAlert.m */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -1334,6 +1336,7 @@
 				B3065A541ABB35D700C10AD9 /* SignUpViewController.m in Sources */,
 				7328120B1B03E44300C0087A /* TPStoryTableViewCell.m in Sources */,
 				73A188D31B19A80800E164E0 /* CommentAudioRecorder.m in Sources */,
+				B352793C1B20CF140023C42C /* TPAlert.m in Sources */,
 				73825C1D1ADE8B4300D43383 /* SHPathLibrary.m in Sources */,
 				B3BCCFD31AA5C36C00261212 /* main.m in Sources */,
 				B3C2E5C61AD32A1B00868DA4 /* WaveBackground.m in Sources */,

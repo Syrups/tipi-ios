@@ -12,6 +12,7 @@
 
 @implementation NotificationListViewController {
     NSUInteger lastIndex;
+    TPAlert* alert;
 }
 
 - (void)viewDidLoad {
@@ -47,6 +48,10 @@
 
 - (void)userManager:(UserManager *)manager failedToFetchInvitationsWithError:(NSError *)error {
     // TODO
+//    alert = [TPAlert displayOnController:self.parentViewController.parentViewController withMessage:@"Impossible de charger les dernières notifications" delegate:nil];
+    [UIView animateWithDuration:.2f animations:^{
+        self.errorLabel.alpha = 1;
+    }];
 }
 
 #pragma mark - RoomJoiner
@@ -58,6 +63,8 @@
 
 - (void)roomManager:(RoomManager *)manager failedToJoinRoomWithError:(NSError *)error {
     // TODO
+    
+    alert = [TPAlert displayOnController:self.parentViewController.parentViewController withMessage:@"Une erreur est survenue, merci de réessayer plus tard" delegate:self];
 }
 
 #pragma mark - UITableView

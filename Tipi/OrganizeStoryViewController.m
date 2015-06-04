@@ -39,6 +39,8 @@
     
     [self loadFullImages];
     
+    self.view.alpha = .5f;
+    
 }
 
 - (void)loadFullImages {
@@ -50,9 +52,15 @@
     [self.saver.medias enumerateObjectsUsingBlock:^(NSMutableDictionary* media, NSUInteger idx, BOOL *stop) {
         
 //        if (idx < 4) {
-            ALAsset* asset = (ALAsset*)[media objectForKey:@"asset"];
-            UIImage* full = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
-            [media setObject:full forKey:@"full"];
+        ALAsset* asset = (ALAsset*)[media objectForKey:@"asset"];
+        UIImage* full = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
+        
+        // reduce image if it's too big
+        if (full.size.width > 1500) {
+            full = [ImageUtils scaleImage:full toSize:CGSizeMake(full.size.width/2, full.size.height/2) mirrored:NO];
+        }
+        
+        [media setObject:full forKey:@"full"];
 //        }
         
     }];
@@ -188,7 +196,7 @@
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 15;
+    return 5;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
@@ -224,6 +232,17 @@
 
 - (void)collectionView:(UICollectionView *)collectionView collectionViewLayout:(RAReorderableLayout *)layout didEndDraggingItemToIndexPath:(NSIndexPath *)indexPath {
     [self centerCollectionView];
+    [UIView animateWithDuration:.2f animations:^{
+        [[(RecordViewController*)self.parentViewController currentPage].overlay setAlpha:0];
+        self.view.alpha = .5f;
+    }];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView collectionViewLayout:(RAReorderableLayout *)layout didBeginDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
+    [UIView animateWithDuration:.2f animations:^{
+        [[(RecordViewController*)self.parentViewController currentPage].overlay setAlpha:.7f];
+        self.view.alpha = 1;
+    }];
 }
 
 #pragma mark - UIGestureRecognizer
@@ -238,6 +257,7 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.view.alpha = 1;
         CGPoint point = CGPointMake(self.collectionView.contentOffset.x + self.collectionView.frame.size.width/2, self.collectionView.frame.size.height/2);
         NSIndexPath* indexPath = [self.collectionView indexPathForItemAtPoint:point];
         UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:indexPath];
@@ -245,6 +265,12 @@
         cell.layer.zPosition = 0;
 //        cell.alpha = INACTIVE_CELL_OPACITY;
     } completion:nil];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [UIView animateWithDuration:.2f animations:^{
+        self.view.alpha = .5f;
+    }];
 }
 
 #pragma mark - Navigation

@@ -82,10 +82,6 @@
 #pragma mark - MediaLibrary
 
 - (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedias:(NSArray *)medias {
-    
-    ALAsset* asset = [(NSDictionary*)[medias objectAtIndex:0] objectForKey:@"asset"];
-    UIImage* image = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
-    [self.wave updateImage:[ImageUtils convertImageToGrayScale:image]];
 
     // reverse array
     NSMutableArray *reversed = [NSMutableArray arrayWithCapacity:[medias count]];

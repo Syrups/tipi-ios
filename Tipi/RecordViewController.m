@@ -14,6 +14,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <CoreMotion/CoreMotion.h>
 #import "AVAudioPlayer+AVAudioPlayer_Fading.h"
+#import "ImageUtils.h"
 
 @implementation RecordViewController
 
@@ -107,10 +108,10 @@
             [current.view bringSubviewToFront:current.recordTimer];
         }
         
-        [UIView animateWithDuration:.2f animations:^{
+        [UIView animateWithDuration:.3f animations:^{
             current.overlay.alpha = .6f;
-            self.organizerContainerYConstraint.constant = -100;
-            self.organizerContainerView.alpha = .4f;
+//            self.organizerContainerYConstraint.constant = -100;
+            self.organizerContainerView.alpha = 0;
         }];
     }
     if (recognizer.state == UIGestureRecognizerStateEnded) {
@@ -134,9 +135,9 @@
             [self openDonePopin];
         }
         
-        [UIView animateWithDuration:.2f animations:^{
+        [UIView animateWithDuration:.3f animations:^{
             current.overlay.alpha = 0;
-            self.organizerContainerYConstraint.constant = 0;
+//            self.organizerContainerYConstraint.constant = 0;
             self.organizerContainerView.alpha = 1;
         }];
         
@@ -216,7 +217,8 @@
             [page.moviePlayer play];
         }];
         
-        page.image = [(NSDictionary*)[self.saver.medias objectAtIndex:index] objectForKey:@"full"];
+        UIImage* full = [(NSDictionary*)[self.saver.medias objectAtIndex:index] objectForKey:@"full"];
+        page.image = full;
         
         
         AVPlayerLayer* playerLayer = [AVPlayerLayer playerLayerWithPlayer:page.moviePlayer];
@@ -289,6 +291,8 @@
 #pragma mark - Helpers
 
 - (RecordPageViewController*)currentPage {
+    if (self.currentIndex >= self.swipablePager.viewControllers.count)
+        return nil;
     return (RecordPageViewController*)self.swipablePager.viewControllers[self.currentIndex];
 }
 

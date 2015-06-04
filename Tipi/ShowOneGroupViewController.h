@@ -11,10 +11,11 @@
 #import "Room.h"
 #import "StoryManager.h"
 #import "ReadModeContainerViewController.h"
+#import "TPAlert.h"
 
 @import AVFoundation;
 
-@interface ShowOneGroupViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate,StoryFetcherDelegate, ReadModeContainerDelegate>
+@interface ShowOneGroupViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate,StoryFetcherDelegate, ReadModeContainerDelegate, TPAlertDelegate>
 
 //@property (nonatomic) NSUInteger roomId;
 @property (strong, nonatomic) Room* room;

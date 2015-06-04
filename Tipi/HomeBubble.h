@@ -11,11 +11,13 @@
 @interface HomeBubble : UIView
 
 @property BOOL expanded;
+@property BOOL stuckTop;
 
 - (void)appear;
 - (void)expand;
 - (void)reduceWithCompletion:(void(^)())completionBlock backgroundFading:(BOOL)fading;
 - (void)expandWithCompletion:(void(^)())completionBlock backgroundFading:(BOOL)fading;
 - (void)stickTopTopWithCompletion:(void(^)())completionBlock;
+- (void)replaceImageLayerWithLayer:(CALayer*)layer;
 
 @end

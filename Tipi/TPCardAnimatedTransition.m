@@ -20,7 +20,7 @@ static CGFloat const kDamping = 0.75;
 static CGFloat const kInitialSpringVelocity = 0.5;
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
-    return .6f;
+    return .4f;
 }
 
 /// Slide views horizontally, with a bit of space between, while fading out and in.

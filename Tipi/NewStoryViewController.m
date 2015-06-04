@@ -13,6 +13,7 @@
 #import "ImageUtils.h"
 #import "SHPathLibrary.h"
 #import "AnimationLibrary.h"
+#import "TPLoader.h"
 #import "TPTiltingImageView.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
@@ -71,7 +72,7 @@
     self.titleLabel.attributedText = attrString;
 }
 
-- (void)reloadBackgroundImage {
+- (IBAction)reloadBackgroundImage {
     
     if (self.randomMedias == nil) return;
 
@@ -84,7 +85,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             TPTiltingImageView* imageView = [[TPTiltingImageView alloc] initWithFrame:self.view.frame andImage:full];
             imageView.layer.opacity = .15f;
-            [self.bubble.layer addSublayer:imageView.layer];
+            [self.bubble replaceImageLayerWithLayer:imageView.layer];
             
             [self.view sendSubviewToBack:self.bubble];
             
@@ -124,6 +125,22 @@
     
     [self.bubble stickTopTopWithCompletion:^{
         UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"StoryBuilder"];
+        UINavigationController* storyBuilderNav = [self.storyboard instantiateViewControllerWithIdentifier:@"StoryBuilderNav"];
+        UIViewController* picker = [self.storyboard instantiateViewControllerWithIdentifier:@"MediaPicker"];
+        
+        [vc addChildViewController:storyBuilderNav];
+        storyBuilderNav.view.frame = vc.view.frame;
+        [vc.view addSubview:storyBuilderNav.view];
+        [vc.view sendSubviewToBack:storyBuilderNav.view];
+        [storyBuilderNav didMoveToParentViewController:vc];
+        
+        
+//
+        [storyBuilderNav setViewControllers:@[picker]];
+//
+
+//        [picker.view sendSubviewToBack:self.bubble];
+//
         [self.navigationController pushViewController:vc animated:NO];
     }];
 

@@ -13,6 +13,7 @@
 
 @implementation HomeBubble {
     CAShapeLayer* shapeLayer;
+    CALayer* imageLayer;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
@@ -179,7 +180,7 @@
     }];
     
     CABasicAnimation* morph = [CABasicAnimation animationWithKeyPath:@"path"];
-    morph.duration = 0.2f;
+    morph.duration = 0.3f;
     morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     
     CGPathRef from = shapeLayer.path;
@@ -202,7 +203,7 @@
     
     CABasicAnimation* morph = [CABasicAnimation animationWithKeyPath:@"path"];
     morph.duration = 0.3f;
-    morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     
     CGPathRef from = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame bumpDelta:-90].CGPath;
     CGPathRef to = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame bumpDelta:0].CGPath;
@@ -216,8 +217,19 @@
     [CATransaction commit];
 }
 
+- (void)replaceImageLayerWithLayer:(CALayer *)layer {
+    [imageLayer removeFromSuperlayer];
+    imageLayer = layer;
+    [self.layer addSublayer:imageLayer];
+}
+
 - (void)drawRect:(CGRect)rect {
     CGPathRef path = [SHPathLibrary pathForHomeBubbleInRect:self.frame open:self.expanded].CGPath;
+    
+    if (self.stuckTop) {
+        path = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame bumpDelta:0].CGPath;
+    }
+    
     CAShapeLayer* layer = [CAShapeLayer layer];
     layer.path = CGPathCreateCopy(path);
     self.layer.mask = layer;

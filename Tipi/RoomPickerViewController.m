@@ -22,6 +22,7 @@
     NSUInteger uploadedMediasCount;
     CAGradientLayer* maskLayer;
     TPLoader* loader;
+    TPAlert* alert;
 }
 
 - (void)viewDidLoad {
@@ -109,6 +110,7 @@
 
 - (void)fileUploader:(FileUploader *)uploader failedToUploadFileOfType:(NSString *)type toPath:(NSString *)path {
     // TODO
+    alert = [TPAlert displayOnController:self withMessage:@"Impossible de créer l'histoire, vérifiez votre connexion" delegate:self];
 }
 
 #pragma mark - RoomFetcherDelegate
@@ -128,7 +130,8 @@
 
 - (void)roomManager:(RoomManager *)manager failedToFetchRooms:(NSError *)error {
     // error
-    ErrorAlert(@"Impossible de charger les feux de camp.");
+    alert = [TPAlert displayOnController:self withMessage:@"Impossible de charger les feux de camp, vérifiez votre connexion" delegate:self];
+    [loader removeFromSuperview];
 }
 
 #pragma mark - StoryCreatorDelegate
@@ -152,6 +155,9 @@
 
 - (void)storyManager:(StoryManager *)manager failedToCreateStory:(NSError *)error {
     NSLog(@"%@", error);
+    
+    alert = [TPAlert displayOnController:self withMessage:@"Impossible de créer l'histoire, vérifiez votre connexion" delegate:self];
+    [loader removeFromSuperview];
 }
 
 #pragma mark - Modal

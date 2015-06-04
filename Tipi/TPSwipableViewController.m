@@ -131,7 +131,11 @@ static CGFloat const kButtonSlotHeight = 44;
     [viewControllers insertObject:viewController atIndex:newIndex];
     
     for (int i = 0 ; i < viewControllers.count ; i++) {
-        [(CardViewController*)[viewControllers objectAtIndex:i] setPageIndex:i];
+        CardViewController* vc = (CardViewController*)[viewControllers objectAtIndex:i];
+        [vc setPageIndex:i];
+        
+        if (i != viewControllers.count - 1)
+            [vc setNext:(CardViewController*)[viewControllers objectAtIndex:i+1]];
     }
     
     self.viewControllers = [viewControllers copy];

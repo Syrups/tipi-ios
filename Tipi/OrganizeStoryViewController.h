@@ -12,7 +12,7 @@
 #import "OrganizerWave.h"
 #import "Tipi-Swift.h"
 
-#define CELL_SIZE 120
+#define CELL_SIZE 130
 #define INACTIVE_CELL_OPACITY 0.3f
 #define ACTIVE_CELL_ROTATION 0.05f
 
