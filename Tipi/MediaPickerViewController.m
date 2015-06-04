@@ -36,10 +36,10 @@
     self.topControlsYConstraint.constant = -100;
     self.continueButtonYConstraint.constant = -200;
     [self.view layoutIfNeeded];
-    [UIView animateWithDuration:.3f animations:^{
+    [UIView animateWithDuration:.4f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.topControlsYConstraint.constant = 0;
         [self.view layoutIfNeeded];
-    }];
+    } completion:nil];
     
     [self.library fetchMediasFromLibrary];
 }

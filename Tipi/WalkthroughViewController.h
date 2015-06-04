@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TPSwipableViewController.h"
 
-@interface WalkthroughViewController : UIViewController <UIPageViewControllerDataSource>
+@interface WalkthroughViewController : UIViewController <TPSwipableViewControllerDelegate>
 
-@property (strong, nonatomic) UIPageViewController* pageViewController;
 
 @end

@@ -18,6 +18,7 @@
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -107,7 +108,7 @@
                                             <constraint firstAttribute="width" constant="139" id="thg-VZ-ZRl"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="14"/>
-                                        <state key="normal" title="Notifications">
+                                        <state key="normal" title="Invitations">
                                             <color key="titleColor" red="0.16078431900000001" green="0.22352941330000001" blue="0.36078432199999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -137,6 +138,10 @@
                                             <segue destination="6YX-iR-uM9" kind="modal" id="XwX-rU-tn5"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="olF-R5-gsr">
+                                        <rect key="frame" x="159" y="41" width="1" height="15"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -170,28 +175,15 @@
                                     <segue destination="1u4-8d-cCC" kind="modal" id="XXo-jh-Vge"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon profil" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7g-ui-9k0">
-                                <rect key="frame" x="75" y="33" width="170" height="31"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="170" id="D49-CI-9AR"/>
-                                    <constraint firstAttribute="height" constant="31" id="QWA-dO-Blz"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="wcU-aa-PSw" secondAttribute="width" id="Die-1Y-GCM"/>
-                            <constraint firstAttribute="centerX" secondItem="I7g-ui-9k0" secondAttribute="centerX" id="JsA-do-qwP"/>
                             <constraint firstItem="7Jy-oa-bTk" firstAttribute="top" secondItem="Erq-DU-RNu" secondAttribute="bottom" constant="-3" id="Orr-op-qtT"/>
                             <constraint firstAttribute="centerY" secondItem="wcU-aa-PSw" secondAttribute="centerY" constant="-97" id="UXn-YJ-Qpp"/>
                             <constraint firstItem="7Jy-oa-bTk" firstAttribute="leading" secondItem="YeR-2B-G3e" secondAttribute="leadingMargin" constant="-11" id="VKn-AN-GMI"/>
                             <constraint firstItem="wcU-aa-PSw" firstAttribute="top" secondItem="Erq-DU-RNu" secondAttribute="bottom" constant="174" id="bLV-lQ-GAB"/>
                             <constraint firstAttribute="centerX" secondItem="wcU-aa-PSw" secondAttribute="centerX" id="isi-zL-Pvj"/>
-                            <constraint firstItem="I7g-ui-9k0" firstAttribute="top" secondItem="Erq-DU-RNu" secondAttribute="bottom" constant="13" id="n8E-D4-EcV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7fZ-sD-Po2"/>
@@ -199,6 +191,7 @@
                         <outlet property="addButton" destination="heE-7L-yby" id="Rkn-ku-wWR"/>
                         <outlet property="addButtonYConstraint" destination="YFh-Oa-kGg" id="RIg-Sx-R5p"/>
                         <outlet property="backButton" destination="7Jy-oa-bTk" id="doK-3C-zwq"/>
+                        <outlet property="bodyView" destination="wcU-aa-PSw" id="mRi-ED-1Mh"/>
                         <outlet property="friendsTabButton" destination="YU1-Oc-ra0" id="xft-9i-WBm"/>
                         <outlet property="friendsTabButtonYConstraint" destination="m5G-Hw-baW" id="57S-CG-0oD"/>
                         <outlet property="requestsTabButton" destination="DRY-TY-xYE" id="DL9-9Z-UqB"/>
@@ -437,45 +430,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="73" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dGL-k9-Vus">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="146" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dGL-k9-Vus">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.92941176889999999" green="0.92941176889999999" blue="0.92941176889999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InvitationCell" rowHeight="73" id="y62-tg-cYG">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InvitationCell" rowHeight="146" id="y62-tg-cYG">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y62-tg-cYG" id="EmJ-FX-Llu">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aG-CA-3To">
-                                                    <rect key="frame" x="48" y="12" width="225" height="48"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aG-CA-3To">
+                                                    <rect key="frame" x="48" y="32" width="225" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="48" id="mTK-pE-BqX"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="23"/>
+                                                    <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="19"/>
                                                     <color key="textColor" red="0.16078431900000001" green="0.22352941330000001" blue="0.36078432199999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldj-Ju-kvr">
-                                                    <rect key="frame" x="237" y="11" width="50" height="50"/>
+                                                <button opaque="NO" alpha="0.49999999999999961" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPG-RR-B9J">
+                                                    <rect key="frame" x="110" y="90" width="100" height="36"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="3WE-P0-dNT"/>
-                                                        <constraint firstAttribute="height" constant="50" id="KhS-GH-BrA"/>
+                                                        <constraint firstAttribute="height" constant="36" id="YXF-rS-gaR"/>
+                                                        <constraint firstAttribute="width" constant="100" id="ef0-BR-iOA"/>
                                                     </constraints>
-                                                    <state key="normal" image="btn-accept">
+                                                    <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="15"/>
+                                                    <state key="normal" title="Accepter">
+                                                        <color key="titleColor" red="0.1333333333" green="0.20000000000000001" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="18"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="acceptInvitation:" destination="GWx-Lz-Nky" eventType="touchUpInside" id="ROx-iO-2mi"/>
+                                                        <action selector="acceptInvitation:" destination="GWx-Lz-Nky" eventType="touchUpInside" id="MvI-CX-9cf"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frank vous invite à rejoindre :" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7H-jY-cNS">
+                                                    <rect key="frame" x="33" y="11" width="255" height="48"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="48" id="6oc-Jv-oTI"/>
+                                                        <constraint firstAttribute="width" constant="255" id="XBa-H0-ncF"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="J7H-jY-cNS" secondAttribute="centerX" constant="-0.5" id="4Pf-DS-opv"/>
+                                                <constraint firstItem="J7H-jY-cNS" firstAttribute="top" secondItem="EmJ-FX-Llu" secondAttribute="topMargin" constant="3" id="Cns-Gh-MNn"/>
                                                 <constraint firstItem="7aG-CA-3To" firstAttribute="leading" secondItem="EmJ-FX-Llu" secondAttribute="leadingMargin" constant="40" id="ED5-XV-xda"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Ldj-Ju-kvr" secondAttribute="trailing" constant="25" id="cnB-5e-EXL"/>
-                                                <constraint firstAttribute="centerY" secondItem="Ldj-Ju-kvr" secondAttribute="centerY" constant="0.5" id="kTX-JZ-Bkp"/>
-                                                <constraint firstAttribute="centerY" secondItem="7aG-CA-3To" secondAttribute="centerY" constant="0.5" id="prq-ET-bRY"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="oPG-RR-B9J" secondAttribute="bottom" constant="12" id="FhH-2T-F7G"/>
+                                                <constraint firstAttribute="centerX" secondItem="oPG-RR-B9J" secondAttribute="centerX" id="gx8-Ky-Xz1"/>
+                                                <constraint firstAttribute="centerY" secondItem="7aG-CA-3To" secondAttribute="centerY" constant="10.75" id="prq-ET-bRY"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="7aG-CA-3To" secondAttribute="trailing" constant="39" id="wkq-qV-1ee"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -514,7 +529,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="btn-accept" width="35" height="35"/>
         <image name="btn-back" width="43" height="42"/>
         <image name="btn-back-dark" width="43" height="42"/>
         <image name="btn-settings" width="41" height="40"/>

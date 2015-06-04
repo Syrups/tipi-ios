@@ -13,7 +13,10 @@
 #import "ImageUtils.h"
 #import "SHPathLibrary.h"
 #import "AnimationLibrary.h"
+#import "TPTiltingImageView.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+
+#define RANDOM_IMAGES_COUNT 5
 
 @interface NewStoryViewController ()
 
@@ -30,6 +33,9 @@
     
     [self setupTitle];
     
+    
+    self.view.alpha = 0;
+    
 //    self.microphone = [[EZMicrophone alloc] initWithMicrophoneDelegate:self];
 }
 
@@ -42,12 +48,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+//    [self reloadBackgroundImage];
+    
     if ([[StoryWIPSaver sharedSaver] saved]) {
         [self.mainButton setTitle:@"Continue story" forState:UIControlStateNormal];
         self.secondaryButton.hidden = NO;
     }
-    
-//    [self.microphone startFetchingAudio];
 }
 
 #pragma mark - Helpers
@@ -65,7 +71,31 @@
     self.titleLabel.attributedText = attrString;
 }
 
+- (void)reloadBackgroundImage {
+    
+    if (self.randomMedias == nil) return;
 
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSUInteger randomIndex = arc4random() % [self.randomMedias count];
+        NSDictionary* media = [self.randomMedias objectAtIndex:randomIndex];
+        ALAsset* asset = (ALAsset*)[media objectForKey:@"asset"];
+        UIImage* full = [ImageUtils convertImageToGrayScale:[UIImage imageWithCGImage:[[asset defaultRepresentation]fullScreenImage]]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            TPTiltingImageView* imageView = [[TPTiltingImageView alloc] initWithFrame:self.view.frame andImage:full];
+            imageView.layer.opacity = .15f;
+            [self.bubble.layer addSublayer:imageView.layer];
+            
+            [self.view sendSubviewToBack:self.bubble];
+            
+            [UIView animateWithDuration:.3f animations:^{
+                self.view.alpha = 1;
+            }];
+            
+        });
+    });
+    
+}
 
 #pragma mark - EZMicrophone
 
@@ -80,43 +110,30 @@
 #pragma mark - MediaLibrary
 
 - (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedias:(NSArray *)medias {
+    self.randomMedias = [medias subarrayWithRange:NSMakeRange(0, RANDOM_IMAGES_COUNT)];
     
-    static dispatch_once_t token;
-    dispatch_once(&token, ^{
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            NSUInteger randomIndex = arc4random() % [medias count];
-            NSDictionary* media = [medias objectAtIndex:randomIndex];
-            ALAsset* asset = (ALAsset*)[media objectForKey:@"asset"];
-            UIImage* full = [ImageUtils convertImageToGrayScale:[UIImage imageWithCGImage:[[asset defaultRepresentation]fullScreenImage]]];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIImageView* imageView = [[UIImageView alloc] initWithFrame:self.view.frame];
-                imageView.contentMode = UIViewContentModeScaleAspectFill;
-                imageView.image = full;
-                imageView.layer.opacity = .1f;
-                [self.bubble.layer addSublayer:imageView.layer];
-                
-            });
-        });
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self reloadBackgroundImage];
     });
-    
 }
 
 #pragma mark - Navigation
 
 - (IBAction)launchStoryBuilder:(id)sender {
     
-    [self.bubble stickTopTopWithCompletion:nil];
+    [self.bubble stickTopTopWithCompletion:^{
+        UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"StoryBuilder"];
+        [self.navigationController pushViewController:vc animated:NO];
+    }];
 
     [UIView animateWithDuration:.4f delay:0 options:
      UIViewAnimationOptionCurveEaseOut animations:^{
          self.topControlsYConstraint.constant = -150;
          self.bottomViewYConstraint.constant = -200;
+         self.titleLabel.alpha = 0;
          [self.view layoutIfNeeded];
-     } completion:^(BOOL finished) {
-         UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"StoryBuilder"];
-         [self.navigationController pushViewController:vc animated:NO];
-     }];
+     } completion:nil];
     
 }
 
@@ -126,6 +143,7 @@
      UIViewAnimationOptionCurveEaseOut animations:^{
          self.topControlsYConstraint.constant = -29;
          self.bottomViewYConstraint.constant = 0;
+         self.titleLabel.alpha = 1;
          [self.view layoutIfNeeded];
      } completion:nil];
 }

@@ -503,12 +503,7 @@ public class RAReorderableLayout: UICollectionViewFlowLayout, UIGestureRecognize
             case .Changed:
                 self.cellFakeView!.center.x = self.fakeCellCenter!.x + panTranslation!.x
                 self.cellFakeView!.center.y = self.fakeCellCenter!.y + panTranslation!.y
-                
-                UIView.animateWithDuration(0.2, animations: {
-                    self.cellFakeView?.transform = self.panTranslation?.x > 0 ? CGAffineTransformMakeRotation(0.1) : CGAffineTransformMakeRotation(-0.1)
-                    return
-                })
-                
+
                 
                 self.beginScrollIfNeeded()
                 self.moveItemIfNeeded()
@@ -625,7 +620,7 @@ private class RACellFakeView: UIView {
     func pushFowardView() {
         UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseInOut | .BeginFromCurrentState, animations: {
             self.center = self.originalCenter!
-            self.transform = CGAffineTransformMakeScale(1.1, 1.1)
+            self.transform = CGAffineTransformMakeScale(1.2, 1.2)
             self.cellFakeHightedView!.alpha = 0;
             var shadowAnimation = CABasicAnimation(keyPath: "shadowOpacity")
             shadowAnimation.fromValue = 0

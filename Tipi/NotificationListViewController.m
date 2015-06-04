@@ -42,7 +42,7 @@
     self.invitations = invitations;
     NSLog(@"%@", invitations);
     [self.requestsTableView reloadData];
-//    [self animate];
+    [self animate];
 }
 
 - (void)userManager:(UserManager *)manager failedToFetchInvitationsWithError:(NSError *)error {
@@ -69,6 +69,13 @@
     UILabel* label = (UILabel*)[cell.contentView viewWithTag:10];
     label.text = [NSString stringWithFormat:@"%@", invitation.name];
     
+    UILabel* from = (UILabel*)[cell.contentView viewWithTag:20];
+    from.text = [NSString stringWithFormat:@"%@ vous invite à rejoindre :", invitation.owner.username];
+    
+    UIButton* accept = (UIButton*)[cell.contentView viewWithTag:30];
+    accept.layer.borderColor = kCreateBackgroundColor.CGColor;
+    accept.layer.borderWidth = 2;
+    
     return cell;
 }
 
@@ -85,7 +92,7 @@
 - (void)animate {
     [self.requestsTableView.visibleCells enumerateObjectsUsingBlock:^(UITableViewCell* cell, NSUInteger idx, BOOL *stop) {
         
-        [AnimationLibrary animateBouncingView:cell];
+        [AnimationLibrary animateBouncingView:cell withDelay:idx * 0.2f];
         
     }];
     

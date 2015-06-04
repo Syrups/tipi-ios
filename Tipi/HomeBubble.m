@@ -174,14 +174,16 @@
 
 - (void)stickTopTopWithCompletion:(void (^)())completionBlock {
     [CATransaction begin];
-    [CATransaction setCompletionBlock:completionBlock];
+    [CATransaction setCompletionBlock:^{
+        [self _bumpToTopWithCompletion:completionBlock];
+    }];
     
     CABasicAnimation* morph = [CABasicAnimation animationWithKeyPath:@"path"];
-    morph.duration = 0.4f;
+    morph.duration = 0.2f;
     morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     
     CGPathRef from = shapeLayer.path;
-    CGPathRef to = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame].CGPath;
+    CGPathRef to = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame bumpDelta:-90].CGPath;
     
     morph.fromValue = (__bridge id)(from);
     morph.toValue = (__bridge id)(to);
@@ -190,14 +192,28 @@
     [shapeLayer.modelLayer setPath:to];
     
     [CATransaction commit];
-    
-    [UIView animateWithDuration:.4f animations:^{
-        for (UIView* v in self.subviews) {
-            v.alpha = 0;
-        }
-    }];
-    
 
+
+}
+
+- (void)_bumpToTopWithCompletion:(void (^)())completionBlock {
+    [CATransaction begin];
+    [CATransaction setCompletionBlock:completionBlock];
+    
+    CABasicAnimation* morph = [CABasicAnimation animationWithKeyPath:@"path"];
+    morph.duration = 0.3f;
+    morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    
+    CGPathRef from = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame bumpDelta:-90].CGPath;
+    CGPathRef to = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame bumpDelta:0].CGPath;
+    
+    morph.fromValue = (__bridge id)(from);
+    morph.toValue = (__bridge id)(to);
+    
+    [shapeLayer addAnimation:morph forKey:@"expand"];
+    [shapeLayer.modelLayer setPath:to];
+    
+    [CATransaction commit];
 }
 
 - (void)drawRect:(CGRect)rect {

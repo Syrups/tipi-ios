@@ -10,6 +10,7 @@
 
 @interface CardViewController : UIViewController
 
+@property NSUInteger pageIndex;
 @property (strong, nonatomic) CardViewController* next;
 
 @end

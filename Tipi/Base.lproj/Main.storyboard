@@ -228,12 +228,13 @@ avec votre voix</string>
                     <view key="view" contentMode="scaleToFill" id="ndu-II-wiD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.1333333333" green="0.20000000000000001" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="VuT-F7-vKs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pKS-3m-PVM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1363" y="-1219"/>
+            <point key="canvasLocation" x="1663" y="-1851"/>
         </scene>
         <!--Walkthrough Screen View Controller-->
         <scene sceneID="SIc-bP-5Mt">
@@ -251,7 +252,7 @@ avec votre voix</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GQ6-uY-7uF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1740" y="-1219"/>
+            <point key="canvasLocation" x="2040" y="-1851"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="6mH-bN-Rse">
@@ -264,13 +265,13 @@ avec votre voix</string>
                     <view key="view" contentMode="scaleToFill" id="zTh-Ad-ekw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.1333333333" green="0.20000000000000001" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="3NF-2L-rB5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2pd-Wg-o5t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2508" y="-1219"/>
+            <point key="canvasLocation" x="2056" y="-1139"/>
         </scene>
         <!--Sandbox View Controller-->
         <scene sceneID="o0J-2O-uUJ">
@@ -536,6 +537,24 @@ avec votre voix</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bHt-8p-301" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="989" y="-598"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="e5Y-7e-6iN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Tju-OZ-K5B" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0k2-hZ-ykT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Bj6-qm-Nni" kind="relationship" relationship="rootViewController" id="oIS-qk-HpO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tr8-yI-ugK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1219" y="-1851"/>
         </scene>
     </scenes>
     <resources>

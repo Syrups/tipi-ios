@@ -36,8 +36,8 @@
     self.saver = [StoryWIPSaver sharedSaver];
     self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
     
-    [self.roomsTableView setContentInset:UIEdgeInsetsMake(70,0,150,0)];
-    [self centerTable];
+    [self.roomsTableView setContentInset:UIEdgeInsetsMake(0,0,150,0)];
+//    [self centerTable];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
@@ -46,24 +46,24 @@
     [super viewWillAppear:animated];
     
     if (!maskLayer) {
-        maskLayer = [CAGradientLayer layer];
-        
-        CGColorRef outerColor = [UIColor colorWithWhite:1.0 alpha:0.0].CGColor;
-        CGColorRef innerColor = kListenBackgroundColor.CGColor;
-        
-        maskLayer.colors = [NSArray arrayWithObjects:(__bridge id)outerColor,
-                            (__bridge id)innerColor, (__bridge id)innerColor, (__bridge id)outerColor, nil];
-        maskLayer.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0],
-                               [NSNumber numberWithFloat:0.1],
-                               [NSNumber numberWithFloat:0.8],
-                               [NSNumber numberWithFloat:1.0], nil];
-        
-        maskLayer.bounds = CGRectMake(0, 0,
-                                      self.roomsTableView.frame.size.width,
-                                      self.roomsTableView.frame.size.height);
-        maskLayer.anchorPoint = CGPointZero;
-        
-        self.roomsTableView.layer.mask = maskLayer;
+//        maskLayer = [CAGradientLayer layer];
+//        
+//        CGColorRef outerColor = [UIColor colorWithWhite:1.0 alpha:0.0].CGColor;
+//        CGColorRef innerColor = kListenBackgroundColor.CGColor;
+//        
+//        maskLayer.colors = [NSArray arrayWithObjects:(__bridge id)outerColor,
+//                            (__bridge id)innerColor, (__bridge id)innerColor, (__bridge id)outerColor, nil];
+//        maskLayer.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0],
+//                               [NSNumber numberWithFloat:0.1],
+//                               [NSNumber numberWithFloat:0.8],
+//                               [NSNumber numberWithFloat:1.0], nil];
+//        
+//        maskLayer.bounds = CGRectMake(0, 0,
+//                                      self.roomsTableView.frame.size.width,
+//                                      self.roomsTableView.frame.size.height);
+//        maskLayer.anchorPoint = CGPointZero;
+//        
+//        self.roomsTableView.layer.mask = maskLayer;
     }
 }
 
@@ -72,10 +72,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)createNewRoom:(id)sender {
-    UIViewController* vc = [[UIStoryboard storyboardWithName:kStoryboardRooms bundle:nil] instantiateViewControllerWithIdentifier:@"CreateRoom"];
-    [self.navigationController pushViewController:vc animated:YES];
-}
 
 - (IBAction)send:(id)sender {
     StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
@@ -219,7 +215,7 @@
     } else {
         [selectedRooms removeObject:room];
         UIImageView* picto = (UIImageView*)[cell.contentView viewWithTag:90];
-        picto.image = [UIImage imageNamed:@"picto_lucifer"];
+        picto.image = [UIImage imageNamed:@"picto-fire-a-blue"];
         [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionAutoreverse animations:^{
             picto.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
         } completion:^(BOOL finished) {
@@ -245,8 +241,8 @@
         
         int del = fabs(scrollView.superview.center.y -  cellCenter.y)/ 4.5;
         
-        cell.heightConstraint.constant = 120 - del;
-        cell.widthConstraint.constant = 120 - del;
+//        cell.heightConstraint.constant = 120 - del;
+//        cell.widthConstraint.constant = 120 - del;
         
         [cell setNeedsLayout];
         [cell setNeedsUpdateConstraints];

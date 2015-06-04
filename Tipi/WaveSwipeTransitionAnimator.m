@@ -18,7 +18,8 @@
     
     //2
     UIView* containerView = [transitionContext containerView];
-    containerView.backgroundColor =  [UIColor colorWithRed:178/255.0  green:47/255.0 blue:43/255.0 alpha:1];
+//    containerView.backgroundColor =  [UIColor colorWithRed:178/255.0  green:47/255.0 blue:43/255.0 alpha:1];
+    containerView.backgroundColor = kListenBackgroundColor;
     
     UIViewController* fromViewController=  [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController* toViewController=  [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];

@@ -89,6 +89,8 @@
 		B33DE85B1ACDCE00008AE55F /* BaseModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DE85A1ACDCE00008AE55F /* BaseModelController.m */; };
 		B341F04C1AE1A272001D448A /* MediaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B341F04B1AE1A272001D448A /* MediaCell.m */; };
 		B34FEE971AEAB7A200A7E57B /* HelpModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34FEE961AEAB7A200A7E57B /* HelpModalViewController.m */; };
+		B35279361B2058290023C42C /* AVAudioPlayer+AVAudioPlayer_Fading.m in Sources */ = {isa = PBXBuildFile; fileRef = B35279351B2058290023C42C /* AVAudioPlayer+AVAudioPlayer_Fading.m */; };
+		B35279391B2097A40023C42C /* TPTiltingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B35279381B2097A40023C42C /* TPTiltingImageView.m */; };
 		B35975F21ADFA29F00936E5E /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B35975F11ADFA29F00936E5E /* ImageUtils.m */; };
 		B35AD0391ABF2B6600527C0D /* ReviewStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD0381ABF2B6600527C0D /* ReviewStoryViewController.m */; };
 		B35AD03C1ABF2D2500527C0D /* ReviewPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD03B1ABF2D2500527C0D /* ReviewPageViewController.m */; };
@@ -300,6 +302,10 @@
 		B341F04B1AE1A272001D448A /* MediaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaCell.m; sourceTree = "<group>"; };
 		B34FEE951AEAB7A200A7E57B /* HelpModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpModalViewController.h; sourceTree = "<group>"; };
 		B34FEE961AEAB7A200A7E57B /* HelpModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpModalViewController.m; sourceTree = "<group>"; };
+		B35279341B2058290023C42C /* AVAudioPlayer+AVAudioPlayer_Fading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AVAudioPlayer+AVAudioPlayer_Fading.h"; sourceTree = "<group>"; };
+		B35279351B2058290023C42C /* AVAudioPlayer+AVAudioPlayer_Fading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AVAudioPlayer+AVAudioPlayer_Fading.m"; sourceTree = "<group>"; };
+		B35279371B2097A40023C42C /* TPTiltingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTiltingImageView.h; sourceTree = "<group>"; };
+		B35279381B2097A40023C42C /* TPTiltingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTiltingImageView.m; sourceTree = "<group>"; };
 		B35975F01ADFA29F00936E5E /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
 		B35975F11ADFA29F00936E5E /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
 		B35AD0371ABF2B6600527C0D /* ReviewStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewStoryViewController.h; sourceTree = "<group>"; };
@@ -454,6 +460,8 @@
 		739BEC4D1B1F010C00756770 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B35279371B2097A40023C42C /* TPTiltingImageView.h */,
+				B35279381B2097A40023C42C /* TPTiltingImageView.m */,
 				739BEC4E1B1F013400756770 /* TPSwipableViewController.h */,
 				739BEC4F1B1F013400756770 /* TPSwipableViewController.m */,
 				73E0BDAB1B1F153400AD540D /* AWPercentDrivenInteractiveTransition.h */,
@@ -734,6 +742,15 @@
 				B33389D81B1C60DE003BAC78 /* CoachmarkManager.m */,
 			);
 			name = Help;
+			sourceTree = "<group>";
+		};
+		B35279331B20580E0023C42C /* AVAudioPlayer+Fading */ = {
+			isa = PBXGroup;
+			children = (
+				B35279341B2058290023C42C /* AVAudioPlayer+AVAudioPlayer_Fading.h */,
+				B35279351B2058290023C42C /* AVAudioPlayer+AVAudioPlayer_Fading.m */,
+			);
+			name = "AVAudioPlayer+Fading";
 			sourceTree = "<group>";
 		};
 		B35AD0361ABF2B4B00527C0D /* Review */ = {
@@ -1034,6 +1051,7 @@
 		DCA76F8ACE4F9EBC399AF0C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B35279331B20580E0023C42C /* AVAudioPlayer+Fading */,
 				B3D1B0761B1E496800000C81 /* RAReorderableLayout */,
 				B33618601B09E9150047013C /* SCSiriWaveformView */,
 				B3846F1C1ADD058B0030DBDE /* CoreMotion.framework */,
@@ -1267,6 +1285,7 @@
 				B3A8D18A1ACECB1A00B09C34 /* AddFriendViewController.m in Sources */,
 				B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */,
 				B34FEE971AEAB7A200A7E57B /* HelpModalViewController.m in Sources */,
+				B35279361B2058290023C42C /* AVAudioPlayer+AVAudioPlayer_Fading.m in Sources */,
 				7322855D1B0F41CA00481C2B /* FileDownLoader.m in Sources */,
 				B3BCD0061AA5F0CE00261212 /* NewStoryViewController.m in Sources */,
 				B3A8D18E1ACED0EC00B09C34 /* ProfileViewController.m in Sources */,
@@ -1311,6 +1330,7 @@
 				B30317FD1ABC2759005EF73D /* Page.m in Sources */,
 				73E0BDB01B1F159300AD540D /* PanGestureInteractiveTransition.m in Sources */,
 				B396AFB61B1F33A0006E1042 /* RAReorderableLayout.swift in Sources */,
+				B35279391B2097A40023C42C /* TPTiltingImageView.m in Sources */,
 				B3A8D1841ACEAD0A00B09C34 /* FriendManager.m in Sources */,
 				B336186A1B0A16FC0047013C /* TPLoader.m in Sources */,
 				B38621FA1AE16DC200D2CA5A /* ShowCaseableViewController.m in Sources */,

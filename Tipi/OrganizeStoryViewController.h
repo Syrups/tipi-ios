@@ -12,7 +12,7 @@
 #import "OrganizerWave.h"
 #import "Tipi-Swift.h"
 
-#define CELL_SIZE 190
+#define CELL_SIZE 120
 #define INACTIVE_CELL_OPACITY 0.3f
 #define ACTIVE_CELL_ROTATION 0.05f
 
@@ -21,14 +21,5 @@
 @property (strong, nonatomic) StoryWIPSaver* saver;
 @property (strong, nonatomic) StoryMediaRecorder* recorder;
 @property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
-@property (strong, nonatomic) IBOutlet OrganizerWave* wave;
-@property (strong, nonatomic) IBOutlet UIButton* replayButton;
-@property (strong, nonatomic) IBOutlet UIButton* finishButton;
-@property (strong, nonatomic) UIViewController* donePopin;
-@property (strong, nonatomic) UIViewController* namePopin;
-@property (strong, nonatomic) IBOutlet UIView* overlay;
-@property (strong, nonatomic) IBOutlet UILabel* helpLabel;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint* topControlsYConstraint;
-@property (strong, nonatomic) IBOutlet UIImageView* coachmarkSprite;
 
 @end

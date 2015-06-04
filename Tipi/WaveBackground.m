@@ -33,7 +33,7 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    CGPathRef path = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame].CGPath;
+    CGPathRef path = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame bumpDelta:0].CGPath;
     CAShapeLayer* layer = [CAShapeLayer layer];
     layer.path = CGPathCreateCopy(path);
 //    layer.fillColor = RgbColorAlpha(43, 75, 122, 0).CGColor;

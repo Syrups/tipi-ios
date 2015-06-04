@@ -13,6 +13,7 @@
 #import "CoachmarkManager.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <CoreMotion/CoreMotion.h>
+#import "AVAudioPlayer+AVAudioPlayer_Fading.h"
 
 @implementation RecordViewController
 
@@ -22,13 +23,13 @@
     self.currentIndex = 0;
     self.saver = [StoryWIPSaver sharedSaver];
     
-    [self loadFullImages];
     [self setupSwipeablePager];
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
     self.longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     self.longPressRecognizer.minimumPressDuration = 0.2f;
+    self.longPressRecognizer.delegate = self;
     
     [self.view addGestureRecognizer:self.longPressRecognizer];
     
@@ -36,31 +37,6 @@
     self.recorder.delegate = self;
     
 //    [CoachmarkManager launchCoachmarkAnimationForRecordController:self withCompletion:nil];
-}
-
-- (void)loadFullImages {
-    
-    // We load the first XX images in full resolution
-    // so they can display immediately on collection view,
-    // while we load all the others in the background thread.
-    
-    [self.saver.medias enumerateObjectsUsingBlock:^(NSMutableDictionary* media, NSUInteger idx, BOOL *stop) {
-        
-        if (idx < 4) {
-            ALAsset* asset = (ALAsset*)[media objectForKey:@"asset"];
-            UIImage* full = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
-            [media setObject:full forKey:@"full"];
-        }
-        
-    }];
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        [self.saver.medias enumerateObjectsUsingBlock:^(NSMutableDictionary* media, NSUInteger idx, BOOL *stop) {
-            ALAsset* asset = (ALAsset*)[media objectForKey:@"asset"];
-            UIImage* full = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
-            [media setObject:full forKey:@"full"];
-        }];
-    });
 }
 
 - (void)setupSwipeablePager {
@@ -81,12 +57,12 @@
     
     for (int i = 0; i < self.saver.medias.count; ++i) {
         RecordPageViewController* controller = [self viewControllerAtIndex:i];
-        UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:controller.view.bounds];
-        controller.view.layer.masksToBounds = NO;
-        controller.view.layer.shadowColor = [UIColor blackColor].CGColor;
-        controller.view.layer.shadowOffset = CGSizeMake(5.0f, 0);
-        controller.view.layer.shadowOpacity = 0.5f;
-        controller.view.layer.shadowPath = shadowPath.CGPath;
+//        UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:controller.view.bounds];
+//        controller.view.layer.masksToBounds = NO;
+//        controller.view.layer.shadowColor = [UIColor blackColor].CGColor;
+//        controller.view.layer.shadowOffset = CGSizeMake(5.0f, 0);
+//        controller.view.layer.shadowOpacity = 0.3f;
+//        controller.view.layer.shadowPath = shadowPath.CGPath;
         [viewControllers addObject:controller];
     }
     
@@ -111,7 +87,7 @@
     RecordPageViewController* current = [self currentPage];
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
-        NSLog(@"begin touch");
+        NSLog(@"begin touch index: %d", self.currentIndex);
         [self.recorder startRecording];
         
 //        [CoachmarkManager dismissCoachmarkAnimationForRecordController:self];
@@ -133,6 +109,8 @@
         
         [UIView animateWithDuration:.2f animations:^{
             current.overlay.alpha = .6f;
+            self.organizerContainerYConstraint.constant = -100;
+            self.organizerContainerView.alpha = .4f;
         }];
     }
     if (recognizer.state == UIGestureRecognizerStateEnded) {
@@ -158,6 +136,8 @@
         
         [UIView animateWithDuration:.2f animations:^{
             current.overlay.alpha = 0;
+            self.organizerContainerYConstraint.constant = 0;
+            self.organizerContainerView.alpha = 1;
         }];
         
         if ([self currentPage].moviePlayer != nil) {
@@ -166,10 +146,21 @@
     }
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if (CGRectContainsPoint(self.organizerContainerView.bounds, [touch locationInView:self.organizerContainerView]))
+        return NO;
+    
+    return YES;
+}
 
 #pragma mark - Navigation and view controller
 
 - (void)swipableViewController:(TPSwipableViewController *)containerViewController didFinishedTransitionToViewController:(RecordPageViewController *)viewController {
+    
+    NSUInteger oldIndex = self.currentIndex;
+    
+    RecordPageViewController* old = [self viewControllerAtIndex:self.currentIndex];
+//    [old.motionManager stopDeviceMotionUpdates];
     
     self.currentIndex = viewController.pageIndex;
     
@@ -186,8 +177,14 @@
     }
     
     viewController.overlay.alpha = 0;
-    [self.recorder.player stop];
+    [self.recorder.player fadeOutAndPause];
     [self.recorder setupForMediaWithIndex:self.currentIndex];
+    
+    OrganizeStoryViewController* organizer = (OrganizeStoryViewController*)[self.childViewControllers objectAtIndex:0];
+    
+//    CGPoint oldContentOffset = organizer.collectionView.contentOffset;
+//    CGFloat delta = oldIndex < self.currentIndex ? CELL_SIZE + 15 : -CELL_SIZE - 15;
+//    [organizer.collectionView setContentOffset:CGPointMake(oldContentOffset.x + delta, oldContentOffset.y) animated:YES];
 }
 
 - (RecordPageViewController *)viewControllerAtIndex:(NSUInteger)index
@@ -212,7 +209,6 @@
         AVURLAsset* asset = [AVURLAsset URLAssetWithURL:url options:nil];
         AVPlayerItem* item = [AVPlayerItem playerItemWithAsset:asset];
         page.moviePlayer=[AVPlayer playerWithPlayerItem:item];
-        NSLog(@"%@", url);
         
         [[NSNotificationCenter defaultCenter] addObserverForName:AVPlayerItemDidPlayToEndTimeNotification object:item queue:nil usingBlock:^(NSNotification *note) {
             AVPlayerItem* item = [note object];
@@ -228,6 +224,9 @@
         page.moviePlayer.volume = 0;
         playerLayer.frame = self.view.frame;
         [page.view.layer insertSublayer:playerLayer atIndex:0];
+        
+        [page.view bringSubviewToFront:page.replayButton];
+        [page.view bringSubviewToFront:page.recordTimer];
     } else {
         page.image = [(NSDictionary*)[self.saver.medias objectAtIndex:index] objectForKey:@"full"];
     }
@@ -236,6 +235,21 @@
 }
 
 #pragma mark - Navigation
+
+- (void)moveViewControllerfromIndex:(NSUInteger)oldIndex atIndex:(NSUInteger)newIndex {
+    
+    if (self.currentIndex == oldIndex) {
+        self.currentIndex = newIndex;
+    } else {
+        if (oldIndex < newIndex) {
+            self.currentIndex--;
+        } else {
+            self.currentIndex++;
+        }
+    }
+    
+    [self.swipablePager moveViewController:[self.swipablePager.viewControllers objectAtIndex:oldIndex] fromIndex:oldIndex atIndex:newIndex];
+}
 
 - (void)openDonePopin {
     DoneStoryViewController* done = (DoneStoryViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"DoneStory"];

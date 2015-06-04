@@ -52,18 +52,19 @@ static CGFloat const kInitialSpringVelocity = 0.5;
         
         toViewControllerNext.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(.7f, .7f), CGAffineTransformMakeTranslation(toViewControllerNext.view.frame.size.width * .2, 0));
     } else {
-        toViewController.view.transform = CGAffineTransformMakeTranslation(-toViewController.view.frame.size.width, 0);
+        toViewController.view.transform = CGAffineTransformConcat(CGAffineTransformMakeRotation(0), CGAffineTransformMakeTranslation(-toViewController.view.frame.size.width, 0));
         toViewController.view.alpha = 1;
         toViewControllerNext.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(.85f, .85f), CGAffineTransformMakeTranslation(toViewControllerNext.view.frame.size.width * .1, 0));
     }
     
     [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
         if (forward) {
-            fromViewController.view.transform = travel;
+            fromViewController.view.transform = CGAffineTransformConcat(travel, CGAffineTransformMakeRotation(0));
             toViewController.view.transform = CGAffineTransformIdentity;
             toViewController.view.alpha = 1;
             toViewControllerNext.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(.85f, .85f), CGAffineTransformMakeTranslation(toViewControllerNext.view.frame.size.width * .1, 0));
             toViewControllerNext.view.alpha = 1;
+            
         } else {
             toViewController.view.transform = CGAffineTransformMakeTranslation(0, 0);
             fromViewController.view.transform = CGAffineTransformMakeScale(.85f, .85f);

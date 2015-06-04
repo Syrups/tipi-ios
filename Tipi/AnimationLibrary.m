@@ -13,10 +13,10 @@ static const float totalBounceDuration = 1;
 
 @implementation AnimationLibrary
 
-+ (void)animateBouncingView:(UIView*)view {
++ (void)animateBouncingView:(UIView*)view withDelay:(NSUInteger)delay {
     view.transform = CGAffineTransformMakeTranslation(0, kInitialYOffset);
     view.alpha = 0;
-    [UIView animateKeyframesWithDuration:totalBounceDuration delay:0 options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
+    [UIView animateKeyframesWithDuration:totalBounceDuration delay:delay options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
         [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.4f animations:^{
             view.transform = CGAffineTransformMakeTranslation(0, -10);
             view.alpha = 1;

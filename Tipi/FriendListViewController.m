@@ -72,7 +72,7 @@
 - (void)animate {
     [self.friendsTableView.visibleCells enumerateObjectsUsingBlock:^(UITableViewCell* cell, NSUInteger idx, BOOL *stop) {
         
-        [AnimationLibrary animateBouncingView:cell];
+        [AnimationLibrary animateBouncingView:cell withDelay:idx * .1f];
         
     }];
     

@@ -13,6 +13,7 @@
 #import "SRRecordButton.h"
 #import "OrganizeStoryViewController.h"
 #import "TPSwipableViewController.h"
+#import "RecordPageViewController.h"
 
 @interface RecordViewController : UIViewController <EZMicrophoneDelegate, StoryMediaRecorderDelegate, UIGestureRecognizerDelegate, TPSwipableViewControllerDelegate>
 
@@ -26,9 +27,14 @@
 @property (strong, nonatomic) UIViewController* namePopin;
 @property (strong, nonatomic) IBOutlet UIImageView* coachmarkSprite;
 @property (strong, nonatomic) IBOutlet UILabel* helpLabel;
+@property (strong, nonatomic) IBOutlet UIView* organizerContainerView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* organizerContainerYConstraint;
 
 @property BOOL lastPage;
 
+- (RecordPageViewController*)currentPage;
 - (void)openNameStoryPopin;
+- (void)moveViewControllerfromIndex:(NSUInteger)oldIndex atIndex:(NSUInteger)newIndex;
+
 
 @end

@@ -15,9 +15,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        UIImageView* imageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMidX(frame) - 50, CGRectGetMidY(frame) - 50, 100, 100)];
-        imageView.contentMode = UIViewContentModeScaleAspectFill;
-        [self addSubview:imageView];
+        self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMidX(frame) - 50, CGRectGetMidY(frame) - 50, 100, 100)];
+        self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+        [self addSubview:self.imageView];
         
         self.infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.frame.size.height/2, self.frame.size.width, self.frame.size.height/2)];
         self.infoLabel.textColor = [UIColor whiteColor];
@@ -27,15 +27,18 @@
         
         self.backgroundColor = RgbColorAlpha(0, 0, 0, .6f);
         
-        [PKAIDecoder builAnimatedImageIn:imageView fromFile:@"loader"];
+        [PKAIDecoder builAnimatedImageIn:self.imageView fromFile:@"loader"];
     }
     return self;
 }
 
 - (void)didMoveToSuperview {
     self.alpha = 0;
+    self.imageView.transform = CGAffineTransformMakeTranslation(0, 50);
+    
     [UIView animateWithDuration:.3f animations:^{
         self.alpha = 1;
+        self.imageView.transform = CGAffineTransformIdentity;
     }];
 }
 

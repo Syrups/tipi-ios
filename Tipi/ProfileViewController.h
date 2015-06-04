@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "UserManager.h"
 
-@interface ProfileViewController : UIViewController <UserFetcherDelegate, UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface ProfileViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIView* bodyView;
 @property (strong, nonatomic) UIPageViewController* pager;
 @property (strong, nonatomic) User* user;
 @property (strong, nonatomic) IBOutlet UIButton* backButton;

@@ -13,6 +13,8 @@
 
 @interface NewStoryViewController : UIViewController <EZMicrophoneDelegate, MediaLibraryDelegate>
 
+@property (strong, nonatomic) NSArray* randomMedias;
+
 @property (strong, nonatomic) IBOutlet UIButton* mainButton;
 @property (strong, nonatomic) IBOutlet UIButton* secondaryButton;
 @property (strong, nonatomic) EZMicrophone* microphone;

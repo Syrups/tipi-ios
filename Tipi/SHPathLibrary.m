@@ -189,16 +189,36 @@
 #pragma mark - Home bubble
 
 + (UIBezierPath *)pathForHomeBubbleInRect:(CGRect)rect open:(BOOL)open {
-    CGRect smallRect = open ? CGRectMake(-rect.size.width, -rect.size.height/2, rect.size.width*3, rect.size.height*2) :CGRectMake(CGRectGetMidX(rect) - 135, 80, 270, 270);
-    UIBezierPath* path = [UIBezierPath bezierPathWithOvalInRect:smallRect];
+//    CGRect smallRect = open ? CGRectMake(-rect.size.width, -rect.size.height/2, rect.size.width*3, rect.size.height*2) :CGRectMake(CGRectGetMidX(rect) - 135, 80, 270, 270);
+//    UIBezierPath* path = [UIBezierPath bezierPathWithOvalInRect:smallRect];
+    
+    UIBezierPath* path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(0, 0)];
+    [path addLineToPoint:CGPointMake(0, rect.size.height)];
+    CGPoint c1 = CGPointMake(rect.size.width/2 - 80, rect.size.height);
+    CGPoint c2 = CGPointMake(rect.size.width/2 + 80, rect.size.height);
+    [path addCurveToPoint:CGPointMake(rect.size.width, rect.size.height) controlPoint1:c1 controlPoint2:c2];
+    [path addLineToPoint:CGPointMake(rect.size.width, 0)];
+    [path addLineToPoint:CGPointMake(0, 0)];
     
     return path;
 }
 
-+ (UIBezierPath *)pathForHomeBubbleStickyToTopInRect:(CGRect)rect {
-    CGRect smallRect = CGRectMake(-50, -rect.size.height/3, rect.size.width + 100, rect.size.height/1.5f );
++ (UIBezierPath *)pathForHomeBubbleStickyToTopInRect:(CGRect)rect bumpDelta:(NSInteger)bumpDelta {
+//    CGRect smallRect = CGRectMake(-50, -rect.size.height/3, rect.size.width + 100, rect.size.height/1.5f - bumpDelta );
+//    
+//    return [UIBezierPath bezierPathWithOvalInRect:smallRect];
     
-    return [UIBezierPath bezierPathWithOvalInRect:smallRect];
+    UIBezierPath* path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(0, -rect.size.height)];
+    [path addLineToPoint:CGPointMake(0, 100)];
+    CGPoint c1 = CGPointMake(rect.size.width/2 - 80, 180 + bumpDelta);
+    CGPoint c2 = CGPointMake(rect.size.width/2 + 80, 180 + bumpDelta);
+    [path addCurveToPoint:CGPointMake(rect.size.width, 100) controlPoint1:c1 controlPoint2:c2];
+    [path addLineToPoint:CGPointMake(rect.size.width, -rect.size.height)];
+    [path addLineToPoint:CGPointMake(0, -rect.size.height)];
+    
+    return path;
 }
 
 
@@ -311,6 +331,30 @@
     [path addLineToPoint:CGPointMake(width, height)];//-!
     [path addLineToPoint:CGPointMake(0, height)]; //
     [path addLineToPoint:CGPointMake(0, curveEdgesY)]; // __^
+    
+    return path;
+}
+
++ (UIBezierPath *)pathForProfileView:(UIView *)view open:(BOOL)open {
+    UIBezierPath* path = [UIBezierPath bezierPath];
+    
+    if (!open) {
+        [path moveToPoint:CGPointMake(0, view.frame.size.height)];
+        [path addLineToPoint:CGPointMake(view.frame.size.width, view.frame.size.height)];
+        [path addLineToPoint:CGPointMake(view.frame.size.width, 60)];
+        CGPoint c1 = CGPointMake(view.frame.size.width/2 + 80, 0);
+        CGPoint c2 = CGPointMake(view.frame.size.width/2 - 80, 0);
+        [path addCurveToPoint:CGPointMake(0, 60) controlPoint1:c1 controlPoint2:c2];
+        [path addLineToPoint:CGPointMake(0, view.frame.size.height)];
+    } else {
+        [path moveToPoint:CGPointMake(0, view.frame.size.height)];
+        [path addLineToPoint:CGPointMake(view.frame.size.width, view.frame.size.height)];
+        [path addLineToPoint:CGPointMake(view.frame.size.width, 0)];
+        CGPoint c1 = CGPointMake(view.frame.size.width/2 + 80, 0);
+        CGPoint c2 = CGPointMake(view.frame.size.width/2 - 80, 0);
+        [path addCurveToPoint:CGPointMake(0, 0) controlPoint1:c1 controlPoint2:c2];
+        [path addLineToPoint:CGPointMake(0, view.frame.size.height)];
+    }
     
     return path;
 }

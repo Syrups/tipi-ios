@@ -16,6 +16,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.backButtonYConstraint.constant = -50;
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:.4f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.backButtonYConstraint.constant = 22;
+        [self.view layoutIfNeeded];
+    } completion:nil];
 }
 
 - (IBAction)displayAbortModal:(id)sender {

@@ -19,12 +19,14 @@
 + (UIBezierPath *) swipableRightCurvyBezierPathForRect: (CGRect) frame inverted:(BOOL)inverted;
 
 + (UIBezierPath *) pathForHomeBubbleInRect:(CGRect)rect open:(BOOL)open;
-+ (UIBezierPath *) pathForHomeBubbleStickyToTopInRect:(CGRect)rect;
++ (UIBezierPath *) pathForHomeBubbleStickyToTopInRect:(CGRect)rect bumpDelta:(NSInteger)bumpDelta;
 
 + (UIBezierPath *) pathForTransitionBeetweenStoriesAndAdmin: (CGRect) rect segueBack:(BOOL) back withFinalPath:(BOOL) finalPath;
 + (UIBezierPath *) pathForTransitionToAdminFromStories: (CGRect) rect withFinalPath:(BOOL) finalPath;
 + (UIBezierPath *) pathForTransitionFromAdminToStories: (CGRect) rect withFinalPath:(BOOL) finalPath;
 
 + (UIBezierPath *) pathForTransitionBeetweenRoomsAndStories: (CGRect) rect segueBack:(BOOL) back withFinalPath:(BOOL) finalPath;
+
++ (UIBezierPath *) pathForProfileView:(UIView*)view open: (BOOL)open;
 
 @end

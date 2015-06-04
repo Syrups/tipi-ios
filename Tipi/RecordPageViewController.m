@@ -7,6 +7,7 @@
 //
 
 #import "RecordPageViewController.h"
+#import "TPTiltingImageView.h"
 
 @implementation RecordPageViewController {
     UIScrollView* scrollView;
@@ -23,34 +24,16 @@
     CGFloat ratio = self.image.size.width / self.image.size.height;
     
     if (ratio > 1) { // portrait
+        TPTiltingImageView* tiltingImageView = [[TPTiltingImageView alloc] initWithFrame:self.imageView.frame andImage:self.image];
         [self.imageView removeFromSuperview];
-        
-        self.imageView.contentMode = UIViewContentModeScaleAspectFill;
-        
-        scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
-        
-        self.imageView.bounds = CGRectMake(0, 0, self.view.frame.size.height * ratio, self.view.frame.size.height);
-        
-        scrollView.userInteractionEnabled = NO;
-        
-        scrollView.contentInset = UIEdgeInsetsZero;
-        scrollView.contentSize = self.imageView.bounds.size;
-        scrollView.zoomScale = (CGRectGetHeight(scrollView.bounds) / CGRectGetWidth(scrollView.bounds)) * (self.image.size.width / self.image.size.height);
-        
-        [scrollView addSubview:self.imageView];
-        [self.view addSubview:scrollView];
-        
-        scrollView.contentOffset = CGPointMake(scrollView.contentSize.width/2-self.view.frame.size.width/2, 0);
-        offsetCoefficient = scrollView.contentOffset.x;
-        
-        self.imagePanningEnabled = YES;
+        [self.view addSubview:tiltingImageView];
     }
     
-    self.motionManager = [[CMMotionManager alloc] init];
-    self.motionManager.gyroUpdateInterval = .2f;
-    self.motionManager.accelerometerUpdateInterval = .2f;
+    [self.view bringSubviewToFront:self.overlay];
+    [self.view bringSubviewToFront:self.recordTimer];
+    [self.view bringSubviewToFront:self.replayButton];
     
-    [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:[self gyroUpdateHandler]];
+    self.replayButton.transform = CGAffineTransformMakeScale(0, 0);
 }
 
 - (IBAction)replay:(id)sender {

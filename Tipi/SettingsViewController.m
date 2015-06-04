@@ -47,7 +47,7 @@
 - (void)animate {
     [self.rows enumerateObjectsUsingBlock:^(UIView* view, NSUInteger idx, BOOL *stop) {
         
-        [AnimationLibrary animateBouncingView:view];
+        [AnimationLibrary animateBouncingView:view withDelay:idx * .1f];
         
     }];
     

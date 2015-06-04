@@ -14,7 +14,6 @@
 
 @interface RecordPageViewController : CardViewController
 
-@property NSUInteger pageIndex;
 @property BOOL recorded;
 
 @property (strong, nonatomic) UIImage* image;
