@@ -11,10 +11,12 @@
 #import <AVFoundation/AVFoundation.h>
 #import <EZMicrophone.h>
 #import "MediaLibrary.h"
+#import "TPCircleWaverControl.h"
 
 @interface SandboxViewController : UIViewController
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @property (nonatomic, strong) AVPlayer *sandbPlayer;
+@property (weak, nonatomic) IBOutlet TPCircleWaverControl *sendBoxControl;
 
 
 @end

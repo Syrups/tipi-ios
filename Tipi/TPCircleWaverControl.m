@@ -66,6 +66,7 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 - (void)setAudioPlayer:(AVAudioPlayer *)audioPlayer{
     _audioPlayer = audioPlayer;
     _duration = _audioPlayer.duration;
+    [self start];
 }
 
 - (void)baseInitWithbaseView:(UIView *)baseView {
@@ -77,9 +78,10 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     self.duration = kBaseDuration;
     self.currentTimePercent = kBaseTime;
     self.radiusFactor = kBaseRadiusFactor;
+    self.showController = NO;
     
     self.backgroundPathColor = [UIColor colorWithWhite:1 alpha:0.3];
-    self.progressPathColor = [UIColor greenColor];
+    self.progressPathColor = [UIColor colorWithWhite:1 alpha:0.7];
     self.mode = TPCircleModeListen;
     
     self.backgroundColor = [UIColor clearColor];
@@ -87,8 +89,8 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     
     CGPoint center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
     
-    CGFloat waveWidth = CGRectGetWidth(self.frame) * 0.8;
-    CGFloat waveHeight = CGRectGetHeight(self.frame) * 0.8;
+    CGFloat waveWidth = CGRectGetWidth(self.frame) * 0.5;
+    CGFloat waveHeight = CGRectGetHeight(self.frame) * 0.5;
     
     CGRect innerFrame = CGRectMake(center.x - (waveWidth/2), center.y - (waveHeight/2), waveWidth, waveHeight);
     
@@ -97,6 +99,7 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     self.wave.idleAmplitude = kWaveIdleAmplitude;
     self.wave.frequency = kWaveFrequency;
     self.wave.alpha = 0;
+    self.wave.userInteractionEnabled = NO;
     
     [self addSubview:self.wave];
 
@@ -113,7 +116,6 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     CGContextSaveGState(ctx);
     
     self.radius =  (CGRectGetWidth(rect) * 0.45) * self.radiusFactor;
-    
 
     CGPoint center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
     
@@ -132,10 +134,9 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     CGContextSetLineWidth(ctx, kArcLineWidth);
     CGContextStrokePath(ctx);
     
-    //NSLog(@"getAngle %f",[self getAngle]);
-    
-    [self drawTheHandle:ctx];
-
+    if(self.showController){
+        [self drawTheHandle:ctx];
+    }
 }
 
 
@@ -150,7 +151,7 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     CGPoint handleCenter =  [self pointFromAngle: [self getAngleDeg]];
     
     //Draw It!
-    [[UIColor colorWithWhite:1.0 alpha:0.7]set];
+    [[UIColor colorWithWhite:1.0 alpha:0.8]set];
     CGContextFillEllipseInRect(ctx, CGRectMake(handleCenter.x, handleCenter.y, kSliderStroke, kSliderStroke));
     
     CGContextRestoreGState(ctx);
@@ -170,8 +171,6 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     CGFloat b = (-M_PI_2 + a / 100);
     
     return self.startAngle + b;
-    
-    //return self.startAngle + (-M_PI_2 + (M_PI*2 * time) / 100);
 }
 
 - (CGFloat)getAngleDegAtTime:(CGFloat)time {
@@ -241,8 +240,6 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     self.currentTimePercent = percent;
     self.audioPlayer.currentTime = [self getTimeAtAngle:angleFloat];
     
-    //NSLog(@"slide %f", [self getTimeAtAngle:angleFloat]);
-    
     //Redraw
     [self setNeedsDisplay];
 }
@@ -265,7 +262,6 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
             break;
     }
  
-    
     [self.wave updateWithLevel:normalizedValue];
 }
 
@@ -274,13 +270,20 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 - (void)appear {
     self.alpha = 1;
     self.radiusFactor = kBaseRadiusFactor;
+    
+    /*[UIView animateWithDuration:10 animations:^{
+        self.radiusFactor = kEndRadiusFactor;
+    } completion:^(BOOL finished) {
+        self.appeared = YES;
+    }];*/
     appearanceTimer = [NSTimer scheduledTimerWithTimeInterval:kRadiusFactorUpdateInterval
                                                        target:self
                                                      selector:@selector(updateAppearing)
                                                      userInfo:nil
                                                       repeats:YES];
-    self.appeared = YES;
+     self.appeared = YES;
 }
+
 
 - (void)updateAppearing {
     self.radiusFactor += kRadiusFactorUpdateValue;
@@ -366,8 +369,6 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
         if (self.duration <= self.currentTimePercent) return;
         
         self.currentTimePercent += kSyncWithTimeUpdateInterval;
-        
-        //        circleOffset -= 0.05f;
     }
 }
 
@@ -404,28 +405,6 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     
     [self setNeedsDisplay];
 }
-
-/*
-- (void)getSimplePlayerLevels{
-    // 1
-    float scale = 0.5;
-    if (_simplePlayer.playing )
-    {
-        [_audioPlayer updateMeters];
-        float power = 0.0f;
-        for (int i = 0; i < [_audioPlayer numberOfChannels]; i++) {
-            power += [_audioPlayer averagePowerForChannel:i];
-        }
-        power /= [_audioPlayer numberOfChannels];
-        
-        // 4
-        float level = meterTable.ValueAt(power);
-        scale = level * 5;
-    }
-    
-    return 0;
-}*/
-
 
 #pragma mark - Math -
 

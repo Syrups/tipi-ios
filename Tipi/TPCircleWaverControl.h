@@ -39,6 +39,7 @@ typedef enum TPCircleMode{
 
 @property BOOL appeared;
 @property BOOL recording;
+@property BOOL showController;
 
 - (void)start;
 - (void)appear;

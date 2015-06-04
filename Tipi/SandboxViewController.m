@@ -10,7 +10,6 @@
 #import "PKAIDecoder.h"
 #import "TPSwipableViewController.h"
 
-#import "TPCircleWaverControl.h"
 @import AVFoundation;
 @import AVKit;
 
@@ -28,15 +27,14 @@
     NSError *err;
     // Create audio player object and initialize with URL to sound
     self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:&err];
-   
-    CGRect frame = CGRectMake(self.view.frame.size.width /2 - 100, self.view.frame.size
-                              .height/2 - 100, 200, 200);
-    TPCircleWaverControl *wv = [[TPCircleWaverControl alloc]initWithFrame:frame];
-    wv. audioPlayer = self.audioPlayer;
-    [wv appear];
-    [wv start];
-    
     [self.audioPlayer play];
+    
+    //CGRect frame = CGRectMake(self.view.frame.size.width /2 - 100, self.view.frame.size.height/2 - 100, 200, 200);
+    //TPCircleWaverControl *wv = [[TPCircleWaverControl alloc]initWithFrame:frame];
+    //[self.view addSubview:wv];
+
+    self.sendBoxControl.audioPlayer = self.audioPlayer;
+    [self.sendBoxControl appear];
     
     /*NSString *streamingString = @"http://api.soundcloud.com/tracks/146814101/stream.json?client_id=fc886d005e29ba78f046e5474e3fdefb";
     NSURL *streamingURL = [NSURL URLWithString:streamingString];
@@ -45,7 +43,12 @@
     [self.sandbPlayer play];
     self.sandbPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;*/
     
-    [self.view addSubview:wv];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    
+    
 }
 
 

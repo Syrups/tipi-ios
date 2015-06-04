@@ -295,6 +295,9 @@ avec votre voix</string>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="sendBoxControl" destination="7M0-vj-9rG" id="wDb-9B-BJG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uhJ-Sv-bnn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
