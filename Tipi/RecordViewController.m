@@ -196,7 +196,9 @@
     page.next = [self viewControllerAtIndex:index+1];
     page.pageIndex = index;
     
-    page.replayButton.transform = CGAffineTransformMakeScale(0, 0);
+    [PKAIDecoder builAnimatedImageInButton:page.replayButton fromFile:@"replay-appear" withColor:nil withAnimationDuration:.5f];
+    
+//    page.replayButton.transform = CGAffineTransformMakeScale(0, 0);
     
     NSDictionary* media = [self.saver.medias objectAtIndex:index];
     

@@ -167,10 +167,10 @@
     }
         
     CABasicAnimation* open = [CABasicAnimation animationWithKeyPath:@"path"];
-    open.duration = .4f;
+    open.duration = .3f;
     open.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     
-    CGPathRef to = exit ? [SHPathLibrary pathForProfileView:self.bodyView open:NO bumpDelta:0].CGPath : [SHPathLibrary pathForProfileView:self.bodyView open:YES bumpDelta:20].CGPath;
+    CGPathRef to = exit ? [SHPathLibrary pathForProfileView:self.bodyView open:NO bumpDelta:0].CGPath : [SHPathLibrary pathForProfileView:self.bodyView open:YES bumpDelta:35].CGPath;
     
     open.fromValue = (__bridge id)maskLayer.path;
     open.toValue = (__bridge id)to;
@@ -183,8 +183,8 @@
 
 - (void)_animateOpenBump {
     CABasicAnimation* open = [CABasicAnimation animationWithKeyPath:@"path"];
-    open.duration = .3f;
-    open.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    open.duration = .4f;
+    open.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     
     CGPathRef to = [SHPathLibrary pathForProfileView:self.bodyView open:YES bumpDelta:0].CGPath;
     

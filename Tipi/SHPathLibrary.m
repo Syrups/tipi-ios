@@ -344,17 +344,21 @@
 + (UIBezierPath *)pathForProfileView:(UIView *)view open:(BOOL)open bumpDelta:(CGFloat)delta {
     UIBezierPath* path = [UIBezierPath bezierPath];
     
-    CGFloat baseY = 30;
+    CGFloat baseY = 40;
     
     if (!open) {
+        
         [path moveToPoint:CGPointMake(0, baseY + view.frame.size.height)];
         [path addLineToPoint:CGPointMake(view.frame.size.width, baseY + view.frame.size.height)];
-        [path addLineToPoint:CGPointMake(view.frame.size.width, baseY + 60)];
+        [path addLineToPoint:CGPointMake(view.frame.size.width, baseY + 80)];
         CGPoint c1 = CGPointMake(view.frame.size.width/2 + 80, baseY + 0);
         CGPoint c2 = CGPointMake(view.frame.size.width/2 - 80, baseY + 0);
-        [path addCurveToPoint:CGPointMake(0, baseY + 60) controlPoint1:c1 controlPoint2:c2];
+        [path addCurveToPoint:CGPointMake(0, baseY + 80) controlPoint1:c1 controlPoint2:c2];
         [path addLineToPoint:CGPointMake(0, baseY + view.frame.size.height)];
     } else {
+        
+        if (delta > 0) baseY -= 10;
+        
         [path moveToPoint:CGPointMake(0, baseY + view.frame.size.height)];
         [path addLineToPoint:CGPointMake(view.frame.size.width, baseY + view.frame.size.height)];
         [path addLineToPoint:CGPointMake(view.frame.size.width,baseY  -delta)];
