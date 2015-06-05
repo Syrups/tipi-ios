@@ -55,9 +55,9 @@ typedef enum TPCircleMode{
 
 @end
 
-@protocol TPCircleModeLongTouchDelegate <NSObject>
+@protocol TPCircleTouchDelegate <NSObject>
 
 @optional
-- (void)circleWaverControl:(TPCircleWaverControl *)control didReceveivedLongPressGestureRecognizer: (UILongPressGestureRecognizer*) page;
+- (void)circleWaverControl:(TPCircleWaverControl *)control didReceveivedLongPressGestureRecognizer: (UILongPressGestureRecognizer*) recognizer;
 @end
 

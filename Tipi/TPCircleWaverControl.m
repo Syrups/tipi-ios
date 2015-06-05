@@ -546,70 +546,9 @@ static inline float AngleFromNorth(CGPoint p1, CGPoint p2, BOOL flipped) {
     if (distance <= self.radius) {
         //perform your tast.
         NSLog(@"in circle");
-        /*if(self.delegate && [self.delegate respondsToSelector:@selector(circleWaverControl:didReceveivedLongPressGestureRecognizer:)]){
+        if(self.delegate && [self.delegate respondsToSelector:@selector(circleWaverControl:didReceveivedLongPressGestureRecognizer:)]){
              [self.delegate circleWaverControl:self didReceveivedLongPressGestureRecognizer:recognizer];
-        }*/
-    }
-    
-    if (recognizer.state == UIGestureRecognizerStateBegan) {
-        NSLog(@"begin touch");
-        //[self pauseSound];
-        //AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-        //[self.commentRecorder startRecording];
-        
-        /*if (!self.recordTimer.appeared) {
-         self.replayButton.transform = CGAffineTransformMakeScale(0, 0);
-         [self.recordTimer appear];
-         }
-         
-         [self.recordTimer reset];
-         [self.recordTimer start];
-         
-         self.audioWave.deployed = YES;
-         [self.previewBubble hideWithCompletion:^{
-         
-         }];
-         
-         // Pause gyroscope panning
-         [self currentPage].imagePanningEnabled = NO;
-         
-         if ([self currentPage].moviePlayer != nil) {
-         [[self currentPage].moviePlayer play];
-         [[self currentPage].view.layer insertSublayer:[self currentPage].moviePlayerLayer atIndex:10];
-         }*/
-    }
-    if (recognizer.state == UIGestureRecognizerStateEnded) {
-        NSLog(@"ended touch");
-        //[self.commentRecorder stopRecording];
-        //[self.recordTimer pause];
-        //[self.recordTimer close];
-        
-        // Requeue gyroscope panning
-        //[self currentPage].imagePanningEnabled = YES;
-        
-        /*if (self.currentIndex != self.saver.medias.count-1) {
-         [self.previewBubble appearWithCompletion:^{
-         [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-         self.replayButton.transform = CGAffineTransformMakeScale(1, 1);
-         self.overlay.alpha = 0.45f;
-         } completion:nil];
-         }];
-         }*/
-        
-        //[self.audioWave hide];
-        
-        // Open done popin if everything has been recorded
-        //[self openDonePopin];
-        //FileUploader* uploader = [[FileUploader alloc] init];
-        //uploader.delegate = self;
-        
-        //NSString* audioPath = [NSString stringWithFormat:@"/pages/%@/comments", self.page.id];
-        //[uploader uploadFileWithData:[self.commentRecorder dataOfAudioWithIndex:0] toPath:audioPath ofType:kUploadTypeAudio];
-        
-        
-        /*if ([self currentPage].moviePlayer != nil) {
-         [[self currentPage].moviePlayer pause];
-         }*/
+        }
     }
 }
 @end

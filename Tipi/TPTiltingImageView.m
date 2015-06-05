@@ -14,45 +14,56 @@
     CGFloat offsetCoefficient;
 }
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+    }
+    return self;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame andImage:(UIImage*)image
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.image = image;
-        
-        CGFloat ratio = image.size.width / image.size.height;
-        
-        imageView = [[UIImageView alloc] initWithImage:image];
-        imageView.frame = CGRectMake(0, 0, frame.size.height * ratio, frame.size.height);
-        
-//        imageView.contentMode = UIViewContentModeScaleAspectFill;
-        
-        scrollView = [[UIScrollView alloc] initWithFrame:frame];
-        
-        imageView.bounds = CGRectMake(0, 0, frame.size.height * ratio, frame.size.height);
-        
-        scrollView.userInteractionEnabled = NO;
-        self.userInteractionEnabled = NO;
-        
-        scrollView.contentInset = UIEdgeInsetsZero;
-        scrollView.contentSize = imageView.bounds.size;
-        scrollView.zoomScale = (CGRectGetWidth(scrollView.bounds) / CGRectGetHeight(scrollView.bounds)) * (self.image.size.width / self.image.size.height);
-        
-        [scrollView addSubview:imageView];
-        [self addSubview:scrollView];
-        
-        scrollView.contentOffset = CGPointMake(scrollView.contentSize.width/2-frame.size.width/2, 0);
-        offsetCoefficient = scrollView.contentOffset.x;
-        
-        self.enabled = YES;
-        
-        self.motionManager = [[CMMotionManager alloc] init];
-        self.motionManager.gyroUpdateInterval = .2f;
-        self.motionManager.accelerometerUpdateInterval = .2f;
-        
-        [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:[self gyroUpdateHandler]];
     }
     return self;
+}
+
+- (void)setup{
+    
+    CGFloat ratio = self.image.size.width / self.image.size.height;
+    
+    imageView = [[UIImageView alloc] initWithImage:self.image];
+    imageView.frame = CGRectMake(0, 0, self.frame.size.height * ratio, self.frame.size.height);
+    
+    //        imageView.contentMode = UIViewContentModeScaleAspectFill;
+    
+    scrollView = [[UIScrollView alloc] initWithFrame:self.frame];
+    
+    imageView.bounds = CGRectMake(0, 0, self.frame.size.height * ratio, self.frame.size.height);
+    
+    scrollView.userInteractionEnabled = NO;
+    self.userInteractionEnabled = NO;
+    
+    scrollView.contentInset = UIEdgeInsetsZero;
+    scrollView.contentSize = imageView.bounds.size;
+    scrollView.zoomScale = (CGRectGetWidth(scrollView.bounds) / CGRectGetHeight(scrollView.bounds)) * (self.image.size.width / self.image.size.height);
+    
+    [scrollView addSubview:imageView];
+    [self addSubview:scrollView];
+    
+    scrollView.contentOffset = CGPointMake(scrollView.contentSize.width/2-self.frame.size.width/2, 0);
+    offsetCoefficient = scrollView.contentOffset.x;
+    
+    self.enabled = YES;
+    
+    self.motionManager = [[CMMotionManager alloc] init];
+    self.motionManager.gyroUpdateInterval = .2f;
+    self.motionManager.accelerometerUpdateInterval = .2f;
+    
+    [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:[self gyroUpdateHandler]];
 }
 
 - (void(^)(CMDeviceMotion *gyroData, NSError *error)) gyroUpdateHandler {

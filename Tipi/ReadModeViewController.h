@@ -19,7 +19,7 @@
 #import "TPCircleWaverControl.h"
 #import "CardViewController.h"
 
-@interface ReadModeViewController : CardViewController<FileUploaderDelegate, TPSideCommentsDelegate>
+@interface ReadModeViewController : CardViewController<FileUploaderDelegate, TPSideCommentsDelegate, TPCircleTouchDelegate>
 @property (nonatomic) int idx;
 @property (nonatomic) Page *page;
 @property (nonatomic, assign) id delegate;
