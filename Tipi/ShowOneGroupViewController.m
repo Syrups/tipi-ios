@@ -258,8 +258,10 @@
 -(void)storyManager:(StoryManager *)manager failedToFetchStories:(NSError *)error{
     //error
     
-    alert = [TPAlert displayOnController:self withMessage:@"Impossible de récupérer les histoires" delegate:self];
+//    alert = [TPAlert displayOnController:self withMessage:@"Impossible de récupérer les histoires" delegate:self];
     [loader removeFromSuperview];
+    
+    self.errorLabel.hidden = NO;
 }
 
 #pragma mark - TPAlert

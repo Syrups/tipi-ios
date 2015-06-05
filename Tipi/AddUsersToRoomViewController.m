@@ -21,6 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSLog(@"%d", self.room.id);
+    
     selectedFriends = [NSMutableArray array];
     self.friends = [NSArray array];
 }
@@ -35,7 +37,7 @@
 }
 
 - (IBAction)back:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - FriendFetcher

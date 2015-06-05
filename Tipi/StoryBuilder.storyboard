@@ -435,9 +435,6 @@ plus tard</string>
                                                 <imageView userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.gif" translatesAutoresizingMaskIntoConstraints="NO" id="Aex-68-Ja1">
                                                     <rect key="frame" x="0.0" y="0.0" width="127" height="127"/>
                                                 </imageView>
-                                                <imageView hidden="YES" userInteractionEnabled="NO" tag="20" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="play.png" translatesAutoresizingMaskIntoConstraints="NO" id="7DO-iR-MZa">
-                                                    <rect key="frame" x="94" y="94" width="25" height="25"/>
-                                                </imageView>
                                                 <view tag="40" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8K-MS-3TI" userLabel="VideoPreview">
                                                     <rect key="frame" x="0.0" y="0.0" width="127" height="127"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -504,7 +501,7 @@ plus tard</string>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="UzX-jJ-ocM" kind="push" identifier="ToOrganizer" id="dY5-fO-c46"/>
+                                    <segue destination="UzX-jJ-ocM" kind="custom" identifier="ToRecord" customClass="PickerToRecordSegue" id="dY5-fO-c46"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fus-Uh-mLW" userLabel="Top">
@@ -683,12 +680,6 @@ plus tard</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Touchez une photo pour l'ouvrir en mode enregistrement" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRx-Fb-nni">
-                                <rect key="frame" x="40" y="409" width="238" height="113"/>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mCg-co-lXX" userLabel="CoachMarkSprite">
                                 <rect key="frame" x="85" y="216" width="150" height="147"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -703,6 +694,12 @@ plus tard</string>
                                     <segue destination="1dF-UM-HnX" kind="embed" id="OEQ-E5-bCP"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Touchez une photo pour l'ouvrir en mode enregistrement" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRx-Fb-nni">
+                                <rect key="frame" x="40" y="334" width="238" height="58"/>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
@@ -760,10 +757,10 @@ plus tard</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dlx-ST-lNN" userLabel="ReplayButton">
-                                <rect key="frame" x="123" y="247" width="74" height="74"/>
+                                <rect key="frame" x="100.5" y="229.5" width="119" height="109"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="74" id="i1Z-cB-joi"/>
-                                    <constraint firstAttribute="height" constant="74" id="mTX-7m-qb6"/>
+                                    <constraint firstAttribute="width" constant="119" id="i1Z-cB-joi"/>
+                                    <constraint firstAttribute="height" constant="109" id="mTX-7m-qb6"/>
                                 </constraints>
                                 <state key="normal" image="page-replay-btn">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1593,7 +1590,6 @@ votre histoire</string>
         <image name="picker-check" width="38" height="38"/>
         <image name="picto-fire-a-blue" width="84" height="84"/>
         <image name="placeholder.gif" width="1000" height="1000"/>
-        <image name="play.png" width="28" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

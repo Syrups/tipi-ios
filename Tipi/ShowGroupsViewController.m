@@ -225,6 +225,9 @@
 }
 
 - (void)animateBackWithCompletion:(void(^)(BOOL finished))completion {
+    
+    if (self.mGroups.count == 0) completion(YES);
+    
     [[self.mTableView visibleCells] enumerateObjectsUsingBlock:^(UITableViewCell *cell, NSUInteger idx, BOOL *stop) {
         
         int endY = cell.frame.origin.y + 200;

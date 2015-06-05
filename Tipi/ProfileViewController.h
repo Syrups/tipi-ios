@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UserManager.h"
 
-@interface ProfileViewController : UIViewController
+@interface ProfileViewController : UIViewController <UIPageViewControllerDataSource>
 
 @property (strong, nonatomic) IBOutlet UIView* bodyView;
 @property (strong, nonatomic) UIPageViewController* pager;

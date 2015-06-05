@@ -27,6 +27,6 @@
 
 + (UIBezierPath *) pathForTransitionBeetweenRoomsAndStories: (CGRect) rect segueBack:(BOOL) back withFinalPath:(BOOL) finalPath;
 
-+ (UIBezierPath *) pathForProfileView:(UIView*)view open: (BOOL)open;
++ (UIBezierPath *) pathForProfileView:(UIView*)view open: (BOOL)open bumpDelta:(CGFloat)delta;
 
 @end

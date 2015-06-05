@@ -233,14 +233,14 @@
 - (void)collectionView:(UICollectionView *)collectionView collectionViewLayout:(RAReorderableLayout *)layout didEndDraggingItemToIndexPath:(NSIndexPath *)indexPath {
     [self centerCollectionView];
     [UIView animateWithDuration:.2f animations:^{
-        [[(RecordViewController*)self.parentViewController currentPage].overlay setAlpha:0];
+//        [[(RecordViewController*)self.parentViewController currentPage].overlay setAlpha:0];
         self.view.alpha = .5f;
     }];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView collectionViewLayout:(RAReorderableLayout *)layout didBeginDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
     [UIView animateWithDuration:.2f animations:^{
-        [[(RecordViewController*)self.parentViewController currentPage].overlay setAlpha:.7f];
+//        [[(RecordViewController*)self.parentViewController currentPage].overlay setAlpha:.7f];
         self.view.alpha = 1;
     }];
 }

@@ -9,22 +9,22 @@
 #import "AnimationLibrary.h"
 
 static const int kInitialYOffset = 100;
-static const float totalBounceDuration = 1;
+static const float totalBounceDuration = 1.2f;
 
 @implementation AnimationLibrary
 
 + (void)animateBouncingView:(UIView*)view withDelay:(NSUInteger)delay {
     view.transform = CGAffineTransformMakeTranslation(0, kInitialYOffset);
     view.alpha = 0;
-    [UIView animateKeyframesWithDuration:totalBounceDuration delay:delay options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
-        [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.4f animations:^{
+    [UIView animateKeyframesWithDuration:totalBounceDuration delay:delay options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
+        [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.3f animations:^{
             view.transform = CGAffineTransformMakeTranslation(0, -10);
             view.alpha = 1;
         }];
-        [UIView addKeyframeWithRelativeStartTime:.4f relativeDuration:.4f animations:^{
+        [UIView addKeyframeWithRelativeStartTime:.3f relativeDuration:.4f animations:^{
             view.transform = CGAffineTransformMakeTranslation(0, 8);
         }];
-        [UIView addKeyframeWithRelativeStartTime:.8f relativeDuration:.2f animations:^{
+        [UIView addKeyframeWithRelativeStartTime:.7f relativeDuration:.3f animations:^{
             view.transform = CGAffineTransformIdentity;
         }];
     } completion:nil];

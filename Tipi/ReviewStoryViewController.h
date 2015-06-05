@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "StoryWIPSaver.h"
 #import "StoryMediaRecorder.h"
+#import "TPSwipableViewController.h"
 
-@interface ReviewStoryViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate, StoryMediaRecorderDelegate>
+@interface ReviewStoryViewController : UIViewController <TPSwipableViewControllerDelegate, StoryMediaRecorderDelegate>
 
-@property (strong, nonatomic) UIPageViewController* pageViewController;
+@property (strong, nonatomic) TPSwipableViewController* swipablePager;
 @property (strong, nonatomic) StoryWIPSaver* saver;
 @property (strong, nonatomic) StoryMediaRecorder* recorder;
 @property NSUInteger currentIndex;

@@ -184,7 +184,7 @@
     morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     
     CGPathRef from = shapeLayer.path;
-    CGPathRef to = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame bumpDelta:-90].CGPath;
+    CGPathRef to = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame bumpDelta:-100].CGPath;
     
     morph.fromValue = (__bridge id)(from);
     morph.toValue = (__bridge id)(to);

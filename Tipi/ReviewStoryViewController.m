@@ -15,27 +15,40 @@
     [super viewDidLoad];
     
     self.currentIndex = 0;
-    
-    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ReviewStoryPageViewController"];
-    self.pageViewController.delegate = self;
-    self.pageViewController.dataSource = self;
-    
-    [self.pageViewController willMoveToParentViewController:self];
-    [self addChildViewController:self.pageViewController];
-    [self.view addSubview:self.pageViewController.view];
-    [self.view sendSubviewToBack:self.pageViewController.view];
-    [self.pageViewController didMoveToParentViewController:self];
-    
+
     self.saver = [StoryWIPSaver sharedSaver];
     
-    ReviewPageViewController* first = [self viewControllerAtIndex:self.currentIndex];
-    [self.pageViewController setViewControllers:@[first] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    [self setupSwipeablePager];
     
     self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
     self.recorder.delegate = self;
     [self.recorder setupForMediaWithIndex:0];
     [self.recorder playAudio];
 
+}
+
+- (void)setupSwipeablePager {
+    NSArray *childViewControllers = [self instantiateChildViewControllers];
+    self.swipablePager = [[TPSwipableViewController alloc] initWithViewControllers:childViewControllers];
+    
+    [self addChildViewController:self.swipablePager];
+    self.swipablePager.view.frame = self.view.frame;
+    [self.view addSubview:self.swipablePager.view];
+    [self.view sendSubviewToBack:self.swipablePager.view];
+    [self.swipablePager didMoveToParentViewController:self];
+    self.swipablePager.delegate = self;
+}
+
+- (NSArray*)instantiateChildViewControllers {
+    NSMutableArray* viewControllers = [NSMutableArray array];
+    for (int i = 0 ; i < self.saver.medias.count ; ++i) {
+        ReviewPageViewController* vc = (ReviewPageViewController*)[self viewControllerAtIndex:i];
+        vc.pageIndex = i;
+        vc.next = (ReviewPageViewController*)[self viewControllerAtIndex:i+1];
+        [viewControllers addObject:vc];
+    }
+    
+    return [viewControllers copy];
 }
 
 - (IBAction)dismiss:(id)sender {
@@ -65,57 +78,17 @@
     return page;
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
-{
-    NSUInteger index = ((ReviewPageViewController*) viewController).pageIndex;
+- (void)swipableViewController:(TPSwipableViewController *)containerViewController didFinishedTransitionToViewController:(UIViewController *)viewController {
     
-    if ((index == 0) || (index == NSNotFound)) {
-        return nil;
-    }
-    
-    if (index < self.saver.medias.count-1) {
-        self.lastPage = NO;
-    }
-    
-    index--;
-    return [self viewControllerAtIndex:index];
-}
-
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
-{
-    NSUInteger index = ((ReviewPageViewController*) viewController).pageIndex;
-    
-    if (index == NSNotFound) {
-        return nil;
-    }
-    
-    index++;
-    if (index == [self.saver.medias count]) {
-        
-        self.lastPage = YES;
-        
-        return nil;
-    }
-    
-    return [self viewControllerAtIndex:index];
-}
-
-- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
-    NSUInteger index = [self currentPage].pageIndex;
-    self.currentIndex = index;
-    
-    if (index != self.saver.medias.count-1) {
-        self.lastPage = NO;
-    }
-    
-    [self.recorder setupForMediaWithIndex:index];
+    [self.recorder setupForMediaWithIndex:self.currentIndex];
     [self.recorder playAudio];
 }
+
 
 #pragma mark - Helpers
 
 - (ReviewPageViewController*)currentPage {
-    return self.pageViewController.viewControllers[0];
+    return self.swipablePager.viewControllers[0];
 }
 
 - (void)next {
@@ -127,11 +100,9 @@
         return;
     }
     
-    __block ReviewStoryViewController* _self = self;
+    self.currentIndex++;
     
-    [self.pageViewController setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
-        [_self pageViewController:_self.pageViewController didFinishAnimating:finished previousViewControllers:nil transitionCompleted:YES];
-    }];
+    [self.swipablePager setSelectedViewController:[self.swipablePager.viewControllers objectAtIndex:self.currentIndex]];
 }
 
 @end

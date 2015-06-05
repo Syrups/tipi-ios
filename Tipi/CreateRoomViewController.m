@@ -33,6 +33,8 @@
     RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
     [manager createRoomWithName:[self.roomNameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] andUsers:@[]];
     
+    [self.roomNameField resignFirstResponder];
+    
     loader = [[TPLoader alloc] initWithFrame:self.view.frame];
     [self.view addSubview:loader];
 }

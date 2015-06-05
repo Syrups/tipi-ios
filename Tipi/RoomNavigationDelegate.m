@@ -44,11 +44,14 @@
     if([toVC isKindOfClass:[ReadModeContainerViewController class]]
        || [fromVC isKindOfClass:[ReadModeContainerViewController class]]){
          return [[ReadStoryTransitionAnimator alloc]init];
-    }else if( [toVC isKindOfClass:[FilterViewController class]]
+    } else if( [toVC isKindOfClass:[FilterViewController class]]
        || [fromVC isKindOfClass:[FilterViewController class]]){
         return [[WaveToBottomTransitionAnimator alloc]init];
-    }else if( [toVC isKindOfClass:[ShowOneGroupViewController class]]
+    } else if( [toVC isKindOfClass:[ShowOneGroupViewController class]]
        || [fromVC isKindOfClass:[ShowOneGroupViewController class]]){
+        return [[WaveSwipeTransitionAnimator alloc]init];
+    } else if( [toVC isKindOfClass:[CreateRoomViewController class]]
+              || [fromVC isKindOfClass:[CreateRoomViewController class]]){
         return [[WaveSwipeTransitionAnimator alloc]init];
     }
     

@@ -19,6 +19,7 @@
     NSMutableArray* unorderedMedias;
     CAGradientLayer* maskLayer;
     TPLoader* loader;
+    UIImageView* preview;
 }
 
 - (void)viewDidLoad {
@@ -99,6 +100,36 @@
     [loader removeFromSuperview];
 }
 
+#pragma mark - UIGestureRecognizer
+
+- (void)handleLongPress:(UILongPressGestureRecognizer*)gestureRecognizer {
+    
+    switch (gestureRecognizer.state) {
+        case UIGestureRecognizerStateBegan:{
+            NSUInteger index = gestureRecognizer.view.tag;
+            
+            if (preview != nil) return;
+            
+            preview = [[UIImageView alloc] initWithFrame:self.view.frame];
+            NSDictionary* media = [self.medias objectAtIndex:index];
+            ALAsset* asset = (ALAsset*)[media objectForKey:@"asset"];
+            UIImage* full = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
+            preview.image = full;
+            preview.alpha = .8f;
+            preview.contentMode = UIViewContentModeScaleAspectFill;
+            
+            [self.view addSubview:preview];
+            break;
+        }
+        case UIGestureRecognizerStateEnded:
+            [preview removeFromSuperview];
+            preview = nil;
+            
+        default:
+            break;
+    }
+}
+
 #pragma mark - UICollectionView
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -150,6 +181,9 @@
     } else {
         check.alpha = 0;
     }
+        
+    UILongPressGestureRecognizer* longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+//    [cell.contentView addGestureRecognizer:longPress];
     
     return cell;
 }

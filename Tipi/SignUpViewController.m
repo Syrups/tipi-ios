@@ -8,6 +8,7 @@
 
 #import "SignUpViewController.h"
 #import "TPLoader.h"
+#import "TPAlert.h"
 
 @implementation SignUpViewController {
     TPLoader* loader;
@@ -21,7 +22,7 @@
 }
 
 - (IBAction)back:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)updateMeters
@@ -56,19 +57,23 @@
 - (void)userManager:(UserManager *)manager successfullyCreatedUser:(User *)user {
     // success
     
+    // authenticate
+    [[UserSession sharedSession] storeUser:user];
+    
+    // show walkthrough to home
     UIViewController* walkthrough = [self.storyboard instantiateViewControllerWithIdentifier:@"Walkthrough"];
     
     [loader removeFromSuperview];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController setViewControllers:@[walkthrough]];
     
-    [self.presentingViewController.navigationController pushViewController:walkthrough animated:YES];
+    
 }
 
 - (void)userManager:(UserManager *)manager failedToCreateUserWithStatusCode:(NSUInteger)statusCode {
     if (statusCode == 409) {
-        ErrorAlert(@"Username is already taken");
+        [TPAlert displayOnController:self withMessage:@"Désolé, mais ce nom d'utilisateur est déjà pris" delegate:nil];
     } else {
-        ErrorAlert(@"Network error");
+        [TPAlert displayOnController:self withMessage:@"Impossible de créer le compte, réessayez plus tard" delegate:nil];
     }
 }
 

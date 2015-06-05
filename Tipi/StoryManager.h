@@ -57,5 +57,5 @@
 @protocol CommentCreatorDelegate <NSObject>
 
 - (void)storyManager:(StoryManager*)manager successfullyCreatedComment:(Comment*)story;
-- (void)storyManager:(StoryManager*)manager failedToCreateComment:(NSError*)error;
+- (void)storyManagerFailedToCreateComment:(StoryManager*)manager;
 @end

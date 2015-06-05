@@ -15,6 +15,7 @@
 #import <CoreMotion/CoreMotion.h>
 #import "AVAudioPlayer+AVAudioPlayer_Fading.h"
 #import "ImageUtils.h"
+#import "PKAIDecoder.h"
 
 @implementation RecordViewController
 
@@ -120,15 +121,10 @@
         [current.recordTimer pause];
         [current.recordTimer close];
         
-        // Requeue gyroscope panning
-        [self currentPage].imagePanningEnabled = YES;
 
-        if (self.currentIndex != self.saver.medias.count-1) {
-                [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                    current.replayButton.transform = CGAffineTransformMakeScale(1, 1);
-                } completion:nil];
-        }
-        
+        [PKAIDecoder builAnimatedImageInButton:current.replayButton fromFile:@"replay-appear" withColor:nil withAnimationDuration:.5f];
+        current.replayButton.transform = CGAffineTransformMakeScale(1, 1);
+
         
         // Open done popin if everything has been recorded
         if ([self.recorder isComplete]) {
@@ -157,17 +153,17 @@
 #pragma mark - Navigation and view controller
 
 - (void)swipableViewController:(TPSwipableViewController *)containerViewController didFinishedTransitionToViewController:(RecordPageViewController *)viewController {
-    
-    NSUInteger oldIndex = self.currentIndex;
-    
+
     RecordPageViewController* old = [self viewControllerAtIndex:self.currentIndex];
-//    [old.motionManager stopDeviceMotionUpdates];
+    old.tiltingView.enabled = NO;
     
     self.currentIndex = viewController.pageIndex;
     
     if (self.currentIndex != self.saver.medias.count-1) {
         self.lastPage = NO;
     }
+    
+    viewController.tiltingView.enabled = YES;
     
     viewController.replayButton.transform = ![self.recorder hasRecordedAtIndex:self.currentIndex] ? CGAffineTransformMakeScale(0, 0) : CGAffineTransformMakeScale(1, 1);
     viewController.recordTimer.hidden = [self.recorder hasRecordedAtIndex:self.currentIndex];

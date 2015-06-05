@@ -46,9 +46,9 @@ static CGFloat const kInitialSpringVelocity = 0.5;
     [[transitionContext containerView] sendSubviewToBack:toViewControllerNext.view];
     
     if (forward) {
-        toViewController.view.transform = CGAffineTransformMakeScale(.85f, .85f);
-//        toViewController.view.alpha = .5f;
-//        toViewControllerNext.view.alpha = .5f;
+        toViewController.view.transform = CGAffineTransformMakeScale(.9f, .9f);
+        toViewController.view.alpha = 0;
+        toViewControllerNext.view.alpha = 0;
         
         toViewControllerNext.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(.7f, .7f), CGAffineTransformMakeTranslation(toViewControllerNext.view.frame.size.width * .2, 0));
     } else {
@@ -63,13 +63,13 @@ static CGFloat const kInitialSpringVelocity = 0.5;
             toViewController.view.transform = CGAffineTransformIdentity;
             toViewController.view.alpha = 1;
             toViewControllerNext.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(.85f, .85f), CGAffineTransformMakeTranslation(toViewControllerNext.view.frame.size.width * .1, 0));
-            toViewControllerNext.view.alpha = 1;
+            toViewControllerNext.view.alpha = .4f;
             
         } else {
             toViewController.view.transform = CGAffineTransformMakeTranslation(0, 0);
-            fromViewController.view.transform = CGAffineTransformMakeScale(.85f, .85f);
+            fromViewController.view.transform = CGAffineTransformMakeScale(.9f, .9f);
             toViewControllerNext.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(.7f, .7f), CGAffineTransformMakeTranslation(toViewControllerNext.view.frame.size.width * .2, 0));
-//            fromViewController.view.alpha = 0;
+            fromViewController.view.alpha = 0;
         }
     } completion:^(BOOL finished) {
         fromViewController.view.transform = CGAffineTransformIdentity;

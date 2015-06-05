@@ -22,14 +22,19 @@
         
         CGFloat ratio = image.size.width / image.size.height;
         
-        imageView = [[UIImageView alloc] initWithImage:image];
-        imageView.frame = CGRectMake(0, 0, frame.size.height * ratio, frame.size.height);
-        
-//        imageView.contentMode = UIViewContentModeScaleAspectFill;
         
         scrollView = [[UIScrollView alloc] initWithFrame:frame];
+        scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+        scrollView.scrollEnabled = NO;
+        scrollView.maximumZoomScale = 2;
         
+        imageView = [[UIImageView alloc] initWithImage:image];
+        imageView.frame = CGRectMake(0, 0, frame.size.height * ratio, frame.size.height);
         imageView.bounds = CGRectMake(0, 0, frame.size.height * ratio, frame.size.height);
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [scrollView addSubview:imageView];
+        
+        [self updateScrollViewZoomToMaximumForImage:image];
         
         scrollView.userInteractionEnabled = NO;
         self.userInteractionEnabled = NO;
@@ -38,10 +43,12 @@
         scrollView.contentSize = imageView.bounds.size;
         scrollView.zoomScale = (CGRectGetWidth(scrollView.bounds) / CGRectGetHeight(scrollView.bounds)) * (self.image.size.width / self.image.size.height);
         
-        [scrollView addSubview:imageView];
+        scrollView.contentOffset = CGPointMake((scrollView.contentSize.width / 2.f) - (CGRectGetWidth(scrollView.bounds)) / 2.f, (scrollView.contentSize.height / 2.f) - (CGRectGetHeight(scrollView.bounds)) / 2.f);
         [self addSubview:scrollView];
         
-        scrollView.contentOffset = CGPointMake(scrollView.contentSize.width/2-frame.size.width/2, 0);
+        
+        
+        
         offsetCoefficient = scrollView.contentOffset.x;
         
         self.enabled = YES;
@@ -55,8 +62,23 @@
     return self;
 }
 
+- (CGFloat)maximumZoomScaleForImage:(UIImage *)image
+{
+    return (CGRectGetHeight(scrollView.bounds) / CGRectGetWidth(scrollView.bounds)) * (image.size.width / image.size.height);
+}
+
+- (void)updateScrollViewZoomToMaximumForImage:(UIImage *)image
+{
+    CGFloat zoomScale = [self maximumZoomScaleForImage:image];
+    
+    scrollView.maximumZoomScale = zoomScale;
+    scrollView.zoomScale = zoomScale;
+}
+
 - (void(^)(CMDeviceMotion *gyroData, NSError *error)) gyroUpdateHandler {
     return ^void(CMDeviceMotion* gyroData, NSError* error) {
+        
+        if (!self.enabled) return;
         
         CGFloat xRotationRate = gyroData.rotationRate.x;
         CGFloat yRotationRate = gyroData.rotationRate.y;
@@ -95,5 +117,6 @@
     
     return CGPointMake(clampedXOffset, centeredY);
 }
+
 
 @end

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CardViewController.h"
 
-@interface ReviewPageViewController : UIViewController
+@interface ReviewPageViewController : CardViewController
 
 @property NSUInteger pageIndex;
 @property (strong, nonatomic) IBOutlet UIImageView* image;
