@@ -31,12 +31,19 @@
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.scrollSpeedValue = 5;
     
+    self.saver = [StoryWIPSaver sharedSaver];
+    
     pendingCellToRemoveIndex = -1;
     
     self.collectionView.collectionViewLayout = layout;
     
-    self.saver = [StoryWIPSaver sharedSaver];
-    self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
+    [self loadFullImages];
+    
+    self.view.alpha = .5f;
+    
+}
+
+- (void)loadFullImages {
     
     // We load the first XX images in full resolution
     // so they can display immediately on collection view,
@@ -44,46 +51,31 @@
     
     [self.saver.medias enumerateObjectsUsingBlock:^(NSMutableDictionary* media, NSUInteger idx, BOOL *stop) {
         
-        if (idx < 4) {
-            ALAsset* asset = (ALAsset*)[media objectForKey:@"asset"];
-            UIImage* full = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
-            [media setObject:full forKey:@"full"];
+//        if (idx < 4) {
+        ALAsset* asset = (ALAsset*)[media objectForKey:@"asset"];
+        UIImage* full = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
+        
+        // reduce image if it's too big
+        if (full.size.width > 1500) {
+            full = [ImageUtils scaleImage:full toSize:CGSizeMake(full.size.width/2, full.size.height/2) mirrored:NO];
         }
+        
+        [media setObject:full forKey:@"full"];
+//        }
         
     }];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        [self.saver.medias enumerateObjectsUsingBlock:^(NSMutableDictionary* media, NSUInteger idx, BOOL *stop) {
-            ALAsset* asset = (ALAsset*)[media objectForKey:@"asset"];
-            UIImage* full = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
-            [media setObject:full forKey:@"full"];
-            
-            if (idx == self.saver.medias.count-1) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.wave updateImage:[ImageUtils convertImageToGrayScale:full]];
-                    [self.collectionView reloadData];
-                });
-            }
-        }];
-    });
-    
-//    [NSTimer scheduledTimerWithTimeInterval:.5f target:self selector:@selector(animateCoachmark:) userInfo:nil repeats:NO];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    self.replayButton.alpha = 1;
-    
-    if ([self.recorder isComplete] && ![self.recorder isEmpty]) {
-        self.replayButton.hidden = YES;
-        self.finishButton.hidden = NO;
-    } else if ([self.recorder isEmpty]) {
-        self.replayButton.hidden = YES;
-    } else {
-        self.replayButton.hidden = NO;
-        self.finishButton.hidden = YES;
-    }
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+//        [self.saver.medias enumerateObjectsUsingBlock:^(NSMutableDictionary* media, NSUInteger idx, BOOL *stop) {
+//            ALAsset* asset = (ALAsset*)[media objectForKey:@"asset"];
+//            UIImage* full = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
+//            [media setObject:full forKey:@"full"];
+//            
+//            if (idx == self.saver.medias.count-1) {
+//                [self.collectionView reloadData];
+//            }
+//        }];
+//    });
 }
 
 #pragma mark - Media deletion
@@ -104,7 +96,6 @@
                 delete.alpha = 1;
                 delete.enabled = YES;
                 cell.transform = CGAffineTransformMakeTranslation(0, -120);
-                self.overlay.alpha = .5f;
             }];
             
             [UIView addKeyframeWithRelativeStartTime:.4f relativeDuration:.6f animations:^{
@@ -120,7 +111,6 @@
             delete.alpha = 0;
             delete.enabled = NO;
             cell.transform = CGAffineTransformIdentity;
-            self.overlay.alpha = 0;
         } completion:^(BOOL finished) {
             pendingCellToRemoveIndex = -1;
         }];
@@ -180,7 +170,6 @@
 //    }
     
     UIImageView* image = (UIImageView*)[cell.contentView viewWithTag:20];
-    image.layer.mask = [self maskForCell:cell expanded:NO];
     
     [image setImage:[media objectForKey:@"full"]];
     image.contentMode = UIViewContentModeScaleAspectFill;
@@ -192,31 +181,26 @@
     pan.delegate = self;
     [cell.contentView addGestureRecognizer:pan];
     
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:cell.contentView.bounds];
+    cell.contentView.layer.masksToBounds = NO;
+    cell.contentView.layer.shadowColor = [UIColor blackColor].CGColor;
+    cell.contentView.layer.shadowOffset = CGSizeMake(5.0f, 5.0f);
+    cell.contentView.layer.shadowOpacity = 0.5f;
+    cell.contentView.layer.shadowPath = shadowPath.CGPath;
+    
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary* media = [self.saver.medias objectAtIndex:indexPath.row];
-    UIImage* image = [media objectForKey:@"full"];
-    
-    NSLog(@"%@", image);
-    
-//    if (image != nil) {
-        CGFloat ratio = image.size.height / image.size.width;
-        
-        if (ratio > 1)
-            return CGSizeMake(CELL_SIZE, CELL_SIZE * ratio);
-//    }
-    
     return CGSizeMake(CELL_SIZE, CELL_SIZE);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 15;
+    return 5;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake((collectionView.frame.size.height-CELL_SIZE)/2, (collectionView.frame.size.width-CELL_SIZE)/2, (collectionView.frame.size.height-CELL_SIZE)/2, collectionView.frame.size.width/2);
+    return UIEdgeInsetsMake(50, (collectionView.frame.size.width-CELL_SIZE)/2, 0, 20);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -224,7 +208,11 @@
     if (indexPath.row == self.saver.medias.count) return;
     
     selectedPageIndex = indexPath.row;
-    [self zoomAtIndexPath:indexPath];
+//    [self zoomAtIndexPath:indexPath];
+    
+    RecordViewController* parent = (RecordViewController*)self.parentViewController;
+    
+    [parent.swipablePager setSelectedViewController:[parent.swipablePager.viewControllers objectAtIndex:selectedPageIndex]];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView atIndexPath:(NSIndexPath *)atIndexPath didMoveToIndexPath:(NSIndexPath *)toIndexPath {
@@ -235,22 +223,26 @@
     [self.saver.medias removeObjectAtIndex:atIndexPath.row];
     [self.saver.medias insertObject:media atIndex:toIndexPath.row];
     
+    RecordViewController* parent = (RecordViewController*)self.parentViewController;
     
-    UILabel* label = (UILabel*)[cell.contentView viewWithTag:10];
-    label.text = [NSString stringWithFormat:@"%ld sur %ld", (unsigned long)[self.saver.medias indexOfObject:media], (unsigned long)self.saver.medias.count];
+    [parent moveViewControllerfromIndex:atIndexPath.row atIndex:toIndexPath.row];
+
     [collectionView reloadData];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView collectionViewLayout:(RAReorderableLayout *)layout didEndDraggingItemToIndexPath:(NSIndexPath *)indexPath {
     [self centerCollectionView];
+    [UIView animateWithDuration:.2f animations:^{
+        [[(RecordViewController*)self.parentViewController currentPage].overlay setAlpha:0];
+        self.view.alpha = .5f;
+    }];
 }
 
-
-- (BOOL)collectionView:(UICollectionView *)collectionView atIndexPath:(NSIndexPath *)atIndexPath canMoveToIndexPath:(NSIndexPath *)canMoveToIndexPath {
-    CGPoint point = CGPointMake(self.collectionView.contentOffset.x + self.collectionView.frame.size.width/2, self.collectionView.frame.size.height/2);
-    NSIndexPath* visibleIndexPath = [self.collectionView indexPathForItemAtPoint:point];
-    
-    return visibleIndexPath.row == atIndexPath.row;
+- (void)collectionView:(UICollectionView *)collectionView collectionViewLayout:(RAReorderableLayout *)layout didBeginDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
+    [UIView animateWithDuration:.2f animations:^{
+        [[(RecordViewController*)self.parentViewController currentPage].overlay setAlpha:.7f];
+        self.view.alpha = 1;
+    }];
 }
 
 #pragma mark - UIGestureRecognizer
@@ -265,6 +257,7 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.view.alpha = 1;
         CGPoint point = CGPointMake(self.collectionView.contentOffset.x + self.collectionView.frame.size.width/2, self.collectionView.frame.size.height/2);
         NSIndexPath* indexPath = [self.collectionView indexPathForItemAtPoint:point];
         UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:indexPath];
@@ -272,6 +265,12 @@
         cell.layer.zPosition = 0;
 //        cell.alpha = INACTIVE_CELL_OPACITY;
     } completion:nil];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [UIView animateWithDuration:.2f animations:^{
+        self.view.alpha = .5f;
+    }];
 }
 
 #pragma mark - Navigation
@@ -311,9 +310,6 @@
             cell.transform = CGAffineTransformMakeScale(scale+.1f, scale+.1f);
         }
         
-        self.replayButton.alpha = 0;
-        
-        self.topControlsYConstraint.constant = -100;
         [self.view layoutIfNeeded];
         
     } completion:^(BOOL finished) {
@@ -337,48 +333,12 @@
     }];
 }
 
-- (IBAction)openDonePopin:(id)sender {
-    DoneStoryViewController* done = (DoneStoryViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"DoneStory"];
-    
-    [self addChildViewController:done];
-    done.view.frame = self.view.frame;
-    done.view.alpha = 0;
-    [self.view addSubview:done.view];
-    [done didMoveToParentViewController:self];
-    
-    self.donePopin = done;
-    
-    [UIView animateWithDuration:.3f animations:^{
-        done.view.alpha = 1;
-    }];
-}
-
-- (void)openNameStoryPopin {
-    NameStoryViewController* done = (NameStoryViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"NameStory"];
-    
-    [self addChildViewController:done];
-    done.view.frame = self.view.frame;
-    done.view.alpha = 0;
-    [self.view addSubview:done.view];
-    [done didMoveToParentViewController:self];
-    
-    [self.donePopin.view removeFromSuperview];
-    [self.donePopin removeFromParentViewController];
-    
-    self.namePopin = done;
-    
-    [UIView animateWithDuration:.3f animations:^{
-        done.view.alpha = 1;
-    }];
-}
-
 #pragma mark - Helper
 
 - (void)centerCollectionView {
     NSIndexPath *pathForCenterCell = [self.collectionView indexPathForItemAtPoint:CGPointMake(CGRectGetMidX(self.collectionView.bounds) - CELL_SIZE/2, CGRectGetMidY(self.collectionView.bounds))];
-    [self.collectionView scrollToItemAtIndexPath:pathForCenterCell atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    [self.collectionView scrollToItemAtIndexPath:pathForCenterCell atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
     
-
 }
 
 - (UIImage*)mediaForIndexPath:(NSIndexPath*)indexPath {
@@ -400,14 +360,6 @@
     CGPathRelease(path);
     
     return maskLayer;
-}
-
-#pragma mark - Coachmark
-
-- (IBAction)animateCoachmark:(id)sender {
-    [CoachmarkManager launchCoachmarkAnimationForOrganizerController:self withCompletion:^{
-        
-    }];
 }
 
 @end

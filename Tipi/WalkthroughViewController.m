@@ -8,6 +8,9 @@
 
 #import "WalkthroughViewController.h"
 #import "WalkthroughScreenViewController.h"
+#import "HomeViewController.h"
+
+#define SCREENS_COUNT 3
 
 @interface WalkthroughViewController ()
 
@@ -19,19 +22,41 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-    self.pageViewController.dataSource = self;
-    self.pageViewController.view.frame = self.view.frame;
+    TPSwipableViewController* tps = [[TPSwipableViewController alloc] initWithViewControllers:[self instantiateViewControllers]];
+    tps.delegate = self;
+    tps.view.frame = self.view.frame;
+    tps.view.backgroundColor = kCreateBackgroundColor;
+    [self addChildViewController:tps];
+    [self.view addSubview:tps.view];
+    [tps didMoveToParentViewController:self];
     
-    WalkthroughScreenViewController* first = [self viewControllerAtIndex:0];
-    [self.pageViewController setViewControllers:@[first] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+}
+
+- (NSArray*)instantiateViewControllers {
+    NSMutableArray* viewControllers = [NSMutableArray array];
     
-    [self addChildViewController:self.pageViewController];
-    [self.view addSubview:self.pageViewController.view];
-    [self.pageViewController didMoveToParentViewController:self];
+    for (int i = 0 ; i < SCREENS_COUNT ; i++) {
+        CardViewController* vc = (CardViewController*)[self viewControllerAtIndex:i];
+        vc.next = (CardViewController*)[self viewControllerAtIndex:i+1];
+        [viewControllers addObject:vc];
+    }
+    
+    // append fake home screen at the end
+    
+    CardViewController* last = [[CardViewController alloc] init];
+    last.view.backgroundColor = kCreateBackgroundColor;
+    last.view.frame = self.view.frame;
+    
+    [viewControllers addObject:last];
+    
+    return [viewControllers copy];
 }
 
 - (WalkthroughScreenViewController *)viewControllerAtIndex:(NSUInteger)index {
+    
+    if (index >= SCREENS_COUNT) {
+        return nil;
+    }
     
     WalkthroughScreenViewController *childViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WalkthroughScreen"];
     childViewController.index = index;
@@ -40,43 +65,19 @@
     
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
-    
-    NSUInteger index = [(WalkthroughScreenViewController *)viewController index];
-    
-    if (index == 0) {
-        return nil;
+- (void)displayHome {
+    HomeViewController* home = [self.storyboard instantiateViewControllerWithIdentifier:@"Home"];
+    [self.navigationController setViewControllers:@[home] animated:NO];
+}
+
+#pragma mark - TPSwipable
+
+- (void)swipableViewController:(TPSwipableViewController *)containerViewController didFinishedTransitionToViewController:(CardViewController *)viewController {
+    if (viewController.next == nil) { // last
+        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(displayHome) userInfo:nil repeats:NO];
+        
     }
-    
-    index--;
-    
-    return [self viewControllerAtIndex:index];
-    
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
-    
-    NSUInteger index = [(WalkthroughScreenViewController *)viewController index];
-    
-    
-    index++;
-    
-    if (index == 2) {
-        return nil;
-    }
-    
-    return [self viewControllerAtIndex:index];
-    
-}
-
-- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
-    // The number of items reflected in the page indicator.
-    return 2;
-}
-
-- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
-    // The selected item reflected in the page indicator.
-    return 0;
-}
 
 @end

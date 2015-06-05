@@ -13,6 +13,7 @@
 
 @implementation HomeBubble {
     CAShapeLayer* shapeLayer;
+    CALayer* imageLayer;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
@@ -174,14 +175,16 @@
 
 - (void)stickTopTopWithCompletion:(void (^)())completionBlock {
     [CATransaction begin];
-    [CATransaction setCompletionBlock:completionBlock];
+    [CATransaction setCompletionBlock:^{
+        [self _bumpToTopWithCompletion:completionBlock];
+    }];
     
     CABasicAnimation* morph = [CABasicAnimation animationWithKeyPath:@"path"];
-    morph.duration = 0.7f;
+    morph.duration = 0.3f;
     morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     
     CGPathRef from = shapeLayer.path;
-    CGPathRef to = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame].CGPath;
+    CGPathRef to = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame bumpDelta:-90].CGPath;
     
     morph.fromValue = (__bridge id)(from);
     morph.toValue = (__bridge id)(to);
@@ -190,18 +193,43 @@
     [shapeLayer.modelLayer setPath:to];
     
     [CATransaction commit];
-    
-    [UIView animateWithDuration:.4f animations:^{
-        for (UIView* v in self.subviews) {
-            v.alpha = 0;
-        }
-    }];
-    
 
+
+}
+
+- (void)_bumpToTopWithCompletion:(void (^)())completionBlock {
+    [CATransaction begin];
+    [CATransaction setCompletionBlock:completionBlock];
+    
+    CABasicAnimation* morph = [CABasicAnimation animationWithKeyPath:@"path"];
+    morph.duration = 0.3f;
+    morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    
+    CGPathRef from = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame bumpDelta:-90].CGPath;
+    CGPathRef to = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame bumpDelta:0].CGPath;
+    
+    morph.fromValue = (__bridge id)(from);
+    morph.toValue = (__bridge id)(to);
+    
+    [shapeLayer addAnimation:morph forKey:@"expand"];
+    [shapeLayer.modelLayer setPath:to];
+    
+    [CATransaction commit];
+}
+
+- (void)replaceImageLayerWithLayer:(CALayer *)layer {
+    [imageLayer removeFromSuperlayer];
+    imageLayer = layer;
+    [self.layer addSublayer:imageLayer];
 }
 
 - (void)drawRect:(CGRect)rect {
     CGPathRef path = [SHPathLibrary pathForHomeBubbleInRect:self.frame open:self.expanded].CGPath;
+    
+    if (self.stuckTop) {
+        path = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame bumpDelta:0].CGPath;
+    }
+    
     CAShapeLayer* layer = [CAShapeLayer layer];
     layer.path = CGPathCreateCopy(path);
     self.layer.mask = layer;

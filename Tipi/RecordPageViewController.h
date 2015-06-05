@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMotion/CoreMotion.h>
+#import "CardViewController.h"
+#import "SRRecordButton.h"
 
-@interface RecordPageViewController : UIViewController
+@interface RecordPageViewController : CardViewController
 
-@property NSUInteger pageIndex;
 @property BOOL recorded;
 
 @property (strong, nonatomic) UIImage* image;
@@ -21,5 +22,9 @@
 @property (strong, nonatomic) AVPlayerLayer* moviePlayerLayer;
 @property (strong, nonatomic) CMMotionManager* motionManager;
 @property BOOL imagePanningEnabled;
+
+@property (strong, nonatomic) IBOutlet SRRecordButton* recordTimer;
+@property (strong, nonatomic) IBOutlet UIButton* replayButton;
+@property (strong, nonatomic) IBOutlet UIView* overlay;
 
 @end

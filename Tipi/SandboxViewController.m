@@ -37,11 +37,11 @@
     [self.sendBoxControl appear];
     
     /*NSString *streamingString = @"http://api.soundcloud.com/tracks/146814101/stream.json?client_id=fc886d005e29ba78f046e5474e3fdefb";
-    NSURL *streamingURL = [NSURL URLWithString:streamingString];
-    NSLog(@"%@", streamingURL);
-    self.sandbPlayer = [AVPlayer playerWithURL:streamingURL];
-    [self.sandbPlayer play];
-    self.sandbPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;*/
+     NSURL *streamingURL = [NSURL URLWithString:streamingString];
+     NSLog(@"%@", streamingURL);
+     self.sandbPlayer = [AVPlayer playerWithURL:streamingURL];
+     [self.sandbPlayer play];
+     self.sandbPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;*/
     
     
 }

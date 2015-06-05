@@ -194,7 +194,7 @@ public class RAReorderableLayout: UICollectionViewFlowLayout, UIGestureRecognize
         var attributesArray = super.layoutAttributesForElementsInRect(rect)
         if attributesArray != nil {
             for attribute in attributesArray! {
-                var layoutAttribute = attribute as! UICollectionViewLayoutAttributes
+                var layoutAttribute = attribute as UICollectionViewLayoutAttributes
                 if layoutAttribute.representedElementCategory == .Cell {
                     if layoutAttribute.indexPath.isEqual(self.cellFakeView?.indexPath) {
                         var cellAlpha: CGFloat = 0
@@ -215,7 +215,7 @@ public class RAReorderableLayout: UICollectionViewFlowLayout, UIGestureRecognize
     override public func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         
         let collectionViewSize = self.collectionView!.frame.size
-        var proposedContentOffsetCenterX = proposedContentOffset.x + collectionViewSize.width * 0.5
+        var proposedContentOffsetCenterX = proposedContentOffset.x
         
         var proposedRect = self.collectionView?.bounds
         
@@ -223,15 +223,15 @@ public class RAReorderableLayout: UICollectionViewFlowLayout, UIGestureRecognize
         
         if let attributes = self.layoutAttributesForElementsInRect(proposedRect!) {
             for object in attributes {
-                let attributes:UICollectionViewLayoutAttributes = object as! UICollectionViewLayoutAttributes
+                let attributes:UICollectionViewLayoutAttributes = object as UICollectionViewLayoutAttributes
                 
-                if (abs(attributes.center.x - proposedContentOffsetCenterX) < abs(candidateAttributes.center.x - proposedContentOffsetCenterX)) {
+                if (abs(attributes.frame.origin.x - proposedContentOffsetCenterX) < abs(candidateAttributes.frame.origin.x - proposedContentOffsetCenterX)) {
                     candidateAttributes = attributes;
                 }
             }
         }
         
-        return CGPointMake(candidateAttributes.center.x - collectionViewSize.width * 0.5, proposedContentOffset.y)
+        return CGPointMake(candidateAttributes.frame.origin.x - 15, proposedContentOffset.y)
     }
     
     override public func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
@@ -503,12 +503,7 @@ public class RAReorderableLayout: UICollectionViewFlowLayout, UIGestureRecognize
             case .Changed:
                 self.cellFakeView!.center.x = self.fakeCellCenter!.x + panTranslation!.x
                 self.cellFakeView!.center.y = self.fakeCellCenter!.y + panTranslation!.y
-                
-                UIView.animateWithDuration(0.2, animations: {
-                    self.cellFakeView?.transform = self.panTranslation?.x > 0 ? CGAffineTransformMakeRotation(0.1) : CGAffineTransformMakeRotation(-0.1)
-                    return
-                })
-                
+
                 
                 self.beginScrollIfNeeded()
                 self.moveItemIfNeeded()
@@ -625,7 +620,7 @@ private class RACellFakeView: UIView {
     func pushFowardView() {
         UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseInOut | .BeginFromCurrentState, animations: {
             self.center = self.originalCenter!
-            self.transform = CGAffineTransformMakeScale(1.1, 1.1)
+            self.transform = CGAffineTransformMakeScale(1.2, 1.2)
             self.cellFakeHightedView!.alpha = 0;
             var shadowAnimation = CABasicAnimation(keyPath: "shadowOpacity")
             shadowAnimation.fromValue = 0

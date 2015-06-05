@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CardViewController.h"
 
-@interface WalkthroughScreenViewController : UIViewController
+@interface WalkthroughScreenViewController : CardViewController
 
 @property NSUInteger index;
 @property (strong, nonatomic) IBOutlet UIView* screenView;
+@property (strong, nonatomic) IBOutlet UIColor* backgroundColor;
 
 @end

@@ -18,7 +18,6 @@
 		73559BA21AE2686000547886 /* RoomNavigationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 73559BA11AE2686000547886 /* RoomNavigationDelegate.m */; };
 		73559BA61AE269A200547886 /* WaveSwipeTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 73559BA51AE269A200547886 /* WaveSwipeTransitionAnimator.m */; };
 		735FE0C41AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 735FE0C31AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m */; };
-		737646591B1F32F500034108 /* RAReorderableLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737646571B1F32F500034108 /* RAReorderableLayout.swift */; };
 		73825C1D1ADE8B4300D43383 /* SHPathLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 73825C1C1ADE8B4300D43383 /* SHPathLibrary.m */; };
 		739BEC501B1F013400756770 /* TPSwipableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 739BEC4F1B1F013400756770 /* TPSwipableViewController.m */; };
 		739FFB801B1F615300FA726F /* TPCircleWaverControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 739FFB7F1B1F615300FA726F /* TPCircleWaverControl.m */; };
@@ -92,6 +91,9 @@
 		B33DE85B1ACDCE00008AE55F /* BaseModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DE85A1ACDCE00008AE55F /* BaseModelController.m */; };
 		B341F04C1AE1A272001D448A /* MediaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B341F04B1AE1A272001D448A /* MediaCell.m */; };
 		B34FEE971AEAB7A200A7E57B /* HelpModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34FEE961AEAB7A200A7E57B /* HelpModalViewController.m */; };
+		B35279361B2058290023C42C /* AVAudioPlayer+AVAudioPlayer_Fading.m in Sources */ = {isa = PBXBuildFile; fileRef = B35279351B2058290023C42C /* AVAudioPlayer+AVAudioPlayer_Fading.m */; };
+		B35279391B2097A40023C42C /* TPTiltingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B35279381B2097A40023C42C /* TPTiltingImageView.m */; };
+		B352793C1B20CF140023C42C /* TPAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = B352793B1B20CF140023C42C /* TPAlert.m */; };
 		B35975F21ADFA29F00936E5E /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B35975F11ADFA29F00936E5E /* ImageUtils.m */; };
 		B35AD0391ABF2B6600527C0D /* ReviewStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD0381ABF2B6600527C0D /* ReviewStoryViewController.m */; };
 		B35AD03C1ABF2D2500527C0D /* ReviewPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD03B1ABF2D2500527C0D /* ReviewPageViewController.m */; };
@@ -107,6 +109,8 @@
 		B38B895F1ACC08C500799EDD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38B895E1ACC08C500799EDD /* MediaPlayer.framework */; };
 		B38B89621ACC146200799EDD /* MediaLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = B38B89611ACC146200799EDD /* MediaLibrary.m */; };
 		B38B89661ACC221600799EDD /* SRRecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B38B89651ACC221600799EDD /* SRRecordButton.m */; };
+		B396AFB61B1F33A0006E1042 /* RAReorderableLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B396AFB41B1F33A0006E1042 /* RAReorderableLayout.swift */; };
+		B396AFB91B1F4970006E1042 /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B396AFB81B1F4970006E1042 /* CardViewController.m */; };
 		B396C5C01AFE4EC700935725 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B396C5BF1AFE4EC700935725 /* FilterViewController.m */; };
 		B39942211AFBAEBD0040C749 /* SRUnderlinedField.m in Sources */ = {isa = PBXBuildFile; fileRef = B39942201AFBAEBD0040C749 /* SRUnderlinedField.m */; };
 		B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A4CDC71AA71DB90079F8D1 /* StoryWIPSaver.m */; };
@@ -189,8 +193,6 @@
 		73559BA51AE269A200547886 /* WaveSwipeTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveSwipeTransitionAnimator.m; sourceTree = "<group>"; };
 		735FE0C21AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveToBottomTransitionAnimator.h; sourceTree = "<group>"; };
 		735FE0C31AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveToBottomTransitionAnimator.m; sourceTree = "<group>"; };
-		737646571B1F32F500034108 /* RAReorderableLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAReorderableLayout.swift; sourceTree = "<group>"; };
-		737646581B1F32F500034108 /* Swift-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swift-Header.h"; sourceTree = "<group>"; };
 		73825C1B1ADE8B4300D43383 /* SHPathLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHPathLibrary.h; sourceTree = "<group>"; };
 		73825C1C1ADE8B4300D43383 /* SHPathLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHPathLibrary.m; sourceTree = "<group>"; };
 		739BEC4E1B1F013400756770 /* TPSwipableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPSwipableViewController.h; sourceTree = "<group>"; };
@@ -306,6 +308,12 @@
 		B341F04B1AE1A272001D448A /* MediaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaCell.m; sourceTree = "<group>"; };
 		B34FEE951AEAB7A200A7E57B /* HelpModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpModalViewController.h; sourceTree = "<group>"; };
 		B34FEE961AEAB7A200A7E57B /* HelpModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpModalViewController.m; sourceTree = "<group>"; };
+		B35279341B2058290023C42C /* AVAudioPlayer+AVAudioPlayer_Fading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AVAudioPlayer+AVAudioPlayer_Fading.h"; sourceTree = "<group>"; };
+		B35279351B2058290023C42C /* AVAudioPlayer+AVAudioPlayer_Fading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AVAudioPlayer+AVAudioPlayer_Fading.m"; sourceTree = "<group>"; };
+		B35279371B2097A40023C42C /* TPTiltingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTiltingImageView.h; sourceTree = "<group>"; };
+		B35279381B2097A40023C42C /* TPTiltingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTiltingImageView.m; sourceTree = "<group>"; };
+		B352793A1B20CF140023C42C /* TPAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPAlert.h; sourceTree = "<group>"; };
+		B352793B1B20CF140023C42C /* TPAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPAlert.m; sourceTree = "<group>"; };
 		B35975F01ADFA29F00936E5E /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
 		B35975F11ADFA29F00936E5E /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
 		B35AD0371ABF2B6600527C0D /* ReviewStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewStoryViewController.h; sourceTree = "<group>"; };
@@ -332,6 +340,10 @@
 		B38B89611ACC146200799EDD /* MediaLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaLibrary.m; sourceTree = "<group>"; };
 		B38B89641ACC221600799EDD /* SRRecordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecordButton.h; sourceTree = "<group>"; };
 		B38B89651ACC221600799EDD /* SRRecordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecordButton.m; sourceTree = "<group>"; };
+		B396AFB41B1F33A0006E1042 /* RAReorderableLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAReorderableLayout.swift; sourceTree = "<group>"; };
+		B396AFB51B1F33A0006E1042 /* Swift-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swift-Header.h"; sourceTree = "<group>"; };
+		B396AFB71B1F4970006E1042 /* CardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
+		B396AFB81B1F4970006E1042 /* CardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardViewController.m; sourceTree = "<group>"; };
 		B396C5BE1AFE4EC700935725 /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
 		B396C5BF1AFE4EC700935725 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		B399421F1AFBAEBD0040C749 /* SRUnderlinedField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRUnderlinedField.h; sourceTree = "<group>"; };
@@ -464,6 +476,8 @@
 				73E0BDAF1B1F159300AD540D /* PanGestureInteractiveTransition.m */,
 				73E0BDB11B1F195D00AD540D /* TPCardAnimatedTransition.h */,
 				73E0BDB21B1F195D00AD540D /* TPCardAnimatedTransition.m */,
+				B396AFB71B1F4970006E1042 /* CardViewController.h */,
+				B396AFB81B1F4970006E1042 /* CardViewController.m */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -736,6 +750,15 @@
 			name = Help;
 			sourceTree = "<group>";
 		};
+		B35279331B20580E0023C42C /* AVAudioPlayer+Fading */ = {
+			isa = PBXGroup;
+			children = (
+				B35279341B2058290023C42C /* AVAudioPlayer+AVAudioPlayer_Fading.h */,
+				B35279351B2058290023C42C /* AVAudioPlayer+AVAudioPlayer_Fading.m */,
+			);
+			name = "AVAudioPlayer+Fading";
+			sourceTree = "<group>";
+		};
 		B35AD0361ABF2B4B00527C0D /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -968,6 +991,10 @@
 				B33618691B0A16FC0047013C /* TPLoader.m */,
 				730CFF1E1B0B857A001045E4 /* TPSideCommentsView.h */,
 				730CFF1F1B0B857A001045E4 /* TPSideCommentsView.m */,
+				B35279371B2097A40023C42C /* TPTiltingImageView.h */,
+				B35279381B2097A40023C42C /* TPTiltingImageView.m */,
+				B352793A1B20CF140023C42C /* TPAlert.h */,
+				B352793B1B20CF140023C42C /* TPAlert.m */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -995,8 +1022,8 @@
 		B3D1B0761B1E496800000C81 /* RAReorderableLayout */ = {
 			isa = PBXGroup;
 			children = (
-				737646571B1F32F500034108 /* RAReorderableLayout.swift */,
-				737646581B1F32F500034108 /* Swift-Header.h */,
+				B396AFB41B1F33A0006E1042 /* RAReorderableLayout.swift */,
+				B396AFB51B1F33A0006E1042 /* Swift-Header.h */,
 			);
 			path = RAReorderableLayout;
 			sourceTree = "<group>";
@@ -1037,6 +1064,7 @@
 		DCA76F8ACE4F9EBC399AF0C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B35279331B20580E0023C42C /* AVAudioPlayer+Fading */,
 				B3D1B0761B1E496800000C81 /* RAReorderableLayout */,
 				B33618601B09E9150047013C /* SCSiriWaveformView */,
 				B3846F1C1ADD058B0030DBDE /* CoreMotion.framework */,
@@ -1241,6 +1269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B396AFB91B1F4970006E1042 /* CardViewController.m in Sources */,
 				B3065A4E1ABAFD7600C10AD9 /* Room.m in Sources */,
 				B319B2511AF12D0F00C819BD /* AdminRoomViewController.m in Sources */,
 				B3FBAAD01AEFD64300A3A6B4 /* WalkthroughScreenViewController.m in Sources */,
@@ -1271,6 +1300,7 @@
 				B3A8D18A1ACECB1A00B09C34 /* AddFriendViewController.m in Sources */,
 				B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */,
 				B34FEE971AEAB7A200A7E57B /* HelpModalViewController.m in Sources */,
+				B35279361B2058290023C42C /* AVAudioPlayer+AVAudioPlayer_Fading.m in Sources */,
 				7322855D1B0F41CA00481C2B /* FileDownLoader.m in Sources */,
 				B3BCD0061AA5F0CE00261212 /* NewStoryViewController.m in Sources */,
 				B3A8D18E1ACED0EC00B09C34 /* ProfileViewController.m in Sources */,
@@ -1306,6 +1336,7 @@
 				B3065A541ABB35D700C10AD9 /* SignUpViewController.m in Sources */,
 				7328120B1B03E44300C0087A /* TPStoryTableViewCell.m in Sources */,
 				73A188D31B19A80800E164E0 /* CommentAudioRecorder.m in Sources */,
+				B352793C1B20CF140023C42C /* TPAlert.m in Sources */,
 				73825C1D1ADE8B4300D43383 /* SHPathLibrary.m in Sources */,
 				B3BCCFD31AA5C36C00261212 /* main.m in Sources */,
 				B3C2E5C61AD32A1B00868DA4 /* WaveBackground.m in Sources */,
@@ -1314,7 +1345,8 @@
 				B36FF2831B02250B00EF18F2 /* PickerToOrganizerSegue.m in Sources */,
 				B30317FD1ABC2759005EF73D /* Page.m in Sources */,
 				73E0BDB01B1F159300AD540D /* PanGestureInteractiveTransition.m in Sources */,
-				737646591B1F32F500034108 /* RAReorderableLayout.swift in Sources */,
+				B396AFB61B1F33A0006E1042 /* RAReorderableLayout.swift in Sources */,
+				B35279391B2097A40023C42C /* TPTiltingImageView.m in Sources */,
 				B3A8D1841ACEAD0A00B09C34 /* FriendManager.m in Sources */,
 				B336186A1B0A16FC0047013C /* TPLoader.m in Sources */,
 				B38621FA1AE16DC200D2CA5A /* ShowCaseableViewController.m in Sources */,

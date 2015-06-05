@@ -10,4 +10,6 @@
 
 @interface NewStoryMainController : UIViewController
 
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* backButtonYConstraint;
+
 @end

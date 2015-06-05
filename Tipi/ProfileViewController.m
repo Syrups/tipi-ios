@@ -10,8 +10,11 @@
 #import "FriendListViewController.h"
 #import "NewStoryViewController.h"
 #import "AnimationLibrary.h"
+#import "SHPathLibrary.h"
 
-@implementation ProfileViewController
+@implementation ProfileViewController {
+    CAShapeLayer* maskLayer;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -68,28 +71,47 @@
         [self.requestsTabButton.superview layoutIfNeeded];
     } completion:nil];
     
-    self.backButton.transform = CGAffineTransformMakeTranslation(0, -100);
-    self.settingsButton.transform = CGAffineTransformMakeTranslation(0, -100);
-    [UIView animateWithDuration:.6f delay:.5f options:UIViewAnimationOptionCurveEaseOut animations:^{
+    self.backButton.transform = CGAffineTransformMakeTranslation(0, -80);
+    self.settingsButton.transform = CGAffineTransformMakeTranslation(0, -80);
+    [UIView animateWithDuration:.3f delay:.2f options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.backButton.alpha = 1;
         self.settingsButton.alpha = 1;
         self.backButton.transform = CGAffineTransformIdentity;
         self.settingsButton.transform = CGAffineTransformIdentity;
     } completion:nil];
+    
+    maskLayer = [CAShapeLayer layer];
+    
+    maskLayer.path = [SHPathLibrary pathForProfileView:self.bodyView open:NO].CGPath;
+    self.bodyView.layer.mask = maskLayer;
+    
+    [self animatePathExit:NO];
 }
 
 - (IBAction)dismiss:(id)sender {
     NewStoryViewController* parent = (NewStoryViewController*)self.parentViewController;
     
-    [parent transitionFromProfile];
+    [self animatePathExit:YES];
     
-    [UIView animateWithDuration:.3f delay:.1f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.backButton.alpha = 0;
         self.settingsButton.alpha = 0;
-        self.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+        self.backButton.transform = CGAffineTransformMakeTranslation(0, -80);
+        self.settingsButton.transform = CGAffineTransformMakeTranslation(0, -80);
+        
+        self.friendsTabButton.alpha = 0;
+        self.requestsTabButton.alpha = 0;
+        
     } completion:^(BOOL finished) {
-        [self.view removeFromSuperview];
-        [self removeFromParentViewController];
+        
+        [UIView animateWithDuration:.4f animations:^{
+            self.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+            [parent transitionFromProfile];
+            
+        } completion:^(BOOL finished) {
+            [self.view removeFromSuperview];
+            [self removeFromParentViewController];
+        }];
     }];
 }
 
@@ -132,9 +154,22 @@
     return [self viewControllerAtIndex:1];
 }
 
--(void)userManager:(UserManager *)manager successfullyFetchedUser:(User *)user{
+#pragma mark - Animation
+
+- (void)animatePathExit:(BOOL)exit {
+    CABasicAnimation* open = [CABasicAnimation animationWithKeyPath:@"path"];
+    open.duration = .4f;
+    open.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    
+    CGPathRef to = exit ? [SHPathLibrary pathForProfileView:self.bodyView open:NO].CGPath : [SHPathLibrary pathForProfileView:self.bodyView open:YES].CGPath;
+    
+    open.fromValue = (__bridge id)maskLayer.path;
+    open.toValue = (__bridge id)to;
+    
+    [maskLayer addAnimation:open forKey:@"open"];
+    [maskLayer.modelLayer setPath:to];
 }
-- (void)userManager:(UserManager *)manager failedToFetchUserWithId:(NSUInteger)userId{
-}
+
+
 
 @end

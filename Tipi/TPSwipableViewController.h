@@ -24,6 +24,7 @@
 
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers;
 - (void)setSelectedViewControllerViewControllerAtIndex:(NSUInteger)index;
+- (void)moveViewController:(UIViewController*)viewController fromIndex:(NSUInteger)oldIndex atIndex:(NSUInteger)newIndex;
 
 @end
 

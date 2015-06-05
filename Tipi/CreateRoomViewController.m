@@ -46,7 +46,8 @@
 
 - (void)roomManager:(RoomManager *)manager successfullyCreatedRoom:(Room *)room {
     [loader removeFromSuperview];
-    AddUsersToRoomViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"AddUsersToRoom"];
+    
+    AddUsersToRoomViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:[self.restorationIdentifier isEqualToString:@"StoryBuilderCreateRoom"] ? @"StoryBuilderAddUsersToRoom" : @"AddUsersToRoom"];
     vc.room = room;
     [self.navigationController pushViewController:vc animated:YES];
 }

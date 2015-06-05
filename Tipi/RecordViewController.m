@@ -13,33 +13,61 @@
 #import "CoachmarkManager.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <CoreMotion/CoreMotion.h>
+#import "AVAudioPlayer+AVAudioPlayer_Fading.h"
+#import "ImageUtils.h"
 
 @implementation RecordViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.currentIndex = 0;
     self.saver = [StoryWIPSaver sharedSaver];
     
-    self.replayButton.transform = CGAffineTransformMakeScale(0, 0);
-
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    [self setupSwipeablePager];
     
-    RecordPageViewController* first = [self viewControllerAtIndex:self.currentIndex];
-    [self addChildViewController:first];
-    [self.view addSubview:first.view];
-    [self.view sendSubviewToBack:first.view];
-    [first didMoveToParentViewController:self];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 
     self.longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     self.longPressRecognizer.minimumPressDuration = 0.2f;
+    self.longPressRecognizer.delegate = self;
     
     [self.view addGestureRecognizer:self.longPressRecognizer];
     
     self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
     self.recorder.delegate = self;
     
-    [CoachmarkManager launchCoachmarkAnimationForRecordController:self withCompletion:nil];
+//    [CoachmarkManager launchCoachmarkAnimationForRecordController:self withCompletion:nil];
+}
+
+- (void)setupSwipeablePager {
+    NSArray *childViewControllers = [self instantiateChildViewControllers];
+    self.swipablePager = [[TPSwipableViewController alloc] initWithViewControllers:childViewControllers];
+    
+    [self addChildViewController:self.swipablePager];
+    self.swipablePager.view.frame = self.view.frame;
+    [self.view addSubview:self.swipablePager.view];
+    [self.view sendSubviewToBack:self.swipablePager.view];
+    [self.swipablePager didMoveToParentViewController:self];
+    self.swipablePager.delegate = self;
+}
+
+- (NSArray *)instantiateChildViewControllers {
+    
+    NSMutableArray* viewControllers = [NSMutableArray arrayWithCapacity:self.saver.medias.count];
+    
+    for (int i = 0; i < self.saver.medias.count; ++i) {
+        RecordPageViewController* controller = [self viewControllerAtIndex:i];
+//        UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:controller.view.bounds];
+//        controller.view.layer.masksToBounds = NO;
+//        controller.view.layer.shadowColor = [UIColor blackColor].CGColor;
+//        controller.view.layer.shadowOffset = CGSizeMake(5.0f, 0);
+//        controller.view.layer.shadowOpacity = 0.3f;
+//        controller.view.layer.shadowPath = shadowPath.CGPath;
+        [viewControllers addObject:controller];
+    }
+    
+    return viewControllers;
 }
 
 - (IBAction)replay:(id)sender {
@@ -50,60 +78,54 @@
 
 - (void)mediaRecorder:(StoryMediaRecorder *)recorder hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
     
-    [self.recordTimer updateWithBuffer:buffer bufferSize:bufferSize withNumberOfChannels:numberOfChannels];
-}
-
-#pragma mark - UISwipeGestureRecognizer
-
-- (IBAction)handleSwipe:(UISwipeGestureRecognizer*)swipe {
-    [self goNextPage];
-}
-
-- (IBAction)handleSwipeBack:(UISwipeGestureRecognizer*)swipe {
-    [self goPreviousPage];
+    [[self currentPage].recordTimer updateWithBuffer:buffer bufferSize:bufferSize withNumberOfChannels:numberOfChannels];
 }
 
 #pragma mark - UILongPressGestureRecognizer
 
 - (void)handleLongPress:(UILongPressGestureRecognizer*)recognizer {
+    
+    RecordPageViewController* current = [self currentPage];
+    
     if (recognizer.state == UIGestureRecognizerStateBegan) {
-        NSLog(@"begin touch");
+        NSLog(@"begin touch index: %d", self.currentIndex);
         [self.recorder startRecording];
         
-        [CoachmarkManager dismissCoachmarkAnimationForRecordController:self];
+//        [CoachmarkManager dismissCoachmarkAnimationForRecordController:self];
         
-        if (!self.recordTimer.appeared) {
-            self.replayButton.transform = CGAffineTransformMakeScale(0, 0);
-            [self.recordTimer appear];
+        if (!current.recordTimer.appeared) {
+            current.replayButton.transform = CGAffineTransformMakeScale(0, 0);
+            [current.recordTimer appear];
         }
         
-        [self.recordTimer reset];
-        [self.recordTimer start];
+        [current.recordTimer reset];
+        [current.recordTimer start];
 
-        // Pause gyroscope panning
-        [self currentPage].imagePanningEnabled = NO;
-        
         if ([self currentPage].moviePlayer != nil) {
-            [[self currentPage].moviePlayer play];
-            [[self currentPage].view.layer insertSublayer:[self currentPage].moviePlayerLayer atIndex:10];
+            [current.moviePlayer play];
+            [current.view.layer insertSublayer:[self currentPage].moviePlayerLayer atIndex:10];
+            [current.view bringSubviewToFront:current.replayButton];
+            [current.view bringSubviewToFront:current.recordTimer];
         }
         
-        [UIView animateWithDuration:.2f animations:^{
-            self.overlay.alpha = .7f;
+        [UIView animateWithDuration:.3f animations:^{
+            current.overlay.alpha = .6f;
+//            self.organizerContainerYConstraint.constant = -100;
+            self.organizerContainerView.alpha = 0;
         }];
     }
     if (recognizer.state == UIGestureRecognizerStateEnded) {
         NSLog(@"ended touch");
         [self.recorder stopRecording];
-        [self.recordTimer pause];
-        [self.recordTimer close];
+        [current.recordTimer pause];
+        [current.recordTimer close];
         
         // Requeue gyroscope panning
         [self currentPage].imagePanningEnabled = YES;
 
         if (self.currentIndex != self.saver.medias.count-1) {
                 [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                    self.replayButton.transform = CGAffineTransformMakeScale(1, 1);
+                    current.replayButton.transform = CGAffineTransformMakeScale(1, 1);
                 } completion:nil];
         }
         
@@ -113,63 +135,57 @@
             [self openDonePopin];
         }
         
+        [UIView animateWithDuration:.3f animations:^{
+            current.overlay.alpha = 0;
+//            self.organizerContainerYConstraint.constant = 0;
+            self.organizerContainerView.alpha = 1;
+        }];
+        
         if ([self currentPage].moviePlayer != nil) {
             [[self currentPage].moviePlayer pause];
         }
     }
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if (CGRectContainsPoint(self.organizerContainerView.bounds, [touch locationInView:self.organizerContainerView]))
+        return NO;
+    
+    return YES;
+}
 
 #pragma mark - Navigation and view controller
 
-- (void)goNextPage {
+- (void)swipableViewController:(TPSwipableViewController *)containerViewController didFinishedTransitionToViewController:(RecordPageViewController *)viewController {
     
-    if (self.currentIndex == self.saver.medias.count - 1) {
-        return;
+    NSUInteger oldIndex = self.currentIndex;
+    
+    RecordPageViewController* old = [self viewControllerAtIndex:self.currentIndex];
+//    [old.motionManager stopDeviceMotionUpdates];
+    
+    self.currentIndex = viewController.pageIndex;
+    
+    if (self.currentIndex != self.saver.medias.count-1) {
+        self.lastPage = NO;
     }
     
-    self.currentIndex++;
-    [self presentRequestedPage];
-}
-
-- (void)goPreviousPage {
-    if (self.currentIndex == 0) {
-        return;
+    viewController.replayButton.transform = ![self.recorder hasRecordedAtIndex:self.currentIndex] ? CGAffineTransformMakeScale(0, 0) : CGAffineTransformMakeScale(1, 1);
+    viewController.recordTimer.hidden = [self.recorder hasRecordedAtIndex:self.currentIndex];
+    [viewController.recordTimer reset];
+    
+    if (![self.recorder hasRecordedAtIndex:self.currentIndex] && !viewController.recordTimer.appeared) {
+        [viewController.recordTimer appear];
     }
     
-    self.currentIndex--;
-    [self presentRequestedPage];
-}
-
-- (void)presentRequestedPage {
-    RecordPageViewController* next = [self viewControllerAtIndex:self.currentIndex];
+    viewController.overlay.alpha = 0;
+    [self.recorder.player fadeOutAndPause];
+    [self.recorder setupForMediaWithIndex:self.currentIndex];
     
-    if (next) {
-        [[self currentPage].view removeFromSuperview];
-        [[self currentPage] removeFromParentViewController];
-        
-        if (self.currentIndex != self.saver.medias.count-1) {
-            self.lastPage = NO;
-        }
-        
-        self.replayButton.transform = ![self.recorder hasRecordedAtIndex:self.currentIndex] ? CGAffineTransformMakeScale(0, 0) : CGAffineTransformMakeScale(1, 1);
-        self.recordTimer.hidden = [self.recorder hasRecordedAtIndex:self.currentIndex];
-        [self.recordTimer reset];
-        
-        if (![self.recorder hasRecordedAtIndex:self.currentIndex] && !self.recordTimer.appeared) {
-            [self.recordTimer appear];
-        }
-        
-        self.overlay.alpha = 0;
-        [self.recorder.player stop];
-        [self.recorder setupForMediaWithIndex:self.currentIndex];
-        
-        [self addChildViewController:next];
-        [self.view addSubview:next.view];
-        [self.view sendSubviewToBack:next.view];
-        [next didMoveToParentViewController:self];
-        
-    }
+    OrganizeStoryViewController* organizer = (OrganizeStoryViewController*)[self.childViewControllers objectAtIndex:0];
+    
+//    CGPoint oldContentOffset = organizer.collectionView.contentOffset;
+//    CGFloat delta = oldIndex < self.currentIndex ? CELL_SIZE + 15 : -CELL_SIZE - 15;
+//    [organizer.collectionView setContentOffset:CGPointMake(oldContentOffset.x + delta, oldContentOffset.y) animated:YES];
 }
 
 - (RecordPageViewController *)viewControllerAtIndex:(NSUInteger)index
@@ -180,7 +196,11 @@
     
     // Create a new view controller and pass suitable data.
     RecordPageViewController *page = [self.storyboard instantiateViewControllerWithIdentifier:@"RecordPage"];
+    
+    page.next = [self viewControllerAtIndex:index+1];
     page.pageIndex = index;
+    
+    page.replayButton.transform = CGAffineTransformMakeScale(0, 0);
     
     NSDictionary* media = [self.saver.medias objectAtIndex:index];
     
@@ -190,7 +210,6 @@
         AVURLAsset* asset = [AVURLAsset URLAssetWithURL:url options:nil];
         AVPlayerItem* item = [AVPlayerItem playerItemWithAsset:asset];
         page.moviePlayer=[AVPlayer playerWithPlayerItem:item];
-        NSLog(@"%@", url);
         
         [[NSNotificationCenter defaultCenter] addObserverForName:AVPlayerItemDidPlayToEndTimeNotification object:item queue:nil usingBlock:^(NSNotification *note) {
             AVPlayerItem* item = [note object];
@@ -198,7 +217,8 @@
             [page.moviePlayer play];
         }];
         
-        page.image = [(NSDictionary*)[self.saver.medias objectAtIndex:index] objectForKey:@"full"];
+        UIImage* full = [(NSDictionary*)[self.saver.medias objectAtIndex:index] objectForKey:@"full"];
+        page.image = full;
         
         
         AVPlayerLayer* playerLayer = [AVPlayerLayer playerLayerWithPlayer:page.moviePlayer];
@@ -206,6 +226,9 @@
         page.moviePlayer.volume = 0;
         playerLayer.frame = self.view.frame;
         [page.view.layer insertSublayer:playerLayer atIndex:0];
+        
+        [page.view bringSubviewToFront:page.replayButton];
+        [page.view bringSubviewToFront:page.recordTimer];
     } else {
         page.image = [(NSDictionary*)[self.saver.medias objectAtIndex:index] objectForKey:@"full"];
     }
@@ -214,6 +237,21 @@
 }
 
 #pragma mark - Navigation
+
+- (void)moveViewControllerfromIndex:(NSUInteger)oldIndex atIndex:(NSUInteger)newIndex {
+    
+    if (self.currentIndex == oldIndex) {
+        self.currentIndex = newIndex;
+    } else {
+        if (oldIndex < newIndex) {
+            self.currentIndex--;
+        } else {
+            self.currentIndex++;
+        }
+    }
+    
+    [self.swipablePager moveViewController:[self.swipablePager.viewControllers objectAtIndex:oldIndex] fromIndex:oldIndex atIndex:newIndex];
+}
 
 - (void)openDonePopin {
     DoneStoryViewController* done = (DoneStoryViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"DoneStory"];
@@ -253,7 +291,9 @@
 #pragma mark - Helpers
 
 - (RecordPageViewController*)currentPage {
-    return (RecordPageViewController*)self.childViewControllers[0];
+    if (self.currentIndex >= self.swipablePager.viewControllers.count)
+        return nil;
+    return (RecordPageViewController*)self.swipablePager.viewControllers[self.currentIndex];
 }
 
 @end

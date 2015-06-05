@@ -8,7 +8,7 @@
 
 #import "TPSwipableViewController.h"
 #import "TPCardAnimatedTransition.h"
-
+#import "CardViewController.h"
 
 static CGFloat const kButtonSlotWidth = 64; // Also distance between button centers
 static CGFloat const kButtonSlotHeight = 44;
@@ -121,6 +121,24 @@ static CGFloat const kButtonSlotHeight = 44;
 - (void)setSelectedViewControllerViewControllerAtIndex:(NSUInteger)index{
     UIViewController *selectedViewController = self.viewControllers[index];
     self.selectedViewController = selectedViewController;
+}
+
+- (void)moveViewController:(UIViewController *)viewController fromIndex:(NSUInteger)oldIndex atIndex:(NSUInteger)newIndex {
+    NSLog(@"%d", self.viewControllers.count);
+    NSMutableArray* viewControllers = [self.viewControllers mutableCopy];
+    
+    [viewControllers removeObjectAtIndex:oldIndex];
+    [viewControllers insertObject:viewController atIndex:newIndex];
+    
+    for (int i = 0 ; i < viewControllers.count ; i++) {
+        CardViewController* vc = (CardViewController*)[viewControllers objectAtIndex:i];
+        [vc setPageIndex:i];
+        
+        if (i != viewControllers.count - 1)
+            [vc setNext:(CardViewController*)[viewControllers objectAtIndex:i+1]];
+    }
+    
+    self.viewControllers = [viewControllers copy];
 }
 
 /*

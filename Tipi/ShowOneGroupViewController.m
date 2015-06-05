@@ -14,6 +14,7 @@
 #import "WaveToBottomTransitionAnimator.h"
 #import "TPStoryTableViewCell.h"
 #import "TPLoader.h"
+#import "TPAlert.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -23,6 +24,7 @@
 
 @implementation ShowOneGroupViewController {
     TPLoader* loader;
+    TPAlert* alert;
 }
 
 - (void)viewDidLoad {
@@ -255,6 +257,15 @@
 
 -(void)storyManager:(StoryManager *)manager failedToFetchStories:(NSError *)error{
     //error
+    
+    alert = [TPAlert displayOnController:self withMessage:@"Impossible de récupérer les histoires" delegate:self];
+    [loader removeFromSuperview];
+}
+
+#pragma mark - TPAlert
+
+- (void)alertDidAknowledge:(TPAlert *)alert {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(IBAction)prepareForGoBackToOneGroup:(UIStoryboardSegue *)segue {

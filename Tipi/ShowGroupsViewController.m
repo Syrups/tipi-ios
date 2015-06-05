@@ -24,7 +24,7 @@
     
     self.mGroups = [NSArray array];
     
-    [self.mTableView setContentInset:UIEdgeInsetsMake(70,0,150,0)];
+    [self.mTableView setContentInset:UIEdgeInsetsMake(0,0,150,0)];
     self.mTableView.alwaysBounceVertical = NO;
     
     RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
@@ -51,26 +51,26 @@
     
     self.mTableView.delegate = self;
     
-    if (!maskLayer) {
-        maskLayer = [CAGradientLayer layer];
-        
-        CGColorRef outerColor = [UIColor colorWithWhite:1.0 alpha:0.0].CGColor;
-        CGColorRef innerColor = kListenBackgroundColor.CGColor;
-        
-        maskLayer.colors = [NSArray arrayWithObjects:(__bridge id)outerColor,
-                            (__bridge id)innerColor, (__bridge id)innerColor, (__bridge id)outerColor, nil];
-        maskLayer.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0],
-                               [NSNumber numberWithFloat:0.1],
-                               [NSNumber numberWithFloat:0.9],
-                               [NSNumber numberWithFloat:1.0], nil];
-        
-        maskLayer.bounds = CGRectMake(0, 0,
-                                      self.mTableView.frame.size.width,
-                                      self.mTableView.frame.size.height);
-        maskLayer.anchorPoint = CGPointZero;
-        
-        self.mTableView.layer.mask = maskLayer;
-    }
+//    if (!maskLayer) {
+//        maskLayer = [CAGradientLayer layer];
+//        
+//        CGColorRef outerColor = [UIColor colorWithWhite:1.0 alpha:0.0].CGColor;
+//        CGColorRef innerColor = kListenBackgroundColor.CGColor;
+//        
+//        maskLayer.colors = [NSArray arrayWithObjects:(__bridge id)outerColor,
+//                            (__bridge id)innerColor, (__bridge id)innerColor, (__bridge id)outerColor, nil];
+//        maskLayer.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0],
+//                               [NSNumber numberWithFloat:0.3],
+//                               [NSNumber numberWithFloat:0.9],
+//                               [NSNumber numberWithFloat:1.0], nil];
+//        
+//        maskLayer.bounds = CGRectMake(0, 0,
+//                                      self.mTableView.frame.size.width,
+//                                      self.mTableView.frame.size.height);
+//        maskLayer.anchorPoint = CGPointZero;
+//        
+//        self.mTableView.layer.mask = maskLayer;
+//    }
 }
 
 //- (IBAction)createNewRoom:(id)sender {
@@ -97,11 +97,11 @@
     self.mGroups = rooms;
     
     [self.mTableView reloadData];
-    [self.mTableView setContentOffset:CGPointMake(0.0f, -self.mTableView .contentInset.bottom) animated:NO];
+//    [self.mTableView setContentOffset:CGPointMake(0.0f, -self.mTableView .contentInset.bottom) animated:NO];
     
     if(rooms.count >= 2){
         NSIndexPath *pathForCenterCell = [NSIndexPath indexPathForRow:1 inSection:0];
-        [self.mTableView scrollToRowAtIndexPath:pathForCenterCell atScrollPosition:UITableViewScrollPositionTop animated:NO];
+//        [self.mTableView scrollToRowAtIndexPath:pathForCenterCell atScrollPosition:UITableViewScrollPositionTop animated:NO];
     }
     
     if(first){
@@ -156,8 +156,8 @@
         
         int del = fabs(scrollView.superview.center.y -  cellCenter.y)/ 4.5;
         
-        cell.heightConstraint.constant = 120 - del;
-        cell.widthConstraint.constant = 120 - del;
+//        cell.heightConstraint.constant = 120 - del;
+//        cell.widthConstraint.constant = 120 - del;
         
         [cell setNeedsLayout];
         [cell setNeedsUpdateConstraints];
@@ -190,6 +190,9 @@
 
 #pragma mark - Navigation
 
+- (IBAction)prepareForUnwind:(id)sender {
+    
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"ToGroupSegue"]) {
@@ -224,15 +227,17 @@
 - (void)animateBackWithCompletion:(void(^)(BOOL finished))completion {
     [[self.mTableView visibleCells] enumerateObjectsUsingBlock:^(UITableViewCell *cell, NSUInteger idx, BOOL *stop) {
         
-        int endY = cell.frame.origin.y + 150;
-        float delay = (self.mTableView.visibleCells.count - idx - 1) * 0.2;
+        int endY = cell.frame.origin.y + 200;
+        float delay = (self.mTableView.visibleCells.count - idx - 1) * 0.1f;
         
         [UIView animateWithDuration:.3f delay:delay  options:UIViewAnimationOptionCurveEaseInOut animations:^{
             [cell setFrame:CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height)];
             [cell setAlpha:0];
         } completion:^(BOOL finished) {
             if (idx == self.mTableView.visibleCells.count - 1) {
-                completion(finished);
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .25f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                    completion(finished);
+                });
             }
         }];
     }];

@@ -9,6 +9,7 @@
 #import "NewStoryMainController.h"
 #import "AbortModalViewController.h"
 #import "HomeViewController.h"
+#import "StoryWIPSaver.h"
 
 @implementation NewStoryMainController
 
@@ -16,6 +17,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.backButtonYConstraint.constant = -50;
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:.4f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.backButtonYConstraint.constant = 22;
+        [self.view layoutIfNeeded];
+    } completion:nil];
 }
 
 - (IBAction)displayAbortModal:(id)sender {
@@ -37,11 +44,16 @@
 - (IBAction)popCurrentController:(id)sender {
     UINavigationController* nav = (UINavigationController*)self.childViewControllers[0];
     
+    
+    
     // If we are at the first view controller, pop to the home
     if ([[nav visibleViewController] isEqual:[nav.viewControllers objectAtIndex:0]]) {
-
+        NSLog(@"pop");
         HomeViewController* home = (HomeViewController*)[self.navigationController.viewControllers objectAtIndex:0];
         [self.navigationController popToRootViewControllerAnimated:NO];
+        
+        [[StoryWIPSaver sharedSaver] discard];
+        
         [home.storyViewController transitionFromStoryBuilder];
     } else {
         [nav popViewControllerAnimated:NO];

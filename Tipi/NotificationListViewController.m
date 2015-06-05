@@ -12,6 +12,7 @@
 
 @implementation NotificationListViewController {
     NSUInteger lastIndex;
+    TPAlert* alert;
 }
 
 - (void)viewDidLoad {
@@ -42,11 +43,15 @@
     self.invitations = invitations;
     NSLog(@"%@", invitations);
     [self.requestsTableView reloadData];
-//    [self animate];
+    [self animate];
 }
 
 - (void)userManager:(UserManager *)manager failedToFetchInvitationsWithError:(NSError *)error {
     // TODO
+//    alert = [TPAlert displayOnController:self.parentViewController.parentViewController withMessage:@"Impossible de charger les dernières notifications" delegate:nil];
+    [UIView animateWithDuration:.2f animations:^{
+        self.errorLabel.alpha = 1;
+    }];
 }
 
 #pragma mark - RoomJoiner
@@ -58,6 +63,8 @@
 
 - (void)roomManager:(RoomManager *)manager failedToJoinRoomWithError:(NSError *)error {
     // TODO
+    
+    alert = [TPAlert displayOnController:self.parentViewController.parentViewController withMessage:@"Une erreur est survenue, merci de réessayer plus tard" delegate:self];
 }
 
 #pragma mark - UITableView
@@ -68,6 +75,13 @@
     
     UILabel* label = (UILabel*)[cell.contentView viewWithTag:10];
     label.text = [NSString stringWithFormat:@"%@", invitation.name];
+    
+    UILabel* from = (UILabel*)[cell.contentView viewWithTag:20];
+    from.text = [NSString stringWithFormat:@"%@ vous invite à rejoindre :", invitation.owner.username];
+    
+    UIButton* accept = (UIButton*)[cell.contentView viewWithTag:30];
+    accept.layer.borderColor = kCreateBackgroundColor.CGColor;
+    accept.layer.borderWidth = 2;
     
     return cell;
 }
@@ -85,7 +99,7 @@
 - (void)animate {
     [self.requestsTableView.visibleCells enumerateObjectsUsingBlock:^(UITableViewCell* cell, NSUInteger idx, BOOL *stop) {
         
-        [AnimationLibrary animateBouncingView:cell];
+        [AnimationLibrary animateBouncingView:cell withDelay:idx * 0.2f];
         
     }];
     

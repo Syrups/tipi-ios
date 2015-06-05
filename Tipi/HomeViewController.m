@@ -10,6 +10,7 @@
 #import "NewStoryViewController.h"
 #import "ShowGroupsViewController.h"
 #import "AppDelegate.h"
+#import "TPAlert.h"
 
 @interface HomeViewController ()
 
