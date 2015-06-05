@@ -39,7 +39,7 @@
 }
 
 #pragma mark - Factory methods
-- (UIViewController *)viewControllerAtIndex:(int)i {
+- (ReadModeViewController *)viewControllerAtIndex:(int)i {
     // Asking for a page that is out of bounds??
     if (i<0) {
         return nil;
@@ -55,6 +55,8 @@
     newController.player = [self.audioPlayers objectAtIndex:i];
     newController.mediaImage = [self.mediaFiles objectAtIndex:i];
     newController.delegate = self;
+    newController.next = [self viewControllerAtIndex:i+1];
+    
     
     return newController;
 }
@@ -90,8 +92,8 @@
     self.story = story;
     self.mPages = self.story.pages;
     
-    [self loadMediaAndAudioInPages:self.mPages withCompletion:^{
-   
+    [self loadMediaAndAudioInPages:self.mPages atIndex:0 withCompletion:^{
+        
         //Swiper
         NSArray *childViewControllers = [self readmodeControllersWithPages:self.mPages];
         self.swiper = [[TPSwipableViewController alloc] initWithViewControllers:childViewControllers];
@@ -102,7 +104,7 @@
         [self addChildViewController:self.swiper];
         [self.view addSubview:self.swiper.view];
         [self.view sendSubviewToBack:self.swiper.view];
-    
+        
         [self.swiper didMoveToParentViewController:self];
         
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -120,31 +122,31 @@
 }
 
 
-- (void)loadMediaAndAudioInPages:(NSArray *)pages withCompletion:(void(^)())completion{
-   
-    int i = 1;
-    for (Page* page in pages) {
-        
-        //Files
-        NSString* fileUrl = page.audio.file;
-        
-        NSURL *mediaURL = [NSURL URLWithString:page.media.file];
-        
-        [self loadMediaWithURL:mediaURL withCompletion:^{
-            [self loadAudioWithFileURL:fileUrl withCompletion:^{
-                 NSLog(@"loadedPage %d/%lu", i, [pages count]);
-                if(i >= [pages count]){
-                    completion();
-                }
-            }];
+- (void)loadMediaAndAudioInPages:(NSArray *)pages atIndex:(NSUInteger)index withCompletion:(void(^)())completion{
+    
+    
+    Page *page = [pages objectAtIndex:index];
+    //Files
+    NSString* fileUrl = page.audio.file;
+    
+    NSURL *mediaURL = [NSURL URLWithString:page.media.file];
+    
+    [self loadMediaWithURL:mediaURL atIndex:(NSUInteger)index withCompletion:^{
+        [self loadAudioWithFileURL:fileUrl atIndex:(NSUInteger)index withCompletion:^(NSUInteger idx){
+            NSLog(@"loadedPage %lu/%lu", (unsigned long)idx, [pages count]);
+            idx++;
+            
+            if(idx < [pages count]){
+                [self loadMediaAndAudioInPages:pages atIndex:idx withCompletion:completion];
+            }else{
+                completion();
+            }
         }];
-        
-        i++;
-    }
+    }];
 }
 
-- (void)loadMediaWithURL:(NSURL*)url withCompletion:(void(^)())completion{
-    NSLog(@"loadMediaWithURL %@",url);
+- (void)loadMediaWithURL:(NSURL*)url atIndex:(NSUInteger)index withCompletion:(void(^)())completion{
+    //NSLog(@"loadMediaWithURL %@",url);
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
     [manager downloadImageWithURL:url
                           options:0
@@ -161,11 +163,12 @@
     
 }
 
-- (void)loadAudioWithFileURL:(NSString*)fileUrl withCompletion:(void(^)())completion{
+- (void)loadAudioWithFileURL:(NSString*)fileUrl atIndex:(NSUInteger)index withCompletion:(void(^)(NSUInteger idx))completion{
     [FileDownLoader downloadFileWithURL:fileUrl completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
         
+        
         [self.audioPlayers addObject:[[AVAudioPlayer alloc] initWithContentsOfURL:filePath error:nil]];
-        completion();
+        completion(index);
     }];
 }
 

@@ -7,16 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SRRecordButton.h"
+#import "TPCircleWaverControl.h"
 
 
 @interface TPStoryTableViewCell : UITableViewCell<UIGestureRecognizerDelegate>
 @property int baseX;
-@property (nonatomic)BOOL editMode;
+@property (nonatomic) BOOL editMode;
+@property (nonatomic) BOOL isSwipeDeleteEnabled;
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
-@property (weak, nonatomic) IBOutlet SRRecordButton *recordButton;
+@property (weak, nonatomic) IBOutlet TPCircleWaverControl *recordButton;
+
 
 @end

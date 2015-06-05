@@ -16,9 +16,10 @@
 #import "StoryWIPSaver.h"
 #import "StoryMediaRecorder.h"
 #import "CommentAudioRecorder.h"
-#import "SRRecordButton.h"
+#import "TPCircleWaverControl.h"
+#import "CardViewController.h"
 
-@interface ReadModeViewController : UIViewController<FileUploaderDelegate, TPSideCommentsDelegate>
+@interface ReadModeViewController : CardViewController<FileUploaderDelegate, TPSideCommentsDelegate>
 @property (nonatomic) int idx;
 @property (nonatomic) Page *page;
 @property (nonatomic, assign) id delegate;
@@ -30,7 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *mediaImageView;
 @property (weak, nonatomic) IBOutlet UIView *overlayView;
 
-@property (weak, nonatomic) IBOutlet SRRecordButton *playerView;
+@property (weak, nonatomic) IBOutlet TPCircleWaverControl *playerView;
 
 @property (strong, nonatomic) CommentsQueueManager *commentsQueueManager;
 @property (strong, nonatomic) StoryWIPSaver* saver;

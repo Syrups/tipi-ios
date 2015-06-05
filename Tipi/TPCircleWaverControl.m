@@ -26,8 +26,9 @@ static CGFloat const kBaseTime = 0.0f;
 static CGFloat const kBaseDuration = 100;
 static CGFloat const kBaseRadiusFactor = 0.1;
 static CGFloat const kEndRadiusFactor = 1;
-static NSTimeInterval const kRadiusFactorUpdateInterval = 0.005f;
-static CGFloat const kRadiusFactorUpdateValue = kRadiusFactorUpdateInterval;
+static NSTimeInterval const kRadiusFactorUpdateInterval = 0.0005f;
+
+static CGFloat const kRadiusFactorUpdateValue = 0.05;
 
 static CGFloat const kWaveIdleAmplitude = .1f;
 static CGFloat const kWaveFrequency = 2;
@@ -63,10 +64,49 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     return self;
 }
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    
+    if (object == self.simplePlayer  && [keyPath isEqualToString:@"status"]) {
+        if (self.simplePlayer .status == AVPlayerStatusFailed) {
+            NSLog(@"AVPlayer Failed");
+            
+        } else if (self.simplePlayer.status == AVPlayerStatusReadyToPlay && self.autoStart) {
+            NSLog(@"AVPlayerStatusReadyToPlay");
+            [self.simplePlayer  play];
+            
+            
+        } else if (self.simplePlayer.status == AVPlayerItemStatusUnknown) {
+            NSLog(@"AVPlayer Unknown");
+        }
+    }
+}
+
 - (void)setAudioPlayer:(AVAudioPlayer *)audioPlayer{
     _audioPlayer = audioPlayer;
     _duration = _audioPlayer.duration;
     [self start];
+}
+
+- (void)setSimplePlayer:(AVPlayer *)simplePlayer{
+    
+    if (_simplePlayer != nil)
+        [_simplePlayer removeObserver:self forKeyPath:@"status"];
+    
+    _simplePlayer = simplePlayer;
+    _duration = simplePlayer.currentItem.duration.value;
+    [_simplePlayer addObserver:self forKeyPath:@"status" options:0 context:nil];
+    
+
+    /*[[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(simplerPlayerItemDidReachEnd:)
+                                                 name:AVPlayerItemDidPlayToEndTimeNotification
+                                               object:[_simplePlayer currentItem]];*/
+    
+    [self start];
+}
+
+- (void)simplerPlayerItemDidReachEnd:(NSNotification *)notification {
+    
 }
 
 - (void)baseInitWithbaseView:(UIView *)baseView {
@@ -89,10 +129,15 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     
     CGPoint center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
     
-    CGFloat waveWidth = CGRectGetWidth(self.frame) * 0.5;
-    CGFloat waveHeight = CGRectGetHeight(self.frame) * 0.5;
+    //CGFloat waveWidth = CGRectGetWidth(self.frame) * 0.5;
+    //CGFloat waveHeight = CGRectGetHeight(self.frame) * 0.5;
+    CGFloat rectSiez = [self rectSizeForCircleWithRadius:self.radius];
     
-    CGRect innerFrame = CGRectMake(center.x - (waveWidth/2), center.y - (waveHeight/2), waveWidth, waveHeight);
+    //CGRect innerFrame = CGRectMake(center.x - (waveWidth/2), center.y - (waveHeight/2), waveWidth, waveHeight);
+    CGRect innerFrame = CGRectMake(center.x - (rectSiez/2), center.y - (rectSiez/2), rectSiez, rectSiez);
+    self.innerInteractionView = [[UIView alloc] initWithFrame:innerFrame];
+     self.innerInteractionView.backgroundColor = [UIColor greenColor];
+    [self addSubview: self.innerInteractionView];
     
     self.wave = [[SCSiriWaveformView alloc] initWithFrame:innerFrame];
     self.wave.backgroundColor = [UIColor clearColor];
@@ -101,10 +146,16 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     self.wave.alpha = 0;
     self.wave.userInteractionEnabled = NO;
     
-    [self addSubview:self.wave];
-
-    CADisplayLink* displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateWave)];
-    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    if(self.showWave){
+        [self addSubview:self.wave];
+        CADisplayLink* displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateWave)];
+        [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    }
+    
+    UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    longPressRecognizer.minimumPressDuration = .5f;
+    
+    [self.innerInteractionView addGestureRecognizer:longPressRecognizer];
 }
 
 
@@ -186,7 +237,19 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 }
 
 - (NSTimeInterval)getTimeAtAngle:(CGFloat)angle {
-    return self.audioPlayer.duration * ([self getPercentAtAngle:angle]/ 100);
+    
+    CGFloat percentFromAngle = ([self getPercentAtAngle:angle]/ 100);
+    CGFloat duration = 0;
+    
+    if(self.audioPlayer){
+        duration = self.audioPlayer.duration;
+        
+    }else if(self.simplePlayer){
+        
+        duration = self.simplePlayer.currentItem.duration.value;
+    }
+    
+    return duration * percentFromAngle;
 }
 
 
@@ -238,7 +301,13 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     CGFloat percent = [self getPercentAtAngle:angleFloat];
     
     self.currentTimePercent = percent;
-    self.audioPlayer.currentTime = [self getTimeAtAngle:angleFloat];
+    
+    if(self.audioPlayer){
+        self.audioPlayer.currentTime = [self getTimeAtAngle:angleFloat];
+    }else if(self.simplePlayer){
+        [self.simplePlayer seekToTime: CMTimeMake([self getTimeAtAngle:angleFloat], 1)];
+    }
+    
     
     //Redraw
     [self setNeedsDisplay];
@@ -292,6 +361,12 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
         self.radiusFactor = kEndRadiusFactor;
         [appearanceTimer invalidate];
     }
+    
+    CGPoint center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    CGFloat rectSiez = [self rectSizeForCircleWithRadius:self.radius];
+
+    self.innerInteractionView.frame = CGRectMake(center.x - (rectSiez/2), center.y - (rectSiez/2), rectSiez, rectSiez);
+    
     [self setNeedsDisplay];
     [self setContentMode:UIViewContentModeRedraw];
 }
@@ -344,16 +419,25 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
         self.wave.alpha = 1;
     }];
     
-    if(self.audioPlayer){
-        [self.audioPlayer play];
+    
+    if(self.autoStart){
+        if(self.audioPlayer)[self.audioPlayer play];
+        if(self.simplePlayer)[self.simplePlayer play];
     }
 }
+
 
 - (void)updateProgress {
     if (self.audioPlayer) {
         self.currentTimePercent  = ((self.audioPlayer.currentTime / self.duration) * 100);
     }else if(self.simplePlayer){
-        self.currentTimePercent  =  ((self.simplePlayer.currentTime.value / self.duration) * 100);
+        
+        AVPlayerItem *currentItem = self.simplePlayer.currentItem;
+        
+        CMTime duration = currentItem.duration; //total time
+        CMTime currentTime = currentItem.currentTime; //playing time
+        self.duration = CMTimeGetSeconds(duration);
+        self.currentTimePercent  =  ((CMTimeGetSeconds(currentTime)/ self.duration) * 100);
     }else{
         [self updateTestProgress];
     }
@@ -394,6 +478,7 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     }];
     
     if(self.audioPlayer)[self.audioPlayer pause];
+    if(self.simplePlayer)[self.simplePlayer pause];
     
 }
 
@@ -431,5 +516,100 @@ static inline float AngleFromNorth(CGPoint p1, CGPoint p2, BOOL flipped) {
     double radians = atan2(v.y,v.x);
     result = ToDeg(radians);
     return (result >=0  ? result : result + 360.0);
+}
+
+
+-(float)distanceWithCenter:(CGPoint)current with:(CGPoint)SCCenter{
+    CGFloat dx=current.x-SCCenter.x;
+    CGFloat dy=current.y-SCCenter.y;
+    
+    return sqrt(dx*dx + dy*dy);
+}
+
+-(CGFloat)rectSizeForCircleWithRadius:(CGFloat)r{
+    
+    return  sqrt(2 * powf(r, 2));
+}
+
+
+
+
+
+#pragma mark - UILongPressGestureRecognizer
+
+- (void)handleLongPress:(UILongPressGestureRecognizer*)recognizer {
+    
+    CGPoint centerOfCircle=CGPointMake(140,200);
+    CGPoint touchPoint=[recognizer locationInView:self];
+    CGFloat distance=[self distanceWithCenter:centerOfCircle with:touchPoint];
+    
+    if (distance <= self.radius) {
+        //perform your tast.
+        NSLog(@"in circle");
+        /*if(self.delegate && [self.delegate respondsToSelector:@selector(circleWaverControl:didReceveivedLongPressGestureRecognizer:)]){
+             [self.delegate circleWaverControl:self didReceveivedLongPressGestureRecognizer:recognizer];
+        }*/
+    }
+    
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"begin touch");
+        //[self pauseSound];
+        //AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        //[self.commentRecorder startRecording];
+        
+        /*if (!self.recordTimer.appeared) {
+         self.replayButton.transform = CGAffineTransformMakeScale(0, 0);
+         [self.recordTimer appear];
+         }
+         
+         [self.recordTimer reset];
+         [self.recordTimer start];
+         
+         self.audioWave.deployed = YES;
+         [self.previewBubble hideWithCompletion:^{
+         
+         }];
+         
+         // Pause gyroscope panning
+         [self currentPage].imagePanningEnabled = NO;
+         
+         if ([self currentPage].moviePlayer != nil) {
+         [[self currentPage].moviePlayer play];
+         [[self currentPage].view.layer insertSublayer:[self currentPage].moviePlayerLayer atIndex:10];
+         }*/
+    }
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"ended touch");
+        //[self.commentRecorder stopRecording];
+        //[self.recordTimer pause];
+        //[self.recordTimer close];
+        
+        // Requeue gyroscope panning
+        //[self currentPage].imagePanningEnabled = YES;
+        
+        /*if (self.currentIndex != self.saver.medias.count-1) {
+         [self.previewBubble appearWithCompletion:^{
+         [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+         self.replayButton.transform = CGAffineTransformMakeScale(1, 1);
+         self.overlay.alpha = 0.45f;
+         } completion:nil];
+         }];
+         }*/
+        
+        //[self.audioWave hide];
+        
+        // Open done popin if everything has been recorded
+        //[self openDonePopin];
+        //FileUploader* uploader = [[FileUploader alloc] init];
+        //uploader.delegate = self;
+        
+        //NSString* audioPath = [NSString stringWithFormat:@"/pages/%@/comments", self.page.id];
+        //[uploader uploadFileWithData:[self.commentRecorder dataOfAudioWithIndex:0] toPath:audioPath ofType:kUploadTypeAudio];
+        
+        
+        /*if ([self currentPage].moviePlayer != nil) {
+         [[self currentPage].moviePlayer pause];
+         }*/
+    }
 }
 @end

@@ -33,8 +33,6 @@ typedef void(^fadeOutCompletion)(BOOL);
     UITapGestureRecognizer *tapOnImageView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOverlayPlayer:)];
     tapOnImageView.numberOfTapsRequired = 1;
     
-    UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    longPressRecognizer.minimumPressDuration = .5f;
     //)
     
     self.view.clipsToBounds = YES;
@@ -45,7 +43,9 @@ typedef void(^fadeOutCompletion)(BOOL);
     self.mediaImageView.userInteractionEnabled = YES;
     [self.mediaImageView addGestureRecognizer:tapOnImageView];
     
-    [self.playerView addGestureRecognizer:longPressRecognizer];
+    //Player
+    self.playerView.audioPlayer = self.player;
+    [self.playerView appear];
     
     //Data
     self.commentsPlayers = [NSMutableArray new];
@@ -58,7 +58,11 @@ typedef void(^fadeOutCompletion)(BOOL);
     self.commentRecorder = [[CommentAudioRecorder alloc] init];
     self.commentRecorder.delegate = self;
     
-    [self.playerView appear];
+    
+
+    if(self.idx == 0){
+        [self playSound];
+    }
 }
 
 
@@ -242,68 +246,4 @@ typedef void(^fadeOutCompletion)(BOOL);
 }
 
 
-#pragma mark - UILongPressGestureRecognizer
-
-- (void)handleLongPress:(UILongPressGestureRecognizer*)recognizer {
-    if (recognizer.state == UIGestureRecognizerStateBegan) {
-        NSLog(@"begin touch");
-        [self pauseSound];
-        //AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-        [self.commentRecorder startRecording];
-        
-        /*if (!self.recordTimer.appeared) {
-            self.replayButton.transform = CGAffineTransformMakeScale(0, 0);
-            [self.recordTimer appear];
-        }
-        
-        [self.recordTimer reset];
-        [self.recordTimer start];
-        
-        self.audioWave.deployed = YES;
-        [self.previewBubble hideWithCompletion:^{
-            
-        }];
-        
-        // Pause gyroscope panning
-        [self currentPage].imagePanningEnabled = NO;
-        
-        if ([self currentPage].moviePlayer != nil) {
-            [[self currentPage].moviePlayer play];
-            [[self currentPage].view.layer insertSublayer:[self currentPage].moviePlayerLayer atIndex:10];
-        }*/
-    }
-    if (recognizer.state == UIGestureRecognizerStateEnded) {
-        NSLog(@"ended touch");
-        [self.commentRecorder stopRecording];
-        //[self.recordTimer pause];
-        //[self.recordTimer close];
-        
-        // Requeue gyroscope panning
-        //[self currentPage].imagePanningEnabled = YES;
-        
-        /*if (self.currentIndex != self.saver.medias.count-1) {
-            [self.previewBubble appearWithCompletion:^{
-                [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                    self.replayButton.transform = CGAffineTransformMakeScale(1, 1);
-                    self.overlay.alpha = 0.45f;
-                } completion:nil];
-            }];
-        }*/
-        
-        //[self.audioWave hide];
-        
-        // Open done popin if everything has been recorded
-                    //[self openDonePopin];
-            FileUploader* uploader = [[FileUploader alloc] init];
-            uploader.delegate = self;
-            
-            NSString* audioPath = [NSString stringWithFormat:@"/pages/%@/comments", self.page.id];
-            [uploader uploadFileWithData:[self.commentRecorder dataOfAudioWithIndex:0] toPath:audioPath ofType:kUploadTypeAudio];
-            
-        
-        /*if ([self currentPage].moviePlayer != nil) {
-            [[self currentPage].moviePlayer pause];
-        }*/
-    }
-}
 @end

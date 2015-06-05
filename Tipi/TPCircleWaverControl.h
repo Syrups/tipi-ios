@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Syrup Apps. All rights reserved.
 //
 
+IB_DESIGNABLE
+
 @import UIKit;
 @import AVFoundation;
 
@@ -21,7 +23,10 @@ typedef enum TPCircleMode{
 
 @property TPCircleMode mode;
 
+@property (nonatomic, assign) id delegate;
+
 @property (strong, nonatomic) SCSiriWaveformView* wave;
+@property (strong, nonatomic) UIView* innerInteractionView;
 
 @property (strong, nonatomic)  UIColor *backgroundPathColor;
 @property (strong, nonatomic)  UIColor *progressPathColor;
@@ -40,8 +45,19 @@ typedef enum TPCircleMode{
 @property BOOL appeared;
 @property BOOL recording;
 @property BOOL showController;
+@property BOOL showWave;
+@property BOOL autoStart;
+
 
 - (void)start;
+- (void)close;
 - (void)appear;
 
 @end
+
+@protocol TPCircleModeLongTouchDelegate <NSObject>
+
+@optional
+- (void)circleWaverControl:(TPCircleWaverControl *)control didReceveivedLongPressGestureRecognizer: (UILongPressGestureRecognizer*) page;
+@end
+

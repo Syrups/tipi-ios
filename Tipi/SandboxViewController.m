@@ -20,31 +20,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //TPCircleWaverControl *wv = [[TPCircleWaverControl alloc]initWithFrame:CGRectMake(self.view.frame.size.width /2 - 100, self.view.frame.size.height/2 - 100, 200, 200);];
+    //[self.view addSubview:wv];
+    
     
     NSString *path = [NSString stringWithFormat:@"%@/suitcase.mp3", [[NSBundle mainBundle] resourcePath]];
     NSURL *soundUrl = [NSURL fileURLWithPath:path];
     
     NSError *err;
-    // Create audio player object and initialize with URL to sound
     self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:&err];
+    self.sendBoxControl.audioPlayer = self.audioPlayer;
     [self.audioPlayer play];
     
-    //CGRect frame = CGRectMake(self.view.frame.size.width /2 - 100, self.view.frame.size.height/2 - 100, 200, 200);
-    //TPCircleWaverControl *wv = [[TPCircleWaverControl alloc]initWithFrame:frame];
-    //[self.view addSubview:wv];
+    
+    ///S>T>R>E>A>M>I>N>G
+    
+    //NSString *streamingString = @"http://api.soundcloud.com/tracks/146814101/stream.json?client_id=fc886d005e29ba78f046e5474e3fdefb";
+    
+    //self.sandbPlayer = [AVPlayer playerWithURL:[NSURL URLWithString:streamingString]];
+    //self.sandbPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+    
+    /*[[NSNotificationCenter defaultCenter] addObserver:self
+     selector:@selector(playerItemDidReachEnd:)
+     name:AVPlayerItemDidPlayToEndTimeNotification
+     object:[songPlayer currentItem]];*/
 
-    self.sendBoxControl.audioPlayer = self.audioPlayer;
+    //[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateProgress:) userInfo:nil repeats:YES];
+    
+    //self.sendBoxControl.simplePlayer = self.sandbPlayer;
     [self.sendBoxControl appear];
-    
-    /*NSString *streamingString = @"http://api.soundcloud.com/tracks/146814101/stream.json?client_id=fc886d005e29ba78f046e5474e3fdefb";
-     NSURL *streamingURL = [NSURL URLWithString:streamingString];
-     NSLog(@"%@", streamingURL);
-     self.sandbPlayer = [AVPlayer playerWithURL:streamingURL];
-     [self.sandbPlayer play];
-     self.sandbPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;*/
-    
-    
 }
+
+
 
 - (void)viewDidAppear:(BOOL)animated{
     

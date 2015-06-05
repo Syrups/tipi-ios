@@ -35,6 +35,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBarTopConstraint;
 @property (weak, nonatomic) ReadModeContainerViewController *readModeContainer;
 
+@property (weak, nonatomic) NSIndexPath *currentIndexPath;
+
 - (void)applyFilters;
 - (IBAction)deleteStory:(id)sender;
 

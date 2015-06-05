@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -496,7 +496,7 @@
                                                         <action selector="deleteStory:" destination="Hvn-U3-hPU" eventType="touchUpInside" id="3gO-w5-Sxe"/>
                                                     </connections>
                                                 </button>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TeX-bU-hn3" customClass="SRRecordButton">
+                                                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TeX-bU-hn3" customClass="TPCircleWaverControl">
                                                     <rect key="frame" x="90" y="15" width="140" height="140"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -1112,21 +1112,27 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3X5-eF-mZH" customClass="TPCircleWaverControl">
+                                        <rect key="frame" x="90" y="214" width="140" height="140"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="140" id="Elo-9d-dpM"/>
+                                            <constraint firstAttribute="height" constant="140" id="OP8-BL-QFB"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="yBM-7P-cpa" firstAttribute="centerY" secondItem="eKm-uT-F9F" secondAttribute="centerY" id="0pi-kO-LaM"/>
                                     <constraint firstItem="eKm-uT-F9F" firstAttribute="leading" secondItem="0oP-iy-bZh" secondAttribute="leading" constant="18" id="DmB-6J-yNb"/>
+                                    <constraint firstAttribute="centerX" secondItem="3X5-eF-mZH" secondAttribute="centerX" id="O1M-Ab-4E6"/>
                                     <constraint firstAttribute="trailing" secondItem="9D4-PY-6zb" secondAttribute="trailing" constant="28" id="OpY-cu-58W"/>
                                     <constraint firstItem="yBM-7P-cpa" firstAttribute="centerY" secondItem="9D4-PY-6zb" secondAttribute="centerY" id="UDD-9j-t2L"/>
                                     <constraint firstItem="yBM-7P-cpa" firstAttribute="leading" secondItem="eKm-uT-F9F" secondAttribute="trailing" constant="24" id="aBw-LE-6rx"/>
                                     <constraint firstAttribute="centerX" secondItem="yBM-7P-cpa" secondAttribute="centerX" id="laW-5B-mZ6"/>
+                                    <constraint firstAttribute="centerY" secondItem="3X5-eF-mZH" secondAttribute="centerY" id="oAc-do-KWS"/>
                                     <constraint firstItem="eKm-uT-F9F" firstAttribute="top" secondItem="0oP-iy-bZh" secondAttribute="top" constant="28" id="yuh-qW-DIU"/>
                                 </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3X5-eF-mZH" customClass="SRRecordButton">
-                                <rect key="frame" x="90" y="214" width="140" height="140"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyE-qv-G1N">
                                 <rect key="frame" x="137" y="511" width="46" height="30"/>

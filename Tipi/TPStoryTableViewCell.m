@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    self.isSwipeDeleteEnabled = YES;
     
 }
 
@@ -19,8 +20,6 @@
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGestureRecognizer:)];
     panGesture.delegate = self;
     [self addGestureRecognizer:panGesture];
-    
-    [self.recordButton appear];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -54,33 +53,35 @@
     
     //NSLog(@"Panned with translation point: %@: %@", NSStringFromCGPoint(translation), toRight ? @"->" : @"<-");
     
-    switch(gestureRecognizer.state)
-    {
-        case UIGestureRecognizerStateBegan :{
-            [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                self.titleLabel.transform = CGAffineTransformIdentity;
-                self.titleLabel.alpha = 1;
-                self.deleteButton.alpha = 0.5;
-            } completion:nil];
-            //[self setEditMode:NO];
-        }
-            break;
-        case UIGestureRecognizerStateChanged :{
-            
-            if ((toRight && self.titleLabel.transform.tx < endX)){
-                self.titleLabel.transform = CGAffineTransformMakeTranslation(translation.x, 0);
-            }else if(toLeft && (self.titleLabel.transform.tx > self.baseX)){
-                self.titleLabel.transform = CGAffineTransformMakeTranslation(translation.x, 0);
+    if(self.isSwipeDeleteEnabled){
+        switch(gestureRecognizer.state)
+        {
+            case UIGestureRecognizerStateBegan :{
+                [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                    self.titleLabel.transform = CGAffineTransformIdentity;
+                    self.titleLabel.alpha = 1;
+                    self.deleteButton.alpha = 0.5;
+                } completion:nil];
+                //[self setEditMode:NO];
             }
+                break;
+            case UIGestureRecognizerStateChanged :{
+                
+                if ((toRight && self.titleLabel.transform.tx < endX)){
+                    self.titleLabel.transform = CGAffineTransformMakeTranslation(translation.x, 0);
+                }else if(toLeft && (self.titleLabel.transform.tx > self.baseX)){
+                    self.titleLabel.transform = CGAffineTransformMakeTranslation(translation.x, 0);
+                }
+            }
+                break;
+            case UIGestureRecognizerStateEnded :
+                [self setEditMode:(self.titleLabel.transform.tx > midEndX)];
+                break;
+                
+            default :
+                
+                break;
         }
-            break;
-        case UIGestureRecognizerStateEnded :
-            [self setEditMode:(self.titleLabel.transform.tx > midEndX)];
-            break;
-            
-        default :
-            
-            break;
     }
 }
 

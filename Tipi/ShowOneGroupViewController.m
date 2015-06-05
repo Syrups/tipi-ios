@@ -205,7 +205,7 @@
         loader.alpha = 0;
     } completion:^(BOOL finished) {
         
-         [loader removeFromSuperview];
+        [loader removeFromSuperview];
         //[fromController removeFromParentViewController];    //  3
     }];
 }
@@ -296,21 +296,25 @@
 {
     CGPoint p = [gestureRecognizer locationInView:self.mTableView];
     
-    NSIndexPath *indexPath = [self.mTableView indexPathForRowAtPoint:p];
+    NSIndexPath *indexpath = [self.mTableView indexPathForRowAtPoint:p];
+    TPStoryTableViewCell* cell = (TPStoryTableViewCell*)[self.mTableView cellForRowAtIndexPath:indexpath];
     
-    if (indexPath != nil) {
+    if (indexpath != nil) {
         
         switch (gestureRecognizer.state) {
             case UIGestureRecognizerStateBegan:
-                [self startPreviewForRowAtIndexPath:indexPath];
+                [self startPreviewForRowAtIndexPath:indexpath];
+                cell.isSwipeDeleteEnabled = NO;
                 break;
                 
             case UIGestureRecognizerStateEnded:
                 [self stopPreview];
+                cell.isSwipeDeleteEnabled = YES;
                 break;
                 
             case UIGestureRecognizerStateCancelled:
                 [self stopPreview];
+                cell.isSwipeDeleteEnabled = YES;
                 break;
                 
             default:
@@ -327,6 +331,7 @@
 
 -(void)startPreviewForRowAtIndexPath:(NSIndexPath*)indexPath {
     
+    self.currentIndexPath = indexPath;
     self.isPreviewMode = YES;
     
     Story* story = [self.mStories objectAtIndex:indexPath.row];
@@ -339,8 +344,17 @@
     NSURL *mediaUrl = [[NSURL alloc]initWithString:media.file];
     
     AVPlayerItem *aPlayerItem = [[AVPlayerItem alloc] initWithURL:audioUrl];
+    
     self.previewAudioPlayer = [[AVPlayer alloc] initWithPlayerItem:aPlayerItem];
     self.previewAudioPlayer.volume = 1;
+    
+    TPStoryTableViewCell *cell = (TPStoryTableViewCell*)[self.mTableView cellForRowAtIndexPath:indexPath];
+    cell.recordButton.simplePlayer = self.previewAudioPlayer;
+    cell.recordButton.autoStart = YES;
+   
+    cell.recordButton.alpha = 1;
+    [cell.recordButton appear];
+    
     
     // Subscribe to the AVPlayerItem's DidPlayToEndTime notification.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemDidFinishPlaying:) name:AVPlayerItemDidPlayToEndTimeNotification object:aPlayerItem];
@@ -348,7 +362,6 @@
     [self loadPreviewMediaAtURL:mediaUrl withCompletionBlock:^(UIImage *image) {
         [self startPreviewWithImage:image];
     }];
-    
 }
 
 -(void)itemDidFinishPlaying:(NSNotification *) notification {
@@ -375,6 +388,10 @@
 }
 
 -(void)stopPreview {
+    
+    TPStoryTableViewCell* cell = (TPStoryTableViewCell*)[self.mTableView cellForRowAtIndexPath:self.currentIndexPath];
+    
+    [cell.recordButton close];
     
     self.isPreviewMode = NO;
     [UIView animateWithDuration:0.25 animations:^{
