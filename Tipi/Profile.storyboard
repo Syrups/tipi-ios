@@ -461,8 +461,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y62-tg-cYG" id="EmJ-FX-Llu">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aG-CA-3To">
-                                                    <rect key="frame" x="48" y="32" width="225" height="48"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aG-CA-3To">
+                                                    <rect key="frame" x="48" y="38.5" width="225" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="48" id="mTK-pE-BqX"/>
                                                     </constraints>
@@ -523,7 +523,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Impossible de récupérer les notifications" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFy-XH-gQN">
-                                <rect key="frame" x="59" y="87" width="211" height="78"/>
+                                <rect key="frame" x="59" y="142" width="211" height="78"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="78" id="9A7-Rm-RJg"/>
                                     <constraint firstAttribute="width" constant="211" id="XPe-el-vwY"/>
@@ -540,7 +540,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="dGL-k9-Vus" secondAttribute="trailing" constant="-16" id="GhB-Ni-oof"/>
                             <constraint firstItem="ezo-YU-Z39" firstAttribute="top" secondItem="dGL-k9-Vus" secondAttribute="bottom" id="mNq-54-Uq5"/>
                             <constraint firstItem="dGL-k9-Vus" firstAttribute="top" secondItem="tkh-eB-Ozq" secondAttribute="bottom" constant="-20" id="s5n-m6-oac"/>
-                            <constraint firstAttribute="centerY" secondItem="eFy-XH-gQN" secondAttribute="centerY" constant="158" id="sMp-yD-eWV"/>
+                            <constraint firstAttribute="centerY" secondItem="eFy-XH-gQN" secondAttribute="centerY" constant="103" id="sMp-yD-eWV"/>
                         </constraints>
                     </view>
                     <connections>

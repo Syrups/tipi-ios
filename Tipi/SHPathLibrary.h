@@ -14,7 +14,6 @@
 + (void) addRightCurveBezierPathToView: (UIView *) view withColor:(UIColor*)color inverted:(BOOL)inverted;
 + (void) addBackgroundPathForstoriesToView: (UIView *) view;
 
-+ (UIBezierPath *) swippedRightCurvyBezierPathForRect: (CGRect) frame;
 + (UIBezierPath *) swippedRightCurvyBezierPathForRect: (CGRect) frame inverted:(BOOL)inverted;
 + (UIBezierPath *) swipableRightCurvyBezierPathForRect: (CGRect) frame inverted:(BOOL)inverted;
 

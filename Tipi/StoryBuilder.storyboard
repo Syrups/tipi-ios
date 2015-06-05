@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Q9t-ip-vWo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -411,12 +411,12 @@ plus tard</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e2Q-aN-qjV" customClass="WaveBackground">
-                                <rect key="frame" x="0.0" y="-20" width="320" height="588"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2Q-aN-qjV" customClass="WaveBackground">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hnw-1w-duv">
-                                <rect key="frame" x="24" y="0.0" width="272" height="568"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hnw-1w-duv">
+                                <rect key="frame" x="24" y="20" width="272" height="548"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="J9q-el-5h5">
                                     <size key="itemSize" width="113" height="113"/>
@@ -504,7 +504,7 @@ plus tard</string>
                                     <segue destination="UzX-jJ-ocM" kind="custom" identifier="ToRecord" customClass="PickerToRecordSegue" id="dY5-fO-c46"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fus-Uh-mLW" userLabel="Top">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fus-Uh-mLW" userLabel="Top">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sélectionnez des photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6V-mz-kdJ">
@@ -552,7 +552,7 @@ plus tard</string>
                             <constraint firstAttribute="trailingMargin" secondItem="Fus-Uh-mLW" secondAttribute="trailing" constant="-16" id="iho-Ba-1jb"/>
                             <constraint firstItem="YwC-ZC-j5v" firstAttribute="top" secondItem="hnw-1w-duv" secondAttribute="bottom" id="sfw-Pj-NiE"/>
                             <constraint firstItem="Fus-Uh-mLW" firstAttribute="leading" secondItem="179-aK-Gyv" secondAttribute="leadingMargin" constant="-16" id="tq3-Oi-aml"/>
-                            <constraint firstItem="Fus-Uh-mLW" firstAttribute="top" secondItem="HX5-sz-DQO" secondAttribute="bottom" id="wQa-WA-pdN"/>
+                            <constraint firstItem="Fus-Uh-mLW" firstAttribute="top" secondItem="HX5-sz-DQO" secondAttribute="bottom" constant="-20" id="wQa-WA-pdN"/>
                             <constraint firstAttribute="centerX" secondItem="9cL-sN-YMX" secondAttribute="centerX" id="zdE-rp-D4G"/>
                         </constraints>
                     </view>
@@ -813,8 +813,8 @@ plus tard</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" tag="10" contentMode="scaleAspectFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Xf-0g-R9F">
-                                <rect key="frame" x="12" y="10" width="50" height="51"/>
+                            <button opaque="NO" tag="10" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Xf-0g-R9F">
+                                <rect key="frame" x="12" y="30" width="50" height="51"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="Fmb-iK-Ug1"/>
@@ -1060,8 +1060,8 @@ votre histoire</string>
                                     <outlet property="delegate" destination="SAo-G6-GMY" id="VEX-RE-fpI"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="niY-07-Une">
-                                <rect key="frame" x="103" y="482" width="116" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="niY-07-Une">
+                                <rect key="frame" x="102" y="482" width="116" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="7yu-TR-8q4"/>
@@ -1213,7 +1213,7 @@ votre histoire</string>
                                             <segue destination="6P9-nl-8Du" kind="modal" id="gaO-dj-axB"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d5b-FV-sL4">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d5b-FV-sL4">
                                         <rect key="frame" x="31" y="200" width="178" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="178" id="LSu-h3-xkk"/>
@@ -1237,9 +1237,11 @@ votre histoire</string>
                                     <constraint firstAttribute="centerX" secondItem="PhD-G7-akQ" secondAttribute="centerX" id="SMl-au-AbG"/>
                                     <constraint firstAttribute="bottom" secondItem="PhD-G7-akQ" secondAttribute="bottom" constant="43" id="USg-io-iSn"/>
                                     <constraint firstItem="G0G-gW-eua" firstAttribute="top" secondItem="29M-dB-pzY" secondAttribute="top" constant="19" id="Yia-4j-zNU"/>
+                                    <constraint firstAttribute="centerX" secondItem="d5b-FV-sL4" secondAttribute="centerX" id="a36-JS-3eZ"/>
                                     <constraint firstAttribute="width" constant="240" id="bRJ-QO-vNn"/>
                                     <constraint firstAttribute="centerX" secondItem="G0G-gW-eua" secondAttribute="centerX" id="fBT-zT-Ttl"/>
                                     <constraint firstAttribute="centerY" secondItem="Eoq-to-v0B" secondAttribute="centerY" constant="15" id="jxV-Ec-b8p"/>
+                                    <constraint firstAttribute="bottom" secondItem="d5b-FV-sL4" secondAttribute="bottom" constant="8" id="sGq-Kx-LQ4"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

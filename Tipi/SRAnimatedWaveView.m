@@ -83,7 +83,7 @@ float w = 0;//starting x value.
             controlPoint1:CGPointMake(xOffset, self.bounds.size.height / 2.0 - 150)
             controlPoint2:CGPointMake(self.bounds.size.width , self.bounds.size.height / 2.0 + 150)];*/
     
-    const CGFloat maxAmplitude = halfHeight - 4.0f; // 4 corresponds to twice the stroke width
+//    const CGFloat maxAmplitude = halfHeight - 4.0f; // 4 corresponds to twice the stroke width
     
     for (CGFloat x = 0; x<width + 5.0f; x += 5.0f) {
         

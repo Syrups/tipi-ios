@@ -26,7 +26,5 @@
 @property (strong, nonatomic) IBOutlet UIButton* replayButton;
 @property (strong, nonatomic) IBOutlet UIView* overlay;
 
-- (void)startMotionUpdates;
-- (void)stopMotionUpdates;
 
 @end

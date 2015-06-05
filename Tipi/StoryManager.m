@@ -108,7 +108,7 @@
         });
     } failure:^() {
         dispatch_async(dispatch_get_main_queue(), ^{
-            if ([self.delegate respondsToSelector:@selector(storyManager:failedToCreateComment:)]) {
+            if ([self.delegate respondsToSelector:@selector(storyManagerFailedToCreateComment:)]) {
                 [self.delegate storyManagerFailedToCreateComment:self];
             }
         });

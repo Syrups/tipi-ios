@@ -16,8 +16,6 @@
 @implementation TPCardAnimatedTransition
 
 static CGFloat const kChildViewPadding = 16;
-static CGFloat const kDamping = 0.75;
-static CGFloat const kInitialSpringVelocity = 0.5;
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
     return .4f;

@@ -81,7 +81,7 @@
     NSString* tag = [[StoryWIPSaver sharedSaver] tag];
     NSString* title = [[StoryWIPSaver sharedSaver] title];
     
-    TPLoader* loader = [[TPLoader alloc] initWithFrame:self.view.frame];
+    loader = [[TPLoader alloc] initWithFrame:self.view.frame];
     [self.view addSubview:loader];
     
     [manager createStoryWithName:title owner:user inRooms:selectedRooms tag:tag medias:medias audiosFiles:medias];

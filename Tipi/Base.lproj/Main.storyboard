@@ -43,9 +43,6 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="frequency">
                                         <real key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="amplitude">
-                                        <real key="value" value="0.29999999999999999"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="density">
                                         <real key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
@@ -74,9 +71,6 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="idleAmplitude">
                                         <real key="value" value="0.29999999999999999"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="amplitude">
-                                        <real key="value" value="0.80000000000000004"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="phaseShift">
                                         <real key="value" value="-0.14999999999999999"/>
@@ -353,9 +347,6 @@ avec votre voix</string>
                                     <userDefinedRuntimeAttribute type="number" keyPath="idleAmplitude">
                                         <real key="value" value="0.29999999999999999"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="amplitude">
-                                        <real key="value" value="0.80000000000000004"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="phaseShift">
                                         <real key="value" value="-0.14999999999999999"/>
                                     </userDefinedRuntimeAttribute>
@@ -382,9 +373,6 @@ avec votre voix</string>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="frequency">
                                         <real key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="amplitude">
-                                        <real key="value" value="0.5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="density">
                                         <real key="value" value="3"/>

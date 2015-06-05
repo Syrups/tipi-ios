@@ -17,7 +17,6 @@
     MediaPickerViewController* source = (MediaPickerViewController*)self.sourceViewController;
     RecordViewController* dest = (RecordViewController*)self.destinationViewController;
     
-    CGFloat midY = source.mediaCollectionView.contentOffset.y + source.view.frame.size.height/2 - CELL_SIZE/2 - 18; // CELL_SIZE defined in OrganizeStoryViewController.h
     CGFloat origX = source.view.frame.size.width/2 - CELL_SIZE/2 - 24;
     
     NSMutableArray* hiddenCells = [NSMutableArray array];
@@ -73,7 +72,7 @@
                 [source.mediaCollectionView reloadData];
                 
                 for (UICollectionViewCell* cell in hiddenCells) {
-//                    cell.alpha = 1;
+                    cell.alpha = 1;
                 }
             }
         }];

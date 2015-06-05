@@ -182,7 +182,7 @@
         check.alpha = 0;
     }
         
-    UILongPressGestureRecognizer* longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+//    UILongPressGestureRecognizer* longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
 //    [cell.contentView addGestureRecognizer:longPress];
     
     return cell;
@@ -204,7 +204,6 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
     UIView* check = [cell.contentView viewWithTag:30];
-    NSDictionary* media = [self.medias objectAtIndex:indexPath.row];
     
     if (![self.selectedIndexes containsObject:indexPath]) {
         ((UIView*)check.subviews[0]).transform = CGAffineTransformMakeScale(0, 0);
@@ -215,7 +214,6 @@
         [self.selectedIndexes addObject:indexPath];
         [self.saver.medias addObject:[self.medias objectAtIndex:indexPath.row]];
         
-//        [self.wave updateImage:[media objectForKey:@"image"]];
     } else {
         [UIView animateWithDuration:0.3f animations:^{
             check.alpha = 0;

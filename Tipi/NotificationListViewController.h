@@ -11,7 +11,7 @@
 #import "RoomManager.h"
 #import "TPAlert.h"
 
-@interface NotificationListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, InvitationFetcherDelegate, RoomJoinerDelegate, TPAlertDelegate>
+@interface NotificationListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, InvitationFetcherDelegate, RoomJoinerDelegate>
 
 @property (strong, nonatomic) NSMutableArray* invitations;
 @property (strong, nonatomic) IBOutlet UITableView* requestsTableView;

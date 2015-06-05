@@ -21,8 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLog(@"%d", self.room.id);
-    
     selectedFriends = [NSMutableArray array];
     self.friends = [NSArray array];
 }

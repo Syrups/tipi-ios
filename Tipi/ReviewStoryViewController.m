@@ -62,6 +62,10 @@
     [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(next) userInfo:nil repeats:NO];
 }
 
+- (void)mediaRecorder:(StoryMediaRecorder *)recorder hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
+    // todo
+}
+
 #pragma mark - UIPageViewController
 
 - (ReviewPageViewController *)viewControllerAtIndex:(NSUInteger)index
