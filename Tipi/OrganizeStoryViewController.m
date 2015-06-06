@@ -32,12 +32,13 @@
     layout.scrollSpeedValue = 5;
     
     self.saver = [StoryWIPSaver sharedSaver];
+    self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
     
     pendingCellToRemoveIndex = -1;
     
     self.collectionView.collectionViewLayout = layout;
     
-    [self loadFullImages];
+//    [self loadFullImages];
     
     self.view.alpha = .5f;
     
@@ -171,7 +172,7 @@
     
     UIImageView* image = (UIImageView*)[cell.contentView viewWithTag:20];
     
-    [image setImage:[media objectForKey:@"full"]];
+    [image setImage:[media objectForKey:@"image"]];
     image.contentMode = UIViewContentModeScaleAspectFill;
     image.clipsToBounds = YES;
     
@@ -222,6 +223,8 @@
     id media = [self.saver.medias objectAtIndex:atIndexPath.row];
     [self.saver.medias removeObjectAtIndex:atIndexPath.row];
     [self.saver.medias insertObject:media atIndex:toIndexPath.row];
+    
+    [self.recorder moveAudioFileWithIndex:atIndexPath.row atIndex:toIndexPath.row];
     
     RecordViewController* parent = (RecordViewController*)self.parentViewController;
     

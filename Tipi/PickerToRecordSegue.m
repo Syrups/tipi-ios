@@ -43,18 +43,20 @@
                 cell.alpha = 0;
                 [hiddenCells addObject:cell];
             } else {
-                cell.frame = CGRectMake(origX + i * (CELL_SIZE + 5), source.mediaCollectionView.contentOffset.y + source.view.frame.size.height, CELL_SIZE, CELL_SIZE);
+                cell.frame = CGRectMake(origX + i * (CELL_SIZE + 5), source.mediaCollectionView.contentOffset.y + source.view.frame.size.height - CELL_SIZE - 30, CELL_SIZE, CELL_SIZE);
                 ++i;
             }
         } completion:^(BOOL finished) {
             
+            __block UIImageView* full;
+            
             [UIView animateWithDuration:.3f animations:^{
-                UIImageView* full = [[UIImageView alloc] initWithFrame:dest.view.frame];
+                full = [[UIImageView alloc] initWithFrame:dest.view.frame];
                 NSIndexPath* firstIndex = [source.selectedIndexes objectAtIndex:0];
                 NSDictionary* firstMedia = [source.medias objectAtIndex:firstIndex.row];
                 ALAsset* asset = [firstMedia objectForKey:@"asset"];
                 full.image = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
-                [source.view addSubview:full];
+//                [source.view addSubview:full];
                 full.contentMode = UIViewContentModeScaleAspectFill;
 //                
 //                full.transform = CGAffineTransformMakeScale(0, 0);
@@ -68,6 +70,8 @@
                 [source.navigationController pushViewController:dest animated:NO];
                 
                 // reset previous VC layout
+                
+                [full removeFromSuperview];
                 
                 [source.mediaCollectionView reloadData];
                 

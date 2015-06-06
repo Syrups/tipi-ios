@@ -29,6 +29,29 @@
     
 }
 
+// Swap audio files when indexes of medias swaps together
+- (void)moveAudioFileWithIndex:(NSUInteger)fromIndex atIndex:(NSUInteger)atIndex {
+    NSFileManager* manager = [NSFileManager defaultManager];
+    [manager moveItemAtPath:[self pathForAudioFileWithIndex:fromIndex] toPath:[self pathForAudioFileWithIndex:999] error:nil];
+    
+    if (atIndex > fromIndex) {
+        for (int i = fromIndex ; i < atIndex ; i++) {
+            NSString* oldPath = [self pathForAudioFileWithIndex:i+1];
+            NSString* newPath = [self pathForAudioFileWithIndex:i];
+            [manager moveItemAtPath:oldPath toPath:newPath error:nil];
+        }
+        
+    } else {
+        for (int i = atIndex ; i < fromIndex ; i++) {
+            NSString* oldPath = [self pathForAudioFileWithIndex:i];
+            NSString* newPath = [self pathForAudioFileWithIndex:i+1];
+            [manager moveItemAtPath:oldPath toPath:newPath error:nil];
+        }
+    }
+    
+    [manager moveItemAtPath:[self pathForAudioFileWithIndex:999] toPath:[self pathForAudioFileWithIndex:atIndex] error:nil];
+}
+
 - (void)startRecording {
     // Creates a temporary file with filename <STORY_UUID>_<PAGE_INDEX>.m4a
     // to hold audio data
@@ -68,6 +91,21 @@
     #ifdef IPHONE_SIMULATOR
         basePath = @"/Users/leo/Desktop";
     #endif
+    
+    return [NSString stringWithFormat:@"%@/%@", basePath, filename];
+}
+
+- (NSString*)pathForAudioFileWithIndex:(NSUInteger)index {
+    //    NSArray* documents = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString* filename = [NSString stringWithFormat:@"%@_%ld.m4a", self.storyUuid, (long)index];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    
+#ifdef IPHONE_SIMULATOR
+    basePath = @"/Users/leo/Desktop";
+#endif
     
     return [NSString stringWithFormat:@"%@/%@", basePath, filename];
 }

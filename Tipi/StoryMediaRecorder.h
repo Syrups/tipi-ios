@@ -23,6 +23,7 @@
 
 - initWithStoryUUID:(NSString*)uuid;
 - (void)setupForMediaWithIndex:(NSInteger)pageIndex;
+- (void)moveAudioFileWithIndex:(NSUInteger)fromIndex atIndex:(NSUInteger)atIndex;
 - (void)startRecording;
 - (void)stopRecording;
 - (void)playAudio;

@@ -215,8 +215,29 @@
             [page.moviePlayer play];
         }];
         
-        UIImage* full = [(NSDictionary*)[self.saver.medias objectAtIndex:index] objectForKey:@"full"];
-        page.image = full;
+        NSMutableDictionary* media = [self.saver.medias objectAtIndex:index];
+        
+        if ([media objectForKey:@"full"] == nil) {
+            ALAsset* a = (ALAsset*)[media objectForKey:@"asset"];
+            
+            if (index == 0) {
+                UIImage* full = [UIImage imageWithCGImage:[[a defaultRepresentation] fullScreenImage]];
+                [media setObject:full forKey:@"full"];
+                page.image = full;
+            }
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                UIImage* full = [UIImage imageWithCGImage:[[a defaultRepresentation] fullScreenImage]];
+                [media setObject:full forKey:@"full"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    page.image = full;
+                });
+            });
+            
+        } else {
+            page.image = (UIImage*)[media objectForKey:@"full"];
+        }
+        
         
         
         AVPlayerLayer* playerLayer = [AVPlayerLayer playerLayerWithPlayer:page.moviePlayer];
@@ -228,7 +249,27 @@
         [page.view bringSubviewToFront:page.replayButton];
         [page.view bringSubviewToFront:page.recordTimer];
     } else {
-        page.image = [(NSDictionary*)[self.saver.medias objectAtIndex:index] objectForKey:@"full"];
+        NSMutableDictionary* media = [self.saver.medias objectAtIndex:index];
+        
+        if ([media objectForKey:@"full"] == nil) {
+            ALAsset* a = (ALAsset*)[media objectForKey:@"asset"];
+            
+            if (index == 0) {
+                UIImage* full = [UIImage imageWithCGImage:[[a defaultRepresentation] fullScreenImage]];
+                [media setObject:full forKey:@"full"];
+                page.image = full;
+            }
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                UIImage* full = [UIImage imageWithCGImage:[[a defaultRepresentation] fullScreenImage]];
+                [media setObject:full forKey:@"full"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    page.image = full;
+                });
+            });
+        } else {
+            page.image = (UIImage*)[media objectForKey:@"full"];
+        }
     }
         
     return page;
