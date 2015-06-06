@@ -160,7 +160,7 @@
             controlPoint2:CGPointMake(xpc1 , yTopHalf)];*/
     
     //Bump
-    float xcp1B = width + 20;
+//    float xcp1B = width + 20;
 //    float bumpX = xcp1B + 25;
     
     [path addCurveToPoint:CGPointMake(0, half + 50)
@@ -275,6 +275,12 @@
     //
     [path addLineToPoint:CGPointMake(0, height)];
     [path addLineToPoint:CGPointMake(0, 0)];
+//
+//    UIBezierPath* path = [UIBezierPath bezierPath];
+//    
+//    [path moveToPoint:CGPointMake(rect.size.width, 0)];
+//    [path addQuadCurveToPoint:CGPointMake(rect.size.width, rect.size.height) controlPoint:CGPointMake(rect.size.width/2, rect.size.height/2)];
+//    
     
     return path;
 }
@@ -335,25 +341,31 @@
     return path;
 }
 
-+ (UIBezierPath *)pathForProfileView:(UIView *)view open:(BOOL)open {
++ (UIBezierPath *)pathForProfileView:(UIView *)view open:(BOOL)open bumpDelta:(CGFloat)delta {
     UIBezierPath* path = [UIBezierPath bezierPath];
     
+    CGFloat baseY = 40;
+    
     if (!open) {
-        [path moveToPoint:CGPointMake(0, view.frame.size.height)];
-        [path addLineToPoint:CGPointMake(view.frame.size.width, view.frame.size.height)];
-        [path addLineToPoint:CGPointMake(view.frame.size.width, 60)];
-        CGPoint c1 = CGPointMake(view.frame.size.width/2 + 80, 0);
-        CGPoint c2 = CGPointMake(view.frame.size.width/2 - 80, 0);
-        [path addCurveToPoint:CGPointMake(0, 60) controlPoint1:c1 controlPoint2:c2];
-        [path addLineToPoint:CGPointMake(0, view.frame.size.height)];
+        
+        [path moveToPoint:CGPointMake(0, baseY + view.frame.size.height)];
+        [path addLineToPoint:CGPointMake(view.frame.size.width, baseY + view.frame.size.height)];
+        [path addLineToPoint:CGPointMake(view.frame.size.width, baseY + 80)];
+        CGPoint c1 = CGPointMake(view.frame.size.width/2 + 80, baseY + 0);
+        CGPoint c2 = CGPointMake(view.frame.size.width/2 - 80, baseY + 0);
+        [path addCurveToPoint:CGPointMake(0, baseY + 80) controlPoint1:c1 controlPoint2:c2];
+        [path addLineToPoint:CGPointMake(0, baseY + view.frame.size.height)];
     } else {
-        [path moveToPoint:CGPointMake(0, view.frame.size.height)];
-        [path addLineToPoint:CGPointMake(view.frame.size.width, view.frame.size.height)];
-        [path addLineToPoint:CGPointMake(view.frame.size.width, 0)];
-        CGPoint c1 = CGPointMake(view.frame.size.width/2 + 80, 0);
-        CGPoint c2 = CGPointMake(view.frame.size.width/2 - 80, 0);
-        [path addCurveToPoint:CGPointMake(0, 0) controlPoint1:c1 controlPoint2:c2];
-        [path addLineToPoint:CGPointMake(0, view.frame.size.height)];
+        
+        if (delta > 0) baseY -= 10;
+        
+        [path moveToPoint:CGPointMake(0, baseY + view.frame.size.height)];
+        [path addLineToPoint:CGPointMake(view.frame.size.width, baseY + view.frame.size.height)];
+        [path addLineToPoint:CGPointMake(view.frame.size.width,baseY  -delta)];
+        CGPoint c1 = CGPointMake(view.frame.size.width/2 + 80, baseY + 0);
+        CGPoint c2 = CGPointMake(view.frame.size.width/2 - 80, baseY + 0);
+        [path addCurveToPoint:CGPointMake(0, baseY - delta) controlPoint1:c1 controlPoint2:c2];
+        [path addLineToPoint:CGPointMake(0, baseY + view.frame.size.height)];
     }
     
     return path;

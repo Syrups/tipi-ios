@@ -15,8 +15,6 @@
 
 + (TPAlert*)displayOnController:(UIViewController*)controller withMessage:(NSString*)message delegate:(id)delegate;
 - (instancetype)initWithFrame:(CGRect)frame andMessage:(NSString*)message;
-- (void)show;
-- (void)dismiss;
 
 @end
 

@@ -130,7 +130,7 @@
     return images;
 }
 
-+ (void) builAnimatedImageInButton:(UIButton *) button  fromFile:(NSString *)file withColor:(UIColor*)color {
++ (void) builAnimatedImageInButton:(UIButton *) button  fromFile:(NSString *)file withColor:(UIColor*)color withAnimationDuration:(CGFloat)duration {
     
     NSArray *images = [PKAIDecoder decodeImageFromFile:file];
     
@@ -155,7 +155,7 @@
     [button setImage:[images objectAtIndex:images.count-1] forState:UIControlStateNormal];
    
     [button.imageView setAnimationImages:[images copy]];
-    [button.imageView setAnimationDuration:1.3f];
+    [button.imageView setAnimationDuration:duration];
     [button.imageView setAnimationRepeatCount:1];
     
     [UIView setAnimationDelegate:self];

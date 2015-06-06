@@ -9,13 +9,14 @@
 #import "WaveSwipeTransitionAnimator.h"
 #import "SHPathLibrary.h"
 #import "ShowOneGroupViewController.h"
+#import "CreateRoomViewController.h"
 
 @implementation WaveSwipeTransitionAnimator
 
 -(void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext{
     //1
     self.transitionContext = transitionContext;
-    
+
     //2
     UIView* containerView = [transitionContext containerView];
 //    containerView.backgroundColor =  [UIColor colorWithRed:178/255.0  green:47/255.0 blue:43/255.0 alpha:1];
@@ -25,7 +26,7 @@
     UIViewController* toViewController=  [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     //fromViewController.view.layer.backgroundColor = [UIColor orangeColor].CGColor;
     
-    BOOL segueBack = [fromViewController isKindOfClass:[ShowOneGroupViewController class]] ;
+    BOOL segueBack = [fromViewController isKindOfClass:[ShowOneGroupViewController class]] || [fromViewController isKindOfClass:[CreateRoomViewController class]];
     if(!segueBack){
         toViewController.view.transform = CGAffineTransformMakeTranslation(CGRectGetWidth(containerView.frame) * 0.2, 0);
     }

@@ -154,7 +154,7 @@
     for (UIRoomTableViewCell *cell in self.mTableView.visibleCells) {
         CGPoint cellCenter = [scrollView convertPoint:cell.center toView:scrollView.superview];
         
-        int del = fabs(scrollView.superview.center.y -  cellCenter.y)/ 4.5;
+//        int del = fabs(scrollView.superview.center.y -  cellCenter.y)/ 4.5;
         
 //        cell.heightConstraint.constant = 120 - del;
 //        cell.widthConstraint.constant = 120 - del;
@@ -225,6 +225,9 @@
 }
 
 - (void)animateBackWithCompletion:(void(^)(BOOL finished))completion {
+    
+    if (self.mGroups.count == 0) completion(YES);
+    
     [[self.mTableView visibleCells] enumerateObjectsUsingBlock:^(UITableViewCell *cell, NSUInteger idx, BOOL *stop) {
         
         int endY = cell.frame.origin.y + 200;

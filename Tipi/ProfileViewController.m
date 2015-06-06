@@ -40,7 +40,7 @@
     [self addChildViewController:self.pager];
     
     // Don't forget to add the new root view to the current view hierarchy!
-    self.pager.view.frame = CGRectMake(0, 80, self.view.frame.size.width, self.view.frame.size.height - 80);
+    self.pager.view.frame = CGRectMake(0, 120, self.view.frame.size.width, self.bodyView.frame.size.height - 80);
     [self.view.subviews[0] addSubview:self.pager.view];
     [self.view.subviews[0] sendSubviewToBack:self.pager.view];
     
@@ -82,7 +82,7 @@
     
     maskLayer = [CAShapeLayer layer];
     
-    maskLayer.path = [SHPathLibrary pathForProfileView:self.bodyView open:NO].CGPath;
+    maskLayer.path = [SHPathLibrary pathForProfileView:self.bodyView open:NO bumpDelta:0].CGPath;
     self.bodyView.layer.mask = maskLayer;
     
     [self animatePathExit:NO];
@@ -157,19 +157,43 @@
 #pragma mark - Animation
 
 - (void)animatePathExit:(BOOL)exit {
+    
+    [CATransaction begin];
+    
+    if (!exit) {
+        [CATransaction setCompletionBlock:^{
+            [self _animateOpenBump];
+        }];
+    }
+        
     CABasicAnimation* open = [CABasicAnimation animationWithKeyPath:@"path"];
-    open.duration = .4f;
+    open.duration = .3f;
     open.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     
-    CGPathRef to = exit ? [SHPathLibrary pathForProfileView:self.bodyView open:NO].CGPath : [SHPathLibrary pathForProfileView:self.bodyView open:YES].CGPath;
+    CGPathRef to = exit ? [SHPathLibrary pathForProfileView:self.bodyView open:NO bumpDelta:0].CGPath : [SHPathLibrary pathForProfileView:self.bodyView open:YES bumpDelta:35].CGPath;
     
     open.fromValue = (__bridge id)maskLayer.path;
     open.toValue = (__bridge id)to;
     
     [maskLayer addAnimation:open forKey:@"open"];
     [maskLayer.modelLayer setPath:to];
+    
+    [CATransaction commit];
 }
 
+- (void)_animateOpenBump {
+    CABasicAnimation* open = [CABasicAnimation animationWithKeyPath:@"path"];
+    open.duration = .4f;
+    open.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    
+    CGPathRef to = [SHPathLibrary pathForProfileView:self.bodyView open:YES bumpDelta:0].CGPath;
+    
+    open.fromValue = (__bridge id)maskLayer.path;
+    open.toValue = (__bridge id)to;
+    
+    [maskLayer addAnimation:open forKey:@"open"];
+    [maskLayer.modelLayer setPath:to];
 
+}
 
 @end

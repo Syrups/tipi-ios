@@ -30,6 +30,7 @@
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -53,7 +54,7 @@
                                     <constraint firstAttribute="height" constant="31" id="cUA-wV-qCD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="15"/>
-                                <color key="textColor" red="0.46274509800000002" green="0.40784313729999999" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L8m-W7-WNA" userLabel="Textfield">
@@ -119,7 +120,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.20000000000000001" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.76470588240000004" green="0.21176470589999999" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="L8m-W7-WNA" secondAttribute="centerX" id="244-jB-ZM7"/>
                             <constraint firstItem="pGL-eZ-mIk" firstAttribute="top" secondItem="LkT-xf-qxp" secondAttribute="top" constant="22" id="7yO-pN-4Uq"/>
@@ -162,7 +163,7 @@
                                     <constraint firstAttribute="height" constant="31" id="GOr-n2-Goa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="15"/>
-                                <color key="textColor" red="0.46274509800000002" green="0.40784313729999999" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1Dy-S6-cFN">
@@ -245,7 +246,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" red="0.38582631950000001" green="0.33233025669999999" blue="0.32970204949999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -259,7 +260,7 @@
                                 <rect key="frame" x="274" y="113" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" red="0.20000000000000001" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.76470588240000004" green="0.21176470589999999" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="1Dy-S6-cFN" firstAttribute="top" secondItem="sf8-YY-wjf" secondAttribute="bottom" constant="159" id="2YV-vK-y7e"/>
                             <constraint firstItem="Gkl-UM-Hhd" firstAttribute="top" secondItem="sf8-YY-wjf" secondAttribute="bottom" constant="9" id="ClS-aQ-StF"/>
@@ -304,7 +305,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7ou-hl-OOn" id="uhg-le-njP">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="90" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picto-fire-a" translatesAutoresizingMaskIntoConstraints="NO" id="aT8-NN-xM6">
+                                                <imageView userInteractionEnabled="NO" tag="90" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picto-fire-b" translatesAutoresizingMaskIntoConstraints="NO" id="aT8-NN-xM6">
                                                     <rect key="frame" x="118" y="18" width="84" height="84"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="84" id="Tw2-dk-ynz"/>
@@ -584,18 +585,30 @@
                                     <constraint firstAttribute="trailing" secondItem="Gcr-vA-Vul" secondAttribute="trailing" constant="5" id="sFL-fM-POy"/>
                                 </constraints>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Impossible de récupérer la liste des histoires" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jos-JS-1aD">
+                                <rect key="frame" x="52" y="262" width="216" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="216" id="0Xu-WP-GtI"/>
+                                    <constraint firstAttribute="height" constant="44" id="612-eN-Myc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.69803921570000005" green="0.1843137255" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="5wV-UV-Yh4" firstAttribute="leading" secondItem="NIb-yM-wrc" secondAttribute="leadingMargin" constant="-16" id="5MH-vo-BGq"/>
                             <constraint firstItem="iMr-xz-Sbo" firstAttribute="leading" secondItem="NIb-yM-wrc" secondAttribute="leadingMargin" constant="-20" id="8vF-lH-aTD"/>
                             <constraint firstItem="cIb-TS-zEm" firstAttribute="top" secondItem="5wV-UV-Yh4" secondAttribute="bottom" id="AbL-WV-jNl"/>
+                            <constraint firstAttribute="centerX" secondItem="Jos-JS-1aD" secondAttribute="centerX" id="CIM-EO-Qjh"/>
                             <constraint firstItem="a20-Td-Yqz" firstAttribute="width" secondItem="NIb-yM-wrc" secondAttribute="width" id="DYR-SV-y00"/>
                             <constraint firstItem="5wV-UV-Yh4" firstAttribute="width" secondItem="NIb-yM-wrc" secondAttribute="width" id="DpH-ER-625"/>
                             <constraint firstAttribute="centerY" secondItem="a20-Td-Yqz" secondAttribute="centerY" id="EhB-Lz-9C1"/>
                             <constraint firstAttribute="centerY" secondItem="vFn-aL-262" secondAttribute="centerY" id="FN1-Ou-stb"/>
                             <constraint firstItem="vFn-aL-262" firstAttribute="height" secondItem="NIb-yM-wrc" secondAttribute="height" id="KhU-hT-Ljz"/>
                             <constraint firstItem="5wV-UV-Yh4" firstAttribute="top" secondItem="iMr-xz-Sbo" secondAttribute="top" constant="75" id="Ogj-8C-xkG"/>
+                            <constraint firstAttribute="centerY" secondItem="Jos-JS-1aD" secondAttribute="centerY" id="VsJ-eD-3uI"/>
                             <constraint firstItem="vFn-aL-262" firstAttribute="width" secondItem="NIb-yM-wrc" secondAttribute="width" id="cWG-FI-qZr"/>
                             <constraint firstAttribute="centerX" secondItem="vFn-aL-262" secondAttribute="centerX" id="fIy-Zw-zVe"/>
                             <constraint firstItem="a20-Td-Yqz" firstAttribute="height" secondItem="NIb-yM-wrc" secondAttribute="height" id="kZH-fR-7xq"/>
@@ -606,6 +619,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="g1y-Sp-Jhq"/>
                     <connections>
+                        <outlet property="errorLabel" destination="Jos-JS-1aD" id="Pqw-Hd-5SN"/>
                         <outlet property="mTableView" destination="5wV-UV-Yh4" id="M1p-cJ-2dW"/>
                         <outlet property="previewImageView" destination="vFn-aL-262" id="kRH-0T-8md"/>
                         <outlet property="readContainer" destination="a20-Td-Yqz" id="OA0-fZ-JFi"/>
@@ -1234,7 +1248,7 @@
         <image name="btn-filter" width="42" height="39"/>
         <image name="croix-noire.png" width="26" height="27"/>
         <image name="go-right.png" width="23" height="22"/>
-        <image name="picto-fire-a" width="84" height="84"/>
+        <image name="picto-fire-b" width="84" height="84"/>
         <image name="placeholder.gif" width="1000" height="1000"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

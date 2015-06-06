@@ -15,7 +15,7 @@
 #import "HelpModalViewController.h"
 #import "TPAlert.h"
 
-@interface RoomPickerViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, RoomFetcherDelegate, StoryCreatorDelegate, FileUploaderDelegate, HelpModalViewControllerDelegate, TPAlertDelegate>
+@interface RoomPickerViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, RoomFetcherDelegate, StoryCreatorDelegate, FileUploaderDelegate, HelpModalViewControllerDelegate>
 
 @property (strong, nonatomic) StoryWIPSaver* saver;
 @property (strong, nonatomic) StoryMediaRecorder* recorder;

@@ -16,12 +16,9 @@
 #import "TPLoader.h"
 #import "TPTiltingImageView.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "TPAlert.h"
 
-#define RANDOM_IMAGES_COUNT 5
-
-@interface NewStoryViewController ()
-
-@end
+#define RANDOM_IMAGES_COUNT 10
 
 @implementation NewStoryViewController
 
@@ -117,6 +114,10 @@
     dispatch_once(&onceToken, ^{
         [self reloadBackgroundImage];
     });
+}
+
+- (void)mediaLibrary:(MediaLibrary *)library failedToFetchMediasWithError:(NSError *)error {
+    [TPAlert displayOnController:self withMessage:@"Vous devez d'abord autoriser l'application à accéder à vos photos" delegate:nil];
 }
 
 #pragma mark - Navigation
@@ -224,6 +225,10 @@
         [self.view layoutIfNeeded];
     }];
     
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 @end

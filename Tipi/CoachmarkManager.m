@@ -73,6 +73,11 @@
 
 + (void)launchCoachmarkAnimationForRecordController:(RecordViewController *)controller withCompletion:(void (^)())completion {
     
+    UIView* overlay = [[UIView alloc] initWithFrame:controller.view.frame];
+    overlay.backgroundColor = RgbColorAlpha(0, 0, 0, 1);
+    overlay.alpha = 0;
+
+    [controller.view addSubview:overlay];
     [controller.view bringSubviewToFront:controller.coachmarkSprite];
     [controller.view bringSubviewToFront:controller.helpLabel];
     
@@ -82,6 +87,7 @@
     
     controller.coachmarkSprite.alpha = 0;
     [UIView animateWithDuration:.3f animations:^{
+        overlay.alpha = .6f;
         controller.coachmarkSprite.alpha = 1;
         controller.helpLabel.alpha = 1;
     }];

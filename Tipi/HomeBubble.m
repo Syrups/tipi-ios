@@ -180,11 +180,11 @@
     }];
     
     CABasicAnimation* morph = [CABasicAnimation animationWithKeyPath:@"path"];
-    morph.duration = 0.3f;
+    morph.duration = 0.25f;
     morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     
     CGPathRef from = shapeLayer.path;
-    CGPathRef to = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame bumpDelta:-90].CGPath;
+    CGPathRef to = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame bumpDelta:-100].CGPath;
     
     morph.fromValue = (__bridge id)(from);
     morph.toValue = (__bridge id)(to);
@@ -202,10 +202,10 @@
     [CATransaction setCompletionBlock:completionBlock];
     
     CABasicAnimation* morph = [CABasicAnimation animationWithKeyPath:@"path"];
-    morph.duration = 0.3f;
+    morph.duration = 0.25f;
     morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     
-    CGPathRef from = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame bumpDelta:-90].CGPath;
+    CGPathRef from = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame bumpDelta:-110].CGPath;
     CGPathRef to = [SHPathLibrary pathForHomeBubbleStickyToTopInRect:self.frame bumpDelta:0].CGPath;
     
     morph.fromValue = (__bridge id)(from);

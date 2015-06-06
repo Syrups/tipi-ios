@@ -9,7 +9,9 @@
 #import "StoryController.h"
 #import <AFNetworking/AFNetworking.h>
 
-@implementation StoryController
+@implementation StoryController {
+    Page* commentPage;
+}
 
 -(void)createStoryWithName:(NSString *)name owner:(User *)owner inRooms:(NSArray *)rooms tag:(NSString *)tag medias:(NSArray *)medias audiosFiles:(NSArray *)audioFiles success:(void (^)(Story *, NSArray*))success failure:(void (^)(NSError *))failure {
     
@@ -100,31 +102,19 @@
     [op start];
 }
 
-- (void)addCommentOnPage:(Page *)page atTime:(NSUInteger)timecode withAudioFile:(NSString *)audioFile success:(void (^)(Comment *))success failure:(void (^)(NSError *))failure {
-    NSString* path = [NSString stringWithFormat:@"/pages/%@/comments", page.id];
-    NSMutableURLRequest* request = [StoryController getBaseRequestFor:path authenticated:YES method:@"POST"].mutableCopy;
+- (void)addCommentOnPage:(Page *)page atTime:(NSUInteger)timecode withAudioFile:(NSString *)audioFile success:(void (^)(Comment *))success failure:(void (^)())failure {
     
-    NSString *jsonParams = [NSString stringWithFormat:@"{ \"comment\": { \"file\": \"%@\", \"timecode\": \"%lu\" } }", audioFile,(unsigned long)timecode];
-    [request setHTTPBody: [jsonParams dataUsingEncoding:NSUTF8StringEncoding]];
+    commentPage = page;
     
-    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    FileUploader* uploader = [[FileUploader alloc] init];
+    uploader.delegate = self;
     
-    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    NSString* path = [kApiRootUrl stringByAppendingString:[NSString stringWithFormat:@"/pages/%@/comments?timecode=%d&duration=0", page.id, timecode]];
     
-    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        NSError* err = nil;
-        Comment* comment = [[Comment alloc] initWithDictionary:responseObject error:&err];
-        
-        if (err) { NSLog(@"%@", err); }
-        
-        success(comment);
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        failure(error);
-    }];
+    [uploader uploadFileWithData:[NSData dataWithContentsOfFile:audioFile] toPath:path ofType:kUploadTypeAudio];
     
-    [op start];
+    self.commentUploadSuccessBlock = success;
+    self.commentUploadFailureBlock = failure;
 }
 
 - (void)deleteStory:(Story*)story inRoom:(Room*)room success:(void(^)(Room* room))success failure:(void(^)(NSError* error))failure{
@@ -170,6 +160,19 @@
     }
     
     return [json stringByAppendingString:@" ]"];
+}
+
+#pragma mark - FileUploader
+
+- (void)fileUploader:(FileUploader *)uploader successfullyUploadedFileOfType:(NSString *)type toPath:(NSString *)path withFileName:(NSString *)filename {
+    
+    Comment* comment = [[Comment alloc] init];
+    comment.file = filename;
+    self.commentUploadSuccessBlock(comment);
+}
+
+- (void)fileUploader:(FileUploader *)uploader failedToUploadFileOfType:(NSString *)type toPath:(NSString *)path {
+    self.commentUploadFailureBlock();
 }
 
 @end

@@ -106,10 +106,10 @@
                 [self.delegate storyManager:self successfullyCreatedComment:comment];
             }
         });
-    } failure:^(NSError *error) {
+    } failure:^() {
         dispatch_async(dispatch_get_main_queue(), ^{
-            if ([self.delegate respondsToSelector:@selector(storyManager:failedToCreateComment:)]) {
-                [self.delegate storyManager:self failedToCreateComment:error];
+            if ([self.delegate respondsToSelector:@selector(storyManagerFailedToCreateComment:)]) {
+                [self.delegate storyManagerFailedToCreateComment:self];
             }
         });
     }];

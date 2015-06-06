@@ -14,7 +14,6 @@
 + (void) addRightCurveBezierPathToView: (UIView *) view withColor:(UIColor*)color inverted:(BOOL)inverted;
 + (void) addBackgroundPathForstoriesToView: (UIView *) view;
 
-+ (UIBezierPath *) swippedRightCurvyBezierPathForRect: (CGRect) frame;
 + (UIBezierPath *) swippedRightCurvyBezierPathForRect: (CGRect) frame inverted:(BOOL)inverted;
 + (UIBezierPath *) swipableRightCurvyBezierPathForRect: (CGRect) frame inverted:(BOOL)inverted;
 
@@ -27,6 +26,6 @@
 
 + (UIBezierPath *) pathForTransitionBeetweenRoomsAndStories: (CGRect) rect segueBack:(BOOL) back withFinalPath:(BOOL) finalPath;
 
-+ (UIBezierPath *) pathForProfileView:(UIView*)view open: (BOOL)open;
++ (UIBezierPath *) pathForProfileView:(UIView*)view open: (BOOL)open bumpDelta:(CGFloat)delta;
 
 @end

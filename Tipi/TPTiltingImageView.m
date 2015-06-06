@@ -69,6 +69,8 @@
 - (void(^)(CMDeviceMotion *gyroData, NSError *error)) gyroUpdateHandler {
     return ^void(CMDeviceMotion* gyroData, NSError* error) {
         
+        if (!self.enabled) return;
+        
         CGFloat xRotationRate = gyroData.rotationRate.x;
         CGFloat yRotationRate = gyroData.rotationRate.y;
         CGFloat zRotationRate = gyroData.rotationRate.z;
@@ -106,5 +108,6 @@
     
     return CGPointMake(clampedXOffset, centeredY);
 }
+
 
 @end

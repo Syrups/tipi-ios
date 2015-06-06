@@ -26,7 +26,7 @@
 - (void)stopRecording;
 - (void)playAudio;
 - (NSData *)dataOfAudioWithIndex:(NSUInteger)index;
-
+- (NSString*)pathForAudioFile;
 
 @end
 

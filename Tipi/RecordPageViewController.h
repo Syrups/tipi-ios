@@ -11,6 +11,7 @@
 #import <CoreMotion/CoreMotion.h>
 #import "CardViewController.h"
 #import "SRRecordButton.h"
+#import "TPTiltingImageView.h"
 
 @interface RecordPageViewController : CardViewController
 
@@ -20,11 +21,10 @@
 @property (strong, nonatomic) IBOutlet UIImageView* imageView;
 @property (strong, nonatomic) AVPlayer* moviePlayer;
 @property (strong, nonatomic) AVPlayerLayer* moviePlayerLayer;
-@property (strong, nonatomic) CMMotionManager* motionManager;
-@property BOOL imagePanningEnabled;
-
+@property (strong, nonatomic) TPTiltingImageView* tiltingView;
 @property (strong, nonatomic) IBOutlet SRRecordButton* recordTimer;
 @property (strong, nonatomic) IBOutlet UIButton* replayButton;
 @property (strong, nonatomic) IBOutlet UIView* overlay;
+
 
 @end

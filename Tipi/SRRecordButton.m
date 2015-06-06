@@ -153,11 +153,9 @@
 - (void)drawRect:(CGRect)rect {
     self.backgroundColor = [UIColor clearColor];
     
-    CGRect frame = self.bounds;
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGContextSaveGState(ctx);
     CGFloat radius = 90;
-    CGFloat r;
     
     CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
     CGContextSetStrokeColorWithColor(ctx, [UIColor whiteColor].CGColor);
