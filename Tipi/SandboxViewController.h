@@ -16,7 +16,9 @@
 @interface SandboxViewController : UIViewController
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @property (nonatomic, strong) AVPlayer *sandbPlayer;
-@property (weak, nonatomic) IBOutlet TPCircleWaverControl *sendBoxControl;
+@property (nonatomic, strong) EZRecorder *sandRecorder;
+@property (nonatomic, strong) EZMicrophone *sandMic;
+@property (nonatomic, weak) IBOutlet TPCircleWaverControl *sendBoxControl;
 
 
 @end

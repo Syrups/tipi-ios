@@ -43,6 +43,7 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 - (id) initWithFrame:(CGRect)frame{
     if ((self = [super initWithFrame:frame])) {
         [self baseInit];
+        [self baseViewInitWithFrame:frame];
     }
     return self;
 }
@@ -84,6 +85,16 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 
 - (void)setMode:(TPCircleMode)mode{
     _mode = mode;
+}
+
+-(void)setMicrophone:(EZMicrophone *)microphone{
+    _microphone = microphone;
+    _mode = TPCircleModeRecord;
+    [self startUpdate];
+}
+- (void)setRecorder:(EZRecorder *)recorder{
+    _recorder = recorder;
+    _mode = TPCircleModeRecord;
 }
 
 - (void)setAudioPlayer:(AVAudioPlayer *)audioPlayer{
@@ -134,8 +145,13 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     self.backgroundColor = [UIColor clearColor];
     [self setContentMode:UIViewContentModeRedraw];
     
+}
+
+- (void)baseViewInitWithFrame:(CGRect)frame{
+    
     CGFloat rectSize = [self rectSizeForCircleWithRadius:self.radius];
-    CGPoint center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    CGPoint center = CGPointMake(frame.size.width/2, frame.size.height/2);
+    
     CGRect innerFrame = CGRectMake(center.x - (rectSize/2), center.y - (rectSize/2), rectSize, rectSize);
     
     self.wave = [[SCSiriWaveformView alloc] initWithFrame:innerFrame];
@@ -144,13 +160,9 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     self.wave.frequency = kWaveFrequency;
     self.wave.alpha = 0;
     self.wave.userInteractionEnabled = NO;
+    [self addSubview:self.wave];
     
-    if(self.showWave){
-        [self addSubview:self.wave];
-        
-        CADisplayLink* displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateWave)];
-        [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
-    }
+    self.waveDisplayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateWave)];
     
     self.innerInteractionView = [[UIView alloc] initWithFrame:innerFrame];
     self.innerInteractionView.backgroundColor = [UIColor clearColor];
@@ -163,6 +175,43 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     
     [self.innerInteractionView addGestureRecognizer:longPressRecognizer];
     [self.innerInteractionView addGestureRecognizer:tapGestureRecognizer];
+}
+
+- (void)setShowWave:(BOOL)showWave{
+    _showWave = showWave;
+    _wave.alpha = _showWave ? 1 : 0;
+    
+    if(_showWave){
+        [self.waveDisplayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    }else{
+        [self.waveDisplayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    }
+    
+    /*CGFloat rectSize = [self rectSizeForCircleWithRadius:self.radius];
+     CGPoint center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+     CGRect innerFrame = CGRectMake(center.x - (rectSize/2), center.y - (rectSize/2), rectSize, rectSize);
+     
+     if(_showWave){
+     if(!_wave){
+     _wave = [[SCSiriWaveformView alloc] initWithFrame:innerFrame];
+     _wave.backgroundColor = [UIColor clearColor];
+     _wave.idleAmplitude = kWaveIdleAmplitude;
+     _wave.frequency = kWaveFrequency;
+     _wave.alpha = 0;
+     _wave.userInteractionEnabled = NO;
+     }
+     
+     [self addSubview:_wave];
+     
+     self.waveDisplayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateWave)];
+     [self.waveDisplayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+     }else{
+     
+     }*/
+}
+
+- (void)awakeFromNib{
+    [self baseViewInitWithFrame:self.frame];
 }
 
 
@@ -320,7 +369,6 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
         [self.simplePlayer seekToTime: CMTimeMake([self getTimeAtAngle:angleFloat], 1)];
     }
     
-    
     //Redraw
     [self setNeedsDisplay];
 }
@@ -337,13 +385,15 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
             }
             break;
         case TPCircleModeRecord:
-            normalizedValue = .4f;
-            //normalizedValue = pow (10, [self.audioPlayer averagePowerForChannel:0] / 20);
+            if((self.recorder || self.microphone) && self.nowRecording){
+                //[self.audioPlayer updateMeters];
+                normalizedValue = .4f;
+                //normalizedValue = pow (10, [self.audioPlayer averagePowerForChannel:0] / 20);
+            }
             break;
         default:
             break;
     }
-    
     [self.wave updateWithLevel:normalizedValue];
 }
 
@@ -453,47 +503,26 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
                 CMTime currentTime = currentItem.currentTime; //playing time
                 self.duration = CMTimeGetSeconds(duration);
                 self.currentTimePercent  =  ((CMTimeGetSeconds(currentTime)/ self.duration) * 100);
-            }else{
-                [self updateTestProgress];
             }
             break;
         case TPCircleModeRecord:
-            self.currentTimePercent  = ((self.currentRecordTime / self.recordDuration) * 100);
-            
-            //normalizedValue = pow (10, [self.audioPlayer averagePowerForChannel:0] / 20);
+            if (self.nowRecording) {
+                self.currentTimePercent  = ((self.currentRecordTime / self.recordDuration) * 100);
+                self.currentRecordTime += kSyncWithTimeUpdateInterval;
+                if (self.currentRecordTime >= kBaseDuration) {
+                    [self stopRecording];
+                }
+            }
             break;
         default:
             break;
     }
     
     
-    
     [self setNeedsDisplay];
     [self setContentMode:UIViewContentModeRedraw];
 }
 
-
-- (void)updateTestProgress {
-    if (self.nowRecording) {
-        
-        if (self.duration <= self.currentTimePercent) return;
-        
-        self.currentTimePercent += kSyncWithTimeUpdateInterval;
-    }
-}
-
-
-- (void)updateProgressWithValue:(CGFloat)currentValue {
-    
-    if (self.nowRecording) {
-        
-        if (self.duration <= self.currentTimePercent) return;
-        
-        self.currentTimePercent = currentValue;
-        [self setNeedsDisplay];
-        [self setContentMode:UIViewContentModeRedraw];
-    }
-}
 
 - (void)pause {
     [self.updateTimer invalidate];
@@ -526,16 +555,28 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     self.nowRecording = YES;
 }
 
+- (void)startFetchingAudio{
+    [self.microphone startFetchingAudio];
+    self.nowRecording = YES;
+}
+
 - (void)stopRecording {
     [self.microphone stopFetchingAudio];
-    [self.recorder closeAudioFile];
+    
+    if(self.recorder){
+        [self.recorder closeAudioFile];
+    }
     self.nowRecording = NO;
+    self.currentTimePercent = kBaseTime;
+    
+    if(self.delegate && [self.delegate respondsToSelector:@selector(circleWaverControl:didEndRecordingWithMicrophone:)]){
+        [self.delegate circleWaverControl:self didEndRecordingWithMicrophone:self.microphone];
+    }
 }
 
 #pragma mark - Math -
 
 -(CGPoint)pointFromAngle:(CGFloat)angle{
-    
     //Define the Circle center
     CGPoint centerPoint = CGPointMake(self.frame.size.width/2 - kArcLineWidth, self.frame.size.height/2 - kArcLineWidth);
     

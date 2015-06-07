@@ -23,15 +23,22 @@
     //TPCircleWaverControl *wv = [[TPCircleWaverControl alloc]initWithFrame:CGRectMake(self.view.frame.size.width /2 - 100, self.view.frame.size.height/2 - 100, 200, 200);];
     //[self.view addSubview:wv];
     
+   
     
-    NSString *path = [NSString stringWithFormat:@"%@/suitcase.mp3", [[NSBundle mainBundle] resourcePath]];
+    //[self configureAudioSession];
+    
+    
+    /*NSString *path = [NSString stringWithFormat:@"%@/suitcase.mp3", [[NSBundle mainBundle] resourcePath]];
     NSURL *soundUrl = [NSURL fileURLWithPath:path];
     
     NSError *err;
-    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:&err];
-    self.sendBoxControl.audioPlayer = self.audioPlayer;
+    //self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:&err];
+    self.sendBoxControl.audioPlayer = self.audioPlayer;*/
+    self.sendBoxControl.microphone = [EZMicrophone microphoneWithDelegate:self.sendBoxControl];
     self.sendBoxControl.showWave = YES;
-    [self.audioPlayer play];
+    //[self.audioPlayer play];
+    
+    
     
     
     ///S>T>R>E>A>M>I>N>G
@@ -49,6 +56,7 @@
     //[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateProgress:) userInfo:nil repeats:YES];
     
     //self.sendBoxControl.simplePlayer = self.sandbPlayer;
+    [self.sendBoxControl startFetchingAudio];
     [self.sendBoxControl appear];
 }
 

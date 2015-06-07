@@ -21,7 +21,7 @@ typedef enum TPCircleMode{
     TPCircleModeDemo
 } TPCircleMode;
 
-@interface TPCircleWaverControl : UIControl
+@interface TPCircleWaverControl : UIControl <EZMicrophoneDelegate>
 
 @property (nonatomic) TPCircleMode mode;
 
@@ -51,19 +51,23 @@ typedef enum TPCircleMode{
 @property CGFloat startAngle;
 
 @property BOOL appeared;
-@property BOOL showController;
-@property BOOL showWave;
+@property (nonatomic) BOOL showController;
+@property (nonatomic) BOOL showWave;
 @property BOOL autoStart;
 
 @property BOOL nowPlaying;
 @property BOOL nowRecording;
 
 
+@property (strong, nonatomic)  CADisplayLink* waveDisplayLink;
+
 - (void)play;
 - (void)pause;
 
 - (void)close;
 - (void)appear;
+
+-(void)startFetchingAudio;
 
 @end
 
@@ -73,5 +77,7 @@ typedef enum TPCircleMode{
 - (void)circleWaverControl:(TPCircleWaverControl *)control didReceveivedLongPressGestureRecognizer: (UILongPressGestureRecognizer*) recognizer;
 
 - (void)circleWaverControl:(TPCircleWaverControl *)control didReceveivedTapGestureRecognizer: (UITapGestureRecognizer*) recognizer;
+
+- (void)circleWaverControl:(TPCircleWaverControl *)control didEndRecordingWithMicrophone: (EZMicrophone*) microphone;
 @end
 
