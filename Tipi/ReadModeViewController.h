@@ -18,8 +18,9 @@
 #import "CommentAudioRecorder.h"
 #import "TPCircleWaverControl.h"
 #import "CardViewController.h"
+#import "StoryManager.h"
 
-@interface ReadModeViewController : CardViewController<FileUploaderDelegate, TPSideCommentsDelegate, TPCircleTouchDelegate>
+@interface ReadModeViewController : CardViewController<FileUploaderDelegate, TPSideCommentsDelegate, TPCircleTouchDelegate, CommentCreatorDelegate, CommentAudioRecorderDelegate>
 @property (nonatomic) int idx;
 @property (nonatomic) Page *page;
 @property (nonatomic, assign) id delegate;
@@ -33,9 +34,12 @@
 
 @property (weak, nonatomic) IBOutlet TPCircleWaverControl *playerView;
 
+@property (strong, nonatomic) CommentAudioRecorder* commentRecorder;
 @property (strong, nonatomic) CommentsQueueManager *commentsQueueManager;
 @property (strong, nonatomic) StoryWIPSaver* saver;
-@property (strong, nonatomic) CommentAudioRecorder* commentRecorder;
+
+@property (strong, nonatomic) StoryManager* storyManager;
+
 
 @property (nonatomic, strong) AVAudioPlayer* player;
 @property (nonatomic, strong) NSTimer* audioListenTimer;
@@ -43,6 +47,7 @@
 @property (strong,nonatomic) NSURL* fileURL;
 @property (strong,nonatomic) NSTimer *overlayTimer;
 @property (nonatomic) NSTimeInterval trueCurrentTime;
+@property (nonatomic) NSTimeInterval commentTime;
 @property (strong, nonatomic) NSMutableArray *commentsPlayers;
 
 

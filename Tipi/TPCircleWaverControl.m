@@ -516,7 +516,6 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
             break;
     }
     
-    
     [self setNeedsDisplay];
     [self setContentMode:UIViewContentModeRedraw];
 }

@@ -22,7 +22,6 @@ typedef void(^fadeOutCompletion)(BOOL);
 @end
 
 @implementation ReadModeViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -45,6 +44,7 @@ typedef void(^fadeOutCompletion)(BOOL);
     
     //Player
     self.playerView.audioPlayer = self.player;
+    self.playerView.delegate = self;
     [self.playerView appear];
     
     //Data
@@ -58,6 +58,7 @@ typedef void(^fadeOutCompletion)(BOOL);
     self.commentRecorder = [[CommentAudioRecorder alloc] init];
     self.commentRecorder.delegate = self;
     
+    self.storyManager = [[StoryManager alloc] initWithDelegate:self];
     
 
     if(self.idx == 0){
@@ -248,9 +249,14 @@ typedef void(^fadeOutCompletion)(BOOL);
 - (void)circleWaverControl:(TPCircleWaverControl *)control didReceveivedLongPressGestureRecognizer:(UILongPressGestureRecognizer *)recognizer{
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         NSLog(@"begin touch");
-        //[self pauseSound];
-        //AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-        //[self.commentRecorder startRecording];
+        [self.playerView pause];
+        self.commentTime = self.player.currentTime;
+        
+        self.playerView.microphone = self.commentRecorder.microphone;
+        self.playerView.nowRecording = YES;
+        [self.commentRecorder startRecording];
+        
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         
         /*if (!self.recordTimer.appeared) {
          self.replayButton.transform = CGAffineTransformMakeScale(0, 0);
@@ -275,7 +281,11 @@ typedef void(^fadeOutCompletion)(BOOL);
     }
     if (recognizer.state == UIGestureRecognizerStateEnded) {
         NSLog(@"ended touch");
-        //[self.commentRecorder stopRecording];
+        self.playerView.mode = TPCircleModeListen;
+        self.playerView.nowRecording = NO;
+        
+        [self.commentRecorder stopRecording];
+        [self.storyManager addCommentOnPage:self.page atTime:self.commentTime withAudioFile:[self.commentRecorder pathForAudioFile]];
         //[self.recordTimer pause];
         //[self.recordTimer close];
         
@@ -307,4 +317,30 @@ typedef void(^fadeOutCompletion)(BOOL);
          }*/
     }
 }
+
+#pragma mark - StoryManager
+- (void)storyManager:(StoryManager *)manager successfullyCreatedComment:(Comment *)story{
+
+}
+
+- (void)storyManagerFailedToCreateComment:(StoryManager *)manager{
+    
+}
+
+
+#pragma mark - TPCircleWaverControl
+-(void)circleWaverControl:(TPCircleWaverControl *)control didEndRecordingWithMicrophone:(EZMicrophone *)microphone{
+}
+
+- (void)circleWaverControl:(TPCircleWaverControl *)control didReceveivedTapGestureRecognizer:(UITapGestureRecognizer *)recognizer{
+
+}
+
+#pragma mark - CommentAudioRecorder
+- (void)commentRecorder:(CommentAudioRecorder *)recorder didFinishPlayingAudioAtIndex:(NSUInteger)index{
+}
+
+- (void)commentRecorder:(CommentAudioRecorder *)recorder hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels{
+}
+
 @end
