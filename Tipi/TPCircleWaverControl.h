@@ -35,7 +35,7 @@ typedef enum TPCircleMode{
 
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @property (nonatomic, strong) AVPlayer *simplePlayer;
-@property (nonatomic, strong) EZRecorder *recorder;
+//@property (nonatomic, strong) EZRecorder *recorder;
 @property (strong, nonatomic) EZMicrophone* microphone;
 
 
@@ -77,6 +77,8 @@ typedef enum TPCircleMode{
 - (void)circleWaverControl:(TPCircleWaverControl *)control didReceveivedLongPressGestureRecognizer: (UILongPressGestureRecognizer*) recognizer;
 
 - (void)circleWaverControl:(TPCircleWaverControl *)control didReceveivedTapGestureRecognizer: (UITapGestureRecognizer*) recognizer;
+
+- (void)circleWaverControl:(TPCircleWaverControl *)control didStartRecordingWithMicrophone: (EZMicrophone*) microphone;
 
 - (void)circleWaverControl:(TPCircleWaverControl *)control didEndRecordingWithMicrophone: (EZMicrophone*) microphone;
 @end

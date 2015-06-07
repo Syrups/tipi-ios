@@ -92,10 +92,12 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     _mode = TPCircleModeRecord;
     [self startUpdate];
 }
+
+/*
 - (void)setRecorder:(EZRecorder *)recorder{
     _recorder = recorder;
     _mode = TPCircleModeRecord;
-}
+}*/
 
 - (void)setAudioPlayer:(AVAudioPlayer *)audioPlayer{
     _audioPlayer = audioPlayer;
@@ -314,13 +316,13 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 /** Tracking is started **/
 -(BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
     [super beginTrackingWithTouch:touch withEvent:event];
-    [self pause];
-    
-    CGPoint lastPoint = [touch locationInView:self];
-    
-    //Use the location to design the Handle
-    [self movehandle:lastPoint];
-    
+   
+
+    if(self.mode == TPCircleModeListen){
+        [self pause];
+        [self movehandle:[touch locationInView:self]];
+    }
+
     //We need to track continuously
     return YES;
 }
@@ -328,12 +330,8 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 /** Track continuos touch event (like drag) **/
 -(BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
     [super continueTrackingWithTouch:touch withEvent:event];
-    
-    //Get touch location
-    CGPoint lastPoint = [touch locationInView:self];
-    
-    //Use the location to design the Handle
-    [self movehandle:lastPoint];
+
+    if(self.mode == TPCircleModeListen)[self movehandle:[touch locationInView:self]];
     
     //Control value has changed, let's notify that
     [self sendActionsForControlEvents:UIControlEventValueChanged];
@@ -344,7 +342,7 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 /** Track is finished **/
 -(void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
     [super endTrackingWithTouch:touch withEvent:event];
-    [self play];
+    if(self.mode == TPCircleModeListen)[self play];
 }
 
 /** Move the Handle **/
@@ -385,7 +383,7 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
             }
             break;
         case TPCircleModeRecord:
-            if((self.recorder || self.microphone) && self.nowRecording){
+            if((self.microphone) && self.nowRecording){
                 //[self.audioPlayer updateMeters];
                 normalizedValue = .4f;
                 //normalizedValue = pow (10, [self.audioPlayer averagePowerForChannel:0] / 20);
@@ -525,7 +523,7 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 
 
 - (void)pause {
-    [self.updateTimer invalidate];
+    //[self.updateTimer invalidate];
     self.nowPlaying = NO;
     self.nowRecording = NO;
     
@@ -549,7 +547,6 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 }
 
 - (void)startRecordingWithEZRecorder:(EZRecorder*)recorder andEZMicrophone:(EZMicrophone*)microphone {
-    self.recorder = recorder;
     self.microphone = microphone;
     [self.microphone startFetchingAudio];
     self.nowRecording = YES;
@@ -558,14 +555,15 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 - (void)startFetchingAudio{
     [self.microphone startFetchingAudio];
     self.nowRecording = YES;
+    
+    if(self.delegate && [self.delegate respondsToSelector:@selector(circleWaverControl:didStartRecordingWithMicrophone:)]){
+        [self.delegate circleWaverControl:self didStartRecordingWithMicrophone:self.microphone];
+    }
 }
 
 - (void)stopRecording {
     [self.microphone stopFetchingAudio];
     
-    if(self.recorder){
-        [self.recorder closeAudioFile];
-    }
     self.nowRecording = NO;
     self.currentTimePercent = kBaseTime;
     
@@ -609,7 +607,6 @@ static inline float AngleFromNorth(CGPoint p1, CGPoint p2, BOOL flipped) {
 }
 
 -(CGFloat)rectSizeForCircleWithRadius:(CGFloat)r{
-    
     return  sqrt(2 * powf(r, 2));
 }
 
