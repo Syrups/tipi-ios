@@ -23,7 +23,7 @@
 }
 
 static CGFloat const kBaseTime = 0.0f;
-static CGFloat const kBaseDuration = 100;
+static CGFloat const kBaseDuration = 60;
 static CGFloat const kBaseRadiusFactor = 0.1;
 static CGFloat const kEndRadiusFactor = 1;
 static NSTimeInterval const kRadiusFactorUpdateInterval = 0.0005f;
@@ -31,7 +31,7 @@ static NSTimeInterval const kRadiusFactorUpdateInterval = 0.0005f;
 static CGFloat const kRadiusFactorUpdateValue = 0.05;
 
 static CGFloat const kWaveIdleAmplitude = .1f;
-static CGFloat const kWaveFrequency = 2;
+static CGFloat const kWaveFrequency = 2.5;
 
 static CGFloat const kArcLineWidth = 4.0f;
 static CGFloat const kSliderStroke = kArcLineWidth * 1.9;
@@ -81,10 +81,15 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     }
 }
 
+
+- (void)setMode:(TPCircleMode)mode{
+    _mode = mode;
+}
+
 - (void)setAudioPlayer:(AVAudioPlayer *)audioPlayer{
     _audioPlayer = audioPlayer;
     _duration = _audioPlayer.duration;
-    [self start];
+    [self startUpdate];
 }
 
 - (void)setSimplePlayer:(AVPlayer *)simplePlayer{
@@ -96,13 +101,13 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     _duration = simplePlayer.currentItem.duration.value;
     [_simplePlayer addObserver:self forKeyPath:@"status" options:0 context:nil];
     
-
-    /*[[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(simplerPlayerItemDidReachEnd:)
-                                                 name:AVPlayerItemDidPlayToEndTimeNotification
-                                               object:[_simplePlayer currentItem]];*/
     
-    [self start];
+    /*[[NSNotificationCenter defaultCenter] addObserver:self
+     selector:@selector(simplerPlayerItemDidReachEnd:)
+     name:AVPlayerItemDidPlayToEndTimeNotification
+     object:[_simplePlayer currentItem]];*/
+    
+    [self startUpdate];
 }
 
 - (void)simplerPlayerItemDidReachEnd:(NSNotification *)notification {
@@ -116,6 +121,8 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 - (void)baseInit{
     
     self.duration = kBaseDuration;
+    self.recordDuration = kBaseDuration;
+    
     self.currentTimePercent = kBaseTime;
     self.radiusFactor = kBaseRadiusFactor;
     self.showController = NO;
@@ -127,17 +134,9 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     self.backgroundColor = [UIColor clearColor];
     [self setContentMode:UIViewContentModeRedraw];
     
+    CGFloat rectSize = [self rectSizeForCircleWithRadius:self.radius];
     CGPoint center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
-    
-    //CGFloat waveWidth = CGRectGetWidth(self.frame) * 0.5;
-    //CGFloat waveHeight = CGRectGetHeight(self.frame) * 0.5;
-    CGFloat rectSiez = [self rectSizeForCircleWithRadius:self.radius];
-    
-    //CGRect innerFrame = CGRectMake(center.x - (waveWidth/2), center.y - (waveHeight/2), waveWidth, waveHeight);
-    CGRect innerFrame = CGRectMake(center.x - (rectSiez/2), center.y - (rectSiez/2), rectSiez, rectSiez);
-    self.innerInteractionView = [[UIView alloc] initWithFrame:innerFrame];
-     self.innerInteractionView.backgroundColor = [UIColor greenColor];
-    [self addSubview: self.innerInteractionView];
+    CGRect innerFrame = CGRectMake(center.x - (rectSize/2), center.y - (rectSize/2), rectSize, rectSize);
     
     self.wave = [[SCSiriWaveformView alloc] initWithFrame:innerFrame];
     self.wave.backgroundColor = [UIColor clearColor];
@@ -148,14 +147,22 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     
     if(self.showWave){
         [self addSubview:self.wave];
+        
         CADisplayLink* displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateWave)];
         [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
     }
     
-    UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    self.innerInteractionView = [[UIView alloc] initWithFrame:innerFrame];
+    self.innerInteractionView.backgroundColor = [UIColor clearColor];
+    [self addSubview: self.innerInteractionView];
+    
+    UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(passLongPressRecognizer:)];
     longPressRecognizer.minimumPressDuration = .5f;
     
+    UITapGestureRecognizer* tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(passLongTapRecognizer:)];
+    
     [self.innerInteractionView addGestureRecognizer:longPressRecognizer];
+    [self.innerInteractionView addGestureRecognizer:tapGestureRecognizer];
 }
 
 
@@ -167,7 +174,7 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     CGContextSaveGState(ctx);
     
     self.radius =  (CGRectGetWidth(rect) * 0.45) * self.radiusFactor;
-
+    
     CGPoint center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
     
     //Draw Background Path
@@ -260,6 +267,11 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     [super beginTrackingWithTouch:touch withEvent:event];
     [self pause];
     
+    CGPoint lastPoint = [touch locationInView:self];
+    
+    //Use the location to design the Handle
+    [self movehandle:lastPoint];
+    
     //We need to track continuously
     return YES;
 }
@@ -283,7 +295,7 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 /** Track is finished **/
 -(void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
     [super endTrackingWithTouch:touch withEvent:event];
-    [self start];
+    [self play];
 }
 
 /** Move the Handle **/
@@ -319,7 +331,8 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     CGFloat normalizedValue = .1f;
     switch (self.mode) {
         case TPCircleModeListen:
-            if(self.audioPlayer){
+            if(self.audioPlayer && self.audioPlayer.isPlaying){
+                [self.audioPlayer updateMeters];
                 normalizedValue = pow (10, [self.audioPlayer averagePowerForChannel:0] / 20);
             }
             break;
@@ -330,7 +343,7 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
         default:
             break;
     }
- 
+    
     [self.wave updateWithLevel:normalizedValue];
 }
 
@@ -341,16 +354,16 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     self.radiusFactor = kBaseRadiusFactor;
     
     /*[UIView animateWithDuration:10 animations:^{
-        self.radiusFactor = kEndRadiusFactor;
-    } completion:^(BOOL finished) {
-        self.appeared = YES;
-    }];*/
+     self.radiusFactor = kEndRadiusFactor;
+     } completion:^(BOOL finished) {
+     self.appeared = YES;
+     }];*/
     appearanceTimer = [NSTimer scheduledTimerWithTimeInterval:kRadiusFactorUpdateInterval
                                                        target:self
                                                      selector:@selector(updateAppearing)
                                                      userInfo:nil
                                                       repeats:YES];
-     self.appeared = YES;
+    self.appeared = YES;
 }
 
 
@@ -364,8 +377,9 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     
     CGPoint center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
     CGFloat rectSiez = [self rectSizeForCircleWithRadius:self.radius];
-
+    
     self.innerInteractionView.frame = CGRectMake(center.x - (rectSiez/2), center.y - (rectSiez/2), rectSiez, rectSiez);
+    self.wave.frame = self.innerInteractionView.frame;
     
     [self setNeedsDisplay];
     [self setContentMode:UIViewContentModeRedraw];
@@ -403,44 +417,56 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 
 #pragma mark - Timer
 
-- (void)start {
+- (void)startUpdate {
     self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:kSyncWithTimeUpdateInterval
-                                             target:self
-                                           selector:@selector(updateProgress)
-                                           userInfo:nil
-                                            repeats:YES];
+                                                        target:self
+                                                      selector:@selector(updateProgress)
+                                                      userInfo:nil
+                                                       repeats:YES];
     
     //CADisplayLink *displaylink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateProgress)];
     //[displaylink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
     
-    self.recording = YES;
+    self.nowRecording = YES;
     
     [UIView animateWithDuration:.2f animations:^{
         self.wave.alpha = 1;
     }];
-    
-    
-    if(self.autoStart){
-        if(self.audioPlayer)[self.audioPlayer play];
-        if(self.simplePlayer)[self.simplePlayer play];
-    }
+}
+
+-(void)play{
+    if(self.audioPlayer)[self.audioPlayer play];
+    if(self.simplePlayer)[self.simplePlayer play];
 }
 
 
 - (void)updateProgress {
-    if (self.audioPlayer) {
-        self.currentTimePercent  = ((self.audioPlayer.currentTime / self.duration) * 100);
-    }else if(self.simplePlayer){
-        
-        AVPlayerItem *currentItem = self.simplePlayer.currentItem;
-        
-        CMTime duration = currentItem.duration; //total time
-        CMTime currentTime = currentItem.currentTime; //playing time
-        self.duration = CMTimeGetSeconds(duration);
-        self.currentTimePercent  =  ((CMTimeGetSeconds(currentTime)/ self.duration) * 100);
-    }else{
-        [self updateTestProgress];
+    switch (self.mode) {
+        case TPCircleModeListen:
+            if (self.audioPlayer) {
+                self.currentTimePercent  = ((self.audioPlayer.currentTime / self.duration) * 100);
+            }else if(self.simplePlayer){
+                
+                AVPlayerItem *currentItem = self.simplePlayer.currentItem;
+                
+                CMTime duration = currentItem.duration; //total time
+                CMTime currentTime = currentItem.currentTime; //playing time
+                self.duration = CMTimeGetSeconds(duration);
+                self.currentTimePercent  =  ((CMTimeGetSeconds(currentTime)/ self.duration) * 100);
+            }else{
+                [self updateTestProgress];
+            }
+            break;
+        case TPCircleModeRecord:
+            self.currentTimePercent  = ((self.currentRecordTime / self.recordDuration) * 100);
+            
+            //normalizedValue = pow (10, [self.audioPlayer averagePowerForChannel:0] / 20);
+            break;
+        default:
+            break;
     }
+    
+    
     
     [self setNeedsDisplay];
     [self setContentMode:UIViewContentModeRedraw];
@@ -448,7 +474,7 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 
 
 - (void)updateTestProgress {
-    if (self.recording) {
+    if (self.nowRecording) {
         
         if (self.duration <= self.currentTimePercent) return;
         
@@ -459,7 +485,7 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 
 - (void)updateProgressWithValue:(CGFloat)currentValue {
     
-    if (self.recording) {
+    if (self.nowRecording) {
         
         if (self.duration <= self.currentTimePercent) return;
         
@@ -471,7 +497,8 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 
 - (void)pause {
     [self.updateTimer invalidate];
-    self.recording = NO;
+    self.nowPlaying = NO;
+    self.nowRecording = NO;
     
     [UIView animateWithDuration:.2f animations:^{
         self.wave.alpha = 0;
@@ -484,11 +511,25 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 
 - (void)reset {
     [self.updateTimer invalidate];
-    self.recording = NO;
+    self.nowRecording = NO;
+    self.nowPlaying = NO;
     self.currentTimePercent = 0;
     self.radiusFactor = 1;
     
     [self setNeedsDisplay];
+}
+
+- (void)startRecordingWithEZRecorder:(EZRecorder*)recorder andEZMicrophone:(EZMicrophone*)microphone {
+    self.recorder = recorder;
+    self.microphone = microphone;
+    [self.microphone startFetchingAudio];
+    self.nowRecording = YES;
+}
+
+- (void)stopRecording {
+    [self.microphone stopFetchingAudio];
+    [self.recorder closeAudioFile];
+    self.nowRecording = NO;
 }
 
 #pragma mark - Math -
@@ -532,23 +573,18 @@ static inline float AngleFromNorth(CGPoint p1, CGPoint p2, BOOL flipped) {
 }
 
 
-
-
-
 #pragma mark - UILongPressGestureRecognizer
 
-- (void)handleLongPress:(UILongPressGestureRecognizer*)recognizer {
+- (void)passLongPressRecognizer:(UILongPressGestureRecognizer*)recognizer {
     
-    CGPoint centerOfCircle=CGPointMake(140,200);
-    CGPoint touchPoint=[recognizer locationInView:self];
-    CGFloat distance=[self distanceWithCenter:centerOfCircle with:touchPoint];
-    
-    if (distance <= self.radius) {
-        //perform your tast.
-        NSLog(@"in circle");
-        if(self.delegate && [self.delegate respondsToSelector:@selector(circleWaverControl:didReceveivedLongPressGestureRecognizer:)]){
-             [self.delegate circleWaverControl:self didReceveivedLongPressGestureRecognizer:recognizer];
-        }
+    if(self.delegate && [self.delegate respondsToSelector:@selector(circleWaverControl:didReceveivedLongPressGestureRecognizer:)]){
+        [self.delegate circleWaverControl:self didReceveivedLongPressGestureRecognizer:recognizer];
+    }
+}
+
+- (void)passLongTapRecognizer:(UITapGestureRecognizer*)recognizer {
+    if(self.delegate && [self.delegate respondsToSelector:@selector(circleWaverControl:didReceveivedTapGestureRecognizer:)]){
+        [self.delegate circleWaverControl:self didReceveivedTapGestureRecognizer:recognizer];
     }
 }
 @end

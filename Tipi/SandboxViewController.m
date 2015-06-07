@@ -30,6 +30,7 @@
     NSError *err;
     self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:&err];
     self.sendBoxControl.audioPlayer = self.audioPlayer;
+    self.sendBoxControl.showWave = YES;
     [self.audioPlayer play];
     
     
