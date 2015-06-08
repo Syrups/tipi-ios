@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="GTWalsheim Regular.otf">
-            <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
@@ -1011,9 +1010,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.gif" translatesAutoresizingMaskIntoConstraints="NO" id="f9p-36-ZDN">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Yl-zd-QUk" customClass="TPSideCommentsView">
                                 <rect key="frame" x="0.0" y="61" width="160" height="447"/>
                                 <subviews>
@@ -1034,17 +1030,14 @@
                                                                 <constraint firstAttribute="width" constant="25" id="WJn-ZA-kVL"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bx6-8m-Ub5" userLabel="CircleView">
+                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bx6-8m-Ub5" userLabel="CircleView">
                                                             <rect key="frame" x="38" y="12" width="40" height="40"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cap" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ei-UK-4lL">
-                                                                    <rect key="frame" x="5" y="13" width="27" height="15"/>
-                                                                    <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="14"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capitale" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Prd-iM-9fH">
-                                                                    <rect key="frame" x="5" y="13" width="55" height="15"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ei-UK-4lL" userLabel="nameLabel">
+                                                                    <rect key="frame" x="5" y="13" width="30" height="15"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="30" id="k7B-eA-HqL"/>
+                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="14"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -1052,12 +1045,10 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="centerY" secondItem="Prd-iM-9fH" secondAttribute="centerY" id="IGO-le-t5F"/>
-                                                                <constraint firstItem="Prd-iM-9fH" firstAttribute="leading" secondItem="bx6-8m-Ub5" secondAttribute="leading" constant="5" id="N81-1I-TpM"/>
+                                                                <constraint firstAttribute="centerX" secondItem="3ei-UK-4lL" secondAttribute="centerX" id="AZZ-uQ-qzp"/>
                                                                 <constraint firstAttribute="height" constant="40" id="Nys-pW-koB"/>
-                                                                <constraint firstAttribute="centerY" secondItem="3ei-UK-4lL" secondAttribute="centerY" id="ft8-1S-lGM"/>
                                                                 <constraint firstAttribute="width" constant="40" id="kCh-7Q-JKx"/>
-                                                                <constraint firstItem="3ei-UK-4lL" firstAttribute="leading" secondItem="bx6-8m-Ub5" secondAttribute="leading" constant="5" id="n9J-uq-KJl"/>
+                                                                <constraint firstAttribute="centerY" secondItem="3ei-UK-4lL" secondAttribute="centerY" id="zVo-jL-fS0"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -1069,10 +1060,10 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="capLabel" destination="3ei-UK-4lL" id="avY-Q0-7AP"/>
                                                     <outlet property="circleContainer" destination="bx6-8m-Ub5" id="EMR-ce-hjy"/>
                                                     <outlet property="circleContainerWidth" destination="kCh-7Q-JKx" id="bNd-1Z-Oeh"/>
-                                                    <outlet property="fullNameLabel" destination="Prd-iM-9fH" id="aOZ-zC-usj"/>
+                                                    <outlet property="nameLabel" destination="3ei-UK-4lL" id="9SM-nn-ogJ"/>
+                                                    <outlet property="nameLabelWidth" destination="k7B-eA-HqL" id="Zdk-Jl-9VL"/>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell alpha="0.0" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="hiddenCommentCell" id="dzr-qu-X22" customClass="UICommentSideCell">
@@ -1158,23 +1149,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0oP-iy-bZh" firstAttribute="width" secondItem="rGu-BP-W9v" secondAttribute="width" id="5nq-uL-or4"/>
-                            <constraint firstItem="f9p-36-ZDN" firstAttribute="width" secondItem="rGu-BP-W9v" secondAttribute="width" id="CRZ-zV-vVK"/>
                             <constraint firstItem="5Yl-zd-QUk" firstAttribute="leading" secondItem="rGu-BP-W9v" secondAttribute="leadingMargin" constant="-16" id="OYW-GL-oZc"/>
-                            <constraint firstItem="f9p-36-ZDN" firstAttribute="height" secondItem="rGu-BP-W9v" secondAttribute="height" id="OZm-GH-9JW"/>
                             <constraint firstAttribute="centerY" secondItem="0oP-iy-bZh" secondAttribute="centerY" id="OcN-LL-KHd"/>
                             <constraint firstItem="5Yl-zd-QUk" firstAttribute="top" secondItem="QUI-Wn-nKS" secondAttribute="bottom" constant="41" id="QAj-ih-RZV"/>
                             <constraint firstAttribute="centerX" secondItem="0oP-iy-bZh" secondAttribute="centerX" id="TAm-Bk-H1t"/>
                             <constraint firstItem="ir6-xh-ceQ" firstAttribute="top" secondItem="5Yl-zd-QUk" secondAttribute="bottom" constant="60" id="bIq-ev-BHK"/>
                             <constraint firstAttribute="width" secondItem="5Yl-zd-QUk" secondAttribute="width" multiplier="2" id="cAW-vx-DsW"/>
                             <constraint firstItem="0oP-iy-bZh" firstAttribute="height" secondItem="rGu-BP-W9v" secondAttribute="height" id="e92-ZY-01G"/>
-                            <constraint firstAttribute="centerX" secondItem="f9p-36-ZDN" secondAttribute="centerX" id="mwq-1o-dwW"/>
-                            <constraint firstAttribute="centerY" secondItem="f9p-36-ZDN" secondAttribute="centerY" id="xwN-3D-Sf0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rnb-pV-Djv"/>
                     <connections>
                         <outlet property="commentsView" destination="5Yl-zd-QUk" id="G8Z-F6-Kjw"/>
-                        <outlet property="mediaImageView" destination="f9p-36-ZDN" id="gkX-Qi-Rwi"/>
                         <outlet property="overlayView" destination="0oP-iy-bZh" id="my9-2O-cIu"/>
                         <outlet property="playerView" destination="3X5-eF-mZH" id="IVF-aR-Yc8"/>
                     </connections>
@@ -1265,7 +1251,6 @@
         <image name="btn-filter" width="42" height="39"/>
         <image name="croix-noire.png" width="26" height="27"/>
         <image name="picto-fire-b" width="84" height="84"/>
-        <image name="placeholder.gif" width="1000" height="1000"/>
         <image name="totem" width="36" height="67"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

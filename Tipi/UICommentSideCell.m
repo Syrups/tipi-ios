@@ -14,23 +14,24 @@
 - (void)awakeFromNib {
     // Initialization code
     self.unRolled = NO;
-   
+    
+    CGSize textSize = [[self.nameLabel text] sizeWithAttributes:@{NSFontAttributeName:[self.nameLabel font]}];
+    _nameLabelWidth.constant =  textSize.width;
 }
 
 -(void)updateState{
     
-    self.unRolled = !self.unRolled;
+    CGSize textSize = [[self.nameLabel text] sizeWithAttributes:@{NSFontAttributeName:[self.nameLabel font]}];
+    [self layoutIfNeeded];
+   
+    _circleContainerWidth.constant = self.unRolled ? (textSize.width + 30) : 40;
+    _nameLabelWidth.constant =  textSize.width;
     
-    [self.contentView layoutIfNeeded]; // Ensures that all pending layout operations have been completed
-    [UIView animateWithDuration:.5f animations:^{
-        self.circleContainerWidth.constant = self.unRolled ? 100 : 40;
-        self.capLabel.alpha = self.unRolled ? 0 : 1;
-        self.fullNameLabel.alpha = self.unRolled ? 1 : 0;
-        
-        [self.contentView layoutIfNeeded]; // Forces the layout of the subtree animation block and then captures all of the frame changes
+    [UIView animateWithDuration:.4f animations:^{
+       [self layoutIfNeeded];
+        // Forces the layout of the subtree animation block and then captures all of the frame changes
     }];
 }
-
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

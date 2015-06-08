@@ -74,8 +74,12 @@
 - (void)removeCommentRef:(NSDictionary *) ref atIndex:(NSUInteger) index{
     //[self.commQueue removeObjectForKey:@(index)];
     
+    NSUInteger idx = [self.referencesQueue indexOfObject:@(index)];
+    
     [self.commentsQueue removeObject:ref];
-    [self.delegate commentsQueueManager:self didRemovedComment:ref withReference:@(index)];
+    [self.referencesQueue removeObject:@(index)];
+    
+    [self.delegate commentsQueueManager:self didRemovedComment:ref atIndex:idx];
 }
 
 

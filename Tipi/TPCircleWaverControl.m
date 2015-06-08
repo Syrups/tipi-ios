@@ -311,6 +311,7 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 }
 
 
+
 #pragma mark - UIControl Override -
 
 /** Tracking is started **/
@@ -456,6 +457,18 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     [self setContentMode:UIViewContentModeRedraw];
 }
 
+-(void)sexyClose{
+    closingTimer = [NSTimer scheduledTimerWithTimeInterval:kRadiusFactorUpdateInterval
+                                                    target:self
+                                                  selector:@selector(animateSexyClose)
+                                                  userInfo:nil
+                                                   repeats:YES];
+    self.appeared = NO;
+}
+
+-(void)animateSexyClose{
+    self.startAngle += 0.005;
+}
 
 - (void)hide {
     self.radiusFactor = -self.frame.size.width/2 + 30;

@@ -7,12 +7,10 @@
 //
 
 #import "Configuration.h"
+#import "FileDownLoader.h"
 #import "ReadModeViewController.h"
 
-#import "FileDownLoader.h"
-
 #import <SDWebImage/UIImageView+WebCache.h>
-
 
 @import AVFoundation;
 
@@ -35,12 +33,17 @@ typedef void(^fadeOutCompletion)(BOOL);
     //)
     
     self.view.clipsToBounds = YES;
+    
+    self.mediaImageView = [[TPTiltingImageView alloc] initWithFrame:self.view.frame andImage:self.mediaImage];
+    
     self.mediaImageView.image = self.mediaImage;
     self.mediaImageView.clipsToBounds = YES;
     self.mediaImageView.transform = CGAffineTransformMakeScale(1.2,1.2);
     
     self.mediaImageView.userInteractionEnabled = YES;
     [self.mediaImageView addGestureRecognizer:tapOnImageView];
+    
+    [self.view insertSubview:self.mediaImageView belowSubview:self.commentsView];
     
     //Player
     self.playerView.audioPlayer = self.player;
@@ -60,7 +63,6 @@ typedef void(^fadeOutCompletion)(BOOL);
     
     self.storyManager = [[StoryManager alloc] initWithDelegate:self];
     
-
     if(self.idx == 0){
         [self playSound];
     }
@@ -205,25 +207,22 @@ typedef void(^fadeOutCompletion)(BOOL);
     
     for ( int i = 0; i < self.page.comments.count; i++) {
          Comment* comment = [self.page.comments objectAtIndex:i];
-        
-        NSTimeInterval commentTime = round([[self.page.comments objectAtIndex:i] doubleValue]);
-        
-        //NSLog(@"__________________________|%f", comment);
+    
+        //NSLog(@"__________________________|%f", comment.timecode);
 
-        if(commentTime == currentPlayerTime){
-            //NSLog(@"|___________BIM_______________|");
+        if(comment.timecode == currentPlayerTime){
             
-           
-            [self pushComment:comment atIndex:i];
+            User* user = [User new];
+            user.username = @"Alceste";
+            user.id = @"1234";
+            
+            comment.user = user;
+            
+            [self.commentsQueueManager pushInQueueComment:comment  atIndex:i];
         }
     }
 }
 
--(void)pushComment:(Comment*)comment atIndex:(NSInteger) index{
-    //NSLog(@"|___________BIM_______________|");
-
-    [self.commentsQueueManager pushInQueueComment:comment  atIndex:index];
-}
 
 +(Comment*)mockCommentForIndex:(NSInteger)index{
     
@@ -259,7 +258,6 @@ typedef void(^fadeOutCompletion)(BOOL);
          NSLog(@"begin touch");
         
         [self.overlayTimer invalidate];
-       
         [self.playerView pause];
         self.commentTime = self.player.currentTime;
         
@@ -268,84 +266,41 @@ typedef void(^fadeOutCompletion)(BOOL);
         [self.commentRecorder startRecording];
         
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-        
-        /*if (!self.recordTimer.appeared) {
-         self.replayButton.transform = CGAffineTransformMakeScale(0, 0);
-         [self.recordTimer appear];
-         }
-         
-         [self.recordTimer reset];
-         [self.recordTimer start];
-         
-         self.audioWave.deployed = YES;
-         [self.previewBubble hideWithCompletion:^{
-         
-         }];
-         
-         // Pause gyroscope panning
-         [self currentPage].imagePanningEnabled = NO;
-         
-         if ([self currentPage].moviePlayer != nil) {
-         [[self currentPage].moviePlayer play];
-         [[self currentPage].view.layer insertSublayer:[self currentPage].moviePlayerLayer atIndex:10];
-         }*/
     }
     if (recognizer.state == UIGestureRecognizerStateEnded) {
         NSLog(@"ended touch");
-        self.playerView.mode = TPCircleModeListen;
-        self.playerView.nowRecording = NO;
-        
         [self.commentRecorder stopRecording];
         [self.storyManager addCommentOnPage:self.page atTime:self.commentTime withAudioFile:[self.commentRecorder pathForAudioFile]];
-        //[self.recordTimer pause];
-        //[self.recordTimer close];
-        
-        // Requeue gyroscope panning
-        //[self currentPage].imagePanningEnabled = YES;
-        
-        /*if (self.currentIndex != self.saver.medias.count-1) {
-         [self.previewBubble appearWithCompletion:^{
-         [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-         self.replayButton.transform = CGAffineTransformMakeScale(1, 1);
-         self.overlay.alpha = 0.45f;
-         } completion:nil];
-         }];
-         }*/
-        
-        //[self.audioWave hide];
-        
-        // Open done popin if everything has been recorded
-        //[self openDonePopin];
-        //FileUploader* uploader = [[FileUploader alloc] init];
-        //uploader.delegate = self;
-        
-        //NSString* audioPath = [NSString stringWithFormat:@"/pages/%@/comments", self.page.id];
-        //[uploader uploadFileWithData:[self.commentRecorder dataOfAudioWithIndex:0] toPath:audioPath ofType:kUploadTypeAudio];
-        
-        
-        /*if ([self currentPage].moviePlayer != nil) {
-         [[self currentPage].moviePlayer pause];
-         }*/
     }
 }
 
 #pragma mark - StoryManager
 - (void)storyManager:(StoryManager *)manager successfullyCreatedComment:(Comment *)story{
-
+    [TPAlert displayOnController:self withMessage:@"Votre commentaire à été enregistré avec succès !" delegate:self];
 }
 
 - (void)storyManagerFailedToCreateComment:(StoryManager *)manager{
-    
+    [TPAlert displayOnController:self withMessage:@"Une erreur est survenue lors de l'enregistrement de votre commentaire veuillez réessayer" delegate:self];
 }
 
+- (void)alertDidAknowledge:(TPAlert *)alert{
+    self.playerView.mode = TPCircleModeListen;
+    self.playerView.nowRecording = NO;
+    [self.playerView play];
+}
 
 #pragma mark - TPCircleWaverControl
+- (void)circleWaverControl:(TPCircleWaverControl *)control didReceveivedTapGestureRecognizer:(UITapGestureRecognizer *)recognizer{
+    if(control.audioPlayer.isPlaying){
+        [control pause];
+    }else{
+        [control play];
+    }
+}
+
 -(void)circleWaverControl:(TPCircleWaverControl *)control didEndRecordingWithMicrophone:(EZMicrophone *)microphone{
 }
 
-- (void)circleWaverControl:(TPCircleWaverControl *)control didReceveivedTapGestureRecognizer:(UITapGestureRecognizer *)recognizer{
-
-}
 
 #pragma mark - CommentAudioRecorder
 - (void)commentRecorder:(CommentAudioRecorder *)recorder didFinishPlayingAudioAtIndex:(NSUInteger)index{

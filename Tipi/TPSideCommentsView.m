@@ -29,11 +29,9 @@
     //[self performSelector:@selector(doTheFuckinReloadWithArray:) withObject:arr afterDelay:1];
 }
 
-- (void)commentsQueueManager:(CommentsQueueManager *)manager didRemovedComment:(NSDictionary *)comment withReference:(NSNumber *)ref{
+- (void)commentsQueueManager:(CommentsQueueManager *)manager didRemovedComment:(NSDictionary *)comment atIndex:(NSUInteger)index{
     self.comments = manager.commentsQueue;
     
-    
-    NSUInteger index = [manager.referencesQueue indexOfObject:ref];
     NSArray *arr = @[[NSIndexPath indexPathForRow:index inSection:0]];
     
     [self.commentsList beginUpdates];
@@ -77,8 +75,11 @@
 }
 
 -(UICommentSideCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSDictionary* comment = [self.comments objectAtIndex:indexPath.row];
-    BOOL shown = [[comment objectForKeyedSubscript:@"state"] boolValue];
+    
+    NSDictionary* commentRef = [self.comments objectAtIndex:indexPath.row];
+    
+    BOOL shown = [[commentRef objectForKeyedSubscript:@"state"] boolValue];
+    Comment* comment = [commentRef objectForKey:@"comment"];
     
     NSString *cellIdentifier = shown ? @"popCommentCell" : @"hiddenCommentCell" ;
     UICommentSideCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -90,32 +91,37 @@
     cell.contentView.transform = CGAffineTransformMakeScale (1,-1);
     cell.accessoryView.transform = CGAffineTransformMakeScale (1,-1);
     
+  
     if(shown){
-   
-    cell.capLabel.text =  [comment objectForKey:@"cap"];
-    cell.fullNameLabel.text =  [comment objectForKey:@"cap"];
-         }
+        cell.nameLabel.text = cell.unRolled ? comment.user.username : [commentRef objectForKey:@"cap"];
+    }
 
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UICommentSideCell* cell = (UICommentSideCell*)[tableView cellForRowAtIndexPath:indexPath];
-    [cell updateState];
-    
-    /*Comment *comment = [[self.comments objectAtIndex:indexPath.row] objectForKey:@"comment"];
-    [self.delegate sideCommentsView:self didSelectedComment:comment withFile:comment.file];*/
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self sideCommentView:self handleToucheOnRowAtIndexPath:indexPath];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    UICommentSideCell* cell = (UICommentSideCell*)[tableView cellForRowAtIndexPath:indexPath];
-    [cell updateState];
-    
-    /*Comment *comment = [[self.comments objectAtIndex:indexPath.row] objectForKey:@"comment"];
-    [self.delegate sideCommentsView:self didDeselectedComment:comment withFile:comment.file];*/
+    [self sideCommentView:self handleToucheOnRowAtIndexPath:indexPath];
 }
 
+- (void)sideCommentView:(TPSideCommentsView *)sideView handleToucheOnRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary* commentRef = [self.comments objectAtIndex:indexPath.row];
+    BOOL shown = [[commentRef objectForKeyedSubscript:@"state"] boolValue];
+    Comment* comment = [commentRef objectForKey:@"comment"];
+    
+    
+    UICommentSideCell* cell = (UICommentSideCell*)[sideView.commentsList cellForRowAtIndexPath:indexPath];
+    cell.unRolled = !cell.unRolled;
+    
+    if(shown){
+        cell.nameLabel.text = cell.unRolled ? comment.user.username : [commentRef objectForKey:@"cap"];
+    }
+    
+    [cell updateState];
+}
 
 /*
  // Only override drawRect: if you perform custom drawing.

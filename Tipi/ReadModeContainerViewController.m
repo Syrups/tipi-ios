@@ -156,6 +156,10 @@
                          }
                         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                             if (image) {
+                               // UIImage* full = [ImageUtils convertImageToGrayScale:[UIImage imageWithCGImage:[[asset defaultRepresentation]fullScreenImage]]];
+                                
+                               
+                                
                                 [self.mediaFiles addObject:image];
                                 completion();
                             }
