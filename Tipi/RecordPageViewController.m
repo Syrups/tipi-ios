@@ -26,7 +26,7 @@
     [self.view bringSubviewToFront:self.recordTimer];
     [self.view bringSubviewToFront:self.replayButton];
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
+//    self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.replayButton.transform = CGAffineTransformMakeScale(0, 0);
 }

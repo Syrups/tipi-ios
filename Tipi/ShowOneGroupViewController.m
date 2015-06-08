@@ -374,6 +374,7 @@
 -(void)startPreviewWithImage:(UIImage*)image{
     self.previewImageView.image = image;
     self.previewImageView.clipsToBounds = YES;
+    self.previewImageView.contentMode = UIViewContentModeScaleAspectFill;
     
     [UIView animateWithDuration:1 animations:^{
         self.previewImageView.transform = CGAffineTransformMakeScale(1.2,1.2);

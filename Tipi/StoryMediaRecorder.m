@@ -81,7 +81,6 @@
 }
 
 - (NSString*)pathForAudioFile {
-//    NSArray* documents = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
     NSString* filename = [NSString stringWithFormat:@"%@_%ld.m4a", self.storyUuid, (long)self.currentPageIndex];
     
@@ -96,7 +95,6 @@
 }
 
 - (NSString*)pathForAudioFileWithIndex:(NSUInteger)index {
-    //    NSArray* documents = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
     NSString* filename = [NSString stringWithFormat:@"%@_%ld.m4a", self.storyUuid, (long)index];
     

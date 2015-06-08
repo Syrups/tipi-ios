@@ -138,6 +138,10 @@
         [UIView animateWithDuration:.3f animations:^{
             current.overlay.alpha = 0;
 //            self.organizerContainerYConstraint.constant = 0;
+            
+            if (current.pageIndex != self.saver.medias.count-1)
+                current.view.transform = CGAffineTransformMakeTranslation(-25, 0);
+            
             self.organizerContainerView.alpha = 1;
         }];
         
@@ -183,9 +187,6 @@
     
     OrganizeStoryViewController* organizer = (OrganizeStoryViewController*)[self.childViewControllers objectAtIndex:0];
     
-//    CGPoint oldContentOffset = organizer.collectionView.contentOffset;
-//    CGFloat delta = oldIndex < self.currentIndex ? CELL_SIZE + 15 : -CELL_SIZE - 15;
-//    [organizer.collectionView setContentOffset:CGPointMake(oldContentOffset.x + delta, oldContentOffset.y) animated:YES];
 }
 
 - (RecordPageViewController *)viewControllerAtIndex:(NSUInteger)index
@@ -196,7 +197,7 @@
     
     // Create a new view controller and pass suitable data.
     RecordPageViewController *page = [self.storyboard instantiateViewControllerWithIdentifier:@"RecordPage"];
-    
+//    page.view.frame = self.view.frame;
     page.next = [self viewControllerAtIndex:index+1];
     page.pageIndex = index;
     

@@ -75,9 +75,12 @@
     }
     
     // Create a new view controller and pass suitable data.
-    ReviewPageViewController *page = [self.storyboard instantiateViewControllerWithIdentifier:@"RecordPage"];
+    ReviewPageViewController *page = [self.storyboard instantiateViewControllerWithIdentifier:@"ReviewPage"];
     page.pageIndex = index;
-    page.image = [(NSDictionary*)[self.saver.medias objectAtIndex:index] objectForKey:@"full"];
+    UIImage* image = [(NSDictionary*)[self.saver.medias objectAtIndex:index] objectForKey:@"full"];
+    
+    page.tiltingImageView = [[TPTiltingImageView alloc] initWithFrame:page.view.frame andImage:image];
+    [page.view addSubview:page.tiltingImageView];
     
     return page;
 }

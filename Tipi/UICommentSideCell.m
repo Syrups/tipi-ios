@@ -15,8 +15,8 @@
     // Initialization code
     self.unRolled = NO;
     
-    CGSize textSize = [[self.nameLabel text] sizeWithAttributes:@{NSFontAttributeName:[self.nameLabel font]}];
-    _nameLabelWidth.constant =  textSize.width;
+//    CGSize textSize = [[self.nameLabel text] sizeWithAttributes:@{NSFontAttributeName:[self.nameLabel font]}];
+//    _nameLabelWidth.constant =  textSize.width;
 }
 
 -(void)updateState{

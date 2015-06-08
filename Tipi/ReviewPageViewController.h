@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "CardViewController.h"
+#import "TPTiltingImageView.h"
 
 @interface ReviewPageViewController : CardViewController
 
 @property NSUInteger pageIndex;
 @property (strong, nonatomic) IBOutlet UIImageView* image;
+@property (strong, nonatomic) IBOutlet TPTiltingImageView* tiltingImageView;
 
 @end
