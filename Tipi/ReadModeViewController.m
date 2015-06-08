@@ -60,6 +60,13 @@ typedef void(^fadeOutCompletion)(BOOL);
     
     self.storyManager = [[StoryManager alloc] initWithDelegate:self];
     
+    self.commentsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CommentList"];
+    [self addChildViewController:self.commentsViewController];
+    self.commentsViewController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    self.commentsViewController.view.alpha = 0;
+    [self.view addSubview:self.commentsViewController.view];
+    [self.commentsViewController didMoveToParentViewController:self];
+    
 
     if(self.idx == 0){
         [self playSound];
@@ -75,6 +82,15 @@ typedef void(^fadeOutCompletion)(BOOL);
 
 -(void)startPreviewMode{
     
+}
+
+#pragma mark - Comment list management
+
+- (IBAction)openCommentList:(id)sender {
+    [UIView animateWithDuration:.3f animations:^{
+        self.commentsViewController.view.alpha = 1;
+        self.commentsViewController.view.frame = self.view.frame;
+    }];
 }
 
 

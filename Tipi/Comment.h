@@ -15,6 +15,7 @@
 @property (strong, nonatomic) User<Optional>* user;
 @property (strong, nonatomic) NSString* file;
 @property NSUInteger timecode;
+@property NSUInteger duration;
 
 @end
 

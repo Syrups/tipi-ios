@@ -14,7 +14,7 @@
 @property (strong, nonatomic) NSString* id;
 @property (strong, nonatomic) NSString* title;
 @property (strong, nonatomic) NSDate * createdAt;
-@property (strong, nonatomic) User* user;
+@property (strong, nonatomic) User<Optional>* user;
 @property (strong, nonatomic) NSArray<Optional, Page>* pages;
 
 //@property (nonatomic) NSInteger* candidate;
