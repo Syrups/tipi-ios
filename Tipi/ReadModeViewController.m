@@ -79,6 +79,15 @@ typedef void(^fadeOutCompletion)(BOOL);
     
 }
 
+#pragma mark - Comment list management
+
+- (IBAction)openCommentList:(id)sender {
+    [UIView animateWithDuration:.3f animations:^{
+        self.commentsViewController.view.alpha = 1;
+        self.commentsViewController.view.frame = self.view.frame;
+    }];
+}
+
 
 #pragma mark - Side Comments View
 - (void)sideCommentsView:(TPSideCommentsView *)manager didSelectedComment:(Comment *)comment withFile:(NSString *)fileUrl{

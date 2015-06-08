@@ -15,6 +15,7 @@
 #import "TPLoader.h"
 #import "HomeViewController.h"
 #import "HelpModalViewController.h"
+#import "ImageUtils.h"
 
 @implementation RoomPickerViewController {
     NSMutableArray* selectedRooms;
@@ -150,10 +151,16 @@
     
     [story.pages enumerateObjectsUsingBlock:^(Page* page, NSUInteger idx, BOOL *stop) {
         UIImage* image = [(NSDictionary*)[self.saver.medias objectAtIndex:idx] objectForKey:@"full"];
+        
+        if (image.size.width > 2000) {
+            image = [ImageUtils scaleImage:image toSize:CGSizeMake(image.size.width/3, image.size.height/3) mirrored:NO];
+        }
         NSString* mediaPath = [NSString stringWithFormat:@"/pages/%@/media", page.id];
         NSString* audioPath = [NSString stringWithFormat:@"/pages/%@/audio", page.id];
         
-        [uploader uploadFileWithData:UIImageJPEGRepresentation(image, 1.0) toPath:mediaPath ofType:kUploadTypeMedia];
+        
+        
+        [uploader uploadFileWithData:UIImageJPEGRepresentation(image, 0.5f) toPath:mediaPath ofType:kUploadTypeMedia];
         
         [uploader uploadFileWithData:[self.recorder dataOfAudioWithIndex:idx] toPath:audioPath ofType:kUploadTypeAudio];
     }];

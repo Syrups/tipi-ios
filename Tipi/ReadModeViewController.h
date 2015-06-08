@@ -19,12 +19,14 @@
 #import "TPCircleWaverControl.h"
 #import "CardViewController.h"
 #import "StoryManager.h"
+#import "CommentListViewController.h"
 
 #import "TPAlert.h"
 #import "TPTiltingImageView.h"
 
 @interface ReadModeViewController : CardViewController<FileUploaderDelegate, TPSideCommentsDelegate, TPCircleTouchDelegate, CommentCreatorDelegate, CommentAudioRecorderDelegate, TPAlertDelegate>
 @property (nonatomic) int idx;
+@property (strong, nonatomic) IBOutlet UILabel* storyTitle;
 @property (nonatomic) Page *page;
 @property (nonatomic, assign) id delegate;
 
@@ -52,6 +54,8 @@
 @property (nonatomic) NSTimeInterval trueCurrentTime;
 @property (nonatomic) NSTimeInterval commentTime;
 @property (strong, nonatomic) NSMutableArray *commentsPlayers;
+
+@property (strong, nonatomic) CommentListViewController* commentsViewController;
 
 
 - (IBAction)quitStory:(id)sender;
