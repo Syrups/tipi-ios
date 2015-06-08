@@ -31,7 +31,7 @@
 @required
 - (void)commentsQueueManager:(CommentsQueueManager *)manager didPushedComment:(NSDictionary*)comment withReference:(NSNumber*)ref;
 @required
-- (void)commentsQueueManager:(CommentsQueueManager *)manager didRemovedComment:(NSDictionary*)comment withReference:(NSNumber*)ref;
+- (void)commentsQueueManager:(CommentsQueueManager *)manager didRemovedComment:(NSDictionary*)comment atIndex:(NSUInteger)index;
 
 @optional
 - (void)commentsQueueManager:(CommentsQueueManager *)manager isReadyComment:(NSDictionary *)comment withReference:(NSNumber*)ref atIndexPath:(NSIndexPath *) indexpath;

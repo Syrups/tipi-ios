@@ -21,8 +21,10 @@
 #import "StoryManager.h"
 #import "CommentListViewController.h"
 
-@interface ReadModeViewController : CardViewController<FileUploaderDelegate, TPSideCommentsDelegate, TPCircleTouchDelegate, CommentCreatorDelegate, CommentAudioRecorderDelegate>
+#import "TPAlert.h"
+#import "TPTiltingImageView.h"
 
+@interface ReadModeViewController : CardViewController<FileUploaderDelegate, TPSideCommentsDelegate, TPCircleTouchDelegate, CommentCreatorDelegate, CommentAudioRecorderDelegate, TPAlertDelegate>
 @property (nonatomic) int idx;
 @property (strong, nonatomic) IBOutlet UILabel* storyTitle;
 @property (nonatomic) Page *page;
@@ -31,8 +33,8 @@
 
 @property (weak, nonatomic) IBOutlet TPSideCommentsView *commentsView;
 
+@property (strong, nonatomic)  TPTiltingImageView *mediaImageView;
 @property (weak, nonatomic) IBOutlet UIImage *mediaImage;
-@property (weak, nonatomic) IBOutlet UIImageView *mediaImageView;
 @property (weak, nonatomic) IBOutlet UIView *overlayView;
 
 @property (weak, nonatomic) IBOutlet TPCircleWaverControl *playerView;
