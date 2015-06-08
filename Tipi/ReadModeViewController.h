@@ -57,7 +57,8 @@
 @property (strong,nonatomic) NSTimer *overlayTimer;
 @property (nonatomic) NSTimeInterval trueCurrentTime;
 @property (nonatomic) NSTimeInterval commentTime;
-@property (strong, nonatomic) NSMutableArray *commentsPlayers;
+//@property (strong, nonatomic) NSMutableArray *commentsPlayers;
+@property (nonatomic, strong) AVQueuePlayer* commentsPlayer;
 
 @property (strong, nonatomic) CommentListViewController* commentsViewController;
 
