@@ -76,6 +76,7 @@
 		B319B2481AF0D13100C819BD /* tete.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B319B2471AF0D13100C819BD /* tete.pkai */; };
 		B319B24B1AF1020800C819BD /* Screen0.xib in Resources */ = {isa = PBXBuildFile; fileRef = B319B24A1AF1020800C819BD /* Screen0.xib */; };
 		B319B2511AF12D0F00C819BD /* AdminRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B319B2501AF12D0F00C819BD /* AdminRoomViewController.m */; };
+		B31B01B71B259BBB00F704FA /* CommentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31B01B61B259BBB00F704FA /* CommentListViewController.m */; };
 		B325A13A1ADE546A0041DF21 /* SandboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A1391ADE546A0041DF21 /* SandboxViewController.m */; };
 		B325A1431ADF0B4D0041DF21 /* OrganizerWave.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A1421ADF0B4D0041DF21 /* OrganizerWave.m */; };
 		B3297F661B0E2C0B00249DA0 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3297F651B0E2C0B00249DA0 /* WebViewController.m */; };
@@ -284,6 +285,8 @@
 		B319B24A1AF1020800C819BD /* Screen0.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Screen0.xib; sourceTree = "<group>"; };
 		B319B24F1AF12D0F00C819BD /* AdminRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminRoomViewController.h; sourceTree = "<group>"; };
 		B319B2501AF12D0F00C819BD /* AdminRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminRoomViewController.m; sourceTree = "<group>"; };
+		B31B01B51B259BBB00F704FA /* CommentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentListViewController.h; sourceTree = "<group>"; };
+		B31B01B61B259BBB00F704FA /* CommentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentListViewController.m; sourceTree = "<group>"; };
 		B325A1381ADE546A0041DF21 /* SandboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandboxViewController.h; sourceTree = "<group>"; };
 		B325A1391ADE546A0041DF21 /* SandboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandboxViewController.m; sourceTree = "<group>"; };
 		B325A1411ADF0B4D0041DF21 /* OrganizerWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrganizerWave.h; sourceTree = "<group>"; };
@@ -549,6 +552,8 @@
 				73B3B35E1AA7CA5100FF7578 /* ReadModeViewController.m */,
 				73B3B3601AA7CA9100FF7578 /* ReadModeContainerViewController.h */,
 				73B3B3611AA7CA9100FF7578 /* ReadModeContainerViewController.m */,
+				B31B01B51B259BBB00F704FA /* CommentListViewController.h */,
+				B31B01B61B259BBB00F704FA /* CommentListViewController.m */,
 			);
 			name = ReadStory;
 			sourceTree = "<group>";
@@ -1356,6 +1361,7 @@
 				73A188D31B19A80800E164E0 /* CommentAudioRecorder.m in Sources */,
 				B352793C1B20CF140023C42C /* TPAlert.m in Sources */,
 				73825C1D1ADE8B4300D43383 /* SHPathLibrary.m in Sources */,
+				B31B01B71B259BBB00F704FA /* CommentListViewController.m in Sources */,
 				B3BCCFD31AA5C36C00261212 /* main.m in Sources */,
 				B3C2E5C61AD32A1B00868DA4 /* WaveBackground.m in Sources */,
 				B3065A3E1AB98B4900C10AD9 /* UserManager.m in Sources */,

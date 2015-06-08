@@ -1240,6 +1240,24 @@
             </objects>
             <point key="canvasLocation" x="5897" y="-591"/>
         </scene>
+        <!--Comment List View Controller-->
+        <scene sceneID="WvB-mh-Lld">
+            <objects>
+                <viewController id="DXF-Vq-VTv" customClass="CommentListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="biF-oI-NAh"/>
+                        <viewControllerLayoutGuide type="bottom" id="iHg-TA-5pe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2qd-qv-jy1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.98999999999999999" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hft-8e-M8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5893" y="72"/>
+        </scene>
     </scenes>
     <resources>
         <image name="btn-add" width="50" height="50"/>
