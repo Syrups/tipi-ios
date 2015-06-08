@@ -183,9 +183,6 @@
     
     OrganizeStoryViewController* organizer = (OrganizeStoryViewController*)[self.childViewControllers objectAtIndex:0];
     
-//    CGPoint oldContentOffset = organizer.collectionView.contentOffset;
-//    CGFloat delta = oldIndex < self.currentIndex ? CELL_SIZE + 15 : -CELL_SIZE - 15;
-//    [organizer.collectionView setContentOffset:CGPointMake(oldContentOffset.x + delta, oldContentOffset.y) animated:YES];
 }
 
 - (RecordPageViewController *)viewControllerAtIndex:(NSUInteger)index
@@ -196,7 +193,7 @@
     
     // Create a new view controller and pass suitable data.
     RecordPageViewController *page = [self.storyboard instantiateViewControllerWithIdentifier:@"RecordPage"];
-    
+//    page.view.frame = self.view.frame;
     page.next = [self viewControllerAtIndex:index+1];
     page.pageIndex = index;
     

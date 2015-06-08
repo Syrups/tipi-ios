@@ -847,18 +847,11 @@ plus tard</string>
             </objects>
             <point key="canvasLocation" x="5454" y="-2652"/>
         </scene>
-        <!--Page View Controller-->
-        <scene sceneID="rBZ-DR-I3C">
-            <objects>
-                <pageViewController storyboardIdentifier="ReviewStoryPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="YjF-p8-BOq" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xiq-eW-4Sa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5454" y="-3322"/>
-        </scene>
-        <!--View Controller-->
+        <!--Review Page View Controller-->
         <scene sceneID="slk-0C-0yI">
             <objects>
-                <viewController id="ptu-Q3-Vmi" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jDt-xD-1YD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="ReviewPage" id="ptu-Q3-Vmi" customClass="ReviewPageViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="C0u-ol-4NF"/>
                         <viewControllerLayoutGuide type="bottom" id="JOF-WU-IN8"/>
@@ -869,7 +862,6 @@ plus tard</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jDt-xD-1YD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5840" y="-3322"/>
         </scene>
@@ -1335,21 +1327,12 @@ votre histoire</string>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ztr-88-4F8">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Ztr-88-4F8" firstAttribute="top" secondItem="DxO-aa-Xs1" secondAttribute="bottom" constant="-20" id="6QF-sy-jAP"/>
                             <constraint firstAttribute="centerX" secondItem="0GQ-t2-bVo" secondAttribute="centerX" id="hAN-Ij-5eC"/>
-                            <constraint firstItem="cms-oH-xCQ" firstAttribute="top" secondItem="Ztr-88-4F8" secondAttribute="bottom" id="jlX-Gz-ZN2"/>
                             <constraint firstAttribute="centerY" secondItem="0GQ-t2-bVo" secondAttribute="centerY" id="nbB-8K-oNL"/>
-                            <constraint firstItem="Ztr-88-4F8" firstAttribute="leading" secondItem="lmU-e9-ptD" secondAttribute="leadingMargin" constant="-16" id="wJM-bB-CnZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Ztr-88-4F8" secondAttribute="trailing" constant="-16" id="zIH-wD-0n0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Y9o-CB-NFK"/>

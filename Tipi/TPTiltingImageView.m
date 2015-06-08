@@ -51,7 +51,10 @@
         scrollView.contentSize = imageView.bounds.size;
         scrollView.zoomScale = (CGRectGetWidth(scrollView.bounds) / CGRectGetHeight(scrollView.bounds)) * (self.image.size.width / self.image.size.height);
         
-        scrollView.contentOffset = CGPointMake((scrollView.contentSize.width / 2.f) - (CGRectGetWidth(scrollView.bounds)) / 2.f, (scrollView.contentSize.height / 2.f) - (CGRectGetHeight(scrollView.bounds)) / 2.f);
+//        scrollView.contentOffset = CGPointMake((scrollView.contentSize.width / 2.f) - (CGRectGetWidth(scrollView.bounds)) / 2.f, (scrollView.contentSize.height / 2.f) - (CGRectGetHeight(scrollView.bounds)) / 2.f);
+        
+        scrollView.contentOffset = CGPointMake(scrollView.contentSize.width/2, 0);
+        
         [self addSubview:scrollView];
         
         
@@ -62,10 +65,9 @@
         self.enabled = YES;
         
         self.motionManager = [[CMMotionManager alloc] init];
-        self.motionManager.gyroUpdateInterval = .5f;
-        self.motionManager.accelerometerUpdateInterval = .5f;
+//        self.motionManager.gyroUpdateInterval = .02f;
         
-        [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:[self gyroUpdateHandler]];
+        [self.motionManager startGyroUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:[self gyroUpdateHandler]];
     }
     return self;
 }
@@ -83,8 +85,8 @@
     scrollView.zoomScale = zoomScale;
 }
 
-- (void(^)(CMDeviceMotion *gyroData, NSError *error)) gyroUpdateHandler {
-    return ^void(CMDeviceMotion* gyroData, NSError* error) {
+- (void(^)(CMGyroData *gyroData, NSError *error)) gyroUpdateHandler {
+    return ^void(CMGyroData* gyroData, NSError* error) {
         
         if (!self.enabled) return;
         

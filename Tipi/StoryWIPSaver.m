@@ -107,7 +107,6 @@
 #pragma mark - Helper
 
 - (NSString*)pathForAudioFileAtIndex:(NSUInteger)index {
-    //    NSArray* documents = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
     NSString* filename = [NSString stringWithFormat:@"%@_%ld.m4a", self.uuid, (long)index];
     
