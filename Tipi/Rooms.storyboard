@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="GTWalsheim Regular.otf">
+            <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
@@ -1010,7 +1013,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.gif" translatesAutoresizingMaskIntoConstraints="NO" id="f9p-36-ZDN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder.gif" translatesAutoresizingMaskIntoConstraints="NO" id="f9p-36-ZDN">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Yl-zd-QUk" customClass="TPSideCommentsView">
@@ -1036,13 +1039,16 @@
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bx6-8m-Ub5" userLabel="CircleView">
                                                             <rect key="frame" x="38" y="12" width="40" height="40"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cap" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ei-UK-4lL">
-                                                                    <rect key="frame" x="5.5" y="11.5" width="30" height="19"/>
-                                                                    <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ei-UK-4lL" userLabel="nameLabel">
+                                                                    <rect key="frame" x="5" y="13" width="30" height="15"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="30" id="k7B-eA-HqL"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="14"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Capitale" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Prd-iM-9fH">
+                                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Capitale" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Prd-iM-9fH">
                                                                     <rect key="frame" x="9" y="11.5" width="22" height="19"/>
                                                                     <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1110,8 +1116,11 @@
                                             <action selector="quitStory:" destination="H9Z-8Y-aMj" eventType="touchUpInside" id="Gtt-i8-YDd"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yBM-7P-cpa">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yBM-7P-cpa">
                                         <rect key="frame" x="62" y="28.5" width="196" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="TsL-4q-KSw"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1150,17 +1159,17 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="yBM-7P-cpa" firstAttribute="centerY" secondItem="eKm-uT-F9F" secondAttribute="centerY" id="0pi-kO-LaM"/>
                                     <constraint firstItem="eKm-uT-F9F" firstAttribute="leading" secondItem="0oP-iy-bZh" secondAttribute="leading" constant="8" id="DmB-6J-yNb"/>
                                     <constraint firstAttribute="centerX" secondItem="3X5-eF-mZH" secondAttribute="centerX" id="O1M-Ab-4E6"/>
                                     <constraint firstAttribute="trailing" secondItem="9D4-PY-6zb" secondAttribute="trailing" constant="18.5" id="OpY-cu-58W"/>
-                                    <constraint firstItem="yBM-7P-cpa" firstAttribute="centerY" secondItem="9D4-PY-6zb" secondAttribute="centerY" id="UDD-9j-t2L"/>
+                                    <constraint firstItem="yBM-7P-cpa" firstAttribute="top" secondItem="0oP-iy-bZh" secondAttribute="top" constant="28.5" id="Q8Y-n5-epL"/>
                                     <constraint firstItem="yBM-7P-cpa" firstAttribute="leading" secondItem="eKm-uT-F9F" secondAttribute="trailing" constant="-2" id="aBw-LE-6rx"/>
                                     <constraint firstAttribute="centerX" secondItem="yBM-7P-cpa" secondAttribute="centerX" id="laW-5B-mZ6"/>
                                     <constraint firstAttribute="bottom" secondItem="dyE-qv-G1N" secondAttribute="bottom" constant="30" id="nZG-kB-SfW"/>
                                     <constraint firstAttribute="centerY" secondItem="3X5-eF-mZH" secondAttribute="centerY" id="oAc-do-KWS"/>
                                     <constraint firstAttribute="centerX" secondItem="dyE-qv-G1N" secondAttribute="centerX" constant="-3" id="vOx-Cd-bbQ"/>
                                     <constraint firstItem="eKm-uT-F9F" firstAttribute="top" secondItem="0oP-iy-bZh" secondAttribute="top" constant="11" id="yuh-qW-DIU"/>
+                                    <constraint firstItem="9D4-PY-6zb" firstAttribute="top" secondItem="0oP-iy-bZh" secondAttribute="top" constant="28" id="zCM-zG-5YT"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1181,6 +1190,7 @@
                         <outlet property="commentsView" destination="5Yl-zd-QUk" id="G8Z-F6-Kjw"/>
                         <outlet property="overlayView" destination="0oP-iy-bZh" id="my9-2O-cIu"/>
                         <outlet property="playerView" destination="3X5-eF-mZH" id="IVF-aR-Yc8"/>
+                        <outlet property="storyPageCount" destination="9D4-PY-6zb" id="BB1-89-qZm"/>
                         <outlet property="storyTitle" destination="yBM-7P-cpa" id="UMk-TU-Kg4"/>
                     </connections>
                 </viewController>
@@ -1321,8 +1331,8 @@
         <image name="btn-comments" width="59" height="59"/>
         <image name="btn-delete" width="81" height="81"/>
         <image name="btn-filter" width="42" height="39"/>
-        <image name="croix-noire.png" width="26" height="27"/>
         <image name="picto-fire-b" width="84" height="84"/>
+        <image name="placeholder.gif" width="1000" height="1000"/>
         <image name="totem" width="36" height="67"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -27,6 +27,7 @@
 @interface ReadModeViewController : CardViewController<FileUploaderDelegate, TPSideCommentsDelegate, TPCircleTouchDelegate, CommentCreatorDelegate, CommentAudioRecorderDelegate, TPAlertDelegate>
 @property (nonatomic) int idx;
 @property (strong, nonatomic) IBOutlet UILabel* storyTitle;
+@property (strong, nonatomic) IBOutlet UILabel* storyPageCount;
 @property (nonatomic) Page *page;
 @property (nonatomic, assign) id delegate;
 

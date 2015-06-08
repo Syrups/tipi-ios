@@ -138,6 +138,10 @@
         [UIView animateWithDuration:.3f animations:^{
             current.overlay.alpha = 0;
 //            self.organizerContainerYConstraint.constant = 0;
+            
+            if (current.pageIndex != self.saver.medias.count-1)
+                current.view.transform = CGAffineTransformMakeTranslation(-25, 0);
+            
             self.organizerContainerView.alpha = 1;
         }];
         

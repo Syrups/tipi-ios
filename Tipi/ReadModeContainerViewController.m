@@ -57,7 +57,6 @@
     newController.delegate = self;
     newController.next = [self viewControllerAtIndex:i+1];
     
-    
     return newController;
 }
 
