@@ -85,4 +85,9 @@
     return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
++ (UIImage *)compressImage:(UIImage *)image withQuality:(CGFloat)quality {
+    NSData* data = UIImageJPEGRepresentation(image, quality);
+    return [UIImage imageWithData:data];
+}
+
 @end

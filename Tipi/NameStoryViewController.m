@@ -78,7 +78,7 @@
     NSMutableArray* possibles = [NSMutableArray array];
     for (NSString* tag in self.latestTags) {
         if (tag != (NSString*)[NSNull null] && [tag containsString:string]) {
-            [possibles addObject:tag];
+//            [possibles addObject:tag];
         }
     }
     

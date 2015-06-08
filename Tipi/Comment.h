@@ -8,11 +8,13 @@
 
 #import "JSONModel.h"
 #import "User.h"
+#import "Audio.h"
 
 @interface Comment : JSONModel
 
 @property (strong, nonatomic) User<Optional>* user;
 @property (strong, nonatomic) NSString* file;
+@property NSUInteger timecode;
 
 @end
 

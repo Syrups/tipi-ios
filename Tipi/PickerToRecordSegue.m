@@ -7,6 +7,7 @@
 //
 
 #import "PickerToRecordSegue.h"
+#import "TPLoader.h"
 #import "MediaPickerViewController.h"
 #import "RecordViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
@@ -21,13 +22,17 @@
     
     NSMutableArray* hiddenCells = [NSMutableArray array];
     
+    TPLoader* loader = [[TPLoader alloc] initWithFrame:source.view.frame];
+    loader.backgroundColor = [UIColor clearColor];
+    [source.view addSubview:loader];
+    
     __block NSUInteger i = 0;
     
     [source.mediaCollectionView.visibleCells enumerateObjectsUsingBlock:^(UICollectionViewCell* cell, NSUInteger idx, BOOL *stop) {
         NSIndexPath* indexPath = [source.mediaCollectionView indexPathForCell:cell];
         
         if (![source.selectedIndexes containsObject:indexPath]) {
-            [hiddenCells addObject:[source.mediaCollectionView cellForItemAtIndexPath:indexPath]];
+            [hiddenCells addObject:cell];
             [UIView animateWithDuration:.3f animations:^{
                 cell.alpha = 0;
             }];
@@ -71,6 +76,7 @@
                 
                 // reset previous VC layout
                 
+                [loader removeFromSuperview];
                 [full removeFromSuperview];
                 
                 [source.mediaCollectionView reloadData];

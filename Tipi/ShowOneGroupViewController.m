@@ -146,7 +146,7 @@
     name.text = story.title;
     
     UILabel *desc = (UILabel*)[cell.contentView viewWithTag:20];
-    desc.text = [Story NSDateToShowString: story.createdAt];
+    desc.text = [NSString stringWithFormat:@"%@ - %@", story.user.username, [Story NSDateToShowString: story.createdAt]];
     
     return cell;
 }

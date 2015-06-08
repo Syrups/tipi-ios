@@ -62,8 +62,8 @@
         self.enabled = YES;
         
         self.motionManager = [[CMMotionManager alloc] init];
-        self.motionManager.gyroUpdateInterval = .2f;
-        self.motionManager.accelerometerUpdateInterval = .2f;
+        self.motionManager.gyroUpdateInterval = .5f;
+        self.motionManager.accelerometerUpdateInterval = .5f;
         
         [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:[self gyroUpdateHandler]];
     }

@@ -38,7 +38,10 @@
     self.recorder = [[StoryMediaRecorder alloc] initWithStoryUUID:self.saver.uuid];
     self.recorder.delegate = self;
     
+    [self swipableViewController:self.swipablePager didFinishedTransitionToViewController:self.swipablePager.viewControllers[0]];
+    
 //    [CoachmarkManager launchCoachmarkAnimationForRecordController:self withCompletion:nil];
+
 }
 
 - (void)setupSwipeablePager {
@@ -59,6 +62,7 @@
     
     for (int i = 0; i < self.saver.medias.count; ++i) {
         RecordPageViewController* controller = [self viewControllerAtIndex:i];
+        controller.view.frame = self.view.frame;
 //        UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:controller.view.bounds];
 //        controller.view.layer.masksToBounds = NO;
 //        controller.view.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -222,12 +226,14 @@
             
             if (index == 0) {
                 UIImage* full = [UIImage imageWithCGImage:[[a defaultRepresentation] fullScreenImage]];
+                full = [ImageUtils compressImage:full withQuality:.5f];
                 [media setObject:full forKey:@"full"];
                 page.image = full;
             }
             
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
                 UIImage* full = [UIImage imageWithCGImage:[[a defaultRepresentation] fullScreenImage]];
+                full = [ImageUtils compressImage:full withQuality:.5f];
                 [media setObject:full forKey:@"full"];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     page.image = full;
@@ -256,12 +262,14 @@
             
             if (index == 0) {
                 UIImage* full = [UIImage imageWithCGImage:[[a defaultRepresentation] fullScreenImage]];
+                full = [ImageUtils compressImage:full withQuality:.5f];
                 [media setObject:full forKey:@"full"];
                 page.image = full;
             }
             
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
                 UIImage* full = [UIImage imageWithCGImage:[[a defaultRepresentation] fullScreenImage]];
+                full = [ImageUtils compressImage:full withQuality:.5f];
                 [media setObject:full forKey:@"full"];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     page.image = full;

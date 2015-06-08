@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SettingsViewController.h"
+#import "ProfileViewController.h"
 #import "AnimationLibrary.h"
 #import "TPLoader.h"
 
@@ -41,7 +42,13 @@
 }
 
 - (IBAction)dismiss:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [UIView animateWithDuration:.3f animations:^{
+        self.view.frame = ((ProfileViewController*)self.parentViewController).bodyView.frame;
+        
+    } completion:^(BOOL finished) {
+        [self.view removeFromSuperview];
+        [self removeFromParentViewController];
+    }];
 }
 
 - (void)animate {

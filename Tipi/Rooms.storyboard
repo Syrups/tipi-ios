@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -93,7 +93,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGL-eZ-mIk">
-                                <rect key="frame" x="16" y="22" width="47" height="45"/>
+                                <rect key="frame" x="20" y="20" width="47" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="47" id="dDf-IY-oCx"/>
                                     <constraint firstAttribute="height" constant="45" id="tuW-5S-7le"/>
@@ -123,7 +123,7 @@
                         <color key="backgroundColor" red="0.76470588240000004" green="0.21176470589999999" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="L8m-W7-WNA" secondAttribute="centerX" id="244-jB-ZM7"/>
-                            <constraint firstItem="pGL-eZ-mIk" firstAttribute="top" secondItem="LkT-xf-qxp" secondAttribute="top" constant="22" id="7yO-pN-4Uq"/>
+                            <constraint firstItem="pGL-eZ-mIk" firstAttribute="top" secondItem="LkT-xf-qxp" secondAttribute="top" constant="20" id="7yO-pN-4Uq"/>
                             <constraint firstItem="SMT-lM-VoO" firstAttribute="top" secondItem="L8m-W7-WNA" secondAttribute="bottom" constant="18" id="Tnp-AA-Krk"/>
                             <constraint firstAttribute="centerX" secondItem="DNH-HR-Flz" secondAttribute="centerX" id="XEJ-Gj-qLA"/>
                             <constraint firstItem="M0p-63-Eqa" firstAttribute="top" secondItem="uhZ-OC-44X" secondAttribute="bottom" constant="9" id="Yoz-ue-cS4"/>
@@ -131,7 +131,7 @@
                             <constraint firstAttribute="centerX" secondItem="M0p-63-Eqa" secondAttribute="centerX" id="fEk-kP-FY9"/>
                             <constraint firstItem="L8m-W7-WNA" firstAttribute="top" secondItem="uhZ-OC-44X" secondAttribute="bottom" constant="117" id="feh-Lm-DpN"/>
                             <constraint firstAttribute="centerX" secondItem="SMT-lM-VoO" secondAttribute="centerX" id="fw3-Kn-eUG"/>
-                            <constraint firstItem="pGL-eZ-mIk" firstAttribute="leading" secondItem="LkT-xf-qxp" secondAttribute="leading" constant="16" id="zbg-v4-D5a"/>
+                            <constraint firstItem="pGL-eZ-mIk" firstAttribute="leading" secondItem="LkT-xf-qxp" secondAttribute="leading" constant="20" id="zbg-v4-D5a"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eqx-1G-nCh"/>
@@ -246,7 +246,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="value" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" red="0.38582631950000001" green="0.33233025669999999" blue="0.32970204949999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -476,9 +476,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VO3-W6-dlT" userLabel="Date">
-                                                    <rect key="frame" x="63" y="123" width="186" height="18"/>
+                                                    <rect key="frame" x="43" y="123" width="235" height="18"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="186" id="htW-uT-kQE"/>
+                                                        <constraint firstAttribute="width" constant="235" id="htW-uT-kQE"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -510,7 +510,7 @@
                                                 <constraint firstAttribute="centerX" secondItem="TeX-bU-hn3" secondAttribute="centerX" id="2Mi-Ok-zCi"/>
                                                 <constraint firstAttribute="centerY" secondItem="j5S-X8-GPt" secondAttribute="centerY" id="2du-Gt-ghR"/>
                                                 <constraint firstItem="VO3-W6-dlT" firstAttribute="top" secondItem="tvM-ut-zHC" secondAttribute="bottom" constant="15" id="WGZ-1z-NfW"/>
-                                                <constraint firstAttribute="centerX" secondItem="VO3-W6-dlT" secondAttribute="centerX" constant="4.5" id="ZsW-dS-K3G"/>
+                                                <constraint firstAttribute="centerX" secondItem="VO3-W6-dlT" secondAttribute="centerX" id="ZsW-dS-K3G"/>
                                                 <constraint firstAttribute="centerX" secondItem="j5S-X8-GPt" secondAttribute="centerX" constant="3.5" id="aM3-BV-S1n"/>
                                                 <constraint firstAttribute="centerY" secondItem="TeX-bU-hn3" secondAttribute="centerY" id="cxg-RB-vmU"/>
                                                 <constraint firstAttribute="centerX" secondItem="tvM-ut-zHC" secondAttribute="centerX" id="iCB-Eo-Wae"/>
@@ -1238,6 +1238,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DVy-g0-TY5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5897" y="-591"/>
+        </scene>
+        <!--Comment List View Controller-->
+        <scene sceneID="WvB-mh-Lld">
+            <objects>
+                <viewController id="DXF-Vq-VTv" customClass="CommentListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="biF-oI-NAh"/>
+                        <viewControllerLayoutGuide type="bottom" id="iHg-TA-5pe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2qd-qv-jy1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.98999999999999999" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hft-8e-M8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5893" y="72"/>
         </scene>
     </scenes>
     <resources>

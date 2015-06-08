@@ -13,5 +13,6 @@
 + (UIImage *)convertImageToGrayScale:(UIImage *)image;
 + (UIImage*)scaleImage:(UIImage*)image toSize:(CGSize)newSize mirrored:(BOOL)mirrored;
 + (UIColor*)blendWithColor:(UIColor*)color1 andColor:(UIColor*)color2 alpha:(CGFloat)alpha2;
++ (UIImage*)compressImage:(UIImage*)image withQuality:(CGFloat)quality;
 
 @end

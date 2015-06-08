@@ -138,12 +138,16 @@
                                             <action selector="transitionToFires" destination="Q9t-ip-vWo" eventType="touchUpInside" id="Iec-FL-djq"/>
                                         </connections>
                                     </button>
-                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ydG-gG-ihE" userLabel="Led">
-                                        <rect key="frame" x="52" y="38" width="12" height="12"/>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ydG-gG-ihE" userLabel="Led">
+                                        <rect key="frame" x="52" y="38" width="8" height="8"/>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.25098039220000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="jFD-fU-tqg"/>
+                                            <constraint firstAttribute="width" constant="8" id="lZa-C7-mRf"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="6"/>
+                                                <integer key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
@@ -153,6 +157,8 @@
                                 <constraints>
                                     <constraint firstItem="8SJ-ZM-9LX" firstAttribute="top" secondItem="NkS-J3-N38" secondAttribute="top" constant="23" id="6h1-NE-ZMo"/>
                                     <constraint firstItem="z2Y-W2-2US" firstAttribute="leading" secondItem="NkS-J3-N38" secondAttribute="leading" constant="20" id="7Tr-gw-zlh"/>
+                                    <constraint firstItem="ydG-gG-ihE" firstAttribute="top" secondItem="NkS-J3-N38" secondAttribute="top" constant="38" id="J1v-Qo-Q1z"/>
+                                    <constraint firstItem="ydG-gG-ihE" firstAttribute="leading" secondItem="NkS-J3-N38" secondAttribute="leading" constant="52" id="Ych-jU-Z8Z"/>
                                     <constraint firstAttribute="height" constant="100" id="c3p-NU-xO7"/>
                                     <constraint firstItem="z2Y-W2-2US" firstAttribute="top" secondItem="NkS-J3-N38" secondAttribute="top" constant="23" id="kpT-bB-vF2"/>
                                     <constraint firstAttribute="trailing" secondItem="8SJ-ZM-9LX" secondAttribute="trailing" constant="20" id="sDd-o9-ayO"/>
@@ -1216,7 +1222,7 @@ votre histoire</string>
                                             <constraint firstAttribute="height" constant="32" id="RPP-Wn-PuY"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="15"/>
-                                        <state key="normal" title="modifier">
+                                        <state key="normal" title="retour">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
