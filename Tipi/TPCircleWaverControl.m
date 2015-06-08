@@ -492,6 +492,7 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     switch (self.mode) {
         case TPCircleModeListen:
             if (self.audioPlayer) {
+                self.duration = self.audioPlayer.duration;
                 self.currentTimePercent  = ((self.audioPlayer.currentTime / self.duration) * 100);
             }else if(self.simplePlayer){
                 
@@ -505,10 +506,14 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
             break;
         case TPCircleModeRecord:
             if (self.nowRecording) {
+                self.duration = kBaseDuration;
+                
                 self.currentTimePercent  = ((self.currentRecordTime / self.recordDuration) * 100);
                 self.currentRecordTime += kSyncWithTimeUpdateInterval;
+                
+                NSLog(@"%f : %f/%f", self.currentTimePercent, self.currentRecordTime, self.duration);
                 if (self.currentRecordTime >= kBaseDuration) {
-                    [self stopRecording];
+                    //[self stopRecording];
                 }
             }
             break;

@@ -199,41 +199,48 @@ typedef void(^fadeOutCompletion)(BOOL);
     double currentPlayerTime = round(self.player.currentTime);
     
     //self.page.comments = @[@6.582200, @7.739955];
-    NSArray *mockComment = @[@1.344, @6.582200, @7.739955];
+    //NSArray *mockComment = @[@1.344, @6.582200, @7.739955];
     
     //NSLog(@"__________________________%f/%f___________________________________", currentPlayerTime, self.player.duration);
     
-    for ( int i = 0; i < mockComment.count; i++) {
+    for ( int i = 0; i < self.page.comments.count; i++) {
+         Comment* comment = [self.page.comments objectAtIndex:i];
         
-        NSTimeInterval commentTime = round([[mockComment objectAtIndex:i] doubleValue]);
+        NSTimeInterval commentTime = round([[self.page.comments objectAtIndex:i] doubleValue]);
         
         //NSLog(@"__________________________|%f", comment);
-        
 
         if(commentTime == currentPlayerTime){
             //NSLog(@"|___________BIM_______________|");
-            [self pushCommentAtindex:i];
+            
+           
+            [self pushComment:comment atIndex:i];
         }
     }
 }
 
--(void)pushCommentAtindex:(NSInteger) index{
+-(void)pushComment:(Comment*)comment atIndex:(NSInteger) index{
     //NSLog(@"|___________BIM_______________|");
-    
-    NSArray* mockNames = @[@"Anne", @"Andy", @"France", @"Marc"];
-    NSArray* mockIds= @[@1234, @7654, @98745, @3];
+
+    [self.commentsQueueManager pushInQueueComment:comment  atIndex:index];
+}
+
++(Comment*)mockCommentForIndex:(NSInteger)index{
     
     //int randIndex = arc4random() % [mockNames count];
+
+    NSArray* mockNames = @[@"Anne", @"Andy", @"France", @"Marc"];
+    NSArray* mockIds= @[@1234, @7654, @98745, @3];
     
     User* user = [User new];
     user.username = [mockNames objectAtIndex: index];
     user.id = [mockIds objectAtIndex: index];
     
-    Comment* comment = [Comment new]; 
+    Comment* comment = [Comment new];
     comment.file = [NSString stringWithFormat:@"com %ld", index];
     comment.user = user;
-    //[self.page.comments objectAtIndex:index];
-    [self.commentsQueueManager pushInQueueComment:comment  atIndex:index];
+    return comment;
+
 }
 
 #pragma mark - Sound Tracking
@@ -248,7 +255,11 @@ typedef void(^fadeOutCompletion)(BOOL);
 
 - (void)circleWaverControl:(TPCircleWaverControl *)control didReceveivedLongPressGestureRecognizer:(UILongPressGestureRecognizer *)recognizer{
     if (recognizer.state == UIGestureRecognizerStateBegan) {
-        NSLog(@"begin touch");
+        
+         NSLog(@"begin touch");
+        
+        [self.overlayTimer invalidate];
+       
         [self.playerView pause];
         self.commentTime = self.player.currentTime;
         

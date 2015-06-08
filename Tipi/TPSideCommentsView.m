@@ -90,9 +90,12 @@
     cell.contentView.transform = CGAffineTransformMakeScale (1,-1);
     cell.accessoryView.transform = CGAffineTransformMakeScale (1,-1);
     
-    UILabel *label = (UILabel*)[cell viewWithTag:10];
-    label.text =  [comment objectForKey:@"cap"];
-    
+    if(shown){
+   
+    cell.capLabel.text =  [comment objectForKey:@"cap"];
+    cell.fullNameLabel.text =  [comment objectForKey:@"cap"];
+         }
+
     return cell;
 }
 
