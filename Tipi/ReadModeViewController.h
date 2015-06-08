@@ -25,19 +25,23 @@
 #import "TPTiltingImageView.h"
 
 @interface ReadModeViewController : CardViewController<FileUploaderDelegate, TPSideCommentsDelegate, TPCircleTouchDelegate, CommentCreatorDelegate, CommentAudioRecorderDelegate, TPAlertDelegate>
+
+
 @property (nonatomic) int idx;
-@property (strong, nonatomic) IBOutlet UILabel* storyTitle;
 @property (nonatomic) Page *page;
 @property (nonatomic, assign) id delegate;
 
+@property (nonatomic) NSString *storyTitleString;
+@property (nonatomic) NSUInteger totalPages;
 
-@property (weak, nonatomic) IBOutlet TPSideCommentsView *commentsView;
-
-@property (strong, nonatomic)  TPTiltingImageView *mediaImageView;
+@property (weak, nonatomic) IBOutlet UILabel* storyTitle;
 @property (weak, nonatomic) IBOutlet UIImage *mediaImage;
 @property (weak, nonatomic) IBOutlet UIView *overlayView;
+@property (weak, nonatomic) IBOutlet UILabel *pagingLabel;
 
-@property (weak, nonatomic) IBOutlet TPCircleWaverControl *playerView;
+@property (strong, nonatomic) IBOutlet TPSideCommentsView *commentsView;
+@property (strong, nonatomic) IBOutlet TPCircleWaverControl *playerView;
+@property (strong, nonatomic) TPTiltingImageView *mediaImageView;
 
 @property (strong, nonatomic) CommentAudioRecorder* commentRecorder;
 @property (strong, nonatomic) CommentsQueueManager *commentsQueueManager;

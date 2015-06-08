@@ -51,7 +51,7 @@
     int endX = (self.baseX + 100);
     int midEndX = endX / 2;
     
-    NSLog(@"Panned with translation point: %@: %@", NSStringFromCGPoint(translation), toRight ? @"->" : @"<-");
+    //NSLog(@"Panned with translation point: %@: %@", NSStringFromCGPoint(translation), toRight ? @"->" : @"<-");
     
     if(self.isSwipeDeleteEnabled){
         switch(gestureRecognizer.state)

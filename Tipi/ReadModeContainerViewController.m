@@ -51,12 +51,13 @@
     // Assuming you have SomePageViewController.xib
     ReadModeViewController *newController = [self.storyboard instantiateViewControllerWithIdentifier: @"ReadMode"];
     newController.idx = i;
+    newController.delegate = self;
     newController.page = [self.mPages objectAtIndex:i];
     newController.player = [self.audioPlayers objectAtIndex:i];
     newController.mediaImage = [self.mediaFiles objectAtIndex:i];
-    newController.delegate = self;
     newController.next = [self viewControllerAtIndex:i+1];
-    
+    newController.storyTitleString = self.story.title;
+    newController.totalPages = [self.story.pages count];
     
     return newController;
 }

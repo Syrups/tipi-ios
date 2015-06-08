@@ -29,10 +29,12 @@ typedef void(^fadeOutCompletion)(BOOL);
     //(
     UITapGestureRecognizer *tapOnImageView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOverlayPlayer:)];
     tapOnImageView.numberOfTapsRequired = 1;
-    
     //)
     
     self.view.clipsToBounds = YES;
+    
+    self.storyTitle.text = self.storyTitleString;
+    self.pagingLabel.text = [NSString stringWithFormat:@"%d/%lu", (self.idx + 1), (unsigned long)self.totalPages];
     
     self.mediaImageView = [[TPTiltingImageView alloc] initWithFrame:self.view.frame andImage:self.mediaImage];
     

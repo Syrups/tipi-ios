@@ -482,7 +482,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a20-Td-Yqz">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </containerView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vFn-aL-262">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vFn-aL-262">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="170" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5wV-UV-Yh4">
@@ -1208,6 +1208,7 @@
                     <connections>
                         <outlet property="commentsView" destination="5Yl-zd-QUk" id="G8Z-F6-Kjw"/>
                         <outlet property="overlayView" destination="0oP-iy-bZh" id="my9-2O-cIu"/>
+                        <outlet property="pagingLabel" destination="9D4-PY-6zb" id="hEt-bZ-v6t"/>
                         <outlet property="playerView" destination="3X5-eF-mZH" id="IVF-aR-Yc8"/>
                         <outlet property="storyTitle" destination="yBM-7P-cpa" id="UMk-TU-Kg4"/>
                     </connections>
