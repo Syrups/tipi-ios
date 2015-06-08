@@ -109,7 +109,9 @@
     FileUploader* uploader = [[FileUploader alloc] init];
     uploader.delegate = self;
     
-    NSString* path = [kApiRootUrl stringByAppendingString:[NSString stringWithFormat:@"/pages/%@/comments?timecode=%d&duration=0", page.id, timecode]];
+    NSString* path = [NSString stringWithFormat:@"/pages/%@/comments?timecode=%lu&duration=0", page.id, (unsigned long)timecode];
+    
+    //[kApiRootUrl stringByAppendingString:[];
     
     [uploader uploadFileWithData:[NSData dataWithContentsOfFile:audioFile] toPath:path ofType:kUploadTypeAudio];
     
