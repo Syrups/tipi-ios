@@ -17,6 +17,7 @@
 		7345C23D1B1DDA010099EA58 /* ReadStoryTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7345C23C1B1DDA010099EA58 /* ReadStoryTransitionAnimator.m */; };
 		73559BA21AE2686000547886 /* RoomNavigationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 73559BA11AE2686000547886 /* RoomNavigationDelegate.m */; };
 		73559BA61AE269A200547886 /* WaveSwipeTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 73559BA51AE269A200547886 /* WaveSwipeTransitionAnimator.m */; };
+		735AD1971B25E0D70050BFCE /* TPSwipeDeleteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 735AD1961B25E0D70050BFCE /* TPSwipeDeleteTableViewCell.m */; };
 		735FE0C41AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 735FE0C31AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m */; };
 		73825C1D1ADE8B4300D43383 /* SHPathLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 73825C1C1ADE8B4300D43383 /* SHPathLibrary.m */; };
 		739BEC501B1F013400756770 /* TPSwipableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 739BEC4F1B1F013400756770 /* TPSwipableViewController.m */; };
@@ -194,6 +195,8 @@
 		73559BA11AE2686000547886 /* RoomNavigationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomNavigationDelegate.m; sourceTree = "<group>"; };
 		73559BA41AE269A200547886 /* WaveSwipeTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveSwipeTransitionAnimator.h; sourceTree = "<group>"; };
 		73559BA51AE269A200547886 /* WaveSwipeTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveSwipeTransitionAnimator.m; sourceTree = "<group>"; };
+		735AD1951B25E0D70050BFCE /* TPSwipeDeleteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPSwipeDeleteTableViewCell.h; sourceTree = "<group>"; };
+		735AD1961B25E0D70050BFCE /* TPSwipeDeleteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPSwipeDeleteTableViewCell.m; sourceTree = "<group>"; };
 		735FE0C21AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveToBottomTransitionAnimator.h; sourceTree = "<group>"; };
 		735FE0C31AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveToBottomTransitionAnimator.m; sourceTree = "<group>"; };
 		73825C1B1ADE8B4300D43383 /* SHPathLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHPathLibrary.h; sourceTree = "<group>"; };
@@ -486,6 +489,8 @@
 				73E0BDB21B1F195D00AD540D /* TPCardAnimatedTransition.m */,
 				B396AFB71B1F4970006E1042 /* CardViewController.h */,
 				B396AFB81B1F4970006E1042 /* CardViewController.m */,
+				735AD1951B25E0D70050BFCE /* TPSwipeDeleteTableViewCell.h */,
+				735AD1961B25E0D70050BFCE /* TPSwipeDeleteTableViewCell.m */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -1362,6 +1367,7 @@
 				B352793C1B20CF140023C42C /* TPAlert.m in Sources */,
 				73825C1D1ADE8B4300D43383 /* SHPathLibrary.m in Sources */,
 				B31B01B71B259BBB00F704FA /* CommentListViewController.m in Sources */,
+				735AD1971B25E0D70050BFCE /* TPSwipeDeleteTableViewCell.m in Sources */,
 				B3BCCFD31AA5C36C00261212 /* main.m in Sources */,
 				B3C2E5C61AD32A1B00868DA4 /* WaveBackground.m in Sources */,
 				B3065A3E1AB98B4900C10AD9 /* UserManager.m in Sources */,

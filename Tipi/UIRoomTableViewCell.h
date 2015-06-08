@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TPSwipeDeleteTableViewCell.h"
 
-@interface UIRoomTableViewCell : UITableViewCell
+@interface UIRoomTableViewCell : TPSwipeDeleteTableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *picto;
 @property (weak, nonatomic) IBOutlet UILabel *roomName;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
