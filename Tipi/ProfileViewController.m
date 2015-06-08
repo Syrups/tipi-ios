@@ -115,6 +115,20 @@
     }];
 }
 
+- (IBAction)openSettings:(id)sender {
+    UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"Settings"];
+    vc.view.frame = self.bodyView.frame;
+//    vc.view.alpha = 0;
+    [self addChildViewController:vc];
+    [self.view addSubview:vc.view];
+    [vc didMoveToParentViewController:self];
+    
+    [UIView animateWithDuration:.3f animations:^{
+        vc.view.frame = self.view.frame;
+        vc.view.alpha = 1;
+    }];
+}
+
 #pragma mark - Navigation
 
 - (IBAction)toFriendList:(id)sender {

@@ -39,7 +39,7 @@
     self.wave.backgroundColor = [UIColor clearColor];
     self.wave.idleAmplitude = .1f;
     self.wave.frequency = 2;
-    self.wave.alpha = 0;
+    self.wave.hidden = YES;
     
     [self addSubview:self.wave];
     
@@ -126,18 +126,14 @@
 
     recording = YES;
     
-    [UIView animateWithDuration:.2f animations:^{
-        self.wave.alpha = 1;
-    }];
+    self.wave.hidden = NO;
 }
 
 - (void)pause {
     [timer invalidate];
     recording = NO;
     
-    [UIView animateWithDuration:.2f animations:^{
-        self.wave.alpha = 0;
-    }];
+    self.wave.hidden = YES;
 
 }
 

@@ -41,6 +41,12 @@
 //    [self centerTable];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    for (NSDictionary* media in self.saver.medias) {
+        UIImage* img = [media objectForKey:@"full"];
+        NSData* data = UIImageJPEGRepresentation(img, 0);
+        NSLog(@"Size of image : %d", data.length);
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

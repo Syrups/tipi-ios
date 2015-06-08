@@ -17,14 +17,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    if (self.image)
-        [self.imageView setImage:self.image];
-    
-    CGFloat ratio = self.image.size.width / self.image.size.height;
-    
-    if (ratio > 1) { // portrait
-        self.tiltingView = [[TPTiltingImageView alloc] initWithFrame:self.imageView.frame andImage:self.image];
-        [self.imageView removeFromSuperview];
+    if (self.image) {
+        self.tiltingView = [[TPTiltingImageView alloc] initWithFrame:self.view.frame andImage:self.image];
         [self.view addSubview:self.tiltingView];
     }
     
@@ -32,9 +26,9 @@
     [self.view bringSubviewToFront:self.recordTimer];
     [self.view bringSubviewToFront:self.replayButton];
     
-    self.replayButton.transform = CGAffineTransformMakeScale(0, 0);
-    
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.replayButton.transform = CGAffineTransformMakeScale(0, 0);
 }
 
 - (IBAction)replay:(id)sender {

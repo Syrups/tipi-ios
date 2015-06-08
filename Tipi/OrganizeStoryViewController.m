@@ -61,6 +61,8 @@
             full = [ImageUtils scaleImage:full toSize:CGSizeMake(full.size.width/2, full.size.height/2) mirrored:NO];
         }
         
+        full = [ImageUtils compressImage:full withQuality:.5f];
+        
         [media setObject:full forKey:@"full"];
 //        }
         
