@@ -15,6 +15,9 @@
 @property (strong, nonatomic) CMMotionManager* motionManager;
 @property BOOL enabled;
 
+- (void)enable;
+- (void)disable;
+
 - (instancetype)initWithFrame:(CGRect)frame andImage:(UIImage*)image;
 
 @end

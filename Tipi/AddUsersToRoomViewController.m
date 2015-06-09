@@ -26,12 +26,16 @@
 }
 
 - (IBAction)validate:(id)sender {
-    loader = [[TPLoader alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:loader];
-    
-    RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
-    [manager inviteUsers:selectedFriends toRoom:self.room];
-    
+    if ([selectedFriends count] >= 1) {
+        loader = [[TPLoader alloc] initWithFrame:self.view.frame];
+        [self.view addSubview:loader];
+        RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
+        [manager inviteUsers:selectedFriends toRoom:self.room];
+    } else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        
+    }
 }
 
 - (IBAction)back:(id)sender {

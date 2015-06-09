@@ -26,7 +26,8 @@
 - (IBAction)addUsersToRoom:(id)sender {
     AddUsersToRoomViewController* vc = (AddUsersToRoomViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"AddUsersToRoom"];
     vc.room = self.room;
-    [self presentViewController:vc animated:YES completion:nil];
+    vc.roomExists = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableView

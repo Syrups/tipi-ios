@@ -52,6 +52,8 @@
         [self.roomNameButton addTarget:self action:@selector(didTapAdminButton:) forControlEvents:UIControlEventTouchUpInside];
     }
     
+    self.nameArrow.hidden = ! [self.room isAdmin:CurrentUser];
+    
     //UISwipeGestureRecognizer* swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeCell:)];
     //swipe.direction = UISwipeGestureRecognizerDirectionRight;
     
@@ -75,10 +77,14 @@
 #pragma mark - Actions
 
 - (IBAction)didTapAdminButton:(id)sender {
-    AdminRoomViewController* vc = (AdminRoomViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"AdminRoom"];
-    vc.room = self.room;
-    [self presentViewController:vc animated:YES completion:nil];
-    //    [self.navigationController pushViewController:vc animated:YES];
+    
+    if ([self.room isAdmin:CurrentUser]) {
+        AdminRoomViewController* vc = (AdminRoomViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"AdminRoom"];
+        vc.room = self.room;
+        //    [self presentViewController:vc animated:YES completion:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
 }
 
 

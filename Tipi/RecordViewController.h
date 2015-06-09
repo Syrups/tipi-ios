@@ -29,6 +29,7 @@
 @property (strong, nonatomic) IBOutlet UILabel* helpLabel;
 @property (strong, nonatomic) IBOutlet UIView* organizerContainerView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* organizerContainerYConstraint;
+@property (strong, nonatomic) IBOutlet UIView* overlay;
 
 @property BOOL lastPage;
 

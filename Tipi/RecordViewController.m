@@ -40,8 +40,26 @@
     
     [self swipableViewController:self.swipablePager didFinishedTransitionToViewController:self.swipablePager.viewControllers[0]];
     
-//    [CoachmarkManager launchCoachmarkAnimationForRecordController:self withCompletion:nil];
+    [self displayCoachmarkForDrag];
 
+}
+
+- (void)displayCoachmarkForDrag {
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:kCookieCoachmarkKey] == nil) {
+        [PKAIDecoder builAnimatedImageIn:self.coachmarkSprite fromFile:@"help-drag" withAnimationDuration:3];
+        self.helpLabel.text = @"Déplacez les vignettes pour réorganiser votre histoire";
+        self.overlay.alpha = .7f;
+        self.helpLabel.alpha = 1;
+        
+        [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(displayCoachmarkForRecord) userInfo:nil repeats:NO];
+    }
+    
+}
+
+- (void)displayCoachmarkForRecord {
+    [PKAIDecoder builAnimatedImageIn:self.coachmarkSprite fromFile:@"help-record" withAnimationDuration:3];
+    self.helpLabel.text = @"Appuyez sur l'image actuelle pour enregistrer votre voix sur celle-ci";
 }
 
 - (void)setupSwipeablePager {
@@ -93,6 +111,12 @@
     RecordPageViewController* current = [self currentPage];
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
+        
+        self.overlay.alpha = 0;
+        self.coachmarkSprite.alpha = 0;
+        self.coachmarkSprite.animationImages = [NSArray array];
+        self.helpLabel.alpha = 0;
+        
         NSLog(@"begin touch index: %d", self.currentIndex);
         [self.recorder startRecording];
         
@@ -115,7 +139,6 @@
         
         [UIView animateWithDuration:.3f animations:^{
             current.overlay.alpha = .6f;
-//            self.organizerContainerYConstraint.constant = -100;
             self.organizerContainerView.alpha = 0;
         }];
     }
@@ -135,19 +158,26 @@
             [self openDonePopin];
         }
         
-        [UIView animateWithDuration:.3f animations:^{
-            current.overlay.alpha = 0;
-//            self.organizerContainerYConstraint.constant = 0;
-            
-            if (current.pageIndex != self.saver.medias.count-1)
-                current.view.transform = CGAffineTransformMakeTranslation(-25, 0);
-            
-            self.organizerContainerView.alpha = 1;
-        }];
+        // hint
+        
+//        [UIView animateWithDuration:.3f animations:^{
+//            current.overlay.alpha = 0;
+////            self.organizerContainerYConstraint.constant = 0;
+//            
+//            if (current.pageIndex != self.saver.medias.count-1)
+//                current.view.transform = CGAffineTransformMakeTranslation(-25, 0);
+//            
+//            self.organizerContainerView.alpha = 1;
+//        }];
         
         if ([self currentPage].moviePlayer != nil) {
             [[self currentPage].moviePlayer pause];
         }
+        
+        [UIView animateWithDuration:.3f animations:^{
+            current.overlay.alpha = 0;
+            self.organizerContainerView.alpha = 1;
+        }];
     }
 }
 
@@ -163,7 +193,7 @@
 - (void)swipableViewController:(TPSwipableViewController *)containerViewController didFinishedTransitionToViewController:(RecordPageViewController *)viewController {
 
     RecordPageViewController* old = [self viewControllerAtIndex:self.currentIndex];
-    old.tiltingView.enabled = NO;
+    [old.tiltingView disable];
     
     self.currentIndex = viewController.pageIndex;
     
@@ -171,14 +201,15 @@
         self.lastPage = NO;
     }
     
-    viewController.tiltingView.enabled = YES;
+    [viewController.tiltingView enable];
     
     viewController.replayButton.transform = ![self.recorder hasRecordedAtIndex:self.currentIndex] ? CGAffineTransformMakeScale(0, 0) : CGAffineTransformMakeScale(1, 1);
     viewController.recordTimer.hidden = [self.recorder hasRecordedAtIndex:self.currentIndex];
     [viewController.recordTimer reset];
+    [viewController.recordTimer close];
     
     if (![self.recorder hasRecordedAtIndex:self.currentIndex] && !viewController.recordTimer.appeared) {
-        [viewController.recordTimer appear];
+//        [viewController.recordTimer appear];
     }
     
     viewController.overlay.alpha = 0;

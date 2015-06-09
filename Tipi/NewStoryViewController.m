@@ -82,6 +82,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             TPTiltingImageView* imageView = [[TPTiltingImageView alloc] initWithFrame:self.view.frame andImage:full];
             imageView.layer.opacity = .15f;
+            [imageView enable];
             [self.bubble replaceImageLayerWithLayer:imageView.layer];
             
             [self.view sendSubviewToBack:self.bubble];
@@ -108,7 +109,7 @@
 #pragma mark - MediaLibrary
 
 - (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedias:(NSArray *)medias {
-    self.randomMedias = [medias subarrayWithRange:NSMakeRange(0, RANDOM_IMAGES_COUNT)];
+    self.randomMedias = [medias subarrayWithRange:NSMakeRange(0, 1)];
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

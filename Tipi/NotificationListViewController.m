@@ -40,7 +40,7 @@
 #pragma mark - InvitationFetcher
 
 - (void)userManager:(UserManager *)manager successfullyFetchedInvitations:(NSArray *)invitations {
-    self.invitations = [invitations copy];
+    self.invitations = [invitations mutableCopy];
     NSLog(@"%@", invitations);
     [self.requestsTableView reloadData];
     [self animate];

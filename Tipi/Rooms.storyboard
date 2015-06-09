@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -337,7 +337,7 @@
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" alpha="0.0" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhc-G1-6Yu" userLabel="DeleteButton">
-                                                    <rect key="frame" x="118" y="39" width="83" height="82"/>
+                                                    <rect key="frame" x="118" y="19" width="83" height="82"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="82" id="OGy-bB-28M"/>
                                                         <constraint firstAttribute="width" constant="83" id="tXK-oU-cZF"/>
@@ -352,7 +352,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="vOi-3O-Ye4" secondAttribute="bottom" id="1kM-f9-z17"/>
-                                                <constraint firstAttribute="centerY" secondItem="zhc-G1-6Yu" secondAttribute="centerY" id="HyX-kh-8v1"/>
+                                                <constraint firstAttribute="centerY" secondItem="zhc-G1-6Yu" secondAttribute="centerY" constant="20" id="HyX-kh-8v1"/>
                                                 <constraint firstAttribute="centerX" secondItem="zhc-G1-6Yu" secondAttribute="centerX" constant="0.5" id="Pgf-bO-nG3"/>
                                                 <constraint firstAttribute="centerX" secondItem="vOi-3O-Ye4" secondAttribute="centerX" id="Z9R-8Q-kmP"/>
                                                 <constraint firstItem="vOi-3O-Ye4" firstAttribute="top" secondItem="uhg-le-njP" secondAttribute="topMargin" id="iYV-WH-nxb"/>
@@ -446,9 +446,6 @@
                             <constraint firstItem="NRc-6n-xXc" firstAttribute="top" secondItem="WZG-im-Ano" secondAttribute="bottom" constant="-25" id="smG-fd-mFn"/>
                             <constraint firstItem="6N9-UU-sLH" firstAttribute="trailing" secondItem="0fd-zP-wcI" secondAttribute="trailingMargin" constant="16" id="zFF-GR-h30"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="tEz-g8-SJt" appends="YES" id="Dha-sK-Eku"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="ZuF-Ri-gw0">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="dRh-iR-McS"/>
@@ -460,11 +457,6 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ewp-nH-bCx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="YY0-2K-5Rc" userLabel="Exit" sceneMemberID="exit"/>
-                <swipeGestureRecognizer direction="right" id="tEz-g8-SJt">
-                    <connections>
-                        <action selector="backToHome:" destination="57J-7U-xTR" id="vqx-mo-nnh"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4009" y="-597"/>
         </scene>
@@ -617,11 +609,20 @@
                                             <segue destination="Nz3-qQ-LFk" kind="unwind" unwindAction="prepareForUnwind:" id="H63-FG-CWo"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow-down" translatesAutoresizingMaskIntoConstraints="NO" id="JeM-Hm-0q1">
+                                        <rect key="frame" x="206" y="42" width="12" height="10"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="Jg2-sa-5vU"/>
+                                            <constraint firstAttribute="height" constant="10" id="zXA-7n-zmM"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="67" id="E4i-ZD-eXg"/>
                                     <constraint firstItem="Iw4-K6-JMw" firstAttribute="centerY" secondItem="zjU-3A-GHW" secondAttribute="centerY" constant="-3" id="EBu-wK-apW"/>
                                     <constraint firstItem="Iw4-K6-JMw" firstAttribute="leading" secondItem="iMr-xz-Sbo" secondAttribute="leading" constant="18" id="eCe-nw-6JH"/>
+                                    <constraint firstItem="JeM-Hm-0q1" firstAttribute="leading" secondItem="zjU-3A-GHW" secondAttribute="trailing" constant="-43" id="ecR-0z-Sju"/>
+                                    <constraint firstItem="Gcr-vA-Vul" firstAttribute="centerY" secondItem="JeM-Hm-0q1" secondAttribute="centerY" constant="-0.5" id="g9S-uD-D3H"/>
                                     <constraint firstItem="Iw4-K6-JMw" firstAttribute="centerY" secondItem="Gcr-vA-Vul" secondAttribute="centerY" constant="-3.5" id="h38-kT-9vH"/>
                                     <constraint firstAttribute="centerY" secondItem="Iw4-K6-JMw" secondAttribute="centerY" constant="-9.5" id="hnq-LS-YaL"/>
                                     <constraint firstAttribute="centerX" secondItem="zjU-3A-GHW" secondAttribute="centerX" id="r0p-QT-oye"/>
@@ -664,6 +665,7 @@
                     <connections>
                         <outlet property="errorLabel" destination="Jos-JS-1aD" id="Pqw-Hd-5SN"/>
                         <outlet property="mTableView" destination="5wV-UV-Yh4" id="M1p-cJ-2dW"/>
+                        <outlet property="nameArrow" destination="JeM-Hm-0q1" id="vEy-53-4ed"/>
                         <outlet property="previewImageView" destination="vFn-aL-262" id="kRH-0T-8md"/>
                         <outlet property="readContainer" destination="a20-Td-Yqz" id="OA0-fZ-JFi"/>
                         <outlet property="roomNameButton" destination="zjU-3A-GHW" id="2pU-DC-qEb"/>
@@ -1366,6 +1368,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow-down" width="12" height="9"/>
         <image name="btn-add" width="50" height="50"/>
         <image name="btn-back" width="43" height="42"/>
         <image name="btn-close" width="40" height="40"/>

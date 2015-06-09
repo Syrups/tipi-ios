@@ -14,6 +14,7 @@
 
 @interface AddUsersToRoomViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, FriendFetcherDelegate, UserFinderDelegate, RoomInviterDelegate, UITextFieldDelegate>
 
+@property BOOL roomExists;
 @property (strong, nonatomic) NSString* roomName;
 @property (strong, nonatomic) Room* room;
 @property (strong, nonatomic) NSArray* friends;

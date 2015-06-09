@@ -30,44 +30,52 @@
         
         CGFloat ratio = image.size.width / image.size.height;
         
-        
-        scrollView = [[UIScrollView alloc] initWithFrame:frame];
-        scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-        scrollView.scrollEnabled = NO;
-        scrollView.maximumZoomScale = 2;
-        
-        imageView = [[UIImageView alloc] initWithImage:image];
-        imageView.frame = CGRectMake(0, 0, frame.size.height * ratio, frame.size.height);
-        imageView.bounds = CGRectMake(0, 0, frame.size.height * ratio, frame.size.height);
-        imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [scrollView addSubview:imageView];
-        
-        [self updateScrollViewZoomToMaximumForImage:image];
-        
-        scrollView.userInteractionEnabled = NO;
-        self.userInteractionEnabled = NO;
-        
-        scrollView.contentInset = UIEdgeInsetsZero;
-        scrollView.contentSize = imageView.bounds.size;
-        scrollView.zoomScale = (CGRectGetWidth(scrollView.bounds) / CGRectGetHeight(scrollView.bounds)) * (self.image.size.width / self.image.size.height);
-        
-//        scrollView.contentOffset = CGPointMake((scrollView.contentSize.width / 2.f) - (CGRectGetWidth(scrollView.bounds)) / 2.f, (scrollView.contentSize.height / 2.f) - (CGRectGetHeight(scrollView.bounds)) / 2.f);
-        
-        scrollView.contentOffset = CGPointMake(scrollView.contentSize.width/2, 0);
-        
-        [self addSubview:scrollView];
-        
-        
-        
-        
-        offsetCoefficient = scrollView.contentOffset.x;
-        
-        self.enabled = YES;
-        
-        self.motionManager = [[CMMotionManager alloc] init];
-//        self.motionManager.gyroUpdateInterval = .02f;
-        
-        [self.motionManager startGyroUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:[self gyroUpdateHandler]];
+        if (ratio > 1) {
+            scrollView = [[UIScrollView alloc] initWithFrame:frame];
+            scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+            scrollView.scrollEnabled = NO;
+            scrollView.maximumZoomScale = 2;
+            
+            imageView = [[UIImageView alloc] initWithImage:image];
+            imageView.frame = CGRectMake(0, 0, frame.size.height * ratio, frame.size.height);
+            imageView.bounds = CGRectMake(0, 0, frame.size.height * ratio, frame.size.height);
+            imageView.contentMode = UIViewContentModeScaleAspectFit;
+            [scrollView addSubview:imageView];
+            
+            [self updateScrollViewZoomToMaximumForImage:image];
+            
+            scrollView.userInteractionEnabled = NO;
+            self.userInteractionEnabled = NO;
+            
+            scrollView.contentInset = UIEdgeInsetsZero;
+            scrollView.contentSize = imageView.bounds.size;
+            scrollView.zoomScale = (CGRectGetWidth(scrollView.bounds) / CGRectGetHeight(scrollView.bounds)) * (self.image.size.width / self.image.size.height);
+            
+            //        scrollView.contentOffset = CGPointMake((scrollView.contentSize.width / 2.f) - (CGRectGetWidth(scrollView.bounds)) / 2.f, (scrollView.contentSize.height / 2.f) - (CGRectGetHeight(scrollView.bounds)) / 2.f);
+            
+            scrollView.contentOffset = CGPointMake(scrollView.contentSize.width/2, 0);
+            
+            [self addSubview:scrollView];
+            
+            
+            
+            
+            offsetCoefficient = scrollView.contentOffset.x;
+            
+            self.enabled = YES;
+            
+            self.motionManager = [[CMMotionManager alloc] init];
+            //        self.motionManager.gyroUpdateInterval = .02f;
+            
+            [self.motionManager startGyroUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:[self gyroUpdateHandler]];
+        } else {
+            imageView = [[UIImageView alloc] initWithImage:image];
+            imageView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+            imageView.bounds = CGRectMake(0, 0, frame.size.width, frame.size.height);
+            imageView.contentMode = UIViewContentModeScaleAspectFill;
+            imageView.clipsToBounds = YES;
+            [self addSubview:imageView];
+        }
     }
     return self;
 }
@@ -83,6 +91,14 @@
     
     scrollView.maximumZoomScale = zoomScale;
     scrollView.zoomScale = zoomScale;
+}
+
+- (void)enable {
+    [self.motionManager startGyroUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:[self gyroUpdateHandler]];
+}
+
+- (void)disable {
+    [self.motionManager stopGyroUpdates];
 }
 
 - (void(^)(CMGyroData *gyroData, NSError *error)) gyroUpdateHandler {

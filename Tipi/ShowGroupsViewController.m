@@ -127,6 +127,7 @@
         cell = [[UIRoomTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
+    cell.isSwipeDeleteEnabled = [room isAdmin:CurrentUser];
     
     cell.roomName.text = room.name;
     

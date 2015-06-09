@@ -25,6 +25,7 @@
 
 #define kSessionStoreId    @"user.id"
 #define kSessionStoreToken @"user.token"
+#define kCookieCoachmarkKey @"user.coachmark_cookie"
 
 #define kMediaPickerMediaLimit 999999
 
