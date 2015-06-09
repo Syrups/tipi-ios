@@ -100,14 +100,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self sideCommentView:self handleToucheOnRowAtIndexPath:indexPath];
+    [self sideCommentView:self handleToucheOnRowAtIndexPath:indexPath withSelection:YES];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self sideCommentView:self handleToucheOnRowAtIndexPath:indexPath];
+    [self sideCommentView:self handleToucheOnRowAtIndexPath:indexPath withSelection:NO];
 }
 
-- (void)sideCommentView:(TPSideCommentsView *)sideView handleToucheOnRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)sideCommentView:(TPSideCommentsView *)sideView handleToucheOnRowAtIndexPath:(NSIndexPath *)indexPath withSelection:(BOOL)selected{
     NSDictionary* commentRef = [self.comments objectAtIndex:indexPath.row];
     BOOL shown = [[commentRef objectForKeyedSubscript:@"state"] boolValue];
     Comment* comment = [commentRef objectForKey:@"comment"];
@@ -121,6 +121,12 @@
     }
     
     [cell updateState];
+    
+    if(selected){
+          [self.delegate sideCommentsView:self didSelectComment:comment];
+    }else{
+          [self.delegate sideCommentsView:self didDeselectComment:comment];
+    }
 }
 
 /*

@@ -19,10 +19,10 @@
 @protocol TPSideCommentsDelegate <NSObject>
 
 @required
-- (void)sideCommentsView:(TPSideCommentsView *)manager didSelectedComment:(Comment*)comment withFile:(NSString*)fileUrl;
+- (void)sideCommentsView:(TPSideCommentsView *)manager didSelectComment:(Comment*)comment;
 
 @required
-- (void)sideCommentsView:(TPSideCommentsView *)manager didDeselectedComment:(Comment*)comment withFile:(NSString*)fileUrl;
+- (void)sideCommentsView:(TPSideCommentsView *)manager didDeselectComment:(Comment*)comment;
 
 @end
 
