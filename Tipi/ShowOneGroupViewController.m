@@ -179,6 +179,8 @@
     }];
 }
 
+#pragma mark - Transition to Read Mode
+
 - (void) prepareReadModeContainerControllerWith:(UIViewController*) fromController
                                toViewController:(UIViewController*) toController
 {

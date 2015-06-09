@@ -32,6 +32,8 @@ typedef void(^fadeOutCompletion)(BOOL);
     tapOnImageView.numberOfTapsRequired = 1;
     //)
     
+    self.player.delegate = self;
+    
     self.view.clipsToBounds = YES;
     
     self.storyTitle.text = self.storyTitleString;
@@ -81,6 +83,14 @@ typedef void(^fadeOutCompletion)(BOOL);
 
 -(void)startPreviewMode{
     
+}
+
+#pragma mark - AVAudioPlayer
+
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    if ([self.delegate respondsToSelector:@selector(readModeViewController:didFinishReadingPage:)]) {
+        [self.delegate readModeViewController:self didFinishReadingPage:self.page];
+    }
 }
 
 #pragma mark - Comment list management
@@ -133,6 +143,7 @@ typedef void(^fadeOutCompletion)(BOOL);
 
 - (IBAction)playSound:(id)sender {
     if(self.player){
+        NSLog(@"play");
         [self playSound];
     }
 }

@@ -24,7 +24,7 @@
 #import "TPAlert.h"
 #import "TPTiltingImageView.h"
 
-@interface ReadModeViewController : CardViewController<FileUploaderDelegate, TPSideCommentsDelegate, TPCircleTouchDelegate, CommentCreatorDelegate, CommentAudioRecorderDelegate, TPAlertDelegate>
+@interface ReadModeViewController : CardViewController<FileUploaderDelegate, TPSideCommentsDelegate, TPCircleTouchDelegate, CommentCreatorDelegate, CommentAudioRecorderDelegate, TPAlertDelegate, AVAudioPlayerDelegate>
 
 
 @property (nonatomic) int idx;

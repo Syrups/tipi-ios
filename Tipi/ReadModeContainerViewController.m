@@ -8,7 +8,7 @@
 
 #import <AFURLSessionManager.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-
+#import "ShowOneGroupViewController.h"
 
 #import "ReadModeContainerViewController.h"
 #import "ReadModeViewController.h"
@@ -78,11 +78,12 @@
 #pragma mark - TPSwipableViewController
 
 - (void)swipableViewController:(TPSwipableViewController *)containerViewController didFinishedTransitionToViewController:(UIViewController *)viewController{
+    
     ReadModeViewController *currentController = (ReadModeViewController *)viewController;
     
-    if(currentController.player.isPlaying){
-        [currentController pauseSound];
-    }
+    if (currentController.player.isPlaying)
+        [currentController.player pause];
+
 }
 
 - (void)swipableViewController:(TPSwipableViewController *)containerViewController didSelectViewController:(UIViewController *)viewController{
@@ -118,10 +119,29 @@
     
 }
 
+#pragma mark - ReadModeViewController delegation
+
 - (void)readModeViewController:(ReadModeViewController *)controller requestedToQuitStoryAtPage:(Page *)page{
-    [self.navigationController popViewControllerAnimated:YES];
+    ShowOneGroupViewController* parent = (ShowOneGroupViewController*)self.parentViewController;
+    parent.topBar.alpha = 1;
+    parent.mTableView.alpha = 1;
+    
+    [UIView animateWithDuration:.3f animations:^{
+        self.view.alpha = 0;
+//        self.view.transform = CGAffineTransformMakeTranslation(0, self.view.frame.size.height);
+    } completion:^(BOOL finished) {
+        [self.view removeFromSuperview];
+        [self removeFromParentViewController];
+    }];
 }
 
+- (void)readModeViewController:(ReadModeViewController *)controller didFinishReadingPage:(Page *)page {
+    
+    if (controller.idx < [self.story.pages count] - 1) {
+       [self.swiper setSelectedViewControllerViewControllerAtIndex:controller.idx+1];
+    }
+    
+}
 
 - (void)loadMediaAndAudioInPages:(NSArray *)pages atIndex:(NSUInteger)index withCompletion:(void(^)())completion{
     
