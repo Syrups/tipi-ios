@@ -44,7 +44,7 @@
 @property (strong, nonatomic) TPTiltingImageView *mediaImageView;
 
 @property (strong, nonatomic) CommentAudioRecorder* commentRecorder;
-@property (strong, nonatomic) CommentsQueueManager *commentsQueueManager;
+
 @property (strong, nonatomic) StoryWIPSaver* saver;
 
 @property (strong, nonatomic) StoryManager* storyManager;
@@ -57,8 +57,7 @@
 @property (strong,nonatomic) NSTimer *overlayTimer;
 @property (nonatomic) NSTimeInterval trueCurrentTime;
 @property (nonatomic) NSTimeInterval commentTime;
-//@property (strong, nonatomic) NSMutableArray *commentsPlayers;
-@property (nonatomic, strong) AVQueuePlayer* commentsPlayer;
+
 
 @property (strong, nonatomic) CommentListViewController* commentsViewController;
 

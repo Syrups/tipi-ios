@@ -27,8 +27,8 @@
     
     if (self) {
         self.delegate = delegate;
-        self.commentsQueue = [NSMutableArray new];
-        self.referencesQueue = [NSMutableArray new];
+        self.commentsQueue = [[NSMutableArray alloc] initWithCapacity:capacity];
+        self.referencesQueue = [[NSMutableArray alloc] initWithCapacity:capacity];
     }
     return self;
 }
