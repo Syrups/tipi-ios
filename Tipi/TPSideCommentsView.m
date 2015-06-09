@@ -13,13 +13,14 @@
 
 - (void)awakeFromNib{
     
-    self.comments = [NSMutableArray new];
-    
     self.commentsList.dataSource = self;
     self.commentsList.delegate = self;
     self.commentsList.transform = CGAffineTransformMakeScale (1,-1);
     self.commentsList.alwaysBounceVertical = NO;
     
+    //Player comment
+    self.commentsPlayer = [[AVPlayer alloc] init];
+    self.commentsPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
 }
 
 - (void)commentsQueueManager:(CommentsQueueManager *)manager didPushedComment:(NSDictionary *)comment withReference:(NSNumber*)ref{
@@ -42,7 +43,6 @@
 - (void)commentsQueueManager:(CommentsQueueManager *)manager isReadyComment:(NSDictionary *)comment withReference:(NSNumber *)ref atIndexPath:(NSIndexPath *)indexpath{
     
     self.comments = manager.commentsQueue;
-    
     NSUInteger index = [self.comments indexOfObject:comment];
     
     [self.commentsList beginUpdates];
@@ -91,11 +91,11 @@
     cell.contentView.transform = CGAffineTransformMakeScale (1,-1);
     cell.accessoryView.transform = CGAffineTransformMakeScale (1,-1);
     
-  
+    
     if(shown){
         cell.nameLabel.text = cell.unRolled ? comment.user.username : [commentRef objectForKey:@"cap"];
     }
-
+    
     return cell;
 }
 
@@ -108,26 +108,85 @@
 }
 
 - (void)sideCommentView:(TPSideCommentsView *)sideView handleToucheOnRowAtIndexPath:(NSIndexPath *)indexPath withSelection:(BOOL)selected{
-    NSDictionary* commentRef = [self.comments objectAtIndex:indexPath.row];
-    BOOL shown = [[commentRef objectForKeyedSubscript:@"state"] boolValue];
-    Comment* comment = [commentRef objectForKey:@"comment"];
+    self.currentCommentRef = [self.comments objectAtIndex:indexPath.row];
+    BOOL shown = [[self.currentCommentRef objectForKeyedSubscript:@"state"] boolValue];
+    Comment* comment = [self.currentCommentRef objectForKey:@"comment"];
     
     
     UICommentSideCell* cell = (UICommentSideCell*)[sideView.commentsList cellForRowAtIndexPath:indexPath];
     cell.unRolled = !cell.unRolled;
     
     if(shown){
-        cell.nameLabel.text = cell.unRolled ? comment.user.username : [commentRef objectForKey:@"cap"];
+        cell.nameLabel.text = cell.unRolled ? comment.user.username : [self.currentCommentRef objectForKey:@"cap"];
     }
     
     [cell updateState];
     
+    if(!self.commentsPlayers){
+        self.commentsPlayers = [[NSMutableArray alloc] initWithCapacity:[self.commentsQueueManager.commentsQueue count]];
+    }
+    
     if(selected){
-          [self.delegate sideCommentsView:self didSelectComment:comment];
+
+        NSURL *comURL = [[NSURL alloc]initWithString:comment.file];
+        AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithURL:comURL];
+        [playerItem addObserver:self forKeyPath:@"status" options:0 context:nil];
+        [playerItem addObserver:self forKeyPath:@"playbackBufferEmpty" options:0 context:nil];
+        //[self.commentsPlayers insertObject:playerItem atIndex: indexPath.row];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemDidFinishPlaying:) name:AVPlayerItemDidPlayToEndTimeNotification object:playerItem];
+
+        
+        if(playerItem != self.commentsPlayer.currentItem){
+            [self.commentsPlayer replaceCurrentItemWithPlayerItem:playerItem];
+            self.commentsPlayer.volume = 1;
+            [self.commentsPlayer play];
+        }
+    
+        [self.delegate sideCommentsView:self didSelectComment:comment];
     }else{
-          [self.delegate sideCommentsView:self didDeselectComment:comment];
+        [self.commentsPlayer pause];
+        [self.delegate sideCommentsView:self didDeselectComment:comment];
     }
 }
+
+-(void)itemDidFinishPlaying:(NSNotification *) notification {
+    // Will be called when AVPlayer finishes playing playerItem
+    [self.commentsPlayer pause];
+    
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([object isKindOfClass:[AVPlayerItem class]])
+    {
+        AVPlayerItem *item = (AVPlayerItem *)object;
+        //playerItem status value changed?
+        if ([keyPath isEqualToString:@"status"])
+        {   //yes->check it...
+            switch(item.status)
+            {
+                case AVPlayerItemStatusFailed:
+                    NSLog(@"player item status failed");
+                    break;
+                case AVPlayerItemStatusReadyToPlay:
+                    NSLog(@"player item status is ready to play");
+                    break;
+                case AVPlayerItemStatusUnknown:
+                    NSLog(@"player item status is unknown");
+                    break;
+            }
+        }
+        else if ([keyPath isEqualToString:@"playbackBufferEmpty"])
+        {
+            if (item.playbackBufferEmpty)
+            {
+                NSLog(@"player item playback buffer is empty");
+            }
+        }
+    }
+}
+
 
 /*
  // Only override drawRect: if you perform custom drawing.

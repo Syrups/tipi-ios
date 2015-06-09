@@ -53,17 +53,14 @@ typedef void(^fadeOutCompletion)(BOOL);
     self.playerView.delegate = self;
     [self.playerView appear];
     
-    //Player comment
-    self.commentsPlayer = [[AVPlayer alloc] init];
-    self.commentsPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-    
     //Data
     //self.commentsPlayers = [NSMutableArray new];
     
     // Manager
+ 
     self.commentsView.delegate = self;
-    self.commentsQueueManager = [[CommentsQueueManager alloc] initWithDelegate:self.commentsView andCapacity:10];
-    
+    self.commentsView.commentsQueueManager = [[CommentsQueueManager alloc] initWithDelegate:self.commentsView
+                                                                                andCapacity:[self.page.comments count]];;
     // Recording
     self.commentRecorder = [[CommentAudioRecorder alloc] init];
     self.commentRecorder.delegate = self;
@@ -234,7 +231,7 @@ typedef void(^fadeOutCompletion)(BOOL);
             
             comment.user = user;*/
             
-            [self.commentsQueueManager pushInQueueComment:comment  atIndex:i];
+            [self.commentsView.commentsQueueManager pushInQueueComment:comment  atIndex:i];
         }
     }
 }
@@ -328,29 +325,7 @@ typedef void(^fadeOutCompletion)(BOOL);
 
 #pragma mark - TPSideCommentsView
 - (void)sideCommentsView:(TPSideCommentsView *)manager didSelectComment :(Comment*)comment{
-    [self.playerView pause];
-
-    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:[NSURL URLWithString:comment.file] options:nil];
-    
-    NSArray *keys = @[@"playable", @"tracks",@"duration"];
-    
-    [asset loadValuesAsynchronouslyForKeys:keys completionHandler:^(){
-        // make sure everything downloaded properly
-        for (NSString *thisKey in keys) {
-            NSError *error = nil;
-            AVKeyValueStatus keyStatus = [asset statusOfValueForKey:thisKey error:&error];
-            if (keyStatus == AVKeyValueStatusFailed) {
-                return ;
-            }
-        }
-        
-        AVPlayerItem *item = [[AVPlayerItem alloc] initWithAsset:asset];
-        
-        dispatch_async(dispatch_get_main_queue(), ^ {
-            [self.commentsPlayer  replaceCurrentItemWithPlayerItem:item];
-        });
-    }];
-    
+    [self.playerView pause];    
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerItemDidReachEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:[songPlayer currentItem]];
 }
 

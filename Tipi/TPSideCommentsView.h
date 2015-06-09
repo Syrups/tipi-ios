@@ -10,10 +10,19 @@
 #import "CommentsQueueManager.h"
 #import "UIViewTouchUnder.h"
 
+@import AVFoundation;
+
 @interface TPSideCommentsView : UIViewTouchUnder <CommentsQueueDelegate, UITableViewDelegate, UITableViewDataSource>
-@property(strong, nonatomic) NSMutableArray *comments;
+
+@property (assign, nonatomic) id delegate;
+@property (strong, nonatomic) NSMutableArray *comments;
+@property (strong, nonatomic) CommentsQueueManager *commentsQueueManager;
+
+@property (strong, nonatomic) AVPlayer* commentsPlayer;
+@property (strong, nonatomic) NSMutableArray *commentsPlayers;
+@property (strong, nonatomic) NSDictionary* currentCommentRef;
 @property (weak, nonatomic) IBOutlet UITableView *commentsList;
-@property (nonatomic, assign) id delegate;
+
 @end
 
 @protocol TPSideCommentsDelegate <NSObject>
