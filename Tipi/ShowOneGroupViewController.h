@@ -39,6 +39,8 @@
 @property (strong, nonatomic) IBOutlet UILabel* errorLabel;
 @property (weak, nonatomic) NSIndexPath *currentIndexPath;
 
+@property (strong, nonatomic) IBOutlet UIView* emptyInfoView;
+
 - (void)applyFilters;
 - (IBAction)deleteStory:(id)sender;
 

@@ -44,6 +44,11 @@
     NSLog(@"%@", invitations);
     [self.requestsTableView reloadData];
     [self animate];
+    
+    if ([invitations count] == 0) {
+        self.errorLabel.text = @"Pas de nouvelles notifications";
+        self.errorLabel.alpha = 1;
+    }
 }
 
 - (void)userManager:(UserManager *)manager failedToFetchInvitationsWithError:(NSError *)error {

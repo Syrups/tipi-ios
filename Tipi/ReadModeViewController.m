@@ -58,6 +58,14 @@ typedef void(^fadeOutCompletion)(BOOL);
     //Data
     //self.commentsPlayers = [NSMutableArray new];
     
+    self.commentsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CommentList"];
+    self.commentsViewController.comments = self.page.comments;
+    self.commentsViewController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    self.commentsViewController.view.alpha = 0;
+    [self addChildViewController:self.commentsViewController];
+    [self.view addSubview:self.commentsViewController.view];
+    [self.commentsViewController didMoveToParentViewController:self];
+    
     // Manager
  
     self.commentsView.delegate = self;
@@ -96,6 +104,10 @@ typedef void(^fadeOutCompletion)(BOOL);
 #pragma mark - Comment list management
 
 - (IBAction)openCommentList:(id)sender {
+    
+    if (self.player.playing)
+        [self.player pause];
+    
     [UIView animateWithDuration:.3f animations:^{
         self.commentsViewController.view.alpha = 1;
         self.commentsViewController.view.frame = self.view.frame;

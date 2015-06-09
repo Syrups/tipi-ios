@@ -15,7 +15,7 @@
 #import "TPStoryTableViewCell.h"
 #import "TPLoader.h"
 #import "TPAlert.h"
-
+#import "HomeViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ShowOneGroupViewController ()
@@ -85,6 +85,19 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     
+}
+
+- (IBAction)toStoryBuilder:(id)sender {
+    
+    // #1 make home container display story builder screen
+    HomeViewController* home = (HomeViewController*)self.navigationController.parentViewController;
+    [home displayChildViewController:home.storyViewController];
+    
+    // #2 launch story builder
+    [home.storyViewController launchStoryBuilder:sender];
+    
+    // #3 reset campfire nav controller
+    [(UINavigationController*)home.groupsViewController popToRootViewControllerAnimated:NO];
 }
 
 
@@ -261,6 +274,10 @@
     self.mStories = stories;
     [self.mTableView reloadData];
     [self animate];
+    
+    if ([stories count] == 0) {
+        self.emptyInfoView.hidden = NO;
+    }
 }
 
 -(void)storyManager:(StoryManager *)manager failedToFetchStories:(NSError *)error{

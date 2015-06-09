@@ -175,11 +175,11 @@
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    [self centerTable];
+//    [self centerTable];
 }
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
-    [self centerTable];
+//    [self centerTable];
 }
 
 - (void)centerTable {

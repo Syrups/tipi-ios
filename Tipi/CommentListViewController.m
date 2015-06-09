@@ -16,6 +16,11 @@
     
 }
 
+- (IBAction)dismiss:(id)sender {
+    [self.view removeFromSuperview];
+    [self removeFromParentViewController];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.comments count];
 }

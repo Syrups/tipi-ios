@@ -125,6 +125,7 @@
     ShowOneGroupViewController* parent = (ShowOneGroupViewController*)self.parentViewController;
     parent.topBar.alpha = 1;
     parent.mTableView.alpha = 1;
+    [parent.mTableView reloadData];
     
     [UIView animateWithDuration:.3f animations:^{
         self.view.alpha = 0;

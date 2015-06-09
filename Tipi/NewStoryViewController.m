@@ -109,7 +109,12 @@
 #pragma mark - MediaLibrary
 
 - (void)mediaLibrary:(MediaLibrary *)library successfullyFetchedMedias:(NSArray *)medias {
-    self.randomMedias = [medias subarrayWithRange:NSMakeRange(0, 1)];
+    
+    if ([medias count] > RANDOM_IMAGES_COUNT) {
+        self.randomMedias = [medias subarrayWithRange:NSMakeRange(0, RANDOM_IMAGES_COUNT)];
+    } else {
+        self.randomMedias = medias;
+    }
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
