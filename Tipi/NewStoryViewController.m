@@ -18,7 +18,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "TPAlert.h"
 
-#define RANDOM_IMAGES_COUNT 10
+#define RANDOM_IMAGES_COUNT 5
 
 @implementation NewStoryViewController
 

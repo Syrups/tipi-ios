@@ -46,15 +46,17 @@
     
     
     
-    // If we are at the first view controller, pop to the home
+    // If we are at the first view controller, show warning
     if ([[nav visibleViewController] isEqual:[nav.viewControllers objectAtIndex:0]]) {
-        NSLog(@"pop");
-        HomeViewController* home = (HomeViewController*)[self.navigationController.viewControllers objectAtIndex:0];
-        [self.navigationController popToRootViewControllerAnimated:NO];
         
-        [[StoryWIPSaver sharedSaver] discard];
+        [self displayAbortModal:sender];
         
-        [home.storyViewController transitionFromStoryBuilder];
+//        HomeViewController* home = (HomeViewController*)[self.navigationController.viewControllers objectAtIndex:0];
+//        [self.navigationController popToRootViewControllerAnimated:NO];
+//        
+//        [[StoryWIPSaver sharedSaver] discard];
+//        
+//        [home.storyViewController transitionFromStoryBuilder];
     } else {
         [nav popViewControllerAnimated:NO];
     }
