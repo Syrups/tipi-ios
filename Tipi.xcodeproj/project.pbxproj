@@ -126,6 +126,7 @@
 		B3A8D18E1ACED0EC00B09C34 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D18D1ACED0EC00B09C34 /* ProfileViewController.m */; };
 		B3B4DB6B1B15EE7400DE905E /* Screen1.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3B4DB6A1B15EE7400DE905E /* Screen1.xib */; };
 		B3B4DB6D1B15EE7900DE905E /* Screen2.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3B4DB6C1B15EE7900DE905E /* Screen2.xib */; };
+		B3B85A961B28F35E007AAA31 /* StoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B85A951B28F35E007AAA31 /* StoryCache.m */; };
 		B3BCCFD31AA5C36C00261212 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFD21AA5C36C00261212 /* main.m */; };
 		B3BCCFD61AA5C36C00261212 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BCCFD51AA5C36C00261212 /* AppDelegate.m */; };
 		B3BCCFDC1AA5C36C00261212 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3BCCFDA1AA5C36C00261212 /* Main.storyboard */; };
@@ -376,6 +377,8 @@
 		B3A8D18D1ACED0EC00B09C34 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		B3B4DB6A1B15EE7400DE905E /* Screen1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Screen1.xib; sourceTree = "<group>"; };
 		B3B4DB6C1B15EE7900DE905E /* Screen2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Screen2.xib; sourceTree = "<group>"; };
+		B3B85A941B28F35E007AAA31 /* StoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryCache.h; sourceTree = "<group>"; };
+		B3B85A951B28F35E007AAA31 /* StoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryCache.m; sourceTree = "<group>"; };
 		B3BCCFCD1AA5C36C00261212 /* Tipi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3BCCFD11AA5C36C00261212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3BCCFD21AA5C36C00261212 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -801,6 +804,8 @@
 			children = (
 				B36DD6211AEE5928001FA8C5 /* RoomCache.h */,
 				B36DD6221AEE5928001FA8C5 /* RoomCache.m */,
+				B3B85A941B28F35E007AAA31 /* StoryCache.h */,
+				B3B85A951B28F35E007AAA31 /* StoryCache.m */,
 			);
 			name = Cache;
 			sourceTree = "<group>";
@@ -1372,6 +1377,7 @@
 				B3A8D1841ACEAD0A00B09C34 /* FriendManager.m in Sources */,
 				B336186A1B0A16FC0047013C /* TPLoader.m in Sources */,
 				B38621FA1AE16DC200D2CA5A /* ShowCaseableViewController.m in Sources */,
+				B3B85A961B28F35E007AAA31 /* StoryCache.m in Sources */,
 				730CFF231B0BBC52001045E4 /* UICommentSideCell.m in Sources */,
 				B3BCCFFD1AA5C85B00261212 /* HomeViewController.m in Sources */,
 				B3FBAAC91AEFC15A00A3A6B4 /* HomeBubble.m in Sources */,

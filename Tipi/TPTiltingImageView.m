@@ -67,7 +67,7 @@
             self.motionManager = [[CMMotionManager alloc] init];
             self.motionManager.gyroUpdateInterval = .015f;
             
-//            [self.motionManager startGyroUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:[self gyroUpdateHandler]];
+            [self.motionManager startGyroUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:[self gyroUpdateHandler]];
         } else {
             imageView = [[UIImageView alloc] initWithImage:image];
             imageView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);

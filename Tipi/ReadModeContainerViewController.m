@@ -87,6 +87,8 @@
     parent.mTableView.alpha = 1;
     [parent.mTableView reloadData];
     
+    [parent transitionFromReadMode];
+    
     [UIView animateWithDuration:.3f animations:^{
         self.view.alpha = 0;
         //        self.view.transform = CGAffineTransformMakeTranslation(0, self.view.frame.size.height);
@@ -97,20 +99,15 @@
 }
 
 
-#pragma mark - TPSwipableViewController
-
-- (void)swipableViewController:(TPSwipableViewController *)containerViewController didFinishedTransitionToViewController:(UIViewController *)viewController{
-    
+- (void)setupForViewController:(ReadModeViewController*)newViewController {
     ReadModeViewController* previousController = self.currentController;
-    ReadModeViewController *currentController = (ReadModeViewController *)viewController;
+    ReadModeViewController *currentController = newViewController;
     
     if (previousController.player.isPlaying) {
         [previousController.player pause];
         previousController.player.currentTime = 0;
     }
     
-    if (!currentController.player.isPlaying)
-        [currentController.player play];
     
     self.currentController = currentController;
     
@@ -126,6 +123,14 @@
     }
     
     [currentController.mediaImageView enable];
+}
+
+#pragma mark - TPSwipableViewController
+
+- (void)swipableViewController:(TPSwipableViewController *)containerViewController didFinishedTransitionToViewController:(UIViewController *)viewController{
+    
+    [self setupForViewController:(ReadModeViewController*)viewController];
+    
 }
 
 - (void)swipableViewController:(TPSwipableViewController *)containerViewController didSelectViewController:(UIViewController *)viewController{
@@ -164,6 +169,12 @@
     [TPAlert displayOnController:self.parentViewController withMessage:@"Impossible de charger l'histoire" delegate:self];
 }
 
+#pragma mark - TPAlert
+
+- (void)alertDidAknowledge:(TPAlert *)alert {
+    [self close];
+}
+
 #pragma mark - ReadModeViewController delegation
 
 - (void)readModeViewController:(ReadModeViewController *)controller requestedToQuitStoryAtPage:(Page *)page{
@@ -171,14 +182,16 @@
 }
 
 - (void)readModeViewController:(ReadModeViewController *)controller didFinishReadingPage:(Page *)page {
+    NSLog(@"%d / %d", controller.idx, [self.story.pages count]);
     if (controller.idx < [self.story.pages count] - 1) {
        [self.swiper setSelectedViewControllerViewControllerAtIndex:controller.idx+1];
         ReadModeViewController* next = (ReadModeViewController*)self.swiper.viewControllers[controller.idx+1];
-        [next.player performSelector:@selector(play) withObject:nil afterDelay:.8f];
-    } else {
+        [next.player performSelector:@selector(play) withObject:nil afterDelay:.5f];
+    } else if (self.currentController.idx == [self.story.pages count] - 1) {
         // end
-        [self close];
+        [self performSelector:@selector(close) withObject:nil afterDelay:.5f];
     }
+    
     
 }
 
@@ -241,7 +254,12 @@
             [self.delegate readModeContainerViewController:self failedToCompleteLoadStory:self.story];
         }
         
-        [self.audioPlayers addObject:[[AVAudioPlayer alloc] initWithContentsOfURL:filePath error:nil]];
+        NSError* err = nil;
+        AVAudioPlayer* player = [[AVAudioPlayer alloc] initWithContentsOfURL:filePath error:&err];
+        
+        if (err) { NSLog(@"%@", err); }
+        
+        [self.audioPlayers addObject:player];
         completion(index);
     }];
 }

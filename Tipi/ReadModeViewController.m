@@ -161,7 +161,8 @@ typedef void(^fadeOutCompletion)(BOOL);
 
 #pragma mark - Sound Playing
 - (IBAction)quitStory:(id)sender {
-    [self doVolumeFadeAndStop];
+//    [self doVolumeFadeAndStop];
+    [self.player stop];
     [self.delegate readModeViewController:self requestedToQuitStoryAtPage:self.page];
 }
 

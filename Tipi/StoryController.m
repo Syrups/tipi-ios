@@ -7,6 +7,8 @@
 //
 
 #import "StoryController.h"
+#import "RoomCache.h"
+#import "StoryCache.h"
 #import <AFNetworking/AFNetworking.h>
 
 @implementation StoryController {
@@ -65,11 +67,23 @@
         
         if (err) { NSLog(@"%@", err); }
         
+        // cache last stories
+        NSUInteger l = [stories count] > 3 ? 3 : [stories count];
+        [RoomCache cacheLastStories:[stories subarrayWithRange:NSMakeRange(0, l)] forRoomId:[NSString stringWithFormat:@"%d", room]];
+        
         success(stories);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"TIPI :  error %@", error);
-        failure(error);
+        NSLog(@"Error loading stories. Trying cache last stories...");
+        
+        // try cache
+        
+        [RoomCache fetchCachedLastStoriesForRoomId:[NSString stringWithFormat:@"%d", room] withSuccess:^(NSArray *stories) {
+            success(stories);
+        } failure:^{
+            failure(error);
+        }];
+        
     }];
     
     [op start];
@@ -91,12 +105,24 @@
         
         if (err) { NSLog(@"%@", err); }
         
+        // cache
+        [StoryCache cacheStory:story];
+        
+        
         success(story);
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
-        failure(error);
+        
+        NSLog(@"Error loading story. Trying cache copy...");
+        
+        // try cache
+        [StoryCache fetchCachedStoryForId:[NSString stringWithFormat:@"%d", roomId] withSuccess:success failure:^{
+            NSLog(@"%@", error);
+            failure(error);
+        }];
+        
+        
     }];
     
     [op start];

@@ -43,5 +43,6 @@
 
 - (void)applyFilters;
 - (IBAction)deleteStory:(id)sender;
+- (void)transitionFromReadMode;
 
 @end

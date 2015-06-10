@@ -37,7 +37,7 @@
         self.label.font = [UIFont fontWithName:@"GTWalsheim-Regular" size:15];
         self.label.textAlignment = NSTextAlignmentCenter;
         self.label.text = message;
-        self.label.textColor = kCreateBackgroundColor;
+        self.label.textColor = [UIColor blackColor];
         self.label.numberOfLines = 3;
         
         UIButton* ok = [[UIButton alloc] initWithFrame:CGRectMake(w/2 - 40, h - 60, 80, 40)];

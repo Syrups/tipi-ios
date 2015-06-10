@@ -13,13 +13,16 @@
 
 + (void) downloadFileWithURL: (NSString *) fileURL  completionHandler:(void (^)(NSURLResponse *response, NSURL *filePath, NSError *error)) completionHandler{
     
-    NSString* cachedPath = [self cachedFilePathForUrl:fileURL];
+    NSString* cachedFile = [self cachedFilePathForUrl:fileURL];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString* cachedPath = [documentsDirectory stringByAppendingPathComponent:cachedFile];
     
-    if ([[NSFileManager defaultManager] fileExistsAtPath:cachedPath]) {
+    if (cachedFile != nil && [[NSFileManager defaultManager] fileExistsAtPath:cachedPath]) {
         
-        NSLog(@"Cache hit for path %@", cachedPath);
+//        NSLog(@"Cache hit for path %@", cachedPath);
         
-        completionHandler(nil, [NSURL URLWithString:cachedPath], nil);
+        completionHandler(nil, [NSURL fileURLWithPath:cachedPath], nil);
     } else {
         [self performDownloadFileWithURL:fileURL completionHandler:completionHandler];
     }
@@ -40,7 +43,7 @@
     } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
         
         // TODO caching
-        [self cacheFileAtPath:[filePath absoluteString] forUrl:fileURL];
+        [self cacheFileAtPath:filePath forUrl:fileURL];
         
         completionHandler(response, filePath, error);
     }];
@@ -48,22 +51,31 @@
     [downloadTask resume];
 }
 
-+ (void)cacheFileAtPath:(NSString*)filePath forUrl:(NSString*)fileUrl {
++ (void)cacheFileAtPath:(NSURL*)filePath forUrl:(NSString*)fileUrl {
     
-    NSString* jsonString = [[NSString alloc] initWithContentsOfFile:[self cacheFilePath] encoding:NSUTF8StringEncoding error:NULL];
+    // First copy the temp downloaded file to a new file
+    NSString* ext = [[fileUrl componentsSeparatedByString:@"."] lastObject];
+    NSString* newFile = [self generateNewFilePathWithExtension:ext];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString* newFilePath = [documentsDirectory stringByAppendingPathComponent:newFile];
+    NSError* err = nil;
+    [[NSFileManager defaultManager] copyItemAtURL:filePath toURL:[NSURL fileURLWithPath:newFilePath] error:&err];
     
-    NSMutableDictionary* cache;
-    if (jsonString != nil) {
-        cache = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-    } else {
+    if (err) { NSLog(@"%@", err); }
+    
+    // Then register the new file path into the cache for the given URL
+    NSMutableDictionary* cache = [NSMutableDictionary dictionaryWithContentsOfFile:[self cacheFilePath]];
+    
+    if (!cache) {
         cache = [NSMutableDictionary dictionary];
     }
     
-    [cache setObject:filePath forKey:fileUrl];
+    [cache setObject:newFile forKey:fileUrl];
     
     [cache writeToFile:[self cacheFilePath] atomically:YES];
     
-    NSLog(@"Cached file at path %@ for url %@", filePath, fileUrl);
+//    NSLog(@"Cached file at URL %@ for url %@", [NSURL fileURLWithPath:newFilePath], fileUrl);
 }
 
 + (NSString*)cachedFilePathForUrl:(NSString*)fileUrl {
@@ -83,6 +95,20 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
     return [documentsDirectory stringByAppendingString:@"/file_cache"];
+}
+
++ (NSString*)generateNewFilePathWithExtension:(NSString*)extension {
+    return [[self generateUuid] stringByAppendingPathExtension:extension];
+}
+
++ (NSString *)generateUuid {
+    // Returns a UUID
+    
+    CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
+    NSString *uuidString = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuid);
+    CFRelease(uuid);
+    
+    return uuidString;
 }
 
 @end
