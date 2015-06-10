@@ -7,10 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Comment.h"
 
 @interface CommentListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic)   id delegate;
 @property (strong, nonatomic) NSArray* comments;
 @property (strong, nonatomic) IBOutlet UITableView* commentsTableView;
+
+- (void)appear;
+
+@end
+
+@protocol CommentListViewControllerDelegate <NSObject>
+
+- (void)commentListViewController:(CommentListViewController*)viewController didSelectComment:(Comment*)comment;
 
 @end

@@ -20,11 +20,10 @@
 #import "CardViewController.h"
 #import "StoryManager.h"
 #import "CommentListViewController.h"
-
 #import "TPAlert.h"
 #import "TPTiltingImageView.h"
 
-@interface ReadModeViewController : CardViewController<FileUploaderDelegate, TPSideCommentsDelegate, TPCircleTouchDelegate, CommentCreatorDelegate, CommentAudioRecorderDelegate, TPAlertDelegate, AVAudioPlayerDelegate>
+@interface ReadModeViewController : CardViewController<TPSideCommentsDelegate, TPCircleTouchDelegate, CommentCreatorDelegate, CommentAudioRecorderDelegate, TPAlertDelegate, CommentListViewControllerDelegate, AVAudioPlayerDelegate>
 
 
 @property (nonatomic) int idx;
@@ -42,7 +41,7 @@
 @property (strong, nonatomic) IBOutlet TPSideCommentsView *commentsView;
 @property (strong, nonatomic) IBOutlet TPCircleWaverControl *playerView;
 @property (strong, nonatomic) TPTiltingImageView *mediaImageView;
-
+@property (strong, nonatomic) IBOutlet UIButton* commentsButton;
 @property (strong, nonatomic) CommentAudioRecorder* commentRecorder;
 
 @property (strong, nonatomic) StoryWIPSaver* saver;

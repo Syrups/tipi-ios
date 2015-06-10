@@ -259,7 +259,7 @@ avec votre voix</string>
                     <view key="view" contentMode="scaleToFill" id="zTh-Ad-ekw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.1333333333" green="0.20000000000000001" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.58039215690000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="3NF-2L-rB5"/>
                 </viewController>

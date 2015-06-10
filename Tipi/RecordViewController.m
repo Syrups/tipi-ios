@@ -60,6 +60,8 @@
 - (void)displayCoachmarkForRecord {
     [PKAIDecoder builAnimatedImageIn:self.coachmarkSprite fromFile:@"help-record" withAnimationDuration:3];
     self.helpLabel.text = @"Appuyez sur l'image actuelle pour enregistrer votre voix sur celle-ci";
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kCookieCoachmarkKey];
 }
 
 - (void)setupSwipeablePager {
@@ -117,6 +119,7 @@
         self.coachmarkSprite.animationImages = [NSArray array];
         self.helpLabel.alpha = 0;
         
+        
         NSLog(@"begin touch index: %d", self.currentIndex);
         [self.recorder startRecording];
         
@@ -124,6 +127,7 @@
         
         if (!current.recordTimer.appeared) {
             current.replayButton.transform = CGAffineTransformMakeScale(0, 0);
+            current.recordTimer.hidden = NO;
             [current.recordTimer appear];
         }
         
@@ -206,10 +210,9 @@
     viewController.replayButton.transform = ![self.recorder hasRecordedAtIndex:self.currentIndex] ? CGAffineTransformMakeScale(0, 0) : CGAffineTransformMakeScale(1, 1);
     viewController.recordTimer.hidden = [self.recorder hasRecordedAtIndex:self.currentIndex];
     [viewController.recordTimer reset];
-    [viewController.recordTimer close];
     
     if (![self.recorder hasRecordedAtIndex:self.currentIndex] && !viewController.recordTimer.appeared) {
-//        [viewController.recordTimer appear];
+        [viewController.recordTimer appear];
     }
     
     viewController.overlay.alpha = 0;

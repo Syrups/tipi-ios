@@ -13,6 +13,7 @@
 #import "HelpModalViewController.h"
 #import "TPLoader.h"
 #import "ImageUtils.h"
+#import <UIView+MTAnimation.h>
 
 @implementation MediaPickerViewController {
     BOOL loading;
@@ -20,6 +21,7 @@
     CAGradientLayer* maskLayer;
     TPLoader* loader;
     UIImageView* preview;
+    BOOL firstLoad;
 }
 
 - (void)viewDidLoad {
@@ -48,26 +50,28 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    
+    
     if (self.selectedIndexes.count > 0) {
         self.continueButtonYConstraint.constant = 42;
     }
     
     if (!maskLayer) {
-        maskLayer = [CAGradientLayer layer];
-        
-        CGColorRef outerColor = [UIColor colorWithWhite:1.0 alpha:0.0].CGColor;
-        CGColorRef innerColor = RgbColorAlpha(41, 57, 92, 1).CGColor;
-        
-        maskLayer.colors = [NSArray arrayWithObjects:(__bridge id)outerColor, (__bridge id)innerColor, nil];
-        maskLayer.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.1],
-                               [NSNumber numberWithFloat:0.2], nil];
-        
-        maskLayer.bounds = CGRectMake(0, 0,
-                                      self.mediaCollectionView.frame.size.width,
-                                      self.mediaCollectionView.frame.size.height);
-        maskLayer.anchorPoint = CGPointZero;
-        
-        self.mediaCollectionView.layer.mask = maskLayer;
+//        maskLayer = [CAGradientLayer layer];
+//        
+//        CGColorRef outerColor = [UIColor colorWithWhite:1.0 alpha:0.0].CGColor;
+//        CGColorRef innerColor = RgbColorAlpha(41, 57, 92, 1).CGColor;
+//        
+//        maskLayer.colors = [NSArray arrayWithObjects:(__bridge id)outerColor, (__bridge id)innerColor, nil];
+//        maskLayer.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.1],
+//                               [NSNumber numberWithFloat:0.2], nil];
+//        
+//        maskLayer.bounds = CGRectMake(0, 0,
+//                                      self.mediaCollectionView.frame.size.width,
+//                                      self.mediaCollectionView.frame.size.height);
+//        maskLayer.anchorPoint = CGPointZero;
+//        
+//        self.mediaCollectionView.layer.mask = maskLayer;
     }
 }
 
@@ -153,19 +157,14 @@
     
     int endY = cell.frame.origin.y;
     
-    if (cell.tag == 0 && indexPath.row < 8) { // not animated yet, we only animate the first cells
+    if (!firstLoad && indexPath.row < 8) { // not animated yet, we only animate the first cells
         cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y + 500, cell.frame.size.width, cell.frame.size.height);
         
-        [UIView animateKeyframesWithDuration:.7f delay:indexPath.row*0.05f options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
-            [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.5f animations:^{
-                cell.frame = CGRectMake(cell.frame.origin.x, endY - 10, cell.frame.size.width, cell.frame.size.height);
-            }];
-            [UIView addKeyframeWithRelativeStartTime:.5f relativeDuration:.5f animations:^{
-                cell.frame = CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height);
-            }];
-        } completion:nil];
-        
-        cell.tag = 1; // animated
+        [UIView mt_animateWithViews:@[cell] duration:.5f delay:indexPath.row * .05f timingFunction:kMTEaseOutBack animations:^{
+            cell.frame = CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height);
+        } completion:^{
+            firstLoad = YES;
+        }];
     }
 
     UIView* check = (UIView*)[cell.contentView viewWithTag:30];
@@ -189,7 +188,7 @@
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(150, 10, 100, 10);
+    return UIEdgeInsetsMake(60, 10, 100, 10);
 }
 
 

@@ -10,9 +10,6 @@
 #import "TPCardAnimatedTransition.h"
 #import "CardViewController.h"
 
-static CGFloat const kButtonSlotWidth = 64; // Also distance between button centers
-static CGFloat const kButtonSlotHeight = 44;
-
 
 
 /** A private UIViewControllerContextTransitioning class to be provided transitioning delegates.

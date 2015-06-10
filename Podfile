@@ -7,6 +7,7 @@ target 'Tipi' do
 	pod 'JSONModel'
   pod 'SDWebImage', '~>3.7'
   pod 'MLPAutoCompleteTextField'
+  pod 'MTAnimation'
 end
 
 target 'TipiTests' do

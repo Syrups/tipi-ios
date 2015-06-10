@@ -13,6 +13,7 @@
 #import "HomeViewController.h"
 #import "TPLoader.h"
 #import "SHPathLibrary.h"
+#import <UIView+MTAnimation.h>
 
 @implementation ShowGroupsViewController {
     CAGradientLayer* maskLayer;
@@ -24,7 +25,7 @@
     
     self.mGroups = [NSArray array];
     
-    [self.mTableView setContentInset:UIEdgeInsetsMake(0,0,150,0)];
+    [self.mTableView setContentInset:UIEdgeInsetsMake(30,0,150,0)];
     self.mTableView.alwaysBounceVertical = NO;
     
     RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
@@ -81,6 +82,7 @@
 - (IBAction)backToHome:(id)sender {
     [self animateBackWithCompletion:^(BOOL finished) {
         self.mTableView.delegate = nil;
+        self.mTableView.contentOffset = CGPointMake(0, 0);
         HomeViewController* parent = (HomeViewController*)self.parentViewController.parentViewController;
         [parent displayChildViewController:parent.storyViewController];
     }];
@@ -213,15 +215,20 @@
     [[self.mTableView visibleCells] enumerateObjectsUsingBlock:^(UITableViewCell *cell, NSUInteger idx, BOOL *stop) {
         
         int endY = cell.frame.origin.y;
-        float delay = idx * 0.1;
+        float delay = idx * 0.05;
         
-        [cell setFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y + 150, cell.frame.size.width, cell.frame.size.height)];
+        [cell setFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y + self.view.frame.size.height, cell.frame.size.width, cell.frame.size.height)];
         [cell setAlpha:0];
         
-        [UIView animateWithDuration:.3f delay:delay  options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [cell setFrame:CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height)];
+        
+        [UIView animateWithDuration:.23f delay:delay options:UIViewAnimationOptionCurveEaseIn animations:^{
             [cell setAlpha:1];
-        } completion:nil];
+            [cell setFrame:CGRectMake(cell.frame.origin.x, endY + 100, cell.frame.size.width, cell.frame.size.height)];
+        } completion:^(BOOL finished) {
+            [UIView mt_animateWithViews:@[cell] duration:1.3f delay:0 timingFunction:kMTEaseOutElastic animations:^{
+                [cell setFrame:CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height)];
+            } completion:nil];
+        }];
     }];
 }
 

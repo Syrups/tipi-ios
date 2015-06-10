@@ -17,6 +17,7 @@
 #import "TPTiltingImageView.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "TPAlert.h"
+#import <UIView+MTAnimation.h>
 
 #define RANDOM_IMAGES_COUNT 5
 
@@ -74,23 +75,32 @@
     if (self.randomMedias == nil) return;
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSUInteger randomIndex = arc4random() % [self.randomMedias count];
-        NSDictionary* media = [self.randomMedias objectAtIndex:randomIndex];
+        NSUInteger randomIndex = arc4random() % ([self.randomMedias count] - 1);
+        NSDictionary* media = [self.randomMedias firstObject];
         ALAsset* asset = (ALAsset*)[media objectForKey:@"asset"];
         UIImage* full = [ImageUtils convertImageToGrayScale:[UIImage imageWithCGImage:[[asset defaultRepresentation]fullScreenImage]]];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             TPTiltingImageView* imageView = [[TPTiltingImageView alloc] initWithFrame:self.view.frame andImage:full];
-            imageView.layer.opacity = .15f;
+            imageView.layer.opacity = .05f;
             [imageView enable];
             [self.bubble replaceImageLayerWithLayer:imageView.layer];
             
             [self.view sendSubviewToBack:self.bubble];
             
+            self.titleLabel.alpha = 0;
+            self.titleLabel.transform = CGAffineTransformMakeTranslation(0, 80);
+            self.bottom.transform = CGAffineTransformMakeTranslation(0, self.bottom.frame.size.height);
+
             [UIView animateWithDuration:.3f animations:^{
                 self.view.alpha = 1;
-            }];
+                self.titleLabel.alpha = 1;
+            } completion:nil];
             
+            [UIView mt_animateWithViews:@[self.bottom, self.titleLabel] duration:.5f delay:0 timingFunction:kMTEaseOutBack animations:^{
+                self.titleLabel.transform = CGAffineTransformIdentity;
+                self.bottom.transform = CGAffineTransformIdentity;
+            } completion:nil];
         });
     });
     
@@ -224,7 +234,16 @@
     self.bottomViewYConstraint.constant = -200;
     self.topControlsYConstraint.constant = -100;
     [self.view layoutIfNeeded];
-    [UIView animateWithDuration:.4f animations:^{
+    
+    self.titleLabel.transform = CGAffineTransformMakeTranslation(0, 80);
+    self.bottom.transform = CGAffineTransformMakeTranslation(0, self.bottom.frame.size.height);
+    
+    [UIView mt_animateWithViews:@[self.bottom, self.titleLabel] duration:.7f delay:0 timingFunction:kMTEaseOutBack animations:^{
+        self.titleLabel.transform = CGAffineTransformIdentity;
+        self.bottom.transform = CGAffineTransformIdentity;
+    } completion:nil];
+    
+    [UIView animateWithDuration:.3f animations:^{
         self.titleLabel.alpha = 1;
         self.bottomViewYConstraint.constant = 0;
         self.topControlsYConstraint.constant = -29;
@@ -233,8 +252,5 @@
     
 }
 
-- (BOOL)prefersStatusBarHidden {
-    return YES;
-}
 
 @end

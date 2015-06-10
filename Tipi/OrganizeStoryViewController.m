@@ -40,7 +40,7 @@
     
 //    [self loadFullImages];
     
-    self.view.alpha = .5f;
+//    self.view.alpha = .5f;
     
 }
 
@@ -182,7 +182,7 @@
     
     UIPanGestureRecognizer* pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(toggleRemoveState:)];
     pan.delegate = self;
-    [cell.contentView addGestureRecognizer:pan];
+//    [cell.contentView addGestureRecognizer:pan];
     
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:cell.contentView.bounds];
     cell.contentView.layer.masksToBounds = NO;
@@ -220,8 +220,6 @@
 
 - (void)collectionView:(UICollectionView *)collectionView atIndexPath:(NSIndexPath *)atIndexPath didMoveToIndexPath:(NSIndexPath *)toIndexPath {
     
-    UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:atIndexPath];
-    
     id media = [self.saver.medias objectAtIndex:atIndexPath.row];
     [self.saver.medias removeObjectAtIndex:atIndexPath.row];
     [self.saver.medias insertObject:media atIndex:toIndexPath.row];
@@ -239,14 +237,14 @@
     [self centerCollectionView];
     [UIView animateWithDuration:.2f animations:^{
 //        [[(RecordViewController*)self.parentViewController currentPage].overlay setAlpha:0];
-        self.view.alpha = .5f;
+//        self.view.alpha = .5f;
     }];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView collectionViewLayout:(RAReorderableLayout *)layout didBeginDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
     [UIView animateWithDuration:.2f animations:^{
 //        [[(RecordViewController*)self.parentViewController currentPage].overlay setAlpha:.7f];
-        self.view.alpha = 1;
+//        self.view.alpha = 1;
     }];
 }
 
@@ -274,7 +272,7 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     [UIView animateWithDuration:.2f animations:^{
-        self.view.alpha = .5f;
+//        self.view.alpha = .5f;
     }];
 }
 

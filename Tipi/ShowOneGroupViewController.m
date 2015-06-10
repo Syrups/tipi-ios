@@ -16,6 +16,7 @@
 #import "TPLoader.h"
 #import "TPAlert.h"
 #import "HomeViewController.h"
+#import "DeleteStoryModalViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ShowOneGroupViewController ()
@@ -32,8 +33,6 @@
     [self configureAVAudioSession];
     // Do any additional setup after loading the view.
     
-    //[SHPathLibrary addBackgroundPathForstoriesToView:self.view];
-    self.view.backgroundColor = [UIColor colorWithRed:178/255.0  green:47/255.0 blue:43/255.0 alpha:1];
     
     //self.mStories = @[@"coup de chance", @"Conférence F.A.M.E", @"Plexus Gobelins"];
     
@@ -130,9 +129,6 @@
 
 #pragma mark - Filters
 
-- (IBAction)deleteStory:(id)sender {
-}
-
 - (void)applyFilters {
     StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
     [manager fetchStoriesForRoomId:[self.room.id integerValue] filteredByTag:self.filterTag orUser:self.filterUser];
@@ -142,6 +138,25 @@
     for (TPStoryTableViewCell *cell in self.mTableView.visibleCells) {
         [cell setEditMode:false];
     }
+}
+
+#pragma mark - Deletion
+
+- (IBAction)deleteStory:(id)sender {
+    
+    // retrieve story object
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.mTableView];
+    NSIndexPath *indexPath = [self.mTableView indexPathForRowAtPoint:buttonPosition];
+    Story* story = [self.mStories objectAtIndex:indexPath.row];
+    
+    DeleteStoryModalViewController* modal = [self.storyboard instantiateViewControllerWithIdentifier:@"DeleteStory"];
+    modal.room = self.room;
+    modal.story = story;
+    
+    [self addChildViewController:modal];
+    modal.view.frame = self.view.frame;
+    [self.view addSubview:modal.view];
+    [modal didMoveToParentViewController:self];
 }
 
 #pragma mark - TableView
@@ -158,6 +173,37 @@
     
     Story* story = [self.mStories objectAtIndex:indexPath.row];
     
+    cell.isSwipeDeleteEnabled = [story.user.id isEqualToString:CurrentUser.id] || [self.room isAdmin:CurrentUser];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
+    // Always use this locale when parsing fixed format date strings
+    NSLocale *posix = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    [formatter setLocale:posix];
+    
+    NSDate *now = [NSDate date];
+    NSDate *created = story.createdAt; // this date is UTC
+    
+    // convert UTC date to locale time zone
+    NSTimeInterval timeZoneSeconds = [[NSTimeZone localTimeZone] secondsFromGMT];
+    created = [created dateByAddingTimeInterval:timeZoneSeconds];
+    
+    NSTimeInterval diff = [now timeIntervalSinceDate:created];
+    
+    NSString* dateText;
+    
+    if (diff < 60) {
+        dateText = @"A l'instant";
+    } else if (diff < 3600) {
+        dateText = [NSString stringWithFormat:@"Il y a %d minutes", (int)(diff / 60)];
+    } else if (diff < 86400) {
+        int h = (int) (diff / 3600);
+        dateText = [NSString stringWithFormat:@"Il y a %d heures", h];
+    } else if (diff > 86400 && diff < 172800) {
+        dateText = [NSString stringWithFormat:@"Hier"];
+    } else {
+        dateText = [NSString stringWithFormat:@"Il y a %d jours", (int)(diff / 86400)];
+    }
     
     //NSLog(@"%@", [story toJSONString]);
     
@@ -165,7 +211,7 @@
     name.text = story.title;
     
     UILabel *desc = (UILabel*)[cell.contentView viewWithTag:20];
-    desc.text = [NSString stringWithFormat:@"%@ - %@", story.user.username, [Story NSDateToShowString: story.createdAt]];
+    desc.text = [NSString stringWithFormat:@"%@ - %@", story.user.username, dateText];
     
     return cell;
 }
@@ -231,6 +277,10 @@
     }];
 }
 
+- (void)readModeContainerViewController:(ReadModeContainerViewController *)controller failedToCompleteLoadStory:(Story *)story {
+    // TODO ERROR HANDLING
+    [TPAlert displayOnController:self withMessage:@"Impossible de charger l'histoire" delegate:self];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showStory"]) {
@@ -292,8 +342,10 @@
 #pragma mark - TPAlert
 
 - (void)alertDidAknowledge:(TPAlert *)alert {
-    [self.navigationController popViewControllerAnimated:YES];
+    
 }
+
+#pragma mark - Navigation and animation
 
 -(IBAction)prepareForGoBackToOneGroup:(UIStoryboardSegue *)segue {
     [self.view.layer removeAllAnimations];

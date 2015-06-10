@@ -58,13 +58,8 @@ typedef void(^fadeOutCompletion)(BOOL);
     //Data
     //self.commentsPlayers = [NSMutableArray new];
     
-    self.commentsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CommentList"];
-    self.commentsViewController.comments = self.page.comments;
-    self.commentsViewController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-    self.commentsViewController.view.alpha = 0;
-    [self addChildViewController:self.commentsViewController];
-    [self.view addSubview:self.commentsViewController.view];
-    [self.commentsViewController didMoveToParentViewController:self];
+    // Comment list child VC
+    [self setupCommentListViewController];
     
     // Manager
  
@@ -82,12 +77,21 @@ typedef void(^fadeOutCompletion)(BOOL);
     }
 }
 
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (void)setupCommentListViewController {
+    self.commentsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CommentList"];
+    self.commentsViewController.comments = self.page.comments;
+    self.commentsViewController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    self.commentsViewController.view.alpha = 0;
+    [self addChildViewController:self.commentsViewController];
+    [self.view addSubview:self.commentsViewController.view];
+    [self.commentsViewController didMoveToParentViewController:self];
+    self.commentsViewController.delegate = self;
+}
 
 -(void)startPreviewMode{
     
@@ -96,24 +100,32 @@ typedef void(^fadeOutCompletion)(BOOL);
 #pragma mark - AVAudioPlayer
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
-    if ([self.delegate respondsToSelector:@selector(readModeViewController:didFinishReadingPage:)]) {
+    if ([player isEqual:self.player] && [self.delegate respondsToSelector:@selector(readModeViewController:didFinishReadingPage:)]) {
         [self.delegate readModeViewController:self didFinishReadingPage:self.page];
     }
 }
 
-#pragma mark - Comment list management
+#pragma mark - Comment list VC
 
 - (IBAction)openCommentList:(id)sender {
+    
+    [self hideOverlay:nil];
     
     if (self.player.playing)
         [self.player pause];
     
+    self.commentsViewController.view.frame = self.view.frame;
     [UIView animateWithDuration:.3f animations:^{
         self.commentsViewController.view.alpha = 1;
-        self.commentsViewController.view.frame = self.view.frame;
+        
+    } completion:^(BOOL finished) {
+        [self.commentsViewController appear];
     }];
 }
 
+- (void)commentListViewController:(CommentListViewController *)viewController didSelectComment:(Comment *)comment {
+    
+}
 
 #pragma mark - Side Comments View
 - (void)sideCommentsView:(TPSideCommentsView *)manager didSelectedComment:(Comment *)comment withFile:(NSString *)fileUrl{
@@ -280,14 +292,6 @@ typedef void(^fadeOutCompletion)(BOOL);
 
 #pragma mark - Sound Tracking
 
-- (void)fileUploader:(FileUploader *)uploader successfullyUploadedFileOfType:(NSString *)type toPath:(NSString *)path withFileName:(NSString *)filename{
-
-}
-
-- (void)fileUploader:(FileUploader *)uploader failedToUploadFileOfType:(NSString *)type toPath:(NSString *)path{
-
-}
-
 - (void)circleWaverControl:(TPCircleWaverControl *)control didReceveivedLongPressGestureRecognizer:(UILongPressGestureRecognizer *)recognizer{
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         
@@ -316,7 +320,7 @@ typedef void(^fadeOutCompletion)(BOOL);
 }
 
 - (void)storyManagerFailedToCreateComment:(StoryManager *)manager{
-    [TPAlert displayOnController:self withMessage:@"Une erreur est survenue lors de l'enregistrement de votre commentaire veuillez réessayer" delegate:self];
+    [TPAlert displayOnController:self withMessage:@"Votre commentaire n'a pu être enregistré, veuillez réessayer" delegate:self];
 }
 
 - (void)alertDidAknowledge:(TPAlert *)alert{

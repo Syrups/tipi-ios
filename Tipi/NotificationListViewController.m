@@ -21,7 +21,6 @@
     UserManager* manager = [[UserManager alloc] initWithDelegate:self];
     [manager fetchRoomInvitationsOfUser:CurrentUser];
     
-    [self animate];
 }
 
 - (IBAction)acceptInvitation:(UIView*)sender {
@@ -85,7 +84,7 @@
     from.text = [NSString stringWithFormat:@"%@ vous invite à rejoindre :", invitation.owner.username];
     
     UIButton* accept = (UIButton*)[cell.contentView viewWithTag:30];
-    accept.layer.borderColor = kCreateBackgroundColor.CGColor;
+    accept.layer.borderColor = [UIColor blackColor].CGColor;
     accept.layer.borderWidth = 2;
     
     return cell;
@@ -103,7 +102,7 @@
 
 - (void)animate {
     [self.requestsTableView.visibleCells enumerateObjectsUsingBlock:^(UITableViewCell* cell, NSUInteger idx, BOOL *stop) {
-        
+
         [AnimationLibrary animateBouncingView:cell withDelay:idx * 0.2f];
         
     }];

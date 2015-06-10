@@ -67,6 +67,7 @@
 		B30C8C651B21A41B009DA4FC /* PickerToRecordSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = B30C8C641B21A41B009DA4FC /* PickerToRecordSegue.m */; };
 		B30C8C691B21DBEF009DA4FC /* replay-appear.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B30C8C681B21DBEF009DA4FC /* replay-appear.pkai */; };
 		B30CDD721B077B83007BAEA8 /* AnimationLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = B30CDD711B077B83007BAEA8 /* AnimationLibrary.m */; };
+		B313FF881B28605000E146DC /* DeleteStoryModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B313FF871B28605000E146DC /* DeleteStoryModalViewController.m */; };
 		B319338A1ADFB2B600603158 /* GTWalsheim Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B31933891ADFB2B600603158 /* GTWalsheim Bold.otf */; };
 		B319338D1ADFB4AE00603158 /* DoneStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B319338C1ADFB4AE00603158 /* DoneStoryViewController.m */; };
 		B319B23F1AF0CD1B00C819BD /* onde_bleu_clair.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B319B23A1AF0CD1B00C819BD /* onde_bleu_clair.pkai */; };
@@ -274,6 +275,8 @@
 		B30C8C681B21DBEF009DA4FC /* replay-appear.pkai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "replay-appear.pkai"; sourceTree = "<group>"; };
 		B30CDD701B077B83007BAEA8 /* AnimationLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationLibrary.h; sourceTree = "<group>"; };
 		B30CDD711B077B83007BAEA8 /* AnimationLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationLibrary.m; sourceTree = "<group>"; };
+		B313FF861B28605000E146DC /* DeleteStoryModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteStoryModalViewController.h; sourceTree = "<group>"; };
+		B313FF871B28605000E146DC /* DeleteStoryModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteStoryModalViewController.m; sourceTree = "<group>"; };
 		B31933891ADFB2B600603158 /* GTWalsheim Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GTWalsheim Bold.otf"; path = "../GTWalsheim Bold.otf"; sourceTree = "<group>"; };
 		B319338B1ADFB4AE00603158 /* DoneStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoneStoryViewController.h; sourceTree = "<group>"; };
 		B319338C1ADFB4AE00603158 /* DoneStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoneStoryViewController.m; sourceTree = "<group>"; };
@@ -543,6 +546,8 @@
 				B319B2501AF12D0F00C819BD /* AdminRoomViewController.m */,
 				73B20BF11AA6178200A9C88F /* ShowOneGroupViewController.h */,
 				73B20BF21AA6178200A9C88F /* ShowOneGroupViewController.m */,
+				B313FF861B28605000E146DC /* DeleteStoryModalViewController.h */,
+				B313FF871B28605000E146DC /* DeleteStoryModalViewController.m */,
 			);
 			name = InRoom;
 			sourceTree = "<group>";
@@ -1349,6 +1354,7 @@
 				B3065A511ABB29E200C10AD9 /* Story.m in Sources */,
 				B3FBAACD1AEFD5D200A3A6B4 /* WalkthroughViewController.m in Sources */,
 				B3065A541ABB35D700C10AD9 /* SignUpViewController.m in Sources */,
+				B313FF881B28605000E146DC /* DeleteStoryModalViewController.m in Sources */,
 				7328120B1B03E44300C0087A /* TPStoryTableViewCell.m in Sources */,
 				73A188D31B19A80800E164E0 /* CommentAudioRecorder.m in Sources */,
 				B352793C1B20CF140023C42C /* TPAlert.m in Sources */,

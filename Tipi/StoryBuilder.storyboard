@@ -54,7 +54,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbp-Vs-cGv" customClass="HomeBubble">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" red="0.1333333333" green="0.20000000000000001" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.58039215686274503" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="y6r-7R-t8e" appends="YES" id="0rO-Hb-CD1"/>
@@ -72,7 +72,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
                                         <state key="normal" title="commencer">
-                                            <color key="titleColor" red="0.023529411760000001" green="0.031372549020000001" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.93725490199999995" green="0.58039215690000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -131,7 +131,7 @@
                                     </button>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ydG-gG-ihE" userLabel="Led">
                                         <rect key="frame" x="52" y="39" width="12" height="12"/>
-                                        <color key="backgroundColor" red="0.93725490199999995" green="0.25098039220000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.81176470590000005" green="0.34901960780000002" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="12" id="jFD-fU-tqg"/>
                                             <constraint firstAttribute="width" constant="12" id="lZa-C7-mRf"/>
@@ -291,12 +291,12 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONn-y7-SeY">
                                         <rect key="frame" x="54" y="140" width="132" height="44"/>
-                                        <color key="backgroundColor" red="0.090196078430000007" green="0.18039215689999999" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.58039215690000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="132" id="5um-HK-SCu"/>
                                             <constraint firstAttribute="height" constant="44" id="TwV-Ib-RTN"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="15"/>
                                         <state key="normal" title="sauvegarder">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -336,7 +336,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEl-cu-IzS">
-                                        <rect key="frame" x="15.5" y="55" width="210" height="76"/>
+                                        <rect key="frame" x="15" y="55" width="210" height="76"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="76" id="3Pq-2H-ltK"/>
                                             <constraint firstAttribute="width" constant="210" id="3VB-OV-ICE"/>
@@ -412,7 +412,7 @@ plus tard</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hnw-1w-duv">
-                                <rect key="frame" x="24" y="20" width="272" height="548"/>
+                                <rect key="frame" x="24" y="100" width="272" height="468"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="J9q-el-5h5">
                                     <size key="itemSize" width="113" height="113"/>
@@ -487,7 +487,7 @@ plus tard</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
                                 <state key="normal" title="continuer">
-                                    <color key="titleColor" red="0.023529411760000001" green="0.031372549020000001" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.93725490199999995" green="0.58039215690000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -514,7 +514,7 @@ plus tard</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q88-KQ-5S5">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q88-KQ-5S5">
                                         <rect key="frame" x="267" y="7" width="37" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="MZ7-2e-x85"/>
@@ -543,7 +543,7 @@ plus tard</string>
                             <constraint firstItem="YwC-ZC-j5v" firstAttribute="top" secondItem="e2Q-aN-qjV" secondAttribute="bottom" id="P7u-4V-ioh"/>
                             <constraint firstItem="YwC-ZC-j5v" firstAttribute="top" secondItem="9cL-sN-YMX" secondAttribute="bottom" constant="42" id="WuP-Wl-GOJ"/>
                             <constraint firstItem="e2Q-aN-qjV" firstAttribute="top" secondItem="HX5-sz-DQO" secondAttribute="bottom" constant="-20" id="Y8w-fu-JF3"/>
-                            <constraint firstItem="hnw-1w-duv" firstAttribute="top" secondItem="HX5-sz-DQO" secondAttribute="bottom" id="cVR-se-rDc"/>
+                            <constraint firstItem="hnw-1w-duv" firstAttribute="top" secondItem="HX5-sz-DQO" secondAttribute="bottom" constant="80" id="cVR-se-rDc"/>
                             <constraint firstItem="hnw-1w-duv" firstAttribute="leading" secondItem="179-aK-Gyv" secondAttribute="leading" constant="24" id="e7y-KZ-3ID"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Fus-Uh-mLW" secondAttribute="trailing" constant="-16" id="iho-Ba-1jb"/>
                             <constraint firstItem="YwC-ZC-j5v" firstAttribute="top" secondItem="hnw-1w-duv" secondAttribute="bottom" id="sfw-Pj-NiE"/>
@@ -598,6 +598,10 @@ plus tard</string>
                                                     <rect key="frame" x="0.0" y="0.0" width="161" height="166"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.allowsEdgeAntialiasing" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <view hidden="YES" tag="40" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rIV-W6-Scz" userLabel="VideoPreview">
@@ -915,7 +919,7 @@ votre histoire</string>
                                     </textField>
                                     <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lix-LL-xyD">
                                         <rect key="frame" x="54" y="173" width="132" height="44"/>
-                                        <color key="backgroundColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.58039215690000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="q4l-bI-6yR"/>
                                             <constraint firstAttribute="width" constant="132" id="zNb-Xd-iBW"/>
@@ -1168,8 +1172,8 @@ votre histoire</string>
                                 <rect key="frame" x="40" y="164" width="240" height="240"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PhD-G7-akQ">
-                                        <rect key="frame" x="54" y="153" width="132" height="44"/>
-                                        <color key="backgroundColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="frame" x="54" y="146" width="132" height="44"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.58039215690000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="132" id="5CG-hu-Dyv"/>
                                             <constraint firstAttribute="height" constant="44" id="7qQ-0T-eIf"/>
@@ -1191,7 +1195,7 @@ votre histoire</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vous avez terminé !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0G-gW-eua">
-                                        <rect key="frame" x="6" y="19" width="229" height="51"/>
+                                        <rect key="frame" x="6" y="12" width="229" height="51"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="229" id="23w-UO-t86"/>
                                             <constraint firstAttribute="height" constant="51" id="Wmk-op-LrV"/>
@@ -1200,7 +1204,7 @@ votre histoire</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eoq-to-v0B">
-                                        <rect key="frame" x="84" y="69" width="72" height="72"/>
+                                        <rect key="frame" x="84" y="62" width="72" height="72"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="72" id="d6v-hJ-pZU"/>
                                             <constraint firstAttribute="height" constant="72" id="oJt-nv-rSL"/>
@@ -1234,12 +1238,12 @@ votre histoire</string>
                                     <constraint firstAttribute="centerX" secondItem="Eoq-to-v0B" secondAttribute="centerX" id="4Sp-Io-tms"/>
                                     <constraint firstAttribute="height" constant="240" id="Gom-0e-BPa"/>
                                     <constraint firstAttribute="centerX" secondItem="PhD-G7-akQ" secondAttribute="centerX" id="SMl-au-AbG"/>
-                                    <constraint firstAttribute="bottom" secondItem="PhD-G7-akQ" secondAttribute="bottom" constant="43" id="USg-io-iSn"/>
-                                    <constraint firstItem="G0G-gW-eua" firstAttribute="top" secondItem="29M-dB-pzY" secondAttribute="top" constant="19" id="Yia-4j-zNU"/>
+                                    <constraint firstAttribute="bottom" secondItem="PhD-G7-akQ" secondAttribute="bottom" constant="50" id="USg-io-iSn"/>
+                                    <constraint firstItem="G0G-gW-eua" firstAttribute="top" secondItem="29M-dB-pzY" secondAttribute="top" constant="12" id="Yia-4j-zNU"/>
                                     <constraint firstAttribute="centerX" secondItem="d5b-FV-sL4" secondAttribute="centerX" id="a36-JS-3eZ"/>
                                     <constraint firstAttribute="width" constant="240" id="bRJ-QO-vNn"/>
                                     <constraint firstAttribute="centerX" secondItem="G0G-gW-eua" secondAttribute="centerX" id="fBT-zT-Ttl"/>
-                                    <constraint firstAttribute="centerY" secondItem="Eoq-to-v0B" secondAttribute="centerY" constant="15" id="jxV-Ec-b8p"/>
+                                    <constraint firstAttribute="centerY" secondItem="Eoq-to-v0B" secondAttribute="centerY" constant="22" id="jxV-Ec-b8p"/>
                                     <constraint firstAttribute="bottom" secondItem="d5b-FV-sL4" secondAttribute="bottom" constant="8" id="sGq-Kx-LQ4"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -1285,12 +1289,12 @@ votre histoire</string>
                                 <rect key="frame" x="40" y="164" width="240" height="240"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Votre histoire a bien été partagée !" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57r-g6-blt">
-                                        <rect key="frame" x="5" y="56" width="229" height="76"/>
+                                        <rect key="frame" x="30" y="56" width="181" height="76"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="76" id="XLa-SR-c9y"/>
-                                            <constraint firstAttribute="width" constant="229" id="eUN-dj-xeu"/>
+                                            <constraint firstAttribute="width" constant="181" id="eUN-dj-xeu"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="19"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBO-9P-0U7">

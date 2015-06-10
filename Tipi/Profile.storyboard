@@ -241,8 +241,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ur2-Bb-DVr">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ur2-Bb-DVr">
                                 <rect key="frame" x="30" y="144" width="260" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="260" id="Nnh-8M-Tcr"/>
+                                    <constraint firstAttribute="height" constant="47" id="VHa-mY-64m"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="19"/>
                                 <state key="normal" title="Conditions d'utilisation">
                                     <color key="titleColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -252,16 +256,24 @@
                                     <segue destination="9Da-TV-GhA" kind="modal" id="NQQ-4p-hcq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UeX-to-DV9">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UeX-to-DV9">
                                 <rect key="frame" x="30" y="94" width="260" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="260" id="yfo-1t-HZi"/>
+                                    <constraint firstAttribute="height" constant="47" id="ykn-qj-Lub"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="19"/>
                                 <state key="normal" title="Signaler un abus">
                                     <color key="titleColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glV-uD-S7B">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glV-uD-S7B">
                                 <rect key="frame" x="30" y="189" width="260" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="260" id="EQ7-KC-Cd0"/>
+                                    <constraint firstAttribute="height" constant="47" id="Hpx-is-mIF"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="19"/>
                                 <state key="normal" title="Déconnexion">
                                     <color key="titleColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -302,24 +314,42 @@
                                     <constraint firstAttribute="height" constant="1" id="rPZ-OL-4hu"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.20000000298023224" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HFQ-GB-9If">
+                            <view alpha="0.20000000298023224" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HFQ-GB-9If">
                                 <rect key="frame" x="30" y="144" width="268" height="1"/>
                                 <color key="backgroundColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="RPi-Sx-MvF"/>
+                                    <constraint firstAttribute="width" constant="268" id="XLh-I7-qeA"/>
+                                </constraints>
                             </view>
-                            <view alpha="0.20000000298023224" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gaj-Qb-2OX">
+                            <view alpha="0.20000000298023224" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gaj-Qb-2OX">
                                 <rect key="frame" x="26" y="189" width="268" height="1"/>
                                 <color key="backgroundColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="268" id="H9o-W9-6ZD"/>
+                                    <constraint firstAttribute="height" constant="1" id="TBh-zc-pcy"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="HFQ-GB-9If" firstAttribute="top" secondItem="UeX-to-DV9" secondAttribute="bottom" constant="3" id="4HO-EP-xQy"/>
                             <constraint firstAttribute="centerX" secondItem="qTA-E6-6LI" secondAttribute="centerX" constant="-0.5" id="4ea-Pm-78f"/>
+                            <constraint firstAttribute="centerX" secondItem="HFQ-GB-9If" secondAttribute="centerX" constant="-4" id="AZD-Fg-mXe"/>
                             <constraint firstItem="8SN-sC-Wmf" firstAttribute="top" secondItem="cUc-rg-sgG" secondAttribute="bottom" constant="-2" id="Jnd-cZ-OBt"/>
                             <constraint firstItem="8SN-sC-Wmf" firstAttribute="leading" secondItem="a08-hc-4il" secondAttribute="leadingMargin" constant="-11" id="LMI-xy-43B"/>
+                            <constraint firstItem="glV-uD-S7B" firstAttribute="top" secondItem="UeX-to-DV9" secondAttribute="bottom" constant="48" id="Mj3-uR-feI"/>
+                            <constraint firstItem="Ur2-Bb-DVr" firstAttribute="top" secondItem="UeX-to-DV9" secondAttribute="bottom" constant="3" id="QWh-Gm-Lwu"/>
+                            <constraint firstAttribute="centerX" secondItem="gaj-Qb-2OX" secondAttribute="centerX" id="RkK-Si-90C"/>
                             <constraint firstItem="qTA-E6-6LI" firstAttribute="top" secondItem="cUc-rg-sgG" secondAttribute="bottom" constant="11" id="UEN-S6-Goj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zcJ-hD-emh" secondAttribute="trailing" constant="-16" id="Ug3-Pp-Vbb"/>
+                            <constraint firstAttribute="centerX" secondItem="glV-uD-S7B" secondAttribute="centerX" id="Xxs-HP-i13"/>
                             <constraint firstItem="zcJ-hD-emh" firstAttribute="leading" secondItem="a08-hc-4il" secondAttribute="leadingMargin" constant="-16" id="cVK-lc-La7"/>
+                            <constraint firstAttribute="centerX" secondItem="Ur2-Bb-DVr" secondAttribute="centerX" id="lU2-mb-RbR"/>
+                            <constraint firstItem="gaj-Qb-2OX" firstAttribute="top" secondItem="Ur2-Bb-DVr" secondAttribute="bottom" constant="-2" id="psd-we-24x"/>
                             <constraint firstItem="zcJ-hD-emh" firstAttribute="top" secondItem="qTA-E6-6LI" secondAttribute="bottom" constant="19" id="qpk-WY-pPs"/>
+                            <constraint firstItem="Ur2-Bb-DVr" firstAttribute="top" secondItem="cUc-rg-sgG" secondAttribute="bottom" constant="124" id="sAq-jY-qhj"/>
+                            <constraint firstAttribute="centerX" secondItem="UeX-to-DV9" secondAttribute="centerX" id="tIl-8z-aDt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Sva-2d-Chu"/>

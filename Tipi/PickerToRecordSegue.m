@@ -48,7 +48,7 @@
                 cell.alpha = 0;
                 [hiddenCells addObject:cell];
             } else {
-                cell.frame = CGRectMake(origX + i * (CELL_SIZE + 5), source.mediaCollectionView.contentOffset.y + source.view.frame.size.height - CELL_SIZE - 30, CELL_SIZE, CELL_SIZE);
+                cell.frame = CGRectMake(origX + i * (CELL_SIZE + 5), source.mediaCollectionView.contentOffset.y + source.mediaCollectionView.frame.size.height - CELL_SIZE - 10, CELL_SIZE, CELL_SIZE);
                 ++i;
             }
         } completion:^(BOOL finished) {

@@ -16,6 +16,7 @@
 #import "HomeViewController.h"
 #import "HelpModalViewController.h"
 #import "ImageUtils.h"
+#import <UIView+MTAnimation.h>
 
 @implementation RoomPickerViewController {
     NSMutableArray* selectedRooms;
@@ -126,7 +127,17 @@
     
     BOOL first = self.rooms.count == 0;
     
-    self.rooms = rooms;
+    NSMutableArray* tempRooms = [rooms mutableCopy];
+    Room* roomDelete = nil;
+    
+    for (Room* room in tempRooms) {
+        if (room.tipi_room && [room.tipi_room isEqualToString:@"1"])
+            roomDelete = room;
+    }
+    
+    [tempRooms removeObject:roomDelete];
+    
+    self.rooms = [tempRooms copy];
     
     [self.roomsTableView reloadData];
     
@@ -205,7 +216,6 @@
     if (!cell) {
         cell = [[UIRoomTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    
     
     cell.roomName.text = room.name;
     
@@ -292,20 +302,24 @@
     
 }
 
-- (void)animate
-{
+- (void)animate {
     [[self.roomsTableView visibleCells] enumerateObjectsUsingBlock:^(UITableViewCell *cell, NSUInteger idx, BOOL *stop) {
         
         int endY = cell.frame.origin.y;
-        float delay = idx * 0.1;
+        float delay = idx * 0.05;
         
-        [cell setFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y + 150, cell.frame.size.width, cell.frame.size.height)];
+        [cell setFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y + self.view.frame.size.height, cell.frame.size.width, cell.frame.size.height)];
         [cell setAlpha:0];
         
-        [UIView animateWithDuration:.5f delay:delay  options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [cell setFrame:CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height)];
+        
+        [UIView animateWithDuration:.23f delay:delay options:UIViewAnimationOptionCurveEaseIn animations:^{
             [cell setAlpha:1];
-        } completion:nil];
+            [cell setFrame:CGRectMake(cell.frame.origin.x, endY + 100, cell.frame.size.width, cell.frame.size.height)];
+        } completion:^(BOOL finished) {
+            [UIView mt_animateWithViews:@[cell] duration:1.3f delay:0 timingFunction:kMTEaseOutElastic animations:^{
+                [cell setFrame:CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height)];
+            } completion:nil];
+        }];
     }];
 }
 

@@ -74,19 +74,62 @@
     return childViewControllers;
 }
 
+- (void)close {
+    
+    
+    // disable all motion managers
+    [self.swiper.viewControllers enumerateObjectsUsingBlock:^(ReadModeViewController* obj, NSUInteger idx, BOOL *stop) {
+        [obj.mediaImageView.motionManager stopGyroUpdates];
+    }];
+    
+    ShowOneGroupViewController* parent = (ShowOneGroupViewController*)self.parentViewController;
+    parent.topBar.alpha = 1;
+    parent.mTableView.alpha = 1;
+    [parent.mTableView reloadData];
+    
+    [UIView animateWithDuration:.3f animations:^{
+        self.view.alpha = 0;
+        //        self.view.transform = CGAffineTransformMakeTranslation(0, self.view.frame.size.height);
+    } completion:^(BOOL finished) {
+        [self.view removeFromSuperview];
+        [self removeFromParentViewController];
+    }];
+}
+
 
 #pragma mark - TPSwipableViewController
 
 - (void)swipableViewController:(TPSwipableViewController *)containerViewController didFinishedTransitionToViewController:(UIViewController *)viewController{
     
+    ReadModeViewController* previousController = self.currentController;
     ReadModeViewController *currentController = (ReadModeViewController *)viewController;
     
-    if (currentController.player.isPlaying)
-        [currentController.player pause];
-
+    if (previousController.player.isPlaying) {
+        [previousController.player pause];
+        previousController.player.currentTime = 0;
+    }
+    
+    if (!currentController.player.isPlaying)
+        [currentController.player play];
+    
+    self.currentController = currentController;
+    
+    // disable all motion managers
+    [self.swiper.viewControllers enumerateObjectsUsingBlock:^(ReadModeViewController* obj, NSUInteger idx, BOOL *stop) {
+        [obj.mediaImageView.motionManager stopGyroUpdates];
+    }];
+    
+    if ([self.currentController.page.comments count] > 0) {
+        self.currentController.commentsButton.alpha = 1;
+    } else {
+        self.currentController.commentsButton.alpha = 0;
+    }
+    
+    [currentController.mediaImageView enable];
 }
 
 - (void)swipableViewController:(TPSwipableViewController *)containerViewController didSelectViewController:(UIViewController *)viewController{
+    
 }
 
 #pragma mark - StoryManager
@@ -109,6 +152,8 @@
         
         [self.swiper didMoveToParentViewController:self];
         
+        self.currentController = [self.swiper.viewControllers firstObject];
+        
         self.edgesForExtendedLayout = UIRectEdgeNone;
         
         [self.delegate readModeContainerViewController:self didFinishedLoadingStory:self.story];
@@ -116,30 +161,23 @@
 }
 
 - (void)storyManager:(StoryManager *)manager failedToFetchStoryWithId:(NSUInteger)id{
-    
+    [TPAlert displayOnController:self.parentViewController withMessage:@"Impossible de charger l'histoire" delegate:self];
 }
 
 #pragma mark - ReadModeViewController delegation
 
 - (void)readModeViewController:(ReadModeViewController *)controller requestedToQuitStoryAtPage:(Page *)page{
-    ShowOneGroupViewController* parent = (ShowOneGroupViewController*)self.parentViewController;
-    parent.topBar.alpha = 1;
-    parent.mTableView.alpha = 1;
-    [parent.mTableView reloadData];
-    
-    [UIView animateWithDuration:.3f animations:^{
-        self.view.alpha = 0;
-//        self.view.transform = CGAffineTransformMakeTranslation(0, self.view.frame.size.height);
-    } completion:^(BOOL finished) {
-        [self.view removeFromSuperview];
-        [self removeFromParentViewController];
-    }];
+    [self close];
 }
 
 - (void)readModeViewController:(ReadModeViewController *)controller didFinishReadingPage:(Page *)page {
-    
     if (controller.idx < [self.story.pages count] - 1) {
        [self.swiper setSelectedViewControllerViewControllerAtIndex:controller.idx+1];
+        ReadModeViewController* next = (ReadModeViewController*)self.swiper.viewControllers[controller.idx+1];
+        [next.player performSelector:@selector(play) withObject:nil afterDelay:.8f];
+    } else {
+        // end
+        [self close];
     }
     
 }
@@ -155,7 +193,7 @@
     
     [self loadMediaWithURL:mediaURL atIndex:(NSUInteger)index withCompletion:^{
         [self loadAudioWithFileURL:fileUrl atIndex:(NSUInteger)index withCompletion:^(NSUInteger idx){
-            NSLog(@"loadedPage %lu/%lu", (unsigned long)idx, [pages count]);
+            NSLog(@"loadedPage %lu/%lu", (unsigned long)idx, (unsigned long)[pages count]);
             idx++;
             
             if(idx < [pages count]){
@@ -174,12 +212,16 @@
                           options:0
                          progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                              // progression tracking code
-                             NSLog(@"loadedImage %lu/%lu of file %@", receivedSize,expectedSize, url);
+                             NSLog(@"loadedImage %lu/%lu of file %@", (long)receivedSize,(long)expectedSize, url);
                          }
                         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                             if (image) {
                                // UIImage* full = [ImageUtils convertImageToGrayScale:[UIImage imageWithCGImage:[[asset defaultRepresentation]fullScreenImage]]];
                                 
+                                // error handling
+                                if (error) {
+                                    [self.delegate readModeContainerViewController:self failedToCompleteLoadStory:self.story];
+                                }
                                
                                 
                                 [self.mediaFiles addObject:image];
@@ -192,6 +234,12 @@
 - (void)loadAudioWithFileURL:(NSString*)fileUrl atIndex:(NSUInteger)index withCompletion:(void(^)(NSUInteger idx))completion{
     [FileDownLoader downloadFileWithURL:fileUrl completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
         
+        NSLog(@"%@", filePath);
+        
+        // error handling
+        if (!filePath) {
+            [self.delegate readModeContainerViewController:self failedToCompleteLoadStory:self.story];
+        }
         
         [self.audioPlayers addObject:[[AVAudioPlayer alloc] initWithContentsOfURL:filePath error:nil]];
         completion(index);

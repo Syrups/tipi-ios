@@ -115,8 +115,6 @@
     }];
 }
 
-
-
 #pragma mark - Helpers
 
 - (NSString*)jsonArrayForRooms:(NSArray*)rooms {

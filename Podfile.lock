@@ -23,6 +23,7 @@ PODS:
   - EZAudio (0.0.6)
   - JSONModel (1.0.2)
   - MLPAutoCompleteTextField (1.5)
+  - MTAnimation (1.2.2)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
@@ -32,6 +33,7 @@ DEPENDENCIES:
   - EZAudio (~> 0.0.6)
   - JSONModel
   - MLPAutoCompleteTextField
+  - MTAnimation
   - SDWebImage (~> 3.7)
 
 SPEC CHECKSUMS:
@@ -39,6 +41,7 @@ SPEC CHECKSUMS:
   EZAudio: feb8e1c3ec17d8933bc2efc66b59ead1f2e79e54
   JSONModel: 6ffcb4ffa3659c9e9a2e5d45d6c7705bab187c03
   MLPAutoCompleteTextField: ba4d507bbff2bd4f139d4197814fc8dd39caf77e
+  MTAnimation: 1079f4ff38c0282779ced010d7363a8f893fd3ee
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
 
 COCOAPODS: 0.35.0

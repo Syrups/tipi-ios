@@ -504,6 +504,12 @@ public class RAReorderableLayout: UICollectionViewFlowLayout, UIGestureRecognize
                 self.cellFakeView!.center.x = self.fakeCellCenter!.x + panTranslation!.x
                 self.cellFakeView!.center.y = self.fakeCellCenter!.y + panTranslation!.y
 
+                UIView.animateWithDuration(0.2, animations: { () -> Void in
+                    
+                    let angle:CGFloat = self.panTranslation!.x > 0 ? 0.1 : -0.1
+                    self.cellFakeView?.transform = CGAffineTransformMakeRotation(angle)
+                    return
+                })
                 
                 self.beginScrollIfNeeded()
                 self.moveItemIfNeeded()

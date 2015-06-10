@@ -18,6 +18,7 @@
 
 - (void)fetchStoriesForRoomId:(NSUInteger )room filteredByTag:(NSString*)tag orUser:(User*)user;
 - (void)fetchStoryWithId:(NSUInteger)roomId ;
+- (void)deleteStory:(Story*)story inRoom:(Room*)room;
 
 
 - (void)addCommentOnPage:(Page *)page atTime:(NSUInteger)time withAudioFile:(NSString *)audioFile;

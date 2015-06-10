@@ -21,6 +21,7 @@
 
 @interface ReadModeContainerViewController : UIViewController<TPSwipableViewControllerDelegate, ReadModeViewDelegate, StoryFetcherDelegate, EZMicrophoneDelegate, EZAudioFileDelegate>
 
+@property (weak, nonatomic) ReadModeViewController* currentController;
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, assign) NSUInteger loadedPagesCount;
 
@@ -50,5 +51,6 @@
 
 @required
 - (void)readModeContainerViewController:(ReadModeContainerViewController *)controller didFinishedLoadingStory: (Story*) story;
+- (void)readModeContainerViewController:(ReadModeContainerViewController *)controller failedToCompleteLoadStory:(Story *)story;
 
 @end

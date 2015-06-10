@@ -7,27 +7,26 @@
 //
 
 #import "AnimationLibrary.h"
+#import <UIView+MTAnimation.h>
 
 static const int kInitialYOffset = 100;
 static const float totalBounceDuration = 1.2f;
 
 @implementation AnimationLibrary
 
-+ (void)animateBouncingView:(UIView*)view withDelay:(NSUInteger)delay {
-    view.transform = CGAffineTransformMakeTranslation(0, kInitialYOffset);
-    view.alpha = 0;
-    [UIView animateKeyframesWithDuration:totalBounceDuration delay:delay options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
-        [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.3f animations:^{
-            view.transform = CGAffineTransformMakeTranslation(0, -10);
-            view.alpha = 1;
-        }];
-        [UIView addKeyframeWithRelativeStartTime:.3f relativeDuration:.4f animations:^{
-            view.transform = CGAffineTransformMakeTranslation(0, 8);
-        }];
-        [UIView addKeyframeWithRelativeStartTime:.7f relativeDuration:.3f animations:^{
-            view.transform = CGAffineTransformIdentity;
-        }];
-    } completion:nil];
++ (void)animateBouncingView:(UIView*)view withDelay:(CGFloat)delay {
+    int endY = view.frame.origin.y;
+    
+    [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y + view.superview.frame.size.height, view.frame.size.width, view.frame.size.height)];
+    [view setAlpha:0];
+    [UIView animateWithDuration:.2f delay:delay options:UIViewAnimationOptionCurveEaseIn animations:^{
+        [view setAlpha:1];
+        [view setFrame:CGRectMake(view.frame.origin.x, endY + 50, view.frame.size.width, view.frame.size.height)];
+    } completion:^(BOOL finished) {
+        [UIView mt_animateWithViews:@[view] duration:1.3f delay:0 timingFunction:kMTEaseOutElastic animations:^{
+            [view setFrame:CGRectMake(view.frame.origin.x, endY, view.frame.size.width, view.frame.size.height)];
+        } completion:nil];
+    }];
 }
 
 + (void)animateBouncingView:(UIView *)view usingConstraint:(NSLayoutConstraint *)constraint ofType:(AnimationLibraryConstraintType)type relativeToSuperview:(UIView *)superview inverted:(BOOL)inverted {
