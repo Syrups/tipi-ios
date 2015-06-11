@@ -84,7 +84,7 @@
     from.text = [NSString stringWithFormat:@"%@ vous invite à rejoindre :", invitation.owner.username];
     
     UIButton* accept = (UIButton*)[cell.contentView viewWithTag:30];
-    accept.layer.borderColor = [UIColor blackColor].CGColor;
+    accept.layer.borderColor = RgbColorAlpha(0, 0, 0, .5f).CGColor;
     accept.layer.borderWidth = 2;
     
     return cell;

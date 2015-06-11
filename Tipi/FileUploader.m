@@ -17,9 +17,15 @@
 - (void)uploadFileWithData:(NSData *)data toPath:(NSString*)path ofType:(NSString *)type {
     
 //    NSString* name = [type isEqualToString:kUploadTypeAudio] ? @"audio[file]" : @"media[file]";
-    NSString* mime = [type isEqualToString:kUploadTypeAudio] ? @"audio/mp4" : @"image/jpeg";
+    NSString* mime = [type isEqualToString:kUploadTypeAudio] ? @"audio/mp4" : ([type isEqualToString:kUploadTypeMedia] ? @"image/jpeg" : @"video/mp4");
+    
+    
+    if ([type isEqualToString:kUploadTypeVideo]) {
+        path = [path stringByAppendingString:@"?type=video"];
+    }
     
     NSLog(@"%@", path);
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     [manager.requestSerializer setValue:[[UserSession sharedSession].user token] forHTTPHeaderField:@"X-Authorization-Token"];

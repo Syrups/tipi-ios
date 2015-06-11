@@ -41,6 +41,7 @@
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -211,7 +212,7 @@
                                     <outlet property="delegate" destination="mYZ-Np-Rjw" id="Fb8-eq-URg"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dlf-sh-vqW">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dlf-sh-vqW" customClass="TPLetterSpacingButton">
                                 <rect key="frame" x="98" y="489" width="124" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -835,23 +836,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="renommer le feu" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wwf-XH-ObI" userLabel="Textfield" customClass="SRUnderlinedField">
-                                <rect key="frame" x="37" y="80" width="246" height="36"/>
+                                <rect key="frame" x="37" y="100" width="246" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="246" id="RwB-ph-bPB"/>
                                     <constraint firstAttribute="height" constant="36" id="oBc-bZ-dfj"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="renameRoom:" destination="Cvb-hf-RZg" eventType="editingDidEnd" id="55D-7v-7vg"/>
                                     <outlet property="delegate" destination="Cvb-hf-RZg" id="8nh-V0-Efq"/>
                                 </connections>
                             </textField>
@@ -904,7 +906,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yit-je-pB5">
-                                <rect key="frame" x="16" y="21" width="47" height="45"/>
+                                <rect key="frame" x="10" y="21" width="47" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="47" id="6GU-7y-Ep2"/>
                                     <constraint firstAttribute="height" constant="45" id="GBf-XA-cha"/>
@@ -919,7 +921,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4AH-WF-sbg">
-                                <rect key="frame" x="260" y="22" width="44" height="44"/>
+                                <rect key="frame" x="265" y="24" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="6fm-GF-HUM"/>
                                     <constraint firstAttribute="width" constant="44" id="W9k-Z1-Azm"/>
@@ -931,15 +933,28 @@
                                     <action selector="addUsersToRoom:" destination="Cvb-hf-RZg" eventType="touchUpInside" id="6j7-A3-a2P"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gyy-uh-yyK">
+                                <rect key="frame" x="82" y="30" width="157" height="31"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="TWt-dB-Plr"/>
+                                    <constraint firstAttribute="width" constant="157" id="h1V-EN-RSl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.72156862749999995" green="0.30588235289999999" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.81176470590000005" green="0.34901960780000002" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="yit-je-pB5" firstAttribute="leading" secondItem="o4N-J8-wQs" secondAttribute="leading" constant="16" id="6RC-oS-QBA"/>
-                            <constraint firstItem="4AH-WF-sbg" firstAttribute="top" secondItem="3mS-9U-8Dm" secondAttribute="bottom" constant="2" id="8lF-J8-Gej"/>
-                            <constraint firstItem="4AH-WF-sbg" firstAttribute="trailing" secondItem="o4N-J8-wQs" secondAttribute="trailingMargin" id="Dj6-Fn-Ib1"/>
+                            <constraint firstAttribute="centerX" secondItem="Gyy-uh-yyK" secondAttribute="centerX" constant="-0.5" id="0Al-Vb-OPT"/>
+                            <constraint firstItem="Gyy-uh-yyK" firstAttribute="top" secondItem="3mS-9U-8Dm" secondAttribute="bottom" constant="10" id="2GA-QX-dhv"/>
+                            <constraint firstItem="yit-je-pB5" firstAttribute="leading" secondItem="o4N-J8-wQs" secondAttribute="leading" constant="10" id="6RC-oS-QBA"/>
+                            <constraint firstItem="4AH-WF-sbg" firstAttribute="top" secondItem="3mS-9U-8Dm" secondAttribute="bottom" constant="4" id="8lF-J8-Gej"/>
+                            <constraint firstItem="4AH-WF-sbg" firstAttribute="trailing" secondItem="o4N-J8-wQs" secondAttribute="trailingMargin" constant="5" id="Dj6-Fn-Ib1"/>
                             <constraint firstItem="pwM-Zh-8Pq" firstAttribute="top" secondItem="Jfq-A1-z5l" secondAttribute="bottom" constant="33" id="LFS-RW-buy"/>
                             <constraint firstItem="Jfq-A1-z5l" firstAttribute="top" secondItem="3mS-9U-8Dm" secondAttribute="bottom" constant="174" id="aPy-P4-Ssi"/>
-                            <constraint firstItem="Wwf-XH-ObI" firstAttribute="top" secondItem="3mS-9U-8Dm" secondAttribute="bottom" constant="60" id="mwF-ex-Tsj"/>
+                            <constraint firstItem="Wwf-XH-ObI" firstAttribute="top" secondItem="3mS-9U-8Dm" secondAttribute="bottom" constant="80" id="mwF-ex-Tsj"/>
                             <constraint firstItem="Jfq-A1-z5l" firstAttribute="leading" secondItem="o4N-J8-wQs" secondAttribute="leadingMargin" constant="-16" id="wdM-Zl-HpO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Jfq-A1-z5l" secondAttribute="trailing" constant="-16" id="yRZ-f1-iFc"/>
                             <constraint firstItem="yit-je-pB5" firstAttribute="top" secondItem="o4N-J8-wQs" secondAttribute="topMargin" constant="21" id="yY1-zd-8JF"/>
@@ -948,6 +963,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="EsQ-HL-Aom"/>
                     <connections>
+                        <outlet property="roomName" destination="Gyy-uh-yyK" id="8wy-pJ-9dZ"/>
                         <outlet property="roomNameField" destination="Wwf-XH-ObI" id="eeR-Fa-fhK"/>
                         <outlet property="usersTableView" destination="Jfq-A1-z5l" id="adW-LK-KoT"/>
                     </connections>
@@ -1430,7 +1446,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqM-Jr-4he">
-                                <rect key="frame" x="10" y="11" width="56" height="56"/>
+                                <rect key="frame" x="9" y="11" width="56" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="56" id="B78-TY-K2z"/>
                                     <constraint firstAttribute="height" constant="56" id="jCn-nv-xFd"/>
@@ -1445,9 +1461,9 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fqM-Jr-4he" firstAttribute="leading" secondItem="2qd-qv-jy1" secondAttribute="leadingMargin" constant="-6" id="J1B-K5-8ia"/>
+                            <constraint firstItem="fqM-Jr-4he" firstAttribute="leading" secondItem="2qd-qv-jy1" secondAttribute="leadingMargin" constant="-7" id="J1B-K5-8ia"/>
                             <constraint firstItem="fqM-Jr-4he" firstAttribute="top" secondItem="biF-oI-NAh" secondAttribute="bottom" constant="-9" id="a3i-8S-JxK"/>
                         </constraints>
                     </view>
@@ -1490,7 +1506,7 @@ histoire ?</string>
                                         <fontDescription key="fontDescription" name="GTWalsheim-Bold" family="GTWalsheim" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diO-UW-mx0">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diO-UW-mx0" customClass="TPLetterSpacingButton">
                                         <rect key="frame" x="29" y="89" width="183" height="44"/>
                                         <color key="backgroundColor" red="0.81176470590000005" green="0.34901960780000002" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -1512,7 +1528,7 @@ histoire ?</string>
                                             <action selector="delete:" destination="0H9-mn-uWs" eventType="touchUpInside" id="Hpu-C1-xW2"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEJ-qS-hPP">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEJ-qS-hPP" customClass="TPLetterSpacingButton">
                                         <rect key="frame" x="29" y="141" width="183" height="44"/>
                                         <color key="backgroundColor" red="0.81176470590000005" green="0.34901960780000002" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -1534,7 +1550,7 @@ histoire ?</string>
                                             <action selector="deleteAndReport:" destination="0H9-mn-uWs" eventType="touchUpInside" id="QVr-PX-W1g"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bdt-hj-2e1">
+                                    <button opaque="NO" alpha="0.49999999999999961" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bdt-hj-2e1" customClass="TPLetterSpacingButton">
                                         <rect key="frame" x="31" y="193" width="178" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="178" id="9DY-F2-lRK"/>

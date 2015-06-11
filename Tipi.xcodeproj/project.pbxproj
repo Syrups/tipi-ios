@@ -105,6 +105,8 @@
 		B35AD03C1ABF2D2500527C0D /* ReviewPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD03B1ABF2D2500527C0D /* ReviewPageViewController.m */; };
 		B35CDBDA1AB87DD900BF9F82 /* StoryMediaRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = B35CDBD91AB87DD900BF9F82 /* StoryMediaRecorder.m */; };
 		B35CDBDC1AB8863C00BF9F82 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35CDBDB1AB8863C00BF9F82 /* AVFoundation.framework */; };
+		B361ADB11B29973E00FAEB3E /* TPLetterSpacingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B361ADB01B29973E00FAEB3E /* TPLetterSpacingLabel.m */; };
+		B361ADB41B29979B00FAEB3E /* TPLetterSpacingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B361ADB31B29979B00FAEB3E /* TPLetterSpacingButton.m */; };
 		B36941AF1ACAE02500F3F95A /* FileUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = B36941AE1ACAE02500F3F95A /* FileUploader.m */; };
 		B36941B11ACAF06800F3F95A /* pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B36941B01ACAF06800F3F95A /* pic.jpg */; };
 		B36DD6231AEE5928001FA8C5 /* RoomCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B36DD6221AEE5928001FA8C5 /* RoomCache.m */; };
@@ -340,6 +342,10 @@
 		B35CDBD81AB87DD900BF9F82 /* StoryMediaRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryMediaRecorder.h; sourceTree = "<group>"; };
 		B35CDBD91AB87DD900BF9F82 /* StoryMediaRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryMediaRecorder.m; sourceTree = "<group>"; };
 		B35CDBDB1AB8863C00BF9F82 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B361ADAF1B29973E00FAEB3E /* TPLetterSpacingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPLetterSpacingLabel.h; sourceTree = "<group>"; };
+		B361ADB01B29973E00FAEB3E /* TPLetterSpacingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPLetterSpacingLabel.m; sourceTree = "<group>"; };
+		B361ADB21B29979B00FAEB3E /* TPLetterSpacingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPLetterSpacingButton.h; sourceTree = "<group>"; };
+		B361ADB31B29979B00FAEB3E /* TPLetterSpacingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPLetterSpacingButton.m; sourceTree = "<group>"; };
 		B36941AD1ACAE02500F3F95A /* FileUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUploader.h; sourceTree = "<group>"; };
 		B36941AE1ACAE02500F3F95A /* FileUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUploader.m; sourceTree = "<group>"; };
 		B36941B01ACAF06800F3F95A /* pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic.jpg; sourceTree = "<group>"; };
@@ -1023,6 +1029,10 @@
 				B35279381B2097A40023C42C /* TPTiltingImageView.m */,
 				B352793A1B20CF140023C42C /* TPAlert.h */,
 				B352793B1B20CF140023C42C /* TPAlert.m */,
+				B361ADAF1B29973E00FAEB3E /* TPLetterSpacingLabel.h */,
+				B361ADB01B29973E00FAEB3E /* TPLetterSpacingLabel.m */,
+				B361ADB21B29979B00FAEB3E /* TPLetterSpacingButton.h */,
+				B361ADB31B29979B00FAEB3E /* TPLetterSpacingButton.m */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -1311,6 +1321,7 @@
 				B3FBAABD1AEF7D0900A3A6B4 /* CreateRoomViewController.m in Sources */,
 				B36DD6231AEE5928001FA8C5 /* RoomCache.m in Sources */,
 				73B3B3321AA7B45500FF7578 /* TagMenuViewController.m in Sources */,
+				B361ADB41B29979B00FAEB3E /* TPLetterSpacingButton.m in Sources */,
 				73B3B3621AA7CA9100FF7578 /* ReadModeContainerViewController.m in Sources */,
 				B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */,
 				B3065A3B1AB98ACC00C10AD9 /* LoginViewController.m in Sources */,
@@ -1370,6 +1381,7 @@
 				73A188D31B19A80800E164E0 /* CommentAudioRecorder.m in Sources */,
 				B352793C1B20CF140023C42C /* TPAlert.m in Sources */,
 				73825C1D1ADE8B4300D43383 /* SHPathLibrary.m in Sources */,
+				B361ADB11B29973E00FAEB3E /* TPLetterSpacingLabel.m in Sources */,
 				B31B01B71B259BBB00F704FA /* CommentListViewController.m in Sources */,
 				735AD1971B25E0D70050BFCE /* TPSwipeDeleteTableViewCell.m in Sources */,
 				B3BCCFD31AA5C36C00261212 /* main.m in Sources */,

@@ -285,6 +285,7 @@
         page.moviePlayerLayer = playerLayer;
         page.moviePlayer.volume = 0;
         playerLayer.frame = self.view.frame;
+        playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
         [page.view.layer insertSublayer:playerLayer atIndex:0];
         
         [page.view bringSubviewToFront:page.replayButton];

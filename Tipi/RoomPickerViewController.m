@@ -17,6 +17,7 @@
 #import "HelpModalViewController.h"
 #import "ImageUtils.h"
 #import <UIView+MTAnimation.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @implementation RoomPickerViewController {
     NSMutableArray* selectedRooms;
@@ -161,17 +162,37 @@
     uploader.delegate = self;
     
     [story.pages enumerateObjectsUsingBlock:^(Page* page, NSUInteger idx, BOOL *stop) {
-        UIImage* image = [(NSDictionary*)[self.saver.medias objectAtIndex:idx] objectForKey:@"full"];
+        NSDictionary* media = (NSDictionary*)[self.saver.medias objectAtIndex:idx];
         
-        if (image.size.width > 2000) {
-            image = [ImageUtils scaleImage:image toSize:CGSizeMake(image.size.width/3, image.size.height/3) mirrored:NO];
+        NSData* data;
+        NSString* type;
+        
+        if ([[media objectForKey:@"type"] isEqualToString:ALAssetTypeVideo]) {
+            ALAssetRepresentation *rep = [(ALAsset*)[media objectForKey:@"asset"] defaultRepresentation];
+            Byte *buffer = (Byte*)malloc(rep.size);
+            NSUInteger buffered = [rep getBytes:buffer fromOffset:0.0 length:rep.size error:nil];
+            
+            
+            data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES];
+            
+            NSLog(@"Size of video : %d", [data length]);
+            type = kUploadTypeVideo;
+        } else {
+            type = kUploadTypeMedia;
+            UIImage* image = [media objectForKey:@"full"];
+            
+            if (image.size.width > 2000) {
+                image = [ImageUtils scaleImage:image toSize:CGSizeMake(image.size.width/3, image.size.height/3) mirrored:NO];
+            }
+            
+            data = UIImageJPEGRepresentation(image, 0.5f);
         }
+        
+        
         NSString* mediaPath = [NSString stringWithFormat:@"/pages/%@/media", page.id];
         NSString* audioPath = [NSString stringWithFormat:@"/pages/%@/audio", page.id];
         
-        
-        
-        [uploader uploadFileWithData:UIImageJPEGRepresentation(image, 0.5f) toPath:mediaPath ofType:kUploadTypeMedia];
+        [uploader uploadFileWithData:data toPath:mediaPath ofType:type];
         
         [uploader uploadFileWithData:[self.recorder dataOfAudioWithIndex:idx] toPath:audioPath ofType:kUploadTypeAudio];
     }];
@@ -217,9 +238,12 @@
         cell = [[UIRoomTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
+    UIImageView* picto = (UIImageView*)[cell.contentView viewWithTag:90];
+
     if ([selectedRooms containsObject:room]) {
-        UIImageView* picto = (UIImageView*)[cell.contentView viewWithTag:90];
-        picto.transform = CGAffineTransformIdentity;
+        picto.image = [UIImage imageNamed:@"check-room"];
+    } else {
+        picto.image = [UIImage imageNamed:@"picto-fire-b"];
     }
     
     cell.roomName.text = room.name;
@@ -241,20 +265,12 @@
         [selectedRooms addObject:room];
         UIImageView* picto = (UIImageView*)[cell.contentView viewWithTag:90];
         picto.image = [UIImage imageNamed:@"check-room"];
-        [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionAutoreverse animations:^{
-            picto.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
-        } completion:^(BOOL finished) {
-            picto.transform = CGAffineTransformIdentity;
-        }];
+        
     } else {
         [selectedRooms removeObject:room];
         UIImageView* picto = (UIImageView*)[cell.contentView viewWithTag:90];
         picto.image = [UIImage imageNamed:@"picto-fire-b"];
-        [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionAutoreverse animations:^{
-            picto.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
-        } completion:^(BOOL finished) {
-            picto.transform = CGAffineTransformIdentity;
-        }];
+
     }
 }
 
