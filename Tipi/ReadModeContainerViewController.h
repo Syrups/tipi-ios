@@ -19,7 +19,7 @@
 @import AVFoundation;
 @import AudioToolbox;
 
-@interface ReadModeContainerViewController : UIViewController<TPSwipableViewControllerDelegate, ReadModeViewDelegate, StoryFetcherDelegate, EZMicrophoneDelegate, EZAudioFileDelegate>
+@interface ReadModeContainerViewController : UIViewController<TPSwipableViewControllerDelegate, ReadModeViewDelegate, StoryFetcherDelegate, EZMicrophoneDelegate, EZAudioFileDelegate, TPAlertDelegate>
 
 @property (weak, nonatomic) ReadModeViewController* currentController;
 @property (nonatomic, assign) id delegate;
@@ -44,6 +44,7 @@
 //@property (nonatomic, strong) AVAudioPlayer* player;
 //@property (nonatomic, strong) NSTimer* audioListenTimer;
 
+- (void)close;
 
 @end
 

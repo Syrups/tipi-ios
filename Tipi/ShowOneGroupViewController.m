@@ -342,7 +342,8 @@
 #pragma mark - TPAlert
 
 - (void)alertDidAknowledge:(TPAlert *)alert {
-    
+    [loader removeFromSuperview];
+    [self.readModeContainer close];
 }
 
 #pragma mark - Navigation and animation
@@ -583,6 +584,11 @@
     
 }
 
+- (void)transitionFromReadMode {
+    [loader removeFromSuperview];
+    self.previewImageView.alpha = 0;
+    
+}
 
 
 /*

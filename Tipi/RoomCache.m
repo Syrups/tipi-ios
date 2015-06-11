@@ -33,12 +33,48 @@
     }
 }
 
++ (void)cacheLastStories:(NSArray *)stories forRoomId:(Room *)roomId {
+    NSMutableDictionary* cache = [NSMutableDictionary dictionaryWithContentsOfFile:[self cacheFilePathForStories]];
+    
+    if (!cache) {
+        cache = [NSMutableDictionary dictionary];
+    }
+    
+    [cache setObject:stories forKey:roomId];
+    
+    [cache writeToFile:[self cacheFilePathForStories] atomically:YES];
+}
+
++ (void)fetchCachedLastStoriesForRoomId:(Room *)roomId withSuccess:(void (^)(NSArray *))success failure:(void (^)())failure {
+    NSMutableDictionary* cache = [NSMutableDictionary dictionaryWithContentsOfFile:[self cacheFilePathForStories]];
+    
+    if (!cache) {
+        failure();
+    } else {
+        NSArray* stories = (NSArray*)[cache objectForKey:roomId];
+        
+        if (!stories) {
+            failure();
+        } else {
+            success(stories);
+        }
+    }
+}
+
 + (NSString*)cacheFilePath {
     //applications Documents dirctory path
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
     return [documentsDirectory stringByAppendingString:@"/room_cache.json"];
+}
+
++ (NSString*)cacheFilePathForStories {
+    //applications Documents dirctory path
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    return [documentsDirectory stringByAppendingString:@"/room_stories.json"];
 }
 
 @end

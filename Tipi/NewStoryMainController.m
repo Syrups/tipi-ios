@@ -9,6 +9,8 @@
 #import "NewStoryMainController.h"
 #import "AbortModalViewController.h"
 #import "HomeViewController.h"
+#import "DoneStoryViewController.h"
+#import "NameStoryViewController.h"
 #import "StoryWIPSaver.h"
 
 @implementation NewStoryMainController
@@ -43,7 +45,7 @@
 
 - (IBAction)popCurrentController:(id)sender {
     UINavigationController* nav = (UINavigationController*)self.childViewControllers[0];
-    
+    UIViewController* current = [nav visibleViewController];
     
     
     // If we are at the first view controller, show warning
@@ -58,7 +60,7 @@
 //        
 //        [home.storyViewController transitionFromStoryBuilder];
     } else {
-        [nav popViewControllerAnimated:NO];
+        [nav popViewControllerAnimated:YES];
     }
     
 }
