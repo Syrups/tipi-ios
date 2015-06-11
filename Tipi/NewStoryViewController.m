@@ -81,9 +81,10 @@
         UIImage* full = [ImageUtils convertImageToGrayScale:[UIImage imageWithCGImage:[[asset defaultRepresentation]fullScreenImage]]];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            TPTiltingImageView* imageView = [[TPTiltingImageView alloc] initWithFrame:self.view.frame andImage:full];
+            
+            UIImageView* imageView = [[UIImageView alloc] initWithFrame:self.view.frame];
+            imageView.image = full;
             imageView.layer.opacity = .05f;
-            [imageView enable];
             [self.bubble replaceImageLayerWithLayer:imageView.layer];
             
             [self.view sendSubviewToBack:self.bubble];

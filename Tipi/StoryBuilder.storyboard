@@ -291,7 +291,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONn-y7-SeY">
                                         <rect key="frame" x="54" y="140" width="132" height="44"/>
-                                        <color key="backgroundColor" red="0.93725490199999995" green="0.58039215690000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.81176470590000005" green="0.34901960780000002" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="132" id="5um-HK-SCu"/>
                                             <constraint firstAttribute="height" constant="44" id="TwV-Ib-RTN"/>
@@ -446,7 +446,7 @@ plus tard</string>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.023529411760000001" green="0.031372549020000001" blue="0.1137254902" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="centerY" secondItem="Yia-mt-PbW" secondAttribute="centerY" id="XKA-RI-eW5"/>
                                                         <constraint firstAttribute="centerX" secondItem="Yia-mt-PbW" secondAttribute="centerX" id="v4n-g1-e41"/>
@@ -744,7 +744,7 @@ plus tard</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.gif" translatesAutoresizingMaskIntoConstraints="NO" id="som-9j-pRs" userLabel="Image">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="som-9j-pRs" userLabel="Image">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAX-g0-2bO" userLabel="Overlay">
@@ -919,7 +919,7 @@ votre histoire</string>
                                     </textField>
                                     <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lix-LL-xyD">
                                         <rect key="frame" x="54" y="173" width="132" height="44"/>
-                                        <color key="backgroundColor" red="0.93725490199999995" green="0.58039215690000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.81176470590000005" green="0.34901960780000002" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="q4l-bI-6yR"/>
                                             <constraint firstAttribute="width" constant="132" id="zNb-Xd-iBW"/>
@@ -978,7 +978,7 @@ votre histoire</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.023529411760000001" green="0.031372549020000001" blue="0.1137254902" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="o9Q-hd-tGt" firstAttribute="top" secondItem="pJ1-t0-4Z6" secondAttribute="bottom" id="596-Qz-2Hc"/>
                             <constraint firstAttribute="centerY" secondItem="gfg-U0-yeU" secondAttribute="centerY" id="HnA-Xn-KBn"/>
@@ -991,6 +991,7 @@ votre histoire</string>
                     <navigationItem key="navigationItem" id="YTp-lx-9Kh"/>
                     <connections>
                         <outlet property="centerYConstraint" destination="HnA-Xn-KBn" id="2A3-ca-Rks"/>
+                        <outlet property="popin" destination="gfg-U0-yeU" id="rOL-Ej-hrL"/>
                         <outlet property="tagField" destination="wvk-Lo-RD7" id="8A6-Ub-FbK"/>
                         <outlet property="titleField" destination="hJu-3d-eM9" id="Z9H-jq-eY6"/>
                         <outlet property="validateButton" destination="lix-LL-xyD" id="hak-cj-3Ba"/>
@@ -1021,7 +1022,7 @@ votre histoire</string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kpm-cT-b3Z" id="dm6-El-Hub">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="90" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picto-fire-a-blue" translatesAutoresizingMaskIntoConstraints="NO" id="0OW-Su-X1Y">
+                                                <imageView userInteractionEnabled="NO" tag="90" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picto-fire-b" translatesAutoresizingMaskIntoConstraints="NO" id="0OW-Su-X1Y">
                                                     <rect key="frame" x="102" y="23" width="84" height="84"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="84" id="k7L-zk-SpV"/>
@@ -1110,7 +1111,7 @@ votre histoire</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.043137254901960784" green="0.074509803921568626" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.81176470590000005" green="0.34901960780000002" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ovE-mb-dVR" firstAttribute="top" secondItem="niY-07-Une" secondAttribute="bottom" constant="42" id="3Ab-jT-ZAg"/>
                             <constraint firstAttribute="centerX" secondItem="niY-07-Une" secondAttribute="centerX" id="9OA-Xq-3JG"/>
@@ -1173,7 +1174,7 @@ votre histoire</string>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PhD-G7-akQ">
                                         <rect key="frame" x="54" y="146" width="132" height="44"/>
-                                        <color key="backgroundColor" red="0.93725490199999995" green="0.58039215690000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.81176470590000005" green="0.34901960780000002" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="132" id="5CG-hu-Dyv"/>
                                             <constraint firstAttribute="height" constant="44" id="7qQ-0T-eIf"/>
@@ -1254,7 +1255,7 @@ votre histoire</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.023529411760000001" green="0.031372549020000001" blue="0.1137254902" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="7qo-vI-yOs" firstAttribute="leading" secondItem="o6U-UF-0wN" secondAttribute="leadingMargin" constant="-16" id="Cmv-kL-PXN"/>
                             <constraint firstItem="J3B-rm-7KA" firstAttribute="top" secondItem="7qo-vI-yOs" secondAttribute="bottom" id="F7m-S8-o0N"/>
@@ -1426,7 +1427,7 @@ votre histoire</string>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.043137254899999998" green="0.074509803920000006" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.72156862749999995" green="0.30588235289999999" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="anM-SP-gmB" firstAttribute="top" secondItem="Xqb-iK-ozW" secondAttribute="bottom" constant="13" id="FIO-rj-j12"/>
                             <constraint firstAttribute="centerX" secondItem="anM-SP-gmB" secondAttribute="centerX" id="RWR-fi-Xyn"/>
@@ -1550,7 +1551,7 @@ votre histoire</string>
                                 <rect key="frame" x="274" y="113" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" red="0.043137254899999998" green="0.074509803920000006" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.72156862749999995" green="0.30588235289999999" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6wy-kI-k3O" firstAttribute="top" secondItem="ip8-Sh-QAy" secondAttribute="bottom" constant="159" id="82q-u2-I0d"/>
                             <constraint firstAttribute="centerX" secondItem="0VH-Xl-qAg" secondAttribute="centerX" id="FJf-uK-kk8"/>
@@ -1584,7 +1585,7 @@ votre histoire</string>
         <image name="help-btn" width="28" height="28"/>
         <image name="page-replay-btn" width="79" height="79"/>
         <image name="picker-check" width="38" height="38"/>
-        <image name="picto-fire-a-blue" width="84" height="84"/>
+        <image name="picto-fire-b" width="84" height="84"/>
         <image name="placeholder.gif" width="1000" height="1000"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

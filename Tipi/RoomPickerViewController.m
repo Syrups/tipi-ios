@@ -217,6 +217,11 @@
         cell = [[UIRoomTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
+    if ([selectedRooms containsObject:room]) {
+        UIImageView* picto = (UIImageView*)[cell.contentView viewWithTag:90];
+        picto.transform = CGAffineTransformIdentity;
+    }
+    
     cell.roomName.text = room.name;
     
     return cell;
@@ -244,7 +249,7 @@
     } else {
         [selectedRooms removeObject:room];
         UIImageView* picto = (UIImageView*)[cell.contentView viewWithTag:90];
-        picto.image = [UIImage imageNamed:@"picto-fire-a-blue"];
+        picto.image = [UIImage imageNamed:@"picto-fire-b"];
         [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionAutoreverse animations:^{
             picto.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
         } completion:^(BOOL finished) {
@@ -288,11 +293,11 @@
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    [self centerTable];
+//    [self centerTable];
 }
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
-    [self centerTable];
+//    [self centerTable];
 }
 
 - (void)centerTable {
