@@ -64,7 +64,7 @@ float w = 0;//starting x value.
 - (UIBezierPath *)pathAtInterval:(NSTimeInterval) interval
 {
     
-    CGFloat halfHeight = CGRectGetHeight(self.bounds) / 2.0f;
+    //CGFloat halfHeight = CGRectGetHeight(self.bounds) / 2.0f;
     CGFloat width = CGRectGetWidth(self.bounds);
     
     UIBezierPath *path = [UIBezierPath bezierPath];

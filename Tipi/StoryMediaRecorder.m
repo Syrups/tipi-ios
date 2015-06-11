@@ -35,14 +35,14 @@
     [manager moveItemAtPath:[self pathForAudioFileWithIndex:fromIndex] toPath:[self pathForAudioFileWithIndex:999] error:nil];
     
     if (atIndex > fromIndex) {
-        for (int i = fromIndex ; i < atIndex ; i++) {
+        for (NSUInteger i = fromIndex ; i < atIndex ; i++) {
             NSString* oldPath = [self pathForAudioFileWithIndex:i+1];
             NSString* newPath = [self pathForAudioFileWithIndex:i];
             [manager moveItemAtPath:oldPath toPath:newPath error:nil];
         }
         
     } else {
-        for (int i = atIndex ; i < fromIndex ; i++) {
+        for (NSUInteger i = atIndex ; i < fromIndex ; i++) {
             NSString* oldPath = [self pathForAudioFileWithIndex:i];
             NSString* newPath = [self pathForAudioFileWithIndex:i+1];
             [manager moveItemAtPath:oldPath toPath:newPath error:nil];

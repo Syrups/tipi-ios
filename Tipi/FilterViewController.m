@@ -29,7 +29,7 @@
     self.pager.dataSource = self;
     self.pager.delegate = self;
     
-    UIViewController *initialViewController = [self viewControllerAtIndex:currentTab];
+    UIViewController *initialViewController = [self viewControllerAtIndex:(int)currentTab];
     NSArray *initialViewControllers = [NSArray arrayWithObject:initialViewController];
     
     [self.pager setViewControllers:initialViewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];

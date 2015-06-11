@@ -20,7 +20,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [SHPathLibrary addBackgroundPathForstoriesToView:self.view];
 }
 
 - (IBAction)addUsersToRoom:(id)sender {

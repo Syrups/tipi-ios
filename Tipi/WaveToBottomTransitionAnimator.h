@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TPAnimator.h"
 
-@interface WaveToBottomTransitionAnimator : NSObject <UIViewControllerAnimatedTransitioning>
+@interface WaveToBottomTransitionAnimator : TPAnimator <UIViewControllerAnimatedTransitioning>
 @property (weak) id<UIViewControllerContextTransitioning> transitionContext;
+
 @end

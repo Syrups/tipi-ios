@@ -12,7 +12,7 @@
 
 @interface ReviewPageViewController : CardViewController
 
-@property NSUInteger pageIndex;
+//@property NSUInteger pageIndex;
 @property (strong, nonatomic) IBOutlet UIImageView* image;
 @property (strong, nonatomic) IBOutlet TPTiltingImageView* tiltingImageView;
 

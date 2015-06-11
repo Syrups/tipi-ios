@@ -306,7 +306,6 @@
     float midX = CGRectGetMidX(rect);
     
     float height = finalPath ? CGRectGetHeight(rect) : 0;
-    height -= 150;
     
     UIBezierPath* path = [[UIBezierPath alloc] init];
     [path moveToPoint:CGPointMake(0, 0)];

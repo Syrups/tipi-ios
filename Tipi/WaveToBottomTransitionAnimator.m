@@ -15,16 +15,16 @@
 @implementation WaveToBottomTransitionAnimator
 
 
+
 -(void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext{
     //1
     self.transitionContext = transitionContext;
     
     //2
     UIView* containerView = [transitionContext containerView];
-    UIViewController* fromViewController=  [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController* toViewController=  [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
-    BOOL segueBack = [fromViewController isKindOfClass:[FilterViewController class]] ;
+    BOOL segueBack = (self.operation == UINavigationControllerOperationPop);
     
     //3
     [containerView addSubview: toViewController.view];

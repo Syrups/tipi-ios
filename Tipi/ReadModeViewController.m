@@ -112,7 +112,7 @@ typedef void(^fadeOutCompletion)(BOOL);
     [self hideOverlay:nil];
     
     if (self.player.playing)
-        [self.player pause];
+        [self pauseSound];
     
     self.commentsViewController.view.frame = self.view.frame;
     [UIView animateWithDuration:.3f animations:^{
@@ -226,6 +226,7 @@ typedef void(^fadeOutCompletion)(BOOL);
     self.trueCurrentTime = self.player.currentTime;
     [self doVolumeFade:^(BOOL stop)  {
         // Stop and get the sound ready for playing again
+        [self.playerView pause];
         [self.player pause];
         [self.player prepareToPlay];
         self.player.volume = 1.0;
@@ -353,14 +354,19 @@ typedef void(^fadeOutCompletion)(BOOL);
 
 #pragma mark - TPSideCommentsView
 - (void)sideCommentsView:(TPSideCommentsView *)manager didSelectComment :(Comment*)comment{
-    [self.playerView pause];    
+    [self doVolumeFadeAndPause];
+    
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerItemDidReachEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:[songPlayer currentItem]];
 }
 
 - (void)sideCommentsView:(TPSideCommentsView *)manager didDeselectComment:(Comment*)comment{
     [self.playerView play];
-    
-    
+}
+
+- (void)sideCommentsView:(TPSideCommentsView *)manager comment:(Comment *)comment didFinishedPlaying:(BOOL)finished{
+    if (finished && self.player.currentTime < self.player.duration) {
+        [self playSound];
+    }
 }
 
 /*- (void)playAtIndex:(NSInteger)index

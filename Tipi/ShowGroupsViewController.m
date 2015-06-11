@@ -91,21 +91,13 @@
 #pragma mark - RoomFetcher
 
 - (void)roomManager:(RoomManager *)manager successfullyFetchedRooms:(NSArray *)rooms {
-    
-    BOOL first = self.mGroups.count == 0;
-    
     [loader removeFromSuperview];
     
+    BOOL first = (self.mGroups.count == 0);
     self.mGroups = rooms;
-    
+
     [self.mTableView reloadData];
-//    [self.mTableView setContentOffset:CGPointMake(0.0f, -self.mTableView .contentInset.bottom) animated:NO];
-    
-    if(rooms.count >= 2){
-        NSIndexPath *pathForCenterCell = [NSIndexPath indexPathForRow:1 inSection:0];
-//        [self.mTableView scrollToRowAtIndexPath:pathForCenterCell atScrollPosition:UITableViewScrollPositionTop animated:NO];
-    }
-    
+
     if(first){
         [self animate];
     }
@@ -155,12 +147,6 @@
     [CATransaction commit];
     
     for (UIRoomTableViewCell *cell in self.mTableView.visibleCells) {
-        CGPoint cellCenter = [scrollView convertPoint:cell.center toView:scrollView.superview];
-        
-//        int del = fabs(scrollView.superview.center.y -  cellCenter.y)/ 4.5;
-        
-//        cell.heightConstraint.constant = 120 - del;
-//        cell.widthConstraint.constant = 120 - del;
         
         [cell setNeedsLayout];
         [cell setNeedsUpdateConstraints];
