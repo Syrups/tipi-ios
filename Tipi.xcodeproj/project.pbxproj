@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		730ABC3F1B28B74D000EAC53 /* TPAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 730ABC3E1B28B74D000EAC53 /* TPAnimator.m */; };
 		730CFF1D1B0B7D78001045E4 /* CommentsQueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 730CFF1C1B0B7D78001045E4 /* CommentsQueueManager.m */; };
 		730CFF201B0B857A001045E4 /* TPSideCommentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 730CFF1F1B0B857A001045E4 /* TPSideCommentsView.m */; };
 		730CFF231B0BBC52001045E4 /* UICommentSideCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 730CFF221B0BBC52001045E4 /* UICommentSideCell.m */; };
@@ -176,6 +177,8 @@
 
 /* Begin PBXFileReference section */
 		668F960769FF3C13F992EB88 /* Pods-Tipi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tipi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tipi/Pods-Tipi.debug.xcconfig"; sourceTree = "<group>"; };
+		730ABC3D1B28B74D000EAC53 /* TPAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPAnimator.h; sourceTree = "<group>"; };
+		730ABC3E1B28B74D000EAC53 /* TPAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPAnimator.m; sourceTree = "<group>"; };
 		730CFF1B1B0B7D78001045E4 /* CommentsQueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsQueueManager.h; sourceTree = "<group>"; };
 		730CFF1C1B0B7D78001045E4 /* CommentsQueueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsQueueManager.m; sourceTree = "<group>"; };
 		730CFF1E1B0B857A001045E4 /* TPSideCommentsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPSideCommentsView.h; sourceTree = "<group>"; };
@@ -472,6 +475,8 @@
 				735FE0C31AFAA73500AEF9D1 /* WaveToBottomTransitionAnimator.m */,
 				7345C23B1B1DDA010099EA58 /* ReadStoryTransitionAnimator.h */,
 				7345C23C1B1DDA010099EA58 /* ReadStoryTransitionAnimator.m */,
+				730ABC3D1B28B74D000EAC53 /* TPAnimator.h */,
+				730ABC3E1B28B74D000EAC53 /* TPAnimator.m */,
 			);
 			name = Animators;
 			sourceTree = "<group>";
@@ -1344,6 +1349,7 @@
 				B3297F661B0E2C0B00249DA0 /* WebViewController.m in Sources */,
 				73B20BF01AA609DB00A9C88F /* ShowGroupsViewController.m in Sources */,
 				730CFF1D1B0B7D78001045E4 /* CommentsQueueManager.m in Sources */,
+				730ABC3F1B28B74D000EAC53 /* TPAnimator.m in Sources */,
 				B3BCD0091AA5F3D300261212 /* RoomPickerViewController.m in Sources */,
 				B3065A451AB99BB700C10AD9 /* User.m in Sources */,
 				B35AD03C1ABF2D2500527C0D /* ReviewPageViewController.m in Sources */,

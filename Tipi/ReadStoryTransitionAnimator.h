@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TPAnimator.h"
 
-@interface ReadStoryTransitionAnimator : NSObject <UIViewControllerAnimatedTransitioning>
+@interface ReadStoryTransitionAnimator : TPAnimator <UIViewControllerAnimatedTransitioning>
 
 @property (weak) id<UIViewControllerContextTransitioning> transitionContext;
 

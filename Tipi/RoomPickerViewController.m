@@ -47,7 +47,7 @@
     for (NSDictionary* media in self.saver.medias) {
         UIImage* img = [media objectForKey:@"full"];
         NSData* data = UIImageJPEGRepresentation(img, 0);
-        NSLog(@"Size of image : %d", data.length);
+        NSLog(@"Size of image : %lu", (unsigned long)data.length);
     }
 }
 
@@ -105,7 +105,7 @@
         uploadedMediasCount++;
     }
     
-    NSLog(@"%d files downloaded (%d total)", uploadedAudiosCount+uploadedMediasCount, self.saver.medias.count*2);
+    NSLog(@"%lu files downloaded (%lu total)", uploadedAudiosCount+uploadedMediasCount, self.saver.medias.count*2);
 
     // all good
     if (uploadedMediasCount == self.saver.medias.count && uploadedAudiosCount == self.saver.medias.count) {

@@ -8,9 +8,10 @@
 
 @import UIKit;
 #import <Foundation/Foundation.h>
+#import "TPAnimator.h"
 
 
-@interface WaveSwipeTransitionAnimator : NSObject <UIViewControllerAnimatedTransitioning>
+@interface WaveSwipeTransitionAnimator : TPAnimator <UIViewControllerAnimatedTransitioning>
 
 @property (weak) id<UIViewControllerContextTransitioning> transitionContext;
 

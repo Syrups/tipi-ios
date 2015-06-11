@@ -121,7 +121,7 @@
 }
 
 - (void)moveViewController:(UIViewController *)viewController fromIndex:(NSUInteger)oldIndex atIndex:(NSUInteger)newIndex {
-    NSLog(@"%d", self.viewControllers.count);
+    NSLog(@"%lu", (unsigned long)self.viewControllers.count);
     NSMutableArray* viewControllers = [self.viewControllers mutableCopy];
     
     [viewControllers removeObjectAtIndex:oldIndex];
