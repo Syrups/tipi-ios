@@ -211,37 +211,12 @@ typedef void(^fadeOutCompletion)(BOOL);
 #pragma mark - Sound Playing/Processing
 
 -(void)doVolumeFadeAndStop{
-    [self doVolumeFade:^(BOOL stop) {
-        // Stop and get the sound ready for playing again
-        [self.player stop];
-        self.player.currentTime = 0;
-        self.trueCurrentTime = 0;
-        
-        [self.player prepareToPlay];
-        self.player.volume = 1.0;
-    }];
+    [self.player fadeOutAndStop];
 }
 
 -(void)doVolumeFadeAndPause{
-    self.trueCurrentTime = self.player.currentTime;
-    [self doVolumeFade:^(BOOL stop)  {
-        // Stop and get the sound ready for playing again
-        [self.playerView pause];
-        [self.player pause];
-        [self.player prepareToPlay];
-        self.player.volume = 1.0;
-    }];
+    [self.playerView pauseWithFade:YES];
 }
-
--(void)doVolumeFade: (fadeOutCompletion) completion{
-    if (self.player.volume > 0.1) {
-        self.player.volume = self.player.volume - 0.1;
-        [self performSelector:@selector(doVolumeFade:) withObject:completion afterDelay:0.1];
-    } else {
-        completion(YES);
-    }
-}
-
 
 #pragma mark - Sound Tracking
 
@@ -300,7 +275,7 @@ typedef void(^fadeOutCompletion)(BOOL);
          NSLog(@"begin touch");
         
         [self.overlayTimer invalidate];
-        [self.playerView pause];
+        [self.playerView pauseWithFade:YES];
         self.commentTime = self.player.currentTime;
         
         self.playerView.microphone = self.commentRecorder.microphone;
@@ -334,7 +309,7 @@ typedef void(^fadeOutCompletion)(BOOL);
 #pragma mark - TPCircleWaverControl
 - (void)circleWaverControl:(TPCircleWaverControl *)control didReceveivedTapGestureRecognizer:(UITapGestureRecognizer *)recognizer{
     if(control.audioPlayer.isPlaying){
-        [control pause];
+        [control pauseWithFade:YES];
     }else{
         [control play];
     }

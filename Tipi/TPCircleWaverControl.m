@@ -94,10 +94,10 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 }
 
 /*
-- (void)setRecorder:(EZRecorder *)recorder{
-    _recorder = recorder;
-    _mode = TPCircleModeRecord;
-}*/
+ - (void)setRecorder:(EZRecorder *)recorder{
+ _recorder = recorder;
+ _mode = TPCircleModeRecord;
+ }*/
 
 - (void)setAudioPlayer:(AVAudioPlayer *)audioPlayer{
     _audioPlayer = audioPlayer;
@@ -107,24 +107,25 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 
 - (void)setSimplePlayer:(AVPlayer *)simplePlayer{
     
-    if (_simplePlayer != nil)
+    if (_simplePlayer != nil){
         [_simplePlayer removeObserver:self forKeyPath:@"status"];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:[_simplePlayer currentItem]];
+    }
     
     _simplePlayer = simplePlayer;
     _duration = simplePlayer.currentItem.duration.value;
     [_simplePlayer addObserver:self forKeyPath:@"status" options:0 context:nil];
     
     
-    /*[[NSNotificationCenter defaultCenter] addObserver:self
-     selector:@selector(simplerPlayerItemDidReachEnd:)
-     name:AVPlayerItemDidPlayToEndTimeNotification
-     object:[_simplePlayer currentItem]];*/
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(simplerPlayerItemDidReachEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:[_simplePlayer currentItem]];
     
     [self startUpdate];
 }
 
 - (void)simplerPlayerItemDidReachEnd:(NSNotification *)notification {
-    
+    if(self.delegate && [self.delegate respondsToSelector:@selector(circleWaverControl:didEndPlayingItem:)]){
+        [self.delegate circleWaverControl:self didEndPlayingItem:self.simplePlayer.currentItem];
+    }
 }
 
 - (void)baseInitWithbaseView:(UIView *)baseView {
@@ -317,13 +318,13 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 /** Tracking is started **/
 -(BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
     [super beginTrackingWithTouch:touch withEvent:event];
-   
-
+    
+    
     if(self.mode == TPCircleModeListen){
-        [self pause];
+        [self pauseWithFade:NO];
         [self movehandle:[touch locationInView:self]];
     }
-
+    
     //We need to track continuously
     return YES;
 }
@@ -331,7 +332,7 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 /** Track continuos touch event (like drag) **/
 -(BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
     [super continueTrackingWithTouch:touch withEvent:event];
-
+    
     if(self.mode == TPCircleModeListen)[self movehandle:[touch locationInView:self]];
     
     //Control value has changed, let's notify that
@@ -539,16 +540,21 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 }
 
 
-- (void)pause {
+- (void)pauseWithFade:(BOOL)fade{
     //[self.updateTimer invalidate];
-    self.nowPlaying = NO;
     self.nowRecording = NO;
     
     [UIView animateWithDuration:.2f animations:^{
         self.wave.alpha = 0;
     }];
     
-    if(self.audioPlayer)[self.audioPlayer pause];
+    if(self.audioPlayer){
+        if (fade) {
+            [self.audioPlayer fadeOutPause];
+        } else {
+            [self.audioPlayer pause];
+        }
+    }
     if(self.simplePlayer)[self.simplePlayer pause];
     
 }
@@ -556,7 +562,6 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 - (void)reset {
     [self.updateTimer invalidate];
     self.nowRecording = NO;
-    self.nowPlaying = NO;
     self.currentTimePercent = 0;
     self.radiusFactor = 1;
     

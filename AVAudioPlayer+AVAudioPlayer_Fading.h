@@ -7,11 +7,19 @@
 //
 
 #import <AVFoundation/AVFoundation.h>
+#import <objc/runtime.h>
 
 @interface AVAudioPlayer (AVAudioPlayer_Fading)
 
--(void)fadeOutAndPause;
+@property (nonatomic, strong) id trueCurrentTime;
+
 -(void)fadeInWithCompletion:(void(^)(BOOL finished))completion;
 -(void)fadeOutWithCompletion:(void(^)(BOOL finished))completion;
+
+
+- (void)fadeOutPlay;
+- (void)fadeOutPause;
+- (void)fadeOutAndStop;
+
 
 @end
