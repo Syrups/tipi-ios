@@ -128,6 +128,13 @@
     
     if(selected){
 
+        if (self.commentsPlayer != nil && [self.commentsPlayer currentItem] != nil){
+            //[[self.commentsPlayer currentItem] removeObserver:self forKeyPath:@"timedMetadata"];
+            [[self.commentsPlayer currentItem] removeObserver:self forKeyPath:@"status"];
+            [[self.commentsPlayer currentItem] removeObserver:self forKeyPath:@"playbackBufferEmpty"];
+        }
+    
+        
         NSURL *comURL = [[NSURL alloc]initWithString:comment.file];
         AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithURL:comURL];
         [playerItem addObserver:self forKeyPath:@"status" options:0 context:nil];
@@ -153,6 +160,7 @@
 -(void)itemDidFinishPlaying:(NSNotification *) notification {
     // Will be called when AVPlayer finishes playing playerItem
     [self.commentsPlayer pause];
+    [self.delegate sideCommentsView:self comment:nil didFinishedPlaying:YES];
     
 }
 

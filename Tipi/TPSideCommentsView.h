@@ -33,6 +33,10 @@
 @required
 - (void)sideCommentsView:(TPSideCommentsView *)manager didDeselectComment:(Comment*)comment;
 
+
+@required
+- (void)sideCommentsView:(TPSideCommentsView *)manager comment:(Comment*)comment didFinishedPlaying:(BOOL)finished;
+
 @end
 
 
