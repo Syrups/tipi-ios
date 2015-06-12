@@ -30,6 +30,7 @@
 @property (strong, nonatomic) IBOutlet UIView* organizerContainerView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* organizerContainerYConstraint;
 @property (strong, nonatomic) IBOutlet UIView* overlay;
+@property (strong, nonatomic) IBOutlet UIButton* finishButton;
 
 @property BOOL lastPage;
 

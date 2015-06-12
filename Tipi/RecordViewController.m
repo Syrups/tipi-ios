@@ -101,6 +101,10 @@
     [self.recorder playAudio];
 }
 
+- (IBAction)finish:(id)sender {
+    [self openDonePopin];
+}
+
 #pragma mark - StoryMediaRecorder
 
 - (void)mediaRecorder:(StoryMediaRecorder *)recorder hasAudioReceived:(float **)buffer withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels {
@@ -162,6 +166,7 @@
         // Open done popin if everything has been recorded
         if ([self.recorder isComplete]) {
             [self openDonePopin];
+            self.finishButton.hidden = NO;
         }
         
         // hint

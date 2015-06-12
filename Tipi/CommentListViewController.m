@@ -23,11 +23,19 @@
 }
 
 - (IBAction)dismiss:(id)sender {
+    
+    if (self.player != nil) {
+        [self.player stop];
+    }
+    
     [UIView animateWithDuration:.3f animations:^{
         self.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
         self.commentsTableView.alpha = 0;
         self.view.alpha = 0;
     }];
+    
+    [self.commentsTableView reloadData];
+    currentIndexPath = nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
