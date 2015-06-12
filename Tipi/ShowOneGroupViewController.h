@@ -15,7 +15,7 @@
 
 #import <AVFoundation/AVFoundation.h>
 
-@interface ShowOneGroupViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate,StoryFetcherDelegate, ReadModeContainerDelegate, TPAlertDelegate>
+@interface ShowOneGroupViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate,StoryFetcherDelegate, ReadModeContainerDelegate, TPAlertDelegate, TPCircleTouchDelegate>
 
 //@property (nonatomic) NSUInteger roomId;
 @property (strong, nonatomic) Room* room;

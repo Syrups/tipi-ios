@@ -122,7 +122,7 @@
         self.helpLabel.alpha = 0;
         
         
-        NSLog(@"begin touch index: %d", self.currentIndex);
+        NSLog(@"begin touch index: %lu", (unsigned long)self.currentIndex);
         [self.recorder startRecording];
         
 //        [CoachmarkManager dismissCoachmarkAnimationForRecordController:self];
@@ -225,7 +225,7 @@
     }
     
     viewController.overlay.alpha = 0;
-    [self.recorder.player fadeOutAndPause];
+    [self.recorder.player fadeOutPause];
     [self.recorder setupForMediaWithIndex:self.currentIndex];
     
     OrganizeStoryViewController* organizer = (OrganizeStoryViewController*)[self.childViewControllers objectAtIndex:0];

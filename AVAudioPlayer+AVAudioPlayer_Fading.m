@@ -8,6 +8,8 @@
 
 #import "AVAudioPlayer+AVAudioPlayer_Fading.h"
 
+typedef void(^fadeCompletion)(BOOL);
+
 @implementation AVAudioPlayer (AVAudioPlayer_Fading)
 
 -(void)fadeOutWithCompletion:(void(^)(BOOL finished))completion {
@@ -28,10 +30,46 @@
     }
 }
 
-- (void)fadeOutAndPause {
+- (void)fadeOutPause{
+    NSTimeInterval trueTime = self.currentTime;
+    
     [self fadeOutWithCompletion:^(BOOL finished) {
         [self pause];
+        [self prepareToPlay];
+        self.volume = 1.0;
+        self.currentTime = trueTime;
     }];
+}
+
+- (void)fadeOutPlay {
+    [self prepareToPlay];
+    [self fadeInWithCompletion:^(BOOL finished) {
+        self.volume = 1.0;
+        [self play];
+    }];
+}
+
+-(void)fadeOutAndStop{
+    [self fadeOutWithCompletion:^(BOOL stop) {
+        // Stop and get the sound ready for playing again
+        [self stop];
+        self.currentTime = 0;
+        
+        [self prepareToPlay];
+        self.volume = 1.0;
+    }];
+}
+
+
+
+- (void)setTrueCurrentTime:(id)trueCurrentTime{
+    objc_setAssociatedObject(self, @selector(trueCurrentTime), trueCurrentTime, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+
+
+- (id)trueCurrentTime {
+    return objc_getAssociatedObject(self, @selector(trueCurrentTime));
 }
 
 

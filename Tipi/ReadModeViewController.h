@@ -22,6 +22,7 @@
 #import "CommentListViewController.h"
 #import "TPAlert.h"
 #import "TPTiltingImageView.h"
+#import "AVAudioPlayer+AVAudioPlayer_Fading.h"
 
 @interface ReadModeViewController : CardViewController<TPSideCommentsDelegate, TPCircleTouchDelegate, CommentCreatorDelegate, CommentAudioRecorderDelegate, TPAlertDelegate, CommentListViewControllerDelegate, AVAudioPlayerDelegate>
 
@@ -57,7 +58,6 @@
 
 @property (strong,nonatomic) NSURL* fileURL;
 @property (strong,nonatomic) NSTimer *overlayTimer;
-@property (nonatomic) NSTimeInterval trueCurrentTime;
 @property (nonatomic) NSTimeInterval commentTime;
 
 

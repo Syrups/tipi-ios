@@ -347,7 +347,7 @@
 -(void)storyManager:(StoryManager *)manager failedToFetchStories:(NSError *)error{
     //error
     
-//    alert = [TPAlert displayOnController:self withMessage:@"Impossible de récupérer les histoires" delegate:self];
+    //    alert = [TPAlert displayOnController:self withMessage:@"Impossible de récupérer les histoires" delegate:self];
     [loader removeFromSuperview];
     
     self.errorLabel.hidden = NO;
@@ -428,21 +428,17 @@
     TPStoryTableViewCell *cell = (TPStoryTableViewCell*)[self.mTableView cellForRowAtIndexPath:indexPath];
     cell.recordButton.simplePlayer = self.previewAudioPlayer;
     cell.recordButton.autoStart = YES;
-   
+    
     cell.recordButton.alpha = 1;
     [cell.recordButton appear];
     
-    
-    // Subscribe to the AVPlayerItem's DidPlayToEndTime notification.
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemDidFinishPlaying:) name:AVPlayerItemDidPlayToEndTimeNotification object:aPlayerItem];
     
     [self loadPreviewMediaAtURL:mediaUrl withCompletionBlock:^(UIImage *image) {
         [self startPreviewWithImage:image];
     }];
 }
 
--(void)itemDidFinishPlaying:(NSNotification *) notification {
-    // Will be called when AVPlayer finishes playing playerItem
+- (void)circleWaverControl:(TPCircleWaverControl *)control didEndPlayingItem:(AVPlayerItem *)item{
     [self stopPreview];
 }
 

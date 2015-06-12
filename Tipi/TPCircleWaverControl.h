@@ -13,6 +13,7 @@ IB_DESIGNABLE
 #import "SCSiriWaveformView.h"
 #import <EZAudio/EZRecorder.h>
 #import <EZAudio/EZMicrophone.h>
+#import "AVAudioPlayer+AVAudioPlayer_Fading.h"
 
 typedef enum TPCircleMode{
     TPCircleModeListen = 0,
@@ -54,14 +55,13 @@ typedef enum TPCircleMode{
 @property (nonatomic) BOOL showWave;
 @property BOOL autoStart;
 
-@property BOOL nowPlaying;
 @property BOOL nowRecording;
 
 
 @property (strong, nonatomic)  CADisplayLink* waveDisplayLink;
 
 - (void)play;
-- (void)pause;
+- (void)pauseWithFade:(BOOL)fade;
 
 - (void)close;
 - (void)appear;
@@ -80,5 +80,7 @@ typedef enum TPCircleMode{
 - (void)circleWaverControl:(TPCircleWaverControl *)control didStartRecordingWithMicrophone: (EZMicrophone*) microphone;
 
 - (void)circleWaverControl:(TPCircleWaverControl *)control didEndRecordingWithMicrophone: (EZMicrophone*) microphone;
+
+- (void)circleWaverControl:(TPCircleWaverControl *)control didEndPlayingItem: (AVPlayerItem*) item;
 @end
 
