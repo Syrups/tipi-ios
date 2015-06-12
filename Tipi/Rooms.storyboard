@@ -1399,8 +1399,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="145" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bEw-i3-ORc">
-                                <rect key="frame" x="0.0" y="122" width="320" height="446"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="145" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bEw-i3-ORc">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1474,7 +1474,11 @@
                         <color key="backgroundColor" white="0.0" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fqM-Jr-4he" firstAttribute="leading" secondItem="2qd-qv-jy1" secondAttribute="leadingMargin" constant="-7" id="J1B-K5-8ia"/>
+                            <constraint firstItem="bEw-i3-ORc" firstAttribute="leading" secondItem="2qd-qv-jy1" secondAttribute="leadingMargin" constant="-16" id="YRj-xa-4eU"/>
                             <constraint firstItem="fqM-Jr-4he" firstAttribute="top" secondItem="biF-oI-NAh" secondAttribute="bottom" constant="-9" id="a3i-8S-JxK"/>
+                            <constraint firstItem="bEw-i3-ORc" firstAttribute="top" secondItem="biF-oI-NAh" secondAttribute="bottom" constant="-20" id="crR-P6-vk6"/>
+                            <constraint firstItem="iHg-TA-5pe" firstAttribute="top" secondItem="bEw-i3-ORc" secondAttribute="bottom" id="dOu-hw-crz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bEw-i3-ORc" secondAttribute="trailing" constant="-16" id="eqv-DM-AWc"/>
                         </constraints>
                     </view>
                     <connections>

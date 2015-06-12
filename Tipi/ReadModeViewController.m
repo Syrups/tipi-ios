@@ -296,6 +296,7 @@ typedef void(^fadeOutCompletion)(BOOL);
         [self.overlayTimer invalidate];
         [self.playerView pauseWithFade:NO];
         [self.moviePlayer pause];
+        [self.playerView pauseWithFade:YES];
         self.commentTime = self.player.currentTime;
         
         self.playerView.microphone = self.commentRecorder.microphone;

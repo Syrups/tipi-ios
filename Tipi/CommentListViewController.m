@@ -19,6 +19,7 @@
     [super viewDidLoad];
     
     self.commentsTableView.alpha = 0;
+    self.commentsTableView.contentInset = UIEdgeInsetsMake(80, 0, 0, 0);
 }
 
 - (IBAction)dismiss:(id)sender {

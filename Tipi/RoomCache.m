@@ -8,6 +8,7 @@
 
 #import "RoomCache.h"
 #import "Room.h"
+#import "Story.h"
 
 @implementation RoomCache
 
@@ -35,12 +36,17 @@
 
 + (void)cacheLastStories:(NSArray *)stories forRoomId:(Room *)roomId {
     NSMutableDictionary* cache = [NSMutableDictionary dictionaryWithContentsOfFile:[self cacheFilePathForStories]];
+    NSMutableArray* encodedStories = [NSMutableArray array];
     
     if (!cache) {
         cache = [NSMutableDictionary dictionary];
     }
     
-    [cache setObject:stories forKey:roomId];
+    for (Story* story in stories) {
+        [encodedStories addObject:[story toDictionary]];
+    }
+    
+    [cache setObject:encodedStories forKey:roomId];
     
     [cache writeToFile:[self cacheFilePathForStories] atomically:YES];
 }
@@ -51,7 +57,13 @@
     if (!cache) {
         failure();
     } else {
-        NSArray* stories = (NSArray*)[cache objectForKey:roomId];
+        NSArray* encodedStories = (NSArray*)[cache objectForKey:roomId];
+        NSMutableArray* stories = [NSMutableArray array];
+        
+        for (NSDictionary* story in encodedStories) {
+            [stories addObject:[[Story alloc] initWithDictionary:story error:nil]];
+        }
+        
         
         if (!stories) {
             failure();
