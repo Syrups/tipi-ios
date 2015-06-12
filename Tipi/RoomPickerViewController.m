@@ -277,36 +277,6 @@
 
 #pragma mark - UIScrollView
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    
-    // Keep gradient fixed in view
-    [CATransaction begin];
-    [CATransaction setDisableActions:YES];
-    maskLayer.position = CGPointMake(0, scrollView.contentOffset.y);
-    [CATransaction commit];
-    
-    for (UIRoomTableViewCell *cell in self.roomsTableView.visibleCells) {
-        CGPoint cellCenter = [scrollView convertPoint:cell.center toView:scrollView.superview];
-        
-        int del = fabs(scrollView.superview.center.y -  cellCenter.y)/ 4.5;
-        
-//        cell.heightConstraint.constant = 120 - del;
-//        cell.widthConstraint.constant = 120 - del;
-        
-        [cell setNeedsLayout];
-        [cell setNeedsUpdateConstraints];
-        
-        CGRect cellRect = [scrollView convertRect:cell.frame toView:scrollView.superview];
-        CGRect hitRect = CGRectMake(0, self.roomsTableView.superview.center.y- 25, self.roomsTableView.superview.frame.size.width, 50);
-        
-        if(CGRectIntersectsRect(cellRect, hitRect)){
-            [self.roomsTableView selectRowAtIndexPath: [self.roomsTableView indexPathForCell:cell]
-                                         animated: NO
-                                   scrollPosition: UITableViewScrollPositionNone];
-        }
-    }
-}
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
 //    [self centerTable];

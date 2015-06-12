@@ -8,8 +8,12 @@
 
 #import "CommentListViewController.h"
 #import "AnimationLibrary.h"
+#import "FileDownLoader.h"
+#import "TPCircleWaverControl.h"
 
-@implementation CommentListViewController
+@implementation CommentListViewController {
+    NSIndexPath* currentIndexPath;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,11 +30,39 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (currentIndexPath != nil) {
+        return;
+    }
+    
     Comment* comment = [self.comments objectAtIndex:indexPath.row];
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     
     if ([self.delegate respondsToSelector:@selector(commentListViewController:didSelectComment:)]) {
         [self.delegate commentListViewController:self didSelectComment:comment];
     }
+    
+    [FileDownLoader downloadFileWithURL:comment.file completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+        
+        currentIndexPath = indexPath;
+        
+        NSError* err = nil;
+        self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:filePath error:&err];
+        self.player.delegate = self;
+        
+        if (err) { NSLog(@"%@", err); }
+        
+        TPCircleWaverControl* control = (TPCircleWaverControl*)[cell.contentView viewWithTag:30];
+        [control appear];
+        control.alpha = 1;
+        
+        control.audioPlayer = self.player;
+        control.autoStart = YES;
+        
+        
+        [self.player play];
+    }];
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -52,6 +84,15 @@
     time.text = [NSString stringWithFormat:@"%d secondes", comment.duration];
     
     return cell;
+}
+
+#pragma mark - AVAudioPlayer
+
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    UITableViewCell* cell = [self.commentsTableView cellForRowAtIndexPath:currentIndexPath];
+    TPCircleWaverControl* control = (TPCircleWaverControl*)[cell.contentView viewWithTag:30];
+    [control close];
+    currentIndexPath = nil;
 }
 
 - (void)appear {

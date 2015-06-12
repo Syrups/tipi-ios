@@ -16,5 +16,6 @@
 @property (strong, nonatomic) Room* room;
 @property (strong, nonatomic) IBOutlet UIButton* filterUserButton;
 @property (strong, nonatomic) IBOutlet UIButton* filterTagButton;
+@property (weak, nonatomic) ShowOneGroupViewController* parent;
 
 @end

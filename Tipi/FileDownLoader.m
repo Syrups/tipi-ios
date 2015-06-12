@@ -60,6 +60,11 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString* newFilePath = [documentsDirectory stringByAppendingPathComponent:newFile];
     NSError* err = nil;
+    
+    if (!filePath) {
+        return;
+    }
+    
     [[NSFileManager defaultManager] copyItemAtURL:filePath toURL:[NSURL fileURLWithPath:newFilePath] error:&err];
     
     if (err) { NSLog(@"%@", err); }

@@ -12,7 +12,7 @@
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@import AVFoundation;
+#import <AVFoundation/AVFoundation.h>
 
 typedef void(^fadeOutCompletion)(BOOL);
 
@@ -46,7 +46,7 @@ typedef void(^fadeOutCompletion)(BOOL);
         AVPlayerItem* item = [AVPlayerItem playerItemWithAsset:asset];
         self.moviePlayer = [AVPlayer playerWithPlayerItem:item];
         self.moviePlayerLayer = [AVPlayerLayer playerLayerWithPlayer:self.moviePlayer];
-        self.moviePlayer.volume = 0;
+        self.moviePlayer.volume = .4f;
         self.moviePlayerLayer.frame = self.view.frame;
         self.moviePlayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
         
@@ -120,6 +120,8 @@ typedef void(^fadeOutCompletion)(BOOL);
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
     if ([player isEqual:self.player] && [self.delegate respondsToSelector:@selector(readModeViewController:didFinishReadingPage:)]) {
+        [self.moviePlayer pause];
+        
         [self.delegate readModeViewController:self didFinishReadingPage:self.page];
     }
 }

@@ -96,13 +96,13 @@
         [UIView animateKeyframesWithDuration:.3f delay:0 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
             
             [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.4f animations:^{
-                delete.alpha = 1;
-                delete.enabled = YES;
-                cell.transform = CGAffineTransformMakeTranslation(0, -120);
+//                delete.alpha = 1;
+//                delete.enabled = YES;
+                cell.transform = CGAffineTransformMakeTranslation(0, -90);
             }];
             
             [UIView addKeyframeWithRelativeStartTime:.4f relativeDuration:.6f animations:^{
-                cell.transform = CGAffineTransformMakeTranslation(0, -80);
+                cell.transform = CGAffineTransformMakeTranslation(0, -70);
             }];
             
         } completion:nil];
@@ -182,7 +182,7 @@
     
     UIPanGestureRecognizer* pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(toggleRemoveState:)];
     pan.delegate = self;
-//    [cell.contentView addGestureRecognizer:pan];
+    [cell.contentView addGestureRecognizer:pan];
     
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:cell.contentView.bounds];
     cell.contentView.layer.masksToBounds = NO;
@@ -203,7 +203,7 @@
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(50, (collectionView.frame.size.width-CELL_SIZE)/2, 0, 20);
+    return UIEdgeInsetsMake(self.collectionView.frame.size.height - CELL_SIZE - 10, (collectionView.frame.size.width-CELL_SIZE)/2, 0, 20);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -238,6 +238,7 @@
     [UIView animateWithDuration:.2f animations:^{
 //        [[(RecordViewController*)self.parentViewController currentPage].overlay setAlpha:0];
 //        self.view.alpha = .5f;
+        self.deleteButton.alpha = 0;
     }];
 }
 
@@ -245,6 +246,7 @@
     [UIView animateWithDuration:.2f animations:^{
 //        [[(RecordViewController*)self.parentViewController currentPage].overlay setAlpha:.7f];
 //        self.view.alpha = 1;
+        self.deleteButton.alpha = 1;
     }];
 }
 

@@ -21,5 +21,6 @@
 @property (strong, nonatomic) StoryWIPSaver* saver;
 @property (strong, nonatomic) StoryMediaRecorder* recorder;
 @property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
+@property (strong, nonatomic) IBOutlet UIButton* deleteButton;
 
 @end

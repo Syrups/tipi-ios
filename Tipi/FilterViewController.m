@@ -51,7 +51,6 @@
 
 - (IBAction)dismiss:(id)sender {
     ShowOneGroupViewController* parent = (ShowOneGroupViewController*)self.parentViewController;
-    [parent applyFilters]; // apply filters that were eventually set with two child VCs
     
     //[self.view removeFromSuperview];
     //[self removeFromParentViewController];
@@ -94,6 +93,8 @@
     if ([newController respondsToSelector:@selector(setRoom:)]) {
         [newController setValue:self.room forKey:@"room"];
     }
+    
+    [newController setValue:self.parent forKey:@"parent"];
     
     return newController;
 }

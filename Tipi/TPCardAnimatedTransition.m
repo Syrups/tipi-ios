@@ -61,7 +61,7 @@ static CGFloat const kChildViewPadding = 16;
             toViewController.view.transform = CGAffineTransformIdentity;
             toViewController.view.alpha = 1;
             toViewControllerNext.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(.85f, .85f), CGAffineTransformMakeTranslation(toViewControllerNext.view.frame.size.width * .1, 0));
-            toViewControllerNext.view.alpha = 0;
+            toViewControllerNext.view.alpha = 0.5f;
             
         } else {
             toViewController.view.transform = CGAffineTransformMakeTranslation(0, 0);

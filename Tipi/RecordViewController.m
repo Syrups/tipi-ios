@@ -17,7 +17,9 @@
 #import "ImageUtils.h"
 #import "PKAIDecoder.h"
 
-@implementation RecordViewController
+@implementation RecordViewController {
+    UIView* fakeNextView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -164,15 +166,20 @@
         
         // hint
         
-//        [UIView animateWithDuration:.3f animations:^{
-//            current.overlay.alpha = 0;
-////            self.organizerContainerYConstraint.constant = 0;
-//            
+        [UIView animateWithDuration:.3f animations:^{
+            current.overlay.alpha = 0;
+//            self.organizerContainerYConstraint.constant = 0;
+            
 //            if (current.pageIndex != self.saver.medias.count-1)
-//                current.view.transform = CGAffineTransformMakeTranslation(-25, 0);
+//                current.view.transform = CGAffineTransformMakeTranslation(-35, 0);
 //            
-//            self.organizerContainerView.alpha = 1;
-//        }];
+//            fakeNextView = [[self viewControllerAtIndex:self.currentIndex+1] view];
+//            fakeNextView.transform = CGAffineTransformMakeScale(.9f, .9f);
+//            [self.swipablePager.privateContainerView addSubview:fakeNextView];
+//            [self.swipablePager.privateContainerView sendSubviewToBack:fakeNextView];
+            
+            self.organizerContainerView.alpha = 1;
+        }];
         
         if ([self currentPage].moviePlayer != nil) {
             [[self currentPage].moviePlayer pause];
@@ -186,7 +193,7 @@
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    if (CGRectContainsPoint(self.organizerContainerView.bounds, [touch locationInView:self.organizerContainerView]))
+    if (CGRectContainsPoint(CGRectMake(0, self.view.frame.size.height - CELL_SIZE - 30, self.view.frame.size.width, CELL_SIZE + 30), [touch locationInView:self.view]))
         return NO;
     
     return YES;
@@ -194,7 +201,9 @@
 
 #pragma mark - Navigation and view controller
 
+
 - (void)swipableViewController:(TPSwipableViewController *)containerViewController didFinishedTransitionToViewController:(RecordPageViewController *)viewController {
+    
 
     RecordPageViewController* old = [self viewControllerAtIndex:self.currentIndex];
     [old.tiltingView disable];
@@ -296,21 +305,12 @@
         if ([media objectForKey:@"full"] == nil) {
             ALAsset* a = (ALAsset*)[media objectForKey:@"asset"];
             
-            if (index == 0) {
-                UIImage* full = [UIImage imageWithCGImage:[[a defaultRepresentation] fullScreenImage]];
-                full = [ImageUtils compressImage:full withQuality:.5f];
-                [media setObject:full forKey:@"full"];
-                page.image = full;
-            }
+            UIImage* full = [UIImage imageWithCGImage:[[a defaultRepresentation] fullScreenImage]];
+            full = [ImageUtils compressImage:full withQuality:.5f];
+            [media setObject:full forKey:@"full"];
+            page.image = full;
             
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                UIImage* full = [UIImage imageWithCGImage:[[a defaultRepresentation] fullScreenImage]];
-                full = [ImageUtils compressImage:full withQuality:.5f];
-                [media setObject:full forKey:@"full"];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    page.image = full;
-                });
-            });
+            
         } else {
             page.image = (UIImage*)[media objectForKey:@"full"];
         }
@@ -323,15 +323,20 @@
 
 - (void)moveViewControllerfromIndex:(NSUInteger)oldIndex atIndex:(NSUInteger)newIndex {
     
+//    NSLog(@"%d ----> %d", oldIndex, newIndex);
+    
     if (self.currentIndex == oldIndex) {
         self.currentIndex = newIndex;
     } else {
-        if (oldIndex < newIndex) {
-            self.currentIndex--;
-        } else {
+        if (oldIndex > self.currentIndex && newIndex <= self.currentIndex) {
             self.currentIndex++;
         }
+        if (oldIndex < self.currentIndex && newIndex >= self.currentIndex) {
+            self.currentIndex--;
+        }
     }
+    
+//    NSLog(@"New current index: %d", self.currentIndex);
     
     [self.swipablePager moveViewController:[self.swipablePager.viewControllers objectAtIndex:oldIndex] fromIndex:oldIndex atIndex:newIndex];
 }

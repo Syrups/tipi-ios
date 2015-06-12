@@ -110,6 +110,7 @@
 - (IBAction)displayFiltersController:(id)sender {
     FilterViewController* filterViewController = (FilterViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"Filter"];
     filterViewController.room = self.room;
+    filterViewController.parent = self;
     
     /*
      [vc willMoveToParentViewController:self];
@@ -137,6 +138,7 @@
 #pragma mark - Filters
 
 - (void)applyFilters {
+    NSLog(@"toto");
     StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
     [manager fetchStoriesForRoomId:[self.room.id integerValue] filteredByTag:self.filterTag orUser:self.filterUser];
 }
