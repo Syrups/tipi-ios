@@ -71,10 +71,6 @@ typedef void(^fadeOutCompletion)(BOOL);
     self.commentRecorder.delegate = self;
     
     self.storyManager = [[StoryManager alloc] initWithDelegate:self];
-    
-    if(self.idx == 0){
-        [self playSound];
-    }
 }
 
 - (void)didReceiveMemoryWarning {

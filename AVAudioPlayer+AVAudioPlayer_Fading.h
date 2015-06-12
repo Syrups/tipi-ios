@@ -17,7 +17,7 @@
 -(void)fadeOutWithCompletion:(void(^)(BOOL finished))completion;
 
 
-- (void)fadeOutPlay;
+- (void)fadeInPlay;
 - (void)fadeOutPause;
 - (void)fadeOutAndStop;
 

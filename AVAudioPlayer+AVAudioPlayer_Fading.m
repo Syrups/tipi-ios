@@ -41,11 +41,11 @@ typedef void(^fadeCompletion)(BOOL);
     }];
 }
 
-- (void)fadeOutPlay {
+- (void)fadeInPlay {
     [self prepareToPlay];
+    [self play];
     [self fadeInWithCompletion:^(BOOL finished) {
         self.volume = 1.0;
-        [self play];
     }];
 }
 

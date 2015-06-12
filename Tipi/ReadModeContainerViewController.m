@@ -104,10 +104,11 @@
     ReadModeViewController *currentController = newViewController;
     
     if (previousController.player.isPlaying) {
-        [previousController.player pause];
-        previousController.player.currentTime = 0;
+        [previousController.player fadeOutWithCompletion:^(BOOL finished) {
+            previousController.player.currentTime = 0;
+            previousController.player.volume = 1;
+        }];
     }
-    
     
     self.currentController = currentController;
     
@@ -122,6 +123,7 @@
         self.currentController.commentsButton.alpha = 0;
     }
     
+    //[currentController.player fadeInPlay];
     [currentController.mediaImageView enable];
 }
 
