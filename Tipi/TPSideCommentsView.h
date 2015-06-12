@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CommentsQueueManager.h"
 #import "UIViewTouchUnder.h"
-
-@import AVFoundation;
+#import <AVFoundation/AVFoundation.h>
 
 @interface TPSideCommentsView : UIViewTouchUnder <CommentsQueueDelegate, UITableViewDelegate, UITableViewDataSource>
 

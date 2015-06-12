@@ -20,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UITextField* usernameField;
 @property (strong, nonatomic) IBOutlet UITextField* passwordField;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* centerFieldsVerticalContraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* titleVerticalConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* signInButtonVerticalSpace;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* signUpButtonVerticalSpace;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* signInButtonWidth;

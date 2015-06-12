@@ -105,6 +105,7 @@
 
 - (void)roomManager:(RoomManager *)manager failedToFetchRooms:(NSError*)error{
     // error
+    [TPAlert displayOnController:self withMessage:@"Impossible de charger les feux de camp" delegate:nil];
 }
 
 
@@ -137,30 +138,6 @@
 
 #pragma mark - UIScrollView
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    
-    // Keep the gradient fixed in view
-    [CATransaction begin];
-    [CATransaction setDisableActions:YES];
-    maskLayer.position = CGPointMake(0, scrollView.contentOffset.y);
-    [CATransaction commit];
-    
-    for (UIRoomTableViewCell *cell in self.mTableView.visibleCells) {
-        
-        [cell setNeedsLayout];
-        [cell setNeedsUpdateConstraints];
-        
-        CGRect cellRect = [scrollView convertRect:cell.frame toView:scrollView.superview];
-        CGRect hitRect = CGRectMake(0, self.mTableView.superview.center.y- 25, self.mTableView.superview.frame.size.width, 50);
-        
-        if(CGRectIntersectsRect(cellRect, hitRect)){
-            [self.mTableView selectRowAtIndexPath: [self.mTableView indexPathForCell:cell]
-                                         animated: NO
-                                   scrollPosition: UITableViewScrollPositionNone];
-        }
-    }
-}
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
 //    [self centerTable];

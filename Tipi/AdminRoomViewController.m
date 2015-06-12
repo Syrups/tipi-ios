@@ -9,6 +9,8 @@
 #import "AdminRoomViewController.h"
 #import "AddUsersToRoomViewController.h"
 #import "SHPathLibrary.h"
+#import "RoomManager.h"
+#import "TPAlert.h"
 
 @interface AdminRoomViewController ()
 
@@ -20,6 +22,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.roomName.text = self.room.name;
+}
+
+- (IBAction)renameRoom:(id)sender {
+    NSString* name = [self.roomNameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    self.room.name = name;
+    
+    RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
+    [manager updateRoom:self.room];
 }
 
 - (IBAction)addUsersToRoom:(id)sender {
@@ -27,6 +39,17 @@
     vc.room = self.room;
     vc.roomExists = YES;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - RoomUpdater
+
+- (void)roomManager:(RoomManager *)manager successfullyUpdatedRoom:(Room *)room {
+    [TPAlert displayOnController:self withMessage:@"Le feu de camp a bien été renommé !" delegate:self];
+    self.roomName.text = room.name;
+}
+
+- (void)roomManager:(RoomManager *)manager failedToUpdateRoom:(Room *)room withError:(NSError *)error {
+    [TPAlert displayOnController:self withMessage:@"Erreur de connexion, veuillez réessayer plus tard" delegate:self];
 }
 
 #pragma mark - UITableView

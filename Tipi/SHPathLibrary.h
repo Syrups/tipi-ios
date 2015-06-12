@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@import UIKit;
+#import <UIKit/UIKit.h>
 
 @interface SHPathLibrary : NSObject
 + (void) addRightCurveBezierPathToView: (UIView *) view inverted:(BOOL)inverted;

@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Syrup Apps. All rights reserved.
 //
 
-@import UIKit;
-@import CoreGraphics;
+#import <UIKit/UIKit.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 
 @interface RoomNavigationDelegate : NSObject<UINavigationControllerDelegate>

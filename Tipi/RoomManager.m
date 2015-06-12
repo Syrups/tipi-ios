@@ -114,7 +114,23 @@
 }
 
 - (void)updateRoom:(Room *)room {
-    // TODO
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        
+        [delegate.roomController updateRoom:room success:^(Room *room) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(roomManager:successfullyUpdatedRoom:)]) {
+                    [self.delegate roomManager:self successfullyUpdatedRoom:room];
+                }
+            });
+        } failure:^(NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(roomManager:failedToUpdateRoom:withError:)]) {
+                    [self.delegate roomManager:self failedToUpdateRoom:room withError:error];
+                }
+            });
+        }];
+    });
 }
 
 - (void)deleteRoom:(Room *)room {

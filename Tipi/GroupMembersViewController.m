@@ -17,8 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    NSLog(@"%@", self.room);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,10 +49,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.parent setFilterUser:[self.room.participants objectAtIndex:indexPath.row]];
+    
     UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    NSLog(@"%@", self.parent);
+    [self.parent setFilterUser:[self.room.participants objectAtIndex:indexPath.row]];
+    [self.parent applyFilters];
+    
     UILabel *name = (UILabel*)[cell.contentView viewWithTag:10];
     name.alpha = 1;
+    
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {

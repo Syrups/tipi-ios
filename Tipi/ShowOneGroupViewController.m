@@ -18,6 +18,8 @@
 #import "HomeViewController.h"
 #import "DeleteStoryModalViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <UIView+MTAnimation.h>
+#import "Page.h"
 
 @interface ShowOneGroupViewController ()
 
@@ -70,7 +72,12 @@
     [overlay setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
     overlay.tag = 2048;
     [self.previewImageView addSubview:overlay];
-    self.previewImageView.alpha = 0;
+    self.previewImageView.alpha = 0.2f;
+}
+
+- (void)setupPreviewImageInBackgroundWithImageUrl:(NSString*)imageUrl {
+    self.previewImageView.alpha = .2f;
+    [self.previewImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
 }
 
 #pragma mark - Actions
@@ -103,6 +110,7 @@
 - (IBAction)displayFiltersController:(id)sender {
     FilterViewController* filterViewController = (FilterViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"Filter"];
     filterViewController.room = self.room;
+    filterViewController.parent = self;
     
     /*
      [vc willMoveToParentViewController:self];
@@ -130,6 +138,7 @@
 #pragma mark - Filters
 
 - (void)applyFilters {
+    NSLog(@"toto");
     StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
     [manager fetchStoriesForRoomId:[self.room.id integerValue] filteredByTag:self.filterTag orUser:self.filterUser];
 }
@@ -328,6 +337,11 @@
     if ([stories count] == 0) {
         self.emptyInfoView.hidden = NO;
     }
+    
+    // background preview
+    Page* page = [[[stories firstObject] pages] firstObject];
+    [self setupPreviewImageInBackgroundWithImageUrl:page.media.file];
+    
 }
 
 -(void)storyManager:(StoryManager *)manager failedToFetchStories:(NSError *)error{
@@ -353,23 +367,6 @@
     [self removeCoverModer];
 }
 
-
-- (void)animate
-{
-    [[self.mTableView visibleCells] enumerateObjectsUsingBlock:^(UITableViewCell *cell, NSUInteger idx, BOOL *stop) {
-        
-        int endY = cell.frame.origin.y;
-        float delay = idx * 0.1;
-        
-        [cell setFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y + 150, cell.frame.size.width, cell.frame.size.height)];
-        [cell setAlpha:0];
-        
-        [UIView animateWithDuration:.5f delay:delay  options:UIViewAnimationOptionCurveEaseOut animations:^{
-            [cell setFrame:CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height)];
-            [cell setAlpha:1];
-        } completion:nil];
-    }];
-}
 
 
 -(void)longPressPreviewMode:(UILongPressGestureRecognizer *)gestureRecognizer
@@ -450,7 +447,7 @@
     self.previewImageView.clipsToBounds = YES;
     self.previewImageView.contentMode = UIViewContentModeScaleAspectFill;
     
-    [UIView animateWithDuration:1 animations:^{
+    [UIView animateWithDuration:.7f animations:^{
         self.previewImageView.transform = CGAffineTransformMakeScale(1.2,1.2);
         for (UIView *view in [self.view subviews] ) {
             if(view != self.previewImageView){
@@ -586,6 +583,26 @@
     
 }
 
+- (void)animate {
+    [[self.mTableView visibleCells] enumerateObjectsUsingBlock:^(UITableViewCell *cell, NSUInteger idx, BOOL *stop) {
+        
+        int endY = cell.frame.origin.y;
+        float delay = idx * 0.05;
+        
+        [cell setFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y + self.view.frame.size.height, cell.frame.size.width, cell.frame.size.height)];
+        [cell setAlpha:0];
+        
+        
+        [UIView animateWithDuration:.23f delay:delay options:UIViewAnimationOptionCurveEaseIn animations:^{
+            [cell setAlpha:1];
+            [cell setFrame:CGRectMake(cell.frame.origin.x, endY + 100, cell.frame.size.width, cell.frame.size.height)];
+        } completion:^(BOOL finished) {
+            [UIView mt_animateWithViews:@[cell] duration:1.3f delay:0 timingFunction:kMTEaseOutElastic animations:^{
+                [cell setFrame:CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height)];
+            } completion:nil];
+        }];
+    }];
+}
 
 /*
  #pragma mark - Navigation

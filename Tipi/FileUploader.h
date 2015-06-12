@@ -10,6 +10,7 @@
 
 #define kUploadTypeAudio @"audio"
 #define kUploadTypeMedia @"media"
+#define kUploadTypeVideo @"video"
 
 @interface FileUploader : NSObject
 

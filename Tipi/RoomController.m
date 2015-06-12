@@ -179,9 +179,30 @@
     [op start];
 }
 
-//TODO - (void)updateRoom:(Room*)room success:(void(^)(Room* room))success failure:(void(^)(NSError* error))failure;
 - (void)updateRoom:(Room*)room success:(void(^)(Room* room))success failure:(void(^)(NSError* error))failure{
-
+    NSString* path = [NSString stringWithFormat:@"/rooms/%@", room.id];
+    NSMutableURLRequest* request = [RoomController getBaseRequestFor:path authenticated:YES method:@"PUT"].mutableCopy;
+    
+    [request setHTTPBody:[[NSString stringWithFormat:@"{ \"room\" : { \"name\" : \"%@\" } }", room.name] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSError* err = nil;
+        Room* room = [[Room alloc] initWithDictionary:(NSDictionary*)responseObject error:&err];
+        
+        if (err) { NSLog(@"%@", err); }
+        
+        success(room);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error.localizedDescription);
+        if (failure != nil) failure(error);
+    }];
+    
+    [op start];
 }
 
 

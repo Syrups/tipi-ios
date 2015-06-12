@@ -36,6 +36,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel* storyTitle;
 @property (weak, nonatomic) IBOutlet UIImage *mediaImage;
+@property (strong, nonatomic) NSURL* videoUrl;
+@property (strong, nonatomic) AVPlayer* moviePlayer;
+@property (strong, nonatomic) AVPlayerLayer* moviePlayerLayer;
 @property (weak, nonatomic) IBOutlet UIView *overlayView;
 @property (weak, nonatomic) IBOutlet UILabel *pagingLabel;
 

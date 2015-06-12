@@ -13,7 +13,7 @@
 #import "ReadModeContainerViewController.h"
 #import "TPAlert.h"
 
-@import AVFoundation;
+#import <AVFoundation/AVFoundation.h>
 
 @interface ShowOneGroupViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate,StoryFetcherDelegate, ReadModeContainerDelegate, TPAlertDelegate, TPCircleTouchDelegate>
 

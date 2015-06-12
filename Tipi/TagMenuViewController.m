@@ -19,9 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.mTags = @[@"Los Angeles", @"Recettes", @"Concerts", @"Soirees JV"];
     self.mTableView.delegate = self;
     self.mTableView.dataSource = self;
+    
+    UserManager* manager = [[UserManager alloc] initWithDelegate:self];
+    [manager fetchLatestTags];
     // Do any additional setup after loading the view.
 }
 
@@ -34,6 +36,17 @@
 
 - (void)userManager:(UserManager *)manager successfullyFetchedTags:(NSArray *)tags {
     // TODO
+    
+    NSMutableArray* goodTags = [NSMutableArray array];
+    
+    for (NSString* tag in tags) {
+        if (![tag isEqualToString:@""] && tag != nil && ![tag isEqual:[NSNull null]]) {
+            [goodTags addObject:tag];
+        }
+    }
+    
+    self.mTags = [goodTags copy];
+    [self.mTableView reloadData];
 }
 
 - (void)userManager:(UserManager *)manager failedToFetchTagsWithError:(NSError *)error {
@@ -65,6 +78,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.parent setFilterTag:[self.mTags objectAtIndex:indexPath.row]];
+    [self.parent applyFilters];
     UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     UILabel *name = (UILabel*)[cell.contentView viewWithTag:10];
     name.alpha = 1;

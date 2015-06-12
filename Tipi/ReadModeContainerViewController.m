@@ -54,7 +54,15 @@
     newController.delegate = self;
     newController.page = [self.mPages objectAtIndex:i];
     newController.player = [self.audioPlayers objectAtIndex:i];
-    newController.mediaImage = [self.mediaFiles objectAtIndex:i];
+    
+    id media = [self.mediaFiles objectAtIndex:i];
+    
+    if ([media isKindOfClass:[UIImage class]]) { // image
+        newController.mediaImage = (UIImage*)media;
+    } else { // video with URL
+        newController.videoUrl = (NSURL*)media;
+    }
+    
     newController.next = [self viewControllerAtIndex:i+1];
     newController.storyTitleString = self.story.title;
     newController.totalPages = [self.story.pages count];
@@ -189,6 +197,7 @@
        [self.swiper setSelectedViewControllerViewControllerAtIndex:controller.idx+1];
         ReadModeViewController* next = (ReadModeViewController*)self.swiper.viewControllers[controller.idx+1];
         [next.player performSelector:@selector(play) withObject:nil afterDelay:.5f];
+        [next.moviePlayer performSelector:@selector(play) withObject:nil afterDelay:.5f];
     } else if (self.currentController.idx == [self.story.pages count] - 1) {
         // end
         [self performSelector:@selector(close) withObject:nil afterDelay:.5f];
@@ -221,28 +230,47 @@
 }
 
 - (void)loadMediaWithURL:(NSURL*)url atIndex:(NSUInteger)index withCompletion:(void(^)())completion{
-    //NSLog(@"loadMediaWithURL %@",url);
-    SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    [manager downloadImageWithURL:url
-                          options:0
-                         progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                             // progression tracking code
-                             NSLog(@"loadedImage %lu/%lu of file %@", (long)receivedSize,(long)expectedSize, url);
-                         }
-                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                            if (image) {
-                               // UIImage* full = [ImageUtils convertImageToGrayScale:[UIImage imageWithCGImage:[[asset defaultRepresentation]fullScreenImage]]];
-                                
-                                // error handling
-                                if (error) {
-                                    [self.delegate readModeContainerViewController:self failedToCompleteLoadStory:self.story];
+    
+    NSString* extension = [url pathExtension];
+    
+    if ([extension isEqualToString:@"jpg"]) {
+        //NSLog(@"loadMediaWithURL %@",url);
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadImageWithURL:url
+                              options:0
+                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                 // progression tracking code
+                                 NSLog(@"loadedImage %lu/%lu of file %@", (long)receivedSize,(long)expectedSize, url);
+                             }
+                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                if (image) {
+                                    // UIImage* full = [ImageUtils convertImageToGrayScale:[UIImage imageWithCGImage:[[asset defaultRepresentation]fullScreenImage]]];
+                                    
+                                    // error handling
+                                    if (error) {
+                                        [self.delegate readModeContainerViewController:self failedToCompleteLoadStory:self.story];
+                                    }
+                                    
+                                    
+                                    [self.mediaFiles addObject:image];
+                                    completion();
                                 }
-                               
-                                
-                                [self.mediaFiles addObject:image];
-                                completion();
-                            }
-                        }];
+                            }];
+    } else { // video
+        [FileDownLoader downloadFileWithURL:[url absoluteString] completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+            
+            // error handling
+            if (error) {
+                [self.delegate readModeContainerViewController:self failedToCompleteLoadStory:self.story];
+            }
+            
+            
+            [self.mediaFiles addObject:filePath];
+            completion();
+            
+        }];
+    }
+    
     
 }
 

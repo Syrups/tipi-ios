@@ -8,9 +8,8 @@
 
 IB_DESIGNABLE
 
-@import UIKit;
-@import AVFoundation;
-
+#import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 #import "SCSiriWaveformView.h"
 #import <EZAudio/EZRecorder.h>
 #import <EZAudio/EZMicrophone.h>

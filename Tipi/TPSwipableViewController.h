@@ -6,13 +6,14 @@
 //  Copyright (c) 2015 Syrup Apps. All rights reserved.
 //
 
-@import UIKit;
-@import Foundation;
+#import <UIKit/UIKit.h>
 #import "PanGestureInteractiveTransition.h"
 
 @protocol TPSwipableViewControllerDelegate;
 
 @interface TPSwipableViewController : UIViewController
+
+@property (nonatomic, strong) UIView *privateContainerView;
 
 @property (nonatomic, weak) id<TPSwipableViewControllerDelegate>delegate;
 

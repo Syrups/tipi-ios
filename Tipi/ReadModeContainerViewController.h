@@ -16,8 +16,8 @@
 
 #import "TPSwipableViewController.h"
 
-@import AVFoundation;
-@import AudioToolbox;
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface ReadModeContainerViewController : UIViewController<TPSwipableViewControllerDelegate, ReadModeViewDelegate, StoryFetcherDelegate, EZMicrophoneDelegate, EZAudioFileDelegate, TPAlertDelegate>
 

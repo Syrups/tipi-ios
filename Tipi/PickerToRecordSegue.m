@@ -21,6 +21,7 @@
     CGFloat origX = source.view.frame.size.width/2 - CELL_SIZE/2 - 24;
     
     NSMutableArray* hiddenCells = [NSMutableArray array];
+    NSMutableArray* movedCells = [NSMutableArray array];
     
     TPLoader* loader = [[TPLoader alloc] initWithFrame:source.view.frame];
     loader.backgroundColor = [UIColor clearColor];
@@ -49,6 +50,7 @@
                 [hiddenCells addObject:cell];
             } else {
                 cell.frame = CGRectMake(origX + i * (CELL_SIZE + 5), source.mediaCollectionView.contentOffset.y + source.mediaCollectionView.frame.size.height - CELL_SIZE - 10, CELL_SIZE, CELL_SIZE);
+//                [movedCells addObject:cell];
                 ++i;
             }
         } completion:^(BOOL finished) {
@@ -71,19 +73,24 @@
 //                }];
             }];
             if (idx == source.selectedIndexes.count - 1) {
-
-                [source.navigationController pushViewController:dest animated:NO];
+                
+                for (UICollectionViewCell* cell in hiddenCells) {
+                    cell.alpha = 1;
+                }
+                
+                for (UICollectionViewCell* cell in movedCells) {
+                    cell.transform = CGAffineTransformIdentity;
+                }
+                
+                [source.mediaCollectionView reloadData];
                 
                 // reset previous VC layout
                 
                 [loader removeFromSuperview];
                 [full removeFromSuperview];
                 
-                [source.mediaCollectionView reloadData];
+                [source.navigationController pushViewController:dest animated:NO];
                 
-                for (UICollectionViewCell* cell in hiddenCells) {
-                    cell.alpha = 1;
-                }
             }
         }];
     }];

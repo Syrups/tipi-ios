@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Room.h"
+#import "RoomManager.h"
 
-@interface AdminRoomViewController : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface AdminRoomViewController : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, RoomUpdaterDelegate>
 
+@property (strong, nonatomic) IBOutlet UILabel* roomName;
 @property (strong, nonatomic) Room* room;
 @property (strong, nonatomic) IBOutlet UITableView* usersTableView;
 @property (strong, nonatomic) IBOutlet UITextField* roomNameField;

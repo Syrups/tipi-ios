@@ -12,7 +12,7 @@
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@import AVFoundation;
+#import <AVFoundation/AVFoundation.h>
 
 typedef void(^fadeOutCompletion)(BOOL);
 
@@ -40,6 +40,24 @@ typedef void(^fadeOutCompletion)(BOOL);
     self.pagingLabel.text = [NSString stringWithFormat:@"%d/%lu", (self.idx + 1), (unsigned long)self.totalPages];
     
     self.mediaImageView = [[TPTiltingImageView alloc] initWithFrame:self.view.frame andImage:self.mediaImage];
+    
+    if (self.videoUrl != nil) {
+        AVURLAsset* asset = [AVURLAsset URLAssetWithURL:self.videoUrl options:nil];
+        AVPlayerItem* item = [AVPlayerItem playerItemWithAsset:asset];
+        self.moviePlayer = [AVPlayer playerWithPlayerItem:item];
+        self.moviePlayerLayer = [AVPlayerLayer playerLayerWithPlayer:self.moviePlayer];
+        self.moviePlayer.volume = .4f;
+        self.moviePlayerLayer.frame = self.view.frame;
+        self.moviePlayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        
+        [self.mediaImageView.layer addSublayer:self.moviePlayerLayer];
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:AVPlayerItemDidPlayToEndTimeNotification object:item queue:nil usingBlock:^(NSNotification *note) {
+            AVPlayerItem* item = [note object];
+            [item seekToTime:kCMTimeZero];
+            [self.moviePlayer play];
+        }];
+    }
     
     self.mediaImageView.image = self.mediaImage;
     self.mediaImageView.clipsToBounds = YES;
@@ -97,6 +115,8 @@ typedef void(^fadeOutCompletion)(BOOL);
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
     if ([player isEqual:self.player] && [self.delegate respondsToSelector:@selector(readModeViewController:didFinishReadingPage:)]) {
+        [self.moviePlayer pause];
+        
         [self.delegate readModeViewController:self didFinishReadingPage:self.page];
     }
 }
@@ -107,8 +127,10 @@ typedef void(^fadeOutCompletion)(BOOL);
     
     [self hideOverlay:nil];
     
-    if (self.player.playing)
+    if (self.player.playing) {
         [self pauseSound];
+        [self.moviePlayer pause];
+    }
     
     self.commentsViewController.view.frame = self.view.frame;
     [UIView animateWithDuration:.3f animations:^{
@@ -182,6 +204,7 @@ typedef void(^fadeOutCompletion)(BOOL);
     if(self.player != nil){
         if(self.player.isPlaying){
             [self doVolumeFadeAndPause];
+            [self.moviePlayer pause];
             //TODO pauseComment
         }
     }
@@ -271,7 +294,8 @@ typedef void(^fadeOutCompletion)(BOOL);
          NSLog(@"begin touch");
         
         [self.overlayTimer invalidate];
-        [self.playerView pauseWithFade:YES];
+        [self.playerView pause];
+        [self.moviePlayer pause];
         self.commentTime = self.player.currentTime;
         
         self.playerView.microphone = self.commentRecorder.microphone;
@@ -326,6 +350,7 @@ typedef void(^fadeOutCompletion)(BOOL);
 #pragma mark - TPSideCommentsView
 - (void)sideCommentsView:(TPSideCommentsView *)manager didSelectComment :(Comment*)comment{
     [self doVolumeFadeAndPause];
+    [self.moviePlayer pause];
     
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerItemDidReachEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:[songPlayer currentItem]];
 }

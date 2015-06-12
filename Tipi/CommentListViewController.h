@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 #import "Comment.h"
 
-@interface CommentListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface CommentListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, AVAudioPlayerDelegate>
 
 @property (weak, nonatomic)   id delegate;
 @property (strong, nonatomic) NSArray* comments;
 @property (strong, nonatomic) IBOutlet UITableView* commentsTableView;
+@property (strong, nonatomic) AVAudioPlayer* player;
 
 - (void)appear;
 

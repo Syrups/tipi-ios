@@ -81,9 +81,11 @@
         UIImage* full = [ImageUtils convertImageToGrayScale:[UIImage imageWithCGImage:[[asset defaultRepresentation]fullScreenImage]]];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            TPTiltingImageView* imageView = [[TPTiltingImageView alloc] initWithFrame:self.view.frame andImage:full];
+            
+            UIImageView* imageView = [[UIImageView alloc] initWithFrame:self.view.frame];
+            imageView.image = full;
+            imageView.contentMode = UIViewContentModeScaleAspectFill;
             imageView.layer.opacity = .05f;
-            [imageView enable];
             [self.bubble replaceImageLayerWithLayer:imageView.layer];
             
             [self.view sendSubviewToBack:self.bubble];
@@ -235,10 +237,10 @@
     self.topControlsYConstraint.constant = -100;
     [self.view layoutIfNeeded];
     
-    self.titleLabel.transform = CGAffineTransformMakeTranslation(0, 80);
-    self.bottom.transform = CGAffineTransformMakeTranslation(0, self.bottom.frame.size.height);
+    self.titleLabel.transform = CGAffineTransformMakeTranslation(0, 150);
+    self.bottom.transform = CGAffineTransformMakeTranslation(0, self.bottom.frame.size.height + 50);
     
-    [UIView mt_animateWithViews:@[self.bottom, self.titleLabel] duration:.7f delay:0 timingFunction:kMTEaseOutBack animations:^{
+    [UIView mt_animateWithViews:@[self.bottom, self.titleLabel] duration:.6f delay:0 timingFunction:kMTEaseOutBack animations:^{
         self.titleLabel.transform = CGAffineTransformIdentity;
         self.bottom.transform = CGAffineTransformIdentity;
     } completion:nil];

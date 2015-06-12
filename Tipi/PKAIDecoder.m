@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Gobelins. All rights reserved.
 //
 
-@import UIKit;
+#import <UIKit/UIKit.h>
 #import "PKAIDecoder.h"
 //#import "UIImage+Tint.h"
 
