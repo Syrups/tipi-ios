@@ -79,8 +79,6 @@
     
     BOOL shown = [[commentRef objectForKeyedSubscript:@"state"] boolValue];
     Comment* comment = [commentRef objectForKey:@"comment"];
-    NSUInteger trueIndex = [[commentRef objectForKey:@"index"] integerValue];
-    
     
     NSString *cellIdentifier = shown ? @"popCommentCell" : @"hiddenCommentCell" ;
     UICommentSideCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -94,13 +92,7 @@
     
     
     if(shown){
-       
-
-        cell.circleContainer.tag = trueIndex;
-        NSLog(@"tag %lu ", trueIndex);
-        
         cell.nameLabel.text = cell.unRolled ? comment.user.username : [commentRef objectForKey:@"cap"];
-        
         [cell.circleContainer addTarget:self action:@selector(didSelectBubbleView:) forControlEvents:UIControlEventTouchUpInside];
     }
     
@@ -109,35 +101,22 @@
 
 -(void)didSelectBubbleView:(UIControl*)sender{
     
-    NSUInteger idx = [self.commentsQueueManager.referencesQueue indexOfObject:@(sender.tag)];
+    CGPoint pos = [sender convertPoint:CGPointZero toView:self.commentsList];
+    NSIndexPath* indexPath = [self.commentsList indexPathForRowAtPoint:pos];
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
-    
-    if(self.currentBubbleIndex && self.currentBubbleIndex.row == sender.tag){
-        
-        NSLog(@"reselected %lu", sender.tag);
-        //[self sideCommentView:self handleToucheOnRowAtIndexPath:indexPath withSelection:NO];
-        
+    if(self.currentBubbleIndex && self.currentBubbleIndex.row == indexPath.row){
+        [self sideCommentView:self handleToucheOnRowAtIndexPath:indexPath withSelection:NO];
     }else{
-         NSLog(@"selected %lu", sender.tag);
-        //[self sideCommentView:self handleToucheOnRowAtIndexPath:self.currentBubbleIndex withSelection:NO];
-        //[self sideCommentView:self handleToucheOnRowAtIndexPath:indexPath withSelection:YES];
+        [self sideCommentView:self handleToucheOnRowAtIndexPath:indexPath withSelection:YES];
+        [self sideCommentView:self handleToucheOnRowAtIndexPath:self.currentBubbleIndex withSelection:NO];
         self.currentBubbleIndex = indexPath;
     }
-    //[self sideCommentsView:self didSelectBubbleAtIndexPath:[NSIndexPath indexPathForRow:sender.tag inSection:0]]
 }
-
-
-- (void) sideCommentsView:(TPSideCommentsView *) tableView didSelectBubbleAtIndexPath:(NSIndexPath *)indexPath{
-   
-}
-
 
 - (void)sideCommentView:(TPSideCommentsView *)sideView handleToucheOnRowAtIndexPath:(NSIndexPath *)indexPath withSelection:(BOOL)selected{
     self.currentCommentRef = [self.comments objectAtIndex:indexPath.row];
     BOOL shown = [[self.currentCommentRef objectForKeyedSubscript:@"state"] boolValue];
     Comment* comment = [self.currentCommentRef objectForKey:@"comment"];
-    
     
     UICommentSideCell* cell = (UICommentSideCell*)[sideView.commentsList cellForRowAtIndexPath:indexPath];
     cell.unRolled = !cell.unRolled;
@@ -153,14 +132,11 @@
     }
     
     if(selected){
-
         if (self.commentsPlayer != nil && [self.commentsPlayer currentItem] != nil){
-            //[[self.commentsPlayer currentItem] removeObserver:self forKeyPath:@"timedMetadata"];
             [[self.commentsPlayer currentItem] removeObserver:self forKeyPath:@"status"];
             [[self.commentsPlayer currentItem] removeObserver:self forKeyPath:@"playbackBufferEmpty"];
         }
     
-        
         NSURL *comURL = [[NSURL alloc]initWithString:comment.file];
         AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithURL:comURL];
         [playerItem addObserver:self forKeyPath:@"status" options:0 context:nil];
