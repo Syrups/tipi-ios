@@ -65,9 +65,8 @@
 
 
 - (IBAction)quitStory:(id)sender;
-
 - (IBAction)playSound:(id)sender;
-- (void)pauseSound;
+- (void)pausePage;
 
 
 @end

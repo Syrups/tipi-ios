@@ -52,11 +52,9 @@ typedef void(^fadeCompletion)(BOOL);
 -(void)fadeOutAndStop{
     [self fadeOutWithCompletion:^(BOOL stop) {
         // Stop and get the sound ready for playing again
-        [self stop];
-        self.currentTime = 0;
-        
-        [self prepareToPlay];
         self.volume = 1.0;
+        self.currentTime = 0;
+        [self stop];
     }];
 }
 

@@ -80,7 +80,7 @@ typedef void(^fadeOutCompletion)(BOOL);
     [self setupCommentListViewController];
     
     // Manager
- 
+    
     self.commentsView.delegate = self;
     self.commentsView.commentsQueueManager = [[CommentsQueueManager alloc] initWithDelegate:self.commentsView
                                                                                 andCapacity:[self.page.comments count]];;
@@ -89,6 +89,10 @@ typedef void(^fadeOutCompletion)(BOOL);
     self.commentRecorder.delegate = self;
     
     self.storyManager = [[StoryManager alloc] initWithDelegate:self];
+    
+    if (self.idx ==0) {
+        [self playAndTrack];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -128,8 +132,7 @@ typedef void(^fadeOutCompletion)(BOOL);
     [self hideOverlay:nil];
     
     if (self.player.playing) {
-        [self pauseSound];
-        [self.moviePlayer pause];
+        [self pausePage];
     }
     
     self.commentsViewController.view.frame = self.view.frame;
@@ -147,11 +150,11 @@ typedef void(^fadeOutCompletion)(BOOL);
 
 #pragma mark - Side Comments View
 - (void)sideCommentsView:(TPSideCommentsView *)manager didSelectedComment:(Comment *)comment withFile:(NSString *)fileUrl{
-
+    
 }
 
 - (void)sideCommentsView:(TPSideCommentsView *)manager didDeselectedComment:(Comment *)comment withFile:(NSString *)fileUrl{
-
+    
 }
 
 #pragma mark - Overlay View
@@ -179,62 +182,35 @@ typedef void(^fadeOutCompletion)(BOOL);
 
 #pragma mark - Sound Playing
 - (IBAction)quitStory:(id)sender {
-//    [self doVolumeFadeAndStop];
-    [self.player stop];
+    [self.player fadeOutAndStop];
     [self.delegate readModeViewController:self requestedToQuitStoryAtPage:self.page];
 }
 
 - (IBAction)playSound:(id)sender {
     if(self.player){
-        NSLog(@"play");
-        [self playSound];
-    }
-}
-
-- (void)playSound{
-    if(self.player.isPlaying){
-        [self doVolumeFadeAndPause];
-    }
-    else{
-        [self playAndTrack];
-    }
-}
-
-- (void)pauseSound{
-    if(self.player != nil){
         if(self.player.isPlaying){
-            [self doVolumeFadeAndPause];
-            [self.moviePlayer pause];
-            //TODO pauseComment
+            [self pausePage];
+        }
+        else{
+            [self playAndTrack];
         }
     }
 }
 
-- (void)playAndTrackAtTime:(NSTimeInterval) time{
-    [self.player playAtTime:time];
-    self.audioListenTimer = [NSTimer
-                             scheduledTimerWithTimeInterval:0.1
-                             target:self selector:@selector(listenForComment:)
-                             userInfo:nil repeats:YES];
+- (void)pausePage{
+    if(self.player  && self.player.isPlaying){
+        [self.player fadeOutPause];
+        if(self.moviePlayer)[self.moviePlayer pause];
+        
+    }
 }
 
 - (void)playAndTrack{
-    [self.player play];
+    [self.playerView play];
     self.audioListenTimer = [NSTimer
                              scheduledTimerWithTimeInterval:0.1
                              target:self selector:@selector(listenForComment:)
                              userInfo:nil repeats:YES];
-}
-
-
-#pragma mark - Sound Playing/Processing
-
--(void)doVolumeFadeAndStop{
-    [self.player fadeOutAndStop];
-}
-
--(void)doVolumeFadeAndPause{
-    [self.playerView pauseWithFade:YES];
 }
 
 #pragma mark - Sound Tracking
@@ -250,17 +226,17 @@ typedef void(^fadeOutCompletion)(BOOL);
     //NSLog(@"__________________________%f/%f___________________________________", currentPlayerTime, self.player.duration);
     
     for ( int i = 0; i < self.page.comments.count; i++) {
-         Comment* comment = [self.page.comments objectAtIndex:i];
-    
+        Comment* comment = [self.page.comments objectAtIndex:i];
+        
         //NSLog(@"__________________________|%f", comment.timecode);
-
+        
         if(comment.timecode == currentPlayerTime){
             
             /*User* user = [User new];
-            user.username = @"Alceste";
-            user.id = @"1234";
-            
-            comment.user = user;*/
+             user.username = @"Alceste";
+             user.id = @"1234";
+             
+             comment.user = user;*/
             
             [self.commentsView.commentsQueueManager pushInQueueComment:comment  atIndex:i];
         }
@@ -271,7 +247,7 @@ typedef void(^fadeOutCompletion)(BOOL);
 +(Comment*)mockCommentForIndex:(NSInteger)index{
     
     //int randIndex = arc4random() % [mockNames count];
-
+    
     NSArray* mockNames = @[@"Anne", @"Andy", @"France", @"Marc"];
     NSArray* mockIds= @[@1234, @7654, @98745, @3];
     
@@ -283,7 +259,7 @@ typedef void(^fadeOutCompletion)(BOOL);
     comment.file = [NSString stringWithFormat:@"com %ld", index];
     comment.user = user;
     return comment;
-
+    
 }
 
 #pragma mark - Sound Tracking
@@ -291,9 +267,10 @@ typedef void(^fadeOutCompletion)(BOOL);
 - (void)circleWaverControl:(TPCircleWaverControl *)control didReceveivedLongPressGestureRecognizer:(UILongPressGestureRecognizer *)recognizer{
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         
-         NSLog(@"begin touch");
+        NSLog(@"begin touch");
         
         [self.overlayTimer invalidate];
+        [self.playerView pauseWithFade:NO];
         [self.moviePlayer pause];
         [self.playerView pauseWithFade:YES];
         self.commentTime = self.player.currentTime;
@@ -349,54 +326,53 @@ typedef void(^fadeOutCompletion)(BOOL);
 
 #pragma mark - TPSideCommentsView
 - (void)sideCommentsView:(TPSideCommentsView *)manager didSelectComment :(Comment*)comment{
-    [self doVolumeFadeAndPause];
-    [self.moviePlayer pause];
+    [self pausePage];
     
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerItemDidReachEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:[songPlayer currentItem]];
 }
 
 - (void)sideCommentsView:(TPSideCommentsView *)manager didDeselectComment:(Comment*)comment{
-    [self.playerView play];
+    [self playAndTrack];
 }
 
 - (void)sideCommentsView:(TPSideCommentsView *)manager comment:(Comment *)comment didFinishedPlaying:(BOOL)finished{
     if (finished && self.player.currentTime < self.player.duration) {
-        [self playSound];
+        [self playAndTrack];
     }
 }
 
 /*- (void)playAtIndex:(NSInteger)index
-{
-    [self.commentsPlayer removeAllItems];
-    for (int i = index; i <playerItems.count; i ++) {
-        AVPlayerItem* obj = [playerItems objectAtIndex:i];
-        if ([self.commentsPlayer canInsertItem:obj afterItem:nil]) {
-            [obj seekToTime:kCMTimeZero];
-            [self.commentsPlayer insertItem:obj afterItem:nil];
-        }
-    }
-}*/
+ {
+ [self.commentsPlayer removeAllItems];
+ for (int i = index; i <playerItems.count; i ++) {
+ AVPlayerItem* obj = [playerItems objectAtIndex:i];
+ if ([self.commentsPlayer canInsertItem:obj afterItem:nil]) {
+ [obj seekToTime:kCMTimeZero];
+ [self.commentsPlayer insertItem:obj afterItem:nil];
+ }
+ }
+ }*/
 
 /*
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    
-    if (object == self.simplePlayer  && [keyPath isEqualToString:@"status"]) {
-        if (self.simplePlayer .status == AVPlayerStatusFailed) {
-            NSLog(@"AVPlayer Failed");
-            
-        } else if (self.simplePlayer.status == AVPlayerStatusReadyToPlay && self.autoStart) {
-            NSLog(@"AVPlayerStatusReadyToPlay");
-            [self.simplePlayer  play];
-            
-            
-        } else if (self.simplePlayer.status == AVPlayerItemStatusUnknown) {
-            NSLog(@"AVPlayer Unknown");
-        }
-    }
-}
-
-- (void)simplerPlayerItemDidReachEnd:(NSNotification *)notification {
-    
-}*/
+ - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+ 
+ if (object == self.simplePlayer  && [keyPath isEqualToString:@"status"]) {
+ if (self.simplePlayer .status == AVPlayerStatusFailed) {
+ NSLog(@"AVPlayer Failed");
+ 
+ } else if (self.simplePlayer.status == AVPlayerStatusReadyToPlay && self.autoStart) {
+ NSLog(@"AVPlayerStatusReadyToPlay");
+ [self.simplePlayer  play];
+ 
+ 
+ } else if (self.simplePlayer.status == AVPlayerItemStatusUnknown) {
+ NSLog(@"AVPlayer Unknown");
+ }
+ }
+ }
+ 
+ - (void)simplerPlayerItemDidReachEnd:(NSNotification *)notification {
+ 
+ }*/
 
 @end
