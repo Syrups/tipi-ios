@@ -118,7 +118,7 @@
     
     [currentController.player performSelector:@selector(play) withObject:nil afterDelay:.2f];
     [currentController.moviePlayer performSelector:@selector(play) withObject:nil afterDelay:.2f];
-    
+     
     self.currentController = currentController;
     
     // disable all motion managers

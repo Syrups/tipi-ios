@@ -299,8 +299,8 @@ typedef void(^fadeOutCompletion)(BOOL);
          NSLog(@"begin touch");
         
         [self.overlayTimer invalidate];
-        [self.playerView pause];
         [self.moviePlayer pause];
+        [self.playerView pauseWithFade:YES];
         self.commentTime = self.player.currentTime;
         
         self.playerView.microphone = self.commentRecorder.microphone;
