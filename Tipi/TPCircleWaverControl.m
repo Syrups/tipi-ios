@@ -564,7 +564,6 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
         }
     }
     if(self.simplePlayer)[self.simplePlayer pause];
-    
 }
 
 - (void)reset {

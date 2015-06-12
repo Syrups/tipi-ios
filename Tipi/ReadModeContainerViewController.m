@@ -111,14 +111,15 @@
     ReadModeViewController* previousController = self.currentController;
     ReadModeViewController *currentController = newViewController;
     
+    NSLog(@"%d", previousController.idx);
+    
     if (previousController.player.isPlaying) {
-        [previousController pausePage];
+        [previousController stopPage];
     }
     
-    [currentController.player performSelector:@selector(play) withObject:nil afterDelay:.2f];
-    [currentController.moviePlayer performSelector:@selector(play) withObject:nil afterDelay:.2f];
-     
     self.currentController = currentController;
+    [self.currentController playAndTrack];
+    //[currentController.moviePlayer performSelector:@selector(play) withObject:nil afterDelay:.2f];
     
     // disable all motion managers
     [self.swiper.viewControllers enumerateObjectsUsingBlock:^(ReadModeViewController* obj, NSUInteger idx, BOOL *stop) {
@@ -138,7 +139,7 @@
 #pragma mark - TPSwipableViewController
 
 - (void)swipableViewController:(TPSwipableViewController *)containerViewController didFinishedTransitionToViewController:(UIViewController *)viewController{
-    
+    NSLog(@"TOTOTOTOTOOT");
     [self setupForViewController:(ReadModeViewController*)viewController];
     
 }
@@ -195,9 +196,9 @@
     NSLog(@"%d / %lu", controller.idx, (unsigned long)[self.story.pages count]);
     if (controller.idx < [self.story.pages count] - 1) {
        [self.swiper setSelectedViewControllerViewControllerAtIndex:controller.idx+1];
-        ReadModeViewController* next = (ReadModeViewController*)self.swiper.viewControllers[controller.idx+1];
-        [next.player performSelector:@selector(play) withObject:nil afterDelay:.5f];
-        [next.moviePlayer performSelector:@selector(play) withObject:nil afterDelay:.5f];
+        //ReadModeViewController* next = (ReadModeViewController*)self.swiper.viewControllers[controller.idx+1];
+        //[next.player performSelector:@selector(play) withObject:nil afterDelay:.5f];
+        //[next.moviePlayer performSelector:@selector(play) withObject:nil afterDelay:.5f];
     } else if (self.currentController.idx == [self.story.pages count] - 1) {
         // end
         [self performSelector:@selector(close) withObject:nil afterDelay:.5f];
@@ -205,7 +206,6 @@
 }
 
 - (void)loadMediaAndAudioInPages:(NSArray *)pages atIndex:(NSUInteger)index withCompletion:(void(^)())completion{
-    
     
     Page *page = [pages objectAtIndex:index];
     //Files

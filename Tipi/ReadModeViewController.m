@@ -90,7 +90,7 @@ typedef void(^fadeOutCompletion)(BOOL);
     
     self.storyManager = [[StoryManager alloc] initWithDelegate:self];
     
-    if (self.idx ==0) {
+    if (self.idx == 0) {
         [self playAndTrack];
     }
 }
@@ -197,8 +197,18 @@ typedef void(^fadeOutCompletion)(BOOL);
     }
 }
 
+-(void)stopPage{
+    NSLog(@"stopPage %d", self.idx);
+    //[self.player fadeOutAndStop];
+    [self.player stop];
+    [self.audioListenTimer invalidate];
+    self.audioListenTimer = false;
+}
+
 - (void)pausePage{
+     NSLog(@"pausePage %d", self.idx);
     if(self.player  && self.player.isPlaying){
+        [self.audioListenTimer invalidate];
         [self.player fadeOutPause];
         if(self.moviePlayer)[self.moviePlayer pause];
         
@@ -206,7 +216,10 @@ typedef void(^fadeOutCompletion)(BOOL);
 }
 
 - (void)playAndTrack{
+    NSLog(@"playAndTrack %d", self.idx);
     [self.playerView play];
+    if(self.moviePlayer)[self.moviePlayer play];
+    
     self.audioListenTimer = [NSTimer
                              scheduledTimerWithTimeInterval:0.1
                              target:self selector:@selector(listenForComment:)
@@ -270,7 +283,6 @@ typedef void(^fadeOutCompletion)(BOOL);
         NSLog(@"begin touch");
         
         [self.overlayTimer invalidate];
-        [self.playerView pauseWithFade:NO];
         [self.moviePlayer pause];
         [self.playerView pauseWithFade:YES];
         self.commentTime = self.player.currentTime;
