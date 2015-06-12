@@ -112,10 +112,7 @@
     ReadModeViewController *currentController = newViewController;
     
     if (previousController.player.isPlaying) {
-        [previousController.player fadeOutWithCompletion:^(BOOL finished) {
-            previousController.player.currentTime = 0;
-            previousController.player.volume = 1;
-        }];
+        [previousController pausePage];
     }
     
     [currentController.player performSelector:@selector(play) withObject:nil afterDelay:.2f];
@@ -195,7 +192,7 @@
 }
 
 - (void)readModeViewController:(ReadModeViewController *)controller didFinishReadingPage:(Page *)page {
-    NSLog(@"%d / %d", controller.idx, [self.story.pages count]);
+    NSLog(@"%d / %lu", controller.idx, (unsigned long)[self.story.pages count]);
     if (controller.idx < [self.story.pages count] - 1) {
        [self.swiper setSelectedViewControllerViewControllerAtIndex:controller.idx+1];
         ReadModeViewController* next = (ReadModeViewController*)self.swiper.viewControllers[controller.idx+1];
@@ -205,8 +202,6 @@
         // end
         [self performSelector:@selector(close) withObject:nil afterDelay:.5f];
     }
-    
-    
 }
 
 - (void)loadMediaAndAudioInPages:(NSArray *)pages atIndex:(NSUInteger)index withCompletion:(void(^)())completion{

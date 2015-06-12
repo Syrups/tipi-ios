@@ -496,11 +496,10 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     }];
 }
 
--(void)play{
-    if(self.audioPlayer)[self.audioPlayer play];
-    if(self.simplePlayer)[self.simplePlayer play];
+-(void) pauseUpdate{
+    [self.updateTimer invalidate];
+    self.updateTimer = nil;
 }
-
 
 - (void)updateProgress {
     switch (self.mode) {
@@ -540,6 +539,14 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 }
 
 
+-(void)play{
+    
+    if(!self.updateTimer)[self startUpdate];
+    if(self.audioPlayer)[self.audioPlayer play];
+    if(self.simplePlayer)[self.simplePlayer play];
+}
+
+
 - (void)pauseWithFade:(BOOL)fade{
     //[self.updateTimer invalidate];
     self.nowRecording = NO;
@@ -550,6 +557,7 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     
     if(self.audioPlayer){
         if (fade) {
+            [self pauseUpdate];
             [self.audioPlayer fadeOutPause];
         } else {
             [self.audioPlayer pause];
