@@ -1,0 +1,81 @@
+
+/* Class = "UIButton"; normalTitle = "valider"; ObjectID = "0VH-Xl-qAg"; */
+"0VH-Xl-qAg.normalTitle" = "validate";
+
+/* Class = "UILabel"; text = "Votre histoire a bien été partagée !"; ObjectID = "57r-g6-blt"; */
+"57r-g6-blt.text" = "Your story was successfully shared";
+
+/* Class = "UIButton"; normalTitle = "continuer"; ObjectID = "9cL-sN-YMX"; */
+"9cL-sN-YMX.normalTitle" = "continue";
+
+/* Class = "UILabel"; text = "Créer un feu de camp"; ObjectID = "BU5-Qf-4CV"; */
+"BU5-Qf-4CV.text" = "Create a campfire";
+
+/* Class = "UILabel"; text = "Donnez un nom à\nvotre histoire"; ObjectID = "DqR-oJ-HGl"; */
+"DqR-oJ-HGl.text" = "Give a name to\nyour story";
+
+/* Class = "UILabel"; text = "Vous avez terminé !"; ObjectID = "G0G-gW-eua"; */
+"G0G-gW-eua.text" = "And you're done !";
+
+/* Class = "UIButton"; normalTitle = "commencer"; ObjectID = "IXZ-Ux-feQ"; */
+"IXZ-Ux-feQ.normalTitle" = "start";
+
+/* Class = "UIButton"; normalTitle = "ne pas sauvegarder"; ObjectID = "IgS-ma-EFV"; */
+"IgS-ma-EFV.normalTitle" = "don't save";
+
+/* Class = "UILabel"; text = "Appuyez sur une image pour enregistrer votre voix"; ObjectID = "KRx-Fb-nni"; */
+"KRx-Fb-nni.text" = "Hold your touch on a picture to record your voice";
+
+/* Class = "UILabel"; text = "Ajouter des proches"; ObjectID = "Kdp-y1-hZM"; */
+"Kdp-y1-hZM.text" = "Add people";
+
+/* Class = "UITextField"; placeholder = "nom d'utilisateur ou e-mail"; ObjectID = "M4G-EZ-rAd"; */
+"M4G-EZ-rAd.placeholder" = "username or e-mail";
+
+/* Class = "UIButton"; normalTitle = "sauvegarder"; ObjectID = "ONn-y7-SeY"; */
+"ONn-y7-SeY.normalTitle" = "save";
+
+/* Class = "UIButton"; normalTitle = "continuer"; ObjectID = "PhD-G7-akQ"; */
+"PhD-G7-akQ.normalTitle" = "continue";
+
+/* Class = "UILabel"; text = "Entrez le nom du nouveau feu de camp"; ObjectID = "Xqb-iK-ozW"; */
+"Xqb-iK-ozW.text" = "Type the name of the new campfire";
+
+/* Class = "UIButton"; normalTitle = "créer"; ObjectID = "anM-SP-gmB"; */
+"anM-SP-gmB.normalTitle" = "create";
+
+/* Class = "UIButton"; normalTitle = "retour"; ObjectID = "d5b-FV-sL4"; */
+"d5b-FV-sL4.normalTitle" = "back";
+
+/* Class = "UITextField"; placeholder = "Mon week-end"; ObjectID = "hJu-3d-eM9"; */
+"hJu-3d-eM9.placeholder" = "Awesome week-end";
+
+/* Class = "UILabel"; text = "Partager dans mes feux"; ObjectID = "hcD-rF-ZTj"; */
+"hcD-rF-ZTj.text" = "Share in my campfires";
+
+/* Class = "UILabel"; text = "Quitter"; ObjectID = "kcW-An-TSH"; */
+"kcW-An-TSH.text" = "Quit";
+
+/* Class = "UIButton"; normalTitle = "valider"; ObjectID = "lix-LL-xyD"; */
+"lix-LL-xyD.normalTitle" = "validate";
+
+/* Class = "UIButton"; normalTitle = "continuer"; ObjectID = "nBO-9P-0U7"; */
+"nBO-9P-0U7.normalTitle" = "continue";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "nGa-rW-ygf"; */
+"nGa-rW-ygf.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "envoyer"; ObjectID = "niY-07-Une"; */
+"niY-07-Une.normalTitle" = "send";
+
+/* Class = "UILabel"; text = "Sélectionnez des photos"; ObjectID = "r6V-mz-kdJ"; */
+"r6V-mz-kdJ.text" = "Select some pictures";
+
+/* Class = "UILabel"; text = "Vous pouvez sauvegarder\nvotre histoire pour la continuer\nplus tard"; ObjectID = "vEl-cu-IzS"; */
+"vEl-cu-IzS.text" = "You can save\nyour story to get back\nto it later";
+
+/* Class = "UITextField"; placeholder = "Ajouter un tag"; ObjectID = "wvk-Lo-RD7"; */
+"wvk-Lo-RD7.placeholder" = "Add a tag";
+
+/* Class = "UILabel"; text = "Racontez une histoire à vos proches à l'aide de votre voix"; ObjectID = "ziG-KL-DxV"; */
+"ziG-KL-DxV.text" = "Tell stories to close ones with your voice";

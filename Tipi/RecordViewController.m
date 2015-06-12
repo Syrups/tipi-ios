@@ -42,6 +42,10 @@
     
     [self swipableViewController:self.swipablePager didFinishedTransitionToViewController:self.swipablePager.viewControllers[0]];
     
+    if ([self.recorder isComplete]) {
+        self.finishButton.hidden = NO;
+    }
+    
     [self displayCoachmarkForDrag];
 
 }

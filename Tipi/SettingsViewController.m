@@ -11,10 +11,8 @@
 #import "ProfileViewController.h"
 #import "AnimationLibrary.h"
 #import "TPLoader.h"
+#import "TPAlert.h"
 
-@interface SettingsViewController ()
-
-@end
 
 @implementation SettingsViewController
 
@@ -39,6 +37,38 @@
 
 - (IBAction)openTerms:(id)sender {
     
+}
+
+- (IBAction)deleteAccount:(id)sender {
+    [TPAlert displayOnController:self withMessage:@"Souhaitez-vous vraiment supprimer votre compte ? Ceci est irréversible" delegate:self];
+}
+
+#pragma mark - TPAlert
+
+- (void)alertDidAknowledge:(TPAlert *)alert {
+    TPLoader* loader;
+    UserManager* manager = [[UserManager alloc] initWithDelegate:self];
+    [manager deleteUser:CurrentUser];
+}
+
+#pragma mark - UserDeleter
+
+- (void)userManagerSuccessfullyDeletedUser:(UserManager *)manager {
+    
+    [[UserSession sharedSession] destroy];
+    
+    UINavigationController* rootNav = (UINavigationController *)((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController;
+    UIViewController* vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Login"];
+    
+    [rootNav setViewControllers:@[vc] animated:YES];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [TPAlert displayOnController:vc withMessage:@"Votre compte a bien été supprimé" delegate:nil];
+}
+
+- (void)userManagerFailedToDeleteUserWithError:(NSError *)error {
+    [TPAlert displayOnController:self withMessage:@"Erreur de connexion, réessayez plus tard" delegate:nil];
 }
 
 - (IBAction)dismiss:(id)sender {

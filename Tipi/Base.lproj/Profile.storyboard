@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="GTWalsheim Regular.otf">
+            <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
@@ -97,7 +99,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wcU-aa-PSw">
-                                <rect key="frame" x="0.0" y="194" width="320" height="374"/>
+                                <rect key="frame" x="0.0" y="191.5" width="320" height="379"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YU1-Oc-ra0">
                                         <rect key="frame" x="171" y="50" width="139" height="47"/>
@@ -163,6 +165,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="heE-7L-yby" secondAttribute="centerX" id="1fo-0z-Ngb"/>
+                                    <constraint firstAttribute="height" constant="379" id="5jS-Y8-08l"/>
                                     <constraint firstItem="olF-R5-gsr" firstAttribute="top" secondItem="wcU-aa-PSw" secondAttribute="top" constant="56" id="Hb7-lV-exo"/>
                                     <constraint firstAttribute="centerX" secondItem="YU1-Oc-ra0" secondAttribute="centerX" constant="-80.5" id="JN9-XO-4Cb"/>
                                     <constraint firstItem="heE-7L-yby" firstAttribute="top" secondItem="wcU-aa-PSw" secondAttribute="top" constant="275" id="YFh-Oa-kGg"/>
@@ -203,11 +206,10 @@
                         <constraints>
                             <constraint firstAttribute="width" secondItem="wcU-aa-PSw" secondAttribute="width" id="Die-1Y-GCM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DH7-gl-Qwa" secondAttribute="trailing" constant="1" id="HbD-Gl-KXZ"/>
+                            <constraint firstItem="8LD-13-ZAl" firstAttribute="top" secondItem="wcU-aa-PSw" secondAttribute="bottom" constant="-2.5" id="NOC-6g-BwB"/>
                             <constraint firstItem="7Jy-oa-bTk" firstAttribute="top" secondItem="Erq-DU-RNu" secondAttribute="bottom" id="Orr-op-qtT"/>
-                            <constraint firstAttribute="centerY" secondItem="wcU-aa-PSw" secondAttribute="centerY" constant="-97" id="UXn-YJ-Qpp"/>
                             <constraint firstItem="7Jy-oa-bTk" firstAttribute="leading" secondItem="YeR-2B-G3e" secondAttribute="leadingMargin" constant="-3" id="VKn-AN-GMI"/>
                             <constraint firstItem="DH7-gl-Qwa" firstAttribute="top" secondItem="Erq-DU-RNu" secondAttribute="bottom" constant="1" id="XN3-PO-3W0"/>
-                            <constraint firstItem="wcU-aa-PSw" firstAttribute="top" secondItem="Erq-DU-RNu" secondAttribute="bottom" constant="174" id="bLV-lQ-GAB"/>
                             <constraint firstAttribute="centerX" secondItem="wcU-aa-PSw" secondAttribute="centerX" id="isi-zL-Pvj"/>
                         </constraints>
                     </view>
@@ -274,12 +276,12 @@
                                     <constraint firstAttribute="height" constant="47" id="Hpx-is-mIF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="19"/>
-                                <state key="normal" title="Déconnexion">
+                                <state key="normal" title="Supprimer mon compte">
                                     <color key="titleColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="logout:" destination="1u4-8d-cCC" eventType="touchUpInside" id="7e1-uF-GLC"/>
+                                    <action selector="deleteAccount:" destination="1u4-8d-cCC" eventType="touchUpInside" id="U2e-XW-G4O"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8SN-sC-Wmf">
@@ -329,6 +331,29 @@
                                     <constraint firstAttribute="height" constant="1" id="TBh-zc-pcy"/>
                                 </constraints>
                             </view>
+                            <view alpha="0.20000000298023224" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tw3-7h-awR">
+                                <rect key="frame" x="26" y="236" width="268" height="1"/>
+                                <color key="backgroundColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="qZk-aA-8go"/>
+                                    <constraint firstAttribute="width" constant="268" id="xe9-QJ-gmf"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hly-8q-BmK">
+                                <rect key="frame" x="30" y="235" width="260" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="ASJ-du-O26"/>
+                                    <constraint firstAttribute="width" constant="260" id="EE6-qb-9NO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="19"/>
+                                <state key="normal" title="Déconnexion">
+                                    <color key="titleColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logout:" destination="1u4-8d-cCC" eventType="touchUpInside" id="cxz-lb-OSN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -339,11 +364,15 @@
                             <constraint firstItem="8SN-sC-Wmf" firstAttribute="leading" secondItem="a08-hc-4il" secondAttribute="leadingMargin" constant="-11" id="LMI-xy-43B"/>
                             <constraint firstItem="glV-uD-S7B" firstAttribute="top" secondItem="UeX-to-DV9" secondAttribute="bottom" constant="48" id="Mj3-uR-feI"/>
                             <constraint firstItem="Ur2-Bb-DVr" firstAttribute="top" secondItem="UeX-to-DV9" secondAttribute="bottom" constant="3" id="QWh-Gm-Lwu"/>
+                            <constraint firstAttribute="centerX" secondItem="tw3-7h-awR" secondAttribute="centerX" id="RKi-3P-G98"/>
                             <constraint firstAttribute="centerX" secondItem="gaj-Qb-2OX" secondAttribute="centerX" id="RkK-Si-90C"/>
                             <constraint firstItem="qTA-E6-6LI" firstAttribute="top" secondItem="cUc-rg-sgG" secondAttribute="bottom" constant="11" id="UEN-S6-Goj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zcJ-hD-emh" secondAttribute="trailing" constant="-16" id="Ug3-Pp-Vbb"/>
                             <constraint firstAttribute="centerX" secondItem="glV-uD-S7B" secondAttribute="centerX" id="Xxs-HP-i13"/>
+                            <constraint firstItem="tw3-7h-awR" firstAttribute="top" secondItem="glV-uD-S7B" secondAttribute="bottom" id="ZSC-H8-DeE"/>
+                            <constraint firstAttribute="centerX" secondItem="Hly-8q-BmK" secondAttribute="centerX" id="ax5-15-0dq"/>
                             <constraint firstItem="zcJ-hD-emh" firstAttribute="leading" secondItem="a08-hc-4il" secondAttribute="leadingMargin" constant="-16" id="cVK-lc-La7"/>
+                            <constraint firstItem="Hly-8q-BmK" firstAttribute="top" secondItem="glV-uD-S7B" secondAttribute="bottom" constant="-1" id="gBo-xI-6Tk"/>
                             <constraint firstAttribute="centerX" secondItem="Ur2-Bb-DVr" secondAttribute="centerX" id="lU2-mb-RbR"/>
                             <constraint firstItem="gaj-Qb-2OX" firstAttribute="top" secondItem="Ur2-Bb-DVr" secondAttribute="bottom" constant="-2" id="psd-we-24x"/>
                             <constraint firstItem="zcJ-hD-emh" firstAttribute="top" secondItem="qTA-E6-6LI" secondAttribute="bottom" constant="19" id="qpk-WY-pPs"/>

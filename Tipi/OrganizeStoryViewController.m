@@ -96,8 +96,8 @@
         [UIView animateKeyframesWithDuration:.3f delay:0 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
             
             [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.4f animations:^{
-//                delete.alpha = 1;
-//                delete.enabled = YES;
+                delete.alpha = 1;
+                delete.enabled = YES;
                 cell.transform = CGAffineTransformMakeTranslation(0, -90);
             }];
             

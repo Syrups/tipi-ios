@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "J'accepte les conditions d'utilisation et la politique de vie privée"; ObjectID = "35u-G5-lF1"; */
+"35u-G5-lF1.text" = "I accept terms of condition and privacy policy";
+
+/* Class = "UIButton"; normalTitle = "me connecter"; ObjectID = "5iZ-Qv-tRF"; */
+"5iZ-Qv-tRF.normalTitle" = "sign in";
+
+/* Class = "UILabel"; text = "Racontez des histoires\navec votre voix"; ObjectID = "QhP-Ah-VYA"; */
+"QhP-Ah-VYA.text" = "Tell stories with\nyour voice";
+
+/* Class = "UITextField"; placeholder = "Mot de passe"; ObjectID = "SAJ-GH-Urb"; */
+"SAJ-GH-Urb.placeholder" = "Password";
+
+/* Class = "UIButton"; normalTitle = "m'inscrire"; ObjectID = "VXR-A6-BRO"; */
+"VXR-A6-BRO.normalTitle" = "sign up";
+
+/* Class = "UITextField"; placeholder = "Adresse e-mail"; ObjectID = "YmA-af-bTO"; */
+"YmA-af-bTO.placeholder" = "E-mail address";
+
+/* Class = "UIButton"; normalTitle = "m'inscrire"; ObjectID = "bMc-T4-6sy"; */
+"bMc-T4-6sy.normalTitle" = "sign up";
+
+/* Class = "UITextField"; placeholder = "Mot de passe"; ObjectID = "dlV-TY-5wX"; */
+"dlV-TY-5wX.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "Racontez des histoires\navec votre voix"; ObjectID = "iL9-kE-uI9"; */
+"iL9-kE-uI9.text" = "Tell stories with\nyour voice";
+
+/* Class = "UITextField"; placeholder = "Nom d'utilisateur"; ObjectID = "lVv-1e-3JI"; */
+"lVv-1e-3JI.placeholder" = "Username";
+
+/* Class = "UITextField"; placeholder = "Nom d'utilisateur"; ObjectID = "zCu-M7-YNE"; */
+"zCu-M7-YNE.placeholder" = "Username";

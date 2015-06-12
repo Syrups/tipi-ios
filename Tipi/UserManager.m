@@ -132,4 +132,24 @@
     });
 }
 
+- (void)deleteUser:(User *)user {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        
+        [delegate.userController deleteUser:user success:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(userManagerSuccessfullyDeletedUser:)]) {
+                    [self.delegate userManagerSuccessfullyDeletedUser:self];
+                }
+            });
+        } failure:^(NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(userManagerFailedToDeleteUserWithError:)]) {
+                    [self.delegate userManagerFailedToDeleteUserWithError:error];
+                }
+            });
+        }];
+    });
+}
+
 @end

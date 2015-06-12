@@ -28,6 +28,7 @@
 @implementation ShowOneGroupViewController {
     TPLoader* loader;
     TPAlert* alert;
+    TPCircleWaverControl* currentControl;
 }
 
 - (void)viewDidLoad {
@@ -75,9 +76,10 @@
     self.previewImageView.alpha = 0.2f;
 }
 
-- (void)setupPreviewImageInBackgroundWithImageUrl:(NSString*)imageUrl {
+- (void)setupPreviewImageInBackground {
+    Page* page = [[[self.mStories firstObject] pages] firstObject];
     self.previewImageView.alpha = .2f;
-    [self.previewImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
+    [self.previewImageView sd_setImageWithURL:[NSURL URLWithString:page.media.file]];
 }
 
 #pragma mark - Actions
@@ -338,9 +340,7 @@
         self.emptyInfoView.hidden = NO;
     }
     
-    // background preview
-    Page* page = [[[stories firstObject] pages] firstObject];
-    [self setupPreviewImageInBackgroundWithImageUrl:page.media.file];
+    [self setupPreviewImageInBackground];
     
 }
 
@@ -432,6 +432,7 @@
     cell.recordButton.alpha = 1;
     [cell.recordButton appear];
     
+    currentControl = cell.recordButton;
     
     [self loadPreviewMediaAtURL:mediaUrl withCompletionBlock:^(UIImage *image) {
         [self startPreviewWithImage:image];
@@ -465,7 +466,7 @@
     
     TPStoryTableViewCell* cell = (TPStoryTableViewCell*)[self.mTableView cellForRowAtIndexPath:self.currentIndexPath];
     
-    [cell.recordButton close];
+    [currentControl close];
     
     self.isPreviewMode = NO;
     [UIView animateWithDuration:0.25 animations:^{
@@ -481,6 +482,7 @@
         self.previewImageView.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
         [self.previewAudioPlayer pause];
+        [self setupPreviewImageInBackground];
     }];
 }
 

@@ -1,0 +1,45 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "7aG-CA-3To"; */
+"7aG-CA-3To.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Invitations"; ObjectID = "DRY-TY-xYE"; */
+"DRY-TY-xYE.normalTitle" = "Invites";
+
+/* Class = "UITextField"; placeholder = "nom d'utilisateur ou email"; ObjectID = "FKT-qZ-Ef1"; */
+"FKT-qZ-Ef1.placeholder" = "nom d'utilisateur ou email";
+
+/* Class = "UIButton"; normalTitle = "Déconnexion"; ObjectID = "Hly-8q-BmK"; */
+"Hly-8q-BmK.normalTitle" = "Log out";
+
+/* Class = "UILabel"; text = "Frank vous invite à rejoindre :"; ObjectID = "J7H-jY-cNS"; */
+"J7H-jY-cNS.text" = "Frank vous invite à rejoindre :";
+
+/* Class = "UIButton"; normalTitle = "Signaler un abus"; ObjectID = "UeX-to-DV9"; */
+"UeX-to-DV9.normalTitle" = "Report abuse";
+
+/* Class = "UIButton"; normalTitle = "Conditions d'utilisation"; ObjectID = "Ur2-Bb-DVr"; */
+"Ur2-Bb-DVr.normalTitle" = "Terms of service";
+
+/* Class = "UIButton"; normalTitle = "Proches"; ObjectID = "YU1-Oc-ra0"; */
+"YU1-Oc-ra0.normalTitle" = "People";
+
+/* Class = "UILabel"; text = "Impossible de récupérer les notifications"; ObjectID = "eFy-XH-gQN"; */
+"eFy-XH-gQN.text" = "Unable to fetch latest notifications";
+
+/* Class = "UIButton"; normalTitle = "Supprimer mon compte"; ObjectID = "glV-uD-S7B"; */
+"glV-uD-S7B.normalTitle" = "Delete my account";
+
+/* Class = "UIButton"; normalTitle = "ajouter"; ObjectID = "heE-7L-yby"; */
+"heE-7L-yby.normalTitle" = "add";
+
+/* Class = "UIButton"; normalTitle = "Accepter"; ObjectID = "oPG-RR-B9J"; */
+"oPG-RR-B9J.normalTitle" = "Accept";
+
+/* Class = "UILabel"; text = "Paramètres"; ObjectID = "qTA-E6-6LI"; */
+"qTA-E6-6LI.text" = "Settings";
+
+/* Class = "UILabel"; text = "glenn"; ObjectID = "qVh-E4-Brw"; */
+"qVh-E4-Brw.text" = "glenn";
+
+/* Class = "UILabel"; text = "glenn"; ObjectID = "te1-N8-Iuf"; */
+"te1-N8-Iuf.text" = "glenn";

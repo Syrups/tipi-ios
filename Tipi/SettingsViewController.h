@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TPAlert.h"
+#import "UserManager.h"
 
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController : UIViewController <TPAlertDelegate, UserDeleterDelegate>
 
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray* rows;
 

@@ -11,6 +11,7 @@
 #import "PKAIDecoder.h"
 #import "AnimationLibrary.h"
 #import "TPLoader.h"
+#import "TPAlert.h"
 
 @implementation LoginViewController {
     TPLoader* loader;
@@ -103,10 +104,10 @@
 - (void)userManager:(UserManager *)manager failedToAuthenticateUserWithUsername:(NSString *)username withStatusCode:(NSInteger)code {
     
     if (code == 404 || code == 403) {
-        ErrorAlert(@"Mauvaise combinaison nom d'utilisateur / mot de passe");
+        [TPAlert displayOnController:self withMessage:@"Mauvaise combinaison nom d'utilisateur / mot de passe" delegate:nil];
     } else {
     // failure
-        ErrorAlert(@"Impossible de se connecter pour le moment, veuillez réessayer plus tard...");
+        [TPAlert displayOnController:self withMessage:@"Erreur de connexion, veuillez réessayer plus tard" delegate:nil];
     }
     [loader removeFromSuperview];
 }

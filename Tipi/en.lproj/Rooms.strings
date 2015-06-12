@@ -1,0 +1,96 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "2SK-Fn-Ulf"; */
+"2SK-Fn-Ulf.text" = "Label";
+
+/* Class = "UILabel"; text = "An"; ObjectID = "3ei-UK-4lL"; */
+"3ei-UK-4lL.text" = "An";
+
+/* Class = "UIButton"; normalTitle = "Filtrer par créateur"; ObjectID = "4Xx-17-Ql9"; */
+"4Xx-17-Ql9.normalTitle" = "Filter by user";
+
+/* Class = "UILabel"; text = "1/20"; ObjectID = "9D4-PY-6zb"; */
+"9D4-PY-6zb.text" = "1/20";
+
+/* Class = "UIButton"; normalTitle = "annuler"; ObjectID = "Bdt-hj-2e1"; */
+"Bdt-hj-2e1.normalTitle" = "cancel";
+
+/* Class = "UIButton"; normalTitle = "créer"; ObjectID = "DNH-HR-Flz"; */
+"DNH-HR-Flz.normalTitle" = "create";
+
+/* Class = "UIButton"; normalTitle = "valider"; ObjectID = "Dlf-sh-vqW"; */
+"Dlf-sh-vqW.normalTitle" = "validate";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "FEZ-D2-Vel"; */
+"FEZ-D2-Vel.text" = "Label";
+
+/* Class = "UILabel"; text = "Ajouter des proches"; ObjectID = "Gkl-UM-Hhd"; */
+"Gkl-UM-Hhd.text" = "Add people";
+
+/* Class = "UILabel"; text = "Room"; ObjectID = "Gyy-uh-yyK"; */
+"Gyy-uh-yyK.text" = "Room";
+
+/* Class = "UILabel"; text = "Impossible de récupérer la liste des histoires"; ObjectID = "Jos-JS-1aD"; */
+"Jos-JS-1aD.text" = "Unable to fetch stories";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "L6U-gr-9gn"; */
+"L6U-gr-9gn.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "créer une histoire"; ObjectID = "LIR-AQ-krs"; */
+"LIR-AQ-krs.normalTitle" = "create a story";
+
+/* Class = "UILabel"; text = "Créer un feu de camp"; ObjectID = "M0p-63-Eqa"; */
+"M0p-63-Eqa.text" = "Create a campfire";
+
+/* Class = "UIButton"; normalTitle = "supprimer et signaler"; ObjectID = "MEJ-qS-hPP"; */
+"MEJ-qS-hPP.normalTitle" = "delete and report";
+
+/* Class = "UITextField"; placeholder = "nom d'utilisateur ou e-mail"; ObjectID = "PYc-Uh-LaL"; */
+"PYc-Uh-LaL.placeholder" = "username or e-mail";
+
+/* Class = "UILabel"; text = "Capitale"; ObjectID = "Prd-iM-9fH"; */
+"Prd-iM-9fH.text" = "Capitale";
+
+/* Class = "UILabel"; text = "Entrez le nom du nouveau feu de camp"; ObjectID = "SMT-lM-VoO"; */
+"SMT-lM-VoO.text" = "Type name of the new campfire";
+
+/* Class = "UILabel"; text = "Supprimer cette\nhistoire ?"; ObjectID = "Uc5-cs-arr"; */
+"Uc5-cs-arr.text" = "Delete story ?";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "VO3-W6-dlT"; */
+"VO3-W6-dlT.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "WED-JA-Nxb"; */
+"WED-JA-Nxb.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "renommer le feu"; ObjectID = "Wwf-XH-ObI"; */
+"Wwf-XH-ObI.placeholder" = "rename campfire";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "YZE-vU-Wd0"; */
+"YZE-vU-Wd0.text" = "Label";
+
+/* Class = "UILabel"; text = "John Doe"; ObjectID = "aWC-S9-Yq0"; */
+"aWC-S9-Yq0.text" = "John Doe";
+
+/* Class = "UIBarButtonItem"; title = "Settings"; ObjectID = "dRh-iR-McS"; */
+"dRh-iR-McS.title" = "Settings";
+
+/* Class = "UIButton"; normalTitle = "supprimer"; ObjectID = "diO-UW-mx0"; */
+"diO-UW-mx0.normalTitle" = "delete";
+
+/* Class = "UILabel"; text = "Aucune histoire n'a encore été partagée"; ObjectID = "fGa-3O-Qgv"; */
+"fGa-3O-Qgv.text" = "No story has been shared yet";
+
+/* Class = "UILabel"; text = "Feux de camp"; ObjectID = "fy8-yN-4ZC"; */
+"fy8-yN-4ZC.text" = "Campfires";
+
+/* Class = "UIButton"; normalTitle = "Filtrer par tag"; ObjectID = "rw4-EK-zeK"; */
+"rw4-EK-zeK.normalTitle" = "Filter by tag";
+
+/* Class = "UILabel"; text = "Journée finale et présentations"; ObjectID = "tvM-ut-zHC"; */
+"tvM-ut-zHC.text" = "Journée finale et présentations";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "yBM-7P-cpa"; */
+"yBM-7P-cpa.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Room"; ObjectID = "zjU-3A-GHW"; */
+"zjU-3A-GHW.normalTitle" = "Room";
