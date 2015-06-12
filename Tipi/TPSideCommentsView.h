@@ -22,6 +22,8 @@
 @property (strong, nonatomic) NSDictionary* currentCommentRef;
 @property (weak, nonatomic) IBOutlet UITableView *commentsList;
 
+@property(strong, nonatomic)NSIndexPath* currentBubbleIndex;
+
 @end
 
 @protocol TPSideCommentsDelegate <NSObject>
@@ -31,7 +33,6 @@
 
 @required
 - (void)sideCommentsView:(TPSideCommentsView *)manager didDeselectComment:(Comment*)comment;
-
 
 @required
 - (void)sideCommentsView:(TPSideCommentsView *)manager comment:(Comment*)comment didFinishedPlaying:(BOOL)finished;

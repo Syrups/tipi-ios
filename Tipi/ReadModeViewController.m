@@ -198,7 +198,7 @@ typedef void(^fadeOutCompletion)(BOOL);
 }
 
 -(void)stopPage{
-    NSLog(@"stopPage %d", self.idx);
+    //NSLog(@"stopPage %d", self.idx);
     //[self.player fadeOutAndStop];
     [self.player stop];
     [self.audioListenTimer invalidate];
@@ -206,7 +206,7 @@ typedef void(^fadeOutCompletion)(BOOL);
 }
 
 - (void)pausePage{
-     NSLog(@"pausePage %d", self.idx);
+     //NSLog(@"pausePage %d", self.idx);
     if(self.player  && self.player.isPlaying){
         [self.audioListenTimer invalidate];
         [self.player fadeOutPause];
@@ -216,7 +216,7 @@ typedef void(^fadeOutCompletion)(BOOL);
 }
 
 - (void)playAndTrack{
-    NSLog(@"playAndTrack %d", self.idx);
+    //NSLog(@"playAndTrack %d", self.idx);
     [self.playerView play];
     if(self.moviePlayer)[self.moviePlayer play];
     
@@ -229,31 +229,18 @@ typedef void(^fadeOutCompletion)(BOOL);
 #pragma mark - Sound Tracking
 
 - (void)listenForComment:(NSTimer*)timer{
-    //[self updateDisplay];
     
     double currentPlayerTime = round(self.player.currentTime);
     
-    //self.page.comments = @[@6.582200, @7.739955];
-    //NSArray *mockComment = @[@1.344, @6.582200, @7.739955];
-    
     //NSLog(@"__________________________%f/%f___________________________________", currentPlayerTime, self.player.duration);
     
-    for ( int i = 0; i < self.page.comments.count; i++) {
-        Comment* comment = [self.page.comments objectAtIndex:i];
-        
+    [self.page.comments enumerateObjectsUsingBlock:^(Comment* comment, NSUInteger idx, BOOL *stop) {
         //NSLog(@"__________________________|%f", comment.timecode);
         
         if(comment.timecode == currentPlayerTime){
-            
-            /*User* user = [User new];
-             user.username = @"Alceste";
-             user.id = @"1234";
-             
-             comment.user = user;*/
-            
-            [self.commentsView.commentsQueueManager pushInQueueComment:comment  atIndex:i];
+            [self.commentsView.commentsQueueManager pushComment:comment  atIndex:idx];
         }
-    }
+    }];
 }
 
 

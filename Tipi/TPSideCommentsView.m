@@ -41,7 +41,6 @@
 }
 
 - (void)commentsQueueManager:(CommentsQueueManager *)manager isReadyComment:(NSDictionary *)comment withReference:(NSNumber *)ref atIndexPath:(NSIndexPath *)indexpath{
-    
     self.comments = manager.commentsQueue;
     NSUInteger index = [self.comments indexOfObject:comment];
     
@@ -80,6 +79,8 @@
     
     BOOL shown = [[commentRef objectForKeyedSubscript:@"state"] boolValue];
     Comment* comment = [commentRef objectForKey:@"comment"];
+    NSUInteger trueIndex = [[commentRef objectForKey:@"index"] integerValue];
+    
     
     NSString *cellIdentifier = shown ? @"popCommentCell" : @"hiddenCommentCell" ;
     UICommentSideCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -93,19 +94,44 @@
     
     
     if(shown){
+       
+
+        cell.circleContainer.tag = trueIndex;
+        NSLog(@"tag %lu ", trueIndex);
+        
         cell.nameLabel.text = cell.unRolled ? comment.user.username : [commentRef objectForKey:@"cap"];
+        
+        [cell.circleContainer addTarget:self action:@selector(didSelectBubbleView:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self sideCommentView:self handleToucheOnRowAtIndexPath:indexPath withSelection:YES];
+-(void)didSelectBubbleView:(UIControl*)sender{
+    
+    NSUInteger idx = [self.commentsQueueManager.referencesQueue indexOfObject:@(sender.tag)];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
+    
+    if(self.currentBubbleIndex && self.currentBubbleIndex.row == sender.tag){
+        
+        NSLog(@"reselected %lu", sender.tag);
+        //[self sideCommentView:self handleToucheOnRowAtIndexPath:indexPath withSelection:NO];
+        
+    }else{
+         NSLog(@"selected %lu", sender.tag);
+        //[self sideCommentView:self handleToucheOnRowAtIndexPath:self.currentBubbleIndex withSelection:NO];
+        //[self sideCommentView:self handleToucheOnRowAtIndexPath:indexPath withSelection:YES];
+        self.currentBubbleIndex = indexPath;
+    }
+    //[self sideCommentsView:self didSelectBubbleAtIndexPath:[NSIndexPath indexPathForRow:sender.tag inSection:0]]
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self sideCommentView:self handleToucheOnRowAtIndexPath:indexPath withSelection:NO];
+
+- (void) sideCommentsView:(TPSideCommentsView *) tableView didSelectBubbleAtIndexPath:(NSIndexPath *)indexPath{
+   
 }
+
 
 - (void)sideCommentView:(TPSideCommentsView *)sideView handleToucheOnRowAtIndexPath:(NSIndexPath *)indexPath withSelection:(BOOL)selected{
     self.currentCommentRef = [self.comments objectAtIndex:indexPath.row];

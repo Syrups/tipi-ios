@@ -21,7 +21,7 @@
 - (instancetype) initWithDelegate:(id)delegate;
 - (instancetype) initWithDelegate:(id)delegate andCapacity:(NSUInteger)capacity;
 
-- (void) pushInQueueComment: (Comment *) comment atIndex:(NSUInteger) index;
+- (void) pushComment: (Comment *) comment atIndex:(NSUInteger) index;
 - (void)removeCommentRef:(NSDictionary *) ref atIndex:(NSUInteger) index;
 
 @end
