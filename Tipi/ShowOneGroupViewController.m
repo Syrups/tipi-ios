@@ -206,14 +206,16 @@
     if (diff < 60) {
         dateText = @"A l'instant";
     } else if (diff < 3600) {
-        dateText = [NSString stringWithFormat:@"Il y a %d minutes", (int)(diff / 60)];
+        dateText = [NSString stringWithFormat:NSLocalizedString(@"Il y a %d minutes", nil), (int)(diff / 60)];
     } else if (diff < 86400) {
         int h = (int) (diff / 3600);
-        dateText = [NSString stringWithFormat:@"Il y a %d heures", h];
+        dateText = [NSString stringWithFormat:NSLocalizedString(@"Il y a %d heures", nil), h];
     } else if (diff > 86400 && diff < 172800) {
-        dateText = [NSString stringWithFormat:@"Hier"];
-    } else {
-        dateText = [NSString stringWithFormat:@"Il y a %d jours", (int)(diff / 86400)];
+        dateText = NSLocalizedString(@"Hier", nil);
+    } else if (diff > 172800 && diff < 2592000) {
+        dateText = [NSString stringWithFormat:NSLocalizedString(@"Il y a %d jours", nil), (int)(diff / 86400)];
+    }else {
+        dateText = NSLocalizedString(@"Il y a longtemps", nil);
     }
     
     //NSLog(@"%@", [story toJSONString]);

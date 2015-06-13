@@ -8,6 +8,7 @@
 
 #import "AddUsersToRoomViewController.h"
 #import "TPLoader.h"
+#import "TPAlert.h"
 
 @interface AddUsersToRoomViewController ()
 
@@ -66,7 +67,7 @@
 
 - (void)roomManager:(RoomManager *)manager failedToInviteUsersToRoom:(Room *)room withError:(NSError *)error {
     [loader removeFromSuperview];
-    ErrorAlert(@"Une erreur est survenue, merci de réessayer plus tard");
+    [TPAlert displayOnController:self withMessage:NSLocalizedString(@"Une erreur est survenue, merci de réessayer plus tard", nil) delegate:nil];
 }
 
 #pragma mark - UITableView
@@ -120,7 +121,7 @@
 }
 
 - (void)userManager:(UserManager *)manager failedToFindUsersWithError:(NSError *)error {
-    ErrorAlert(@"Une erreur est survenue. Merci de réessayer plus tard");
+    [TPAlert displayOnController:self withMessage:NSLocalizedString(@"Une erreur est survenue, merci de réessayer plus tard", nil) delegate:nil];
     self.activityIndicator.hidden = YES;
 }
 

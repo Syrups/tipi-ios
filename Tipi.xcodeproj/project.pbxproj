@@ -125,6 +125,8 @@
 		B3A6123C1B2B1C4800FA7619 /* Rooms.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3A6123E1B2B1C4800FA7619 /* Rooms.storyboard */; };
 		B3A612411B2B1CC300FA7619 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3A612431B2B1CC300FA7619 /* Profile.storyboard */; };
 		B3A6124C1B2B1F6700FA7619 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3A6124E1B2B1F6700FA7619 /* Localizable.strings */; };
+		B3A612511B2C698300FA7619 /* GTWalsheim Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B3A612501B2C698300FA7619 /* GTWalsheim Medium.otf */; };
+		B3A612541B2C6C9300FA7619 /* AudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A612531B2C6C9300FA7619 /* AudioManager.m */; };
 		B3A8D17D1ACE7A3800B09C34 /* RoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D17C1ACE7A3800B09C34 /* RoomController.m */; };
 		B3A8D1811ACE8C2F00B09C34 /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D1801ACE8C2F00B09C34 /* FriendListViewController.m */; };
 		B3A8D1841ACEAD0A00B09C34 /* FriendManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D1831ACEAD0A00B09C34 /* FriendManager.m */; };
@@ -386,6 +388,9 @@
 		B3A6124B1B2B1E2600FA7619 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Rooms.strings; sourceTree = "<group>"; };
 		B3A6124D1B2B1F6700FA7619 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B3A6124F1B2B1F6D00FA7619 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B3A612501B2C698300FA7619 /* GTWalsheim Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GTWalsheim Medium.otf"; path = "../../../../Downloads/Dossier presentation_17_04_15/Document fonts/GTWalsheim Medium.otf"; sourceTree = "<group>"; };
+		B3A612521B2C6C9300FA7619 /* AudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioManager.h; sourceTree = "<group>"; };
+		B3A612531B2C6C9300FA7619 /* AudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioManager.m; sourceTree = "<group>"; };
 		B3A8D17B1ACE7A3800B09C34 /* RoomController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomController.h; sourceTree = "<group>"; };
 		B3A8D17C1ACE7A3800B09C34 /* RoomController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomController.m; sourceTree = "<group>"; };
 		B3A8D17F1ACE8C2F00B09C34 /* FriendListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListViewController.h; sourceTree = "<group>"; };
@@ -696,6 +701,7 @@
 		B319B2391AF0CD1400C819BD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B3A612501B2C698300FA7619 /* GTWalsheim Medium.otf */,
 				B3C470921B10C9A1003231D3 /* tete-sanstete.pkai */,
 				B3BCCFF61AA5C4CB00261212 /* GTWalsheim Light.otf */,
 				B3BCCFF71AA5C4CB00261212 /* GTWalsheim Regular.otf */,
@@ -886,6 +892,8 @@
 				7322855C1B0F41CA00481C2B /* FileDownLoader.m */,
 				73A188D11B19A80800E164E0 /* CommentAudioRecorder.h */,
 				73A188D21B19A80800E164E0 /* CommentAudioRecorder.m */,
+				B3A612521B2C6C9300FA7619 /* AudioManager.h */,
+				B3A612531B2C6C9300FA7619 /* AudioManager.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -1237,6 +1245,7 @@
 				B33389DB1B1CA5BE003BAC78 /* help-record.pkai in Resources */,
 				B3A6123C1B2B1C4800FA7619 /* Rooms.storyboard in Resources */,
 				73B3B3471AA7BA3F00FF7578 /* croix-noire.png in Resources */,
+				B3A612511B2C698300FA7619 /* GTWalsheim Medium.otf in Resources */,
 				B3BCCFF81AA5C4CB00261212 /* GTWalsheim Light.otf in Resources */,
 				B319B2401AF0CD1B00C819BD /* onde_bleu.pkai in Resources */,
 				B3C470931B10C9A1003231D3 /* tete-sanstete.pkai in Resources */,
@@ -1335,6 +1344,7 @@
 				B3FBAABD1AEF7D0900A3A6B4 /* CreateRoomViewController.m in Sources */,
 				B36DD6231AEE5928001FA8C5 /* RoomCache.m in Sources */,
 				73B3B3321AA7B45500FF7578 /* TagMenuViewController.m in Sources */,
+				B3A612541B2C6C9300FA7619 /* AudioManager.m in Sources */,
 				B361ADB41B29979B00FAEB3E /* TPLetterSpacingButton.m in Sources */,
 				73B3B3621AA7CA9100FF7578 /* ReadModeContainerViewController.m in Sources */,
 				B3A4CDC81AA71DB90079F8D1 /* StoryWIPSaver.m in Sources */,

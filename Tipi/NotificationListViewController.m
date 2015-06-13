@@ -45,7 +45,7 @@
     [self animate];
     
     if ([invitations count] == 0) {
-        self.errorLabel.text = @"Pas de nouvelles notifications";
+        self.errorLabel.text = NSLocalizedString(@"Pas de nouvelles notifications", nil);
         self.errorLabel.alpha = 1;
     }
 }

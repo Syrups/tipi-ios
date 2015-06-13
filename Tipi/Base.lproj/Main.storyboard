@@ -6,10 +6,13 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="GTWalsheim Medium.otf">
+            <string>GTWalsheimMedium</string>
+            <string>GTWalsheimMedium</string>
+            <string>GTWalsheimMedium</string>
+            <string>GTWalsheimMedium</string>
+        </mutableArray>
         <mutableArray key="GTWalsheim Regular.otf">
-            <string>GTWalsheim-Regular</string>
-            <string>GTWalsheim-Regular</string>
-            <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
@@ -33,22 +36,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7HU-AZ-Ups" userLabel="Waveform" customClass="SCSiriWaveformView">
-                                <rect key="frame" x="0.0" y="15" width="640" height="435"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="segmented" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="phaseShift">
-                                        <real key="value" value="-0.12"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="frequency">
-                                        <real key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="density">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7k4-ic-My2">
                                 <rect key="frame" x="10" y="15" width="53" height="53"/>
                                 <constraints>
@@ -62,25 +49,6 @@
                                     <action selector="closeFields:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="P4V-8h-ijI"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x5k-bv-3NO" userLabel="Waveform2" customClass="SCSiriWaveformView">
-                                <rect key="frame" x="0.0" y="74" width="320" height="313"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="segmented" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="frequency">
-                                        <real key="value" value="1.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="idleAmplitude">
-                                        <real key="value" value="0.29999999999999999"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="phaseShift">
-                                        <real key="value" value="-0.14999999999999999"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z6R-0s-Tw9" userLabel="Waves">
-                                <rect key="frame" x="31" y="66" width="245" height="192"/>
-                            </imageView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbl-C2-b2A">
                                 <rect key="frame" x="50" y="245" width="220" height="140"/>
                                 <subviews>
@@ -91,11 +59,11 @@
                                             <constraint firstAttribute="width" constant="220" id="ROJ-EF-5RZ"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                <color key="value" red="0.92941176889999999" green="0.92941176889999999" blue="0.92941176889999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                 <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -113,11 +81,11 @@
                                             <constraint firstAttribute="height" constant="30" id="dJY-Wa-Ot3"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                <color key="value" red="0.92941176889999999" green="0.92941176889999999" blue="0.92941176889999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                 <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -139,15 +107,15 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMc-T4-6sy" customClass="TPLetterSpacingButton">
-                                <rect key="frame" x="94" y="399" width="136" height="44"/>
+                                <rect key="frame" x="102" y="414" width="120" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="JN0-nS-pNg"/>
-                                    <constraint firstAttribute="width" constant="136" id="s0j-0L-rWx"/>
+                                    <constraint firstAttribute="width" constant="120" id="s0j-0L-rWx"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GTWalsheim" pointSize="14"/>
                                 <state key="normal" title="m'inscrire">
-                                    <color key="titleColor" red="1" green="0.59215686270000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.87058823529999996" green="0.33725490200000002" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -161,13 +129,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5iZ-Qv-tRF" customClass="TPLetterSpacingButton">
-                                <rect key="frame" x="94" y="457" width="136" height="44"/>
+                                <rect key="frame" x="94" y="472" width="136" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Nao-A6-JkY"/>
                                     <constraint firstAttribute="width" constant="136" id="cpV-qm-Eou"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GTWalsheim" pointSize="14"/>
                                 <state key="normal" title="me connecter">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -182,31 +150,52 @@
                                     <action selector="openFields:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Wqn-zc-IwS"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QhP-Ah-VYA">
-                                <rect key="frame" x="-22" y="200" width="364" height="79"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tipi" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QhP-Ah-VYA">
+                                <rect key="frame" x="110" y="220" width="100" height="79"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="79" id="EPp-Cx-8J8"/>
-                                    <constraint firstAttribute="width" constant="364" id="gT9-WS-4vR"/>
+                                    <constraint firstAttribute="width" constant="100" id="gT9-WS-4vR"/>
                                 </constraints>
-                                <string key="text">Racontez des histoires
-avec votre voix</string>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GTWalsheim" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.79999999999999982" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74d-91-tLK">
+                                <rect key="frame" x="60" y="275" width="200" height="79"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="fie-Fv-laT"/>
+                                    <constraint firstAttribute="height" constant="79" id="kLF-mf-Hcz"/>
+                                </constraints>
+                                <string key="text">Racontez des histoires
+avec votre voix</string>
+                                <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GTWalsheim" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="6gm-4F-MoK">
+                                <rect key="frame" x="113" y="132" width="95" height="95"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="95" id="PCc-Kb-LYC"/>
+                                    <constraint firstAttribute="width" constant="95" id="vtv-09-H32"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.59215686274509804" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.87058823529411766" green="0.33725490196078434" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="QhP-Ah-VYA" secondAttribute="centerX" id="6jX-Qk-w3z"/>
                             <constraint firstItem="7k4-ic-My2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-6" id="86B-zp-bd1"/>
                             <constraint firstAttribute="centerX" secondItem="5iZ-Qv-tRF" secondAttribute="centerX" constant="-2" id="AnO-Df-8Bb"/>
                             <constraint firstItem="7k4-ic-My2" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-5" id="FHO-cG-6iz"/>
+                            <constraint firstAttribute="centerY" secondItem="6gm-4F-MoK" secondAttribute="centerY" constant="104.5" id="Gld-7G-L3I"/>
                             <constraint firstAttribute="centerY" secondItem="vbl-C2-b2A" secondAttribute="centerY" constant="-31" id="Kld-Bi-JRy"/>
                             <constraint firstAttribute="centerX" secondItem="bMc-T4-6sy" secondAttribute="centerX" constant="-2" id="MpI-Gt-4Am"/>
-                            <constraint firstAttribute="centerY" secondItem="QhP-Ah-VYA" secondAttribute="centerY" constant="44.5" id="NJJ-bv-MlG"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="5iZ-Qv-tRF" secondAttribute="bottom" constant="67" id="OZb-fa-I1f"/>
+                            <constraint firstAttribute="centerY" secondItem="QhP-Ah-VYA" secondAttribute="centerY" constant="24.5" id="NJJ-bv-MlG"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="5iZ-Qv-tRF" secondAttribute="bottom" constant="52" id="OZb-fa-I1f"/>
                             <constraint firstAttribute="centerX" secondItem="vbl-C2-b2A" secondAttribute="centerX" id="Xgd-6x-PIe"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="bMc-T4-6sy" secondAttribute="bottom" constant="125" id="fIe-9f-v8t"/>
+                            <constraint firstItem="74d-91-tLK" firstAttribute="top" secondItem="QhP-Ah-VYA" secondAttribute="bottom" constant="-24" id="YJe-7c-ytn"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="bMc-T4-6sy" secondAttribute="bottom" constant="110" id="fIe-9f-v8t"/>
+                            <constraint firstAttribute="centerX" secondItem="74d-91-tLK" secondAttribute="centerX" id="iS3-oc-7H9"/>
+                            <constraint firstAttribute="centerX" secondItem="6gm-4F-MoK" secondAttribute="centerX" id="vCm-Ip-YvW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7ru-Od-4IV"/>
@@ -215,18 +204,19 @@ avec votre voix</string>
                         <outlet property="backButtonTopConstraint" destination="FHO-cG-6iz" id="cnA-ke-fbr"/>
                         <outlet property="centerFieldsVerticalContraint" destination="Kld-Bi-JRy" id="1qf-IC-Q6d"/>
                         <outlet property="fieldsZone" destination="vbl-C2-b2A" id="OCy-qd-RBZ"/>
-                        <outlet property="littleWaves" destination="Z6R-0s-Tw9" id="qeQ-pn-hd9"/>
+                        <outlet property="logo" destination="6gm-4F-MoK" id="go7-Lt-1ib"/>
+                        <outlet property="logoVerticalConstraint" destination="Gld-7G-L3I" id="HJb-DM-XGV"/>
                         <outlet property="passwordField" destination="dlV-TY-5wX" id="Qt8-G5-gzx"/>
-                        <outlet property="secondWaveformView" destination="x5k-bv-3NO" id="Wt7-69-chn"/>
                         <outlet property="signInButton" destination="5iZ-Qv-tRF" id="kG1-3N-Soq"/>
                         <outlet property="signInButtonHeight" destination="Nao-A6-JkY" id="Rb8-9h-kcf"/>
                         <outlet property="signInButtonVerticalSpace" destination="OZb-fa-I1f" id="RZ5-Zc-Qsa"/>
                         <outlet property="signInButtonWidth" destination="cpV-qm-Eou" id="JRo-Nx-gt4"/>
                         <outlet property="signUpButton" destination="bMc-T4-6sy" id="PZ2-HI-3mJ"/>
                         <outlet property="signUpButtonVerticalSpace" destination="fIe-9f-v8t" id="oef-9c-Y7Y"/>
+                        <outlet property="subtitleLabel" destination="74d-91-tLK" id="cC4-En-zUf"/>
+                        <outlet property="titleLabel" destination="QhP-Ah-VYA" id="565-dH-8UM"/>
                         <outlet property="titleVerticalConstraint" destination="NJJ-bv-MlG" id="Q1I-9L-fex"/>
                         <outlet property="usernameField" destination="zCu-M7-YNE" id="LJ5-Ca-LBu"/>
-                        <outlet property="waveformView" destination="7HU-AZ-Ups" id="C0v-f9-IzQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -400,15 +390,14 @@ avec votre voix</string>
                                     <constraint firstAttribute="height" constant="40" id="OPO-ZK-iQz"/>
                                     <constraint firstAttribute="width" constant="220" id="pjZ-bm-egO"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="1" alpha="0.14999999999999999" colorSpace="calibratedWhite"/>
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -421,15 +410,14 @@ avec votre voix</string>
                                     <constraint firstAttribute="width" constant="220" id="6tp-bx-Fiq"/>
                                     <constraint firstAttribute="height" constant="40" id="Oan-Fj-vQ6"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="1" alpha="0.14999999999999999" colorSpace="calibratedWhite"/>
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -442,15 +430,14 @@ avec votre voix</string>
                                     <constraint firstAttribute="width" constant="220" id="d01-1g-L5e"/>
                                     <constraint firstAttribute="height" constant="40" id="e9J-6h-D3A"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="1" alpha="0.14999999999999999" colorSpace="calibratedWhite"/>
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -459,14 +446,14 @@ avec votre voix</string>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXR-A6-BRO" customClass="TPLetterSpacingButton">
                                 <rect key="frame" x="92" y="472" width="136" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="0.59215686270000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="136" id="KLe-GW-TpW"/>
                                     <constraint firstAttribute="height" constant="44" id="zfL-Rb-gP3"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
                                 <state key="normal" title="m'inscrire">
-                                    <color key="titleColor" red="1" green="0.59215686270000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -486,7 +473,6 @@ avec votre voix</string>
                                     <constraint firstAttribute="width" constant="177" id="jh8-Bu-2Zu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iL9-kE-uI9">
@@ -518,7 +504,7 @@ avec votre voix</string>
                                     <constraint firstAttribute="width" constant="53" id="Sb2-GA-hqA"/>
                                     <constraint firstAttribute="height" constant="53" id="e8Z-Ds-M0A"/>
                                 </constraints>
-                                <state key="normal" image="btn-back">
+                                <state key="normal" image="btn-back-dark">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -526,7 +512,7 @@ avec votre voix</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.59215686270000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="JuO-os-H1M" firstAttribute="top" secondItem="ef9-Ar-cqP" secondAttribute="bottom" constant="-4" id="8zf-VX-Jva"/>
                             <constraint firstItem="zb1-BZ-DNC" firstAttribute="top" secondItem="VXR-A6-BRO" secondAttribute="bottom" constant="52" id="BHN-dT-rZ0"/>
@@ -630,6 +616,7 @@ avec votre voix</string>
         <image name="btn-back" width="43" height="42"/>
         <image name="btn-back-dark" width="43" height="42"/>
         <image name="btn-replay" width="87" height="87"/>
+        <image name="logo" width="512" height="512"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

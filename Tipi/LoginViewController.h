@@ -30,5 +30,9 @@
 @property (nonatomic, weak) IBOutlet SCSiriWaveformView *waveformView;
 @property (nonatomic, weak) IBOutlet SCSiriWaveformView *secondWaveformView;
 @property (strong, nonatomic) IBOutlet UIImageView* littleWaves;
+@property (strong, nonatomic) IBOutlet UIView* logo;
+@property (strong, nonatomic) IBOutlet UILabel* titleLabel;
+@property (strong, nonatomic) IBOutlet UILabel* subtitleLabel;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* logoVerticalConstraint;
 
 @end

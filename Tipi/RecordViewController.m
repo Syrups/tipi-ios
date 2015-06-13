@@ -54,7 +54,7 @@
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:kCookieCoachmarkKey] == nil) {
         [PKAIDecoder builAnimatedImageIn:self.coachmarkSprite fromFile:@"help-drag" withAnimationDuration:3];
-        self.helpLabel.text = @"Déplacez les vignettes pour réorganiser votre histoire";
+        self.helpLabel.text = NSLocalizedString(@"Déplacez les vignettes pour réorganiser votre histoire", nil);
         self.overlay.alpha = .7f;
         self.helpLabel.alpha = 1;
         
@@ -65,7 +65,7 @@
 
 - (void)displayCoachmarkForRecord {
     [PKAIDecoder builAnimatedImageIn:self.coachmarkSprite fromFile:@"help-record" withAnimationDuration:3];
-    self.helpLabel.text = @"Appuyez sur l'image actuelle pour enregistrer votre voix sur celle-ci";
+    self.helpLabel.text = NSLocalizedString(@"Appuyez sur l'image actuelle pour enregistrer votre voix sur celle-ci", nil);
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kCookieCoachmarkKey];
 }

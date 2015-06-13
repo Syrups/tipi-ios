@@ -149,7 +149,7 @@
 
 - (void)roomManager:(RoomManager *)manager failedToFetchRooms:(NSError *)error {
     // error
-    alert = [TPAlert displayOnController:self withMessage:@"Impossible de charger les feux de camp, vérifiez votre connexion" delegate:self];
+    alert = [TPAlert displayOnController:self withMessage:NSLocalizedString(@"Impossible de charger les feux de camp, vérifiez votre connexion", nil) delegate:self];
     [loader removeFromSuperview];
 }
 
@@ -201,7 +201,7 @@
 - (void)storyManager:(StoryManager *)manager failedToCreateStory:(NSError *)error {
     NSLog(@"%@", error);
     
-    alert = [TPAlert displayOnController:self withMessage:@"Impossible de créer l'histoire, vérifiez votre connexion" delegate:self];
+    alert = [TPAlert displayOnController:self withMessage:NSLocalizedString(@"Impossible de créer l'histoire, vérifiez votre connexion", nil) delegate:self];
     [loader removeFromSuperview];
 }
 

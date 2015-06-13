@@ -289,11 +289,11 @@ typedef void(^fadeOutCompletion)(BOOL);
 
 #pragma mark - StoryManager
 - (void)storyManager:(StoryManager *)manager successfullyCreatedComment:(Comment *)story{
-    [TPAlert displayOnController:self withMessage:@"Votre commentaire à été enregistré avec succès !" delegate:self];
+    [TPAlert displayOnController:self withMessage:NSLocalizedString(@"Votre commentaire à été enregistré avec succès !", nil) delegate:self];
 }
 
 - (void)storyManagerFailedToCreateComment:(StoryManager *)manager{
-    [TPAlert displayOnController:self withMessage:@"Votre commentaire n'a pu être enregistré, veuillez réessayer" delegate:self];
+    [TPAlert displayOnController:self withMessage:NSLocalizedString(@"Votre commentaire n'a pu être enregistré, veuillez réessayer", nil) delegate:self];
 }
 
 - (void)alertDidAknowledge:(TPAlert *)alert{

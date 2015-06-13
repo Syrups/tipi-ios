@@ -6,7 +6,7 @@
 "5iZ-Qv-tRF.normalTitle" = "sign in";
 
 /* Class = "UILabel"; text = "Racontez des histoires\navec votre voix"; ObjectID = "QhP-Ah-VYA"; */
-"QhP-Ah-VYA.text" = "Tell stories with\nyour voice";
+"QhP-Ah-VYA.text" = "tipi";
 
 /* Class = "UITextField"; placeholder = "Mot de passe"; ObjectID = "SAJ-GH-Urb"; */
 "SAJ-GH-Urb.placeholder" = "Password";
@@ -31,3 +31,6 @@
 
 /* Class = "UITextField"; placeholder = "Nom d'utilisateur"; ObjectID = "zCu-M7-YNE"; */
 "zCu-M7-YNE.placeholder" = "Username";
+
+/* Class = "UILabel"; ObjectID = "74d-91-tLK"; */
+"74d-91-tLK.text" = "Tell stories with\nyour voice";

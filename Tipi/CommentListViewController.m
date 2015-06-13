@@ -10,6 +10,7 @@
 #import "AnimationLibrary.h"
 #import "FileDownLoader.h"
 #import "TPCircleWaverControl.h"
+#import <UIView+MTAnimation.h>
 
 @implementation CommentListViewController {
     NSIndexPath* currentIndexPath;
@@ -51,27 +52,25 @@
         [self.delegate commentListViewController:self didSelectComment:comment];
     }
     
-    
-    currentIndexPath = indexPath;
-    
     NSError* err = nil;
     NSData *soundData = [NSData dataWithContentsOfURL:[NSURL URLWithString:comment.file]];
     
     self.player = [[AVAudioPlayer alloc] initWithData:soundData error:&err];
     self.player.delegate = self;
     
-    if (err) { NSLog(@"%@", err.description); }
-    
-    TPCircleWaverControl* control = (TPCircleWaverControl*)[cell.contentView viewWithTag:30];
-    [control appear];
-    control.alpha = 1;
-    
-    control.audioPlayer = self.player;
-    control.autoStart = YES;
-    
-    
-    [self.player play];
-    
+    if (!err) {
+        currentIndexPath = indexPath;
+        
+        TPCircleWaverControl* control = (TPCircleWaverControl*)[cell.contentView viewWithTag:30];
+        [control appear];
+        control.alpha = 1;
+        
+        control.audioPlayer = self.player;
+        control.autoStart = YES;
+        
+        
+        [self.player play];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

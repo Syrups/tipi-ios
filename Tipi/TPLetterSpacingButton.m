@@ -23,6 +23,7 @@
         
         [self setAttributedTitle:attributedString forState:UIControlStateNormal];
         
+        self.titleLabel.clipsToBounds = NO;
     }
     
     return self;

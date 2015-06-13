@@ -93,15 +93,17 @@
     
     if(shown){
         cell.nameLabel.text = cell.unRolled ? comment.user.username : [commentRef objectForKey:@"cap"];
-        [cell.circleContainer addTarget:self action:@selector(didSelectBubbleView:) forControlEvents:UIControlEventTouchUpInside];
+        
+        UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didSelectBubbleView:)];
+        [cell.circleContainer addGestureRecognizer:tap];
     }
     
     return cell;
 }
 
--(void)didSelectBubbleView:(UIControl*)sender{
+-(void)didSelectBubbleView:(UIGestureRecognizer*)sender{
     
-    CGPoint pos = [sender convertPoint:CGPointZero toView:self.commentsList];
+    CGPoint pos = [sender.view convertPoint:CGPointZero toView:self.commentsList];
     NSIndexPath* indexPath = [self.commentsList indexPathForRowAtPoint:pos];
     
     if(self.currentBubbleIndex && self.currentBubbleIndex.row == indexPath.row){

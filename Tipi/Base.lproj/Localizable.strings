@@ -1,9 +1,18 @@
-/* 
-  Localizable.strings
-  Tipi
 
-  Created by Leo on 12/06/2015.
-  Copyright (c) 2015 Syrup Apps. All rights reserved.
-*/
 
 "vous invite à rejoindre :" = "vous invite à rejoindre :";
+"Une erreur est survenue, merci de réessayer plus tard" = "Une erreur est survenue, merci de réessayer plus tard";
+"Le feu de camp a bien été renommé !" = "Le feu de camp a bien été renommé !";
+"Mauvaise combinaison nom d'utilisateur / mot de passe" = "Mauvaise combinaison nom d'utilisateur / mot de passe";
+"Pas de nouvelles notifications" = "Pas de nouvelles notifications";
+"Votre commentaire à été enregistré avec succès !" = "Votre commentaire à été enregistré avec succès !";
+"Votre commentaire n'a pu être enregistré, veuillez réessayer" = "Votre commentaire n'a pu être enregistré, veuillez réessayer";
+"Déplacez les vignettes pour réorganiser votre histoire" = "Déplacez les vignettes pour réorganiser votre histoire";
+"Appuyez sur l'image actuelle pour enregistrer votre voix sur celle-ci" = "Appuyez sur l'image actuelle pour enregistrer votre voix sur celle-ci";
+"Impossible de charger les feux de camp, vérifiez votre connexion" = "Impossible de charger les feux de camp, vérifiez votre connexion";
+"Impossible de créer l'histoire, vérifiez votre connexion" = "Impossible de créer l'histoire, vérifiez votre connexion";
+"Il y a %d minutes" = "Il y a %d minutes";
+"Il y a %d heures" = "Il y a %d heures";
+"Il y a %d jours" = "Il y a %d jours";
+"Hier" = "Hier";
+"Il y a longtemps" = "Il y a longtemps";

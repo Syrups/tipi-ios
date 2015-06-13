@@ -21,7 +21,7 @@
                                  range:NSMakeRange(0, [self.text length])];
         
         NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
-        style.lineSpacing = 3.5f;
+        style.lineSpacing = 2;
         style.alignment = NSTextAlignmentCenter;
         
         [attributedString addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, [self.text length])];

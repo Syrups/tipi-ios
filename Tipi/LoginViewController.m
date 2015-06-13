@@ -35,7 +35,23 @@
     [AnimationLibrary animateBouncingView:self.signInButton usingConstraint:self.signInButtonVerticalSpace ofType:AnimationLibraryBottomSpaceConstraint relativeToSuperview:self.view inverted:NO];
     [AnimationLibrary animateBouncingView:self.signUpButton usingConstraint:self.signUpButtonVerticalSpace ofType:AnimationLibraryBottomSpaceConstraint relativeToSuperview:self.view inverted:NO];
     
+    
     self.backButtonTopConstraint.constant = -100;
+    
+    // load anim
+    
+    self.titleLabel.alpha = 0;
+    self.subtitleLabel.alpha = 0;
+    self.logoVerticalConstraint.constant = 0;
+    
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:.3f delay:.4f options:0 animations:^{
+        self.logoVerticalConstraint.constant = 105;
+        [self.view layoutIfNeeded];
+        self.titleLabel.alpha = 1;
+        self.subtitleLabel.alpha = 1;
+    } completion:nil];
+    
 }
 
 - (void)updateMeters
@@ -49,9 +65,11 @@
     
     [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.fieldsZone.alpha = 1;
-        self.signInButtonVerticalSpace.constant -= 40;
+//        self.signInButtonVerticalSpace.constant -= 40;
         self.backButtonTopConstraint.constant = -5;
-        self.titleVerticalConstraint.constant = 100;
+//        self.titleVerticalConstraint.constant = 100;
+        self.titleLabel.alpha = 0;
+        self.subtitleLabel.alpha = 0;
         self.signUpButton.alpha = 0;
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
@@ -67,8 +85,10 @@
     
     [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.fieldsZone.alpha = 0;
-        self.signInButtonVerticalSpace.constant += 40;
-        self.titleVerticalConstraint.constant = 0;
+//        self.signInButtonVerticalSpace.constant += 40;
+//        self.titleVerticalConstraint.constant = 0;
+        self.titleLabel.alpha = 1;
+        self.subtitleLabel.alpha = 1;
         self.backButtonTopConstraint.constant = -100;
         self.signUpButton.alpha = 1;
         [self.view layoutIfNeeded];
@@ -104,10 +124,10 @@
 - (void)userManager:(UserManager *)manager failedToAuthenticateUserWithUsername:(NSString *)username withStatusCode:(NSInteger)code {
     
     if (code == 404 || code == 403) {
-        [TPAlert displayOnController:self withMessage:@"Mauvaise combinaison nom d'utilisateur / mot de passe" delegate:nil];
+        [TPAlert displayOnController:self withMessage:NSLocalizedString(@"Mauvaise combinaison nom d'utilisateur / mot de passe", nil) delegate:nil];
     } else {
     // failure
-        [TPAlert displayOnController:self withMessage:@"Erreur de connexion, veuillez réessayer plus tard" delegate:nil];
+        [TPAlert displayOnController:self withMessage:NSLocalizedString(@"Une erreur est survenue, merci de réessayer plus tard", nil) delegate:nil];
     }
     [loader removeFromSuperview];
 }

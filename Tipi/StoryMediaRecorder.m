@@ -8,6 +8,7 @@
 
 #import "StoryMediaRecorder.h"
 #import "StoryWIPSaver.h"
+#import "AudioManager.h"
 
 @implementation StoryMediaRecorder
 
@@ -18,7 +19,7 @@
     
     self.microphone = [EZMicrophone microphoneWithDelegate:self];
     
-    [self configureAudioSession];
+    [AudioManager configureAudioSession];
     
     return self;
 }
