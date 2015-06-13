@@ -51,26 +51,26 @@
         [self.delegate commentListViewController:self didSelectComment:comment];
     }
     
-    [FileDownLoader downloadFileWithURL:comment.file completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-        
-        currentIndexPath = indexPath;
-        
-        NSError* err = nil;
-        self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:filePath error:&err];
-        self.player.delegate = self;
-        
-        if (err) { NSLog(@"%@", err); }
-        
-        TPCircleWaverControl* control = (TPCircleWaverControl*)[cell.contentView viewWithTag:30];
-        [control appear];
-        control.alpha = 1;
-        
-        control.audioPlayer = self.player;
-        control.autoStart = YES;
-        
-        
-        [self.player play];
-    }];
+    
+    currentIndexPath = indexPath;
+    
+    NSError* err = nil;
+    NSData *soundData = [NSData dataWithContentsOfURL:[NSURL URLWithString:comment.file]];
+    
+    self.player = [[AVAudioPlayer alloc] initWithData:soundData error:&err];
+    self.player.delegate = self;
+    
+    if (err) { NSLog(@"%@", err.description); }
+    
+    TPCircleWaverControl* control = (TPCircleWaverControl*)[cell.contentView viewWithTag:30];
+    [control appear];
+    control.alpha = 1;
+    
+    control.audioPlayer = self.player;
+    control.autoStart = YES;
+    
+    
+    [self.player play];
     
 }
 
