@@ -57,7 +57,6 @@ typedef enum TPCircleMode{
 
 @property BOOL nowRecording;
 
-
 @property (strong, nonatomic)  CADisplayLink* waveDisplayLink;
 
 - (void)play;

@@ -33,11 +33,11 @@
     return self;
 }
 
-- (void)pushInQueueComment : (Comment *) comment atIndex:(NSUInteger) index{
+- (void)pushComment : (Comment *) comment atIndex:(NSUInteger) index{
 
     if(![self.referencesQueue containsObject: @(index)]){
         
-        NSMutableDictionary *commentWraper = [@{@"comment": comment, @"cap": [self findCapForuser: comment.user], @"state" : @NO, @"unrolled" : @NO} mutableCopy];
+        NSMutableDictionary *commentWraper = [@{@"comment": comment, @"cap": [self findCapForuser: comment.user], @"state" : @NO, @"unrolled" : @NO, @"index":@(index) } mutableCopy];
         [self.commentsQueue insertObject:commentWraper atIndex:0];
         [self.referencesQueue insertObject:@(index) atIndex:0];
         
@@ -65,6 +65,10 @@
     }
 }
 
+- (void)reset{
+
+}
+
 - (void)hideOverlay:(NSTimer *)timer{
     /*[UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.overlayView.alpha = 0;
@@ -85,11 +89,12 @@
 
 - (NSString *)findCapForuser:(User*)user{
     
+    user.username = [user.username stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[user.username substringToIndex:1] capitalizedString]];
     NSString *cap = [user.username substringToIndex:2];
-    
+
     for (NSDictionary *comRef in self.commentsQueue) {
         Comment *com = [comRef objectForKey:@"comment"];
-        if(user.id != com.user.id){
+        if(![user.id isEqualToString: com.user.id]){
             cap = [CommentsQueueManager checkCapBeetweenUser:user andComUser:com.user andUserwithIndex:2];
         }
     }

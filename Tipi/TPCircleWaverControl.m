@@ -507,6 +507,12 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
             if (self.audioPlayer) {
                 self.duration = self.audioPlayer.duration;
                 self.currentTimePercent  = ((self.audioPlayer.currentTime / self.duration) * 100);
+                
+                
+                if((self.duration - self.audioPlayer.currentTime) <= 1.2){
+                    self.audioPlayer.volume = self.duration - self.audioPlayer.currentTime;
+                }
+                
             }else if(self.simplePlayer){
                 
                 AVPlayerItem *currentItem = self.simplePlayer.currentItem;
@@ -515,6 +521,10 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
                 CMTime currentTime = currentItem.currentTime; //playing time
                 self.duration = CMTimeGetSeconds(duration);
                 self.currentTimePercent  =  ((CMTimeGetSeconds(currentTime)/ self.duration) * 100);
+                
+                if((self.duration - CMTimeGetSeconds(currentTime)) <= 1.2){
+                    self.simplePlayer.volume = self.duration - (CMTimeGetSeconds(currentTime));
+                }
             }
             break;
         case TPCircleModeRecord:

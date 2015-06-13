@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UICommentSideCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIView *circleContainer;
+@property (weak, nonatomic) IBOutlet UIControl *circleContainer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *circleContainerWidth;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameLabelWidth;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;

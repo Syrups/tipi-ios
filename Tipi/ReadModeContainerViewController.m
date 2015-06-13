@@ -87,6 +87,7 @@
     
     // disable all motion managers
     [self.swiper.viewControllers enumerateObjectsUsingBlock:^(ReadModeViewController* obj, NSUInteger idx, BOOL *stop) {
+        [obj stopPage];
         [obj.mediaImageView.motionManager stopGyroUpdates];
     }];
     
@@ -139,7 +140,7 @@
 #pragma mark - TPSwipableViewController
 
 - (void)swipableViewController:(TPSwipableViewController *)containerViewController didFinishedTransitionToViewController:(UIViewController *)viewController{
-    NSLog(@"TOTOTOTOTOOT");
+    //NSLog(@"TOTOTOTOTOOT");
     [self setupForViewController:(ReadModeViewController*)viewController];
     
 }
