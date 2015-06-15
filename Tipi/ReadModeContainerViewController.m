@@ -9,7 +9,7 @@
 #import <AFURLSessionManager.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ShowOneGroupViewController.h"
-
+#import "AudioManager.h"
 #import "ReadModeContainerViewController.h"
 #import "ReadModeViewController.h"
 #import "Configuration.h"
@@ -25,6 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [AudioManager configureAudioSession];
+
     
     self.audioPlayers = [NSMutableArray new];
     self.mediaFiles = [NSMutableArray new];

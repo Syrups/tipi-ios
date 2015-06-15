@@ -4,9 +4,16 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="GTWalsheim Medium.otf">
+            <string>GTWalsheimMedium</string>
+            <string>GTWalsheimMedium</string>
+        </mutableArray>
         <mutableArray key="GTWalsheim Regular.otf">
+            <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
@@ -242,7 +249,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ur2-Bb-DVr">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ur2-Bb-DVr" customClass="TPLetterSpacingButton">
                                 <rect key="frame" x="30" y="144" width="260" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="Nnh-8M-Tcr"/>
@@ -250,14 +257,14 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="19"/>
                                 <state key="normal" title="Conditions d'utilisation">
-                                    <color key="titleColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="9Da-TV-GhA" kind="modal" id="NQQ-4p-hcq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UeX-to-DV9">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UeX-to-DV9" customClass="TPLetterSpacingButton">
                                 <rect key="frame" x="30" y="94" width="260" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="yfo-1t-HZi"/>
@@ -265,11 +272,11 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="19"/>
                                 <state key="normal" title="Signaler un abus">
-                                    <color key="titleColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glV-uD-S7B">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glV-uD-S7B" customClass="TPLetterSpacingButton">
                                 <rect key="frame" x="30" y="189" width="260" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="EQ7-KC-Cd0"/>
@@ -277,7 +284,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="19"/>
                                 <state key="normal" title="Supprimer mon compte">
-                                    <color key="titleColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -339,15 +346,38 @@
                                     <constraint firstAttribute="width" constant="268" id="xe9-QJ-gmf"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hly-8q-BmK">
-                                <rect key="frame" x="30" y="235" width="260" height="47"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kzt-vv-4xt" customClass="TPLetterSpacingButton">
+                                <rect key="frame" x="30" y="239" width="260" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="P5F-eR-fH2"/>
+                                    <constraint firstAttribute="width" constant="260" id="mbw-qg-TuJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="19"/>
+                                <state key="normal" title="Envoyer votre avis">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="X7P-ha-QJp" kind="modal" id="qvG-xy-lql"/>
+                                </connections>
+                            </button>
+                            <view alpha="0.20000000298023224" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HD3-C8-sNs">
+                                <rect key="frame" x="30" y="285" width="268" height="1"/>
+                                <color key="backgroundColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="268" id="Apq-uQ-nt1"/>
+                                    <constraint firstAttribute="height" constant="1" id="Tyf-i2-17l"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hly-8q-BmK" customClass="TPLetterSpacingButton">
+                                <rect key="frame" x="30" y="285" width="260" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="ASJ-du-O26"/>
                                     <constraint firstAttribute="width" constant="260" id="EE6-qb-9NO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="19"/>
                                 <state key="normal" title="Déconnexion">
-                                    <color key="titleColor" red="0.16078431369999999" green="0.22352941179999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -357,9 +387,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Kzt-vv-4xt" secondAttribute="centerX" id="3DL-Wu-jkb"/>
                             <constraint firstItem="HFQ-GB-9If" firstAttribute="top" secondItem="UeX-to-DV9" secondAttribute="bottom" constant="3" id="4HO-EP-xQy"/>
                             <constraint firstAttribute="centerX" secondItem="qTA-E6-6LI" secondAttribute="centerX" constant="-0.5" id="4ea-Pm-78f"/>
                             <constraint firstAttribute="centerX" secondItem="HFQ-GB-9If" secondAttribute="centerX" constant="-4" id="AZD-Fg-mXe"/>
+                            <constraint firstItem="Kzt-vv-4xt" firstAttribute="top" secondItem="tw3-7h-awR" secondAttribute="bottom" constant="2" id="INS-uV-cGg"/>
                             <constraint firstItem="8SN-sC-Wmf" firstAttribute="top" secondItem="cUc-rg-sgG" secondAttribute="bottom" constant="-2" id="Jnd-cZ-OBt"/>
                             <constraint firstItem="8SN-sC-Wmf" firstAttribute="leading" secondItem="a08-hc-4il" secondAttribute="leadingMargin" constant="-11" id="LMI-xy-43B"/>
                             <constraint firstItem="glV-uD-S7B" firstAttribute="top" secondItem="UeX-to-DV9" secondAttribute="bottom" constant="48" id="Mj3-uR-feI"/>
@@ -370,9 +402,11 @@
                             <constraint firstAttribute="trailingMargin" secondItem="zcJ-hD-emh" secondAttribute="trailing" constant="-16" id="Ug3-Pp-Vbb"/>
                             <constraint firstAttribute="centerX" secondItem="glV-uD-S7B" secondAttribute="centerX" id="Xxs-HP-i13"/>
                             <constraint firstItem="tw3-7h-awR" firstAttribute="top" secondItem="glV-uD-S7B" secondAttribute="bottom" id="ZSC-H8-DeE"/>
+                            <constraint firstAttribute="centerX" secondItem="HD3-C8-sNs" secondAttribute="centerX" constant="-4" id="aqm-gp-5IV"/>
                             <constraint firstAttribute="centerX" secondItem="Hly-8q-BmK" secondAttribute="centerX" id="ax5-15-0dq"/>
                             <constraint firstItem="zcJ-hD-emh" firstAttribute="leading" secondItem="a08-hc-4il" secondAttribute="leadingMargin" constant="-16" id="cVK-lc-La7"/>
-                            <constraint firstItem="Hly-8q-BmK" firstAttribute="top" secondItem="glV-uD-S7B" secondAttribute="bottom" constant="-1" id="gBo-xI-6Tk"/>
+                            <constraint firstItem="Hly-8q-BmK" firstAttribute="top" secondItem="glV-uD-S7B" secondAttribute="bottom" constant="49" id="gBo-xI-6Tk"/>
+                            <constraint firstItem="HD3-C8-sNs" firstAttribute="top" secondItem="Kzt-vv-4xt" secondAttribute="bottom" constant="-1" id="kjO-dh-91S"/>
                             <constraint firstAttribute="centerX" secondItem="Ur2-Bb-DVr" secondAttribute="centerX" id="lU2-mb-RbR"/>
                             <constraint firstItem="gaj-Qb-2OX" firstAttribute="top" secondItem="Ur2-Bb-DVr" secondAttribute="bottom" constant="-2" id="psd-we-24x"/>
                             <constraint firstItem="zcJ-hD-emh" firstAttribute="top" secondItem="qTA-E6-6LI" secondAttribute="bottom" constant="19" id="qpk-WY-pPs"/>
@@ -390,6 +424,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5My-I1-NIM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Hm0-US-dcw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="958" y="-3983"/>
         </scene>
@@ -440,7 +475,100 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QFW-pa-5wO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1333" y="-3983"/>
+            <point key="canvasLocation" x="1405" y="-3635"/>
+        </scene>
+        <!--Feedback View Controller-->
+        <scene sceneID="K7D-Dh-TgN">
+            <objects>
+                <viewController id="X7P-ha-QJp" customClass="FeedbackViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ejM-aw-A2A"/>
+                        <viewControllerLayoutGuide type="bottom" id="Flx-6G-EPJ"/>
+                    </layoutGuides>
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="xZo-0Y-KaN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7uD-49-b9H">
+                                <rect key="frame" x="0.0" y="-4" width="320" height="227"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Q8D-EY-ThJ">
+                                        <rect key="frame" x="113" y="66" width="95" height="95"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="95" id="Dv8-tP-W8M"/>
+                                            <constraint firstAttribute="width" constant="95" id="IvS-a0-nfd"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.87058823529999996" green="0.33725490200000002" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="Q8D-EY-ThJ" secondAttribute="centerX" id="LK2-3e-grQ"/>
+                                    <constraint firstAttribute="centerY" secondItem="Q8D-EY-ThJ" secondAttribute="centerY" id="UBg-tK-vzX"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.65000001192092882" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdJ-jT-cgG">
+                                <rect key="frame" x="34" y="254" width="252" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="EQu-9q-ZdL"/>
+                                    <constraint firstAttribute="width" constant="252" id="Ico-wb-NWg"/>
+                                </constraints>
+                                <string key="text">Nous souhaitons pouvoir améliorer tipi, afin de vous permettre de toujours pouvoir raconter des histoires de la meilleure façon possible</string>
+                                <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GTWalsheim" pointSize="14"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.65000003576278687" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pour tout problème, feedback, ou idée d'amélioration, vous pouvez nous contacter à l'adresse suivante :" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pm8-ub-6Nw">
+                                <rect key="frame" x="34" y="328" width="254" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="BwU-6J-nsH"/>
+                                    <constraint firstAttribute="width" constant="254" id="K8H-Kd-TO3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GTWalsheim" pointSize="14"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IG0-O2-f6d">
+                                <rect key="frame" x="61" y="454" width="201" height="30"/>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="15"/>
+                                <state key="normal" title="syrupdev@gmail.com">
+                                    <color key="titleColor" red="0.87058823529999996" green="0.33725490200000002" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="openMailComposer" destination="X7P-ha-QJp" eventType="touchUpInside" id="rUM-Vh-XSK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSA-oy-mzP">
+                                <rect key="frame" x="5" y="17" width="60" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="eeH-NT-pJb"/>
+                                    <constraint firstAttribute="width" constant="60" id="he0-1G-LzH"/>
+                                </constraints>
+                                <state key="normal" image="btn-back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismiss:" destination="1u4-8d-cCC" eventType="touchUpInside" id="MgV-eX-adK"/>
+                                    <segue destination="Hm0-US-dcw" kind="unwind" unwindAction="prepareForUnwind:" id="tbi-fq-9sR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7uD-49-b9H" firstAttribute="height" secondItem="xZo-0Y-KaN" secondAttribute="height" multiplier="0.4" id="0GX-ts-S0n"/>
+                            <constraint firstItem="7uD-49-b9H" firstAttribute="leading" secondItem="xZo-0Y-KaN" secondAttribute="leadingMargin" constant="-16" id="4rz-lh-bbB"/>
+                            <constraint firstItem="NSA-oy-mzP" firstAttribute="leading" secondItem="xZo-0Y-KaN" secondAttribute="leadingMargin" constant="-11" id="FZR-fD-mad"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7uD-49-b9H" secondAttribute="trailing" constant="-16" id="Si9-4s-74j"/>
+                            <constraint firstItem="pdJ-jT-cgG" firstAttribute="top" secondItem="7uD-49-b9H" secondAttribute="bottom" constant="31" id="U55-U2-xwD"/>
+                            <constraint firstItem="pm8-ub-6Nw" firstAttribute="top" secondItem="pdJ-jT-cgG" secondAttribute="bottom" constant="-66" id="Uc3-7O-Z5l"/>
+                            <constraint firstItem="NSA-oy-mzP" firstAttribute="top" secondItem="ejM-aw-A2A" secondAttribute="bottom" constant="-3" id="bqe-BT-yNZ"/>
+                            <constraint firstAttribute="centerX" secondItem="pm8-ub-6Nw" secondAttribute="centerX" constant="-1" id="eBg-2D-oqp"/>
+                            <constraint firstItem="7uD-49-b9H" firstAttribute="top" secondItem="ejM-aw-A2A" secondAttribute="bottom" constant="-24" id="jYg-1o-IWo"/>
+                            <constraint firstAttribute="centerX" secondItem="pdJ-jT-cgG" secondAttribute="centerX" id="rN6-80-gRC"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cUO-Sn-uej" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1405" y="-4279"/>
         </scene>
         <!--Add Friend View Controller-->
         <scene sceneID="P8L-dn-9Uv">
@@ -620,6 +748,7 @@
         <image name="btn-back" width="43" height="42"/>
         <image name="btn-back-dark" width="43" height="42"/>
         <image name="btn-settings" width="41" height="40"/>
+        <image name="logo" width="512" height="512"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

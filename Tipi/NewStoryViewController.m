@@ -26,10 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    MediaLibrary* library = [[MediaLibrary alloc] init];
-    library.delegate = self;
-    [library fetchMediasFromLibrary];
-    
     [self setupTitle];
     
     
@@ -46,6 +42,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    [self transitionFromFires];
+    
+    MediaLibrary* library = [[MediaLibrary alloc] init];
+    library.delegate = self;
+    [library fetchMediasFromLibrary];
     
 //    [self reloadBackgroundImage];
     

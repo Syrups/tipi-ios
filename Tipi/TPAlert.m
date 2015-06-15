@@ -8,7 +8,9 @@
 
 #import "TPAlert.h"
 
-@implementation TPAlert
+@implementation TPAlert {
+    UIView* popin;
+}
 
 + (TPAlert*)displayOnController:(UIViewController *)controller withMessage:(NSString *)message delegate:(id)delegate {
     TPAlert* alert = [[TPAlert alloc] initWithFrame:controller.view.frame andMessage:message];
@@ -26,14 +28,14 @@
         CGFloat w = 260;
         CGFloat h = 160;
         
-        UIView* popin = [[UIView alloc] initWithFrame:CGRectMake(frame.size.width/2 - w/2, frame.size.height/2 - h/2, w, h)];
+        popin = [[UIView alloc] initWithFrame:CGRectMake(frame.size.width/2 - w/2, frame.size.height/2 - h/2, w, h)];
         popin.backgroundColor = [UIColor whiteColor];
         popin.layer.cornerRadius = 10;
         popin.layer.masksToBounds = YES;
         popin.alpha = 0;
         popin.transform = CGAffineTransformMakeScale(.9f, .9f);
         
-        self.label = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, popin.frame.size.width - 40, popin.frame.size.height - 50)];
+        self.label = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, popin.frame.size.width - 50, popin.frame.size.height - 50)];
         self.label.font = [UIFont fontWithName:@"GTWalsheim-Regular" size:15];
         self.label.textAlignment = NSTextAlignmentCenter;
         self.label.text = message;
@@ -54,6 +56,17 @@
         
         [self addSubview:popin];
         
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.label.text];
+        
+        
+        NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
+        style.lineSpacing = 1.5f;
+        style.alignment = NSTextAlignmentCenter;
+        
+        [attributedString addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, [self.label.text length])];
+        
+        self.label.attributedText = attributedString;
+        
         self.backgroundColor = RgbColorAlpha(0, 0, 0, .7f);
         
         [UIView animateWithDuration:.2f animations:^{
@@ -62,6 +75,18 @@
         }];
     }
     return self;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    CGPoint location = [[touches anyObject] locationInView:self];
+    
+    if (!CGRectContainsPoint(popin.frame, location)) {
+        [UIView animateWithDuration:.3f animations:^{
+            self.alpha = 0;
+        } completion:^(BOOL finished) {
+            [self removeFromSuperview];
+        }];
+    }
 }
 
 - (void)okButtonClicked {

@@ -18,7 +18,6 @@
     
     self.microphone = [EZMicrophone microphoneWithDelegate:self];
     
-    [AudioManager configureAudioSession];
     
     return self;
 }

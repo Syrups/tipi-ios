@@ -1,16 +1,16 @@
 //
-//  DeleteStoryModalViewController.m
+//  DeleteRoomModalViewController.m
 //  Tipi
 //
-//  Created by Leo on 10/06/2015.
+//  Created by Leo on 14/06/2015.
 //  Copyright (c) 2015 Syrup Apps. All rights reserved.
 //
 
-#import "DeleteStoryModalViewController.h"
-#import "ShowOneGroupViewController.h"
+#import "DeleteRoomModalViewController.h"
+#import "ShowGroupsViewController.h"
 #import "TPAlert.h"
 
-@implementation DeleteStoryModalViewController
+@implementation DeleteRoomModalViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,7 +32,7 @@
 }
 
 - (IBAction)close:(id)sender {
-
+    
     [UIView animateKeyframesWithDuration:.5f delay:0 options:0 animations:^{
         [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.5f animations:^{
             self.centerYConstraint.constant = 30;
@@ -53,36 +53,34 @@
 }
 
 - (IBAction)delete:(id)sender {
-    StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
-    [manager deleteStory:self.story inRoom:self.room];
+    RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
+    [manager deleteRoom:self.room];
 }
 
-- (IBAction)deleteAndReport:(id)sender {
-    StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
-    // todo report
-    [manager deleteStory:self.story inRoom:self.room];
-}
 
-#pragma mark - StoryDeleter
+#pragma mark - RoomDeleter
 
-- (void)storyManager:(StoryManager *)manager successfullyDeletedStoryInRoom:(Room *)room {
+- (void)roomManager:(RoomManager *)manager successfullyDeletedRoom:(Room *)room {
     [self close:nil];
     
-    ShowOneGroupViewController* parent = (ShowOneGroupViewController*)self.parentViewController;
+    ShowGroupsViewController* parent = (ShowGroupsViewController*)self.parentViewController;
     
-    NSMutableArray* mStories = [parent.mStories mutableCopy];
+    NSMutableArray* mRooms = [parent.mGroups mutableCopy];
     
-    [mStories removeObject:self.story];
+    [mRooms removeObject:self.room];
     
-    parent.mStories = [mStories copy];
+    parent.mGroups = [mRooms copy];
     
-    [[(ShowOneGroupViewController*)self.parentViewController mTableView] reloadData];
+    [[(ShowGroupsViewController*)self.parentViewController mTableView] reloadData];
     
-    [TPAlert displayOnController:parent withMessage:@"L'histoire a été supprimée du feu de camp, mais elle reste disponible dans les autres" delegate:nil];
+    [TPAlert displayOnController:parent withMessage:@"Le feu de camp a bien été supprimé" delegate:nil];
 }
 
-- (void)storyManager:(StoryManager *)manager failedToDeleteStory:(Story *)story inRoom:(Room *)room withError:(NSError *)error {
-    // TODO
+- (void)roomManager:(RoomManager *)manager failedToDeleteRoom:(Room *)room withError:(NSError *)error {
+    [TPAlert displayOnController:self.parentViewController withMessage:NSLocalizedString(@"Une erreur est survenue, merci de réessayer plus tard", nil) delegate:nil];
+    [self close:nil];
+    
+    
 }
 
 @end

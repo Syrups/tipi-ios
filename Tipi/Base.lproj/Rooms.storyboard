@@ -9,8 +9,12 @@
     <customFonts key="customFonts">
         <mutableArray key="GTWalsheim Bold.otf">
             <string>GTWalsheim-Bold</string>
+            <string>GTWalsheim-Bold</string>
         </mutableArray>
         <mutableArray key="GTWalsheim Regular.otf">
+            <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
+            <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
@@ -362,6 +366,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
+                                                        <action selector="deleteRoom:" destination="57J-7U-xTR" eventType="touchUpInside" id="U7c-a4-REg"/>
                                                         <action selector="deleteStory:" destination="Hvn-U3-hPU" eventType="touchUpInside" id="WVP-9I-y1X"/>
                                                     </connections>
                                                 </button>
@@ -1637,6 +1642,124 @@ histoire ?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9eM-Ia-wMJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Delete Room Modal View Controller-->
+        <scene sceneID="eJ4-Gu-79U">
+            <objects>
+                <viewController storyboardIdentifier="DeleteRoom" id="NuC-LA-SQV" customClass="DeleteRoomModalViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5za-DQ-6s8"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Ga-i5-7Q8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cp9-7m-dwa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffI-Se-cOP">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JHx-pp-cmh">
+                                <rect key="frame" x="40" y="164" width="240" height="240"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXm-b2-jla">
+                                        <rect key="frame" x="33" y="19" width="175" height="51"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="175" id="qKX-ek-bcp"/>
+                                            <constraint firstAttribute="height" constant="51" id="rFa-88-IMs"/>
+                                        </constraints>
+                                        <string key="text">Supprimer ce feu
+de camp ?</string>
+                                        <fontDescription key="fontDescription" name="GTWalsheim-Bold" family="GTWalsheim" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqq-2o-bvy" customClass="TPLetterSpacingButton">
+                                        <rect key="frame" x="29" y="146" width="183" height="44"/>
+                                        <color key="backgroundColor" red="0.81176470590000005" green="0.34901960780000002" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="183" id="cSA-Fp-EOV"/>
+                                            <constraint firstAttribute="height" constant="44" id="xOK-Qj-Upl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
+                                        <state key="normal" title="supprimer le feu">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="22"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="delete:" destination="NuC-LA-SQV" eventType="touchUpInside" id="x58-A8-IjV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yh1-Pk-gXN" customClass="TPLetterSpacingButton">
+                                        <rect key="frame" x="31" y="193" width="178" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="DgL-OA-2Ln"/>
+                                            <constraint firstAttribute="width" constant="178" id="Ul7-yO-chp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="15"/>
+                                        <state key="normal" title="annuler">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="close:" destination="NuC-LA-SQV" eventType="touchUpInside" id="4Y6-Ar-sUA"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ce feu sera définitivement supprimé pour tous ses membres, de même que ses histoires" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4O-NG-RQE" customClass="TPLetterSpacingLabel">
+                                        <rect key="frame" x="9" y="65" width="222" height="76"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="76" id="EyX-jd-YHh"/>
+                                            <constraint firstAttribute="width" constant="222" id="H0o-m5-mvB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="15"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="iXm-b2-jla" firstAttribute="top" secondItem="JHx-pp-cmh" secondAttribute="top" constant="19" id="3uW-lt-pvw"/>
+                                    <constraint firstAttribute="height" constant="240" id="8uh-4k-PFg"/>
+                                    <constraint firstItem="h4O-NG-RQE" firstAttribute="top" secondItem="iXm-b2-jla" secondAttribute="bottom" constant="-5" id="B3d-PX-D1B"/>
+                                    <constraint firstAttribute="centerX" secondItem="h4O-NG-RQE" secondAttribute="centerX" id="D2Y-cA-eei"/>
+                                    <constraint firstAttribute="centerX" secondItem="yh1-Pk-gXN" secondAttribute="centerX" id="FXx-cz-6Ww"/>
+                                    <constraint firstAttribute="centerX" secondItem="rqq-2o-bvy" secondAttribute="centerX" constant="-0.5" id="Gpj-6y-8bb"/>
+                                    <constraint firstAttribute="bottom" secondItem="rqq-2o-bvy" secondAttribute="bottom" constant="50" id="U8i-jS-8V1"/>
+                                    <constraint firstAttribute="width" constant="240" id="eU3-aB-MUI"/>
+                                    <constraint firstAttribute="bottom" secondItem="yh1-Pk-gXN" secondAttribute="bottom" constant="15" id="g0Q-cA-t26"/>
+                                    <constraint firstAttribute="centerX" secondItem="iXm-b2-jla" secondAttribute="centerX" id="iYI-bs-LZQ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.023529411760000001" green="0.031372549020000001" blue="0.1137254902" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ffI-Se-cOP" firstAttribute="leading" secondItem="cp9-7m-dwa" secondAttribute="leadingMargin" constant="-16" id="IMS-gn-zjl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ffI-Se-cOP" secondAttribute="trailing" constant="-16" id="LwY-Ae-FT1"/>
+                            <constraint firstAttribute="centerY" secondItem="JHx-pp-cmh" secondAttribute="centerY" id="YXl-Yf-CBo"/>
+                            <constraint firstAttribute="centerX" secondItem="JHx-pp-cmh" secondAttribute="centerX" id="ak6-fu-WRd"/>
+                            <constraint firstItem="8Ga-i5-7Q8" firstAttribute="top" secondItem="ffI-Se-cOP" secondAttribute="bottom" id="tNq-Se-eWH"/>
+                            <constraint firstItem="ffI-Se-cOP" firstAttribute="top" secondItem="5za-DQ-6s8" secondAttribute="bottom" constant="-20" id="vta-o9-WdS"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="YMI-XZ-Mnf"/>
+                    <connections>
+                        <outlet property="centerYConstraint" destination="YXl-Yf-CBo" id="0yg-rp-a9z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EfP-bQ-O9E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3568" y="124"/>
         </scene>
     </scenes>
     <resources>

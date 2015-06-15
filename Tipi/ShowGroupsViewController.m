@@ -13,6 +13,7 @@
 #import "HomeViewController.h"
 #import "TPLoader.h"
 #import "SHPathLibrary.h"
+#import "DeleteRoomModalViewController.h"
 #import <UIView+MTAnimation.h>
 
 @implementation ShowGroupsViewController {
@@ -88,6 +89,24 @@
     }];
 }
 
+#pragma mark - Deletion
+
+- (IBAction)deleteRoom:(id)sender {
+    
+    // retrieve story object
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.mTableView];
+    NSIndexPath *indexPath = [self.mTableView indexPathForRowAtPoint:buttonPosition];
+    Room* room = [self.mGroups objectAtIndex:indexPath.row];
+    
+    DeleteRoomModalViewController* modal = [self.storyboard instantiateViewControllerWithIdentifier:@"DeleteRoom"];
+    modal.room = room;
+    
+    [self addChildViewController:modal];
+    modal.view.frame = self.view.frame;
+    [self.view addSubview:modal.view];
+    [modal didMoveToParentViewController:self];
+}
+
 #pragma mark - RoomFetcher
 
 - (void)roomManager:(RoomManager *)manager successfullyFetchedRooms:(NSArray *)rooms {
@@ -120,6 +139,14 @@
     
     if (!cell) {
         cell = [[UIRoomTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    }
+    
+    UIImageView* pic = (UIImageView*)[cell.contentView viewWithTag:90];
+
+    if (room.tipi_room && [room.tipi_room isEqualToString:@"1"]) {
+        pic.image = [UIImage imageNamed:@"picto-fire-tipi"];
+    } else {
+        pic.image = [UIImage imageNamed:@"picto-fire-b"];
     }
     
     cell.isSwipeDeleteEnabled = [room isAdmin:CurrentUser];
@@ -155,10 +182,6 @@
 }
 
 #pragma mark - Navigation
-
-- (IBAction)prepareForUnwind:(id)sender {
-    
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"ToGroupSegue"]) {
@@ -217,5 +240,8 @@
     }];
 }
 
+-(IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

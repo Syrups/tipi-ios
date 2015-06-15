@@ -337,10 +337,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEl-cu-IzS" customClass="TPLetterSpacingLabel">
-                                        <rect key="frame" x="8" y="55" width="224" height="76"/>
+                                        <rect key="frame" x="10" y="55" width="220" height="76"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="76" id="3Pq-2H-ltK"/>
-                                            <constraint firstAttribute="width" constant="224" id="3VB-OV-ICE"/>
+                                            <constraint firstAttribute="width" constant="220" id="3VB-OV-ICE"/>
                                         </constraints>
                                         <string key="text">Vous pouvez sauvegarder
 votre histoire pour la continuer
@@ -486,7 +486,7 @@ plus tard</string>
                                     <constraint firstAttribute="width" constant="140" id="8lu-WP-UEk"/>
                                     <constraint firstAttribute="height" constant="44" id="JbB-pJ-of3"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
                                 <state key="normal" title="continuer">
                                     <color key="titleColor" red="0.93725490199999995" green="0.58039215690000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -621,9 +621,6 @@ plus tard</string>
                                                     <state key="normal" image="btn-delete-blue">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="deleteMedia:" destination="1dF-UM-HnX" eventType="touchUpInside" id="gKG-Rm-9wr"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -650,6 +647,15 @@ plus tard</string>
                                     <outlet property="delegate" destination="1dF-UM-HnX" id="74L-xu-BS7"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZr-mz-fxk">
+                                <rect key="frame" x="117" y="112" width="81" height="81"/>
+                                <state key="normal" image="btn-delete">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteMedia:" destination="1dF-UM-HnX" eventType="touchUpInside" id="gpD-MI-8bq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -661,6 +667,7 @@ plus tard</string>
                     <navigationItem key="navigationItem" id="EAg-mK-bpV"/>
                     <connections>
                         <outlet property="collectionView" destination="Yz5-qh-T2v" id="ngJ-Js-LzJ"/>
+                        <outlet property="deleteButton" destination="WZr-mz-fxk" id="zPa-mb-C3z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s9Y-0H-L1s" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1596,6 +1603,7 @@ votre histoire</string>
     <resources>
         <image name="btn-add" width="50" height="50"/>
         <image name="btn-back" width="43" height="42"/>
+        <image name="btn-delete" width="81" height="81"/>
         <image name="btn-delete-blue" width="85" height="84"/>
         <image name="btn-listen" width="51" height="49"/>
         <image name="btn-profile" width="51" height="49"/>

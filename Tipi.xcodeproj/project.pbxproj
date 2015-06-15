@@ -82,6 +82,7 @@
 		B31B01B71B259BBB00F704FA /* CommentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31B01B61B259BBB00F704FA /* CommentListViewController.m */; };
 		B325A13A1ADE546A0041DF21 /* SandboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A1391ADE546A0041DF21 /* SandboxViewController.m */; };
 		B325A1431ADF0B4D0041DF21 /* OrganizerWave.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A1421ADF0B4D0041DF21 /* OrganizerWave.m */; };
+		B32674A91B2E295F000B3D17 /* DeleteRoomModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32674A81B2E295F000B3D17 /* DeleteRoomModalViewController.m */; };
 		B3297F661B0E2C0B00249DA0 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3297F651B0E2C0B00249DA0 /* WebViewController.m */; };
 		B3297F691B0E2CD900249DA0 /* terms.html in Resources */ = {isa = PBXBuildFile; fileRef = B3297F681B0E2CD900249DA0 /* terms.html */; };
 		B33389D31B1C5AE3003BAC78 /* help-drag.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B33389D21B1C5AE3003BAC78 /* help-drag.pkai */; };
@@ -110,6 +111,7 @@
 		B36941AF1ACAE02500F3F95A /* FileUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = B36941AE1ACAE02500F3F95A /* FileUploader.m */; };
 		B36941B11ACAF06800F3F95A /* pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B36941B01ACAF06800F3F95A /* pic.jpg */; };
 		B36DD6231AEE5928001FA8C5 /* RoomCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B36DD6221AEE5928001FA8C5 /* RoomCache.m */; };
+		B376ABEE1B2ED5960076ADCE /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B376ABED1B2ED5960076ADCE /* FeedbackViewController.m */; };
 		B3846F1D1ADD058B0030DBDE /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3846F1C1ADD058B0030DBDE /* CoreMotion.framework */; };
 		B38621F41AE16C7200D2CA5A /* ShowCaseOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = B38621F31AE16C7200D2CA5A /* ShowCaseOverlay.m */; };
 		B38621FA1AE16DC200D2CA5A /* ShowCaseableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38621F91AE16DC200D2CA5A /* ShowCaseableViewController.m */; };
@@ -305,6 +307,8 @@
 		B325A1391ADE546A0041DF21 /* SandboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandboxViewController.m; sourceTree = "<group>"; };
 		B325A1411ADF0B4D0041DF21 /* OrganizerWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrganizerWave.h; sourceTree = "<group>"; };
 		B325A1421ADF0B4D0041DF21 /* OrganizerWave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrganizerWave.m; sourceTree = "<group>"; };
+		B32674A71B2E295F000B3D17 /* DeleteRoomModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteRoomModalViewController.h; sourceTree = "<group>"; };
+		B32674A81B2E295F000B3D17 /* DeleteRoomModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteRoomModalViewController.m; sourceTree = "<group>"; };
 		B3297F641B0E2C0B00249DA0 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		B3297F651B0E2C0B00249DA0 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		B3297F681B0E2CD900249DA0 /* terms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = terms.html; sourceTree = "<group>"; };
@@ -354,6 +358,8 @@
 		B36941B01ACAF06800F3F95A /* pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic.jpg; sourceTree = "<group>"; };
 		B36DD6211AEE5928001FA8C5 /* RoomCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomCache.h; sourceTree = "<group>"; };
 		B36DD6221AEE5928001FA8C5 /* RoomCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomCache.m; sourceTree = "<group>"; };
+		B376ABEC1B2ED5960076ADCE /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		B376ABED1B2ED5960076ADCE /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		B3846F1C1ADD058B0030DBDE /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		B38621F21AE16C7200D2CA5A /* ShowCaseOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowCaseOverlay.h; sourceTree = "<group>"; };
 		B38621F31AE16C7200D2CA5A /* ShowCaseOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowCaseOverlay.m; sourceTree = "<group>"; };
@@ -651,16 +657,13 @@
 		B3065A381AB98AB700C10AD9 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				B376ABEB1B2ED5810076ADCE /* Settings */,
 				B3A8D18B1ACED0E300B09C34 /* Profile */,
 				B3A8D17E1ACE8C0F00B09C34 /* Friends */,
 				B3065A391AB98ACC00C10AD9 /* LoginViewController.h */,
 				B3065A3A1AB98ACC00C10AD9 /* LoginViewController.m */,
 				B3065A521ABB35D700C10AD9 /* SignUpViewController.h */,
 				B3065A531ABB35D700C10AD9 /* SignUpViewController.m */,
-				B3FBAAC41AEFB7A400A3A6B4 /* SettingsViewController.h */,
-				B3FBAAC51AEFB7A400A3A6B4 /* SettingsViewController.m */,
-				B3297F641B0E2C0B00249DA0 /* WebViewController.h */,
-				B3297F651B0E2C0B00249DA0 /* WebViewController.m */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -837,6 +840,19 @@
 				B3B85A951B28F35E007AAA31 /* StoryCache.m */,
 			);
 			name = Cache;
+			sourceTree = "<group>";
+		};
+		B376ABEB1B2ED5810076ADCE /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B3FBAAC41AEFB7A400A3A6B4 /* SettingsViewController.h */,
+				B3FBAAC51AEFB7A400A3A6B4 /* SettingsViewController.m */,
+				B3297F641B0E2C0B00249DA0 /* WebViewController.h */,
+				B3297F651B0E2C0B00249DA0 /* WebViewController.m */,
+				B376ABEC1B2ED5960076ADCE /* FeedbackViewController.h */,
+				B376ABED1B2ED5960076ADCE /* FeedbackViewController.m */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		B38621F11AE16C6100D2CA5A /* ShowCase */ = {
@@ -1093,6 +1109,8 @@
 				B3FBAABC1AEF7D0900A3A6B4 /* CreateRoomViewController.m */,
 				B3FBAABE1AEF7EA500A3A6B4 /* AddUsersToRoomViewController.h */,
 				B3FBAABF1AEF7EA500A3A6B4 /* AddUsersToRoomViewController.m */,
+				B32674A71B2E295F000B3D17 /* DeleteRoomModalViewController.h */,
+				B32674A81B2E295F000B3D17 /* DeleteRoomModalViewController.m */,
 			);
 			name = Rooms;
 			sourceTree = "<group>";
@@ -1357,6 +1375,7 @@
 				7345C23D1B1DDA010099EA58 /* ReadStoryTransitionAnimator.m in Sources */,
 				B3065A331AB9868100C10AD9 /* StoryManager.m in Sources */,
 				B3065A411AB98D6700C10AD9 /* BaseManager.m in Sources */,
+				B32674A91B2E295F000B3D17 /* DeleteRoomModalViewController.m in Sources */,
 				730CFF201B0B857A001045E4 /* TPSideCommentsView.m in Sources */,
 				B325A13A1ADE546A0041DF21 /* SandboxViewController.m in Sources */,
 				73B3B35F1AA7CA5100FF7578 /* ReadModeViewController.m in Sources */,
@@ -1420,6 +1439,7 @@
 				B336186A1B0A16FC0047013C /* TPLoader.m in Sources */,
 				B38621FA1AE16DC200D2CA5A /* ShowCaseableViewController.m in Sources */,
 				B3B85A961B28F35E007AAA31 /* StoryCache.m in Sources */,
+				B376ABEE1B2ED5960076ADCE /* FeedbackViewController.m in Sources */,
 				730CFF231B0BBC52001045E4 /* UICommentSideCell.m in Sources */,
 				B3BCCFFD1AA5C85B00261212 /* HomeViewController.m in Sources */,
 				B3FBAAC91AEFC15A00A3A6B4 /* HomeBubble.m in Sources */,
