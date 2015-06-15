@@ -82,7 +82,7 @@
 
     self.currentViewController = viewController;
     
-    if (self.currentViewController == self.storyViewController && previous != nil) {
+    if (self.currentViewController == self.storyViewController) {
         [self.storyViewController transitionFromFires];
     } else {
         [(ShowGroupsViewController*)self.groupsViewController.childViewControllers[0] animate];

@@ -20,6 +20,12 @@
                                  value:@(kButtonLetterSpacing)
                                  range:NSMakeRange(0, [self.text length])];
         
+        NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
+        style.lineSpacing = 2;
+        style.alignment = NSTextAlignmentCenter;
+        
+        [attributedString addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, [self.text length])];
+        
         self.attributedText = attributedString;
     }
     

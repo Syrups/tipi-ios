@@ -75,6 +75,8 @@
     } else {
         [TPAlert displayOnController:self withMessage:@"Impossible de créer le compte, réessayez plus tard" delegate:nil];
     }
+    
+    [loader removeFromSuperview];
 }
 
 @end

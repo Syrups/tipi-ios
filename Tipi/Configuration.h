@@ -21,7 +21,8 @@
 #define kStoryboardRooms        @"Rooms"
 #define kStoryboardProfile      @"Profile"
 
-#define kButtonLetterSpacing .5f
+#define kFeedbackEmail @"syrupdev@gmail.com"
+#define kButtonLetterSpacing .4f
 
 #define kApiTestUserToken @"bf4d45e51878831054e37991d16860ac991a2e7668b7c7011f994ead021118f8"
 

@@ -45,7 +45,7 @@
     [self animate];
     
     if ([invitations count] == 0) {
-        self.errorLabel.text = @"Pas de nouvelles notifications";
+        self.errorLabel.text = NSLocalizedString(@"Pas de nouvelles notifications", nil);
         self.errorLabel.alpha = 1;
     }
 }
@@ -81,7 +81,7 @@
     label.text = [NSString stringWithFormat:@"%@", invitation.name];
     
     UILabel* from = (UILabel*)[cell.contentView viewWithTag:20];
-    from.text = [NSString stringWithFormat:@"%@ vous invite à rejoindre :", invitation.owner.username];
+    from.text = [NSString stringWithFormat:@"%@ %@", invitation.owner.username, NSLocalizedString(@"vous invite à rejoindre :", nil)];
     
     UIButton* accept = (UIButton*)[cell.contentView viewWithTag:30];
     accept.layer.borderColor = RgbColorAlpha(0, 0, 0, .5f).CGColor;

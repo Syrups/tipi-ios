@@ -8,6 +8,7 @@
 
 #import "DeleteStoryModalViewController.h"
 #import "ShowOneGroupViewController.h"
+#import "TPAlert.h"
 
 @implementation DeleteStoryModalViewController
 
@@ -53,7 +54,6 @@
 
 - (IBAction)delete:(id)sender {
     StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
-    // todo
     [manager deleteStory:self.story inRoom:self.room];
 }
 
@@ -67,7 +67,18 @@
 
 - (void)storyManager:(StoryManager *)manager successfullyDeletedStoryInRoom:(Room *)room {
     [self close:nil];
+    
+    ShowOneGroupViewController* parent = (ShowOneGroupViewController*)self.parentViewController;
+    
+    NSMutableArray* mStories = [parent.mStories mutableCopy];
+    
+    [mStories removeObject:self.story];
+    
+    parent.mStories = [mStories copy];
+    
     [[(ShowOneGroupViewController*)self.parentViewController mTableView] reloadData];
+    
+    [TPAlert displayOnController:parent withMessage:@"L'histoire a été supprimée du feu de camp, mais elle reste disponible dans les autres" delegate:nil];
 }
 
 - (void)storyManager:(StoryManager *)manager failedToDeleteStory:(Story *)story inRoom:(Room *)room withError:(NSError *)error {

@@ -159,9 +159,9 @@
     int endY = cell.frame.origin.y;
     
     if (!firstLoad && indexPath.row < 8) { // not animated yet, we only animate the first cells
-        cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y + 500, cell.frame.size.width, cell.frame.size.height);
+        cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y + 300, cell.frame.size.width, cell.frame.size.height);
         
-        [UIView mt_animateWithViews:@[cell] duration:.5f delay:indexPath.row * .08f timingFunction:kMTEaseOutBack animations:^{
+        [UIView mt_animateWithViews:@[cell] duration:.5f delay:indexPath.row * .05f timingFunction:kMTEaseOutBack animations:^{
             cell.frame = CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height);
         } completion:^{
             firstLoad = YES;

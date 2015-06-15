@@ -85,19 +85,24 @@
 
 - (void)toggleRemoveState:(UIPanGestureRecognizer*)sender {
     
+    if (sender.view.tag == ((RecordViewController*)self.parentViewController).currentIndex) return;
+    
     CGPoint t = [sender translationInView:self.view];
     
     if (sender.view.tag != pendingCellToRemoveIndex && t.y < -2) {
         pendingCellToRemoveIndex = sender.view.tag;
         
         UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:pendingCellToRemoveIndex inSection:0]];
-        UIButton *delete = (UIButton*)[cell.contentView viewWithTag:30];
+        
+        CGPoint p = [self.collectionView convertPoint:cell.frame.origin toView:self.view];
+        
+        self.deleteButton.frame = CGRectMake(p.x + 20, self.view.frame.size.height - CELL_SIZE, self.deleteButton.frame.size.width, self.deleteButton.frame.size.height);
         
         [UIView animateKeyframesWithDuration:.3f delay:0 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
             
             [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:.4f animations:^{
-//                delete.alpha = 1;
-//                delete.enabled = YES;
+                self.deleteButton.enabled = YES;
+                self.deleteButton.alpha = 1;
                 cell.transform = CGAffineTransformMakeTranslation(0, -90);
             }];
             
@@ -110,9 +115,8 @@
         UICollectionViewCell* cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:pendingCellToRemoveIndex inSection:0]];
         
         [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            UIButton *delete = (UIButton*)[cell.contentView viewWithTag:30];
-            delete.alpha = 0;
-            delete.enabled = NO;
+            self.deleteButton.alpha = 0;
+            self.deleteButton.enabled = NO;
             cell.transform = CGAffineTransformIdentity;
         } completion:^(BOOL finished) {
             pendingCellToRemoveIndex = -1;
@@ -130,6 +134,8 @@
         
         [UIView animateWithDuration:.3f animations:^{
             cell.transform = CGAffineTransformMakeScale(0, 0);
+            self.deleteButton.enabled = NO;
+            self.deleteButton.alpha = 0;
         } completion:^(BOOL finished) {
             [self.saver.medias removeObjectAtIndex:pendingCellToRemoveIndex];
             [self.collectionView performBatchUpdates:^{
@@ -143,7 +149,7 @@
     
     // if all has been deleted, go back to picker
     if (self.saver.medias.count == 0) {
-        [self.navigationController popViewControllerAnimated:YES];
+        [self.parentViewController.navigationController popViewControllerAnimated:YES];
     }
 }
 
@@ -235,19 +241,10 @@
 
 - (void)collectionView:(UICollectionView *)collectionView collectionViewLayout:(RAReorderableLayout *)layout didEndDraggingItemToIndexPath:(NSIndexPath *)indexPath {
     [self centerCollectionView];
-    [UIView animateWithDuration:.2f animations:^{
-//        [[(RecordViewController*)self.parentViewController currentPage].overlay setAlpha:0];
-//        self.view.alpha = .5f;
-        self.deleteButton.alpha = 0;
-    }];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView collectionViewLayout:(RAReorderableLayout *)layout didBeginDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
-    [UIView animateWithDuration:.2f animations:^{
-//        [[(RecordViewController*)self.parentViewController currentPage].overlay setAlpha:.7f];
-//        self.view.alpha = 1;
-        self.deleteButton.alpha = 1;
-    }];
+
 }
 
 #pragma mark - UIGestureRecognizer

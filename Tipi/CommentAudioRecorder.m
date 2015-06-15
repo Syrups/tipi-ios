@@ -7,6 +7,7 @@
 //
 
 #import "CommentAudioRecorder.h"
+#import "AudioManager.h"
 
 @implementation CommentAudioRecorder
 
@@ -17,7 +18,6 @@
     
     self.microphone = [EZMicrophone microphoneWithDelegate:self];
     
-    [self configureAudioSession];
     
     return self;
 }

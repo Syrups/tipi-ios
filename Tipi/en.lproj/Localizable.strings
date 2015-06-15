@@ -1,0 +1,18 @@
+
+
+"vous invite à rejoindre :" = "invites you to join:";
+"Une erreur est survenue, merci de réessayer plus tard" = "Network error, please try again later";
+"Le feu de camp a bien été renommé !" = "Campfire has successfully been renamed!";
+"Mauvaise combinaison nom d'utilisateur / mot de passe" = "Wrong username / password combination, please try again";
+"Pas de nouvelles notifications" = "No new notifications";
+"Votre commentaire à été enregistré avec succès !" = "Your comment has successfully been shared!";
+"Votre commentaire n'a pu être enregistré, veuillez réessayer" = "Unable to share this comment, please try again later";
+"Déplacez les vignettes pour réorganiser votre histoire" = "Move and swap thumbnails to reorganize your story";
+"Appuyez sur l'image actuelle pour enregistrer votre voix sur celle-ci" = "Hold touch on the screen to record your voice on current picture";
+"Impossible de charger les feux de camp, vérifiez votre connexion" = "Unable to fetch campfires, please try again later";
+"Impossible de créer l'histoire, vérifiez votre connexion" = "Unable to share your story, please check your connection and try again";
+"Il y a %d minutes" = "%d minutes ago";
+"Il y a %d heures" = "%d hours ago";
+"Il y a %d jours" = "%d days ago";
+"Hier" = "Yesterday";
+"Il y a longtemps" = "Some time ago";

@@ -101,9 +101,9 @@
     [op start];
 }
 
-- (void)deleteRoom:(Room*)room success:(void(^)(Room* room))success failure:(void(^)(NSError* error))failure{
+- (void)deleteRoom:(Room*)room success:(void(^)())success failure:(void(^)(NSError* error))failure{
     NSString* path = [NSString stringWithFormat:@"/rooms/%@", room.id];
-    NSURLRequest* request = [BaseModelController getBaseRequestFor:path authenticated:YES method:@"GET"];
+    NSURLRequest* request = [BaseModelController getBaseRequestFor:path authenticated:YES method:@"DELETE"];
     
     AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     

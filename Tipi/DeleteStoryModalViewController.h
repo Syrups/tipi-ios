@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "StoryManager.h"
+#import "ShowOneGroupViewController.h"
 
 @interface DeleteStoryModalViewController : UIViewController <StoryDeleterDelegate>
 

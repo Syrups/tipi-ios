@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Q9t-ip-vWo">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -335,11 +336,11 @@
                                         <fontDescription key="fontDescription" name="GTWalsheim-Bold" family="GTWalsheim" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEl-cu-IzS">
-                                        <rect key="frame" x="15" y="55" width="210" height="76"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEl-cu-IzS" customClass="TPLetterSpacingLabel">
+                                        <rect key="frame" x="10" y="55" width="220" height="76"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="76" id="3Pq-2H-ltK"/>
-                                            <constraint firstAttribute="width" constant="210" id="3VB-OV-ICE"/>
+                                            <constraint firstAttribute="width" constant="220" id="3VB-OV-ICE"/>
                                         </constraints>
                                         <string key="text">Vous pouvez sauvegarder
 votre histoire pour la continuer
@@ -485,7 +486,7 @@ plus tard</string>
                                     <constraint firstAttribute="width" constant="140" id="8lu-WP-UEk"/>
                                     <constraint firstAttribute="height" constant="44" id="JbB-pJ-of3"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
                                 <state key="normal" title="continuer">
                                     <color key="titleColor" red="0.93725490199999995" green="0.58039215690000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -612,17 +613,14 @@ plus tard</string>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <button opaque="NO" alpha="0.0" tag="30" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFS-kf-hFZ" userLabel="DeleteButton">
-                                                    <rect key="frame" x="42" y="44" width="77" height="77"/>
+                                                    <rect key="frame" x="50.5" y="52.5" width="60" height="60"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="77" id="aNW-Ev-7ES"/>
-                                                        <constraint firstAttribute="height" constant="77" id="jWQ-n0-YBp"/>
+                                                        <constraint firstAttribute="width" constant="60" id="aNW-Ev-7ES"/>
+                                                        <constraint firstAttribute="height" constant="60" id="jWQ-n0-YBp"/>
                                                     </constraints>
                                                     <state key="normal" image="btn-delete-blue">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="deleteMedia:" destination="1dF-UM-HnX" eventType="touchUpInside" id="gKG-Rm-9wr"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -649,6 +647,15 @@ plus tard</string>
                                     <outlet property="delegate" destination="1dF-UM-HnX" id="74L-xu-BS7"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZr-mz-fxk">
+                                <rect key="frame" x="117" y="112" width="81" height="81"/>
+                                <state key="normal" image="btn-delete">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteMedia:" destination="1dF-UM-HnX" eventType="touchUpInside" id="gpD-MI-8bq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -660,6 +667,7 @@ plus tard</string>
                     <navigationItem key="navigationItem" id="EAg-mK-bpV"/>
                     <connections>
                         <outlet property="collectionView" destination="Yz5-qh-T2v" id="ngJ-Js-LzJ"/>
+                        <outlet property="deleteButton" destination="WZr-mz-fxk" id="zPa-mb-C3z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s9Y-0H-L1s" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -696,6 +704,19 @@ plus tard</string>
                                 <rect key="frame" x="85" y="216" width="150" height="147"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEh-e3-tEY">
+                                <rect key="frame" x="252" y="24" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="iAs-bd-eul"/>
+                                    <constraint firstAttribute="height" constant="55" id="m6d-tJ-mJU"/>
+                                </constraints>
+                                <state key="normal" image="picker-check">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="finish:" destination="UzX-jJ-ocM" eventType="touchUpInside" id="rqm-n5-i2o"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appuyez sur une image pour enregistrer votre voix" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRx-Fb-nni">
                                 <rect key="frame" x="40" y="384" width="238" height="58"/>
                                 <constraints>
@@ -713,9 +734,11 @@ plus tard</string>
                             <constraint firstAttribute="trailingMargin" secondItem="Hp9-BD-r12" secondAttribute="trailing" constant="-16" id="3h4-6c-UNB"/>
                             <constraint firstItem="Hp9-BD-r12" firstAttribute="top" secondItem="iep-Zd-f9S" secondAttribute="bottom" constant="-20" id="4LH-FU-DPO"/>
                             <constraint firstAttribute="centerX" secondItem="KRx-Fb-nni" secondAttribute="centerX" constant="1" id="4pf-tw-6ML"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lEh-e3-tEY" secondAttribute="trailing" constant="-3" id="7Rf-Jl-8kN"/>
                             <constraint firstItem="Hp9-BD-r12" firstAttribute="leading" secondItem="Swq-LE-DNt" secondAttribute="leadingMargin" constant="-16" id="9tN-Mj-VYJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Jgq-sh-bnl" secondAttribute="trailing" constant="-16" id="Eqh-ns-9hd"/>
                             <constraint firstItem="UKV-wh-6dE" firstAttribute="top" secondItem="Jgq-sh-bnl" secondAttribute="bottom" id="Hvt-lB-TLw"/>
+                            <constraint firstItem="lEh-e3-tEY" firstAttribute="top" secondItem="iep-Zd-f9S" secondAttribute="bottom" constant="4" id="dTe-Tx-MNq"/>
                             <constraint firstItem="Jgq-sh-bnl" firstAttribute="leading" secondItem="Swq-LE-DNt" secondAttribute="leadingMargin" constant="-16" id="g7j-ap-IqU"/>
                             <constraint firstItem="KRx-Fb-nni" firstAttribute="top" secondItem="iep-Zd-f9S" secondAttribute="bottom" constant="364" id="itj-DW-X0J"/>
                             <constraint firstItem="UKV-wh-6dE" firstAttribute="top" secondItem="Hp9-BD-r12" secondAttribute="bottom" id="iv3-4O-VsE"/>
@@ -724,6 +747,7 @@ plus tard</string>
                     <navigationItem key="navigationItem" id="NPN-bC-pBy"/>
                     <connections>
                         <outlet property="coachmarkSprite" destination="mCg-co-lXX" id="dko-lw-OVO"/>
+                        <outlet property="finishButton" destination="lEh-e3-tEY" id="4Mp-3r-3Bx"/>
                         <outlet property="helpLabel" destination="KRx-Fb-nni" id="sSG-R5-jwt"/>
                         <outlet property="organizerContainerView" destination="Jgq-sh-bnl" id="9rA-zH-spt"/>
                         <outlet property="organizerContainerYConstraint" destination="Hvt-lB-TLw" id="1GL-sa-RZW"/>
@@ -1015,7 +1039,7 @@ votre histoire</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="118-Pm-cTT">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="118-Pm-cTT">
                                 <rect key="frame" x="15" y="75" width="288" height="445"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1291,7 +1315,7 @@ votre histoire</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0GQ-t2-bVo">
                                 <rect key="frame" x="40" y="164" width="240" height="240"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Votre histoire a bien été partagée !" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57r-g6-blt">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Votre histoire a bien été partagée !" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57r-g6-blt" customClass="TPLetterSpacingLabel">
                                         <rect key="frame" x="30" y="56" width="181" height="76"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="76" id="XLa-SR-c9y"/>
@@ -1579,6 +1603,7 @@ votre histoire</string>
     <resources>
         <image name="btn-add" width="50" height="50"/>
         <image name="btn-back" width="43" height="42"/>
+        <image name="btn-delete" width="81" height="81"/>
         <image name="btn-delete-blue" width="85" height="84"/>
         <image name="btn-listen" width="51" height="49"/>
         <image name="btn-profile" width="51" height="49"/>

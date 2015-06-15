@@ -10,6 +10,7 @@
 #import "AnimationLibrary.h"
 #import "FileDownLoader.h"
 #import "TPCircleWaverControl.h"
+#import <UIView+MTAnimation.h>
 
 @implementation CommentListViewController {
     NSIndexPath* currentIndexPath;
@@ -23,11 +24,19 @@
 }
 
 - (IBAction)dismiss:(id)sender {
+    
+    if (self.player != nil) {
+        [self.player stop];
+    }
+    
     [UIView animateWithDuration:.3f animations:^{
         self.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
         self.commentsTableView.alpha = 0;
         self.view.alpha = 0;
     }];
+    
+    [self.commentsTableView reloadData];
+    currentIndexPath = nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -43,15 +52,14 @@
         [self.delegate commentListViewController:self didSelectComment:comment];
     }
     
-    [FileDownLoader downloadFileWithURL:comment.file completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-        
+    NSError* err = nil;
+    NSData *soundData = [NSData dataWithContentsOfURL:[NSURL URLWithString:comment.file]];
+    
+    self.player = [[AVAudioPlayer alloc] initWithData:soundData error:&err];
+    self.player.delegate = self;
+    
+    if (!err) {
         currentIndexPath = indexPath;
-        
-        NSError* err = nil;
-        self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:filePath error:&err];
-        self.player.delegate = self;
-        
-        if (err) { NSLog(@"%@", err); }
         
         TPCircleWaverControl* control = (TPCircleWaverControl*)[cell.contentView viewWithTag:30];
         [control appear];
@@ -62,8 +70,7 @@
         
         
         [self.player play];
-    }];
-    
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

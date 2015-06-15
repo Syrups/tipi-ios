@@ -42,6 +42,10 @@
     
     [self swipableViewController:self.swipablePager didFinishedTransitionToViewController:self.swipablePager.viewControllers[0]];
     
+    if ([self.recorder isComplete]) {
+        self.finishButton.hidden = NO;
+    }
+    
     [self displayCoachmarkForDrag];
 
 }
@@ -50,7 +54,7 @@
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:kCookieCoachmarkKey] == nil) {
         [PKAIDecoder builAnimatedImageIn:self.coachmarkSprite fromFile:@"help-drag" withAnimationDuration:3];
-        self.helpLabel.text = @"Déplacez les vignettes pour réorganiser votre histoire";
+        self.helpLabel.text = NSLocalizedString(@"Déplacez les vignettes pour réorganiser votre histoire", nil);
         self.overlay.alpha = .7f;
         self.helpLabel.alpha = 1;
         
@@ -61,7 +65,7 @@
 
 - (void)displayCoachmarkForRecord {
     [PKAIDecoder builAnimatedImageIn:self.coachmarkSprite fromFile:@"help-record" withAnimationDuration:3];
-    self.helpLabel.text = @"Appuyez sur l'image actuelle pour enregistrer votre voix sur celle-ci";
+    self.helpLabel.text = NSLocalizedString(@"Appuyez sur l'image actuelle pour enregistrer votre voix sur celle-ci", nil);
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kCookieCoachmarkKey];
 }
@@ -99,6 +103,10 @@
 
 - (IBAction)replay:(id)sender {
     [self.recorder playAudio];
+}
+
+- (IBAction)finish:(id)sender {
+    [self openDonePopin];
 }
 
 #pragma mark - StoryMediaRecorder
@@ -162,6 +170,7 @@
         // Open done popin if everything has been recorded
         if ([self.recorder isComplete]) {
             [self openDonePopin];
+            self.finishButton.hidden = NO;
         }
         
         // hint

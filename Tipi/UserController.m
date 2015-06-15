@@ -180,6 +180,24 @@
     [op start];
 }
 
+- (void)deleteUser:(User *)user success:(void (^)())success failure:(void (^)(NSError *))failure {
+    NSURLRequest* request = [UserController getBaseRequestFor:[NSString stringWithFormat:@"/users/%@", user.id] authenticated:YES method:@"DELETE"];
+    
+    AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        success();
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        if (failure != nil) failure(error);
+    }];
+    
+    [op start];
+}
+
 - (void)fetchFriendsRequestsOfUser:(User *)user success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure {
     // TODO
 }

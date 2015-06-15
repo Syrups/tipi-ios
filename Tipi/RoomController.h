@@ -21,5 +21,7 @@
 - (void)inviteUsers:(NSArray*)users toRoom:(Room*)room success:(void(^)(Room* room))success failure:(void(^)(NSError* error))failure;
 - (void)joinRoom:(Room*)room success:(void(^)(Room* room))success failure:(void(^)(NSError* error))failure;
 ;
+- (void)deleteRoom:(Room*)room success:(void(^)())success failure:(void(^)(NSError* error))failure;
+;
 
 @end

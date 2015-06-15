@@ -28,6 +28,7 @@
 @implementation ShowOneGroupViewController {
     TPLoader* loader;
     TPAlert* alert;
+    TPCircleWaverControl* currentControl;
 }
 
 - (void)viewDidLoad {
@@ -75,9 +76,10 @@
     self.previewImageView.alpha = 0.2f;
 }
 
-- (void)setupPreviewImageInBackgroundWithImageUrl:(NSString*)imageUrl {
+- (void)setupPreviewImageInBackground {
+    Page* page = [[[self.mStories firstObject] pages] firstObject];
     self.previewImageView.alpha = .2f;
-    [self.previewImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
+    [self.previewImageView sd_setImageWithURL:[NSURL URLWithString:page.media.file]];
 }
 
 #pragma mark - Actions
@@ -204,14 +206,16 @@
     if (diff < 60) {
         dateText = @"A l'instant";
     } else if (diff < 3600) {
-        dateText = [NSString stringWithFormat:@"Il y a %d minutes", (int)(diff / 60)];
+        dateText = [NSString stringWithFormat:NSLocalizedString(@"Il y a %d minutes", nil), (int)(diff / 60)];
     } else if (diff < 86400) {
         int h = (int) (diff / 3600);
-        dateText = [NSString stringWithFormat:@"Il y a %d heures", h];
+        dateText = [NSString stringWithFormat:NSLocalizedString(@"Il y a %d heures", nil), h];
     } else if (diff > 86400 && diff < 172800) {
-        dateText = [NSString stringWithFormat:@"Hier"];
-    } else {
-        dateText = [NSString stringWithFormat:@"Il y a %d jours", (int)(diff / 86400)];
+        dateText = NSLocalizedString(@"Hier", nil);
+    } else if (diff > 172800 && diff < 2592000) {
+        dateText = [NSString stringWithFormat:NSLocalizedString(@"Il y a %d jours", nil), (int)(diff / 86400)];
+    }else {
+        dateText = NSLocalizedString(@"Il y a longtemps", nil);
     }
     
     //NSLog(@"%@", [story toJSONString]);
@@ -338,9 +342,7 @@
         self.emptyInfoView.hidden = NO;
     }
     
-    // background preview
-    Page* page = [[[stories firstObject] pages] firstObject];
-    [self setupPreviewImageInBackgroundWithImageUrl:page.media.file];
+    [self setupPreviewImageInBackground];
     
 }
 
@@ -432,6 +434,7 @@
     cell.recordButton.alpha = 1;
     [cell.recordButton appear];
     
+    currentControl = cell.recordButton;
     
     [self loadPreviewMediaAtURL:mediaUrl withCompletionBlock:^(UIImage *image) {
         [self startPreviewWithImage:image];
@@ -465,7 +468,7 @@
     
     TPStoryTableViewCell* cell = (TPStoryTableViewCell*)[self.mTableView cellForRowAtIndexPath:self.currentIndexPath];
     
-    [cell.recordButton close];
+    [currentControl close];
     
     self.isPreviewMode = NO;
     [UIView animateWithDuration:0.25 animations:^{
@@ -481,6 +484,7 @@
         self.previewImageView.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
         [self.previewAudioPlayer pause];
+        [self setupPreviewImageInBackground];
     }];
 }
 

@@ -147,7 +147,7 @@
 }
 
 - (void)deleteStory:(Story*)story inRoom:(Room*)room success:(void(^)(Room* room))success failure:(void(^)(NSError* error))failure{
-    NSString* path = [NSString stringWithFormat:@"/rooms/%@/stories/%@",story.id, room.id];
+    NSString* path = [NSString stringWithFormat:@"/rooms/%@/stories/%@",room.id, story.id];
     NSURLRequest* request = [BaseModelController getBaseRequestFor:path authenticated:YES method:@"DELETE"];
     
     AFHTTPRequestOperation* op = [[AFHTTPRequestOperation alloc] initWithRequest:request];

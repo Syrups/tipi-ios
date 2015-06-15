@@ -44,12 +44,12 @@
 #pragma mark - RoomUpdater
 
 - (void)roomManager:(RoomManager *)manager successfullyUpdatedRoom:(Room *)room {
-    [TPAlert displayOnController:self withMessage:@"Le feu de camp a bien été renommé !" delegate:self];
+    [TPAlert displayOnController:self withMessage:NSLocalizedString(@"Le feu de camp a bien été renommé !", nil) delegate:self];
     self.roomName.text = room.name;
 }
 
 - (void)roomManager:(RoomManager *)manager failedToUpdateRoom:(Room *)room withError:(NSError *)error {
-    [TPAlert displayOnController:self withMessage:@"Erreur de connexion, veuillez réessayer plus tard" delegate:self];
+    [TPAlert displayOnController:self withMessage:NSLocalizedString(@"Une erreur est survenue, merci de réessayer plus tard", nil) delegate:self];
 }
 
 #pragma mark - UITableView

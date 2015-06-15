@@ -18,6 +18,7 @@
 - (void)fetchLatestTags;
 - (void)findUsersWithQuery:(NSString*)query;
 - (void)fetchRoomInvitationsOfUser:(User*)user;
+- (void)deleteUser:(User*)user;
 
 @end
 
@@ -53,6 +54,13 @@
 
 - (void)userManager:(UserManager*)manager successfullyUpdatedUser:(User*)user;
 - (void)userManager:(UserManager*)manager failedToUpdateUser:(User*)user;
+
+@end
+
+@protocol UserDeleterDelegate <NSObject>
+
+- (void)userManagerSuccessfullyDeletedUser:(UserManager*)manager;
+- (void)userManagerFailedToDeleteUserWithError:(NSError*)error;
 
 @end
 
