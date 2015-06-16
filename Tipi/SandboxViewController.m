@@ -66,9 +66,15 @@
   [self.sendBoxControl appear];
 }
 
+- (void)hideIt{
+    [self.sendBoxControl close];
+}
+
 
 - (void)viewDidAppear:(BOOL)animated{
      [self performSelector:@selector(showIt) withObject:nil afterDelay:2.0 inModes:[NSArray arrayWithObject:NSRunLoopCommonModes]];
+    
+    [self performSelector:@selector(hideIt) withObject:nil afterDelay:5.0 inModes:[NSArray arrayWithObject:NSRunLoopCommonModes]];
   
 }
 
