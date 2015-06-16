@@ -40,7 +40,7 @@
     [self addChildViewController:self.pager];
     
     // Don't forget to add the new root view to the current view hierarchy!
-    self.pager.view.frame = CGRectMake(0, 120, self.view.frame.size.width, self.bodyView.frame.size.height - 80);
+    self.pager.view.frame = CGRectMake(0, 120, self.bodyView.frame.size.width, self.bodyView.frame.size.height - 80);
     [self.view.subviews[0] addSubview:self.pager.view];
     [self.view.subviews[0] sendSubviewToBack:self.pager.view];
     
@@ -118,7 +118,7 @@
 - (IBAction)openSettings:(id)sender {
     UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"Settings"];
     vc.view.frame = self.bodyView.frame;
-//    vc.view.alpha = 0;
+    vc.view.alpha = 0;
     [self addChildViewController:vc];
     [self.view addSubview:vc.view];
     [vc didMoveToParentViewController:self];

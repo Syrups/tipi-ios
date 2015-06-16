@@ -42,9 +42,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    [self transitionFromFires];
-    
+        
     MediaLibrary* library = [[MediaLibrary alloc] init];
     library.delegate = self;
     [library fetchMediasFromLibrary];

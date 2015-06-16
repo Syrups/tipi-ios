@@ -21,7 +21,7 @@
 - (void)deleteStory:(Story*)story inRoom:(Room*)room;
 
 
-- (void)addCommentOnPage:(Page *)page atTime:(NSUInteger)time withAudioFile:(NSString *)audioFile;
+- (void)addCommentOnPage:(Page *)page atTime:(NSUInteger)time duration:(NSUInteger)duration withAudioFile:(NSString *)audioFile;
 
 @end
 

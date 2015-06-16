@@ -11,10 +11,16 @@
             <string>GTWalsheimMedium</string>
             <string>GTWalsheimMedium</string>
             <string>GTWalsheimMedium</string>
+            <string>GTWalsheimMedium</string>
+            <string>GTWalsheimMedium</string>
+            <string>GTWalsheimMedium</string>
+            <string>GTWalsheimMedium</string>
+            <string>GTWalsheimMedium</string>
+            <string>GTWalsheimMedium</string>
+            <string>GTWalsheimMedium</string>
+            <string>GTWalsheimMedium</string>
         </mutableArray>
         <mutableArray key="GTWalsheim Regular.otf">
-            <string>GTWalsheim-Regular</string>
-            <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
@@ -49,63 +55,6 @@
                                     <action selector="closeFields:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="P4V-8h-ijI"/>
                                 </connections>
                             </button>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbl-C2-b2A">
-                                <rect key="frame" x="50" y="230" width="220" height="140"/>
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mot de passe" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dlV-TY-5wX" customClass="SRUnderlinedField">
-                                        <rect key="frame" x="20" y="80" width="180" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Kkw-t9-sFr"/>
-                                            <constraint firstAttribute="width" constant="180" id="ROJ-EF-5RZ"/>
-                                        </constraints>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="1" alpha="0.70000000000000007" colorSpace="calibratedWhite"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="password"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <outlet property="delegate" destination="vXZ-lx-hvc" id="oDk-6s-0hG"/>
-                                        </connections>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nom d'utilisateur" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zCu-M7-YNE" customClass="SRUnderlinedField">
-                                        <rect key="frame" x="20" y="20" width="180" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="180" id="Th7-fo-QkE"/>
-                                            <constraint firstAttribute="height" constant="30" id="dJY-Wa-Ot3"/>
-                                        </constraints>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="1" alpha="0.70000000000000007" colorSpace="calibratedWhite"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <outlet property="delegate" destination="vXZ-lx-hvc" id="del-By-AnQ"/>
-                                        </connections>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="GUu-5h-KhS"/>
-                                    <constraint firstAttribute="centerX" secondItem="dlV-TY-5wX" secondAttribute="centerX" id="NwR-WS-QwW"/>
-                                    <constraint firstAttribute="width" constant="220" id="Uwq-jB-qWT"/>
-                                    <constraint firstItem="zCu-M7-YNE" firstAttribute="top" secondItem="vbl-C2-b2A" secondAttribute="top" constant="20" id="c4T-lw-Ceu"/>
-                                    <constraint firstAttribute="centerX" secondItem="zCu-M7-YNE" secondAttribute="centerX" id="eV7-Rb-SYS"/>
-                                    <constraint firstAttribute="bottom" secondItem="dlV-TY-5wX" secondAttribute="bottom" constant="20" id="eha-T2-JSW"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMc-T4-6sy" customClass="TPLetterSpacingButton">
                                 <rect key="frame" x="102" y="414" width="120" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -125,7 +74,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="SRW-ca-HYr" kind="push" id="t16-2H-xG4"/>
+                                    <action selector="toSignUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="FdO-4C-kNn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5iZ-Qv-tRF" customClass="TPLetterSpacingButton">
@@ -173,40 +122,179 @@ avec votre voix</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="6gm-4F-MoK">
-                                <rect key="frame" x="113" y="132" width="95" height="95"/>
+                                <rect key="frame" x="62" y="101" width="196" height="156"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="95" id="PCc-Kb-LYC"/>
-                                    <constraint firstAttribute="width" constant="95" id="vtv-09-H32"/>
+                                    <constraint firstAttribute="height" constant="156" id="PCc-Kb-LYC"/>
+                                    <constraint firstAttribute="width" constant="196" id="vtv-09-H32"/>
                                 </constraints>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mot de passe" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dlV-TY-5wX" customClass="SRUnderlinedField">
+                                <rect key="frame" x="60" y="284" width="200" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Kkw-t9-sFr"/>
+                                    <constraint firstAttribute="width" constant="200" id="ROJ-EF-5RZ"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GTWalsheim" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="0.70000000000000007" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="password"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="oDk-6s-0hG"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nom d'utilisateur" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zCu-M7-YNE" customClass="SRUnderlinedField">
+                                <rect key="frame" x="60" y="189" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Th7-fo-QkE"/>
+                                    <constraint firstAttribute="height" constant="30" id="dJY-Wa-Ot3"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GTWalsheim" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="0.70000000000000007" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="del-By-AnQ"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nom d'utilisateur" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aIH-HM-U4d" customClass="SRUnderlinedField">
+                                <rect key="frame" x="50" y="125" width="220" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="4Yk-Er-dEE"/>
+                                    <constraint firstAttribute="height" constant="40" id="zJ3-i6-AcW"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GTWalsheim" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="0.69999999999999996" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="T8V-TM-Y5G"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Adresse e-mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZTe-pU-uNF" customClass="SRUnderlinedField">
+                                <rect key="frame" x="50" y="289" width="220" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="eTT-ap-nUL"/>
+                                    <constraint firstAttribute="height" constant="40" id="yyc-yn-7wa"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GTWalsheim" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="0.69999999999999996" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="Jcn-wn-n1s"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mot de passe" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xhh-0w-gpn" customClass="SRUnderlinedField">
+                                <rect key="frame" x="50" y="204" width="220" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Ij2-8x-9DV"/>
+                                    <constraint firstAttribute="width" constant="220" id="Qvd-MV-meM"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GTWalsheim" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="0.69999999999999996" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="wg9-0L-VeQ"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="43X-fH-rB9" customClass="TPLetterSpacingButton">
+                                <rect key="frame" x="74" y="368" width="175" height="43"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="ZIh-xY-lBw"/>
+                                    <constraint firstAttribute="width" constant="175" id="k3m-rg-mz5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GTWalsheim" pointSize="14"/>
+                                <state key="normal" title="J'accepte les conditions d'utilisation">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="H8b-pS-bW4" kind="modal" id="cXX-A2-T4m"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.87058823529411766" green="0.33725490196078434" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="Xhh-0w-gpn" secondAttribute="centerY" constant="60" id="29j-bi-pFB"/>
+                            <constraint firstAttribute="centerX" secondItem="43X-fH-rB9" secondAttribute="centerX" constant="-2" id="2b9-74-q8i"/>
                             <constraint firstAttribute="centerX" secondItem="QhP-Ah-VYA" secondAttribute="centerX" id="6jX-Qk-w3z"/>
                             <constraint firstItem="7k4-ic-My2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-6" id="86B-zp-bd1"/>
                             <constraint firstAttribute="centerX" secondItem="5iZ-Qv-tRF" secondAttribute="centerX" constant="-2" id="AnO-Df-8Bb"/>
+                            <constraint firstAttribute="centerX" secondItem="ZTe-pU-uNF" secondAttribute="centerX" id="Bs0-NY-Fwk"/>
                             <constraint firstItem="7k4-ic-My2" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-5" id="FHO-cG-6iz"/>
                             <constraint firstAttribute="centerY" secondItem="6gm-4F-MoK" secondAttribute="centerY" constant="104.5" id="Gld-7G-L3I"/>
-                            <constraint firstAttribute="centerY" secondItem="vbl-C2-b2A" secondAttribute="centerY" constant="-16" id="Kld-Bi-JRy"/>
+                            <constraint firstAttribute="centerY" secondItem="aIH-HM-U4d" secondAttribute="centerY" constant="139" id="Mit-YP-vAv"/>
+                            <constraint firstAttribute="centerY" secondItem="dlV-TY-5wX" secondAttribute="centerY" constant="-20" id="MkU-xc-bs8"/>
                             <constraint firstAttribute="centerX" secondItem="bMc-T4-6sy" secondAttribute="centerX" constant="-2" id="MpI-Gt-4Am"/>
                             <constraint firstAttribute="centerY" secondItem="QhP-Ah-VYA" secondAttribute="centerY" constant="24.5" id="NJJ-bv-MlG"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="5iZ-Qv-tRF" secondAttribute="bottom" constant="52" id="OZb-fa-I1f"/>
-                            <constraint firstAttribute="centerX" secondItem="vbl-C2-b2A" secondAttribute="centerX" id="Xgd-6x-PIe"/>
+                            <constraint firstAttribute="centerY" secondItem="ZTe-pU-uNF" secondAttribute="centerY" constant="-25" id="Rqd-ZO-ULZ"/>
+                            <constraint firstAttribute="centerX" secondItem="zCu-M7-YNE" secondAttribute="centerX" id="UDI-I0-UNQ"/>
                             <constraint firstItem="74d-91-tLK" firstAttribute="top" secondItem="QhP-Ah-VYA" secondAttribute="bottom" constant="-24" id="YJe-7c-ytn"/>
+                            <constraint firstAttribute="centerX" secondItem="aIH-HM-U4d" secondAttribute="centerX" id="YwP-it-qKf"/>
+                            <constraint firstAttribute="centerX" secondItem="dlV-TY-5wX" secondAttribute="centerX" id="dy7-9u-efg"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="bMc-T4-6sy" secondAttribute="bottom" constant="110" id="fIe-9f-v8t"/>
                             <constraint firstAttribute="centerX" secondItem="74d-91-tLK" secondAttribute="centerX" id="iS3-oc-7H9"/>
+                            <constraint firstAttribute="centerX" secondItem="Xhh-0w-gpn" secondAttribute="centerX" id="igw-kE-vUi"/>
                             <constraint firstAttribute="centerX" secondItem="6gm-4F-MoK" secondAttribute="centerX" id="vCm-Ip-YvW"/>
+                            <constraint firstAttribute="centerY" secondItem="zCu-M7-YNE" secondAttribute="centerY" constant="80" id="waV-P8-Snw"/>
+                            <constraint firstAttribute="centerY" secondItem="43X-fH-rB9" secondAttribute="centerY" constant="-105.5" id="xoQ-xF-8cd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7ru-Od-4IV"/>
                     <connections>
                         <outlet property="backButton" destination="7k4-ic-My2" id="ahJ-Sj-yry"/>
                         <outlet property="backButtonTopConstraint" destination="FHO-cG-6iz" id="cnA-ke-fbr"/>
-                        <outlet property="centerFieldsVerticalContraint" destination="Kld-Bi-JRy" id="1qf-IC-Q6d"/>
-                        <outlet property="fieldsZone" destination="vbl-C2-b2A" id="OCy-qd-RBZ"/>
                         <outlet property="logo" destination="6gm-4F-MoK" id="go7-Lt-1ib"/>
                         <outlet property="logoVerticalConstraint" destination="Gld-7G-L3I" id="HJb-DM-XGV"/>
                         <outlet property="passwordField" destination="dlV-TY-5wX" id="Qt8-G5-gzx"/>
+                        <outlet property="registerEmailField" destination="ZTe-pU-uNF" id="zWc-V0-8ov"/>
+                        <outlet property="registerPasswordField" destination="Xhh-0w-gpn" id="FV1-kV-rbZ"/>
+                        <outlet property="registerUsernameField" destination="aIH-HM-U4d" id="mgW-te-xTj"/>
                         <outlet property="signInButton" destination="5iZ-Qv-tRF" id="kG1-3N-Soq"/>
                         <outlet property="signInButtonHeight" destination="Nao-A6-JkY" id="Rb8-9h-kcf"/>
                         <outlet property="signInButtonVerticalSpace" destination="OZb-fa-I1f" id="RZ5-Zc-Qsa"/>
@@ -214,6 +302,7 @@ avec votre voix</string>
                         <outlet property="signUpButton" destination="bMc-T4-6sy" id="PZ2-HI-3mJ"/>
                         <outlet property="signUpButtonVerticalSpace" destination="fIe-9f-v8t" id="oef-9c-Y7Y"/>
                         <outlet property="subtitleLabel" destination="74d-91-tLK" id="cC4-En-zUf"/>
+                        <outlet property="termsButton" destination="43X-fH-rB9" id="Y46-kX-ZNT"/>
                         <outlet property="titleLabel" destination="QhP-Ah-VYA" id="565-dH-8UM"/>
                         <outlet property="titleVerticalConstraint" destination="NJJ-bv-MlG" id="Q1I-9L-fex"/>
                         <outlet property="usernameField" destination="zCu-M7-YNE" id="LJ5-Ca-LBu"/>
@@ -234,7 +323,59 @@ avec votre voix</string>
                     <view key="view" contentMode="scaleToFill" id="ndu-II-wiD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IeF-2S-NFb" customClass="TPLetterSpacingButton">
+                                <rect key="frame" x="110" y="497" width="100" height="44"/>
+                                <color key="backgroundColor" red="0.87058823529999996" green="0.33725490200000002" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="bk6-do-R3W"/>
+                                    <constraint firstAttribute="width" constant="100" id="dUz-Zb-E3D"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GTWalsheim" pointSize="14"/>
+                                <state key="normal" title="suivant">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="next" destination="Bj6-qm-Nni" eventType="touchUpInside" id="CdK-c7-8db"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YH5-0g-YvT" customClass="TPLetterSpacingButton">
+                                <rect key="frame" x="222" y="497" width="85" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="AZK-nH-ug6"/>
+                                    <constraint firstAttribute="height" constant="44" id="TKq-d8-Nx9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GTWalsheim" pointSize="14"/>
+                                <state key="normal" title="ignorer">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="skip:" destination="Bj6-qm-Nni" eventType="touchUpInside" id="5Fb-nh-JFf"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pfq-sx-sON" firstAttribute="top" secondItem="YH5-0g-YvT" secondAttribute="bottom" constant="27" id="MzP-1Z-oQm"/>
+                            <constraint firstAttribute="centerX" secondItem="IeF-2S-NFb" secondAttribute="centerX" id="RDv-DP-SLi"/>
+                            <constraint firstItem="pfq-sx-sON" firstAttribute="top" secondItem="IeF-2S-NFb" secondAttribute="bottom" constant="27" id="d8G-1h-bER"/>
+                            <constraint firstAttribute="centerX" secondItem="YH5-0g-YvT" secondAttribute="centerX" constant="-104.5" id="x4A-wF-P5Y"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VuT-F7-vKs"/>
                 </viewController>
@@ -503,7 +644,7 @@ avec votre voix</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JuO-os-H1M">
-                                <rect key="frame" x="11" y="16" width="53" height="53"/>
+                                <rect key="frame" x="11" y="23" width="53" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="53" id="Sb2-GA-hqA"/>
                                     <constraint firstAttribute="height" constant="53" id="e8Z-Ds-M0A"/>
@@ -518,7 +659,7 @@ avec votre voix</string>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.59215686270000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="JuO-os-H1M" firstAttribute="top" secondItem="ef9-Ar-cqP" secondAttribute="bottom" constant="-4" id="8zf-VX-Jva"/>
+                            <constraint firstItem="JuO-os-H1M" firstAttribute="top" secondItem="ef9-Ar-cqP" secondAttribute="bottom" constant="3" id="8zf-VX-Jva"/>
                             <constraint firstItem="zb1-BZ-DNC" firstAttribute="top" secondItem="VXR-A6-BRO" secondAttribute="bottom" constant="52" id="BHN-dT-rZ0"/>
                             <constraint firstItem="SAJ-GH-Urb" firstAttribute="top" secondItem="ef9-Ar-cqP" secondAttribute="bottom" constant="169" id="Cro-QX-R0j"/>
                             <constraint firstItem="VXR-A6-BRO" firstAttribute="top" secondItem="35u-G5-lF1" secondAttribute="bottom" constant="22" id="PTX-Tm-Y4L"/>
@@ -627,4 +768,7 @@ avec votre voix</string>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="cXX-A2-T4m"/>
+    </inferredMetricsTieBreakers>
 </document>

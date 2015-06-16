@@ -24,6 +24,6 @@
 
 - (void)fetchStoriesForRoomId:(NSUInteger )room filteredByTag:(NSString*)tag orUser:(User*)user success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 - (void)fetchStoryWithId:(NSUInteger)roomId success:(void (^)(Story *))success failure:(void (^)(NSError *))failure;
-- (void)addCommentOnPage:(Page*)page atTime:(NSUInteger)time withAudioFile:(NSString*)audioFile success:(void (^)(Comment *))success failure:(void (^)())failure;
+- (void)addCommentOnPage:(Page*)page atTime:(NSUInteger)time duration:(NSUInteger)duration withAudioFile:(NSString*)audioFile success:(void (^)(Comment *))success failure:(void (^)())failure;
 
 @end

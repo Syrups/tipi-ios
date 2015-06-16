@@ -69,11 +69,11 @@
     [self.mTableView addGestureRecognizer:previewModeGesture];
     
     //Preview Init
-    UIView *overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.previewImageView.frame.size.width, self.previewImageView.frame.size.height)];
+    UIView *overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [overlay setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
     overlay.tag = 2048;
+    self.previewImageView.frame = self.view.frame;
     [self.previewImageView addSubview:overlay];
-    self.previewImageView.alpha = 0.2f;
 }
 
 - (void)setupPreviewImageInBackground {

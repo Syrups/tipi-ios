@@ -8,6 +8,7 @@
 
 #import "AdminRoomViewController.h"
 #import "AddUsersToRoomViewController.h"
+#import "ShowOneGroupViewController.h"
 #import "SHPathLibrary.h"
 #import "RoomManager.h"
 #import "TPAlert.h"
@@ -107,6 +108,7 @@
 
 -(IBAction)prepareForGoBackToOneGroup:(UIStoryboardSegue *)segue {
     [self.roomNameField resignFirstResponder];
+    [(ShowOneGroupViewController*)self.parentViewController setupPreviewImageInBackground];
 }
 
 

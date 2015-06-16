@@ -47,7 +47,30 @@
     }
     
     [self displayCoachmarkForDrag];
+    
+    
+    // fun easter egg
+    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(applySticker:)];
+    tap.numberOfTapsRequired = 3;
+    tap.numberOfTouchesRequired = 2;
 
+    [self.view addGestureRecognizer:tap];
+}
+
+- (void)applySticker:(UITapGestureRecognizer*)recognizer {
+    
+    UIImage* sticker = [UIImage imageNamed:[NSString stringWithFormat:@"sticker%d", arc4random_uniform(2)]];
+    UIImage* image = [self currentPage].tiltingView.image;
+    
+    UIImage* newImage = [ImageUtils combineImage:image withImage:sticker withPosition:CGPointMake(200, 200)];
+    
+    TPTiltingImageView* newTiltingView = [[TPTiltingImageView alloc] initWithFrame:[self currentPage].tiltingView.frame andImage:newImage];
+    [[self currentPage].tiltingView removeFromSuperview];
+    [[self currentPage].view addSubview:newTiltingView];
+    [[self currentPage].view sendSubviewToBack:newTiltingView];
+    
+    NSMutableDictionary* media = [self.saver.medias objectAtIndex:self.currentIndex];
+    [media setObject:newImage forKey:@"full"];
 }
 
 - (void)displayCoachmarkForDrag {
@@ -55,10 +78,13 @@
     if ([[NSUserDefaults standardUserDefaults] objectForKey:kCookieCoachmarkKey] == nil) {
         [PKAIDecoder builAnimatedImageIn:self.coachmarkSprite fromFile:@"help-drag" withAnimationDuration:3];
         self.helpLabel.text = NSLocalizedString(@"Déplacez les vignettes pour réorganiser votre histoire", nil);
-        self.overlay.alpha = .7f;
-        self.helpLabel.alpha = 1;
+    
+        [UIView animateWithDuration:.2f animations:^{
+            self.overlay.alpha = .85f;
+            self.helpLabel.alpha = 1;
+        }];
         
-        [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(displayCoachmarkForRecord) userInfo:nil repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(displayCoachmarkForRecord) userInfo:nil repeats:NO];
     }
     
 }
@@ -68,6 +94,16 @@
     self.helpLabel.text = NSLocalizedString(@"Appuyez sur l'image actuelle pour enregistrer votre voix sur celle-ci", nil);
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kCookieCoachmarkKey];
+    [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(hideCoachmark) userInfo:nil repeats:NO];
+}
+
+- (void)hideCoachmark {
+    [UIView animateWithDuration:.2f animations:^{
+        self.overlay.alpha = 0;
+        self.helpLabel.alpha = 0;
+    } completion:^(BOOL finished) {
+        self.coachmarkSprite.animationImages = [NSArray array];
+    }];
 }
 
 - (void)setupSwipeablePager {
@@ -348,6 +384,24 @@
 //    NSLog(@"New current index: %d", self.currentIndex);
     
     [self.swipablePager moveViewController:[self.swipablePager.viewControllers objectAtIndex:oldIndex] fromIndex:oldIndex atIndex:newIndex];
+}
+
+- (void)removeViewControllerAtIndex:(NSUInteger)index {
+    NSMutableArray* mutableControllers = [self.swipablePager.viewControllers mutableCopy];
+    
+    for (CardViewController* vc in mutableControllers) {
+        if (vc.pageIndex > index) {
+            vc.pageIndex = vc.pageIndex - 1;
+        }
+    }
+    
+    [mutableControllers removeObjectAtIndex:index];
+    
+    [self.recorder deleteAudioFileWithIndex:index];
+    
+    if (self.currentIndex > index) self.currentIndex--;
+    
+    self.swipablePager.viewControllers = [mutableControllers copy];
 }
 
 - (void)openDonePopin {

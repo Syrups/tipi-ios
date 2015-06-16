@@ -97,10 +97,10 @@
 }
 
 
-- (void)addCommentOnPage:(Page *)page atTime:(NSUInteger)time withAudioFile:(NSString *)audioFile{
+- (void)addCommentOnPage:(Page *)page atTime:(NSUInteger)time duration:(NSUInteger)duration withAudioFile:(NSString *)audioFile{
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 
-    [delegate.storyController addCommentOnPage:page atTime:time withAudioFile:audioFile success:^(Comment *comment) {
+    [delegate.storyController addCommentOnPage:page atTime:time duration:duration withAudioFile:audioFile success:^(Comment *comment) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([self.delegate respondsToSelector:@selector(storyManager:successfullyCreatedComment:)]) {
                 [self.delegate storyManager:self successfullyCreatedComment:comment];

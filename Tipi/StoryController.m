@@ -128,14 +128,14 @@
     [op start];
 }
 
-- (void)addCommentOnPage:(Page *)page atTime:(NSUInteger)timecode withAudioFile:(NSString *)audioFile success:(void (^)(Comment *))success failure:(void (^)())failure {
+- (void)addCommentOnPage:(Page *)page atTime:(NSUInteger)timecode duration:(NSUInteger)duration withAudioFile:(NSString *)audioFile success:(void (^)(Comment *))success failure:(void (^)())failure {
     
     commentPage = page;
     
     FileUploader* uploader = [[FileUploader alloc] init];
     uploader.delegate = self;
     
-    NSString* path = [NSString stringWithFormat:@"/pages/%@/comments?timecode=%lu&duration=0", page.id, (unsigned long)timecode];
+    NSString* path = [NSString stringWithFormat:@"/pages/%@/comments?timecode=%lu&duration=%d", page.id, (unsigned long)timecode, duration];
     
     //[kApiRootUrl stringByAppendingString:[];
     

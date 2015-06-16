@@ -80,6 +80,7 @@
 		B319B24B1AF1020800C819BD /* Screen0.xib in Resources */ = {isa = PBXBuildFile; fileRef = B319B24A1AF1020800C819BD /* Screen0.xib */; };
 		B319B2511AF12D0F00C819BD /* AdminRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B319B2501AF12D0F00C819BD /* AdminRoomViewController.m */; };
 		B31B01B71B259BBB00F704FA /* CommentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31B01B61B259BBB00F704FA /* CommentListViewController.m */; };
+		B32596D31B301E55003D4EB1 /* loader.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B32596D21B301E55003D4EB1 /* loader.pkai */; };
 		B325A13A1ADE546A0041DF21 /* SandboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A1391ADE546A0041DF21 /* SandboxViewController.m */; };
 		B325A1431ADF0B4D0041DF21 /* OrganizerWave.m in Sources */ = {isa = PBXBuildFile; fileRef = B325A1421ADF0B4D0041DF21 /* OrganizerWave.m */; };
 		B32674A91B2E295F000B3D17 /* DeleteRoomModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32674A81B2E295F000B3D17 /* DeleteRoomModalViewController.m */; };
@@ -90,7 +91,6 @@
 		B33389D91B1C60DE003BAC78 /* CoachmarkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B33389D81B1C60DE003BAC78 /* CoachmarkManager.m */; };
 		B33389DB1B1CA5BE003BAC78 /* help-record.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B33389DA1B1CA5BE003BAC78 /* help-record.pkai */; };
 		B33618631B09E9150047013C /* SCSiriWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = B33618621B09E9150047013C /* SCSiriWaveformView.m */; };
-		B33618671B0A15370047013C /* loader.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B33618661B0A15370047013C /* loader.pkai */; };
 		B336186A1B0A16FC0047013C /* TPLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B33618691B0A16FC0047013C /* TPLoader.m */; };
 		B336186C1B0A241A0047013C /* waves.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B336186B1B0A241A0047013C /* waves.pkai */; };
 		B33B6FD71ACDC702009C0623 /* UserController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33B6FD61ACDC702009C0623 /* UserController.m */; };
@@ -104,6 +104,7 @@
 		B35975F21ADFA29F00936E5E /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B35975F11ADFA29F00936E5E /* ImageUtils.m */; };
 		B35AD0391ABF2B6600527C0D /* ReviewStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD0381ABF2B6600527C0D /* ReviewStoryViewController.m */; };
 		B35AD03C1ABF2D2500527C0D /* ReviewPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35AD03B1ABF2D2500527C0D /* ReviewPageViewController.m */; };
+		B35B33451B2F472D00309371 /* logo.pkai in Resources */ = {isa = PBXBuildFile; fileRef = B35B33441B2F472D00309371 /* logo.pkai */; };
 		B35CDBDA1AB87DD900BF9F82 /* StoryMediaRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = B35CDBD91AB87DD900BF9F82 /* StoryMediaRecorder.m */; };
 		B35CDBDC1AB8863C00BF9F82 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35CDBDB1AB8863C00BF9F82 /* AVFoundation.framework */; };
 		B361ADB11B29973E00FAEB3E /* TPLetterSpacingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B361ADB01B29973E00FAEB3E /* TPLetterSpacingLabel.m */; };
@@ -303,6 +304,7 @@
 		B319B2501AF12D0F00C819BD /* AdminRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminRoomViewController.m; sourceTree = "<group>"; };
 		B31B01B51B259BBB00F704FA /* CommentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentListViewController.h; sourceTree = "<group>"; };
 		B31B01B61B259BBB00F704FA /* CommentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentListViewController.m; sourceTree = "<group>"; };
+		B32596D21B301E55003D4EB1 /* loader.pkai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = loader.pkai; sourceTree = "<group>"; };
 		B325A1381ADE546A0041DF21 /* SandboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandboxViewController.h; sourceTree = "<group>"; };
 		B325A1391ADE546A0041DF21 /* SandboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandboxViewController.m; sourceTree = "<group>"; };
 		B325A1411ADF0B4D0041DF21 /* OrganizerWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrganizerWave.h; sourceTree = "<group>"; };
@@ -319,7 +321,6 @@
 		B33389DA1B1CA5BE003BAC78 /* help-record.pkai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "help-record.pkai"; sourceTree = "<group>"; };
 		B33618611B09E9150047013C /* SCSiriWaveformView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSiriWaveformView.h; sourceTree = "<group>"; };
 		B33618621B09E9150047013C /* SCSiriWaveformView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSiriWaveformView.m; sourceTree = "<group>"; };
-		B33618661B0A15370047013C /* loader.pkai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = loader.pkai; sourceTree = "<group>"; };
 		B33618681B0A16FC0047013C /* TPLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPLoader.h; sourceTree = "<group>"; };
 		B33618691B0A16FC0047013C /* TPLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPLoader.m; sourceTree = "<group>"; };
 		B336186B1B0A241A0047013C /* waves.pkai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = waves.pkai; sourceTree = "<group>"; };
@@ -346,6 +347,7 @@
 		B35AD0381ABF2B6600527C0D /* ReviewStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewStoryViewController.m; sourceTree = "<group>"; };
 		B35AD03A1ABF2D2500527C0D /* ReviewPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewPageViewController.h; sourceTree = "<group>"; };
 		B35AD03B1ABF2D2500527C0D /* ReviewPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewPageViewController.m; sourceTree = "<group>"; };
+		B35B33441B2F472D00309371 /* logo.pkai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = logo.pkai; sourceTree = "<group>"; };
 		B35CDBD81AB87DD900BF9F82 /* StoryMediaRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryMediaRecorder.h; sourceTree = "<group>"; };
 		B35CDBD91AB87DD900BF9F82 /* StoryMediaRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryMediaRecorder.m; sourceTree = "<group>"; };
 		B35CDBDB1AB8863C00BF9F82 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -733,13 +735,14 @@
 		B3297F671B0E2CC700249DA0 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				B32596D21B301E55003D4EB1 /* loader.pkai */,
+				B35B33441B2F472D00309371 /* logo.pkai */,
 				B30C8C681B21DBEF009DA4FC /* replay-appear.pkai */,
 				B3D64CE81B1CBE3700AEABD2 /* test.JPG */,
 				B33389DA1B1CA5BE003BAC78 /* help-record.pkai */,
 				B33389D41B1C5D61003BAC78 /* help-tap.pkai */,
 				B33389D21B1C5AE3003BAC78 /* help-drag.pkai */,
 				B336186B1B0A241A0047013C /* waves.pkai */,
-				B33618661B0A15370047013C /* loader.pkai */,
 				73B3B3331AA7BA3F00FF7578 /* exports */,
 				B3297F681B0E2CD900249DA0 /* terms.html */,
 			);
@@ -1274,10 +1277,10 @@
 				B319338A1ADFB2B600603158 /* GTWalsheim Bold.otf in Resources */,
 				B319B2411AF0CD1B00C819BD /* onde_voix.pkai in Resources */,
 				B319B2421AF0CD1B00C819BD /* star.pkai in Resources */,
+				B35B33451B2F472D00309371 /* logo.pkai in Resources */,
 				B3A612411B2B1CC300FA7619 /* Profile.storyboard in Resources */,
 				73B3B3511AA7BA3F00FF7578 /* proches-grand.png in Resources */,
 				73B3B34C1AA7BA3F00FF7578 /* loupe.png in Resources */,
-				B33618671B0A15370047013C /* loader.pkai in Resources */,
 				B319B24B1AF1020800C819BD /* Screen0.xib in Resources */,
 				7314E6A51B204FC40074BD2B /* suitcase.mp3 in Resources */,
 				B3B4DB6B1B15EE7400DE905E /* Screen1.xib in Resources */,
@@ -1285,6 +1288,7 @@
 				B33389D51B1C5D61003BAC78 /* help-tap.pkai in Resources */,
 				B3BCCFE11AA5C36C00261212 /* LaunchScreen.xib in Resources */,
 				73B3B3561AA7BA3F00FF7578 /* story.png in Resources */,
+				B32596D31B301E55003D4EB1 /* loader.pkai in Resources */,
 				73B3B3541AA7BA3F00FF7578 /* replay-noir.png in Resources */,
 				B3FC7B8F1AA672DE00034E58 /* placeholder.gif in Resources */,
 				B3C470881B0F6FE7003231D3 /* Tipi.entitlements in Resources */,
@@ -1621,6 +1625,7 @@
 			baseConfigurationReference = 668F960769FF3C13F992EB88 /* Pods-Tipi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -1639,6 +1644,7 @@
 			baseConfigurationReference = DD8907F5BD3F36E16C299571 /* Pods-Tipi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;

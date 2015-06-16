@@ -53,6 +53,19 @@
     [manager moveItemAtPath:[self pathForAudioFileWithIndex:999] toPath:[self pathForAudioFileWithIndex:atIndex] error:nil];
 }
 
+- (void)deleteAudioFileWithIndex:(NSUInteger)index {
+    NSFileManager* manager = [NSFileManager defaultManager];
+    
+    [manager removeItemAtPath:[self pathForAudioFileWithIndex:index] error:nil];
+    
+    for (NSUInteger i = index+1 ; i <= [[StoryWIPSaver sharedSaver].medias count] ; ++i) {
+        NSString* oldPath = [self pathForAudioFileWithIndex:i];
+        NSString* newPath = [self pathForAudioFileWithIndex:i-1];
+        
+        [manager moveItemAtPath:oldPath toPath:newPath error:nil];
+    }
+}
+
 - (void)startRecording {
     // Creates a temporary file with filename <STORY_UUID>_<PAGE_INDEX>.m4a
     // to hold audio data

@@ -282,8 +282,19 @@ typedef void(^fadeOutCompletion)(BOOL);
     }
     if (recognizer.state == UIGestureRecognizerStateEnded) {
         NSLog(@"ended touch");
+        
         [self.commentRecorder stopRecording];
-        [self.storyManager addCommentOnPage:self.page atTime:self.commentTime withAudioFile:[self.commentRecorder pathForAudioFile]];
+        
+        AVAudioPlayer* avAudioPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:[self.commentRecorder pathForAudioFile]] error:nil];
+        
+        double duration = avAudioPlayer.duration;
+        avAudioPlayer = nil;
+        
+        NSLog(@"%f seconds", duration);
+        
+        [self.playerView pauseWithFade:NO];
+        self.playerView.nowRecording = NO;
+        [self.storyManager addCommentOnPage:self.page atTime:self.commentTime duration:(int)duration withAudioFile:[self.commentRecorder pathForAudioFile]];
     }
 }
 

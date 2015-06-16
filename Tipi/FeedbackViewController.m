@@ -7,6 +7,7 @@
 //
 
 #import "FeedbackViewController.h"
+#import "PKAIDecoder.h"
 
 @interface FeedbackViewController ()
 
@@ -17,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [PKAIDecoder builAnimatedImageIn:self.logo fromFile:@"logo" withAnimationDuration:3.5f];
 }
 
 - (IBAction)openMailComposer {

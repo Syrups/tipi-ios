@@ -10,4 +10,6 @@
 
 @interface FeedbackViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIImageView* logo;
+
 @end

@@ -180,7 +180,7 @@
     }];
     
     CABasicAnimation* morph = [CABasicAnimation animationWithKeyPath:@"path"];
-    morph.duration = 0.25f;
+    morph.duration = 0.3f;
     morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     
     CGPathRef from = shapeLayer.path;

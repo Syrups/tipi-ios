@@ -44,5 +44,6 @@
 - (void)applyFilters;
 - (IBAction)deleteStory:(id)sender;
 - (void)transitionFromReadMode;
+- (void)setupPreviewImageInBackground;
 
 @end

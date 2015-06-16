@@ -11,8 +11,10 @@
             <string>GTWalsheim-Bold</string>
             <string>GTWalsheim-Bold</string>
         </mutableArray>
+        <mutableArray key="GTWalsheim Medium.otf">
+            <string>GTWalsheimMedium</string>
+        </mutableArray>
         <mutableArray key="GTWalsheim Regular.otf">
-            <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
             <string>GTWalsheim-Regular</string>
@@ -602,7 +604,7 @@ plus tard</string>
                                                     <rect key="frame" x="0.0" y="0.0" width="161" height="166"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.allowsEdgeAntialiasing" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="4"/>
                                                         </userDefinedRuntimeAttribute>
@@ -717,13 +719,13 @@ plus tard</string>
                                     <action selector="finish:" destination="UzX-jJ-ocM" eventType="touchUpInside" id="rqm-n5-i2o"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appuyez sur une image pour enregistrer votre voix" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRx-Fb-nni">
-                                <rect key="frame" x="40" y="384" width="238" height="58"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appuyez sur une image pour enregistrer votre voix" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRx-Fb-nni" customClass="TPLetterSpacingLabel">
+                                <rect key="frame" x="40" y="384" width="238" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="238" id="3KU-bZ-4uI"/>
-                                    <constraint firstAttribute="height" constant="58" id="e2L-g2-PLJ"/>
+                                    <constraint firstAttribute="height" constant="84" id="e2L-g2-PLJ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GTWalsheim" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>

@@ -85,6 +85,20 @@
     return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
++ (UIImage *)combineImage:(UIImage *)firstImage withImage:(UIImage *)secondImage withPosition:(CGPoint)position {
+    CGSize finalSize = firstImage.size;
+    CGSize stickerSize = secondImage.size;
+    UIGraphicsBeginImageContext(finalSize);
+    [firstImage drawInRect:CGRectMake(0, 0, finalSize.width, finalSize.height)];
+    [secondImage drawInRect:CGRectMake(position.x, position.y, stickerSize.width, stickerSize.height)];
+    
+    UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
 + (UIImage *)compressImage:(UIImage *)image withQuality:(CGFloat)quality {
     NSData* data = UIImageJPEGRepresentation(image, quality);
     return [UIImage imageWithData:data];

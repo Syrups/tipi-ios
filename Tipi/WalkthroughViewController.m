@@ -28,8 +28,19 @@
     tps.view.backgroundColor = kCreateBackgroundColor;
     [self addChildViewController:tps];
     [self.view addSubview:tps.view];
+    [self.view sendSubviewToBack:tps.view];
     [tps didMoveToParentViewController:self];
+    self.tps = tps;
     
+    self.currentIndex = 0;
+}
+
+- (IBAction)next {
+    [self.tps setSelectedViewController:[self.tps.viewControllers objectAtIndex:self.currentIndex+1]];
+}
+
+- (IBAction)skip:(id)sender {
+    [self.tps setSelectedViewController:[self.tps.viewControllers lastObject]];
 }
 
 - (NSArray*)instantiateViewControllers {
@@ -38,12 +49,14 @@
     for (int i = 0 ; i < SCREENS_COUNT ; i++) {
         CardViewController* vc = (CardViewController*)[self viewControllerAtIndex:i];
         vc.next = (CardViewController*)[self viewControllerAtIndex:i+1];
+        vc.pageIndex = i;
         [viewControllers addObject:vc];
     }
     
     // append fake home screen at the end
     
     CardViewController* last = [[CardViewController alloc] init];
+    last.pageIndex = SCREENS_COUNT;
     last.view.backgroundColor = kCreateBackgroundColor;
     last.view.frame = self.view.frame;
     
@@ -72,9 +85,21 @@
 
 #pragma mark - TPSwipable
 
+- (void)swipableViewController:(TPSwipableViewController *)containerViewController didSelectViewController:(CardViewController *)viewController {
+//    self.currentIndex = viewController.pageIndex;
+}
+
 - (void)swipableViewController:(TPSwipableViewController *)containerViewController didFinishedTransitionToViewController:(CardViewController *)viewController {
-    if (viewController.next == nil) { // last
-        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(displayHome) userInfo:nil repeats:NO];
+    self.currentIndex = viewController.pageIndex;
+    NSLog(@"%d", self.currentIndex);
+
+    if (viewController.pageIndex == SCREENS_COUNT) { // last
+        
+        for (UIView* v in self.view.subviews) {
+            v.alpha = 0;
+        }
+        
+        [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(displayHome) userInfo:nil repeats:NO];
         
     }
 }

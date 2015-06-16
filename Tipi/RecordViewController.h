@@ -37,6 +37,6 @@
 - (RecordPageViewController*)currentPage;
 - (void)openNameStoryPopin;
 - (void)moveViewControllerfromIndex:(NSUInteger)oldIndex atIndex:(NSUInteger)newIndex;
-
+- (void)removeViewControllerAtIndex:(NSUInteger)index;
 
 @end

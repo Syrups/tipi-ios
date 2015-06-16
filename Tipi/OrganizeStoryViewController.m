@@ -141,6 +141,10 @@
             [self.collectionView performBatchUpdates:^{
                 [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
             } completion:^(BOOL finished) {
+                
+                RecordViewController* parent = (RecordViewController*)self.parentViewController;
+                [parent removeViewControllerAtIndex:pendingCellToRemoveIndex];
+                
                 removing = NO;
                 pendingCellToRemoveIndex = -1;
             }];

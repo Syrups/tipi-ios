@@ -11,7 +11,7 @@
 #import "SCSiriWaveformView.h"
 #import "UserManager.h"
 
-@interface LoginViewController : UIViewController <UserAuthenticatorDelegate, UITextFieldDelegate>
+@interface LoginViewController : UIViewController <UserAuthenticatorDelegate, UserCreatorDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView* fieldsZone;
 @property (strong, nonatomic) IBOutlet UIButton* signUpButton;
@@ -30,9 +30,13 @@
 @property (nonatomic, weak) IBOutlet SCSiriWaveformView *waveformView;
 @property (nonatomic, weak) IBOutlet SCSiriWaveformView *secondWaveformView;
 @property (strong, nonatomic) IBOutlet UIImageView* littleWaves;
-@property (strong, nonatomic) IBOutlet UIView* logo;
+@property (strong, nonatomic) IBOutlet UIImageView* logo;
 @property (strong, nonatomic) IBOutlet UILabel* titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel* subtitleLabel;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* logoVerticalConstraint;
+@property (strong, nonatomic) IBOutlet UITextField* registerUsernameField;
+@property (strong, nonatomic) IBOutlet UITextField* registerPasswordField;
+@property (strong, nonatomic) IBOutlet UITextField* registerEmailField;
+@property (strong, nonatomic) IBOutlet UIButton* termsButton;
 
 @end

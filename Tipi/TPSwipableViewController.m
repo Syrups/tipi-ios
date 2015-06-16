@@ -25,7 +25,6 @@
 
 
 @interface TPSwipableViewController ()
-@property (nonatomic, copy, readwrite) NSArray *viewControllers;
 //@property (nonatomic, strong) UIView *privateButtonsView;
 
 @end

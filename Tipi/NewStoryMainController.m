@@ -45,7 +45,6 @@
 
 - (IBAction)popCurrentController:(id)sender {
     UINavigationController* nav = (UINavigationController*)self.childViewControllers[0];
-    UIViewController* current = [nav visibleViewController];
     
     
     // If we are at the first view controller, show warning

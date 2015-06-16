@@ -211,13 +211,13 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="wcU-aa-PSw" secondAttribute="width" id="Die-1Y-GCM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DH7-gl-Qwa" secondAttribute="trailing" constant="1" id="HbD-Gl-KXZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wcU-aa-PSw" secondAttribute="trailing" constant="-16" id="Ke4-dt-tuR"/>
                             <constraint firstItem="8LD-13-ZAl" firstAttribute="top" secondItem="wcU-aa-PSw" secondAttribute="bottom" constant="-2.5" id="NOC-6g-BwB"/>
                             <constraint firstItem="7Jy-oa-bTk" firstAttribute="top" secondItem="Erq-DU-RNu" secondAttribute="bottom" id="Orr-op-qtT"/>
                             <constraint firstItem="7Jy-oa-bTk" firstAttribute="leading" secondItem="YeR-2B-G3e" secondAttribute="leadingMargin" constant="-3" id="VKn-AN-GMI"/>
                             <constraint firstItem="DH7-gl-Qwa" firstAttribute="top" secondItem="Erq-DU-RNu" secondAttribute="bottom" constant="1" id="XN3-PO-3W0"/>
-                            <constraint firstAttribute="centerX" secondItem="wcU-aa-PSw" secondAttribute="centerX" id="isi-zL-Pvj"/>
+                            <constraint firstItem="wcU-aa-PSw" firstAttribute="leading" secondItem="YeR-2B-G3e" secondAttribute="leadingMargin" constant="-16" id="tPm-vg-Uh6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7fZ-sD-Po2"/>
@@ -492,18 +492,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7uD-49-b9H">
                                 <rect key="frame" x="0.0" y="-4" width="320" height="227"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Q8D-EY-ThJ">
-                                        <rect key="frame" x="113" y="66" width="95" height="95"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="ag5-2I-zWh">
+                                        <rect key="frame" x="62" y="36" width="196" height="156"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="95" id="Dv8-tP-W8M"/>
-                                            <constraint firstAttribute="width" constant="95" id="IvS-a0-nfd"/>
+                                            <constraint firstAttribute="height" constant="156" id="0Gu-dZ-Xs9"/>
+                                            <constraint firstAttribute="width" constant="196" id="J5E-Q4-8Qn"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.87058823529999996" green="0.33725490200000002" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="Q8D-EY-ThJ" secondAttribute="centerX" id="LK2-3e-grQ"/>
-                                    <constraint firstAttribute="centerY" secondItem="Q8D-EY-ThJ" secondAttribute="centerY" id="UBg-tK-vzX"/>
+                                    <constraint firstAttribute="centerX" secondItem="ag5-2I-zWh" secondAttribute="centerX" id="T5e-bk-RUD"/>
+                                    <constraint firstAttribute="centerY" secondItem="ag5-2I-zWh" secondAttribute="centerY" constant="-0.5" id="xCP-EM-eFR"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.65000001192092882" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdJ-jT-cgG">
@@ -565,6 +565,9 @@
                             <constraint firstAttribute="centerX" secondItem="pdJ-jT-cgG" secondAttribute="centerX" id="rN6-80-gRC"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="logo" destination="ag5-2I-zWh" id="GGj-x5-D4h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUO-Sn-uej" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

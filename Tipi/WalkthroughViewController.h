@@ -11,5 +11,7 @@
 
 @interface WalkthroughViewController : UIViewController <TPSwipableViewControllerDelegate>
 
+@property NSUInteger currentIndex;
+@property (strong, nonatomic) TPSwipableViewController* tps;
 
 @end

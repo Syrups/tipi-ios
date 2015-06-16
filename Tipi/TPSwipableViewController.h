@@ -17,7 +17,7 @@
 
 @property (nonatomic, weak) id<TPSwipableViewControllerDelegate>delegate;
 
-@property (nonatomic, copy, readonly) NSArray *viewControllers;
+@property (nonatomic, copy) NSArray *viewControllers;
 
 @property (nonatomic, assign) UIViewController *selectedViewController;
 
