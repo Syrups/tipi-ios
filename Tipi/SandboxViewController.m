@@ -23,10 +23,11 @@
     //TPCircleWaverControl *wv = [[TPCircleWaverControl alloc]initWithFrame:CGRectMake(self.view.frame.size.width /2 - 100, self.view.frame.size.height/2 - 100, 200, 200);];
     //[self.view addSubview:wv];
     
-   
+    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(self.view.frame.size.width /2 - 100, self.view.frame.size.height/2 - 100, 200, 200)];
+    [self.view addSubview:btn];
+    btn.titleLabel.text = @"OK";
     
     //[self configureAudioSession];
-    
     
     /*NSString *path = [NSString stringWithFormat:@"%@/suitcase.mp3", [[NSBundle mainBundle] resourcePath]];
     NSURL *soundUrl = [NSURL fileURLWithPath:path];
@@ -57,14 +58,24 @@
     
     //self.sendBoxControl.simplePlayer = self.sandbPlayer;
     [self.sendBoxControl startFetchingAudio];
-    [self.sendBoxControl appear];
+    //
+
+}
+
+- (void)showIt{
+  [self.sendBoxControl appear];
+}
+
+- (void)hideIt{
+    [self.sendBoxControl close];
 }
 
 
-
 - (void)viewDidAppear:(BOOL)animated{
+     [self performSelector:@selector(showIt) withObject:nil afterDelay:2.0 inModes:[NSArray arrayWithObject:NSRunLoopCommonModes]];
     
-    
+    [self performSelector:@selector(hideIt) withObject:nil afterDelay:5.0 inModes:[NSArray arrayWithObject:NSRunLoopCommonModes]];
+  
 }
 
 

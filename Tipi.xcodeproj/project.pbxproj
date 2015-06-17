@@ -122,7 +122,6 @@
 		B3A6123C1B2B1C4800FA7619 /* Rooms.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3A6123E1B2B1C4800FA7619 /* Rooms.storyboard */; };
 		B3A612411B2B1CC300FA7619 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3A612431B2B1CC300FA7619 /* Profile.storyboard */; };
 		B3A6124C1B2B1F6700FA7619 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3A6124E1B2B1F6700FA7619 /* Localizable.strings */; };
-		B3A612511B2C698300FA7619 /* GTWalsheim Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B3A612501B2C698300FA7619 /* GTWalsheim Medium.otf */; };
 		B3A612541B2C6C9300FA7619 /* AudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A612531B2C6C9300FA7619 /* AudioManager.m */; };
 		B3A8D17D1ACE7A3800B09C34 /* RoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D17C1ACE7A3800B09C34 /* RoomController.m */; };
 		B3A8D1811ACE8C2F00B09C34 /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A8D1801ACE8C2F00B09C34 /* FriendListViewController.m */; };
@@ -193,6 +192,7 @@
 		7328120A1B03E44300C0087A /* TPStoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPStoryTableViewCell.m; sourceTree = "<group>"; };
 		7338BF771AD2C167005FD5F0 /* SRAnimatedWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRAnimatedWaveView.h; sourceTree = "<group>"; };
 		7338BF781AD2C167005FD5F0 /* SRAnimatedWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRAnimatedWaveView.m; sourceTree = "<group>"; };
+		7342BF811B2F02E7004A5E5F /* GTWalsheim Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTWalsheim Medium.otf"; sourceTree = "<group>"; };
 		7345C23B1B1DDA010099EA58 /* ReadStoryTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadStoryTransitionAnimator.h; sourceTree = "<group>"; };
 		7345C23C1B1DDA010099EA58 /* ReadStoryTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadStoryTransitionAnimator.m; sourceTree = "<group>"; };
 		73559BA01AE2686000547886 /* RoomNavigationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomNavigationDelegate.h; sourceTree = "<group>"; };
@@ -243,6 +243,7 @@
 		73B3B3611AA7CA9100FF7578 /* ReadModeContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadModeContainerViewController.m; sourceTree = "<group>"; };
 		73D0C26E1B0F7A1A00BDFA14 /* UIViewTouchUnder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewTouchUnder.h; sourceTree = "<group>"; };
 		73D0C26F1B0F7A1A00BDFA14 /* UIViewTouchUnder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewTouchUnder.m; sourceTree = "<group>"; };
+		73D2DDC51B303E0A0062CFE1 /* TPEasingFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPEasingFunctions.h; sourceTree = "<group>"; };
 		73E0BDAB1B1F153400AD540D /* AWPercentDrivenInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWPercentDrivenInteractiveTransition.h; sourceTree = "<group>"; };
 		73E0BDAC1B1F153400AD540D /* AWPercentDrivenInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWPercentDrivenInteractiveTransition.m; sourceTree = "<group>"; };
 		73E0BDAE1B1F159300AD540D /* PanGestureInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanGestureInteractiveTransition.h; sourceTree = "<group>"; };
@@ -383,7 +384,6 @@
 		B3A6124B1B2B1E2600FA7619 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Rooms.strings; sourceTree = "<group>"; };
 		B3A6124D1B2B1F6700FA7619 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B3A6124F1B2B1F6D00FA7619 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		B3A612501B2C698300FA7619 /* GTWalsheim Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GTWalsheim Medium.otf"; path = "../../../../Downloads/Dossier presentation_17_04_15/Document fonts/GTWalsheim Medium.otf"; sourceTree = "<group>"; };
 		B3A612521B2C6C9300FA7619 /* AudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioManager.h; sourceTree = "<group>"; };
 		B3A612531B2C6C9300FA7619 /* AudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioManager.m; sourceTree = "<group>"; };
 		B3A8D17B1ACE7A3800B09C34 /* RoomController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomController.h; sourceTree = "<group>"; };
@@ -590,6 +590,14 @@
 				B31B01B61B259BBB00F704FA /* CommentListViewController.m */,
 			);
 			name = ReadStory;
+			sourceTree = "<group>";
+		};
+		73D2DDC41B303DDB0062CFE1 /* TPSpecials */ = {
+			isa = PBXGroup;
+			children = (
+				73D2DDC51B303E0A0062CFE1 /* TPEasingFunctions.h */,
+			);
+			name = TPSpecials;
 			sourceTree = "<group>";
 		};
 		B3065A2D1AB9714400C10AD9 /* Media */ = {
@@ -946,6 +954,7 @@
 		B3BCCFCF1AA5C36C00261212 /* Tipi */ = {
 			isa = PBXGroup;
 			children = (
+				73D2DDC41B303DDB0062CFE1 /* TPSpecials */,
 				B39C1DE51AC4B1620011D87E /* Tipi.entitlements */,
 				B3065A371AB9887500C10AD9 /* Configuration.h */,
 				B319B2391AF0CD1400C819BD /* Resources */,
@@ -1248,7 +1257,6 @@
 				B3A6123C1B2B1C4800FA7619 /* Rooms.storyboard in Resources */,
 				B358F5361B316D2B00609CC1 /* walk2.pkai in Resources */,
 				73B3B3471AA7BA3F00FF7578 /* croix-noire.png in Resources */,
-				B3A612511B2C698300FA7619 /* GTWalsheim Medium.otf in Resources */,
 				B3BCCFF81AA5C4CB00261212 /* GTWalsheim Light.otf in Resources */,
 				B358F5381B316D3600609CC1 /* walk1.pkai in Resources */,
 				B3BCCFF91AA5C4CB00261212 /* GTWalsheim Regular.otf in Resources */,

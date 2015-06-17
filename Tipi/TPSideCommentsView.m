@@ -109,8 +109,8 @@
     if(self.currentBubbleIndex && self.currentBubbleIndex.row == indexPath.row){
         [self sideCommentView:self handleToucheOnRowAtIndexPath:indexPath withSelection:NO];
     }else{
-        [self sideCommentView:self handleToucheOnRowAtIndexPath:indexPath withSelection:YES];
         [self sideCommentView:self handleToucheOnRowAtIndexPath:self.currentBubbleIndex withSelection:NO];
+        [self sideCommentView:self handleToucheOnRowAtIndexPath:indexPath withSelection:YES];
         self.currentBubbleIndex = indexPath;
     }
 }
