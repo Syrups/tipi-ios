@@ -46,7 +46,6 @@
 #pragma mark - TPAlert
 
 - (void)alertDidAknowledge:(TPAlert *)alert {
-    TPLoader* loader;
     UserManager* manager = [[UserManager alloc] initWithDelegate:self];
     [manager deleteUser:CurrentUser];
 }

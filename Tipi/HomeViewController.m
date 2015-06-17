@@ -71,9 +71,7 @@
         [self.currentViewController.view removeFromSuperview];
         [self.currentViewController removeFromParentViewController];
     }
-    
-    UIViewController* previous = self.currentViewController;
-    
+        
     [self addChildViewController:viewController];
     viewController.view.frame = self.view.frame;
     [self.view addSubview:viewController.view];

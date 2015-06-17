@@ -91,6 +91,10 @@ typedef void(^fadeOutCompletion)(BOOL);
     self.storyManager = [[StoryManager alloc] initWithDelegate:self];
     
     if (self.idx == 0) {
+        if ([self.page.comments count] == 0) {
+            self.commentsButton.alpha = 0;
+        }
+        
         [self playAndTrack];
     }
 }
@@ -164,8 +168,14 @@ typedef void(^fadeOutCompletion)(BOOL);
     
     [self.overlayTimer invalidate];
     
+    self.topBarYConstraint.constant = -100;
+    self.commentsButtonYConstraint.constant = -100;
+    [self.view layoutIfNeeded];
     [UIView animateWithDuration:.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.overlayView.alpha = self.overlayView.alpha == 0 ? 1.0 : 0;
+        self.topBarYConstraint.constant = -20;
+        self.commentsButtonYConstraint.constant = 30;
+        [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         self.overlayTimer = [NSTimer timerWithTimeInterval:3 target:self selector:@selector(hideOverlay:) userInfo:nil
                                                    repeats:NO];
@@ -175,8 +185,11 @@ typedef void(^fadeOutCompletion)(BOOL);
 
 - (void)hideOverlay:(NSTimer *)timer{
     
-    [UIView animateWithDuration:.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:.3f delay:0 options:0 animations:^{
         self.overlayView.alpha = 0;
+        self.topBarYConstraint.constant = -100;
+        self.commentsButtonYConstraint.constant = -100;
+        [self.view layoutIfNeeded];
     } completion:nil];
 }
 
@@ -256,7 +269,7 @@ typedef void(^fadeOutCompletion)(BOOL);
     user.id = [mockIds objectAtIndex: index];
     
     Comment* comment = [Comment new];
-    comment.file = [NSString stringWithFormat:@"com %ld", index];
+    comment.file = [NSString stringWithFormat:@"com %d", index];
     comment.user = user;
     return comment;
     

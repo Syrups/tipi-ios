@@ -204,6 +204,8 @@
         //[next.moviePlayer performSelector:@selector(play) withObject:nil afterDelay:.5f];
     } else if (self.currentController.idx == [self.story.pages count] - 1) {
         // end
+        [controller.moviePlayer pause];
+        [controller.player stop];
         [self performSelector:@selector(close) withObject:nil afterDelay:.5f];
     }
 }
@@ -294,6 +296,7 @@
         completion(index);
     }];
 }
+
 
 
 @end

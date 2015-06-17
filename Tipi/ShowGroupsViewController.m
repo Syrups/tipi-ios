@@ -26,8 +26,8 @@
     
     self.mGroups = [NSArray array];
     
-    [self.mTableView setContentInset:UIEdgeInsetsMake(30,0,150,0)];
-    self.mTableView.alwaysBounceVertical = NO;
+    [self.mTableView setContentInset:UIEdgeInsetsMake(40,0,150,0)];
+//    self.mTableView.alwaysBounceVertical = NO;
     
     RoomManager* manager = [[RoomManager alloc] initWithDelegate:self];
     [manager fetchRoomsForUser:[[UserSession sharedSession] user]];
@@ -44,7 +44,7 @@
         [self.view layoutIfNeeded];
     }];
     
-//    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
 }
 
@@ -182,6 +182,17 @@
 
 #pragma mark - Navigation
 
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if ([identifier isEqualToString:@"ToGroupSegue"]) {
+        NSIndexPath* indexPath = [self.mTableView indexPathForSelectedRow];
+        TPSwipeDeleteTableViewCell* cell = (TPSwipeDeleteTableViewCell*)[self.mTableView cellForRowAtIndexPath:indexPath];
+        
+        return !cell.editMode;
+    }
+    
+    return YES;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"ToGroupSegue"]) {
         
@@ -191,6 +202,11 @@
         
         ShowOneGroupViewController* reveal = segue.destinationViewController;
         reveal.room = room;
+    }
+    
+    if ([segue.identifier isEqualToString:@"ToCreate"]) {
+        CreateRoomViewController* vc = (CreateRoomViewController*)segue.destinationViewController;
+        vc.roomsController = self;
     }
 }
 
@@ -225,14 +241,15 @@
         
         int endY = cell.frame.origin.y + 200;
         float delay = (self.mTableView.visibleCells.count - idx - 1) * 0.1f;
+
         
-        [UIView animateWithDuration:.3f delay:delay  options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [UIView mt_animateWithViews:@[cell] duration:.3f delay:delay timingFunction:kMTEaseInBack animations:^{
             [cell setFrame:CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height)];
             [cell setAlpha:0];
-        } completion:^(BOOL finished) {
+        } completion:^{
             if (idx == self.mTableView.visibleCells.count - 1) {
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .25f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-                    completion(finished);
+                    completion(YES);
                 });
             }
         }];

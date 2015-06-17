@@ -34,3 +34,9 @@
 
 /* Class = "UILabel"; ObjectID = "74d-91-tLK"; */
 "74d-91-tLK.text" = "Tell stories with\nyour voice";
+
+/* Class = "UIButton"; ObjectID = "IeF-2S-NFb"; */
+"IeF-2S-NFb.normalTitle" = "continue";
+
+/* Class = "UIButton"; ObjectID = "YH5-0g-YvT"; */
+"YH5-0g-YvT.normalTitle" = "skip";

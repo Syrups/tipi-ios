@@ -18,6 +18,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    
     application.applicationIconBadgeNumber = 0;
     
     self.userController = [[UserController alloc] init];

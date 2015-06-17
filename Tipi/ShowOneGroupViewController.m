@@ -19,6 +19,7 @@
 #import "DeleteStoryModalViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <UIView+MTAnimation.h>
+#import "AudioManager.h"
 #import "Page.h"
 
 @interface ShowOneGroupViewController ()
@@ -33,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self configureAVAudioSession];
+    [AudioManager configureAudioSession];
     // Do any additional setup after loading the view.
     
     
@@ -45,7 +46,8 @@
     
     loader = [[TPLoader alloc] initWithFrame:self.view.frame];
     [self.view addSubview:loader];
-    [self.view sendSubviewToBack:loader];
+    
+    [self.view bringSubviewToFront:self.topBar];
     
     StoryManager* manager = [[StoryManager alloc] initWithDelegate:self];
     [manager fetchStoriesForRoomId:[self.room.id integerValue] filteredByTag:nil orUser:nil];
@@ -72,6 +74,30 @@
     UIView *overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [overlay setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
     overlay.tag = 2048;
+    
+    UILabel* overlayLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height/2, self.view.frame.size.width, self.view.frame.size.height/2)];
+    overlayLabel.textColor = [UIColor whiteColor];
+    overlayLabel.numberOfLines = 3;
+    overlayLabel.text = @"Maintenez appuyé sur\nune page pour enregistrer\nun commentaire audio";
+    overlayLabel.font = [UIFont fontWithName:@"GTWalsheim-Regular" size:15];
+    overlayLabel.textAlignment = NSTextAlignmentCenter;
+    overlayLabel.alpha = 0;
+    [overlay addSubview:overlayLabel];
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:overlayLabel.text];
+    
+    [attributedString addAttribute:NSKernAttributeName
+                             value:@(kButtonLetterSpacing)
+                             range:NSMakeRange(0, [overlayLabel.text length])];
+    
+    NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
+    style.lineSpacing = 2;
+    style.alignment = NSTextAlignmentCenter;
+    
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, [overlayLabel.text length])];
+    
+    overlayLabel.attributedText = attributedString;
+    
     self.previewImageView.frame = self.view.frame;
     [self.previewImageView addSubview:overlay];
 }
@@ -223,6 +249,20 @@
     UILabel *name = (UILabel*)[cell.contentView viewWithTag:10];
     name.text = story.title;
     
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:name.text];
+    
+    [attributedString addAttribute:NSKernAttributeName
+                             value:@(kButtonLetterSpacing)
+                             range:NSMakeRange(0, [name.text length])];
+    
+    NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
+    style.lineSpacing = 4;
+    style.alignment = NSTextAlignmentCenter;
+    
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, [name.text length])];
+    
+    name.attributedText = attributedString;
+    
     UILabel *desc = (UILabel*)[cell.contentView viewWithTag:20];
     desc.text = [NSString stringWithFormat:@"%@ - %@", story.user.username, dateText];
     
@@ -236,7 +276,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    TPSwipeDeleteTableViewCell* cell = (TPSwipeDeleteTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+    
+    [UIView animateWithDuration:.3f animations:^{
+        UIView* overlay = [self.previewImageView viewWithTag:2048];
+        ((UIView*)overlay.subviews[0]).alpha = 1;
+    }];
+    
+    
+    
+    if (cell.editMode) return;
     
     [self startCoverModeWithAnimatingCell:cell atIndexPath:indexPath withCompletionBlock:^(BOOL done) {
         Story* story = [self.mStories objectAtIndex:indexPath.row];
@@ -262,6 +311,7 @@
     [self addChildViewController:toController];
     [toController didMoveToParentViewController:self];
     
+    
     /*[self transitionFromViewController:fromController
      toViewController:toController
      duration:0.2
@@ -275,11 +325,10 @@
 
 - (void)readModeContainerViewController:(ReadModeContainerViewController *)controller didFinishedLoadingStory:(Story *)story{
     
-    [UIView animateWithDuration:1 animations:^{
+    [UIView animateWithDuration:.8f animations:^{
         self.previewImageView.transform = CGAffineTransformMakeScale(1.2,1.2);
         self.previewImageView.alpha = 0;
         
-        self.topBar.alpha = 0;
         self.mTableView.alpha = 0;
         
         loader.alpha = 0;
@@ -365,8 +414,11 @@
 #pragma mark - Navigation and animation
 
 -(IBAction)prepareForGoBackToOneGroup:(UIStoryboardSegue *)segue {
-    [self.view.layer removeAllAnimations];
-    [self removeCoverModer];
+    if ([((UIViewController*)segue.destinationViewController).restorationIdentifier isEqualToString:@"ShowGroupsViewController"]) {
+        [self.view.layer removeAllAnimations];
+        [self animateBack];
+        [self removeCoverModer];
+    }
 }
 
 
@@ -465,9 +517,7 @@
 }
 
 -(void)stopPreview {
-    
-    TPStoryTableViewCell* cell = (TPStoryTableViewCell*)[self.mTableView cellForRowAtIndexPath:self.currentIndexPath];
-    
+        
     [currentControl close];
     
     self.isPreviewMode = NO;
@@ -492,7 +542,6 @@
 - (void)startCoverModeWithAnimatingCell:(UITableViewCell*)selectedCell atIndexPath:(NSIndexPath*)indexPath withCompletionBlock:(void (^)(BOOL))block
 {
     
-    [self.view addSubview:loader];
     
     
     Story* story = [self.mStories objectAtIndex:indexPath.row];
@@ -506,19 +555,27 @@
         self.previewImageView.image = image;
         self.previewImageView.clipsToBounds = YES;
         
-        [UIView animateWithDuration:1 animations:^{
-            self.previewImageView.alpha = 1;
-            
+        
+        [UIView animateWithDuration:.3f animations:^{
             for (UITableViewCell *cell in [self.mTableView visibleCells]) {
                 if(cell != selectedCell){
                     cell.alpha = 0;
                 }
             }
+        }];
+        
+        [UIView animateWithDuration:.4f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            self.previewImageView.alpha = 1;
             
-            selectedCell.frame = CGRectMake(CGRectGetMinX(selectedCell.frame), 0, CGRectGetWidth(selectedCell.frame), CGRectGetHeight(selectedCell.frame));
+            self.topBar.alpha = 0;
+            
+            selectedCell.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
+            selectedCell.frame = CGRectMake(CGRectGetMinX(selectedCell.frame), self.mTableView.contentOffset.y - 40, CGRectGetWidth(selectedCell.frame), CGRectGetHeight(selectedCell.frame));
             selectedCell.alpha = 1;
             
         } completion:^(BOOL finished) {
+            [self.view addSubview:loader];
+            [self.view bringSubviewToFront:self.mTableView];
             double delayInSeconds = 2.0;
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -584,27 +641,43 @@
 - (void)transitionFromReadMode {
     [loader removeFromSuperview];
     self.previewImageView.alpha = 0;
+    self.previewImageView.transform = CGAffineTransformIdentity;
     
+    UIView* overlay = [self.previewImageView viewWithTag:2048];
+    ((UIView*)overlay.subviews[0]).alpha = 0;
+    
+    for (UITableViewCell* cell in self.mTableView.visibleCells) {
+        cell.transform = CGAffineTransformIdentity;
+    }
 }
 
 - (void)animate {
     [[self.mTableView visibleCells] enumerateObjectsUsingBlock:^(UITableViewCell *cell, NSUInteger idx, BOOL *stop) {
         
-        int endY = cell.frame.origin.y;
-        float delay = idx * 0.05;
+        int endX = cell.frame.origin.x;
+        float delay = .1f + idx * 0.08f;
         
-        [cell setFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y + self.view.frame.size.height, cell.frame.size.width, cell.frame.size.height)];
+        [cell setFrame:CGRectMake(cell.frame.origin.x + 100, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
         [cell setAlpha:0];
+
+        [UIView mt_animateWithViews:@[cell] duration:.6f delay:delay timingFunction:kMTEaseOutBack animations:^{
+            [cell setFrame:CGRectMake(endX, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
+            cell.alpha = 1;
+        } completion:nil];
+
+    }];
+}
+
+- (void)animateBack {
+    [[self.mTableView visibleCells] enumerateObjectsUsingBlock:^(UITableViewCell *cell, NSUInteger idx, BOOL *stop) {
         
+        float delay = idx * 0.08;
+
+        [UIView mt_animateWithViews:@[cell] duration:.4f delay:delay timingFunction:kMTEaseOutBack animations:^{
+            [cell setFrame:CGRectMake(cell.frame.origin.x + 120, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
+            cell.alpha = 0;
+        } completion:nil];
         
-        [UIView animateWithDuration:.23f delay:delay options:UIViewAnimationOptionCurveEaseIn animations:^{
-            [cell setAlpha:1];
-            [cell setFrame:CGRectMake(cell.frame.origin.x, endY + 100, cell.frame.size.width, cell.frame.size.height)];
-        } completion:^(BOOL finished) {
-            [UIView mt_animateWithViews:@[cell] duration:1.3f delay:0 timingFunction:kMTEaseOutElastic animations:^{
-                [cell setFrame:CGRectMake(cell.frame.origin.x, endY, cell.frame.size.width, cell.frame.size.height)];
-            } completion:nil];
-        }];
     }];
 }
 

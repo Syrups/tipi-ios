@@ -108,7 +108,7 @@
 
 -(IBAction)prepareForGoBackToOneGroup:(UIStoryboardSegue *)segue {
     [self.roomNameField resignFirstResponder];
-    [(ShowOneGroupViewController*)self.parentViewController setupPreviewImageInBackground];
+//    [(ShowOneGroupViewController*)self.parentViewController setupPreviewImageInBackground];
 }
 
 

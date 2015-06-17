@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "RoomManager.h"
+#import "ShowGroupsViewController.h"
+#import "RoomPickerViewController.h"
 
 @interface CreateRoomViewController : UIViewController <UITextFieldDelegate, RoomCreatorDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField* roomNameField;
+@property (strong, nonatomic) ShowGroupsViewController* roomsController;
+@property (strong, nonatomic) RoomPickerViewController* roomsPicker;
 
 @end

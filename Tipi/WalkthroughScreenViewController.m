@@ -8,6 +8,7 @@
 
 #import "WalkthroughScreenViewController.h"
 #import "HomeBubble.h"
+#import "PKAIDecoder.h"
 
 @interface WalkthroughScreenViewController ()
 
@@ -18,10 +19,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLog(@"%d", self.index);
-    
-    [[NSBundle mainBundle] loadNibNamed:[NSString stringWithFormat:@"Screen%d", self.index] owner:self options:nil];
+    [[NSBundle mainBundle] loadNibNamed:[NSString stringWithFormat:@"Screen%lu", (unsigned long)self.index] owner:self options:nil];
     [self.view addSubview:self.screenView];
+    
+//    switch (self.index) {
+//        case 1:
+//            [PKAIDecoder builAnimatedImageIn:self.illu fromFile:@"walk1" withAnimationDuration:3];
+//            break;
+//            
+//        default:
+//            break;
+//    }
 }
 
 

@@ -13,7 +13,6 @@
 - (void)awakeFromNib {
     // Initialization code
     self.isSwipeDeleteEnabled = YES;
-    
 }
 
 -(void)layoutSubviews{
@@ -74,11 +73,11 @@
                 }
             }
                 break;
-            case UIGestureRecognizerStateEnded :
+            case UIGestureRecognizerStateEnded :{
                 [self setEditMode:(self.aboveView.transform.tx > midEndX)];
                 break;
                 
-            default :
+            } default :
                 
                 break;
         }

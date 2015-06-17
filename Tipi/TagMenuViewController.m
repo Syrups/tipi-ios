@@ -40,7 +40,7 @@
     NSMutableArray* goodTags = [NSMutableArray array];
     
     for (NSString* tag in tags) {
-        if (![tag isEqualToString:@""] && tag != nil && ![tag isEqual:[NSNull null]]) {
+        if (tag != nil && ![tag isEqual:[NSNull null]] && ![tag isEqualToString:@""]) {
             [goodTags addObject:tag];
         }
     }

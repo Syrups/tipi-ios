@@ -18,6 +18,7 @@
 #import "ImageUtils.h"
 #import <UIView+MTAnimation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "CreateRoomViewController.h"
 
 @implementation RoomPickerViewController {
     NSMutableArray* selectedRooms;
@@ -106,7 +107,7 @@
         uploadedMediasCount++;
     }
     
-    NSLog(@"%lu files downloaded (%lu total)", uploadedAudiosCount+uploadedMediasCount, self.saver.medias.count*2);
+    NSLog(@"%u files downloaded (%u total)", uploadedAudiosCount+uploadedMediasCount, self.saver.medias.count*2);
 
     // all good
     if (uploadedMediasCount == self.saver.medias.count && uploadedAudiosCount == self.saver.medias.count) {
@@ -169,8 +170,8 @@
         
         if ([[media objectForKey:@"type"] isEqualToString:ALAssetTypeVideo]) {
             ALAssetRepresentation *rep = [(ALAsset*)[media objectForKey:@"asset"] defaultRepresentation];
-            Byte *buffer = (Byte*)malloc(rep.size);
-            NSUInteger buffered = [rep getBytes:buffer fromOffset:0.0 length:rep.size error:nil];
+            Byte *buffer = (Byte*)malloc((unsigned long)rep.size);
+            NSUInteger buffered = [rep getBytes:buffer fromOffset:0.0 length:(unsigned long)rep.size error:nil];
             
             
             data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES];
@@ -314,6 +315,13 @@
     }];
 }
 
+#pragma mark - Navigation
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ToCreate"]) {
+        CreateRoomViewController* vc = (CreateRoomViewController*)segue.destinationViewController;
+        vc.roomsPicker = self;
+    }
+}
 
 @end

@@ -1135,7 +1135,7 @@ votre histoire</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="7uI-DJ-HMn" kind="push" id="nwq-L7-I8o"/>
+                                    <segue destination="7uI-DJ-HMn" kind="push" identifier="ToCreate" id="nwq-L7-I8o"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1323,7 +1323,7 @@ votre histoire</string>
                                             <constraint firstAttribute="height" constant="76" id="XLa-SR-c9y"/>
                                             <constraint firstAttribute="width" constant="181" id="eUN-dj-xeu"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="19"/>
+                                        <fontDescription key="fontDescription" name="GTWalsheim-Regular" family="GTWalsheim" pointSize="18"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBO-9P-0U7" customClass="TPLetterSpacingButton">
@@ -1386,7 +1386,7 @@ votre histoire</string>
         <!--Create Room View Controller-->
         <scene sceneID="TU4-cd-xPO">
             <objects>
-                <viewController storyboardIdentifier="StoryBuilderCreateRoom" id="7uI-DJ-HMn" customClass="CreateRoomViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateRoom" id="7uI-DJ-HMn" customClass="CreateRoomViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j4e-xE-ZbE"/>
                         <viewControllerLayoutGuide type="bottom" id="vPS-Ci-UHA"/>
@@ -1479,7 +1479,7 @@ votre histoire</string>
         <!--Add Users To Room View Controller-->
         <scene sceneID="sTA-aI-GgB">
             <objects>
-                <viewController storyboardIdentifier="StoryBuilderAddUsersToRoom" id="30l-rK-Kgv" customClass="AddUsersToRoomViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddUsersToRoom" id="30l-rK-Kgv" customClass="AddUsersToRoomViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ip8-Sh-QAy"/>
                         <viewControllerLayoutGuide type="bottom" id="H5X-Ii-CR5"/>
@@ -1565,10 +1565,10 @@ votre histoire</string>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.38582631950000001" green="0.33233025669999999" blue="0.32970204949999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>

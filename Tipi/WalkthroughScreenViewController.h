@@ -13,6 +13,7 @@
 
 @property NSUInteger index;
 @property (strong, nonatomic) IBOutlet UIView* screenView;
+@property (strong, nonatomic) IBOutlet UIImageView* illu;
 @property (strong, nonatomic) IBOutlet UIColor* backgroundColor;
 
 @end

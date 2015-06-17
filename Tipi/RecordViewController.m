@@ -272,9 +272,7 @@
     viewController.overlay.alpha = 0;
     [self.recorder.player fadeOutPause];
     [self.recorder setupForMediaWithIndex:self.currentIndex];
-    
-    OrganizeStoryViewController* organizer = (OrganizeStoryViewController*)[self.childViewControllers objectAtIndex:0];
-    
+        
 }
 
 - (RecordPageViewController *)viewControllerAtIndex:(NSUInteger)index

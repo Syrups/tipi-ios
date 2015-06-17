@@ -59,7 +59,8 @@
 @property (strong,nonatomic) NSURL* fileURL;
 @property (strong,nonatomic) NSTimer *overlayTimer;
 @property (nonatomic) NSTimeInterval commentTime;
-
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint* topBarYConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint* commentsButtonYConstraint;
 
 @property (strong, nonatomic) CommentListViewController* commentsViewController;
 

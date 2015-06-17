@@ -50,11 +50,7 @@
 }
 
 - (IBAction)dismiss:(id)sender {
-    ShowOneGroupViewController* parent = (ShowOneGroupViewController*)self.parentViewController;
-    
-    //[self.view removeFromSuperview];
-    //[self removeFromParentViewController];
-    
+
     [self.navigationController popViewControllerAnimated: YES];
 }
 

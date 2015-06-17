@@ -16,7 +16,6 @@
     if (self) {
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.titleLabel.text];
         
-        float spacing = 5.0f;
         [attributedString addAttribute:NSKernAttributeName
                                  value:@(kButtonLetterSpacing)
                                  range:NSMakeRange(0, [self.titleLabel.text length])];

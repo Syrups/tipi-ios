@@ -75,7 +75,7 @@
     if (self.randomMedias == nil) return;
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSUInteger randomIndex = arc4random() % ([self.randomMedias count] - 1);
+//        NSUInteger randomIndex = arc4random() % ([self.randomMedias count] - 1);
         NSDictionary* media = [self.randomMedias firstObject];
         ALAsset* asset = (ALAsset*)[media objectForKey:@"asset"];
         UIImage* full = [ImageUtils convertImageToGrayScale:[UIImage imageWithCGImage:[[asset defaultRepresentation]fullScreenImage]]];
