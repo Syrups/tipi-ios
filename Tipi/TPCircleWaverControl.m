@@ -83,7 +83,6 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     }
 }
 
-
 - (void)setMode:(TPCircleMode)mode{
     _mode = mode;
 }
@@ -219,6 +218,12 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     [self baseViewInitWithFrame:self.frame];
 }
 
+- (void)setDisAppearing:(BOOL)disAppearing{
+    self.backStartAngle = ToRad(0);
+    self.currentBackAngle = ToRad(0);
+    _disAppearing = disAppearing;
+    
+}
 
 - (void)drawRect:(CGRect)rect {
     
@@ -232,22 +237,8 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     CGPoint center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
     
     //Draw Background Path
-    
-    if (self.disAppearing){
-        self.backStartAngle += ((ToRad(359)  - self.backStartAngle) * ToRad(2.5));
-
-        int delta = (int)(self.backStartAngle - ToRad(360));
-        //
-        NSLog(@"dis %d",  delta);
-        
-        if(delta > 0){
-            //self.currentBackAngle = ToRad(360);
-            self.disAppearing = NO;
-        }
-    }
-    
     CGContextBeginPath(ctx);
-    CGContextAddArc(ctx, center.x, center.y, self.radius,-M_PI_2 + self.backStartAngle, [self getBackAngle], 0);
+    CGContextAddArc(ctx, center.x, center.y, self.radius, [self getBackStartAngle], [self getBackEndAngle], 0);
     //-M_PI_2 + self.currentBackAngle
     CGContextSetStrokeColorWithColor(ctx, self.backgroundPathColor.CGColor);
     CGContextSetLineWidth(ctx, kArcLineWidth * 1.3);
@@ -304,7 +295,8 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     CGContextRestoreGState(ctx);
 }
 
-- (CGFloat)getBackAngle{
+
+- (CGFloat)getBackEndAngle{
     
     if(self.appearing){
         self.currentBackAngle  += (ToRad(360) - self.currentBackAngle) * ToRad(2.5) ;
@@ -314,9 +306,30 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
             //self.currentBackAngle = ToRad(360);
             self.appearing = NO;
         }
+    }else if (self.disAppearing){
+        self.currentBackAngle += (ToRad(90) - self.currentBackAngle) * ToRad(2.5) ;
     }
     
     return -M_PI_2 + self.currentBackAngle;
+}
+
+- (CGFloat)getBackStartAngle{
+    double baseAngle = -M_PI_2;
+    if (self.disAppearing){
+        baseAngle = 0;
+        
+        self.backStartAngle = ([self getAngleRadian]  - self.backStartAngle) * ToRad(1.5);
+        
+        int delta = (int)roundf(ToDeg(self.backStartAngle));
+        NSLog(@"dis %d",  delta);
+        
+        if(delta >= 180){
+            //self.currentBackAngle = ToRad(360);
+            self.disAppearing = NO;
+        }
+    }
+    
+    return baseAngle + self.backStartAngle;
 }
 
 /*
@@ -329,6 +342,8 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
         }
     }
 }*/
+
+
 
 - (CGFloat)getAngleRadian {
     return [self getAngleRadianAtTime:self.currentTimePercent];
