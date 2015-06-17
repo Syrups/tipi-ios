@@ -14,8 +14,8 @@
 #define SQR(x)			( (x) * (x) )
 
 @implementation TPCircleWaverControl{
-    //NSTimer* appearanceTimer;
-    //NSTimer* closingTimer;
+    NSTimer* appearanceTimer;
+    NSTimer* closingTimer;
     CGFloat lastValue;
     float* _buffer;
     UInt32 _bufferSize;
@@ -82,6 +82,7 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
         }
     }
 }
+
 
 - (void)setMode:(TPCircleMode)mode{
     _mode = mode;
@@ -218,12 +219,6 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     [self baseViewInitWithFrame:self.frame];
 }
 
-- (void)setDisAppearing:(BOOL)disAppearing{
-    self.backStartAngle = ToRad(0);
-    self.currentBackAngle = ToRad(0);
-    _disAppearing = disAppearing;
-    
-}
 
 - (void)drawRect:(CGRect)rect {
     
@@ -238,10 +233,10 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     
     //Draw Background Path
     CGContextBeginPath(ctx);
-    CGContextAddArc(ctx, center.x, center.y, self.radius, [self getBackStartAngle], [self getBackEndAngle], 0);
+    CGContextAddArc(ctx, center.x, center.y, self.radius, -M_PI_2 , [self getBackAngle] , 0);
     //-M_PI_2 + self.currentBackAngle
     CGContextSetStrokeColorWithColor(ctx, self.backgroundPathColor.CGColor);
-    CGContextSetLineWidth(ctx, kArcLineWidth * 1.3);
+    CGContextSetLineWidth(ctx, kArcLineWidth);
     CGContextStrokePath(ctx);
     
     
@@ -249,10 +244,8 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     CGContextBeginPath(ctx);
     CGContextAddArc(ctx, center.x, center.y, self.radius, -M_PI_2 + self.startAngle, [self getAngleRadian], 0);
     CGContextSetStrokeColorWithColor(ctx, self.progressPathColor.CGColor);
-    CGContextSetLineWidth(ctx, kArcLineWidth * 0.6);
+    CGContextSetLineWidth(ctx, kArcLineWidth);
     CGContextStrokePath(ctx);
-    
-    //[self drawRoundBorder:ctx];
     
     if(self.showController){
         [self drawTheHandle:ctx];
@@ -278,28 +271,11 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 }
 
 
--(void) drawRoundBorder:(CGContextRef)ctx{
-    CGContextSaveGState(ctx);
-    
-    //I Love shadows
-    CGContextSetShadowWithColor(ctx, CGSizeMake(0, 0), 3, [UIColor blackColor].CGColor);
-    
-    //Get the handle position!
-    CGPoint handleCenter =  [self pointFromAngle: [self getAngleDeg]];
-    
-    //Draw It!
-    [[UIColor colorWithWhite:1.0 alpha:0.8]set];
-    //CGContextFillEllipseInRect(ctx, CGRectMake(handleCenter.x, handleCenter.y, kSliderStroke, kSliderStroke));
-    CGPathCreateWithRoundedRect(CGRectMake(handleCenter.x, handleCenter.y, kSliderStroke, kSliderStroke), 1, 1, NULL);
-
-    CGContextRestoreGState(ctx);
-}
-
-
-- (CGFloat)getBackEndAngle{
+- (CGFloat)getBackAngle{
     
     if(self.appearing){
         self.currentBackAngle  += (ToRad(360) - self.currentBackAngle) * ToRad(2.5) ;
+        //[self linearTweenWithTime:kAngleFactorUpdateInterval startValue:ToRad(5) changeValue:ToRad(10) andDuration:10000];
     
         int delta = (int)(self.currentBackAngle - ToRad(360));
         if(delta > 0){
@@ -307,43 +283,15 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
             self.appearing = NO;
         }
     }else if (self.disAppearing){
-        self.currentBackAngle += (ToRad(90) - self.currentBackAngle) * ToRad(2.5) ;
-    }
-    
-    return -M_PI_2 + self.currentBackAngle;
-}
-
-- (CGFloat)getBackStartAngle{
-    double baseAngle = -M_PI_2;
-    if (self.disAppearing){
-        baseAngle = 0;
+        self.currentBackAngle  -= (ToRad(360) - self.currentBackAngle) * ToRad(2.5);
         
-        self.backStartAngle = ([self getAngleRadian]  - self.backStartAngle) * ToRad(1.5);
-        
-        int delta = (int)roundf(ToDeg(self.backStartAngle));
-        NSLog(@"dis %d",  delta);
-        
-        if(delta >= 180){
-            //self.currentBackAngle = ToRad(360);
+        if(self.currentBackAngle){
             self.disAppearing = NO;
         }
     }
     
-    return baseAngle + self.backStartAngle;
+    return -M_PI_2 + self.currentBackAngle;
 }
-
-/*
-- (CGFloat)getEndAngleForBackGround:(BOOL)forBack {
-    if (self.disAppearing){
-        if(forBack){
-            self.currentBackAngle  += (ToRad(0) - self.currentBackAngle) * ToRad(2.5);
-        }else{
-            self.currentBackAngle  += (ToRad(0) - self.currentBackAngle) * ToRad(2.5);
-        }
-    }
-}*/
-
-
 
 - (CGFloat)getAngleRadian {
     return [self getAngleRadianAtTime:self.currentTimePercent];
@@ -478,17 +426,51 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 
 - (void)appear {
     self.alpha = 1;
+    self.radiusFactor = kBaseRadiusFactor;
     self.radiusFactor = kEndRadiusFactor;
     self.currentBackAngle = ToRad(0);
-    self.backStartAngle = 0;
     
+    //self.appeared = YES;
     self.appearing = YES;
+    
+    //*
+    
+    /*[UIView animateWithDuration:10 animations:^{
+     self.radiusFactor = kEndRadiusFactor;
+     } completion:^(BOOL finished) {
+     self.appeared = YES;
+     }];*/
+    
+   
+    /*appearanceTimer = [NSTimer scheduledTimerWithTimeInterval:kAngleFactorUpdateInterval
+                                                       target:self
+                                                     selector:@selector(updateAppearing)
+                                                     userInfo:nil
+                                                      repeats:YES];*/
     
     [self updateAppearing];
 }
 
 
 - (void)updateAppearing {
+    //self.radiusFactor += kRadiusFactorUpdateValue;
+    //self.radiusFactor += kRadiusFactorUpdateValue;
+    
+    /*if (self.radiusFactor >= kEndRadiusFactor) {
+        self.radiusFactor = kEndRadiusFactor;
+        [appearanceTimer invalidate];
+    }*/
+    
+    
+    
+    /*self.currentBackAngle  += (ToDeg(360) - self.currentBackAngle) * ToDeg(10);
+    //(ToDeg(360) - self.currentBackAngle) * ToDeg(10);
+    //[self linearTweenWithTime:kAngleFactorUpdateInterval startValue:ToDeg(0) changeValue:ToDeg(10) andDuration:1000];
+    NSLog(@"%f", self.currentBackAngle);
+    if (self.currentBackAngle >= ToRad(360)) {
+        self.currentBackAngle = ToRad(360);
+        [appearanceTimer invalidate];
+    }*/
     
     CGPoint center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
     CGFloat rectSiez = [self rectSizeForCircleWithRadius:self.radius];
@@ -500,24 +482,35 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
     [self setContentMode:UIViewContentModeRedraw];
 }
 
+- (CGFloat)linearTweenWithTime:(NSTimeInterval)t startValue:(CGFloat)b changeValue:(CGFloat)c andDuration:(CGFloat)d {
+    t /= d/2;
+    if (t < 1) return -c/2 * (sqrt(1 - t*t) - 1) + b;
+    t -= 2;
+    return c/2 * (sqrt(1 - t*t) + 1) + b;
+}
+
+/*
+function linear(t, from, change, duration) {
+    return from + change * t / duration;
+}*/
+
 
 - (void)close {
     _bufferSize = 0;
     _buffer = NULL;
-    /*closingTimer = [NSTimer scheduledTimerWithTimeInterval:kRadiusFactorUpdateInterval
+    closingTimer = [NSTimer scheduledTimerWithTimeInterval:kRadiusFactorUpdateInterval
                                                     target:self
                                                   selector:@selector(updateClosing)
                                                   userInfo:nil
-                                                   repeats:YES];*/
-    self.appearing = NO;
-    self.disAppearing = YES;
+                                                   repeats:YES];
+    self.appeared = NO;
 }
 
 - (void)updateClosing {
     self.radiusFactor -= kRadiusFactorUpdateValue;
     
     if (self.radiusFactor <= kBaseRadiusFactor) {
-        //[closingTimer invalidate];
+        [closingTimer invalidate];
         self.alpha = 0;
     }
     
@@ -527,6 +520,7 @@ static NSTimeInterval const kSyncWithTimeUpdateInterval = 0.005f;
 
 - (void)hide {
     self.radiusFactor = -self.frame.size.width/2 + 30;
+    self.appeared = NO;
     [self setNeedsDisplay];
 }
 
@@ -716,10 +710,5 @@ static inline float AngleFromNorth(CGPoint p1, CGPoint p2, BOOL flipped) {
     if(self.delegate && [self.delegate respondsToSelector:@selector(circleWaverControl:didReceveivedTapGestureRecognizer:)]){
         [self.delegate circleWaverControl:self didReceveivedTapGestureRecognizer:recognizer];
     }
-}
-
-
-- (CGFloat)linearTweenWithTime:(NSTimeInterval)t startValue:(CGFloat)b changeValue:(CGFloat)c andDuration:(CGFloat)d {
-    return (t == d) ? b + c : c * (-pow(2, -10 * t / d) + 1) + b;
 }
 @end

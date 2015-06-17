@@ -48,12 +48,11 @@ typedef enum TPCircleMode{
 @property CGFloat currentTimePercent;
 @property CGFloat radiusFactor;
 @property CGFloat radius;
-
 @property CGFloat startAngle;
-@property CGFloat backStartAngle;
 
 @property CGFloat currentBackAngle;
 
+@property (nonatomic) BOOL appeared;
 @property (nonatomic) BOOL appearing;
 @property (nonatomic) BOOL disAppearing;
 

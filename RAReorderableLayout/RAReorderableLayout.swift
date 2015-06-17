@@ -194,7 +194,7 @@ public class RAReorderableLayout: UICollectionViewFlowLayout, UIGestureRecognize
         var attributesArray = super.layoutAttributesForElementsInRect(rect)
         if attributesArray != nil {
             for attribute in attributesArray! {
-                var layoutAttribute = attribute as! UICollectionViewLayoutAttributes
+                var layoutAttribute = attribute as UICollectionViewLayoutAttributes
                 if layoutAttribute.representedElementCategory == .Cell {
                     if layoutAttribute.indexPath.isEqual(self.cellFakeView?.indexPath) {
                         var cellAlpha: CGFloat = 0
@@ -223,7 +223,7 @@ public class RAReorderableLayout: UICollectionViewFlowLayout, UIGestureRecognize
         
         if let attributes = self.layoutAttributesForElementsInRect(proposedRect!) {
             for object in attributes {
-                let attributes:UICollectionViewLayoutAttributes = object as! UICollectionViewLayoutAttributes
+                let attributes:UICollectionViewLayoutAttributes = object as UICollectionViewLayoutAttributes
                 
                 if (abs(attributes.frame.origin.x - proposedContentOffsetCenterX) < abs(candidateAttributes.frame.origin.x - proposedContentOffsetCenterX)) {
                     candidateAttributes = attributes;
